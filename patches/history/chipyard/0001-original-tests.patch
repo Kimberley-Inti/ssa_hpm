@@ -1,0 +1,290 @@
+From c9f704c0364ba5cafb83c4ec01478b90a40d5b1a Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 4 Mar 2026 22:27:08 +0800
+Subject: [PATCH] Initial commit
+
+---
+ tests/hello.c        |  6 ++++
+ tests/link.ld        | 23 +++++++++++++++
+ tests/ssa_csr_test.s | 53 +++++++++++++++++++++++++++++++++
+ tests/test_call.S    | 44 ++++++++++++++++++++++++++++
+ tests/test_ssa.S     | 70 ++++++++++++++++++++++++++++++++++++++++++++
+ tests/verify_ssa.c   | 38 ++++++++++++++++++++++++
+ 6 files changed, 234 insertions(+)
+ create mode 100644 tests/hello.c
+ create mode 100644 tests/link.ld
+ create mode 100644 tests/ssa_csr_test.s
+ create mode 100644 tests/test_call.S
+ create mode 100644 tests/test_ssa.S
+ create mode 100644 tests/verify_ssa.c
+
+diff --git a/tests/hello.c b/tests/hello.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..0c47d8e9f5431870aef88783cdb7db76e1a37b8b
+--- /dev/null
++++ b/tests/hello.c
+@@ -0,0 +1,6 @@
++#include <stdio.h>
++
++int main(void) {
++  printf("Hello, World! This is Rocket Chip.\n");
++  return 0;
++}
+diff --git a/tests/link.ld b/tests/link.ld
+new file mode 100644
+index 0000000000000000000000000000000000000000..1022f555982eb420dd5a445df4f429075186778b
+--- /dev/null
++++ b/tests/link.ld
+@@ -0,0 +1,23 @@
++OUTPUT_ARCH( "riscv" )
++ENTRY( _start )
++
++SECTIONS
++{
++  . = 0x80000000;
++
++  .text : { *(.text) }
++  .data : { *(.data) }
++
++  /* 强制 64 字节对齐，防止 FESVR 读写错位 */
++  . = ALIGN(64);
++  .tohost : { *(.tohost) }
++
++  .bss : { *(.bss) }
++
++  /* 扔掉所有会导致 0x0 写入错误的垃圾段 */
++  /DISCARD/ : {
++    *(.note.gnu.build-id)
++    *(.comment)
++    *(.riscv.attributes)
++  }
++}
+diff --git a/tests/ssa_csr_test.s b/tests/ssa_csr_test.s
+new file mode 100644
+index 0000000000000000000000000000000000000000..f1635cbec53b7936990e204b3ab4a90fc06f2c9b
+--- /dev/null
++++ b/tests/ssa_csr_test.s
+@@ -0,0 +1,53 @@
++.section .text
++.global _start
++.align 4
++
++_start:
++    csrw    mie, zero
++    la      t0, trap_handler
++    csrw    mtvec, t0
++
++    # ---------------------------
++    # CSR 测试逻辑
++    # ---------------------------
++    li      t0, 0x12345678
++    csrw    0x800, t0       # 写 CSR
++    li      t1, 0
++    csrr    t1, 0x800       # 读 CSR
++    bne     t0, t1, fail    # 比较
++
++pass:
++    # [关键修复] 强制把 Cache 数据刷入 DRAM，让仿真器看到！
++    fence
++    
++    li      t0, 1
++    la      t1, tohost
++    sd      t0, 0(t1)
++    j       pass
++
++fail:
++    # 同样加上 fence
++    fence
++    
++    li      t0, 3       # 错误码 3: 数据不匹配
++    la      t1, tohost
++    sd      t0, 0(t1)
++    j       fail
++
++.align 4
++trap_handler:
++    fence
++    li      t0, 5       # 错误码 5: 触发了非法指令异常
++    la      t1, tohost
++    sd      t0, 0(t1)
++    j       trap_handler
++
++# ---------------------------
++# Linker Script 会把这个段放到 DRAM 里
++# ---------------------------
++.section .tohost
++.align 6
++.globl tohost
++tohost: .dword 0
++.globl fromhost
++fromhost: .dword 0
+diff --git a/tests/test_call.S b/tests/test_call.S
+new file mode 100644
+index 0000000000000000000000000000000000000000..6a78a713ac0ed5c6ee236f846c27ce670b7c8c52
+--- /dev/null
++++ b/tests/test_call.S
+@@ -0,0 +1,44 @@
++.section .text
++.global _start
++.align 4
++
++_start:
++    csrw    mie, zero
++    # 将基地址设为 0x80004000 (安全的 DRAM 区域)
++    li      t0, 0x80004000
++    csrw    0x800, t0
++
++    # 触发 Call (此时硬件应该向 0x80004000 写入 PC)
++    jal     ra, my_function
++
++pass:
++    fence
++    li      t0, 1
++    la      t1, tohost
++    sd      t0, 0(t1)
++1:  j       1b
++
++fail:
++    fence
++    li      t0, 3
++    la      t1, tohost
++    sd      t0, 0(t1)
++1:  j       1b
++
++my_function:
++   
++    li      t0, 0x80004000
++    ld      t1, 0(t0)      
++
++    # 判决：如果 t1 是 0，说明硬件注入失败了，跳到 fail
++    # 如果 t1 不是 0 (即成功读到了PC)，继续往下走
++    beqz    t1, fail
++
++    ret
++
++.section .tohost
++.align 6
++.globl tohost
++tohost: .dword 0
++.globl fromhost
++fromhost: .dword 0
+diff --git a/tests/test_ssa.S b/tests/test_ssa.S
+new file mode 100644
+index 0000000000000000000000000000000000000000..e787b092bd77f9b7df4547847e1c9044021b9270
+--- /dev/null
++++ b/tests/test_ssa.S
+@@ -0,0 +1,70 @@
++    .section .text
++    .globl _start
++
++_start:
++    # 0. 初始化栈指针 (SP) 到 DRAM 的安全区域
++    # SCStack 位于 0x80001000，我们把 SP 设远一点避免冲突
++    li sp, 0x80004000
++
++    # 1. 简单的初始化
++    li t0, 100
++
++    # 2. 调用函数 A
++    # 【硬件预期】检测到 JAL -> 触发 SSA 写内存 (Stack[0] = PC)
++    jal ra, func_a
++
++  
++    
++    # 加载 SCStack 基地址
++    li s0, 0x80100000       
++    
++    # 读取第 0 个条目 (对应 func_a 的调用点 PC)
++    # 【验证点 1】s1 (x9) 应该等于上面 'jal ra, func_a' 的地址
++    ld s1, 0(s0)            
++    
++    # 读取第 1 个条目 (对应 func_b 的调用点 PC)
++    # 【验证点 2】s2 (x18) 应该等于 func_a 内部 'jal ra, func_b' 的地址
++    ld s2, 8(s0)            
++
++    # ===============================================
++
++    # 3. 结束 (通知仿真器成功退出)
++    # 向 tohost 写 1 表示正常退出 (Pass)
++    li t0, 1
++    la t1, tohost
++    sd t0, 0(t1)
++
++loop:
++    j loop
++
++func_a:
++   
++    mv t1, ra      # 把返回地址(main)备份到 t1
++
++    addi t0, t0, 1
++
++    # 4. 嵌套调用函数 B
++    # 【硬件预期】检测到 JAL -> 触发 SSA 写内存 (Stack[1] = PC)
++    jal ra, func_b
++
++    # 从 t1 恢复返回地址
++    mv ra, t1
++
++    # 5. 函数 A 返回
++    # 【硬件预期】检测到 JALR -> 触发 SSA 弹栈 (Ptr 减 1)
++    ret
++
++func_b:
++    addi t0, t0, 2
++    
++    # 6. 函数 B 返回
++    # 【硬件预期】检测到 JALR -> 触发 SSA 弹栈 (Ptr 减 1)
++    ret
++
++
++.section .tohost
++.align 6
++.globl tohost
++tohost: .dword 0
++.globl fromhost
++fromhost: .dword 0
+diff --git a/tests/verify_ssa.c b/tests/verify_ssa.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..8517a9a6ef0cbd164cf6da8ff2aa6b33555005c7
+--- /dev/null
++++ b/tests/verify_ssa.c
+@@ -0,0 +1,38 @@
++#include <stdio.h>
++#include <stdint.h>
++
++#define SSA_BASE_ADDR 0x80100000
++
++void trigger_func() {
++    asm volatile("nop");
++    // JAL occurs here when returning or calling (depending on compilation)
++    // Your hardware triggers on JAL (Writeback stage), so simply calling this func is enough.
++}
++
++int main() {
++    // 1. 初始化指针，但不读取它。我们假设它是脏的。
++    // 如果之前没有代码访问过 0x80100000，Cache 应该是 Clean 的。
++    volatile uint64_t *ssa_monitor = (uint64_t *)SSA_BASE_ADDR;
++    
++    printf("--- Starting SSA Verification ---\n");
++
++    // 2. 触发 JAL。硬件应当向 0x80100000 写入 PC。
++    trigger_func(); 
++    
++    // 3. 简单的延时，确保硬件写入完成（虽然对于阻塞式 D-Cache 通常不需要，但为了保险）
++    for(volatile int i=0; i<100; i++);
++
++    // 4. 现在读取。如果硬件工作正常，这里应该能读到刚才 JAL 的 PC。
++    // 注意：如果 Cache 一致性没问题，CPU 应该能读到新值。
++    uint64_t stored_pc = *ssa_monitor;
++    
++    printf("After JAL: Address 0x%lx contains 0x%lx\n", SSA_BASE_ADDR, stored_pc);
++
++    if (stored_pc > 0x80000000 && stored_pc < 0x80100000) {
++        printf("[SUCCESS] SSA Hardware wrote PC 0x%lx to memory!\n", stored_pc);
++    } else {
++        printf("[FAILURE] Value is 0x%lx (Expected ~0x8000xxxx)\n", stored_pc);
++    }
++
++    return 0;
++}
