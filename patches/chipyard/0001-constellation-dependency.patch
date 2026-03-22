@@ -1,0 +1,16 @@
+From 710f951e2a3ec3ec1c050889c9ccf35e0e0ede1e Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Sun, 22 Mar 2026 21:26:42 +0800
+Subject: [PATCH] ssa_trap_mode connection logic
+
+---
+ generators/constellation | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/generators/constellation b/generators/constellation
+index b93fde3e2824f728c404e08984046d41679ec31f..dce9eb03b44ad442a552242546f1672bdc15fce3 160000
+--- a/generators/constellation
++++ b/generators/constellation
+@@ -1 +1 @@
+-Subproject commit b93fde3e2824f728c404e08984046d41679ec31f
++Subproject commit dce9eb03b44ad442a552242546f1672bdc15fce3
