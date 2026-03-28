@@ -1,0 +1,33 @@
+From 1f200edb0eb0832a72d04d8d4f36b912e0e447dd Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Sat, 28 Mar 2026 08:01:21 +0800
+Subject: [PATCH] modified code sequence
+
+---
+ src/main/scala/rocket/RocketCore.scala | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/main/scala/rocket/RocketCore.scala b/src/main/scala/rocket/RocketCore.scala
+index 410be7d4c56b2c5d2a0712b57749661c7366e85a..86674ad2542bfa919bb5d3e5c3271fc9c56a148e 100644
+--- a/src/main/scala/rocket/RocketCore.scala
++++ b/src/main/scala/rocket/RocketCore.scala
+@@ -257,9 +257,6 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+     val take_pc_wb = Wire(Bool())
+     val wb_reg_wphit           = Reg(Vec(nBreakpoints, Bool()))
+ 
+-    val take_pc_mem_wb = take_pc_wb || take_pc_mem
+-    val take_pc = Mux(ssa_trap_mode, false.B, take_pc_mem_wb)
+-
+     //========================================
+     //[1] State Register Definitions
+     //Enable switch
+@@ -270,6 +267,9 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+     val ssa_arg_callee = RegInit(0.U(64.W))
+     //==========================================
+ 
++    val take_pc_mem_wb = take_pc_wb || take_pc_mem
++    val take_pc = Mux(ssa_trap_mode, false.B, take_pc_mem_wb)
++
+     // decode stage
+     val ibuf = Module(new IBuf)
+     //[SSA-HPM]===================================
