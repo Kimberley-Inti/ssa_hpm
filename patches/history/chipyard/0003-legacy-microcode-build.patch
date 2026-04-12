@@ -1,0 +1,23 @@
+From c2391670d8e1cc62369cfc3e96b58a9a8cc94dda Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Sun, 12 Apr 2026 14:46:47 +0800
+Subject: [PATCH] normal exit
+
+---
+ tests/Makefile | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/tests/Makefile b/tests/Makefile
+index b5dbcc6f2a7787a605ad26b33d41ac0fada9556e..64adf0c7f11c04111a3069c60d5e69484cf71484 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -36,3 +36,9 @@ dumps: $(addsuffix .dump,$(PROGRAMS))
+ clean:
+ 	rm -f *.riscv *.o *.dump
+ 	$(if $(libgloss),rm -rf $(libgloss_builddir)/)
++	
++# --- SSA Microcode Generator ---
++microcode: ssa_microcode.S
++	riscv64-unknown-elf-gcc -nostdlib -fno-builtin -march=rv64g -mabi=lp64d -Ttext 0x0 ssa_microcode.S -o ssa_microcode.elf
++	riscv64-unknown-elf-objdump -d ssa_microcode.elf | grep "^ " | awk '{print "\"h" $$2 "\","}' > ssa_rom_scala.txt
++	@echo "Microcode successfully compiled! Check ssa_rom_scala.txt for the Scala array."
