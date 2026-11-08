@@ -1,0 +1,62 @@
+From 375068b6180fa968f86f07fc4b2e1ec104f632ee Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Mon, 9 Nov 2026 06:19:08 +0800
+Subject: [PATCH] Add reproducible SSA-HPM Spike and Rocket RTL validation
+
+---
+ sims/common-sim-flags.mk | 4 +++-
+ sims/verilator/Makefile  | 8 ++++----
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/sims/common-sim-flags.mk b/sims/common-sim-flags.mk
+index 7c6c580d6eca6d79ea85f33f9861dfc6588f5bf2..cdb89a6ef627179bb667d4381f8c3e05a665e400 100644
+--- a/sims/common-sim-flags.mk
++++ b/sims/common-sim-flags.mk
+@@ -1,3 +1,5 @@
++# Current Spike/FESVR headers use std::optional. Override for older toolchains.
++SIM_CXXSTD ?= c++17
+ #----------------------------------------------------------------------------------------
+ # common gcc configuration/optimization
+ #----------------------------------------------------------------------------------------
+@@ -6,7 +8,7 @@ SIM_OPT_CXXFLAGS := -O3
+ SIM_CXXFLAGS = \
+ 	$(CXXFLAGS) \
+ 	$(SIM_OPT_CXXFLAGS) \
+-	-std=c++11 \
++	-std=$(SIM_CXXSTD) \
+ 	-I$(RISCV)/include \
+ 	-I$(dramsim_dir) \
+ 	-I$(build_dir) \
+diff --git a/sims/verilator/Makefile b/sims/verilator/Makefile
+index a1186acc742d941c1d46bc0659fbd2fe7707b0ec..cff4f89008d9784127e42ebd8d5552686111b1dd 100644
+--- a/sims/verilator/Makefile
++++ b/sims/verilator/Makefile
+@@ -210,13 +210,13 @@ model_mk_debug = $(model_dir_debug)/V$(VLOG_MODEL).mk
+ #########################################################################################
+ # build makefile fragment that builds the verilator sim rules
+ #########################################################################################
+-$(model_mk): $(sim_vsrcs) $(sim_common_files) $(EXTRA_SIM_REQS)
++$(model_mk): $(base_dir)/sims/common-sim-flags.mk $(sim_vsrcs) $(sim_common_files) $(EXTRA_SIM_REQS)
+ 	rm -rf $(model_dir)
+ 	mkdir -p $(model_dir)
+ 	$(VERILATOR) $(VERILATOR_OPTS) $(EXTRA_SIM_SOURCES) -o $(sim) -Mdir $(model_dir) -CFLAGS "-include $(model_header)"
+ 	touch $@
+ 
+-$(model_mk_debug): $(sim_vsrcs) $(sim_common_files) $(EXTRA_SIM_REQS)
++$(model_mk_debug): $(base_dir)/sims/common-sim-flags.mk $(sim_vsrcs) $(sim_common_files) $(EXTRA_SIM_REQS)
+ 	rm -rf $(model_dir_debug)
+ 	mkdir -p $(model_dir_debug)
+ 	$(VERILATOR) $(VERILATOR_OPTS) $(EXTRA_SIM_SOURCES) -o $(sim_debug) $(TRACING_OPTS) -Mdir $(model_dir_debug) -CFLAGS "-include $(model_header_debug)"
+@@ -226,10 +226,10 @@ $(model_mk_debug): $(sim_vsrcs) $(sim_common_files) $(EXTRA_SIM_REQS)
+ # invoke make to make verilator sim rules
+ #########################################################################################
+ $(sim): $(model_mk) $(dramsim_lib)
+-	$(MAKE) VM_PARALLEL_BUILDS=1 -C $(model_dir) -f V$(VLOG_MODEL).mk
++	$(MAKE) VM_PARALLEL_BUILDS=1 CFG_CXXFLAGS_STD_NEWEST=-std=$(SIM_CXXSTD) -C $(model_dir) -f V$(VLOG_MODEL).mk
+ 
+ $(sim_debug): $(model_mk_debug) $(dramsim_lib)
+-	$(MAKE) VM_PARALLEL_BUILDS=1 -C $(model_dir_debug) -f V$(VLOG_MODEL).mk
++	$(MAKE) VM_PARALLEL_BUILDS=1 CFG_CXXFLAGS_STD_NEWEST=-std=$(SIM_CXXSTD) -C $(model_dir_debug) -f V$(VLOG_MODEL).mk
+ 
+ #########################################################################################
+ # create a verilator vpd rule

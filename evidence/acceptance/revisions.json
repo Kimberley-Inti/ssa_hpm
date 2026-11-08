@@ -1,0 +1,7 @@
+{
+  "branch": "ssa-hpm-completion-20261108",
+  "chipyard_baseline": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+  "rocket_baseline": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+  "inherited_dirty_checkpoint": "539c3b10fee35fe0a2890083dd17c06688a704f8",
+  "rocket_delivery": "986407bc6df8d2a67572250f1df9eb2c0edeacf9"
+}

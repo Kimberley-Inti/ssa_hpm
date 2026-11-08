@@ -1,0 +1,14 @@
+Command: source ssa/env.sh; make -C sims/verilator CONFIG=RocketConfig -j8 LINK='/usr/bin/g++ -B/usr/bin/'
+Observed exit status: 0 (unified exec session 31518)
+
+[info] compiling 1 Scala source to /home/lxf/chipyard/generators/rocket-chip/src/target/scala-2.12/classes ...
+[info] done compiling
+[success] Total time: 69 s (01:09), completed Nov 9, 2026, 1:11:14 AM
+[success] Total time: 100 s (01:40), completed Nov 9, 2026, 1:13:13 AM
+[success] Total time: 9 s, completed Nov 9, 2026, 6:13:16 AM
+[success] Total time: 7 s, completed Nov 9, 2026, 6:13:44 AM
+
+Final linker:
+/usr/bin/g++ -B/usr/bin/    SimDRAM.o SimDTM.o SimJTAG.o SimSerial.o SimUART.o emulator.o mm.o mm_dramsim2.o remote_bitbang.o testchip_tsi.o uart.o verilated.o verilated_dpi.o verilated_vpi.o verilated_threads.o VTestHarness__ALL.a   -L/opt/riscv/lib -Wl,-rpath,/opt/riscv/lib -L/home/lxf/chipyard/sims/verilator -L/home/lxf/chipyard/tools/DRAMSim2 -lfesvr -ldramsim  -pthread -lpthread -latomic   -o /home/lxf/chipyard/sims/verilator/simulator-chipyard-RocketConfig
+
+Warnings retained: pre-existing EICG_wrapper latch; repeated __STDC_FORMAT_MACROS definition. No errors.

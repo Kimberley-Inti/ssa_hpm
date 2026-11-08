@@ -1,0 +1,7 @@
+*.riscv
+reference.S
+*.log
+*.bin
+*.hex
+handoff/
+__pycache__/

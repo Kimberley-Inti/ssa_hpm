@@ -1,0 +1,102 @@
+[
+  {
+    "name": "spike-context",
+    "command": [
+      "spike",
+      "ssa/reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.04
+  },
+  {
+    "name": "spike-boundary",
+    "command": [
+      "spike",
+      "ssa/boundary-reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.04
+  },
+  {
+    "name": "spike-abi",
+    "command": [
+      "spike",
+      "ssa/abi-reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.04
+  },
+  {
+    "name": "rtl-context",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/test.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/test.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 31.83
+  },
+  {
+    "name": "rtl-boundary",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/boundary.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/boundary.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 52.05
+  },
+  {
+    "name": "rtl-abi",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/abi.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/abi.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.05
+  },
+  {
+    "name": "rtl-late",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/late.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/late.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.05
+  },
+  {
+    "name": "rtl-disabled-reference",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/reference.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 30.64
+  }
+]

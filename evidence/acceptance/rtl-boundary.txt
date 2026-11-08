@@ -1,0 +1,5 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 41443
+SSA PASS: 258 calls, 256 frames, overflow folds into top, full unwind
+SSA PASS: record exhaustion bounded, error recorded, parent restored
+[UART] UART0 is here (stdin/stdout).

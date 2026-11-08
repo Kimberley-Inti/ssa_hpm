@@ -1,0 +1,23 @@
+SOURCE: /tmp/ssa-handoff/baseline-correct-load.log
+[SSA-HPM] ERROR: Watchdog Timeout! Forcing flush and resuming C program.
+[SSA-HPM] ERROR: Watchdog Timeout! Forcing flush and resuming C program.
+[93000] %Error: chipyard.TestHarness.RocketConfig.top.v:198231: Assertion failed in TOP.TestHarness.chiptop.system.tile_prci_domain.tile_reset_domain.tile.frontend
+Aborting...
+
+SOURCE: /tmp/ssa-handoff/build.log
+   76 |   std::optional<reg_t>    start_pc;
+/opt/riscv/include/fesvr/../riscv/cfg.h:76:3: note: 'std::optional' is only available from C++17 onwards
+/opt/riscv/include/fesvr/../riscv/cfg.h:76:8: error: 'optional' in namespace 'std' does not name a template type
+/opt/riscv/include/fesvr/../riscv/cfg.h:82:8: error: 'optional' in namespace 'std' does not name a template type
+
+SOURCE: /tmp/ssa-handoff/build-cxx17-retry.log
+/home/lxf/spike/riscv-isa-sim/build/../fesvr/syscall.cc:332: undefined reference to `statx'
+
+SOURCE: /tmp/ssa-handoff/rtl-late-before.log
+*** FAILED *** (tohost = 21)
+*** FAILED *** (code = 21, seed 1794173397) after 3635 cycles
+
+SOURCE: /tmp/ssa-handoff/baseline-original-correct.log (original tests/test_ssa.riscv, compact legacy ABI)
+[SSA-HPM] ERROR: Watchdog Timeout! Forcing flush and resuming C program.
+[92000] %Error: chipyard.TestHarness.RocketConfig.top.v:198231: Assertion failed in TOP.TestHarness.chiptop.system.tile_prci_domain.tile_reset_domain.tile.frontend
+Aborting...

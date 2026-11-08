@@ -1,0 +1,10 @@
+Sun Nov  8 22:15:03 UTC 2026
+Spike RISC-V ISA Simulator 1.1.1-dev
+riscv64-unknown-elf-gcc () 15.1.0
+Verilator 4.226 2022-08-31 rev v4.226
+openjdk version "17.0.18" 2026-01-20
+OpenJDK Runtime Environment (build 17.0.18+8-Ubuntu-122.04.1)
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+065950a045d88f7558295df43416dfc25d1aeaf1
+6f58d5af94d3d083f5c687a2baf21e54b8ef50343b83314b8886b46d89e299aa  /opt/riscv/bin/spike
+6f58d5af94d3d083f5c687a2baf21e54b8ef50343b83314b8886b46d89e299aa  /home/lxf/spike/riscv-isa-sim/build/spike
