@@ -1,0 +1,261 @@
+{
+  "passed": true,
+  "chipyard_base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
+  "rocket_base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
+  "rocket_tree": "535c551af33cce20384ca2f8c3560ac5e70cdca4",
+  "exact_file_hashes": {
+    "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "9b0e4e884e819bd158a4cb813c1469c30f8deaa88c2e0e709d2532dfa3152357",
+    "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "24e3e2d372a42e02183813c18053e089715d67890e59d4b9edbd6fae3b1e4cc0",
+    "generators/rocket-chip/src/main/scala/rocket/IDecode.scala": "a2f6fefae2d38f6414fcf8f0c4eeaa6d49205f3072bb578a121592e459c92377",
+    "generators/rocket-chip/src/main/resources/ssa/microcode.S": "43e5968a267cd07814c4a6c103eec98d8d378789bb5c73243eff5bb2d9c3b5d6",
+    "generators/rocket-chip/scripts/gen-ssa-rom.py": "6b0172fa83277afbfe54abbf3ad25395b28be8cbad96aa8f19d0912494af5953",
+    "sims/common-sim-flags.mk": "b7738ea942d3278d021dd59675fceea6c44bb37d8eb894f51e15deb69776076f",
+    "sims/verilator/Makefile": "0317fa58da0a8b5c776c6f91ce316f3e21e145f71a07e732b5a20e834638757a",
+    "ssa/abi.S": "a0021451f71d59c23cea1242146059ed0bb7ed49458ec4624d24351bd2ec42e5",
+    "ssa/test.ld": "abe19976736741556e3deb41ecd354653f0486f1f64fb74c07586a24cc92b0cb",
+    "ssa/env.sh": "3b24ac29129c513816ff23906c362d90539d2b6526195b01520271a253ddb2f3",
+    "ssa/Makefile": "c90936849ca8b798dd52c7d2b47797a74f70f97519960375ff8fcd0c67ad08d9",
+    "ssa/.gitignore": "26e6b76a6e6548d850a3f518f2a5382586e38aa52b60c461319800da1ccd4dbd",
+    "ssa/gen_rom.py": "4d911732547482931789efcbedc3b461112fec247a1aac700502874f559fb5a7",
+    "ssa/elf_to_hex.py": "4f49a1d6389cb2abf906720b45f1acefa42a97c30569d4fe180e26d2e1365104",
+    "ssa/verify.py": "3871c46c88e4adb6d119b89a8cbe8c7b98e91a8bc9f19d8bfc05c3deb64b9f10",
+    "ssa/start.S": "83f646bdb84b479ffdb2e4de62fb185572b8a912133887b675ff37a1ba336246",
+    "ssa/analyze.py": "8c6800f3175c57c9f6499888f565643a539f7b458f44c1d493fd3176309d9526",
+    "ssa/test.c": "3957dab54f420008ba4412b59d5d8dc3d8f21a3b0645af85e2defec7ab5da6c0",
+    "ssa/trap_entry.S": "a93c62480a82f7fc65b01869f8fd0defc311f589d8d547e263c6585773f78790",
+    "ssa/traps.c": "26a865c5d348e101fd951b0150a2008363a60d010cf453c055e1332217e0abbe",
+    "ssa/process_entry.S": "1246914a1a8572845212608e7240cc4a44a160edc2291f536eca3101f2c05460",
+    "ssa/processes.c": "28eb4732d235956d8a76961789fb58d54fd04770a7d0a38868546af8381610f5",
+    "ssa/verify_process.py": "b289740a117c809adb1271448735a7e4174be485a2afb02d651075bb596d437a",
+    "ssa/process.h": "264ac1afd3e5de0bc5a3069357a5dfaab58b2ace7e76a7a7e3cbae53c0dc9cef"
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "ssa-hpm-reproduce"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "add",
+        "upstream",
+        "https://github.com/ucb-bar/chipyard.git"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--depth=1",
+        "upstream",
+        "2d03d10837fc1a7569d10ae2c91c8132c7fee77d"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "ssa-hpm-reproduce"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "add",
+        "upstream",
+        "https://github.com/chipsalliance/rocket-chip.git"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--depth=1",
+        "upstream",
+        "44b0b8249279d25bd75ea693b725d9ff1b96e2ab"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/chipyard/0001-constellation-dependency.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/chipyard/0002-fesvr-verilator-build.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0001-9c6d44169.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0002-1543ea544.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0003-1f200edb0.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0004-d047a8548.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0005-07a9c3fa8.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0006-23f5a64f6.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0007-539c3b10f.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0008-986407bc6.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "--keep-cr",
+        "/home/lxf/ssa_hpm/patches/rocket-chip/0009-trap-context-isolation.patch"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
+    },
+    {
+      "argv": [
+        "git",
+        "add",
+        "-f",
+        "ssa"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "Install SSA-HPM standalone validation suite"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    },
+    {
+      "argv": [
+        "python3",
+        "ssa/gen_rom.py",
+        "--check"
+      ],
+      "cwd": "/tmp/ssa-process-rebuild-final"
+    }
+  ]
+}

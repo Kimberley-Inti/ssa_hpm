@@ -110,3 +110,5 @@ Verilator 的 16 项实际结果。原始验收证据与本次 baseline/developm
 “Add single-hart monitoring pool lifecycle and off-CPU attribution regression”。
 Chipyard ssa/README.md 的本轮说明在维护仓库整理为 docs/STAGE3.md；运行源文件
 和 Makefile 一致，历史 integration/ssa/README.md 不替代当前阶段说明。
+
+本轮接口与测试整理提交：`aad36f0ecad6fce9fbd661760c9505bc1e653e6d`，对应 Chipyard `503d5ccdb6634a05f46181ecd23648cfbb4e61b8`。后续验证提交仅补充实际重建证据和文档。

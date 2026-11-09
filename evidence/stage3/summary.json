@@ -1,0 +1,86 @@
+{
+  "stage": "stage3-process-isolation",
+  "baseline_release": "2d646a615b357e3e883289d91d0b903ac14baec4",
+  "source_bases": {
+    "chipyard": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+    "rocket_chip": "3f4ab938660454b101c67f6929bfebae5be1a138"
+  },
+  "source_commits": {
+    "chipyard": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+    "rocket_chip": "3f4ab938660454b101c67f6929bfebae5be1a138"
+  },
+  "rocket_source_changed": false,
+  "scope": "single-hart controlled M-mode task switching, not Linux processes",
+  "golden": {
+    "contexts": 6,
+    "common_instret": [
+      14452,
+      7226
+    ]
+  },
+  "baseline": {
+    "stage2_regression_passed": 16,
+    "stage2_spike": 5,
+    "stage2_rtl": 11,
+    "golden_unchanged": true
+  },
+  "development": {
+    "stage2_regression_passed": 16,
+    "stage2_spike": 5,
+    "stage2_rtl": 11,
+    "golden_unchanged": true,
+    "process_checks": {
+      "total": 3,
+      "spike_reference_exit": 0,
+      "legacy_rtl_expected_exit": 42,
+      "corrected_rtl_exit": 0,
+      "relationships_passed": true,
+      "legacy_A_common_instret": [
+        1486,
+        4952
+      ],
+      "corrected_A_common_instret": [
+        215,
+        215
+      ],
+      "excluded_other_task_instret": 3466
+    },
+    "rtl_build": "existing stage2 simulator reused; make exit 0 with no source changes"
+  },
+  "independent": {
+    "stage2_regression_passed": 16,
+    "stage2_spike": 5,
+    "stage2_rtl": 11,
+    "golden_unchanged": true,
+    "process_checks": {
+      "total": 3,
+      "spike_reference_exit": 0,
+      "legacy_rtl_expected_exit": 42,
+      "corrected_rtl_exit": 0,
+      "relationships_passed": true,
+      "legacy_A_common_instret": [
+        1486,
+        4952
+      ],
+      "corrected_A_common_instret": [
+        215,
+        215
+      ],
+      "excluded_other_task_instret": 3466
+    },
+    "public_baselines_fetched": true,
+    "clean_patch_application": true,
+    "new_scala_compilation": true,
+    "new_rtl_and_simulator": true,
+    "dependencies_and_toolchain_cache_reused": true,
+    "rocket_tree": "535c551af33cce20384ca2f8c3560ac5e70cdca4"
+  },
+  "counter_semantics": "inclusive child and monitoring overhead; scheduler ABI excludes per-counter pause/resume sample interval from all open frames; trap and resume overhead outside that interval retained",
+  "not_validated": [
+    "Linux U/S-mode loader, scheduler/exec/exit integration and pinned virtual pools",
+    "multicore and migration",
+    "nonlocal unwind",
+    "Cache/TLB and memory classification",
+    "FP/vector task state"
+  ]
+}

@@ -92,3 +92,8 @@ Rocket hart 上交替运行，池分离、未返回帧恢复、退出结果读�
 RTL 修改；公开基线与原有九个 Rocket 补丁不变，新增接口和测试仅在 integration
 交付一次。详见 [STAGE3](docs/STAGE3.md)；最终证据见
 [evidence/stage3/summary.json](evidence/stage3/summary.json)。
+
+
+第三阶段最终验证：开发树与独立公开基线重建均通过原 16 项回归及新增进程协议
+检查（含旧协议预期退出 42 的负对照）。独立重编译 Scala、RTL 和 Verilator 通过。
+Spike 仍无 SSA 扩展；Linux 集成尚未完成，详见阶段说明。

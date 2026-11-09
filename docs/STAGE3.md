@@ -94,3 +94,13 @@ Rocket 版本才验证硬件透明调用/返回及实际池和计数。
 独立工作区重新编译 Scala、生成 RTL/构建 Verilator；可复用固定 SHA 的依赖和
 VM 工具链缓存，不能复制开发工作树的模拟器冒充独立构建。最终结果以
 `evidence/stage3/summary.json` 为准，baseline/development/independent 分开记录。
+
+
+最终验收：开发树和独立重建均为原 16 项全部通过，加上 1 项 Spike 调度指令参考、
+1 项旧协议 RTL 预期失败（退出 42、mask=0x1000）、1 项修复 RTL 通过（退出 0）。
+独立构建退出 0；全部验证入口退出 0。两处定量关系检查均通过，A common 的
+1486/4952 → 215/215 以及 3466 条串扰排除一致。两处原始六记录和 14452/7226
+不变。源码 Chipyard 为 503d5ccdb6634a05f46181ecd23648cfbb4e61b8；Rocket 沿用
+3f4ab938660454b101c67f6929bfebae5be1a138。原始完整构建日志及独立源文件哈希
+随 evidence/stage3/independent 提供。开发树 make 复用了原有 RTL，独立重建才是
+本轮重新编译 Scala/生成 RTL 的证据；依赖与工具缓存复用已明确记录。
