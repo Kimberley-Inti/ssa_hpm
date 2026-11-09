@@ -1,0 +1,477 @@
+{
+  "schema": 1,
+  "project": "SSA-HPM",
+  "chipyard": {
+    "url": "https://github.com/ucb-bar/chipyard.git",
+    "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
+    "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+    "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee"
+  },
+  "rocket_chip": {
+    "url": "https://github.com/chipsalliance/rocket-chip.git",
+    "base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
+    "accepted_base": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+    "accepted_delivery": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+    "expected_tree": "927a21fc6283a2e5f96adcf84a7d4a381829fccd"
+  },
+  "constellation": {
+    "url": "https://github.com/ucb-bar/constellation.git",
+    "commit": "dce9eb03b44ad442a552242546f1672bdc15fce3"
+  },
+  "history": [
+    {
+      "sha": "c9f704c0364ba5cafb83c4ec01478b90a40d5b1a",
+      "date": "2026-03-04T22:27:08+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Initial commit",
+      "repository": "chipyard",
+      "paths": [
+        "tests/hello.c",
+        "tests/link.ld",
+        "tests/ssa_csr_test.s",
+        "tests/test_call.S",
+        "tests/test_ssa.S",
+        "tests/verify_ssa.c"
+      ],
+      "artifacts": [
+        "patches/history/chipyard/0001-original-tests.patch"
+      ],
+      "release_commit": "b4be26b28b237996713b47f75cb9619cdc242d3b",
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true
+    },
+    {
+      "sha": "90bfa6c768b8fd1258d38cdffcfde862dfcc669d",
+      "date": "2026-03-04T22:59:12+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Update .gitignore and remove untracked build artifacts",
+      "repository": "chipyard",
+      "paths": [
+        ".gitignore",
+        "fpga/fpga-shells",
+        "software/coremark",
+        "software/nvdla-workload",
+        "software/spec2017",
+        "toolchains/esp-tools/esp-tools-feedstock",
+        "toolchains/esp-tools/riscv-isa-sim",
+        "toolchains/esp-tools/riscv-pk",
+        "toolchains/esp-tools/riscv-tests",
+        "toolchains/riscv-tools/riscv-openocd",
+        "toolchains/riscv-tools/riscv-tools-feedstock",
+        "vlsi/hammer-cadence-plugins",
+        "vlsi/hammer-mentor-plugins",
+        "vlsi/hammer-synopsys-plugins"
+      ],
+      "artifacts": [],
+      "release_commit": null,
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true
+    },
+    {
+      "sha": "9c6d44169365b1423f5aa8282def76b20e6c04fb",
+      "date": "2026-03-05T22:41:45+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Update HPM logic in RocketCore",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/CSR.scala",
+        "src/main/scala/rocket/IDecode.scala",
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0001-9c6d44169.patch"
+      ],
+      "release_commit": "e47da1fbea907868f45c3eeb56d8a5f7e1a41262",
+      "original_branch": "SSA-HPM",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "6723407ba5ffb05d01757ef1c5d24a20218caffa",
+      "date": "2026-03-05T22:42:48+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Track modified rocket-chip for SSA-HPM",
+      "repository": "chipyard",
+      "paths": [
+        "generators/rocket-chip"
+      ],
+      "artifacts": [],
+      "release_commit": null,
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true,
+      "rocket_gitlink_mapping": {
+        "original_sha": "9c6d44169365b1423f5aa8282def76b20e6c04fb",
+        "release_commit": "e47da1fbea907868f45c3eeb56d8a5f7e1a41262"
+      }
+    },
+    {
+      "sha": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+      "date": "2026-03-06T23:35:12+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Relink rocket-chip submodule to my personal fork",
+      "repository": "chipyard",
+      "paths": [
+        ".gitmodules"
+      ],
+      "artifacts": [],
+      "release_commit": null,
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true
+    },
+    {
+      "sha": "710f951e2a3ec3ec1c050889c9ccf35e0e0ede1e",
+      "date": "2026-03-22T21:26:42+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "ssa_trap_mode connection logic",
+      "repository": "chipyard",
+      "paths": [
+        "generators/constellation",
+        "generators/rocket-chip"
+      ],
+      "artifacts": [
+        "patches/chipyard/0001-constellation-dependency.patch"
+      ],
+      "release_commit": "826f5082206beef41b461c847ca4b0ca46bc60c3",
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true,
+      "rocket_gitlink_mapping": {
+        "original_sha": "1543ea5445423aefae78c52b37c2521abea42fdc",
+        "release_commit": "22ac074de75b476f2fcd44d01fa38039afe9e40a"
+      }
+    },
+    {
+      "sha": "1543ea5445423aefae78c52b37c2521abea42fdc",
+      "date": "2026-03-22T21:26:42+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "ssa_trap_mode connection logic",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0002-1543ea544.patch"
+      ],
+      "release_commit": "22ac074de75b476f2fcd44d01fa38039afe9e40a",
+      "original_branch": "SSA-HPM",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "01b1aa69bce35971c9912e5706860d848adc6900",
+      "date": "2026-03-28T08:01:21+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "modified code sequence",
+      "repository": "chipyard",
+      "paths": [
+        "generators/rocket-chip",
+        "tests/Makefile",
+        "tests/ssa_csr_test.s",
+        "tests/test_ssa.S"
+      ],
+      "artifacts": [
+        "patches/history/chipyard/0002-legacy-test-revision.patch"
+      ],
+      "release_commit": "1f19a00316cebd0e9bd4b5ed784dbf0f6e44eeff",
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true,
+      "rocket_gitlink_mapping": {
+        "original_sha": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd",
+        "release_commit": "ec73be3357edd13ef4653ec62a1e3074159defa0"
+      }
+    },
+    {
+      "sha": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd",
+      "date": "2026-03-28T08:01:21+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "modified code sequence",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0003-1f200edb0.patch"
+      ],
+      "release_commit": "ec73be3357edd13ef4653ec62a1e3074159defa0",
+      "original_branch": "SSA-HPM",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "d047a854895f008c586487e017f5346c4427c1af",
+      "date": "2026-04-01T15:35:41+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "forced exit",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0004-d047a8548.patch"
+      ],
+      "release_commit": "5a37854211a9f1043de1eed9397e145a20ca8caf",
+      "original_branch": "SSA-HPM",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "f98d756927cf59cfee20b1183f9247cab7e181b9",
+      "date": "2026-04-01T15:35:42+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "forced exit",
+      "repository": "chipyard",
+      "paths": [
+        "generators/rocket-chip"
+      ],
+      "artifacts": [],
+      "release_commit": null,
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true,
+      "rocket_gitlink_mapping": {
+        "original_sha": "d047a854895f008c586487e017f5346c4427c1af",
+        "release_commit": "5a37854211a9f1043de1eed9397e145a20ca8caf"
+      }
+    },
+    {
+      "sha": "2cd92122a0fff0c4036d34e77e36470c22311f53",
+      "date": "2026-04-12T08:02:41+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "normal exit",
+      "repository": "chipyard",
+      "paths": [
+        "generators/rocket-chip"
+      ],
+      "artifacts": [],
+      "release_commit": null,
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true,
+      "rocket_gitlink_mapping": {
+        "original_sha": "07a9c3fa809332daa19f8ca99e2573cd0ecaced1",
+        "release_commit": "48e9965c45221ff5a427e1e4bc53c2cc86e97ee5"
+      }
+    },
+    {
+      "sha": "07a9c3fa809332daa19f8ca99e2573cd0ecaced1",
+      "date": "2026-04-12T08:02:41+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "normal exit",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0005-07a9c3fa8.patch"
+      ],
+      "release_commit": "48e9965c45221ff5a427e1e4bc53c2cc86e97ee5",
+      "original_branch": "SSA-HPM",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+      "date": "2026-04-12T14:46:46+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "normal exit",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0006-23f5a64f6.patch"
+      ],
+      "release_commit": "1d5ae817964d3b13f1098431d0c4f71209ef59cb",
+      "original_branch": "SSA-HPM",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+      "date": "2026-04-12T14:46:47+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "normal exit",
+      "repository": "chipyard",
+      "paths": [
+        "generators/rocket-chip",
+        "tests/Makefile"
+      ],
+      "artifacts": [
+        "patches/history/chipyard/0003-legacy-microcode-build.patch"
+      ],
+      "release_commit": "1d14fa7c7ff95029ee009465f95f30a35646e5a4",
+      "original_branch": "main",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true,
+      "rocket_gitlink_mapping": {
+        "original_sha": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+        "release_commit": "1d5ae817964d3b13f1098431d0c4f71209ef59cb"
+      }
+    },
+    {
+      "sha": "539c3b10fee35fe0a2890083dd17c06688a704f8",
+      "date": "2026-11-08T23:03:16+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Preserve inherited uncommitted SSA-HPM implementation",
+      "repository": "rocket-chip",
+      "paths": [
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0007-539c3b10f.patch"
+      ],
+      "release_commit": "d8390b3affa5c04d7b4e7b305b88a9f8900bba5a",
+      "original_branch": "ssa-hpm-completion-20261108",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+      "date": "2026-11-09T06:18:46+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Fix SSA-HPM microcode retirement, context dictionary and counter attribution",
+      "repository": "rocket-chip",
+      "paths": [
+        "scripts/gen-ssa-rom.py",
+        "src/main/resources/ssa/README.md",
+        "src/main/resources/ssa/microcode.S",
+        "src/main/scala/rocket/RocketCore.scala"
+      ],
+      "artifacts": [
+        "patches/rocket-chip/0008-986407bc6.patch"
+      ],
+      "release_commit": "bc2b064fd2be342d51774e4c83c895457cf197b6",
+      "original_branch": "ssa-hpm-completion-20261108",
+      "original_repository_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "verified_on_github": true
+    },
+    {
+      "sha": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+      "date": "2026-11-09T06:19:08+08:00",
+      "author": "Kimberley-Inti",
+      "email": "KimIntizar@hotmail.com",
+      "subject": "Add reproducible SSA-HPM Spike and Rocket RTL validation",
+      "repository": "chipyard",
+      "paths": [
+        "generators/rocket-chip",
+        "sims/common-sim-flags.mk",
+        "sims/verilator/Makefile",
+        "ssa/.gitignore",
+        "ssa/Makefile",
+        "ssa/README.md",
+        "ssa/abi.S",
+        "ssa/analyze.py",
+        "ssa/chipyard-pr.md",
+        "ssa/elf_to_hex.py",
+        "ssa/gen_rom.py",
+        "ssa/microcode.S",
+        "ssa/results/build.txt",
+        "ssa/results/built-source.sha256",
+        "ssa/results/contexts.json",
+        "ssa/results/failures.txt",
+        "ssa/results/revisions.json",
+        "ssa/results/rtl-abi.txt",
+        "ssa/results/rtl-boundary.txt",
+        "ssa/results/rtl-context.txt",
+        "ssa/results/rtl-disabled-reference.txt",
+        "ssa/results/rtl-late.txt",
+        "ssa/results/spike-abi.txt",
+        "ssa/results/spike-boundary.txt",
+        "ssa/results/spike-context.txt",
+        "ssa/results/spike-summary.json",
+        "ssa/results/summary.json",
+        "ssa/results/versions.txt",
+        "ssa/rocket-pr.md",
+        "ssa/start.S",
+        "ssa/test.c",
+        "ssa/test.ld",
+        "ssa/verify.py"
+      ],
+      "artifacts": [
+        "patches/chipyard/0002-fesvr-verilator-build.patch",
+        "integration/ssa/.gitignore",
+        "integration/ssa/Makefile",
+        "integration/ssa/abi.S",
+        "integration/ssa/analyze.py",
+        "integration/ssa/elf_to_hex.py",
+        "integration/ssa/gen_rom.py",
+        "integration/ssa/start.S",
+        "integration/ssa/test.c",
+        "integration/ssa/test.ld",
+        "integration/ssa/verify.py",
+        "evidence/acceptance/build.txt",
+        "evidence/acceptance/built-source.sha256",
+        "evidence/acceptance/contexts.json",
+        "evidence/acceptance/failures.txt",
+        "evidence/acceptance/revisions.json",
+        "evidence/acceptance/rtl-abi.txt",
+        "evidence/acceptance/rtl-boundary.txt",
+        "evidence/acceptance/rtl-context.txt",
+        "evidence/acceptance/rtl-disabled-reference.txt",
+        "evidence/acceptance/rtl-late.txt",
+        "evidence/acceptance/spike-abi.txt",
+        "evidence/acceptance/spike-boundary.txt",
+        "evidence/acceptance/spike-context.txt",
+        "evidence/acceptance/spike-summary.json",
+        "evidence/acceptance/summary.json",
+        "evidence/acceptance/versions.txt",
+        "docs/accepted-delivery.md"
+      ],
+      "release_commit": "429b78c19191d4973042ac554ae3c71383ad5ff5",
+      "original_branch": "ssa-hpm-completion-20261108",
+      "original_repository_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "verified_on_github": true
+    }
+  ],
+  "accepted_files": {
+    "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "ff9eb23e7403a4b385e1ce3f65df69d220dcff83a6f679484cc7eca6c9e797a1",
+    "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "32273f6e22a2b6795124e1d32242703388ca37893a46d26f59906edaff4c581f",
+    "generators/rocket-chip/src/main/scala/rocket/IDecode.scala": "a2f6fefae2d38f6414fcf8f0c4eeaa6d49205f3072bb578a121592e459c92377",
+    "generators/rocket-chip/src/main/resources/ssa/microcode.S": "43e5968a267cd07814c4a6c103eec98d8d378789bb5c73243eff5bb2d9c3b5d6",
+    "generators/rocket-chip/scripts/gen-ssa-rom.py": "6b0172fa83277afbfe54abbf3ad25395b28be8cbad96aa8f19d0912494af5953",
+    "sims/common-sim-flags.mk": "b7738ea942d3278d021dd59675fceea6c44bb37d8eb894f51e15deb69776076f",
+    "sims/verilator/Makefile": "0317fa58da0a8b5c776c6f91ce316f3e21e145f71a07e732b5a20e834638757a",
+    "ssa/abi.S": "a0021451f71d59c23cea1242146059ed0bb7ed49458ec4624d24351bd2ec42e5",
+    "ssa/test.ld": "abe19976736741556e3deb41ecd354653f0486f1f64fb74c07586a24cc92b0cb",
+    "ssa/env.sh": "3b24ac29129c513816ff23906c362d90539d2b6526195b01520271a253ddb2f3",
+    "ssa/Makefile": "30a191763cc9c36b1d659ddc3cfb252bea5e362eacec97e05e1c21d3e48be9e3",
+    "ssa/.gitignore": "26e6b76a6e6548d850a3f518f2a5382586e38aa52b60c461319800da1ccd4dbd",
+    "ssa/gen_rom.py": "4d911732547482931789efcbedc3b461112fec247a1aac700502874f559fb5a7",
+    "ssa/elf_to_hex.py": "4f49a1d6389cb2abf906720b45f1acefa42a97c30569d4fe180e26d2e1365104",
+    "ssa/verify.py": "b3b390185e852c54aa1d5c2600b127217b2f702e3abf605b24ad98ada8433a5c",
+    "ssa/start.S": "230f1c4983a5b7d3168ef4b9fcf7797d299cb51433d8717e42522732f3a22bf5",
+    "ssa/analyze.py": "8c6800f3175c57c9f6499888f565643a539f7b458f44c1d493fd3176309d9526",
+    "ssa/test.c": "3957dab54f420008ba4412b59d5d8dc3d8f21a3b0645af85e2defec7ab5da6c0"
+  },
+  "local_only_artifacts": {
+    "integration/ssa/env.sh": "Present in accepted working directory but ignored by env.sh rule; not contained in 375068b6. Included explicitly in this standalone release."
+  },
+  "publication_followup": {
+    "repository": "https://github.com/Kimberley-Inti/SSA-HPM",
+    "branch": "ssa-hpm-publication-20261109",
+    "sha": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+    "meaning": "Track the ignored environment helper and guard the absent legacy test; accepted delivery refs unchanged."
+  }
+}

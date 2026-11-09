@@ -1,0 +1,99 @@
+{
+  "identity_before": {
+    "login": "jeffli999",
+    "id": 4491043
+  },
+  "identity_after": {
+    "login": "Kimberley-Inti",
+    "id": 185574409
+  },
+  "diagnosis": "Wrong active gh identity; stale Kimberley credential store entry returned HTTP 401. Canonical repository URLs were valid. Repository-scoped gh helpers and explicit github-authenticated remotes now avoid stale fallback. Original origin/my-fork URLs preserved.",
+  "repositories": {
+    "SSA-HPM": {
+      "id": 1172630218,
+      "full_name": "Kimberley-Inti/SSA-HPM",
+      "html_url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "private": true,
+      "fork": false,
+      "default_branch": "main",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "branches": {
+        "archive/ssa-hpm-local-20261108": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+        "main": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+        "ssa-hpm-completion-20261108": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+        "ssa-hpm-publication-20261109": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
+      }
+    },
+    "rocket-chip": {
+      "id": 1174555119,
+      "full_name": "Kimberley-Inti/rocket-chip",
+      "html_url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "private": false,
+      "fork": true,
+      "default_branch": "master",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "branches": {
+        "SSA-HPM": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd",
+        "archive/ssa-hpm-local-20261108": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+        "main": "9c6d44169365b1423f5aa8282def76b20e6c04fb",
+        "master": "885dd5966a49ce19512e3cc3275515926e729ba2",
+        "ssa-hpm-completion-20261108": "986407bc6df8d2a67572250f1df9eb2c0edeacf9"
+      }
+    },
+    "ssa_hpm": {
+      "id": 1450768733,
+      "full_name": "Kimberley-Inti/ssa_hpm",
+      "html_url": "https://github.com/Kimberley-Inti/ssa_hpm",
+      "private": true,
+      "fork": false,
+      "default_branch": "main",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      }
+    }
+  },
+  "draft_prs": {
+    "SSA-HPM": {
+      "html_url": "https://github.com/Kimberley-Inti/SSA-HPM/pull/1",
+      "number": 1,
+      "state": "open",
+      "draft": true,
+      "changed_files": 38,
+      "additions": 950,
+      "deletions": 131,
+      "base": "main",
+      "base_sha": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+      "head": "ssa-hpm-publication-20261109",
+      "head_sha": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
+    },
+    "rocket-chip": {
+      "html_url": "https://github.com/Kimberley-Inti/rocket-chip/pull/1",
+      "number": 1,
+      "state": "open",
+      "draft": true,
+      "changed_files": 4,
+      "additions": 408,
+      "deletions": 60,
+      "base": "SSA-HPM",
+      "base_sha": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd",
+      "head": "ssa-hpm-completion-20261108",
+      "head_sha": "986407bc6df8d2a67572250f1df9eb2c0edeacf9"
+    }
+  }
+}

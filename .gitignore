@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+build/
+*.riscv
+*.bin
+*.hex
+*.elf
+*.bundle
+*.pdf
+.env
+.env.*

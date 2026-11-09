@@ -1,0 +1,85 @@
+# 从公开上游基线复现
+
+## 准确来源
+
+| 层 | 可获取的来源 | 基线完整 SHA |
+| --- | --- | --- |
+| Chipyard | https://github.com/ucb-bar/chipyard.git | `2d03d10837fc1a7569d10ae2c91c8132c7fee77d` |
+| Rocket Chip | https://github.com/chipsalliance/rocket-chip.git | `44b0b8249279d25bd75ea693b725d9ff1b96e2ab` |
+| Constellation 依赖 | https://github.com/ucb-bar/constellation.git | `dce9eb03b44ad442a552242546f1672bdc15fce3` |
+
+两个主基线均已通过新的网络 fetch 获取，未从虚拟机的本地 Git 对象库借用。
+Chipyard 上游 gitlink 原本就指向上述可获取的 Rocket 基线。原本已验收的顶层基线
+`c2391670d8e1cc62369cfc3e96b58a9a8cc94dda` 指向仅在原开发树保存的 Rocket
+`23f5a64f6144cd3ffc7b25d490b48f5d019ee718`，因此不能把“checkout 该本地 SHA”
+作为外部复现步骤。此发布包从公开基线重放全部 SSA-HPM 补丁，消除了该依赖。
+
+依赖顺序：获取两个基线 → 应用 `patches/chipyard/0001`、`0002` → 按文件名依次
+应用 8 个 Rocket 补丁 → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
+树必须与已验收 `986407bc6df8d2a67572250f1df9eb2c0edeacf9` 的 tree 完全相同，
+同时核对核心 Scala、微码、构建文件及测试的 SHA-256。应用得到的新 commit SHA
+可能因 committer 日期而变化，不以它作为远端 fetch 依赖。顶层 gitlink 保持可获取
+的上游基线，Rocket 子工作树含补丁提交；不要用 submodule update 把它退回基线。
+
+## 安装和依赖
+
+需要 Git、Python 3、RISC-V GCC/binutils、Spike（参考测试）、Java 17、sbt、Verilator
+及 Chipyard 对应版本的构建依赖。参考环境版本记录在 `evidence/acceptance/versions.txt`。
+
+```bash
+# 在本发布仓库根目录执行；目标必须不存在或为空
+python3 scripts/apply.py /tmp/my-ssa-chipyard --report /tmp/my-ssa-apply.json
+
+# 首次使用：从上游获取 RocketConfig 构建所用的固定依赖（没有复用虚拟机的源码）
+python3 scripts/init_build_dependencies.py /tmp/my-ssa-chipyard
+```
+
+跨机器构建还需按 Chipyard 1.8 对应环境准备 sbt、Verilator 等系统依赖。上述初始化
+只选取记录的 RocketConfig 依赖，避免无关商业 VLSI/ESP 依赖；网络获取所有依赖的
+可用性并未逐个重新验证。不要在已打补丁后执行会覆盖 Rocket checkout 的全量
+子模块初始化；特别不要对 `generators/rocket-chip` 本身执行 submodule update。
+
+本次虚拟机发布验证复用现有依赖，使用以下替代步骤。脚本只向**新重建目录**链接
+匹配固定 SHA、无已跟踪改动的本地模块，拒绝不匹配版本，不修改原开发源码：
+
+```bash
+python3 scripts/link_existing_dependencies.py /tmp/my-ssa-chipyard /home/lxf/chipyard \
+  --report /tmp/my-ssa-dependencies.json
+```
+
+此路径仍从 GitHub 获取两个主基线，并重新应用补丁、编译新的 Rocket 源码与 RTL；
+依赖和工具链复用必须与“完整无缓存构建”区分。已有模块若被此脚本链接，不要再对
+这些符号链接运行网络初始化；两种依赖准备路径二选一。
+
+## 构建与回归
+
+```bash
+cd /tmp/my-ssa-chipyard
+source ssa/env.sh
+python3 ssa/gen_rom.py --check
+make -C ssa -j2 all
+make -C sims/verilator CONFIG=RocketConfig -j8 LINK='/usr/bin/g++ -B/usr/bin/'
+python3 ssa/verify.py
+python3 ssa/analyze.py ssa/results/rtl-context.txt --elf ssa/test.riscv \
+  --json ssa/results/contexts.json
+```
+
+`env.sh` 优先使用系统编译/链接工具，避免 Conda 旧 glibc sysroot 无法解析安装的
+FESVR `statx`。C++17 要贯穿 Verilator 的递归 make；七个额外 HPM 槽尚未实现事件。
+
+单项硬件仿真：
+
+```bash
+sims/verilator/simulator-chipyard-RocketConfig +permissive \
+  +loadmem=ssa/test.hex +max-cycles=5000000 +permissive-off ssa/test.riscv
+```
+
+这里的 `+loadmem` 接受十六进制行文件，不能传 ELF。Makefile 使用 objcopy 与
+`elf_to_hex.py` 自动转换。bare-metal 测试不需要 pk/newlib；SCBaseReg=0 关闭监测，
+测试在物理内存 `[0x85c00000,0x88000000)` 预留 36 MiB。实际 loader 必须清零整个
+字典并初始化元数据；测试只初始化其可达桶，不代表已实现 Linux 自动分配。
+
+通过条件：每项退出码为 0，且出现预期 PASS 标记。上下文测试必须有 6 条记录、
+result=46、返回后 depth=0；两条父路径的 common instret 为 14452/7226（相同输入和
+工具链），父记录包含其子调用。跨工具链可出现不同指令数量，应先检查调用图、复用、
+父子归属和对应计数关系；Spike 与 RTL 周期数不应要求相等。
