@@ -1,0 +1,69 @@
+# Stage4 Linux process isolation — work in progress
+
+Baseline: stage3 418692f75b3895cbb084e26276ba7267b9f8efee. This branch does not
+move main, tags or previous PRs. Acceptance A/B/C are separate; booting Spike
+never satisfies the Rocket/Verilator Linux gate.
+
+## Bootstrap implementation and first reproducible fault
+
+The existing bare-metal GCC 15.1.0 can compile the kernel and no-libc user ELF,
+but its linker has no shared-DSO support. The bootstrap locally extracts the
+SHA-pinned Ubuntu Linux-target binutils 2.38 package for Linux's vDSO. No sudo,
+global toolchain replacement or FireMarshal source workaround is required.
+OpenSBI uses explicit GNU C11; GCC15's C23 default otherwise conflicts with
+OpenSBI 0.8's bool typedef. The pinned Linux fork also requires moving its SP
+register declaration outside CONFIG_FRAME_POINTER for the minimal config.
+
+The first real Rocket boot reached Linux Sv39 relocation, then parked after:
+scause=15, sepc=e000001080, stval=6000806450, satp.mode=8, satp.ppn=8021a.
+An SSA ROM-PC mux had widened the normal 40-bit encoded virtual PC to 64 bits
+with zero extension. AUIPC in the high-half kernel consequently produced a
+noncanonical pointer. Patch0010 preserves the architectural VA width at both
+PC muxes. The identical minimal supervisor ELF exits 42 on the old RTL and
+zero on Spike and fixed RTL. The fix is needed even with monitoring disabled.
+
+The static ssa_rocket OpenSBI platform reuses upstream HTIF/CLINT/PLIC helpers,
+with hardware addresses matching RocketConfig. It avoids costly generic DTB
+platform discovery during RTL simulation. The embedded DTB assigns Linux only
+32 MiB of the hardware's 256 MiB DRAM; unused peripherals are omitted. mtime is
+the actual CLINT 1 MHz source. An initramfs PID1 verifies getpid()==1, writes a
+unique marker and requests a real Linux reboot/power-down. No libc or full
+rootfs distribution is needed for this bootstrap.
+
+## Reproduction
+
+Apply all ten Rocket patches and the existing two Chipyard patches with the
+normal scripts/apply.py entry. Then follow integration/ssa/linux/README.md.
+The pinned-source build entry is ssa/linux/build-a.py after installation.
+It fetches Linux and OpenSBI, applies their two small patches, extracts the
+Linux linker, builds kernel/initramfs/firmware and emits ELF plus correct
+flat +loadmem hex. Kernel and firmware local development SHAs are mapped in
+HISTORY.md; their public baselines plus patches suffice for reconstruction.
+
+Core/source bootstrap revisions:
+- Rocket: 41d297689890296699d4a45699bf7e5791d33b96.
+- Chipyard: cad6278c2a079e8ffa3b371158bb6f41aca64ffb.
+- Linux compatibility: 3b79ddfa2fb70707ace85385d6722925fffc8eea.
+- OpenSBI platform: b778927a507e4ebcc43a8ecb8d495562ef48efb3.
+
+Independent public fetch/patch installation passed. Independent kernel and
+firmware builds passed and matched development source tree hashes. Fixed RTL
+was rebuilt successfully and passed all 16 stage2 regressions plus all three
+stage3 process checks, including the expected-exit42 legacy negative. The
+original six records and common instret14452/7226 remain unchanged.
+
+## Gate status
+
+A: actual Rocket Linux execution is running; no pass claimed until PID1 marker,
+power-down and exit zero. The host-only progress harness links unchanged RTL
+model objects and prints read-only PC/CSR fields; raw console and diagnostic
+chatter must be kept distinct. Separate Spike diagnostics reached PID1 and
+power-down but are not A evidence. A smaller config is also being evaluated
+to reduce sysfs/input initialization time.
+
+B: kernel-managed monitoring/exit export has not been executed.
+C: real Linux preemptive two-process isolation has not been executed.
+
+The completed M-mode tests remain low-level regression evidence only. Linux
+U-mode pool protection, private ROM physical access, scheduler hooks and real
+process counter attribution still require their own implementation/validation.
