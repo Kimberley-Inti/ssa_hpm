@@ -83,3 +83,18 @@ sims/verilator/simulator-chipyard-RocketConfig +permissive \
 result=46、返回后 depth=0；两条父路径的 common instret 为 14452/7226（相同输入和
 工具链），父记录包含其子调用。跨工具链可出现不同指令数量，应先检查调用图、复用、
 父子归属和对应计数关系；Spike 与 RTL 周期数不应要求相等。
+
+
+## stage2-trap-isolation 开发分支
+
+本分支仍从上表两个公开基线重建，按序在 v0.1.0 的 8 个 Rocket 补丁后追加第 9 个
+陷阱隔离补丁；不需要等待第一阶段旧仓库 PR 合并。顶层复现辅助文件已显式收录，
+原发布补充提交 `58a7acde9598b4e08d11e5b5f3da0e146e138078` 在实际源码新分支上
+重放为 `339d349d35e308f2912c5db55c42c6e4adcb18ba`；只补环境入口及旧原型构建防护。
+
+`make -C ssa all` 现在也构建陷阱用例。完整回归仍用 `python3 ssa/verify.py`；可指定
+`--only-traps` 只跑本轮用例，`--spike-only` / `--rtl-only` 区分模型，
+`--out-dir /tmp/ssa-stage2-results` 避免覆盖归档证据。六项新增 RTL 用例分别是
+`trap`、`trap-status`、`trap-nested`、`trap-irq`、`trap-overflow`、`trap-readonly`；
+两项新增 Spike 用例只验证标准陷阱/定时器指令，不验证自定义 CSR 或透明上下文。
+状态 CSR、溢出和计数口径详见 `docs/STAGE2.md`。本分支不发布新标签。

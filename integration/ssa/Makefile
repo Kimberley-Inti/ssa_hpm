@@ -37,3 +37,24 @@ abi-reference.riscv: start.S test.c abi.S reference.S test.ld
 
 late.riscv: start.S test.c abi.S test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DABI -DLATE start.S test.c abi.S -o $@
+
+trap.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST start.S trap_entry.S traps.c -o $@
+trap-status.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DCHECK_STATUS start.S trap_entry.S traps.c -o $@
+trap-nested.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=1 start.S trap_entry.S traps.c -o $@
+trap-irq.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=2 start.S trap_entry.S traps.c -o $@
+trap-overflow.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=3 -DNESTING=256 start.S trap_entry.S traps.c -o $@
+trap-reference.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DREFERENCE -DTRAP_KIND=1 start.S trap_entry.S traps.c -o $@
+trap-irq-reference.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DREFERENCE -DTRAP_KIND=2 start.S trap_entry.S traps.c -o $@
+
+trap-readonly.riscv: start.S trap_entry.S traps.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=4 start.S trap_entry.S traps.c -o $@
+.PHONY: traps
+traps: trap.hex trap-status.hex trap-nested.hex trap-irq.hex trap-overflow.hex trap-readonly.hex trap-reference.riscv trap-irq-reference.riscv
+all: traps

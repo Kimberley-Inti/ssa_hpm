@@ -1,0 +1,5 @@
+{
+  "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "24e3e2d372a42e02183813c18053e089715d67890e59d4b9edbd6fae3b1e4cc0",
+  "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "9b0e4e884e819bd158a4cb813c1469c30f8deaa88c2e0e709d2532dfa3152357",
+  "sims/verilator/simulator-chipyard-RocketConfig": "dfd1d961fe2be43407525fb0a7953bae467b738ce9140736e2fd162b8a6181a4"
+}

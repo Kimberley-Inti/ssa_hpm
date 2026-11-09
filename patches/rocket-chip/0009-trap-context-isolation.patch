@@ -1,0 +1,104 @@
+From 3f4ab938660454b101c67f6929bfebae5be1a138 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Mon, 9 Nov 2026 09:05:25 +0800
+Subject: [PATCH] Suspend SSA application contexts across nested architectural
+ traps
+
+---
+ src/main/resources/ssa/README.md       | 19 +++++++++++++++++++
+ src/main/scala/rocket/CSR.scala        | 18 ++++++++++++++++++
+ src/main/scala/rocket/RocketCore.scala |  4 ++--
+ 3 files changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/src/main/resources/ssa/README.md b/src/main/resources/ssa/README.md
+index f7b2e3ddc8ed385ecc24b1f85557b906cf0d7281..0c4f36d41485d482e435fe95b327b4793f95b173 100644
+--- a/src/main/resources/ssa/README.md
++++ b/src/main/resources/ssa/README.md
+@@ -63,3 +63,22 @@ the next issues. Branch/CSR redirects use the actual pipeline PC. Private
+ branches do not train frontend prediction. Late integer writes retain the
+ issuing register bank across monitor entry. There is no watchdog success
+ fallback that silently discards profiling work.
++
++## Trap isolation (stage2-trap-isolation)
++
++Application call/return notifications pause while an architectural trap is
++active. CSRFile tracks trap entry independently of SCBaseReg and resumes on the
++outermost matching xRET. This uses the actual internal trap/return decodes:
++`io.eret` also signals ECALL/EBREAK redirects and is not a return-only signal.
++The per-hart custom user read-only CSR `0xcc0` exposes depth in bits 7:0 and
++sticky overflow in bit 8; higher bits read zero. Depth saturates at 255. A further
++entry latches fail-closed inhibition until reset, even after the depth unwinds;
++any still-open profile must be discarded as incomplete. A return at zero depth
++does not underflow. Writes to this read-only CSR are illegal instructions.
++
++The memory ABI and ROM are unchanged. Counters retain interval-inclusive
++semantics, including instructions/time spent in intervening handlers; this is
++not application-only counter filtering. Only handler-induced call-tree updates
++are suppressed. Normal M-mode ECALL/MRET and timer IRQ are the tested target;
++S/VS delegation, debug/NMI protocols, Linux lifecycle, nonlocal unwinds and
++recovery from private-microcode faults require separate integration/validation.
+diff --git a/src/main/scala/rocket/CSR.scala b/src/main/scala/rocket/CSR.scala
+index 4e1b7d917a99752771ca62316e69d72e57a0a1fb..1e8c73dab1164854c658aa42568a55020f14b015 100644
+--- a/src/main/scala/rocket/CSR.scala
++++ b/src/main/scala/rocket/CSR.scala
+@@ -289,6 +289,7 @@ class CSRFileIO(implicit p: Parameters) extends CoreBundle
+ 
+   //[Edited1]========================
+   val scbasereg = Output(UInt(xLen.W))
++  val ssa_context_active = Output(Bool())
+   //=================================
+ 
+   val vector = usingVector.option(new Bundle {
+@@ -482,6 +483,11 @@ class CSRFile(
+   //[Edited 2]==========================
+   val reg_scbasereg = RegInit(0.U(xLen.W))
+   io.scbasereg := reg_scbasereg
++  // Every architectural trap suspends application call-context updates. Keep
++  // this per hart, independently of whether a pool is currently enabled.
++  val reg_ssa_trap_depth = RegInit(0.U(8.W))
++  val reg_ssa_trap_overflow = RegInit(false.B)
++  io.ssa_context_active := !reg_ssa_trap_depth.orR && !reg_ssa_trap_overflow
+   //===================================
+   val mtvecWidth = paddrBits min xLen
+   val reg_mtvec = mtvecInit match {
+@@ -676,6 +682,8 @@ class CSRFile(
+ 
+   //[Edited 3]==========================
+   read_mapping += 0x800 -> reg_scbasereg
++  // Custom user read-only CSR: depth[7:0], sticky fail-closed overflow[8].
++  read_mapping += 0xcc0 -> Cat(reg_ssa_trap_overflow, reg_ssa_trap_depth)
+   //====================================
+ 
+   if (coreParams.haveBasicCounters) {
+@@ -966,6 +974,16 @@ class CSRFile(
+   io.gstatus.sd_rv32 := xLen == 32 && io.gstatus.sd
+ 
+   val exception = insn_call || insn_break || io.exception
++  // io.eret also denotes ECALL/EBREAK redirects; only insn_ret unwinds.
++  when (exception) {
++    when (reg_ssa_trap_depth.andR) {
++      reg_ssa_trap_overflow := true.B
++    } .otherwise {
++      reg_ssa_trap_depth := reg_ssa_trap_depth + 1.U
++    }
++  } .elsewhen (insn_ret && reg_ssa_trap_depth.orR) {
++    reg_ssa_trap_depth := reg_ssa_trap_depth - 1.U
++  }
+   assert(PopCount(insn_ret :: insn_call :: insn_break :: io.exception :: Nil) <= 1, "these conditions must be mutually exclusive")
+ 
+   when (insn_wfi && !io.singleStep && !reg_debug) { reg_wfi := true }
+diff --git a/src/main/scala/rocket/RocketCore.scala b/src/main/scala/rocket/RocketCore.scala
+index eb0569e4160c522ee3672685a89d41318f724125..9b28b59ab21cf858013fdb0abdaa9975a38ba904 100644
+--- a/src/main/scala/rocket/RocketCore.scala
++++ b/src/main/scala/rocket/RocketCore.scala
+@@ -1220,8 +1220,8 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+ 
+     // SSA-HPM: retire-triggered calls/returns and serialized SCCodeTable execution.
+ 
+-    val is_call_wb = wb_valid && ssa_enable && (wb_ctrl.jal || wb_ctrl.jalr) && (wb_waddr === 1.U || wb_waddr === 5.U) && (sc_base_addr =/= 0.U)
+-    val is_ret_wb  = wb_valid && ssa_enable && wb_ctrl.jalr && (wb_waddr === 0.U) && (wb_reg_inst(19,15) === 1.U || wb_reg_inst(19,15) === 5.U) && wb_reg_inst(31,20) === 0.U && (sc_base_addr =/= 0.U)
++    val is_call_wb = wb_valid && ssa_enable && csr.io.ssa_context_active && (wb_ctrl.jal || wb_ctrl.jalr) && (wb_waddr === 1.U || wb_waddr === 5.U) && (sc_base_addr =/= 0.U)
++    val is_ret_wb  = wb_valid && ssa_enable && csr.io.ssa_context_active && wb_ctrl.jalr && (wb_waddr === 0.U) && (wb_reg_inst(19,15) === 1.U || wb_reg_inst(19,15) === 5.U) && wb_reg_inst(31,20) === 0.U && (sc_base_addr =/= 0.U)
+ 
+     val wb_target_pc = RegEnable(mem_npc, mem_pc_valid)
+ 

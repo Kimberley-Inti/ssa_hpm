@@ -40,7 +40,7 @@ try:
     run(['git','add','-f','ssa'],work)
     run(['git','commit','-m','Install SSA-HPM standalone validation suite'],work)
     checks={}
-    for rel,expected in m['accepted_files'].items():
+    for rel,expected in m.get('expected_files',m['accepted_files']).items():
         path=work/rel
         actual=hashlib.sha256(path.read_bytes()).hexdigest()
         assert actual==expected,rel
