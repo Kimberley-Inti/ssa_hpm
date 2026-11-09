@@ -1,0 +1,5 @@
+{
+  "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "ff9eb23e7403a4b385e1ce3f65df69d220dcff83a6f679484cc7eca6c9e797a1",
+  "generators/rocket-chip/src/main/resources/ssa/microcode.S": "43e5968a267cd07814c4a6c103eec98d8d378789bb5c73243eff5bb2d9c3b5d6",
+  "sims/verilator/simulator-chipyard-RocketConfig": "267a5650ca3c0077790f46a0bd1989b5d0e9c316af87e624aad6f14ab32b5614"
+}

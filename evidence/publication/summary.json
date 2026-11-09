@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "validation": "publication reconstruction; separate from original acceptance",
+  "chipyard_base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
+  "rocket_base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
+  "patch_application": "all clean; complete Rocket tree and accepted source hashes match",
+  "scala_compilation": "passed; 339 Rocket Scala sources compiled in separate checkout",
+  "rtl_generation": "passed",
+  "verilator_build": "passed",
+  "dependencies": "matching existing clones and system/toolchain caches reused; not a fully cold online dependency bootstrap",
+  "spike_reference_tests": [
+    {
+      "name": "spike-context",
+      "command": [
+        "spike",
+        "ssa/reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.02
+    },
+    {
+      "name": "spike-boundary",
+      "command": [
+        "spike",
+        "ssa/boundary-reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.02
+    },
+    {
+      "name": "spike-abi",
+      "command": [
+        "spike",
+        "ssa/abi-reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.02
+    }
+  ],
+  "rocket_rtl_tests": [
+    {
+      "name": "rtl-context",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/test.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/test.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 35.28
+    },
+    {
+      "name": "rtl-boundary",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/boundary.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/boundary.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 54.79
+    },
+    {
+      "name": "rtl-abi",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/abi.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/abi.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.16
+    },
+    {
+      "name": "rtl-late",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/late.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/late.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.17
+    },
+    {
+      "name": "rtl-disabled-reference",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/reference.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 32.14
+    }
+  ],
+  "contexts": 6,
+  "common_instret": [
+    14452,
+    7226
+  ],
+  "counters": "inclusive of children and interval monitor overhead",
+  "unverified": [
+    "Linux lifecycle",
+    "multicore",
+    "exception unwinds",
+    "data access classification",
+    "Cache/TLB events"
+  ]
+}

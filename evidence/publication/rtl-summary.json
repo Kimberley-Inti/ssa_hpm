@@ -1,0 +1,72 @@
+[
+  {
+    "name": "rtl-context",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/test.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/test.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 35.28
+  },
+  {
+    "name": "rtl-boundary",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/boundary.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/boundary.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 54.79
+  },
+  {
+    "name": "rtl-abi",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/abi.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/abi.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.16
+  },
+  {
+    "name": "rtl-late",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/late.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/late.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.17
+  },
+  {
+    "name": "rtl-disabled-reference",
+    "command": [
+      "sims/verilator/simulator-chipyard-RocketConfig",
+      "+permissive",
+      "+loadmem=ssa/reference.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 32.14
+  }
+]
