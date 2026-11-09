@@ -87,3 +87,9 @@ This stage implements normal architectural trap isolation, nested resume, a
 read-only state CSR and fail-closed overflow. `docs/STAGE2.md` records design
 review, the old-RTL failure, unchanged counting semantics and validation scope.
 First-stage main/tag and the two existing Draft PR branches are not moved.
+
+
+本轮独立维护仓库的实现/测试整理提交为 `3ecec6adc0c6e483d5b386f1239e5a596a545153`。
+其后的验证提交收录独立公开基线重建、339 个 Rocket Scala 源文件编译、新 RTL 和新
+Verilator 的 16 项实际结果。原始验收证据与本次 baseline/development/independent
+证据分开保存；全部实现位于本轮独立分支，v0.1.0 和 main 保持不变。

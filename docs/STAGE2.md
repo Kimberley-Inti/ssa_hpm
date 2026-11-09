@@ -1,6 +1,6 @@
 # Stage 2: trap-aware application context isolation
 
-Status: development implementation and 16-test regression passed; independent reconstruction in progress on `stage2-trap-isolation`.
+Status: development and independent public-baseline reconstruction both passed all 16 tests on `stage2-trap-isolation`.
 Baseline: v0.1.0 (`0421e67203e0cfb63d96699f061ffa7d8d00fddf`).
 
 ## Design review
@@ -86,3 +86,25 @@ see 6 entries with maximum nesting 3. Timer IRQ sees one entry and returns out
 of private ROM. Overflow sees 256 entries, maximum software nesting 256 and
 final status `0x100`; open records remain uncompleted and must be discarded.
 Illegal status writes take an actual illegal-instruction trap and resume.
+
+
+## Independent reconstruction
+
+`evidence/stage2/independent/` records a fresh network fetch of the two public
+upstream bases, clean application of all 9 Rocket patches, and exact final tree
+`535c551af33cce20384ca2f8c3560ac5e70cdca4`. The tests were built in that checkout;
+339 Rocket Scala sources were compiled, fresh RTL generated and a new Verilator
+executable linked there. It was not copied from development. Matching external
+modules and toolchain/cache data were reused and individually checked; this is
+not a completely cold online dependency installation. All 5 Spike and 11 RTL
+checks passed. The first-stage 6-record result and 14452/7226 instret are unchanged.
+
+The independent observations are in `trap-observations.json`: normal cases end
+with status 0; the 256-entry case ends with status 256 (`0x100`) and uncompleted
+application frames, explicitly invalidating that profile. The baseline, negative
+same-ELF reproduction, development and independent evidence are stored separately.
+
+Tool versions for this round are in `evidence/stage2/versions.txt`; Java is now
+17.0.20.1 while the archived v0.1.0 report recorded an earlier Java 17 patch level.
+GCC remains 15.1.0, Verilator 4.226 and Spike 1.1.1-dev with the same binary hash.
+The rerun baseline and new regressions demonstrate unchanged instruction results.
