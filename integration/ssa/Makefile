@@ -66,3 +66,7 @@ process-legacy.riscv: start.S process_entry.S processes.c process.h test.ld
 process-reference.riscv: start.S process_entry.S processes.c process.h test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DREFERENCE start.S process_entry.S processes.c -o $@
 all: process.hex process-legacy.hex process-reference.riscv
+
+linux/sv39.riscv: linux/sv39.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) linux/sv39.S -o $@
+all: linux/sv39.hex

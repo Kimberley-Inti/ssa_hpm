@@ -112,3 +112,21 @@ Chipyard ssa/README.md 的本轮说明在维护仓库整理为 docs/STAGE3.md；
 和 Makefile 一致，历史 integration/ssa/README.md 不替代当前阶段说明。
 
 本轮接口与测试整理提交：`aad36f0ecad6fce9fbd661760c9505bc1e653e6d`，对应 Chipyard `503d5ccdb6634a05f46181ecd23648cfbb4e61b8`。后续验证提交仅补充实际重建证据和文档。
+
+## Stage4 Linux bootstrap (work in progress)
+
+Branch starts at stage3 418692f75b3895cbb084e26276ba7267b9f8efee.
+
+| Source | Baseline | New commit | Delivery |
+| --- | --- | --- | --- |
+| Rocket | 3f4ab938660454b101c67f6929bfebae5be1a138 | 41d297689890296699d4a45699bf7e5791d33b96 | 0010-sv39-pc-width.patch |
+| Chipyard | 503d5ccdb6634a05f46181ecd23648cfbb4e61b8 | cad6278c2a079e8ffa3b371158bb6f41aca64ffb | integration/ssa boot entry and tests, no duplicate test patch |
+| Linux | 5f5fd87b36e21ed59b759b69eebfa1c74955cb37 | 3b79ddfa2fb70707ace85385d6722925fffc8eea | integration/ssa/linux/0001-stack-pointer-declaration.patch |
+| OpenSBI | a98258d0b537a295f517bbc8d813007336731fa9 | b778927a507e4ebcc43a8ecb8d495562ef48efb3 | integration/ssa/linux/0001-opensbi-rocket-platform.patch |
+
+Kernel and firmware development commits are local; reproduction fetches the
+public pinned baselines and applies the patches, never fetching those local
+commits. The independent bootstrap already matched both source tree hashes.
+The first-stage Sv39 regression uses the same ELF: old RTL exits 42, Spike and
+fixed RTL exit zero. Linux boot and subsequent real-process acceptance are
+separate gates; implementation commits do not imply they have passed.

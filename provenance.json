@@ -6,8 +6,8 @@
     "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
-    "development_base": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
-    "development_delivery": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+    "development_base": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+    "development_delivery": "cad6278c2a079e8ffa3b371158bb6f41aca64ffb",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -15,9 +15,9 @@
     "base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
     "accepted_base": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
     "accepted_delivery": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
-    "expected_tree": "535c551af33cce20384ca2f8c3560ac5e70cdca4",
+    "expected_tree": "127c867ab5feaee095d77a0a46aa889974b28305",
     "development_base": "3f4ab938660454b101c67f6929bfebae5be1a138",
-    "development_delivery": "3f4ab938660454b101c67f6929bfebae5be1a138",
+    "development_delivery": "41d297689890296699d4a45699bf7e5791d33b96",
     "accepted_v010_tree": "927a21fc6283a2e5f96adcf84a7d4a381829fccd"
   },
   "constellation": {
@@ -481,7 +481,7 @@
     "meaning": "Track the ignored environment helper and guard the absent legacy test; accepted delivery refs unchanged."
   },
   "expected_files": {
-    "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "9b0e4e884e819bd158a4cb813c1469c30f8deaa88c2e0e709d2532dfa3152357",
+    "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "ce55e274cbdffb3c6ece0470399f0b30fa7b3707257d4593d832c281355c0fb7",
     "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "24e3e2d372a42e02183813c18053e089715d67890e59d4b9edbd6fae3b1e4cc0",
     "generators/rocket-chip/src/main/scala/rocket/IDecode.scala": "a2f6fefae2d38f6414fcf8f0c4eeaa6d49205f3072bb578a121592e459c92377",
     "generators/rocket-chip/src/main/resources/ssa/microcode.S": "43e5968a267cd07814c4a6c103eec98d8d378789bb5c73243eff5bb2d9c3b5d6",
@@ -491,7 +491,7 @@
     "ssa/abi.S": "a0021451f71d59c23cea1242146059ed0bb7ed49458ec4624d24351bd2ec42e5",
     "ssa/test.ld": "abe19976736741556e3deb41ecd354653f0486f1f64fb74c07586a24cc92b0cb",
     "ssa/env.sh": "3b24ac29129c513816ff23906c362d90539d2b6526195b01520271a253ddb2f3",
-    "ssa/Makefile": "c90936849ca8b798dd52c7d2b47797a74f70f97519960375ff8fcd0c67ad08d9",
+    "ssa/Makefile": "783f27b0a973a3c85c9e2579f1ee0b6383d5c10794847d0ab8ba576ec6c98ae0",
     "ssa/.gitignore": "26e6b76a6e6548d850a3f518f2a5382586e38aa52b60c461319800da1ccd4dbd",
     "ssa/gen_rom.py": "4d911732547482931789efcbedc3b461112fec247a1aac700502874f559fb5a7",
     "ssa/elf_to_hex.py": "4f49a1d6389cb2abf906720b45f1acefa42a97c30569d4fe180e26d2e1365104",
@@ -504,7 +504,17 @@
     "ssa/process_entry.S": "1246914a1a8572845212608e7240cc4a44a160edc2291f536eca3101f2c05460",
     "ssa/processes.c": "28eb4732d235956d8a76961789fb58d54fd04770a7d0a38868546af8381610f5",
     "ssa/verify_process.py": "b289740a117c809adb1271448735a7e4174be485a2afb02d651075bb596d437a",
-    "ssa/process.h": "264ac1afd3e5de0bc5a3069357a5dfaab58b2ace7e76a7a7e3cbae53c0dc9cef"
+    "ssa/process.h": "264ac1afd3e5de0bc5a3069357a5dfaab58b2ace7e76a7a7e3cbae53c0dc9cef",
+    "ssa/linux/0001-stack-pointer-declaration.patch": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511",
+    "ssa/linux/init.c": "d4550554da8e03307714eb42a85d6cfc15d517caf0e14898474e80b044dc548d",
+    "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
+    "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
+    "ssa/linux/README.md": "0047060abc3591582efffd8d68b75faac15da23441f0e4f3c5a433ba00334137",
+    "ssa/linux/build-a.py": "7df35c1192502bd9796267381a261600def51fd86747b721e4b6762b9b4cce08",
+    "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
+    "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
+    "ssa/linux/build-progress.py": "5a71ff0d2e7825f6b314b4572c150bc4f2c1a640e30fd2a1157f66ffcb6395ce",
+    "ssa/linux/kernel-a.config": "86e019af66d35cf0f941e8adde3db8989eeec3099e3365bfa4c03f995f916ae7"
   },
   "development_stage": {
     "name": "stage2-trap-isolation",
@@ -522,5 +532,21 @@
     "source_commit": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
     "delivery": "standalone integration files; no duplicate source patch",
     "scope": "single-hart M-mode scheduler protocol; not Linux"
+  },
+  "stage4": {
+    "baseline": "418692f75b3895cbb084e26276ba7267b9f8efee",
+    "linux": {
+      "url": "https://github.com/firesim/linux.git",
+      "base": "5f5fd87b36e21ed59b759b69eebfa1c74955cb37",
+      "compat_commit": "3b79ddfa2fb70707ace85385d6722925fffc8eea",
+      "tree": "65dbb133a022ab50107ed9316c531bb047d74b0f"
+    },
+    "opensbi": {
+      "url": "https://github.com/riscv/opensbi.git",
+      "base": "a98258d0b537a295f517bbc8d813007336731fa9",
+      "platform_commit": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
+      "tree": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557"
+    },
+    "status": "in progress; actual Linux acceptance recorded separately"
   }
 }

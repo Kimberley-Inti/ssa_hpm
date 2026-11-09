@@ -27,3 +27,19 @@ SiFive 文件包含 Apache-2.0 文本。本仓库没有为全部项目原创材�
 凭据与账号配置；未纳入当前统一 ABI 的工作树原型（如未跟踪的 ssa_firmware、旧
 微码汇编和旧 C 测试）。这些原文件保留在原开发目录/本地备份中，未被删除或改写。
 历史提交中已纳入版本控制的旧测试只以 `patches/history/` 保存一次。
+
+## Stage4 Linux/firmware inputs
+
+Linux: https://github.com/firesim/linux.git at
+5f5fd87b36e21ed59b759b69eebfa1c74955cb37 (5.7-rc3), GPL-2.0;
+license text in LICENSES/Linux-GPL-2.0.txt. The small stack-pointer declaration
+fix is supplied as a patch. Full Linux source and built images are not included.
+
+OpenSBI: https://github.com/riscv/opensbi.git at
+a98258d0b537a295f517bbc8d813007336731fa9 (0.8), BSD-2-Clause main license,
+with upstream utility files retaining their own notices (including BSD-3-Clause
+HTIF code). This package adds a project platform through a patch and fetches
+upstream source at build time. Main license in LICENSES/OpenSBI-BSD-2-Clause.txt.
+
+The local bootstrap extracts Ubuntu's Linux-target binutils package, SHA-256
+pinned in build-a.py. No toolchain binary or deb is distributed in this repo.
