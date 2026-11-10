@@ -39,6 +39,10 @@ for test in range(1,5):
  ac=[x for x in accounts if x['pid']==A['pid']]
  check(f'test{test}_accounting',len(ac)==3 and all(x['valid']==1 and x['off']>0 and (x['final']-x['original']==(0 if test>=3 else x['off'])) and x['raw']-x['recorded']==x['final']-x['original'] for x in ac))
  check(f'test{test}_unmonitored','SSA_UNMONITORED pid=1 selector=0' in s and any(x['from']==1 for x in ev))
+ bev=[x for x in switches if x['pid']==B['pid'] and x['to']==A['pid'] and x['from']==A['pid'] and x['depth']==2 and x['rid']==2 and x['state']!=0 and x['resumed']==1]
+ check(f'test{test}_B_sleep_resume',len(bev)>0)
+ bc=[x for x in accounts if x['pid']==B['pid']]
+ check(f'test{test}_B_accounting',len(bc)==3 and all(x['valid']==1 and x['off']>0 and x['final']-x['original']==(0 if test>=3 else x['off']) and x['raw']-x['recorded']==x['final']-x['original'] for x in bc))
 comparison={}
 for counter,name in enumerate(['cycle','instret','time']):
  vals={}
@@ -48,6 +52,13 @@ for counter,name in enumerate(['cycle','instret','time']):
  if len(vals)!=4:check(name+'_comparison_available',False);continue
  fixed=vals[2]['recorded']-vals[1]['recorded'];legacy=vals[4]['recorded']-vals[3]['recorded'];off=vals[2]['off']-vals[1]['off']
  comparison[name]={'fixed_long_minus_short':fixed,'legacy_long_minus_short':legacy,'excluded_long_minus_short':off}
+ bvals={}
+ for test in [1,2]:
+  e=bytest.get((test,2));br=[x for x in records if e and x['pid']==e['pid'] and x['id']==2]
+  if len(br)==1:bvals[test]=br[0][name]
+ if len(bvals)==2:
+  comparison[name]['B_fixed_long_minus_short']=bvals[2]-bvals[1]
+  check(name+'_B_work_visible',bvals[2]>bvals[1])
  check(name+'_B_interval_grows',off>0 and legacy>0)
  # Cache/interrupt and boundary costs remain; demand a large, observable reduction.
  check(name+'_cross_talk_reduced',abs(fixed)*2<legacy)

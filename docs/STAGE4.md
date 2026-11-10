@@ -104,3 +104,31 @@ slow simulation is preserved. B/C will be launched once, only after a real A
 success. Build terminal exit statuses were read back: final RTL/model, development
 kernel/firmware, independent kernel/firmware and corrected initramfs all exited0.
 See build-final.json for source-tree matches, input/image hashes and log hashes.
+
+## Explicit design adaptations
+
+The design PDF pp12-13 was checked as rendered pages because text extraction
+omits Chinese glyphs. Its proposed36MiB region is based on the application's
+virtual SP before main. Stage4 retains the accepted physical pool layout and
+SCBaseReg exclusive-upper-bound ABI, managed by the trusted single-hart kernel
+instead of changing the loader/user stack. It monitors only the explicitly
+enabled interval in forked children; no exec occurs after enable. Kernel-owned
+physical pools and trusted ROM requests avoid granting a user a kernel/global
+mapping or an address-selection interface. This is a bounded Linux adaptation,
+not completion of the PDF's general virtual-stack/loader proposal.
+
+The PDF leaves export/offline analysis as TODO. This prototype exports closed,
+bounded records during do_exit to a captured host serial log, persisted to disk
+by the actual simulator command and decoded into JSON. It does not implement a
+general in-guest filesystem export service. Exports with open/spilled frames,
+errors or too many records are marked incomplete rather than silently accepted.
+
+## A actual acceptance completed
+
+The existing slim Rocket run completed successfully: PID1 marker, Linux power-down,
+no panic, exit0,5627.49s. See evidence/stage4/A-summary.json and raw/normalized
+console logs. It used fixed-PC Rocket41d2976 and the pinned independent kernel/
+firmware. Its configuration retains legacy PTYs; the final faster no-PTY profile
+is also running separately. The first full configuration timed out, so its result
+is not a pass. B/C has now launched once using independent PTY-free rebuilt
+Linux0d6ec76 source and Rocket1c7841345. No Linux monitoring pass is yet claimed.

@@ -146,3 +146,6 @@ Stage4 Linux integration implementation (runtime gates pending):
 - Chipyard `ffa17056` (full SHA in provenance): remove unused legacy PTYs,
   correct RISC-V syslog ABI and retain an initramfs-only rebuild entry. The signal
   and permission ABI diagnostic passed on baseline Linux/Spike; no SSA claim.
+- Chipyard `1462d8ba` (full SHA in provenance): require reciprocal B sleep-frame
+  pause/resume/rebasing evidence in the Linux grader, in addition to A's timer
+  preemption evidence. This changes the checker only, not the kernel or image.

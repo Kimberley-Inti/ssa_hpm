@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
-    "development_delivery": "ffa170567772ccb0713e005c14be0fd542de2331",
+    "development_delivery": "1462d8ba247ead8c0494d5dc5bc8e5ef961dd549",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -520,7 +520,7 @@
     "ssa/linux/user-probe.S": "a0b658bf48786a69eb479d789d0999894c3fb4b5f59fe1edb7f97938d54c706f",
     "ssa/linux/0002-linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
-    "ssa/linux/grade-process.py": "03f695c68488af078656932e0a7f32d85209527093d8bef55ff17446cfb17f5b",
+    "ssa/linux/grade-process.py": "663fd301a070085c6586d5473851da7194aa0f029393b7784824658038f7f67c",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878"
   },
   "development_stage": {
