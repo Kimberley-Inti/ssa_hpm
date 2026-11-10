@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
-    "development_delivery": "b4944ca3f1e589ca43a0e015a229d1b843651313",
+    "development_delivery": "c8be3fd4d10a758ea378f2b8f349eff6e2dc9de9",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -522,9 +522,9 @@
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "53a5d6b902a2eac66d60632d1fb1b3483b95dd988af43d1c8d71384fa8e5e0d9",
+    "ssa/linux/ABI.md": "e985d3c3889d846f75ef91f23dc173d67b6b8dd9cb6671c5a6004b5a8b8bb3e0",
     "ssa/linux/exec-init.c": "83dcdb6d2ae2d8b3eb85178249631ca1423cbe31697c7129e825133e4c34f30b",
-    "ssa/linux/grade-exec.py": "52b772fbc875ddbe3737420e8409330cc6b6c44a85d68c1aca92d94f118dfc7f",
+    "ssa/linux/grade-exec.py": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
     "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
     "ssa/linux/run-exec.py": "ebb077acea552641627fdb93065384b3bec9d2cfb7dcd3bb2cdfc61912e748a2"
   },
@@ -571,6 +571,9 @@
     "linux_tree": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d",
     "rocket_changed": false,
     "opensbi_changed": false,
-    "runtime_status": "pending actual Rocket/Verilator completion"
+    "runtime_status": "pending actual Rocket/Verilator completion",
+    "chipyard_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
+    "rocket_base": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
+    "opensbi_base": "b778927a507e4ebcc43a8ecb8d495562ef48efb3"
   }
 }

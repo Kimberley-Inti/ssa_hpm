@@ -120,7 +120,7 @@ identity. The post-exec_mmap hook in flush_old_exec runs after the old address
 space cannot return, before the new image enters userspace. It samples cutoff
 counters, clears the selector and freezes the descriptor, emits SSA_SESSION and
 bounded SSA_EXPORT/SSA_RECORD data, then SSA_OPEN for any abandoned frames and
-SSA_EXEC_END. It detaches the descriptor, releases the slot and frees it. Export
+SSA_EXEC_END. With interrupts masked it releases the slot, detaches the descriptor and frees it. Export
 is once per session; later new-image exit cannot export the old descriptor.
 
 Unfinished activations are not fabricated as normal returns and add no partial

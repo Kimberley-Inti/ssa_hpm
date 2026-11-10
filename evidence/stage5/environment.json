@@ -44,5 +44,19 @@
     ]
   },
   "model_sha256": "5d188ac508df7ac3d27817e81665786763f54f9ce0379af6f38d44ec3cba7dc0",
-  "reuse": "unchanged Rocket1c784134/SBIb778; model hash equals stage4 BC-execution; native image independently rebuilt with stage5 Linux patch"
+  "reuse": "unchanged Rocket1c784134/SBIb778; model hash equals stage4 BC-execution; native image independently rebuilt with stage5 Linux patch",
+  "tool_binaries": {
+    "spike": {
+      "path": "/opt/riscv/bin/spike",
+      "sha256": "6f58d5af94d3d083f5c687a2baf21e54b8ef50343b83314b8886b46d89e299aa"
+    },
+    "verilator": {
+      "path": "/usr/local/bin/verilator",
+      "sha256": "99a56ee08823bef7d920515fd7a64e1cb5351910e41a63d86881a5c7618abcb8"
+    },
+    "riscv64-unknown-elf-gcc": {
+      "path": "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+      "sha256": "3b2b5d5ad7f9c7821c8ca1b11c6c512f30e3d63dcbdc726836c1c7bc0bceed32"
+    }
+  }
 }

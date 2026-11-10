@@ -41,10 +41,11 @@ if all(len(v)==1 for v in selected.values()):
  oldbegin=[x for x in begins if x['session']==old['session']];newbegin=[x for x in begins if x['session']==new['session']]
  check('actual_exec_epoch',len(oldbegin)==len(newbegin)==1 and newbegin[0]['image']==oldbegin[0]['image']+1)
  # These tiny leaf functions contain exactly 66 retired loop instructions/iteration.
- # Prior stage4's identical 100-iteration leaf measured 6623; the 23 includes
- # the unchanged call/return monitor boundary, not a general overhead constant.
+ # Stage4's 100-iteration leaf measured 6623. Its role-check/prologue path
+ # has five more user instructions than this leaf (verified by objdump).
+ # Thus this fixed leaf has 66*n+18, not a general monitor-cost constant.
  leaf_counts={e['test']:next((r['instret'] for r in records if r['session']==e['session'] and r['id']==2),None) for e in [old,new,failed]}
- check('fresh_leaf_counts_no_old_image_carry',leaf_counts=={5:3323,6:6623,7:6646})
+ check('fresh_leaf_counts_no_old_image_carry',leaf_counts=={5:3318,6:6618,7:6636})
  oldq=[q for q in queries if q['session']==old['session']]
  check('old_exec_observed_open_frame',len(oldq)==1 and oldq[0]['depth']==1 and oldq[0]['next']==3 and oldq[0]['selector']==old['pool'])
 

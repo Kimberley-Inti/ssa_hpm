@@ -15,7 +15,7 @@ monotonic session ID, even though its PID and physical pool slot are reused.
 
 The kernel samples cutoff counters, clears selection, freezes the old session,
 exports its bounded records, marks every remaining frame abandoned, detaches the
-descriptor, releases its slot and frees the descriptor. No synthetic return is
+descriptor after releasing its slot, then frees the descriptor, all under the IRQ mask. No synthetic return is
 inserted. Counts already accumulated by completed activations remain valid;
 unfinished activations contribute no partial counts. A record may contain earlier
 completed activations as well as a presently open frame; the record's `open`
@@ -87,8 +87,17 @@ log-only recheck. No Linux image, full upstream source, original PDF, credential
 or backup bundle is included in this repository.
 
 The leaf instruction oracle uses the fixed fixture, not a general monitor-cost
-subtraction: 66 instructions per iteration and the unchanged measured boundary23
-yield3323 for50 iterations,6623 for100, and6646 for two50-iteration activations.
+subtraction: 66 instructions per iteration and a fixed non-loop contribution18
+yield3318 for50 iterations,6618 for100, and6636 for two50-iteration activations.
+Stage4 common(0,100) had five extra non-loop user instructions (role check,
+argument moves and stack adjustment), so its6623 is not this leaf's absolute oracle.
 Old/new leaf virtual addresses are identical. Exact counts distinguish reset
 from carry-over; any unexpected interrupt within a short leaf must be investigated,
 not silently accepted by widening the oracle.
+
+| Diagnostic label | Image/session | Observable result |
+| --- | --- | --- |
+| test5 | A before successful exec | depth1, closed leaf retained, parent abandoned; SSA_EXEC_END once |
+| test6 | B after successful exec, same PID | new session/next image epoch, clean enable, closed nested tree and SSA_EXIT once |
+| test7 | A with failed /absent exec | two depth1 queries in the same session; two completed leaf activations, then closed exit |
+| test0..4 | unchanged stage4 fixture | single exit/security and corrected/legacy short-long preemption pairs |

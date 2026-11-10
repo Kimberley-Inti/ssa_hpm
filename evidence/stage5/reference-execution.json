@@ -14,5 +14,20 @@
     "/tmp/ssa-exec-reference/next": "eb034c5f98ba8e47c467b318c147dcdde3a4d738ef3749999163e60f5c95e5f3",
     "/tmp/ssa-exec-reference/regress": "00b272fcadb309127fe50477efb0bd160cd207f104c51fbac2f88cd619e672e5",
     "/tmp/ssa-exec-stage/reference-spike.log": "ead1aac9e4fedb17f2b20460525ee519b5c1bbd8a61d281de962e76922270c7a"
-  }
+  },
+  "checks": {
+    "SSA EXEC FIXTURE START": true,
+    "SSA EXEC IMAGE B ENTER": true,
+    "SSA EXEC IMAGE B PASS": true,
+    "SSA EXEC SUCCESS CHILD PASS": true,
+    "SSA EXEC ENOENT CHILD PASS": true,
+    "SSA EXEC FIXTURE PASS": true,
+    "SSA LINUX B USER PASS": true,
+    "SSA LINUX SECURITY USER PASS": true,
+    "SSA LINUX PROCESS FIXTURE PASS": true,
+    "reboot: Power down": true,
+    "four_real_ABI_scheduling_trials": true,
+    "clean_exit": true
+  },
+  "passed": true
 }

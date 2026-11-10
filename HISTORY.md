@@ -195,3 +195,5 @@ Runtime evidence and final maintenance commit mapping follow after native comple
 Chipyard follow-up `02ddc90abb4806e136f1e96b1580702df39cc4b7` documents session retirement and counter boundaries in ABI.md; it does not alter the built image or RTL.
 
 Chipyard `b4944ca3f1e589ca43a0e015a229d1b843651313` strengthens the checker with exact short-leaf counts at identical old/new virtual addresses, without rebuilding or altering the running image.
+
+Chipyard `fb7fd09e8c5886498aee42f90e2e5bb97cfa56df` corrects the leaf oracle: actual disassembly shows five fewer non-loop user instructions than stage4 common. Expected counts3318/6618/6636; no kernel, RTL or image change.
