@@ -1,0 +1,19 @@
+Initial native run stopped after diagnosing resume-loop stack overwrite. Not an accepted result.
+Raw log SHA256 40558d05a77ffc1a3de0d1c90ff0729ffeeb4eb03018950c2fdc5f52252fb73b
+
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=25800000 pc=e000247b58 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=25900000 pc=e000247b70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=26000000 pc=e000247b6c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=26100000 pc=e000247b58 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=26200000 pc=e000247b58 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=26300000 pc=e000247b70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=26400000 pc=e000247b74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002481e4 stval=0 satp_mode=8 satp_ppn=80213
+[UART] UART0 is here (stdin/stdout).
