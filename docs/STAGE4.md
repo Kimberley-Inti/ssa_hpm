@@ -13,8 +13,10 @@ main, v0.1.0 and earlier PRs. PR3 remains draft against stage3-process-isolation
   successful child exit checked by PID1, export before slot release, selector0.
   Actual unprivileged CSR, physical-pool, invalid-interface and syslog denial
   probes passed. See single-process-summary.json and B-checkpoint-raw.txt.
-- **C RUNNING**: four actual Linux short/long and corrected/legacy process-pair
-  trials are in execution. No two-process Linux isolation pass is claimed yet.
+- **C PASS**: four real Linux process-pair trials completed on Rocket/Verilator:
+  two corrected short/long cases and two legacy controls showing expected cross-talk.
+  All173 unified checks passed, all children completed, the kernel powered down
+  and the simulator exited0 after11800.79s. See BC-summary.json and BC-console.txt.
 
 The single-process result (PID14 in this run; child PIDs are not fixed) is:
 
@@ -117,3 +119,51 @@ the captured host serial log and JSON, not a general in-guest file-export servic
 Open/spilled frames, allocation errors or more than32 records mark export
 incomplete. Multicore, migration, full exec lifecycle, nonlocal unwind, production
 resource policy/full-capacity export and Cache/TLB events remain deferred.
+
+## Final measured attribution comparison
+
+A executes the same4000-iteration user loop in every trial. B changes from20 to
+3000 iterations. All addresses match the actual embedded user ELF. Nine monitored
+process exports contain18 closed records in total; no pool/record mixing was
+observed. Both parent and common frame corrections were checked.
+
+| A common, long minus short | corrected | legacy control |
+| --- | --- | --- |
+| instret | 20 | 207962 |
+| cycle | 1667 | 219262 |
+| CLINT time ticks | 16 | 2193 |
+
+Corrected A common instret is278450/278470; legacy A is1545490/1753452. B's
+corrected common instret is4026/209102 (delta205076). Its mandatory user-loop
+increment is196680; interval totals also include non-loop execution. Corrected
+A's independently logged excluded instret grows by209744. The difference20 is
+consistent with the defined interval semantics: identical user work plus variable
+non-loop/kernel/handoff/monitor execution outside S-to-R. Exact equality is not
+an acceptance condition. There is no instruction trace assigning those20 to a
+specific kernel routine; no stronger claim is made.
+
+The checker independently verifies each R-S sample, sums only intervals with
+common open, compares actual frame snapshots, checks B.S<A.S<B.R<A.R, and
+requires both parent/common short-long changes to be less than half the observed
+legacy cross-talk. The legacy frames remain unchanged with rebased0; corrected
+frames equal original+excluded intervals. The raw-derived relation alone is not
+used as proof of isolation. Original gold6 contexts/14452/7226 remain unchanged.
+
+CONFIG_PREEMPT_NONE is enabled. RISC-V's return-to-user reschedule path calls
+schedule, so the logged preempt argument is0. Actual involuntary preemption is
+established by timer IRQ5, TASK_RUNNING/state0, nivcsw advancement, depth2/rid2
+and the reciprocal process/sample ordering. Background kernel PID7 may intervene;
+no incorrect assumption of direct adjacency to PID1 is used.
+
+The final checker was also run from the independently reconstructed project tree
+against the same immutable original execution log and real exit code0; all173
+checks passed again. Input image/model hashes match the original execution record.
+This reuses the completed simulation rather than claiming a second Linux replay.
+See independent-final-grade.json, final-source-reproduction.json and summary.json.
+
+For instret the corrected raw-derived interval increment is209764; the independently
+sampled extra excluded interval is209744, leaving20. A's mandatory user loop is
+identical. The exact frame/sampling checks establish exclusion of execution inside
+S-to-R; post-R handoff/restore and pre-S scheduling remain charged by definition.
+The20 is therefore compatible with this contract, not an expected-zero assertion
+or an instruction-by-instruction attribution of all Linux overhead.

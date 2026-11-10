@@ -158,3 +158,15 @@ Stage4 Linux integration implementation (runtime gates pending):
   with global sample chronology, actual embedded user ELF symbols, mandatory loop
   instructions, independent open-frame interval sums and parent-frame exclusion.
   These checker-only commits do not change the already-built RTL/kernel/image.
+- Chipyard `68611650` (full SHA in provenance): specify the exact pre-context-switch
+  S/R sampling boundary and which outgoing/incoming handoff costs remain charged.
+  Documentation only; running RTL, kernel and initramfs are unchanged.
+
+Stage4 final acceptance: final Rocket Linux boot A passed, real uid1000 process
+monitoring/exit export and permission probes B passed, and all four real Linux
+preemption trials C completed with clean power-down/exit0. The final checker
+passed173 checks on the original log and again from the public-source reconstructed
+project directory. Corrected A common instret short/long is278450/278470 (delta20);
+legacy is1545490/1753452 (delta207962). All16+3+5 existing/new low-level checks
+remain passed, including the expected-exit42 legacy control. No new tag, main
+update, PR merge or public repository visibility change is part of this delivery.

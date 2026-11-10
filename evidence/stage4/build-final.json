@@ -5,35 +5,82 @@
       "exit_code": 0,
       "log": "/tmp/ssa-linux-stage/rocket-user-mode-pmp-build.log",
       "log_sha256": "dd66e3d40a05b55493eeb48d8803b54e7e33bd01d5ebac4fc050bbd4d47c0370",
-      "exit_status_source": "completed exec session result read back"
+      "exit_status_source": "completed exec session result read back",
+      "command": [
+        "make",
+        "-C",
+        "sims/verilator",
+        "CONFIG=RocketConfig",
+        "-j6",
+        "LINK=/usr/bin/g++ -B/usr/bin/"
+      ]
     },
     {
       "name": "development Linux process kernel",
       "exit_code": 0,
       "log": "/tmp/ssa-linux-stage/kernel-process-build.log",
       "log_sha256": "3f62255bab6bb384b4975e1d13ef8fc6e1b4099a01aae86459a9183d45a4f45c",
-      "exit_status_source": "completed exec session result read back"
+      "exit_status_source": "completed exec session result read back",
+      "command": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=riscv64-unknown-elf-",
+        "CC=riscv64-unknown-elf-gcc -B/home/lxf/ssa-linux-src/host-tools/compiler-bin/",
+        "LD=/home/lxf/ssa-linux-src/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j6",
+        "Image"
+      ]
     },
     {
       "name": "development process firmware",
       "exit_code": 0,
       "log": "/tmp/ssa-linux-stage/firmware-process-build.log",
       "log_sha256": "69abda77a6e01865761cd59f990432a310055f33a5449f37a05e6aaaa3b5b0a1",
-      "exit_status_source": "completed exec session result read back"
+      "exit_status_source": "completed exec session result read back",
+      "command": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11",
+        "FW_PAYLOAD_PATH=/home/lxf/ssa-linux-src/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-linux-independent-a/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j6"
+      ]
     },
     {
       "name": "independent public process build",
       "exit_code": 0,
       "log": "/tmp/ssa-linux-stage/independent-process-fast-build.log",
       "log_sha256": "335ac64dbe148e45afd0d841eee1d797cde3ad4dd296396788a613f781c2c387",
-      "exit_status_source": "completed exec session result read back"
+      "exit_status_source": "completed exec session result read back",
+      "command": [
+        "python3",
+        "ssa/linux/build-a.py",
+        "--process",
+        "--work",
+        "/tmp/ssa-linux-independent-process-fast",
+        "--jobs",
+        "6"
+      ]
     },
     {
       "name": "corrected independent initramfs",
       "exit_code": 0,
       "log": "/tmp/ssa-linux-stage/independent-process-final-init.log",
       "log_sha256": "ac8aa89fab532f7a2ee3750fff402492fafbf590ad2c016831feebd1ad58831c",
-      "exit_status_source": "completed exec session result read back"
+      "exit_status_source": "completed exec session result read back",
+      "command": [
+        "python3",
+        "ssa/linux/rebuild-init.py",
+        "--work",
+        "/tmp/ssa-linux-independent-process-fast",
+        "--name",
+        "boot-process"
+      ]
     }
   ],
   "linux": {

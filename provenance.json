@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
-    "development_delivery": "325b441ada1b2f4aa1190a321d98dc550992f040",
+    "development_delivery": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -522,7 +522,7 @@
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "8b003561912cf94b09cb76a051b27159ae13dadd0c98ded178ed32eb46e44339"
+    "ssa/linux/ABI.md": "f08fcb4dfe62659c153647a5ad9154c5558f1256bf90960f1b276a58380d8df7"
   },
   "development_stage": {
     "name": "stage2-trap-isolation",
@@ -555,7 +555,7 @@
       "platform_commit": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
       "tree": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557"
     },
-    "status": "in progress; actual Linux acceptance recorded separately",
+    "status": "A/B/C passed on actual single-hart Rocket/Verilator Linux;173 unified checks passed",
     "linux_monitoring_delivery": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
     "linux_monitoring_tree": "ef9c3b6d2e2891853aa576d211f715a8ea718ddb"
   }

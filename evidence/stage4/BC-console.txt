@@ -1,0 +1,449 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 45629
+
+OpenSBI v0.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name       : SSA-HPM RocketConfig hart0
+Platform Features   : timer,mfdeleg
+Platform HART Count : 1
+Boot HART ID        : 0
+Boot HART ISA       : rv64imafdcsux
+BOOT HART Features  : pmp,scounteren,mcounteren
+BOOT HART PMP Count : 16
+Firmware Base       : 0x80000000
+Firmware Size       : 64 KB
+Runtime SBI Version : 0.2
+
+MIDELEG : 0x0000000000000222
+MEDELEG : 0x000000000000b109
+PMP0    : 0x0000000080000000-0x000000008000ffff (A)
+PMP1    : 0x0000000000000000-0x00000001ffffffff (A,R,W,X)
+OF: fdt: Ignoring memory range 0x80000000 - 0x80200000
+
+Forcing kernel command line to: console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 loglevel=7
+
+Linux version 5.7.0-rc3+ (lxf@ubuntu22) (gcc version 15.1.0 (), GNU ld (GNU Binutils for Ubuntu) 2.38) #2 Mon Nov 9 22:47:57 CST 2026
+
+earlycon: sbi0 at I/O port 0x0 (options '')
+
+printk: bootconsole [sbi0] enabled
+
+initrd not found or empty - disabling initrd
+
+Zone ranges:
+
+  DMA32    [mem 0x0000000080200000-0x0000000081ffffff]
+
+  Normal   empty
+
+Movable zone start for each node
+
+Early memory node ranges
+
+  node   0: [mem 0x0000000080200000-0x0000000081ffffff]
+
+Initmem setup node 0 [mem 0x0000000080200000-0x0000000081ffffff]
+
+software IO TLB: mapped [mem 0x81f4e000-0x81f8e000] (0MB)
+
+SBI specification v0.2 detected
+
+SBI implementation ID=0x1 Version=0x8
+
+SBI v0.2 TIME extension detected
+
+SBI v0.2 IPI extension detected
+
+SBI v0.2 RFENCE extension detected
+
+elf_hwcap is 0x112d
+
+Built 1 zonelists, mobility grouping on.  Total pages: 7575
+
+Kernel command line: console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 loglevel=7
+
+Dentry cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+
+Inode-cache hash table entries: 2048 (order: 2, 16384 bytes, linear)
+
+Sorting __ex_table...
+
+mem auto-init: stack:off, heap alloc:off, heap free:off
+
+Memory: 21432K/30720K available (1269K kernel code, 2908K rwdata, 2048K rodata, 112K init, 201K bss, 9288K reserved, 0K cma-reserved)
+
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+
+NR_IRQS: 0, nr_irqs: 0, preallocated irqs: 0
+
+plic: mapped 1 interrupts with 1 handlers for 2 contexts.
+
+riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [0]
+
+clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x1d854df40, max_idle_ns: 3526361616960 ns
+
+sched_clock: 64 bits at 1000kHz, resolution 1000ns, wraps every 2199023255500ns
+
+printk: console [hvc0] enabled
+
+printk: console [hvc0] enabled
+
+printk: bootconsole [sbi0] disabled
+
+printk: bootconsole [sbi0] disabled
+
+Calibrating delay loop (skipped) preset value.. 200.00 BogoMIPS (lpj=100000)
+
+pid_max: default: 4096 minimum: 301
+
+Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+
+Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+
+clocksource: Switched to clocksource riscv_clocksource
+
+workingset: timestamp_bits=62 max_order=13 bucket_order=0
+
+random: get_random_bytes called from 0xffffffe000206e48 with crng_init=0
+
+SSA_LINUX_READY user_triggers=1 harts=1 export_limit=32
+
+Freeing unused kernel memory: 112K
+
+Run /init as init process
+
+SSA LINUX PROCESS FIXTURE START
+
+SSA_EXPORT pid=14 uid=1000 role=0 test=0 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=1
+
+SSA_SWITCH pid=14 test=0 role=0 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=1 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=14 event=0 counter=0 S=0000000000944227 R=00000000009459e8 delta=00000000000017c1
+
+SSA_SAMPLE pid=14 event=0 counter=1 S=00000000004c1ac1 R=00000000004c21a4 delta=00000000000006e3
+
+SSA_SAMPLE pid=14 event=0 counter=2 S=0000000000017b8f R=0000000000017bcb delta=000000000000003c
+
+SSA_RECORD pid=14 id=1 callee=000000000001024e parent=0 cycle=7422 instret=6722 time=74
+
+SSA_RECORD pid=14 id=2 callee=0000000000010114 parent=1 cycle=6820 instret=6623 time=69
+
+SSA_EXIT pid=14 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA LINUX B USER PASS
+
+SSA LINUX SECURITY USER PASS
+
+SSA_EXPORT pid=19 uid=1000 role=2 test=1 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2
+
+SSA_SWITCH pid=19 test=1 role=2 event=0 to=7 from=20 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=19 event=0 counter=0 S=0000000000ba6bbd R=0000000000c83a87 delta=00000000000dceca
+
+SSA_SAMPLE pid=19 event=0 counter=1 S=00000000005bd442 R=00000000005e96eb delta=000000000002c2a9
+
+SSA_SAMPLE pid=19 event=0 counter=2 S=000000000001dd42 R=0000000000020099 delta=0000000000002357
+
+SSA_SWITCH pid=19 test=1 role=2 event=1 to=20 from=20 depth=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=19 event=1 counter=0 S=0000000000c8682e R=0000000000ca491e delta=000000000001e0f0
+
+SSA_SAMPLE pid=19 event=1 counter=1 S=00000000005ea368 R=0000000000604e2e delta=000000000001aac6
+
+SSA_SAMPLE pid=19 event=1 counter=2 S=000000000002010f R=00000000000205dd delta=00000000000004ce
+
+SSA_RECORD pid=19 id=1 callee=000000000001024e parent=0 cycle=10399 instret=4125 time=105
+
+SSA_RECORD pid=19 id=2 callee=0000000000010114 parent=1 cycle=9707 instret=4026 time=99
+
+SSA_ACCOUNT pid=19 test=1 role=2 counter=0 original=0000000000c85056 final=0000000000ca3146 off=000000000001e0f0 recorded=00000000000025eb raw=00000000000206db valid=1 rebased=1
+
+SSA_ACCOUNT pid=19 test=1 role=2 counter=1 original=00000000005e9c1b final=00000000006046e1 off=000000000001aac6 recorded=0000000000000fba raw=000000000001ba80 valid=1 rebased=1
+
+SSA_ACCOUNT pid=19 test=1 role=2 counter=2 original=00000000000200cd final=000000000002059b off=00000000000004ce recorded=0000000000000063 raw=0000000000000531 valid=1 rebased=1
+
+SSA_EXIT pid=19 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_EXPORT pid=20 uid=1000 role=1 test=1 legacy=0 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3
+
+SSA_SWITCH pid=20 test=1 role=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=20 event=0 counter=0 S=0000000000c7ef29 R=0000000000c80669 delta=0000000000001740
+
+SSA_SAMPLE pid=20 event=0 counter=1 S=00000000005e835d R=00000000005e8a40 delta=00000000000006e3
+
+SSA_SAMPLE pid=20 event=0 counter=2 S=000000000001ffda R=0000000000020013 delta=0000000000000039
+
+SSA_SWITCH pid=20 test=1 role=1 event=1 to=19 from=19 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=20 event=1 counter=0 S=0000000000c835c8 R=0000000000c86b5d delta=0000000000003595
+
+SSA_SAMPLE pid=20 event=1 counter=1 S=00000000005e9524 R=00000000005ea52f delta=000000000000100b
+
+SSA_SAMPLE pid=20 event=1 counter=2 S=0000000000020090 R=0000000000020116 delta=0000000000000086
+
+SSA_SWITCH pid=20 test=1 role=1 event=2 to=19 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=20 event=2 counter=0 S=0000000000ca455f R=0000000000e2c5d0 delta=0000000000188071
+
+SSA_SAMPLE pid=20 event=2 counter=1 S=0000000000604c67 R=00000000007398f8 delta=0000000000134c91
+
+SSA_SAMPLE pid=20 event=2 counter=2 S=00000000000205d4 R=000000000002448e delta=0000000000003eba
+
+SSA_RECORD pid=20 id=1 callee=000000000001024e parent=0 cycle=296525 instret=278549 time=2965
+
+SSA_RECORD pid=20 id=2 callee=0000000000010114 parent=1 cycle=295685 instret=278450 time=2957
+
+SSA_ACCOUNT pid=20 test=1 role=1 counter=0 original=0000000000c8743a final=0000000000e0f4ab off=0000000000188071 recorded=0000000000048305 raw=00000000001d0376 valid=1 rebased=1
+
+SSA_ACCOUNT pid=20 test=1 role=1 counter=1 original=00000000005ea826 final=000000000071f4b7 off=0000000000134c91 recorded=0000000000043fb2 raw=0000000000178c43 valid=1 rebased=1
+
+SSA_ACCOUNT pid=20 test=1 role=1 counter=2 original=0000000000020129 final=0000000000023fe3 off=0000000000003eba recorded=0000000000000b8d raw=0000000000004a47 valid=1 rebased=1
+
+SSA_EXIT pid=20 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA LINUX DUAL USER PASS
+
+SSA_EXPORT pid=21 uid=1000 role=2 test=2 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2
+
+SSA_SWITCH pid=21 test=2 role=2 event=0 to=7 from=22 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=21 event=0 counter=0 S=0000000001144ced R=000000000121f0e5 delta=00000000000da3f8
+
+SSA_SAMPLE pid=21 event=0 counter=1 S=000000000091f34b R=000000000094aac8 delta=000000000002b77d
+
+SSA_SAMPLE pid=21 event=0 counter=2 S=000000000002c359 R=000000000002e643 delta=00000000000022ea
+
+SSA_SWITCH pid=21 test=2 role=2 event=1 to=22 from=22 depth=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=21 event=1 counter=0 S=0000000001221d7f R=00000000012450c1 delta=0000000000023342
+
+SSA_SAMPLE pid=21 event=1 counter=1 S=000000000094b72f R=000000000096b17e delta=000000000001fa4f
+
+SSA_SAMPLE pid=21 event=1 counter=2 S=000000000002e6b6 R=000000000002ec56 delta=00000000000005a0
+
+SSA_RECORD pid=21 id=1 callee=000000000001024e parent=0 cycle=222054 instret=209201 time=2223
+
+SSA_RECORD pid=21 id=2 callee=0000000000010114 parent=1 cycle=221394 instret=209102 time=2216
+
+SSA_ACCOUNT pid=21 test=2 role=2 counter=0 original=000000000122061b final=000000000124395d off=0000000000023342 recorded=00000000000360d2 raw=0000000000059414 valid=1 rebased=1
+
+SSA_ACCOUNT pid=21 test=2 role=2 counter=1 original=000000000094aff8 final=000000000096aa47 off=000000000001fa4f recorded=00000000000330ce raw=0000000000052b1d valid=1 rebased=1
+
+SSA_ACCOUNT pid=21 test=2 role=2 counter=2 original=000000000002e676 final=000000000002ec16 off=00000000000005a0 recorded=00000000000008a8 raw=0000000000000e48 valid=1 rebased=1
+
+SSA_EXIT pid=21 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_EXPORT pid=22 uid=1000 role=1 test=2 legacy=0 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3
+
+SSA_SWITCH pid=22 test=2 role=1 event=0 to=11 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=22 event=0 counter=0 S=0000000001217f72 R=000000000121bdf6 delta=0000000000003e84
+
+SSA_SAMPLE pid=22 event=0 counter=1 S=0000000000948b73 R=0000000000949e1d delta=00000000000012aa
+
+SSA_SAMPLE pid=22 event=0 counter=2 S=000000000002e521 R=000000000002e5c0 delta=000000000000009f
+
+SSA_SWITCH pid=22 test=2 role=1 event=1 to=21 from=21 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=22 event=1 counter=0 S=000000000121ecb0 R=0000000001222127 delta=0000000000003477
+
+SSA_SAMPLE pid=22 event=1 counter=1 S=000000000094a901 R=000000000094b8f6 delta=0000000000000ff5
+
+SSA_SAMPLE pid=22 event=1 counter=2 S=000000000002e639 R=000000000002e6bf delta=0000000000000086
+
+SSA_SWITCH pid=22 test=2 role=1 event=2 to=21 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=22 event=2 counter=0 S=0000000001244d7c R=00000000014004e6 delta=00000000001bb76a
+
+SSA_SAMPLE pid=22 event=2 counter=1 S=000000000096afb7 R=0000000000ad2f98 delta=0000000000167fe1
+
+SSA_SAMPLE pid=22 event=2 counter=2 S=000000000002ec50 R=0000000000033344 delta=00000000000046f4
+
+SSA_RECORD pid=22 id=1 callee=000000000001024e parent=0 cycle=298217 instret=278569 time=2983
+
+SSA_RECORD pid=22 id=2 callee=0000000000010114 parent=1 cycle=297352 instret=278470 time=2973
+
+SSA_ACCOUNT pid=22 test=2 role=1 counter=0 original=0000000001222a5d final=00000000013de1c7 off=00000000001bb76a recorded=0000000000048988 raw=00000000002040f2 valid=1 rebased=1
+
+SSA_ACCOUNT pid=22 test=2 role=1 counter=1 original=000000000094bbed final=0000000000ab3bce off=0000000000167fe1 recorded=0000000000043fc6 raw=00000000001abfa7 valid=1 rebased=1
+
+SSA_ACCOUNT pid=22 test=2 role=1 counter=2 original=000000000002e6d3 final=0000000000032dc7 off=00000000000046f4 recorded=0000000000000b9d raw=0000000000005291 valid=1 rebased=1
+
+SSA_EXIT pid=22 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA LINUX DUAL USER PASS
+
+SSA_EXPORT pid=23 uid=1000 role=2 test=3 legacy=1 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2
+
+SSA_SWITCH pid=23 test=3 role=2 event=0 to=7 from=24 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=23 event=0 counter=0 S=0000000001713298 R=00000000017ec374 delta=00000000000d90dc
+
+SSA_SAMPLE pid=23 event=0 counter=1 S=0000000000cb3cde R=0000000000cdecac delta=000000000002afce
+
+SSA_SAMPLE pid=23 event=0 counter=2 S=000000000003b12a R=000000000003d3e3 delta=00000000000022b9
+
+SSA_SWITCH pid=23 test=3 role=2 event=1 to=24 from=24 depth=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=23 event=1 counter=0 S=00000000017eefd7 R=00000000018164df delta=0000000000027508
+
+SSA_SAMPLE pid=23 event=1 counter=1 S=0000000000cdf90a R=0000000000d0365b delta=0000000000023d51
+
+SSA_SAMPLE pid=23 event=1 counter=2 S=000000000003d456 R=000000000003da9f delta=0000000000000649
+
+SSA_RECORD pid=23 id=1 callee=000000000001024e parent=0 cycle=171027 instret=150773 time=1710
+
+SSA_RECORD pid=23 id=2 callee=0000000000010114 parent=1 cycle=170345 instret=150674 time=1704
+
+SSA_ACCOUNT pid=23 test=3 role=2 counter=0 original=00000000017ed8d8 final=00000000017ed8d8 off=0000000000027508 recorded=0000000000029969 raw=0000000000029969 valid=1 rebased=0
+
+SSA_ACCOUNT pid=23 test=3 role=2 counter=1 original=0000000000cdf1d3 final=0000000000cdf1d3 off=0000000000023d51 recorded=0000000000024c92 raw=0000000000024c92 valid=1 rebased=0
+
+SSA_ACCOUNT pid=23 test=3 role=2 counter=2 original=000000000003d416 final=000000000003d416 off=0000000000000649 recorded=00000000000006a8 raw=00000000000006a8 valid=1 rebased=0
+
+SSA_EXIT pid=23 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_EXPORT pid=24 uid=1000 role=1 test=3 legacy=1 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3
+
+SSA_SWITCH pid=24 test=3 role=1 event=0 to=12 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=24 event=0 counter=0 S=00000000017e5fb3 R=00000000017e90fc delta=0000000000003149
+
+SSA_SAMPLE pid=24 event=0 counter=1 S=0000000000cdd1c1 R=0000000000cde00a delta=0000000000000e49
+
+SSA_SAMPLE pid=24 event=0 counter=2 S=000000000003d2e4 R=000000000003d362 delta=000000000000007e
+
+SSA_SWITCH pid=24 test=3 role=1 event=1 to=23 from=23 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=24 event=1 counter=0 S=00000000017ebf65 R=00000000017ef365 delta=0000000000003400
+
+SSA_SAMPLE pid=24 event=1 counter=1 S=0000000000cdeae5 R=0000000000cdfad1 delta=0000000000000fec
+
+SSA_SAMPLE pid=24 event=1 counter=2 S=000000000003d3da R=000000000003d45e delta=0000000000000084
+
+SSA_SWITCH pid=24 test=3 role=1 event=2 to=23 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=24 event=2 counter=0 S=0000000001816155 R=0000000001999456 delta=0000000000183301
+
+SSA_SAMPLE pid=24 event=2 counter=1 S=0000000000d03494 R=0000000000e379ea delta=0000000000134556
+
+SSA_SAMPLE pid=24 event=2 counter=2 S=000000000003da97 R=000000000004188a delta=0000000000003df3
+
+SSA_RECORD pid=24 id=1 callee=000000000001024e parent=0 cycle=1891321 instret=1545589 time=18914
+
+SSA_RECORD pid=24 id=2 callee=0000000000010114 parent=1 cycle=1890487 instret=1545490 time=18905
+
+SSA_ACCOUNT pid=24 test=3 role=1 counter=0 original=00000000017efc0b final=00000000017efc0b off=0000000000183301 recorded=00000000001cd8b7 raw=00000000001cd8b7 valid=1 rebased=0
+
+SSA_ACCOUNT pid=24 test=3 role=1 counter=1 original=0000000000cdfdbf final=0000000000cdfdbf off=0000000000134556 recorded=0000000000179512 raw=0000000000179512 valid=1 rebased=0
+
+SSA_ACCOUNT pid=24 test=3 role=1 counter=2 original=000000000003d470 final=000000000003d470 off=0000000000003df3 recorded=00000000000049d9 raw=00000000000049d9 valid=1 rebased=0
+
+SSA_EXIT pid=24 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA LINUX DUAL USER PASS
+
+SSA_EXPORT pid=25 uid=1000 role=2 test=4 legacy=1 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2
+
+SSA_SWITCH pid=25 test=4 role=2 event=0 to=7 from=26 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=25 event=0 counter=0 S=0000000001ca7f4b R=0000000001d7fa30 delta=00000000000d7ae5
+
+SSA_SAMPLE pid=25 event=0 counter=1 S=0000000001014ea4 R=000000000103f925 delta=000000000002aa81
+
+SSA_SAMPLE pid=25 event=0 counter=2 S=00000000000495c5 R=000000000004b846 delta=0000000000002281
+
+SSA_SWITCH pid=25 test=4 role=2 event=1 to=26 from=26 depth=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=25 event=1 counter=0 S=0000000001d826e0 R=0000000001d9ee8c delta=000000000001c7ac
+
+SSA_SAMPLE pid=25 event=1 counter=1 S=0000000001040583 R=0000000001058e76 delta=00000000000188f3
+
+SSA_SAMPLE pid=25 event=1 counter=2 S=000000000004b8ba R=000000000004bd46 delta=000000000000048c
+
+SSA_RECORD pid=25 id=1 callee=000000000001024e parent=0 cycle=338396 instret=309717 time=3384
+
+SSA_RECORD pid=25 id=2 callee=0000000000010114 parent=1 cycle=337736 instret=309618 time=3377
+
+SSA_ACCOUNT pid=25 test=4 role=2 counter=0 original=0000000001d80f35 final=0000000001d80f35 off=000000000001c7ac recorded=0000000000052748 raw=0000000000052748 valid=1 rebased=0
+
+SSA_ACCOUNT pid=25 test=4 role=2 counter=1 original=000000000103fe4c final=000000000103fe4c off=00000000000188f3 recorded=000000000004b972 raw=000000000004b972 valid=1 rebased=0
+
+SSA_ACCOUNT pid=25 test=4 role=2 counter=2 original=000000000004b879 final=000000000004b879 off=000000000000048c recorded=0000000000000d31 raw=0000000000000d31 valid=1 rebased=0
+
+SSA_EXIT pid=25 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_EXPORT pid=26 uid=1000 role=1 test=4 legacy=1 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3
+
+SSA_SWITCH pid=26 test=4 role=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=26 event=0 counter=0 S=0000000001d7b1b1 R=0000000001d7c6ec delta=000000000000153b
+
+SSA_SAMPLE pid=26 event=0 counter=1 S=000000000103e5a0 R=000000000103ec83 delta=00000000000006e3
+
+SSA_SAMPLE pid=26 event=0 counter=2 S=000000000004b78d R=000000000004b7c4 delta=0000000000000037
+
+SSA_SWITCH pid=26 test=4 role=1 event=1 to=25 from=25 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0
+
+SSA_SAMPLE pid=26 event=1 counter=0 S=0000000001d7f644 R=0000000001d82a8f delta=000000000000344b
+
+SSA_SAMPLE pid=26 event=1 counter=1 S=000000000103f75e R=000000000104074a delta=0000000000000fec
+
+SSA_SAMPLE pid=26 event=1 counter=2 S=000000000004b83d R=000000000004b8c3 delta=0000000000000086
+
+SSA_SWITCH pid=26 test=4 role=1 event=2 to=25 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0
+
+SSA_SAMPLE pid=26 event=2 counter=0 S=0000000001d9eaf3 R=0000000001f59888 delta=00000000001bad95
+
+SSA_SAMPLE pid=26 event=2 counter=1 S=0000000001058caf R=00000000011c0bae delta=0000000000167eff
+
+SSA_SAMPLE pid=26 event=2 counter=2 S=000000000004bd3f R=000000000005041a delta=00000000000046db
+
+SSA_RECORD pid=26 id=1 callee=000000000001024e parent=0 cycle=2110659 instret=1753551 time=21106
+
+SSA_RECORD pid=26 id=2 callee=0000000000010114 parent=1 cycle=2109749 instret=1753452 time=21098
+
+SSA_ACCOUNT pid=26 test=4 role=1 counter=0 original=0000000001d85b43 final=0000000001d85b43 off=00000000001bad95 recorded=0000000000203135 raw=0000000000203135 valid=1 rebased=0
+
+SSA_ACCOUNT pid=26 test=4 role=1 counter=1 original=0000000001041aa5 final=0000000001041aa5 off=0000000000167eff recorded=00000000001ac16c raw=00000000001ac16c valid=1 rebased=0
+
+SSA_ACCOUNT pid=26 test=4 role=1 counter=2 original=000000000004b93b final=000000000004b93b off=00000000000046db recorded=000000000000526a raw=000000000000526a valid=1 rebased=0
+
+SSA_EXIT pid=26 complete=1 selector=0
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA LINUX DUAL USER PASS
+
+SSA LINUX PROCESS FIXTURE PASS
+
+reboot: Power down
+
+[UART] UART0 is here (stdin/stdout).

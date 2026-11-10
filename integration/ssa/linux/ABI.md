@@ -99,3 +99,11 @@ fixture checks syslog denial after dropping to uid1000. This is not a general
 in-guest file export service. PASS requires actual Rocket Linux execution,
 closed records, reciprocal scheduling/frame evidence and short/long comparisons;
 Spike's REFERENCE fixture only diagnoses Linux ABI behavior without SSA.
+
+The scheduler hook executes pause/resume immediately before context_switch.
+S is sampled in the outgoing task's kernel path. R is sampled before the physical
+switch into the incoming task, then its frame snapshots are rebased and its pool
+selected. Scheduling/IRQ entry work before S is charged to the outgoing interval;
+rebasing, context-switch tail and restore work after R are charged to the incoming
+interval. This is the explicitly measured sampling-boundary policy. No separate
+measurement claims an exact split of those kernel handoff costs.

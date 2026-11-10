@@ -128,7 +128,21 @@ python3 scripts/check_process_evidence.py /tmp/stage3-process --report /tmp/stag
 `verify-a.py`；进程用例使用 `build-a.py --process` 与 `run-process.py`。
 后者会保存实际退出结果并调用严格的双向帧归因检查。
 
-本分支启动 A 已实际通过。单进程监测与权限检查 B 已通过；C 尚在执行，当前不宣称双进程隔离通过。
+本分支启动 A 已实际通过。单进程监测与权限检查 B、真实双进程抢占隔离 C 均已通过；
+原始仿真退出 0，最终统一脚本 173 项检查通过。
 已有 16+3 项回归和 5 项裸机探针的证据在 `evidence/stage4/regression-final.json`。
 复用现有工具链和依赖缓存；Linux 与 OpenSBI 源码则从固定公共基线独立获取，
 不得将 Spike 参考输出当作 Rocket Linux 或 SSA 实现的验收。
+
+
+复核已提交的原始 Linux 日志，无需重复长仿真：
+
+```bash
+python3 integration/ssa/linux/grade-process.py \
+  evidence/stage4/BC-rocket-linux-process.txt --exit-code 0 \
+  --symbols evidence/stage4/user-symbols.json --out /tmp/ssa-linux-regrade.json
+```
+
+`BC-execution.json` 保存实际命令、退出码、时长及镜像/模型哈希。此次独立重建
+运行复用了开发树重新构建的 RTL 模型和固定工具链缓存；没有声称重复编译第二份
+RTL 或重复运行 Linux。原始完整配置启动超时的尝试与后续成功结果分开记录。
