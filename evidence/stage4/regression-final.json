@@ -1,0 +1,407 @@
+{
+  "stage2": [
+    {
+      "name": "spike-context",
+      "command": [
+        "spike",
+        "ssa/reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.04
+    },
+    {
+      "name": "spike-boundary",
+      "command": [
+        "spike",
+        "ssa/boundary-reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.04
+    },
+    {
+      "name": "spike-abi",
+      "command": [
+        "spike",
+        "ssa/abi-reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.04
+    },
+    {
+      "name": "rtl-context",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/test.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/test.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 34.33
+    },
+    {
+      "name": "rtl-boundary",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/boundary.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/boundary.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 65.77
+    },
+    {
+      "name": "rtl-abi",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/abi.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/abi.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.56
+    },
+    {
+      "name": "rtl-late",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/late.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/late.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.21
+    },
+    {
+      "name": "rtl-disabled-reference",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/reference.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 35.28
+    },
+    {
+      "name": "spike-traps",
+      "command": [
+        "spike",
+        "ssa/trap-reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.04
+    },
+    {
+      "name": "spike-irq",
+      "command": [
+        "spike",
+        "ssa/trap-irq-reference.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.04
+    },
+    {
+      "name": "rtl-trap",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/trap.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/trap.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 12.14
+    },
+    {
+      "name": "rtl-trap-status",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/trap-status.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/trap-status.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 11.15
+    },
+    {
+      "name": "rtl-trap-nested",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/trap-nested.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/trap-nested.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 12.37
+    },
+    {
+      "name": "rtl-trap-irq",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/trap-irq.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/trap-irq.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 10.21
+    },
+    {
+      "name": "rtl-trap-overflow",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/trap-overflow.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/trap-overflow.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 64.59
+    },
+    {
+      "name": "rtl-trap-readonly",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/trap-readonly.hex",
+        "+max-cycles=5000000",
+        "+permissive-off",
+        "ssa/trap-readonly.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 11.99
+    }
+  ],
+  "stage3": [
+    {
+      "name": "spike-process",
+      "command": [
+        "spike",
+        "ssa/process-reference.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "seconds": 0.04
+    },
+    {
+      "name": "rtl-process-legacy",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/process-legacy.hex",
+        "+max-cycles=50000000",
+        "+permissive-off",
+        "ssa/process-legacy.riscv"
+      ],
+      "exit_code": 42,
+      "expected_exit_code": 42,
+      "passed": true,
+      "seconds": 26.05
+    },
+    {
+      "name": "rtl-process",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/process.hex",
+        "+max-cycles=50000000",
+        "+permissive-off",
+        "ssa/process.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "seconds": 26.11
+    }
+  ],
+  "probes": [
+    {
+      "name": "sv39",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/linux/sv39.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/linux/sv39.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 1.8048090920019604
+    },
+    {
+      "name": "user-csr",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/linux/user-csr.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/linux/user-csr.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 3.295384296998236
+    },
+    {
+      "name": "user-write",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/linux/user-write.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/linux/user-write.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.9842698630018276
+    },
+    {
+      "name": "user-pool",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/linux/user-pool.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/linux/user-pool.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 3.195012122996559
+    },
+    {
+      "name": "supervisor-policy",
+      "command": [
+        "sims/verilator/simulator-chipyard-RocketConfig",
+        "+permissive",
+        "+loadmem=ssa/linux/supervisor-policy.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/linux/supervisor-policy.riscv"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 4.004629494000255
+    }
+  ],
+  "contexts": {
+    "format": "ssa-hpm-v1",
+    "inclusive": true,
+    "includes_monitor_overhead": true,
+    "records": [
+      {
+        "id": 1,
+        "callee": "0x800001aa",
+        "symbol": "parent_a",
+        "parent": 0,
+        "cycle": 30534,
+        "instret": 14791,
+        "time": 305,
+        "next": 0,
+        "context": "parent_a"
+      },
+      {
+        "id": 2,
+        "callee": "0x80000174",
+        "symbol": "common",
+        "parent": 1,
+        "cycle": 29109,
+        "instret": 14452,
+        "time": 292,
+        "next": 0,
+        "context": "parent_a/common"
+      },
+      {
+        "id": 3,
+        "callee": "0x800001d6",
+        "symbol": "parent_b",
+        "parent": 0,
+        "cycle": 15336,
+        "instret": 7427,
+        "time": 153,
+        "next": 0,
+        "context": "parent_b"
+      },
+      {
+        "id": 4,
+        "callee": "0x80000174",
+        "symbol": "common",
+        "parent": 3,
+        "cycle": 14534,
+        "instret": 7226,
+        "time": 146,
+        "next": 0,
+        "context": "parent_b/common"
+      },
+      {
+        "id": 5,
+        "callee": "0x80080000",
+        "symbol": "collision_a",
+        "parent": 0,
+        "cycle": 182,
+        "instret": 44,
+        "time": 2,
+        "next": 0,
+        "context": "collision_a"
+      },
+      {
+        "id": 6,
+        "callee": "0x80100000",
+        "symbol": "collision_b",
+        "parent": 0,
+        "cycle": 100,
+        "instret": 22,
+        "time": 1,
+        "next": 5,
+        "context": "collision_b"
+      }
+    ]
+  },
+  "linux_reference": {
+    "command": [
+      "spike",
+      "-m256",
+      "--isa=rv64gc",
+      "/tmp/ssa-linux-stage/reference-process.elf"
+    ],
+    "exit_code": 0,
+    "scope": "Linux fork/UID/RT scheduling/pipe/nanosleep/wait ABI only, REFERENCE omits SSA and security probes",
+    "log_sha256": "af122ff5a7dfe566c1ca061a9399b209483e12ae8441cf190d78fff9d4001733"
+  }
+}

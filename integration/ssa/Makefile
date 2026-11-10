@@ -70,3 +70,14 @@ all: process.hex process-legacy.hex process-reference.riscv
 linux/sv39.riscv: linux/sv39.S test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) linux/sv39.S -o $@
 all: linux/sv39.hex
+
+linux/user-csr.riscv: linux/user-probe.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_CSR $< -o $@
+linux/user-write.riscv: linux/user-probe.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_CSR -DPROBE_WRITE $< -o $@
+linux/user-pool.riscv: linux/user-probe.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
+linux/supervisor-policy.riscv: linux/user-probe.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_SUPERVISOR $< -o $@
+.PHONY: linux-probes
+linux-probes: linux/sv39.hex linux/user-csr.hex linux/user-write.hex linux/user-pool.hex linux/supervisor-policy.hex

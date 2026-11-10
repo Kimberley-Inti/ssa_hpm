@@ -67,3 +67,40 @@ C: real Linux preemptive two-process isolation has not been executed.
 The completed M-mode tests remain low-level regression evidence only. Linux
 U-mode pool protection, private ROM physical access, scheduler hooks and real
 process counter attribution still require their own implementation/validation.
+
+## Linux integration implementation prepared
+
+Patch0011 protects the legacy SCBaseReg selector from U-mode, introduces the
+supervisor-only opt-in user-call notification policy (CSR0x5c0 bit0), and makes
+trusted ROM data requests use effective M privilege. Keeping TLB passthrough
+false is essential: the PTW passthrough path forces S-mode PMP checks and broke
+the original M-mode tests. The final effective-privilege implementation passes
+all 16 stage2 checks, three stage3 checks, and five U/S/Sv39 probes. See
+`evidence/stage4/regression-final.json`. Gold counts remain14452/7226.
+
+The Linux patch allocates two task-owned fixed physical pools outside Linux RAM,
+clears child ownership on fork, pauses/resumes open frames in the actual scheduler,
+and exports bounded records in do_exit before releasing ownership. U-mode receives
+no pool-address argument or pool mapping. The fixture drops children to uid1000;
+PID1 remains unmonitored and controls deterministic timer wakeups with FIFO
+priorities. A is SCHED_OTHER; a nanosleep-woken FIFO B preempts it. Four trials
+combine short/long B with corrected/legacy accounting, with the same code address
+for common in both processes. The strict grader requires involuntary timer
+A-to-B-to-A with depth2/rid2, owner-specific records and all counter equations.
+
+Reference validation found and fixed a fixture syscall-number bug: RISC-V syslog
+is116. The corrected signal/security/scheduler reference passed on Spike without
+an SSA extension. It does not validate the new kernel driver or the RTL policy.
+The kernel and OpenSBI public-source independent reconstructions/builds passed;
+the initial monitoring trees match the development source hashes exactly.
+Unused legacy PTYs were disabled in the final profile to avoid creating512
+unneeded device objects. A prior full boot timed out at7200s; this is retained as
+a failed attempt, not a passing Linux result. The existing slim attempt remains
+in execution; B/C run only after the real A gate passes.
+
+The final PTY-free A image is also under actual Rocket execution, with separate
+immutable image/log names; it validates the final reproduction profile. The old
+slow simulation is preserved. B/C will be launched once, only after a real A
+success. Build terminal exit statuses were read back: final RTL/model, development
+kernel/firmware, independent kernel/firmware and corrected initramfs all exited0.
+See build-final.json for source-tree matches, input/image hashes and log hashes.

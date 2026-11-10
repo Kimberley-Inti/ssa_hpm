@@ -1,0 +1,5 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 37355
+[UART] UART0 is here (stdin/stdout).
+*** FAILED *** (tohost = 43)
+*** FAILED *** (code = 43, seed 1794322366) after 8497 cycles

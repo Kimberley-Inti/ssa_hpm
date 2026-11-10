@@ -58,3 +58,59 @@ python3 ssa/linux/build-progress.py --workspace "$PWD" --out /tmp/my-ssa-progres
 
 Artifacts (sources, images, deb packages, compiled objects) remain in the work
 or temporary build directory. They must not be committed to ssa_hpm.
+
+## Linux monitoring prototype (stage4, acceptance pending execution)
+
+`python3 ssa/linux/build-a.py --process --work /tmp/ssa-linux-process-rebuild`
+reconstructs the pinned Linux source and kernel task-pool patch in a new directory.
+It uses the same static OpenSBI platform, local Linux linker and minimal initramfs
+as boot A. The process profile selects CONFIG_SSA_HPM and HZ=1000.
+
+After A passes, run the immutable process image with the rebuilt Rocket model:
+
+```
+python3 ssa/linux/run-process.py \
+  --image /tmp/ssa-linux-process-rebuild/boot-a.elf \
+  --hex /tmp/ssa-linux-process-rebuild/boot-a.hex \
+  --simulator "$PWD/sims/verilator/simulator-chipyard-RocketConfig" \
+  --out-dir /tmp/ssa-linux-process-results
+```
+
+The userspace program uses the Linux fork/pipe/nanosleep/wait/scheduler APIs.
+Children drop to uid1000 before enabling monitoring. PID1 stays unmonitored.
+A finite fixed instruction loop gives the timer-woken FIFO B a chance to preempt
+A with two open frames. FIFO scheduling is only the test fixture's deterministic
+wake-up mechanism; user counting and pool ownership are per Linux task.
+The grader requires actual timer/scheduler evidence and exported frame accounting,
+not merely the userspace PASS strings. The REFERENCE compile option omits SSA
+and security checks and is only an ABI/scheduler diagnostic suitable for Spike.
+
+Supervisor CSR0x5c0 bit0 selects user-only call notifications. It does not filter
+hardware counters. SCBaseReg0x800 remains the physical exclusive upper pool bound
+and is now denied in U-mode. Trusted ROM memory operations use effective M-mode
+translation/PMP semantics; other user memory accesses retain normal Sv39/PMP.
+Default CSR0x5c0=0 retains the stage3 trap-depth notification policy.
+
+The kernel owns two fixed physical regions outside the 32MiB Linux RAM allocator.
+It maps only metadata/dictionary/stack and a bounded record export window, never
+passes their addresses to userspace, initializes on enable, clears selection on
+switch, and releases ownership after do_exit export. Fork starts unmonitored.
+The test does not exec after enable. Export is complete only with no open/spilled
+frames or allocator errors and within the 32-record export limit. Abrupt exits
+with open frames produce incomplete exports; nonlocal unwinding is unsupported.
+
+Every switched-out open frame is rebased by R-S for cycle/instret/time. This
+excludes the sampling interval, including B and any unmonitored task in it.
+Own kernel, IRQ, monitor and resume costs outside that interval remain included;
+counts are inclusive of child calls. The time samples and ROM use the real CLINT
+mtime source. The legacy debug flag deliberately omits rebasing for a same-path
+negative control; it affects only the caller's pool. Logs are emitted after
+sampling is stopped, preventing console export costs from contaminating records.
+The short/long comparisons permit cache/timer/boundary costs rather than assuming
+identical absolute cycle/time values. Linux `dmesg_restrict` and signal/access
+probes verify that an unprivileged task cannot read exported kernel logs, select
+another pool through the API, read SCBaseReg or directly load the pool address.
+
+Multicore/migration, exec integration, general unwind, production resource quotas,
+full-capacity export, Cache/TLB events and adversarial policy hardening remain out
+of scope. This is a single-hart research interface, not a production kernel ABI.

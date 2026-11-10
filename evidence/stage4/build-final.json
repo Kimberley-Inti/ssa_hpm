@@ -1,0 +1,129 @@
+{
+  "builds": [
+    {
+      "name": "Rocket Scala RTL and Verilator final",
+      "exit_code": 0,
+      "log": "/tmp/ssa-linux-stage/rocket-user-mode-pmp-build.log",
+      "log_sha256": "dd66e3d40a05b55493eeb48d8803b54e7e33bd01d5ebac4fc050bbd4d47c0370",
+      "exit_status_source": "completed exec session result read back"
+    },
+    {
+      "name": "development Linux process kernel",
+      "exit_code": 0,
+      "log": "/tmp/ssa-linux-stage/kernel-process-build.log",
+      "log_sha256": "3f62255bab6bb384b4975e1d13ef8fc6e1b4099a01aae86459a9183d45a4f45c",
+      "exit_status_source": "completed exec session result read back"
+    },
+    {
+      "name": "development process firmware",
+      "exit_code": 0,
+      "log": "/tmp/ssa-linux-stage/firmware-process-build.log",
+      "log_sha256": "69abda77a6e01865761cd59f990432a310055f33a5449f37a05e6aaaa3b5b0a1",
+      "exit_status_source": "completed exec session result read back"
+    },
+    {
+      "name": "independent public process build",
+      "exit_code": 0,
+      "log": "/tmp/ssa-linux-stage/independent-process-fast-build.log",
+      "log_sha256": "335ac64dbe148e45afd0d841eee1d797cde3ad4dd296396788a613f781c2c387",
+      "exit_status_source": "completed exec session result read back"
+    },
+    {
+      "name": "corrected independent initramfs",
+      "exit_code": 0,
+      "log": "/tmp/ssa-linux-stage/independent-process-final-init.log",
+      "log_sha256": "ac8aa89fab532f7a2ee3750fff402492fafbf590ad2c016831feebd1ad58831c",
+      "exit_status_source": "completed exec session result read back"
+    }
+  ],
+  "linux": {
+    "development_tree": "ef9c3b6d2e2891853aa576d211f715a8ea718ddb",
+    "independent_tree": "ef9c3b6d2e2891853aa576d211f715a8ea718ddb"
+  },
+  "opensbi": {
+    "development_tree": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557",
+    "independent_tree": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557"
+  },
+  "image_report": {
+    "passed": true,
+    "commands": [
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/process-init.c",
+          "-o",
+          "/tmp/ssa-linux-independent-process-fast/init"
+        ],
+        "cwd": "/tmp/ssa-linux-independent-process-fast"
+      },
+      {
+        "argv": [
+          "make",
+          "ARCH=riscv",
+          "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+          "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-linux-independent-process-fast/host-tools/compiler-bin/",
+          "LD=/tmp/ssa-linux-independent-process-fast/host-tools/usr/bin/riscv64-linux-gnu-ld",
+          "KCFLAGS=-misa-spec=2.2",
+          "KAFLAGS=-misa-spec=2.2",
+          "-j6",
+          "Image"
+        ],
+        "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+      },
+      {
+        "argv": [
+          "make",
+          "PLATFORM=ssa_rocket",
+          "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+          "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+          "platform-cflags-y=-std=gnu11",
+          "FW_PAYLOAD_PATH=/tmp/ssa-linux-independent-process-fast/linux/arch/riscv/boot/Image",
+          "FW_PAYLOAD_FDT_PATH=/tmp/ssa-linux-independent-process-fast/rocket.dtb",
+          "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+          "-j6"
+        ],
+        "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+          "-O",
+          "binary",
+          "/tmp/ssa-linux-independent-process-fast/boot-process.elf",
+          "/tmp/ssa-linux-independent-process-fast/boot-process.bin"
+        ],
+        "cwd": "/tmp/ssa-linux-independent-process-fast"
+      },
+      {
+        "argv": [
+          "python3",
+          "/home/lxf/chipyard/ssa/elf_to_hex.py",
+          "/tmp/ssa-linux-independent-process-fast/boot-process.bin",
+          "/tmp/ssa-linux-independent-process-fast/boot-process.hex"
+        ],
+        "cwd": "/tmp/ssa-linux-independent-process-fast"
+      }
+    ],
+    "reference_only": false,
+    "input_sha256": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
+    "images": {
+      ".elf": "32d1ad10929123a9a3825c293e4e1f8aac36f3d4d6418173a3b3a7d4c81a0113",
+      ".bin": "660854a6c5ba86b47de7750cf125bb193be78f47dbd162b2f6eb14384b4cc678",
+      ".hex": "a63c10d09f967e29b0786691f4ed40fd858fc91cd51138536c679df760e91546"
+    }
+  }
+}

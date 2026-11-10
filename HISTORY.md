@@ -130,3 +130,19 @@ commits. The independent bootstrap already matched both source tree hashes.
 The first-stage Sv39 regression uses the same ELF: old RTL exits 42, Spike and
 fixed RTL exit zero. Linux boot and subsequent real-process acceptance are
 separate gates; implementation commits do not imply they have passed.
+
+Stage4 Linux integration implementation (runtime gates pending):
+- Rocket `1c78413459344d7ca1d2b3cdedbdc4a16133dee9`: supervisor-only pool selection,
+  opt-in U-mode notification policy and trusted ROM physical memory access;
+  distributed as patch0011. Parent is the stage4 Sv39 PC fix41d2976.
+- Linux `0d6ec76e6f44802adab36e84c8ffd7b65187d91f`: per-task ownership, fork reset,
+  scheduler pause/resume of open frames, bounded exit export and test diagnostics.
+  Local development commit, reconstructed with integration/ssa/linux/0002 patch
+  after the public baseline and stack-pointer compatibility patch.
+- Chipyard `8bb4bb28` (full SHA in provenance): kernel patch, user-mode probes,
+  real Linux process fixtures, pinned build entry and strict attribution grader.
+  Standalone project files are delivered once under integration/ssa; the gitlink
+  records the Rocket dependency without requiring a private/local commit fetch.
+- Chipyard `ffa17056` (full SHA in provenance): remove unused legacy PTYs,
+  correct RISC-V syslog ABI and retain an initramfs-only rebuild entry. The signal
+  and permission ABI diagnostic passed on baseline Linux/Spike; no SSA claim.
