@@ -128,7 +128,7 @@ python3 scripts/check_process_evidence.py /tmp/stage3-process --report /tmp/stag
 `verify-a.py`；进程用例使用 `build-a.py --process` 与 `run-process.py`。
 后者会保存实际退出结果并调用严格的双向帧归因检查。
 
-本分支启动 A 已实际通过。B/C 尚在执行，当前不宣称 Linux 进程隔离通过。
+本分支启动 A 已实际通过。单进程监测与权限检查 B 已通过；C 尚在执行，当前不宣称双进程隔离通过。
 已有 16+3 项回归和 5 项裸机探针的证据在 `evidence/stage4/regression-final.json`。
 复用现有工具链和依赖缓存；Linux 与 OpenSBI 源码则从固定公共基线独立获取，
 不得将 Spike 参考输出当作 Rocket Linux 或 SSA 实现的验收。

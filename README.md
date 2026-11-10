@@ -104,7 +104,8 @@ Spike 仍无 SSA 扩展；Linux 集成尚未完成，详见阶段说明。
 已在实际 Rocket/Verilator 上启动单 hart Linux 5.7-rc3，运行 PID1 并正常关机，
 退出码为 0。新增 Sv39 PC 宽度修复、U-mode 池选择保护、私有 ROM 物理访存
 和内核任务池生命周期/调度接口。全部 16 项第二阶段、3 项第三阶段及 5 项新增
-裸机探针通过；真实 Linux 单进程/双进程验收仍在执行，不能由裸机测试替代。
+裸机探针通过；真实 Linux 单进程监测、退出导出和权限检查已通过；双进程抢占隔离仍在执行，
+不能由裸机测试替代。
 
 详见 [第四阶段说明](docs/STAGE4.md)、[启动证据](evidence/stage4/A-summary.json)
 与 [Linux 复现入口](integration/ssa/linux/README.md)。本分支仅用于草稿审查，

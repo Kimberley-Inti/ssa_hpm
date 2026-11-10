@@ -1,0 +1,45 @@
+{
+  "gate": "B",
+  "passed": true,
+  "scope": "real Linux child monitoring, closed exit export and UID1000 denial probes on Rocket/Verilator",
+  "checks": {
+    "driver_initialized": true,
+    "owner_uid1000_complete_closed": true,
+    "two_records": true,
+    "real_symbols": true,
+    "tree": true,
+    "mandatory_loop": true,
+    "inclusive_counts": true,
+    "exit_selector_zero": true,
+    "child_exit_zero_checked_by_parent": true,
+    "four_uid1000_security_probes": true
+  },
+  "records": [
+    {
+      "pid": 14,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 7422,
+      "instret": 6722,
+      "time": 74
+    },
+    {
+      "pid": 14,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 6820,
+      "instret": 6623,
+      "time": 69
+    }
+  ],
+  "evidence_lines": [
+    "SSA_EXPORT pid=14 uid=1000 role=0 test=0 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=1",
+    "SSA_RECORD pid=14 id=1 callee=000000000001024e parent=0 cycle=7422 instret=6722 time=74",
+    "SSA_RECORD pid=14 id=2 callee=0000000000010114 parent=1 cycle=6820 instret=6623 time=69",
+    "SSA_EXIT pid=14 complete=1 selector=0",
+    "SSA_UNMONITORED pid=1 selector=0"
+  ],
+  "whole_process_fixture": "still running C; this report covers completed B subtests only"
+}

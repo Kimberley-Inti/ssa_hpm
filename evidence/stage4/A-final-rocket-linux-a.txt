@@ -1,0 +1,244 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 44665
+
+OpenSBI v0.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name       : SSA-HPM RocketConfig hart0
+Platform Features   : tiSSA_HOST_PROGRESS cycles=100000 pc=800053b0 prv=3 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+mer,mfdeleg
+Platform HART Count : 1
+Boot HART ID        : 0
+Boot HART ISA       : rv64imafdcsux
+BOOT HART Features  : pmp,scounteren,mcounteren
+BOOT HART PMP Count : 16
+Firmware Base       : 0x80000000
+Firmware Size       : 64 KB
+Runtime SBI Version : 0.2
+
+MIDELEG : 0x0000000000000222
+MEDELEG : 0x000000000000b109
+PMP0    : 0x0000000080000000-0x000000008000ffff (A)
+PMP1    : 0x0000000000000000-0x00000001ffffffff (A,R,W,X)
+SSA_HOST_PROGRESS cycles=200000 pc=8020103c prv=1 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+SSA_HOST_PROGRESS cycles=300000 pc=80201040 prv=1 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+SSA_HOST_PROGRESS cycles=400000 pc=80204014 prv=1 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+SSA_HOST_PROGRESS cycles=500000 pc=e00031fba4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+OF: fdt: Ignoring memory range 0xSSA_HOST_PROGRESS cycles=600000 pc=800099fa prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+80000000 - 0x80200000
+Forcing kernel command line to: console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 loglevel=7
+Linux vSSA_HOST_PROGRESS cycles=700000 pc=8000687e prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+ersion 5.7.0-rc3+ (lxf@ubuntu22) (gcc version 15.1.0 (), GNU ld (GNU Binutils for Ubuntu) 2.38) #6 Mon Nov 9 22:51:06 CST 2026
+earlycon: sbiSSA_HOST_PROGRESS cycles=800000 pc=80006556 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+0 at I/O port 0x0 (options '')
+printk: bootconsole [sbi0] enabled
+initrd not found or empty - disabliSSA_HOST_PROGRESS cycles=900000 pc=800005fa prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+ng initrd
+Zone ranges:
+  DMA32    [mem 0x00SSA_HOST_PROGRESS cycles=1000000 pc=8000658c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+00000080200000-0x0000000081ffffff]
+  Normal   empty
+Movable zone start for each node
+Early memory node ranges
+  noSSA_HOST_PROGRESS cycles=1100000 pc=800053e2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+de   0: [mem 0x0000000080200000-0x0000000081ffffff]
+Initmem setup node 0 [mem 0x0000000080200000-0x0000000081ffffff]
+SSA_HOST_PROGRESS cycles=1200000 pc=e000338a6c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1300000 pc=e000338a3c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1400000 pc=e000338a6c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1500000 pc=e000338a0c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1600000 pc=e000013368 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1700000 pc=e0000132c8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1800000 pc=e000013368 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1900000 pc=e000013364 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2000000 pc=e000013368 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2100000 pc=e00031fd04 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2200000 pc=e00031fb70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2300000 pc=e00031a130 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2400000 pc=e000338988 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2500000 pc=e000338a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2600000 pc=e000338a4c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+software IO TLB: mapped [mem 0x81f4e000-0x81f8e000] (0MB)
+SBI specifSSA_HOST_PROGRESS cycles=2700000 pc=80003722 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ication v0.2 detected
+SBI implementation ID=0x1 Version=0x8
+SBI v0.2 TIME extension detected
+SBI v0.2 IPI extension detSSA_HOST_PROGRESS cycles=2800000 pc=8000373e prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ected
+SBI v0.2 RFENCE extension detected
+elf_hwcap is 0x112d
+SSA_HOST_PROGRESS cycles=2900000 pc=e000013cd8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+Built 1 zonelists, mobility grouping on.  TotalSSA_HOST_PROGRESS cycles=3000000 pc=800063d2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ pages: 7575
+Kernel command line: console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 loglevel=7
+SSA_HOST_PROGRESS cycles=3100000 pc=e0000012b4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+Dentry cache hash table entries: 4096 (order: 3,SSA_HOST_PROGRESS cycles=3200000 pc=800063e2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ 32768 bytes, linear)
+Inode-cache hash table entries: 2048 (order: 2, 16384 bytes, linear)
+SorSSA_HOST_PROGRESS cycles=3300000 pc=8000433c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ting __ex_table...
+mem auto-init: stack:off,SSA_HOST_PROGRESS cycles=3400000 pc=8000687e prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ heap alloc:off, heap free:off
+SSA_HOST_PROGRESS cycles=3500000 pc=e000013100 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3600000 pc=e00027dca4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3700000 pc=e00027feac prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3800000 pc=e00027feac prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3900000 pc=e00027feac prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4000000 pc=e00027de14 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+Memory: 21432K/30720K available (1267K kernel code, 2910K rwdata, 2048K rodata, 112K iniSSA_HOST_PROGRESS cycles=4100000 pc=80000614 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+t, 201K bss, 9288K reserved, 0K cma-reserved)
+SSA_HOST_PROGRESS cycles=4200000 pc=e000286360 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+SSA_HOST_PROGRESS cycles=4300000 pc=e000228f64 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+NR_IRQS: 0, nr_iSSA_HOST_PROGRESS cycles=4400000 pc=800061a6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+rqs: 0, preallocated irqs: 0
+SSA_HOST_PROGRESS cycles=4500000 pc=e000324780 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4600000 pc=e000338a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4700000 pc=e00032479c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4800000 pc=e00032bf64 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+plic: mapped 1 interrupts with 1 handlers for 2 contexts.
+SSA_HOST_PROGRESS cycles=4900000 pc=e0002feed8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=5000000 pc=e00032ab1c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+riscv_timer_init_dt: RegisterinSSA_HOST_PROGRESS cycles=5100000 pc=8000373c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+g clocksource cpuid [0] hartid [0]
+clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x1d854df40, max_idleSSA_HOST_PROGRESS cycles=5200000 pc=8000635c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+_ns: 3526361616960 ns
+sched_clock: 64 bits at 1000kHz, resolution 1000ns, wraps every 2199023255500ns
+SSA_HOST_PROGRESS cycles=5300000 pc=e00022bb56 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+printk: console [hvc0] enabled
+printk: console [hvc0] enabled
+printk: bootconsole [sbi0] disabled
+printk: bootconsole [sbSSA_HOST_PROGRESS cycles=5400000 pc=800005cc prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+i0] disabled
+Calibrating delay loop (skipped) preset value.. 50.00 BogoMIPS (lpj=100000)
+pidSSA_HOST_PROGRESS cycles=5500000 pc=8000632e prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+_max: default: 4096 minimum: 301
+SSA_HOST_PROGRESS cycles=5600000 pc=800097bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+Mountpoint-cache hash table entries: 512 (orSSA_HOST_PROGRESS cycles=5700000 pc=80006196 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+der: 0, 4096 bytes, linear)
+SSA_HOST_PROGRESS cycles=5800000 pc=e000260698 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d228 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=5900000 pc=e00028447c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d228 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6000000 pc=8000a0a2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d228 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6100000 pc=e00025fba8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d228 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6200000 pc=e0003388c4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002057a8 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6300000 pc=e000240242 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002057a8 stval=0 satp_mode=8 satp_ppn=80a1a
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+SSA_HOST_PROGRESS cycles=6400000 pc=e00031f33c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002057a8 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6500000 pc=e00032d434 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002057a8 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6600000 pc=e0003307b6 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0003314d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6700000 pc=e0003389e0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0003314d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6800000 pc=e00030a9cc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0003314d0 stval=0 satp_mode=8 satp_ppn=80a1a
+clocksource: Switched to clocksource riscv_clocksource
+SSA_HOST_PROGRESS cycles=6900000 pc=e000338a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0003314d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7000000 pc=e0003257a4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7100000 pc=e0002d3d9c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7200000 pc=e0002985f8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7300000 pc=e0002605a8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+workingset: timestamp_bits=62 mSSA_HOST_PROGRESS cycles=7400000 pc=800053ea prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+ax_order=13 bucket_order=0
+SSA_HOST_PROGRESS cycles=7500000 pc=e000201028 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7600000 pc=e000331742 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027f0d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7700000 pc=e00032d082 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000338a6c stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7800000 pc=e0002260d6 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000338a6c stval=0 satp_mode=8 satp_ppn=80a1a
+random: get_random_bytes called from 0xffffffe000206f5c with crng_init=0
+SSA_HOST_PROGRESS cycles=7900000 pc=e000338a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000338a6c stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8000000 pc=e00027ed00 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000338a6c stval=0 satp_mode=8 satp_ppn=80a1a
+Freeing unused kernel memory: 112K
+SSA_HOST_PROGRESS cycles=8100000 pc=e00021daa6 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000338a68 stval=0 satp_mode=8 satp_ppn=80a1a
+Run /init as init process
+SSA_HOST_PROGRESS cycles=8200000 pc=e00022a3e4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000338a68 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA LINUX A PASS: real userspace PISSA_HOST_PROGRESS cycles=8300000 pc=800005b4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10162 stval=0 satp_mode=8 satp_ppn=80201
+D 1 on Rocket
+reboot: Power down
+[UART] UART0 is here (stdin/stdout).

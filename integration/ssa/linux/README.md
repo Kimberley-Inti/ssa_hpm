@@ -117,3 +117,9 @@ of scope. This is a single-hart research interface, not a production kernel ABI.
 
 The exact prototype operations, state transitions, privilege rules, physical
 layout and counter boundaries are documented in [ABI.md](ABI.md).
+
+Keep the built `init` ELF beside the image (or pass `--user-elf` to run-process.py).
+The runner reads its actual parent/common symbols with host readelf and records
+its hash. The grader checks exported addresses against these symbols and requires
+at least66 retired user instructions per fixed nop-loop iteration. This does not
+assume exact total counts: own kernel/monitoring costs remain in the intervals.

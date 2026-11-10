@@ -154,3 +154,7 @@ Stage4 Linux integration implementation (runtime gates pending):
   boundaries, with guarded-failure scope clarified. Documentation only.
   These stage4 source revisions are retained locally; this private standalone
   repository carries their patches/files and does not require fetching local SHAs.
+- Chipyard e6a1537e /3776fab1 /59255bbf /325b441a: strengthen Linux evidence checks
+  with global sample chronology, actual embedded user ELF symbols, mandatory loop
+  instructions, independent open-frame interval sums and parent-frame exclusion.
+  These checker-only commits do not change the already-built RTL/kernel/image.
