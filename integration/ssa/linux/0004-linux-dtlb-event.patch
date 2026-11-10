@@ -1,7 +1,7 @@
 From 07fb4b1efd171f1453b1bcd13ce113a7e6f1b307 Mon Sep 17 00:00:00 2001
 From: Kimberley-Inti <KimIntizar@hotmail.com>
 Date: Wed, 11 Nov 2026 00:04:45 +0800
-Subject: [PATCH] Preserve optional DTLB request counter across Linux
+Subject: [PATCH 1/2] Preserve optional DTLB request counter across Linux
  monitoring sessions
 
 ---
@@ -185,6 +185,32 @@ index 6fe786dfd..7b53935f9 100644
   pr_emerg("SSA_LINUX_READY user_triggers=1 harts=1 export_limit=%u\n",EXPORT_RECORDS);
   return 0;
  }
+-- 
+2.34.1
+
+
+From 49943b80f864a41e4ac13108a77f921e013d3570 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 02:17:13 +0800
+Subject: [PATCH 2/2] Fix fourth-counter resume scratch array bounds
+
+---
+ kernel/ssa_hpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 7b53935f9..aaa3fdf48 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -64,7 +64,7 @@ static void pause_task(struct task_struct *t,struct task_struct *other,bool pree
+ static void resume_task(struct task_struct *t,struct task_struct *other)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm;struct ssa_event *e;
+- volatile u64 *m;u64 d[3],n;unsigned int j;
++ volatile u64 *m;u64 d[4],n;unsigned int j;
+  if(p->state!=PAUSED)return;
+  if(selected() || !p->n){p->bad=true;select_pool(0,false);p->state=STOPPED;return;}
+  e=&p->events[p->n-1];m=meta(p->pool);n=READ_ONCE(m[0]);
 -- 
 2.34.1
 

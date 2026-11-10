@@ -1,0 +1,24 @@
+{'argv': ['make', 'ARCH=riscv', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-linux-final/host-tools/compiler-bin/', 'LD=/tmp/ssa-hpm-linux-final/host-tools/usr/bin/riscv64-linux-gnu-ld', 'KCFLAGS=-misa-spec=2.2', 'KAFLAGS=-misa-spec=2.2', '-j6', 'Image'], 'cwd': '/tmp/ssa-hpm-linux-final/linux'}
+  CALL    scripts/atomic/check-atomics.sh
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CC      kernel/ssa_hpm.o
+  AR      kernel/built-in.a
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  AR      init/built-in.a
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+  MODINFO modules.builtin.modinfo
+  GEN     modules.builtin
+  LD      vmlinux
+  SYSMAP  System.map
+  OBJCOPY arch/riscv/boot/Image
+  Kernel: arch/riscv/boot/Image is ready
+{'argv': ['make', 'PLATFORM=ssa_rocket', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei', 'platform-cflags-y=-std=gnu11', 'FW_PAYLOAD_PATH=/tmp/ssa-hpm-linux-final/linux/arch/riscv/boot/Image', 'FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-linux-final/rocket.dtb', 'FW_PAYLOAD_FDT_ADDR=0x81e00000', '-j6'], 'cwd': '/tmp/ssa-hpm-linux-final/opensbi'}
+ AS        platform/ssa_rocket/firmware/fw_payload.o
+ ELF       platform/ssa_rocket/firmware/fw_payload.elf
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /tmp/ssa-hpm-linux-final/opensbi/build/platform/ssa_rocket/firmware/fw_payload.elf has a LOAD segment with RWX permissions
+ OBJCOPY   platform/ssa_rocket/firmware/fw_payload.bin

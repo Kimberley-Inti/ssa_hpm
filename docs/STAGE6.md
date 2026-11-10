@@ -144,3 +144,7 @@ An independent public Chipyard/Rocket reconstruction regenerated RTL and rebuilt
 SSAHPMEventRocketConfig, then passed all five new RTL tests. This is an actual
 independent model build/execution, not merely log regrading. The version-checked
 dependency modules/toolchain and caches were reused; see independent-model-build.json.
+
+### Native scheduling defect found before acceptance
+
+The initial Linux run reached the context export but then looped in `ssa_hpm_switch`. The actual PC trace and disassembly located the resume loop: `d[3]` still held only three temporary deltas while ABI2 iterated four counters. The fourth write corrupted adjacent stack state. It is now `d[4]`; a new-directory clean patch application reproduces the corrected kernel tree. The stopped run is failure evidence, not accepted Linux results. The corrected independent kernel and firmware were rebuilt and the full Linux suite restarted using the unchanged verified Rocket model.

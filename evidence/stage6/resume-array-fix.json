@@ -1,0 +1,10 @@
+{
+  "clean_apply": true,
+  "expected_tree": "4234609f62a91906b25a741f9897f17b327bcb57",
+  "independent_tree": "4234609f62a91906b25a741f9897f17b327bcb57",
+  "root_cause": "resume scratch d[3] overrun on fourth HPM channel",
+  "fix": "d[4]",
+  "initial_run": "terminated after PC trace identified corrupted resume loop; not accepted",
+  "source_commit": "49943b80f864a41e4ac13108a77f921e013d3570",
+  "cache_reused": "previously fetched public baseline plus stage4/stage5 patched source; stage6 patch reapplied in new directory"
+}

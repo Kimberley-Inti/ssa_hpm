@@ -530,7 +530,7 @@
     "ssa/event_start.S": "ec2a04596c6f3492920bb39332729966c9129d9960ca15207f1d22547b31f2e3",
     "ssa/events.c": "eda947b16a79433d14a131260cba9d8934ec0c9a1a55ce428c4790302dfa5245",
     "ssa/linux/0002-opensbi-dtlb-profile.patch": "7b8941e8a77dd59d39ddc3f3eb025279246767ec3b63927fa0cc22a3231cf8f3",
-    "ssa/linux/0004-linux-dtlb-event.patch": "b87414d2f77b08fa4545af2a838116eb1a123e604e3ce2a5ddaa18272074f378",
+    "ssa/linux/0004-linux-dtlb-event.patch": "5a3977fa4193ddbc59f160cb7706c37e744fc9efc331753d68c1affe9aba6ff4",
     "ssa/linux/event-init.c": "43359829ff9c1f183ecd829cafd9302c8d57847eabe09649e630a5e4ff0e7711",
     "ssa/linux/grade-events.py": "ef5833a0000bc456bb0253d7a35315248c5d48fea9d9f352090ee9c2ce31f04f",
     "ssa/verify_events.py": "aa1feb924f3bf229728f897e9c4c65c4872a34a4a6e6d13a9a02aa72fe9367ee",
