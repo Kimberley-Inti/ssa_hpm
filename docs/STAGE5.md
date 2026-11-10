@@ -1,7 +1,6 @@
 # Stage5: single-hart Linux exec lifecycle
 
-Runtime acceptance is pending completion of the actual Rocket/Verilator run.
-Implementation and reference execution alone do not establish SSA correctness.
+Actual native acceptance passed: success exec, pre-commit ENOENT, replacement-image exit export and the full affected stage4 Linux regression. The native process exited0 with normal power-down. Evidence is under evidence/stage5/.
 
 ## Semantics and boundaries
 
@@ -82,7 +81,7 @@ python3 ssa/linux/grade-exec.py /tmp/ssa-exec-results/rocket-linux-exec.txt \
 ```
 
 The exit code must be taken from execution.json, never assumed from markers.
-Runtime evidence will record the actual native results separately from this
+Runtime evidence records the actual native results separately from this
 log-only recheck. No Linux image, full upstream source, original PDF, credential
 or backup bundle is included in this repository.
 
@@ -101,3 +100,31 @@ not silently accepted by widening the oracle.
 | test6 | B after successful exec, same PID | new session/next image epoch, clean enable, closed nested tree and SSA_EXIT once |
 | test7 | A with failed /absent exec | two depth1 queries in the same session; two completed leaf activations, then closed exit |
 | test0..4 | unchanged stage4 fixture | single exit/security and corrected/legacy short-long preemption pairs |
+
+## Actual results
+
+The independent public-source image ran for 14579.59 seconds on the hash-verified stage4 model. All37 lifecycle gates and all173 unchanged stage4 regression checks passed. Development-tree kernel object compilation and the complete independent kernel/OpenSBI image build also passed. No Rocket Scala or OpenSBI change was made. The prior24 low-level results are reused after exact source/model verification, not claimed as new runs.
+
+| Session | PID | Image | End | Complete/depth | Leaf instret |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 14 | 1 | exec | 0/1 | 3318 |
+| 2 | 14 | 2 | exit | 1/0 | 6618 |
+| 3 | 15 | 1 | exit | 1/0 | 6636 |
+
+Both old and new leaf have VA0x10114; both parent functions have VA0x10222. Separate sessions prevent same-address carry-over. Failed exec retains two completed leaf activations and closes the parent normally. The fixture asserts errno -2 and the parent requires child exit0. All three sessions export exactly once.
+
+The actual stage4 rerun short/long differences are:
+
+| Counter | Corrected long-short | Legacy long-short | Additional excluded interval |
+| --- | --- | --- | --- |
+| cycle | 9921 | 211497 | 217554 |
+| instret | 4205 | 211029 | 210668 |
+| time | 99 | 2114 | 2175 |
+
+These values are from the new native boot. The original stage4 deltas20/207962 remain historical evidence; source layout, logging and interrupt phase can change boundary costs without changing the S/R policy. The unchanged checker requires reciprocal scheduling/open-frame evidence, exact sampled-interval identities, both parent/child exclusion, and a large reduction versus the legacy control for all three counters. See regression/summary.json and the original serial log for every assertion.
+
+The Spike reference is a separate actual Linux run with SSA disabled: it covers the fixture ABI only. The public-project reconstruction and final installed-checker regrade are log/source checks, not additional RTL executions. The one native execution uses a newly rebuilt independent image; compiler/package caches and the unchanged stage4 model were reused.
+
+The current instret residual is independently audited as raw difference 214873 minus excluded difference 210668 = 4205. It is not required to equal the historical20. Both open-frame rebase identities and the legacy comparison must pass. No instruction trace proves the exact per-function split of this boundary remainder. In particular, R is before the physical switch: some incoming handoff/restore costs are charged by policy, so this is not a claim of pure U-mode or solely user-function counts.
+
+The scheduling-policy source span is byte-identical between stage4 and stage5: see unchanged-scheduling-policy.json. The independent installed checker regrade also passed37/173; see independent-regrade.json. Public reconstruction excludes ignored local Python bytecode, verified with nine original cache files preserved and zero installed.

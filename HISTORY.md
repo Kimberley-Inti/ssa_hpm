@@ -197,3 +197,9 @@ Chipyard follow-up `02ddc90abb4806e136f1e96b1580702df39cc4b7` documents session 
 Chipyard `b4944ca3f1e589ca43a0e015a229d1b843651313` strengthens the checker with exact short-leaf counts at identical old/new virtual addresses, without rebuilding or altering the running image.
 
 Chipyard `fb7fd09e8c5886498aee42f90e2e5bb97cfa56df` corrects the leaf oracle: actual disassembly shows five fewer non-loop user instructions than stage4 common. Expected counts3318/6618/6636; no kernel, RTL or image change.
+
+Stage5 publication follow-up: the installer excludes locally ignored Python bytecode caches when copying integration files. Original caches are preserved; a fresh public reconstruction verifies no .pyc is installed. This changes packaging only, not the native image or verifier logic.
+
+Stage5 native acceptance:37 lifecycle gates and173 affected stage4 Linux checks passed in one actual independent public-source rebuilt image execution, clean exit0/power-down. Source implementation maps to maintenance4a5ca6f61cdcf00faa1aab0822f471febcd60765; oracle/provenance follow-ups are d2dcd01 and281f536. Final evidence is in evidence/stage5/. Main, tags and stage4 PR are unchanged.
+
+Final Chipyard source delivery `c8be3fd4d10a758ea378f2b8f349eff6e2dc9de9` includes the test/checker changes and the atomic-release-order ABI clarification; Linux remains `f327da924b3515e2d4c33bc1a8eb1e0c38807d66`. Native model and firmware sources are unchanged. Current instret corrected/legacy long-minus-short is4205/211029, with raw214873 minus excluded210668 =4205. Historical stage4 remains20/207962 under its original image.

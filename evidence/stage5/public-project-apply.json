@@ -45,9 +45,9 @@
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "53a5d6b902a2eac66d60632d1fb1b3483b95dd988af43d1c8d71384fa8e5e0d9",
+    "ssa/linux/ABI.md": "e985d3c3889d846f75ef91f23dc173d67b6b8dd9cb6671c5a6004b5a8b8bb3e0",
     "ssa/linux/exec-init.c": "83dcdb6d2ae2d8b3eb85178249631ca1423cbe31697c7129e825133e4c34f30b",
-    "ssa/linux/grade-exec.py": "52b772fbc875ddbe3737420e8409330cc6b6c44a85d68c1aca92d94f118dfc7f",
+    "ssa/linux/grade-exec.py": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
     "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
     "ssa/linux/run-exec.py": "ebb077acea552641627fdb93065384b3bec9d2cfb7dcd3bb2cdfc61912e748a2"
   },
@@ -59,7 +59,7 @@
         "-b",
         "ssa-hpm-reproduce"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -69,7 +69,7 @@
         "upstream",
         "https://github.com/ucb-bar/chipyard.git"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -80,7 +80,7 @@
         "upstream",
         "2d03d10837fc1a7569d10ae2c91c8132c7fee77d"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -89,7 +89,7 @@
         "--detach",
         "FETCH_HEAD"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -97,7 +97,7 @@
         "rev-parse",
         "HEAD"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -106,7 +106,7 @@
         "-b",
         "ssa-hpm-reproduce"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -116,7 +116,7 @@
         "upstream",
         "https://github.com/chipsalliance/rocket-chip.git"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -127,7 +127,7 @@
         "upstream",
         "44b0b8249279d25bd75ea693b725d9ff1b96e2ab"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -136,7 +136,7 @@
         "--detach",
         "FETCH_HEAD"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -144,7 +144,7 @@
         "rev-parse",
         "HEAD"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -153,7 +153,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/chipyard/0001-constellation-dependency.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -162,7 +162,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/chipyard/0002-fesvr-verilator-build.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -171,7 +171,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0001-9c6d44169.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -180,7 +180,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0002-1543ea544.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -189,7 +189,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0003-1f200edb0.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -198,7 +198,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0004-d047a8548.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -207,7 +207,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0005-07a9c3fa8.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -216,7 +216,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0006-23f5a64f6.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -225,7 +225,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0007-539c3b10f.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -234,7 +234,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0008-986407bc6.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -243,7 +243,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0009-trap-context-isolation.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -252,7 +252,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0010-sv39-pc-width.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -261,7 +261,7 @@
         "--keep-cr",
         "/home/lxf/ssa_hpm/patches/rocket-chip/0011-linux-user-pool-privileges.patch"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -269,7 +269,7 @@
         "rev-parse",
         "HEAD^{tree}"
       ],
-      "cwd": "/tmp/ssa-exec-release-final/generators/rocket-chip"
+      "cwd": "/tmp/ssa-exec-release-clean/generators/rocket-chip"
     },
     {
       "argv": [
@@ -278,7 +278,7 @@
         "-f",
         "ssa"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -287,7 +287,7 @@
         "-m",
         "Install SSA-HPM standalone validation suite"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     },
     {
       "argv": [
@@ -295,7 +295,7 @@
         "ssa/gen_rom.py",
         "--check"
       ],
-      "cwd": "/tmp/ssa-exec-release-final"
+      "cwd": "/tmp/ssa-exec-release-clean"
     }
   ]
 }

@@ -571,9 +571,10 @@
     "linux_tree": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d",
     "rocket_changed": false,
     "opensbi_changed": false,
-    "runtime_status": "pending actual Rocket/Verilator completion",
+    "runtime_status": "passed actual independent public-source rebuilt Linux image on Rocket/Verilator;37 lifecycle gates and173 unchanged stage4 regression checks",
     "chipyard_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
     "rocket_base": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
-    "opensbi_base": "b778927a507e4ebcc43a8ecb8d495562ef48efb3"
+    "opensbi_base": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
+    "evidence": "evidence/stage5/summary.json"
   }
 }

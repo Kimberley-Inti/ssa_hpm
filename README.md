@@ -116,4 +116,4 @@ Spike 仍无 SSA 扩展；Linux 集成尚未完成，详见阶段说明。
 恢复和监测开销，不宣称精确用户态时间。两个真实 Linux 进程的开放帧、记录
 隔离和退出均已在 Rocket RTL 上验证，完整 exec、多核及 Cache/TLB 仍待后续。
 
-Stage5 development: [Linux exec lifecycle](docs/STAGE5.md). Runtime acceptance is pending the actual Rocket/Verilator execution.
+Stage5 development: [Linux exec lifecycle](docs/STAGE5.md). Success exec, ENOENT return, new-image exit export and all173 stage4 Linux regression checks passed on actual Rocket/Verilator.

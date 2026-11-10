@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "base": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
+  "new": "f327da924b3515e2d4c33bc1a8eb1e0c38807d66",
+  "source_span": "sample/select_pool/selected/pause_task/resume_task/fork/switch; up to prctl declaration",
+  "identical_source_sha256": "b8150cb14ca9451f3108cc35e0dfdca4ed04d0298424c3bea2db82131b88749b",
+  "interpretation": "sampling and every-open-frame R-S rebasing C source unchanged; compiled layout, timer phase and logging can differ; not a U-only counter policy",
+  "unchanged_stage4_checker_sha256": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933"
+}
