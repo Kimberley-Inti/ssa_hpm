@@ -1,7 +1,7 @@
 {
   "chipyard": {
-    "head": "3711603cb3059bfa29e0517096ad251b7bbcb5ae",
-    "tree": "c6706e5a0b8c870c75630c208a4271d9acadb6c6",
+    "head": "3a31d53b10babdf476473cc7d2d682e215dc7305",
+    "tree": "0638d1a0703be3605d60b1dda515f54b3e044c53",
     "branch": "stage6-hpm-event-attribution"
   },
   "rocket": {

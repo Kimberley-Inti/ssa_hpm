@@ -231,3 +231,5 @@ pending while the actual independent simulation runs; implementation is not an
 acceptance claim. Source author/date/message are retained in format-patches.
 
 Chipyard3711603c (full SHA in evidence/stage6/source-commits.json) adds a nonzero repeated-record oracle, ABI2 all-register canaries, and the actual Linux timer/unmonitored-handoff chronology. These test/checker changes do not modify the running Linux image or Rocket model. Independent public-source RTL generation/model build and all five new tests passed; Linux execution remains ongoing.
+
+Chipyard 3a31d53b10babdf476473cc7d2d682e215dc7305 adds explicit ELF-identified ABI2 record trees and the Linux B512-page source-count oracle. Checker-only; running image/model unchanged.

@@ -53,9 +53,10 @@
     "ssa/linux/0002-opensbi-dtlb-profile.patch": "7b8941e8a77dd59d39ddc3f3eb025279246767ec3b63927fa0cc22a3231cf8f3",
     "ssa/linux/0004-linux-dtlb-event.patch": "b87414d2f77b08fa4545af2a838116eb1a123e604e3ce2a5ddaa18272074f378",
     "ssa/linux/event-init.c": "43359829ff9c1f183ecd829cafd9302c8d57847eabe09649e630a5e4ff0e7711",
-    "ssa/linux/grade-events.py": "d9a707cae8813773835a8ab6e48b09122a2294a5a0afc3dd332aa55660e09c98",
+    "ssa/linux/grade-events.py": "ef5833a0000bc456bb0253d7a35315248c5d48fea9d9f352090ee9c2ce31f04f",
     "ssa/verify_events.py": "aa1feb924f3bf229728f897e9c4c65c4872a34a4a6e6d13a9a02aa72fe9367ee",
     "generators/chipyard/src/main/scala/config/RocketConfigs.scala": "f63a145ff0c461b0c0425f21b156791947e82e1999c1145f461f94317c948760",
     "generators/chipyard/src/main/scala/config/fragments/TileFragments.scala": "7ea2b4906a9803ad7192743ddb14708dceb98f24202211567cdf9cc9b6b76cd4"
-  }
+  },
+  "final_checker_refresh": "ELF-identified Linux trees and minimum512 payload-walk requirement; no RTL or image change"
 }

@@ -42,6 +42,9 @@ for test in [9,10]:
  check(f'test{test}_real_timer_A_B_A_open_frame',bool(aa))
  for role,e in pair.items():
   ac=[x for x in acc if x['pid']==e['pid'] and x['counter']==3];rr=next((x for x in rec if x['session']==e['session'] and x['id']==2),None)
+  tree=sorted([x for x in rec if x['session']==e['session']],key=lambda z:z['id']);sy=u['events']['symbols']
+  check(f'test{test}_role{role}_record_tree',len(tree)==2 and [x['parent'] for x in tree]==[0,1] and [x['callee'] for x in tree]==[sy['parent'],sy['common']] and tree[0]['dtlb']>=tree[1]['dtlb'])
+  if role==2:check(f'test{test}_B_generated_walks',rr and rr['dtlb']>=512)
   active={x['event'] for x in sw if x['pid']==e['pid'] and x['depth']>=2 and x['rid']==2};ss=[x for x in samples if x['pid']==e['pid'] and x['event'] in active and x['counter']==3]
   check(f'test{test}_role{role}_accepted_samples',bool(ss) and all((x['R']-x['S'])&mask==x['delta'] for x in ss))
   if len(ac)==1 and rr:
@@ -69,6 +72,8 @@ if all(len(v)==1 for v in ex.values()):
  for e,name,lo,hi in [(old,'old',32,90),(new,'new',100,160),(failed,'failed',100,180)]:
   r=sorted([x for x in rec if x['session']==e['session']],key=lambda x:x['id']);check(name+'_event_leaf',len(r)==2 and lo<=r[1]['dtlb']<=hi and r[1]['open']==0)
   check(name+'_event_begin_clean',bb[e['session']]['depth']==0 and bb[e['session']]['next']==1)
+  sy=u['eventnext' if name=='new' else 'eventexec']['symbols'];parent=sy.get('old_parent',sy.get('parent'));leaf=sy.get('old_leaf',sy.get('common'))
+  check(name+'_event_exec_tree',len(r)==2 and [x['parent'] for x in r]==[0,1] and [x['callee'] for x in r]==[parent,leaf])
   if name=='old':check('event_old_abandoned',e['complete']==0 and e['depth']==1 and len(r)==2 and r[0]['dtlb']==0 and r[0]['open']==1 and len([x for x in opens if x['session']==e['session'] and x['rid']==1])==1)
   else:check(name+'_event_closed_exit',e['complete']==1 and e['depth']==0 and len(r)==2 and r[0]['dtlb']>=r[1]['dtlb'] and r[0]['open']==0)
  qs=[x for x in rows('SSA_CHECK') if x['session']==failed['session']];check('event_enoent_keeps_open_frame',len(qs)==2 and all(x['depth']==1 and x['next']==3 and x['selector']==failed['pool'] for x in qs) and qs[0]['image']==qs[1]['image'])
