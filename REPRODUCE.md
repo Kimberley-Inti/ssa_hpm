@@ -15,7 +15,7 @@ Chipyard 上游 gitlink 原本就指向上述可获取的 Rocket 基线。原本
 作为外部复现步骤。此发布包从公开基线重放全部 SSA-HPM 补丁，消除了该依赖。
 
 依赖顺序：获取两个基线 → 应用 `patches/chipyard/0001`、`0002` → 按文件名依次
-依次应用当前分支的全部 11 个 Rocket 补丁 → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
+依次应用当前分支的全部 12 个 Rocket 补丁 → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
 树必须与本分支 `provenance.json` 的 `rocket_chip.expected_tree` 完全相同（
 v0.1.0 对应 `986407bc6df8d2a67572250f1df9eb2c0edeacf9` 的历史树），
 同时核对核心 Scala、微码、构建文件及测试的 SHA-256。应用得到的新 commit SHA
@@ -66,7 +66,7 @@ python3 ssa/analyze.py ssa/results/rtl-context.txt --elf ssa/test.riscv \
 ```
 
 `env.sh` 优先使用系统编译/链接工具，避免 Conda 旧 glibc sysroot 无法解析安装的
-FESVR `statx`。C++17 要贯穿 Verilator 的递归 make；七个额外 HPM 槽尚未实现事件。
+FESVR `statx`。C++17 要贯穿 Verilator 的递归 make；ABI2 使用一个预留槽记录 DTLB 请求，其余扩展槽仍留待后续。
 
 单项硬件仿真：
 
@@ -150,3 +150,10 @@ RTL 或重复运行 Linux。原始完整配置启动超时的尝试与后续成�
 ## Stage5 Linux exec lifecycle
 
 See [STAGE5.md](docs/STAGE5.md) for the success/ENOENT fixture, full stage4 regression and counter boundaries. Use build-a.py --exec followed by run-exec.py; --reference is ABI-only.
+
+## Stage6 DTLB event profile
+
+See [STAGE6.md](docs/STAGE6.md). Use SSAHPMEventRocketConfig, --event image build
+and run, then grade-events.py. Default RocketConfig and ABI1 remain available.
+One standard40-bit HPM3 counter is reserved for accepted DTLB PTW requests;
+this is not a Spike event model or a generic perf multiplexing interface.

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Real CPU context switches; legacy mode must expose off-CPU attribution bug."""
 import argparse,json,pathlib,subprocess,time
-p=argparse.ArgumentParser();p.add_argument('--out-dir',type=pathlib.Path,required=True)
+p=argparse.ArgumentParser();p.add_argument('--simulator',default='sims/verilator/simulator-chipyard-RocketConfig');p.add_argument('--out-dir',type=pathlib.Path,required=True)
 a=p.parse_args();a.out_dir.mkdir(parents=True,exist_ok=True)
 root=pathlib.Path(__file__).resolve().parents[1];results=[]
 for name,binary,expected,marker in [('spike-process','process-reference',0,'SSA PASS: two pools'),('rtl-process-legacy','process-legacy',42,'SSA FAIL process mask:'),('rtl-process','process',0,'SSA PASS: two pools')]:
- cmd=['spike',f'ssa/{binary}.riscv'] if name.startswith('spike') else ['sims/verilator/simulator-chipyard-RocketConfig','+permissive',f'+loadmem=ssa/{binary}.hex','+max-cycles=50000000','+permissive-off',f'ssa/{binary}.riscv']
+ cmd=['spike',f'ssa/{binary}.riscv'] if name.startswith('spike') else [a.simulator,'+permissive',f'+loadmem=ssa/{binary}.hex','+max-cycles=50000000','+permissive-off',f'ssa/{binary}.riscv']
  print('RUN',name,flush=True);begin=time.monotonic();log=a.out_dir/(name+'.txt')
  with log.open('w') as f:
   try:code=subprocess.run(cmd,cwd=root,stdout=f,stderr=subprocess.STDOUT,timeout=900).returncode

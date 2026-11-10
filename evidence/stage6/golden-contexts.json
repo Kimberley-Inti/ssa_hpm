@@ -1,0 +1,73 @@
+{
+  "format": "ssa-hpm-v1",
+  "inclusive": true,
+  "includes_monitor_overhead": true,
+  "records": [
+    {
+      "id": 1,
+      "callee": "0x800001aa",
+      "symbol": "parent_a",
+      "parent": 0,
+      "cycle": 30534,
+      "instret": 14791,
+      "time": 305,
+      "next": 0,
+      "context": "parent_a"
+    },
+    {
+      "id": 2,
+      "callee": "0x80000174",
+      "symbol": "common",
+      "parent": 1,
+      "cycle": 29109,
+      "instret": 14452,
+      "time": 292,
+      "next": 0,
+      "context": "parent_a/common"
+    },
+    {
+      "id": 3,
+      "callee": "0x800001d6",
+      "symbol": "parent_b",
+      "parent": 0,
+      "cycle": 15336,
+      "instret": 7427,
+      "time": 153,
+      "next": 0,
+      "context": "parent_b"
+    },
+    {
+      "id": 4,
+      "callee": "0x80000174",
+      "symbol": "common",
+      "parent": 3,
+      "cycle": 14534,
+      "instret": 7226,
+      "time": 146,
+      "next": 0,
+      "context": "parent_b/common"
+    },
+    {
+      "id": 5,
+      "callee": "0x80080000",
+      "symbol": "collision_a",
+      "parent": 0,
+      "cycle": 182,
+      "instret": 44,
+      "time": 2,
+      "next": 0,
+      "context": "collision_a"
+    },
+    {
+      "id": 6,
+      "callee": "0x80100000",
+      "symbol": "collision_b",
+      "parent": 0,
+      "cycle": 100,
+      "instret": 22,
+      "time": 1,
+      "next": 5,
+      "context": "collision_b"
+    }
+  ]
+}

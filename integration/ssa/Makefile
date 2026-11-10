@@ -81,3 +81,18 @@ linux/supervisor-policy.riscv: linux/user-probe.S test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_SUPERVISOR $< -o $@
 .PHONY: linux-probes
 linux-probes: linux/sv39.hex linux/user-csr.hex linux/user-write.hex linux/user-pool.hex linux/supervisor-policy.hex
+
+event.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) event_start.S events.c -o $@
+event-selector-negative.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DWRONG_SELECTOR event_start.S events.c -o $@
+event-context-negative.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DSWAP_CONTEXT event_start.S events.c -o $@
+event-wrap.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCOUNTER_WRAP event_start.S events.c -o $@
+.PHONY: events
+events: event.hex event-selector-negative.hex event-context-negative.hex event-wrap.hex
+
+event-abi.riscv: start.S test.c abi.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DABI -DEVENT_ABI start.S test.c abi.S -o $@
+events: event-abi.hex

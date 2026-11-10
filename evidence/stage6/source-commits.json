@@ -1,0 +1,22 @@
+{
+  "chipyard": {
+    "head": "3711603cb3059bfa29e0517096ad251b7bbcb5ae",
+    "tree": "c6706e5a0b8c870c75630c208a4271d9acadb6c6",
+    "branch": "stage6-hpm-event-attribution"
+  },
+  "rocket": {
+    "head": "469bfac7de26bfbb03298787ad030898c6de24c9",
+    "tree": "05441ac9cd76f5362397215141ab8e3d4b9b418a",
+    "branch": "stage6-hpm-event-attribution"
+  },
+  "linux": {
+    "head": "07fb4b1efd171f1453b1bcd13ce113a7e6f1b307",
+    "tree": "243659241b8c0225a91160c6020d08aaa7931a57",
+    "branch": "stage6-hpm-event-attribution"
+  },
+  "opensbi": {
+    "head": "34520a712309790d3e9a005194b763467b980fdb",
+    "tree": "7b9ddfe46a8f677349bf5b88d37f01cab2c32be5",
+    "branch": "stage6-hpm-event-attribution"
+  }
+}
