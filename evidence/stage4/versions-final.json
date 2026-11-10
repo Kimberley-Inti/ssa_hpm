@@ -1,0 +1,51 @@
+{
+  "riscv_gcc": {
+    "argv": [
+      "riscv64-unknown-elf-gcc",
+      "--version"
+    ],
+    "first_line": "riscv64-unknown-elf-gcc () 15.1.0",
+    "path": "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+    "sha256": "3b2b5d5ad7f9c7821c8ca1b11c6c512f30e3d63dcbdc726836c1c7bc0bceed32"
+  },
+  "spike": {
+    "argv": [
+      "spike",
+      "--help"
+    ],
+    "first_line": "Spike RISC-V ISA Simulator 1.1.1-dev",
+    "path": "/opt/riscv/bin/spike",
+    "sha256": "6f58d5af94d3d083f5c687a2baf21e54b8ef50343b83314b8886b46d89e299aa"
+  },
+  "verilator": {
+    "argv": [
+      "verilator",
+      "--version"
+    ],
+    "first_line": "Verilator 4.226 2022-08-31 rev v4.226",
+    "path": "/usr/local/bin/verilator",
+    "sha256": "99a56ee08823bef7d920515fd7a64e1cb5351910e41a63d86881a5c7618abcb8"
+  },
+  "native_cxx": {
+    "argv": [
+      "/usr/bin/g++",
+      "--version"
+    ],
+    "first_line": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "path": "/usr/bin/x86_64-linux-gnu-g++-11",
+    "sha256": "2360901d864cf10bfd6296e261cb2c14053552a80377761ab07146ec9ec9a2c0"
+  },
+  "java": {
+    "argv": [
+      "java",
+      "-version"
+    ],
+    "first_line": "openjdk version \"17.0.20.1\" 2026-08-18",
+    "path": "/usr/lib/jvm/java-17-openjdk-amd64/bin/java",
+    "sha256": "ac1d3bbe5301caaa1b86966802a4f8ec9f9f4f065c04dec45cc4a9f7dc24d075"
+  },
+  "linux": "5.7-rc3 firesim5f5fd87 +compat +task-pool patch",
+  "opensbi": "0.8 a98258d +staticplatform",
+  "linux_ld": "Ubuntu binutils2.38-4ubuntu2.12 extracted locally; pinned deb SHA in build entry",
+  "model_config": "chipyard.TestHarness.RocketConfig, one hart RV64GC,256MiB DRAM; Linux DT assigns32MiB; CLINT1MHz"
+}

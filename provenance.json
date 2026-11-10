@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
-    "development_delivery": "1462d8ba247ead8c0494d5dc5bc8e5ef961dd549",
+    "development_delivery": "2813cd71d10d25ed0530df330b05badcaa408036",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -509,7 +509,7 @@
     "ssa/linux/init.c": "d4550554da8e03307714eb42a85d6cfc15d517caf0e14898474e80b044dc548d",
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
-    "ssa/linux/README.md": "a850ad8728a5b6104fe6e69ab11489e8d97722ef98f2f568075aa487f467a7c7",
+    "ssa/linux/README.md": "b6c8e82f389d9ad7bb4c90129436a7d60ca59a8ce13021e452243494f9c55ff2",
     "ssa/linux/build-a.py": "4099699ab34d17fc5a12d515cb8050de16d9cd3f00b35ef7f4e5de3fab23aefb",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
@@ -521,7 +521,8 @@
     "ssa/linux/0002-linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
     "ssa/linux/grade-process.py": "663fd301a070085c6586d5473851da7194aa0f029393b7784824658038f7f67c",
-    "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878"
+    "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
+    "ssa/linux/ABI.md": "8b003561912cf94b09cb76a051b27159ae13dadd0c98ded178ed32eb46e44339"
   },
   "development_stage": {
     "name": "stage2-trap-isolation",

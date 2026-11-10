@@ -114,3 +114,6 @@ another pool through the API, read SCBaseReg or directly load the pool address.
 Multicore/migration, exec integration, general unwind, production resource quotas,
 full-capacity export, Cache/TLB events and adversarial policy hardening remain out
 of scope. This is a single-hart research interface, not a production kernel ABI.
+
+The exact prototype operations, state transitions, privilege rules, physical
+layout and counter boundaries are documented in [ABI.md](ABI.md).

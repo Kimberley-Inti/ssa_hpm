@@ -149,3 +149,8 @@ Stage4 Linux integration implementation (runtime gates pending):
 - Chipyard `1462d8ba` (full SHA in provenance): require reciprocal B sleep-frame
   pause/resume/rebasing evidence in the Linux grader, in addition to A's timer
   preemption evidence. This changes the checker only, not the kernel or image.
+- Chipyard `40287b89` / `2813cd71` (full final SHA in provenance): document the
+  task/selector ownership, prctl lifecycle, physical-pool ABI and exact counter
+  boundaries, with guarded-failure scope clarified. Documentation only.
+  These stage4 source revisions are retained locally; this private standalone
+  repository carries their patches/files and does not require fetching local SHAs.

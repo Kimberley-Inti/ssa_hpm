@@ -31,13 +31,14 @@ Software Semantic Aware Hardware Performance Monitoring：为 RISC-V Rocket 的�
 - [本次发布验证](evidence/publication/) 来自新下载的上游基线和补丁重建，独立标注。
 - [复现指南](REPRODUCE.md) 给出准确基线、依赖、应用顺序和实际命令。
 
-已验证平台是单核 RV64GC RocketConfig、裸机 M mode、关闭中断。Linux 生命周期和
-loader/SP 集成、多核、地址缺页、调试/异常展开、协程/尾调用以及后续访存分类、
-Cache/TLB 事件尚未验证；七个扩展事件槽仅预留。内存池必须事先映射且可访问。
+v0.1.0 验证平台是单核 RV64GC RocketConfig、裸机 M mode、关闭中断。后续阶段
+分别增加 trap 与受控任务切换验证；本分支已通过真实 Rocket Linux 启动，进程监测
+验收状态见第四阶段说明。完整 loader/exec、多核、任务迁移、非局部展开和后续
+访存分类、Cache/TLB 事件仍未验证；七个扩展事件槽仅预留。
 
 ## 内容组织
 
-- `patches/rocket-chip/`：按原开发顺序应用的 8 个实现补丁，含 canonical 微码源码。
+- `patches/rocket-chip/`：按顺序应用的 11 个实现补丁（v0.1.0 为前 8 个），含 canonical 微码源码。
 - `patches/chipyard/`：可获取的 Constellation 依赖固定与仿真器构建补丁。
 - `patches/history/`：旧测试版本补丁，仅用于开发档案，不参与当前复现。
 - `integration/ssa/`：原创测试与构建/分析脚本；由安装脚本放入 Chipyard 的 `ssa/`。
@@ -68,7 +69,7 @@ Cache/TLB 事件尚未验证；七个扩展事件槽仅预留。内存池必须�
 详见 [本次发布验证汇总](evidence/publication/summary.json)。
 
 
-## 当前开发分支：stage2-trap-isolation
+## 第二阶段：stage2-trap-isolation
 
 本轮修复陷阱处理函数被错误加入应用调用树的问题：旧 RTL 的处理函数入口为
 `depth=3,next_id=4`，新实现保持应用的 `2,3`，并在嵌套异常和真实定时器 IRQ 返回后
@@ -81,7 +82,7 @@ Cache/TLB 事件尚未验证；七个扩展事件槽仅预留。内存池必须�
 [分层验证汇总](evidence/stage2/summary.json)。本分支不发布新标签、不修改 main。
 
 
-## 当前开发分支：stage3-process-isolation
+## 第三阶段：stage3-process-isolation
 
 基于 stage2，补齐单 hart 调度器监测池暂停、恢复、退出协议。恢复时校正所有开放
 调用帧的计数快照，排除其他任务的执行区间。两个实际整数 CPU 上下文在同一
@@ -97,3 +98,14 @@ RTL 修改；公开基线与原有九个 Rocket 补丁不变，新增接口和�
 第三阶段最终验证：开发树与独立公开基线重建均通过原 16 项回归及新增进程协议
 检查（含旧协议预期退出 42 的负对照）。独立重编译 Scala、RTL 和 Verilator 通过。
 Spike 仍无 SSA 扩展；Linux 集成尚未完成，详见阶段说明。
+
+## 当前开发分支：stage4-linux-process-isolation
+
+已在实际 Rocket/Verilator 上启动单 hart Linux 5.7-rc3，运行 PID1 并正常关机，
+退出码为 0。新增 Sv39 PC 宽度修复、U-mode 池选择保护、私有 ROM 物理访存
+和内核任务池生命周期/调度接口。全部 16 项第二阶段、3 项第三阶段及 5 项新增
+裸机探针通过；真实 Linux 单进程/双进程验收仍在执行，不能由裸机测试替代。
+
+详见 [第四阶段说明](docs/STAGE4.md)、[启动证据](evidence/stage4/A-summary.json)
+与 [Linux 复现入口](integration/ssa/linux/README.md)。本分支仅用于草稿审查，
+不更新 main、不发布标签。
