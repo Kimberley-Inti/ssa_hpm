@@ -1,0 +1,48 @@
+{
+  "gcc": {
+    "command": [
+      "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+      "--version"
+    ],
+    "exit_code": 0,
+    "version": [
+      "riscv64-unknown-elf-gcc () 15.1.0",
+      "Copyright (C) 2025 Free Software Foundation, Inc.",
+      "This is free software; see the source for copying conditions.  There is NO"
+    ]
+  },
+  "verilator": {
+    "command": [
+      "verilator",
+      "--version"
+    ],
+    "exit_code": 0,
+    "version": [
+      "Verilator 4.226 2022-08-31 rev v4.226"
+    ]
+  },
+  "spike": {
+    "command": [
+      "spike",
+      "--help"
+    ],
+    "exit_code": 0,
+    "version": [
+      "Spike RISC-V ISA Simulator 1.1.1-dev",
+      "",
+      "usage: spike [host options] <target program> [target options]"
+    ]
+  },
+  "host": {
+    "command": [
+      "uname",
+      "-a"
+    ],
+    "exit_code": 0,
+    "version": [
+      "Linux ubuntu22 6.8.0-107-generic #107~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Mar 18 23:40:43 UTC  x86_64 x86_64 x86_64 GNU/Linux"
+    ]
+  },
+  "model_sha256": "5d188ac508df7ac3d27817e81665786763f54f9ce0379af6f38d44ec3cba7dc0",
+  "reuse": "unchanged Rocket1c784134/SBIb778; model hash equals stage4 BC-execution; native image independently rebuilt with stage5 Linux patch"
+}

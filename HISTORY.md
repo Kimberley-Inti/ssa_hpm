@@ -193,3 +193,5 @@ baselines and these patches/files; it never needs the local SHAs to be fetchable
 Runtime evidence and final maintenance commit mapping follow after native completion.
 
 Chipyard follow-up `02ddc90abb4806e136f1e96b1580702df39cc4b7` documents session retirement and counter boundaries in ABI.md; it does not alter the built image or RTL.
+
+Chipyard `b4944ca3f1e589ca43a0e015a229d1b843651313` strengthens the checker with exact short-leaf counts at identical old/new virtual addresses, without rebuilding or altering the running image.

@@ -40,6 +40,14 @@ if all(len(v)==1 for v in selected.values()):
    check(name+'_inclusive',len(rr)==2 and rr[0]['open']==0 and all(rr[0][k]>=rr[1][k]>0 for k in ['cycle','instret','time']))
  oldbegin=[x for x in begins if x['session']==old['session']];newbegin=[x for x in begins if x['session']==new['session']]
  check('actual_exec_epoch',len(oldbegin)==len(newbegin)==1 and newbegin[0]['image']==oldbegin[0]['image']+1)
+ # These tiny leaf functions contain exactly 66 retired loop instructions/iteration.
+ # Prior stage4's identical 100-iteration leaf measured 6623; the 23 includes
+ # the unchanged call/return monitor boundary, not a general overhead constant.
+ leaf_counts={e['test']:next((r['instret'] for r in records if r['session']==e['session'] and r['id']==2),None) for e in [old,new,failed]}
+ check('fresh_leaf_counts_no_old_image_carry',leaf_counts=={5:3323,6:6623,7:6646})
+ oldq=[q for q in queries if q['session']==old['session']]
+ check('old_exec_observed_open_frame',len(oldq)==1 and oldq[0]['depth']==1 and oldq[0]['next']==3 and oldq[0]['selector']==old['pool'])
+
  qs=[q for q in queries if q['session']==failed['session']]
  check('enoent_keeps_open_session',len(qs)==2 and all(q['pid']==failed['pid'] and q['depth']==1 and q['next']==3 and q['selector']==failed['pool'] for q in qs) and qs[0]['image']==qs[1]['image'])
  check('no_duplicate_exports_same_pid',sum(x['pid']==old['pid'] for x in exports)==2 and sum(x['pid']==failed['pid'] for x in exports)==1)

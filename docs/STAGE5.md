@@ -85,3 +85,10 @@ The exit code must be taken from execution.json, never assumed from markers.
 Runtime evidence will record the actual native results separately from this
 log-only recheck. No Linux image, full upstream source, original PDF, credential
 or backup bundle is included in this repository.
+
+The leaf instruction oracle uses the fixed fixture, not a general monitor-cost
+subtraction: 66 instructions per iteration and the unchanged measured boundary23
+yield3323 for50 iterations,6623 for100, and6646 for two50-iteration activations.
+Old/new leaf virtual addresses are identical. Exact counts distinguish reset
+from carry-over; any unexpected interrupt within a short leaf must be investigated,
+not silently accepted by widening the oracle.

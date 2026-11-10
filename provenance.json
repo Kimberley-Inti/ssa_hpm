@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
-    "development_delivery": "02ddc90abb4806e136f1e96b1580702df39cc4b7",
+    "development_delivery": "b4944ca3f1e589ca43a0e015a229d1b843651313",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -524,7 +524,7 @@
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
     "ssa/linux/ABI.md": "53a5d6b902a2eac66d60632d1fb1b3483b95dd988af43d1c8d71384fa8e5e0d9",
     "ssa/linux/exec-init.c": "83dcdb6d2ae2d8b3eb85178249631ca1423cbe31697c7129e825133e4c34f30b",
-    "ssa/linux/grade-exec.py": "d81006d7d7f56e6ffad671141e55605c7c28dc01178b212959c6ca05a27f80ce",
+    "ssa/linux/grade-exec.py": "52b772fbc875ddbe3737420e8409330cc6b6c44a85d68c1aca92d94f118dfc7f",
     "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
     "ssa/linux/run-exec.py": "ebb077acea552641627fdb93065384b3bec9d2cfb7dcd3bb2cdfc61912e748a2"
   },

@@ -1,8 +1,8 @@
 {
   "chipyard": {
-    "head": "02ddc90abb4806e136f1e96b1580702df39cc4b7",
+    "head": "b4944ca3f1e589ca43a0e015a229d1b843651313",
     "branch": "stage5-linux-exec-lifecycle",
-    "tree": "085af17c2759c58730d65d06ba3fa53c2e2a7598"
+    "tree": "57e3b194de8ebdd3b2b9e6b317bf3667a2c0b8da"
   },
   "rocket": {
     "head": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
