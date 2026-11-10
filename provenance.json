@@ -6,8 +6,8 @@
     "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
-    "development_base": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
-    "development_delivery": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
+    "development_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
+    "development_delivery": "02ddc90abb4806e136f1e96b1580702df39cc4b7",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -510,7 +510,7 @@
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
-    "ssa/linux/build-a.py": "4099699ab34d17fc5a12d515cb8050de16d9cd3f00b35ef7f4e5de3fab23aefb",
+    "ssa/linux/build-a.py": "03679bdf4fab9c26a356225c6c8f4fa6373cfdaf34ef9c2a127fce81c8765224",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "5a71ff0d2e7825f6b314b4572c150bc4f2c1a640e30fd2a1157f66ffcb6395ce",
@@ -522,7 +522,11 @@
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "f08fcb4dfe62659c153647a5ad9154c5558f1256bf90960f1b276a58380d8df7"
+    "ssa/linux/ABI.md": "53a5d6b902a2eac66d60632d1fb1b3483b95dd988af43d1c8d71384fa8e5e0d9",
+    "ssa/linux/exec-init.c": "83dcdb6d2ae2d8b3eb85178249631ca1423cbe31697c7129e825133e4c34f30b",
+    "ssa/linux/grade-exec.py": "d81006d7d7f56e6ffad671141e55605c7c28dc01178b212959c6ca05a27f80ce",
+    "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
+    "ssa/linux/run-exec.py": "ebb077acea552641627fdb93065384b3bec9d2cfb7dcd3bb2cdfc61912e748a2"
   },
   "development_stage": {
     "name": "stage2-trap-isolation",
@@ -558,5 +562,15 @@
     "status": "A/B/C passed on actual single-hart Rocket/Verilator Linux;173 unified checks passed",
     "linux_monitoring_delivery": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
     "linux_monitoring_tree": "ef9c3b6d2e2891853aa576d211f715a8ea718ddb"
+  },
+  "stage5": {
+    "baseline": "55104eb22d160d9bf9e1e7388866ba7482a2785a",
+    "branch": "stage5-linux-exec-lifecycle",
+    "linux_base": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
+    "linux_delivery": "f327da924b3515e2d4c33bc1a8eb1e0c38807d66",
+    "linux_tree": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d",
+    "rocket_changed": false,
+    "opensbi_changed": false,
+    "runtime_status": "pending actual Rocket/Verilator completion"
   }
 }

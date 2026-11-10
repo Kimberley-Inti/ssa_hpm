@@ -146,3 +146,7 @@ python3 integration/ssa/linux/grade-process.py \
 `BC-execution.json` 保存实际命令、退出码、时长及镜像/模型哈希。此次独立重建
 运行复用了开发树重新构建的 RTL 模型和固定工具链缓存；没有声称重复编译第二份
 RTL 或重复运行 Linux。原始完整配置启动超时的尝试与后续成功结果分开记录。
+
+## Stage5 Linux exec lifecycle
+
+See [STAGE5.md](docs/STAGE5.md) for the success/ENOENT fixture, full stage4 regression and counter boundaries. Use build-a.py --exec followed by run-exec.py; --reference is ABI-only.

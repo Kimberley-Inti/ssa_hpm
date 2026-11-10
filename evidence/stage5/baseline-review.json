@@ -1,0 +1,27 @@
+{
+  "maintenance_base": "55104eb22d160d9bf9e1e7388866ba7482a2785a",
+  "chipyard_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
+  "rocket_base": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
+  "linux_base": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
+  "opensbi_base": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
+  "branch": "stage5-linux-exec-lifecycle",
+  "pr3": {
+    "state": "open",
+    "draft": true,
+    "base": "stage3-process-isolation",
+    "head_sha": "55104eb22d160d9bf9e1e7388866ba7482a2785a"
+  },
+  "stage4_review": {
+    "passed": true,
+    "unified_checks": 173,
+    "fixed_delta": 20,
+    "legacy_delta": 207962
+  },
+  "retained_untracked": [
+    "ssa_firmware/",
+    "tests/ssa_microcode.S",
+    "tests/ssa_rom_scala.txt",
+    "tests/test_ssa.c"
+  ],
+  "unchanged_rtl_firmware": true
+}

@@ -1,0 +1,11 @@
+{
+  "linux": {
+    "development": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d",
+    "independent": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d"
+  },
+  "opensbi": {
+    "development": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557",
+    "independent": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557"
+  },
+  "reused_model_sha256": "5d188ac508df7ac3d27817e81665786763f54f9ce0379af6f38d44ec3cba7dc0"
+}

@@ -1,0 +1,22 @@
+{
+  "chipyard": {
+    "head": "02ddc90abb4806e136f1e96b1580702df39cc4b7",
+    "branch": "stage5-linux-exec-lifecycle",
+    "tree": "085af17c2759c58730d65d06ba3fa53c2e2a7598"
+  },
+  "rocket": {
+    "head": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
+    "branch": "stage4-linux-process-isolation",
+    "tree": "8cc168563f08902d38379a6fdfeb47080d23fd3f"
+  },
+  "linux": {
+    "head": "f327da924b3515e2d4c33bc1a8eb1e0c38807d66",
+    "branch": "stage5-linux-exec-lifecycle",
+    "tree": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d"
+  },
+  "opensbi": {
+    "head": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
+    "branch": "stage4-linux-process-isolation",
+    "tree": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557"
+  }
+}

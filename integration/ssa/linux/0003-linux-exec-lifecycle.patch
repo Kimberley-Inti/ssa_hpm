@@ -1,0 +1,167 @@
+From f327da924b3515e2d4c33bc1a8eb1e0c38807d66 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Tue, 10 Nov 2026 13:53:59 +0800
+Subject: [PATCH] End SSA sessions at committed exec and retain failed-exec
+ state
+
+---
+ fs/exec.c               |  2 ++
+ include/linux/ssa_hpm.h |  2 ++
+ kernel/ssa_hpm.c        | 52 +++++++++++++++++++++++++++++------------
+ 3 files changed, 41 insertions(+), 15 deletions(-)
+
+diff --git a/fs/exec.c b/fs/exec.c
+index 06b4c550a..086f6c6d4 100644
+--- a/fs/exec.c
++++ b/fs/exec.c
+@@ -23,6 +23,7 @@
+  * formats.
+  */
+ 
++#include <linux/ssa_hpm.h>
+ #include <linux/slab.h>
+ #include <linux/file.h>
+ #include <linux/fdtable.h>
+@@ -1333,6 +1334,7 @@ int flush_old_exec(struct linux_binprm * bprm)
+ 	 */
+ 	bprm->called_exec_mmap = 1;
+ 	bprm->mm = NULL;
++	ssa_hpm_exec(me);
+ 
+ #ifdef CONFIG_POSIX_TIMERS
+ 	exit_itimers(me->signal);
+diff --git a/include/linux/ssa_hpm.h b/include/linux/ssa_hpm.h
+index 94c17a788..e688e884f 100644
+--- a/include/linux/ssa_hpm.h
++++ b/include/linux/ssa_hpm.h
+@@ -8,11 +8,13 @@ struct task_struct;
+ void ssa_hpm_fork(struct task_struct *p);
+ void ssa_hpm_switch(struct task_struct *prev, struct task_struct *next, bool preempt);
+ void ssa_hpm_exit(struct task_struct *p);
++void ssa_hpm_exec(struct task_struct *p);
+ long ssa_hpm_prctl(unsigned long op, unsigned long flags, unsigned long role, unsigned long test);
+ #else
+ static inline void ssa_hpm_fork(struct task_struct *p) {}
+ static inline void ssa_hpm_switch(struct task_struct *p, struct task_struct *n, bool v) {}
+ static inline void ssa_hpm_exit(struct task_struct *p) {}
++static inline void ssa_hpm_exec(struct task_struct *p) {}
+ static inline long ssa_hpm_prctl(unsigned long o,unsigned long f,unsigned long r,unsigned long t) {return -EINVAL;}
+ #endif
+ #endif
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 6d38824dc..6fe786dfd 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -24,11 +24,13 @@ struct ssa_hpm_state {
+  struct ssa_pool *pool;
+  unsigned int state,role,test,uid,n;
+  bool legacy,bad,proof_seen,proof_valid;
++ u64 session, image_id;
+  u64 off[3],orig[3],common_off[3];
+  struct ssa_event events[MAX_EVENTS];
+ };
+ static struct ssa_pool pools[2]={{.base=0x88000000UL},{.base=0x8c000000UL}};
+ static bool available;
++static u64 next_session;
+ static volatile u64 *meta(struct ssa_pool *p){return (void *)((char *)p->top+TOP_SIZE-64);}
+ static volatile u64 *frame(struct ssa_pool *p,u64 n){return (void *)((char *)meta(p)-n*64);}
+ static void sample(u64 *v){
+@@ -83,7 +85,7 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+  struct ssa_hpm_state *p=current->ssa_hpm;unsigned long irq;unsigned int i;
+  if(!available)return -ENODEV;
+  if(op==1){
+-  if(flags>1 || role>2 || test>4)return -EINVAL;
++  if(flags>1 || role>2 || test>7)return -EINVAL;
+   if(p)return -EBUSY;
+   p=kzalloc(sizeof(*p),GFP_KERNEL);if(!p)return -ENOMEM;
+   local_irq_save(irq);
+@@ -91,9 +93,11 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+   if(i==ARRAY_SIZE(pools)){local_irq_restore(irq);kfree(p);return -EBUSY;}
+   p->pool=&pools[i];p->pool->busy=true;p->legacy=flags;p->role=role;p->test=test;
+   p->uid=__kuid_val(current_uid());p->state=RUNNING;
++  p->session=++next_session;p->image_id=READ_ONCE(current->self_exec_id);
+   memset((char *)p->pool->top+TOP_SIZE-1065024,0,262144*4);
+   memset((void *)meta(p->pool),0,64);WRITE_ONCE(meta(p->pool)[1],1);
+   current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base);
++  pr_emerg("SSA_BEGIN pid=%d session=%llu image=%llu pool=%lu depth=%llu next=%llu selector=%lu\n",current->pid,p->session,p->image_id,p->pool->base,READ_ONCE(meta(p->pool)[0]),READ_ONCE(meta(p->pool)[1]),selected());
+   local_irq_restore(irq);return 0;
+  }
+  if(flags || role || test)return -EINVAL;
+@@ -102,6 +106,14 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+   if(i)pr_emerg("SSA_UNMONITORED pid=%d selector=0\n",current->pid);
+   return i?0:1;
+  }
++ if(op==4){
++  if(!p)return -EINVAL;
++  local_irq_save(irq);
++  if(p->state!=RUNNING || selected()!=p->pool->base || p->bad){local_irq_restore(irq);return -EIO;}
++  i=READ_ONCE(meta(p->pool)[0]);
++  pr_emerg("SSA_CHECK pid=%d session=%llu image=%llu depth=%u next=%llu selector=%lu\n",current->pid,p->session,p->image_id,i,READ_ONCE(meta(p->pool)[1]),selected());
++  local_irq_restore(irq);return i;
++ }
+  if(op!=2 || !p)return -EINVAL;
+  local_irq_save(irq);
+  if(p->state!=RUNNING || selected()!=p->pool->base || p->bad){local_irq_restore(irq);return -EIO;}
+@@ -109,35 +121,45 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+  select_pool(0);p->state=STOPPED;i=READ_ONCE(meta(p->pool)[1]);
+  local_irq_restore(irq);return i?i-1:-EIO;
+ }
+-void ssa_hpm_exit(struct task_struct *t)
++static void finish_session(struct task_struct *t,bool exec)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm;unsigned long irq;unsigned int i,j;
+- volatile u64 *m;u64 depth,next,spill;bool complete;
++ volatile u64 *m;u64 depth,next,spill,cutoff[3];bool complete;
+  if(!p)return;
+- local_irq_save(irq);select_pool(0);p->state=STOPPED;m=meta(p->pool);
++ local_irq_save(irq);sample(cutoff);select_pool(0);p->state=STOPPED;m=meta(p->pool);
+  depth=READ_ONCE(m[0]);next=READ_ONCE(m[1]);spill=READ_ONCE(m[2]);
+  complete=!p->bad && !depth && !spill && !READ_ONCE(m[3]) && next>0 && next<=EXPORT_RECORDS+1;
+- pr_emerg("SSA_EXPORT pid=%d uid=%u role=%u test=%u legacy=%u pool=%lu complete=%u depth=%llu next=%llu spill=%llu events=%u\n",
+-  t->pid,p->uid,p->role,p->test,p->legacy,p->pool->base,complete,depth,next,spill,p->n);
++ pr_emerg("SSA_SESSION pid=%d session=%llu image=%llu reason=%s comm=%s selector=%lu cutoff_cycle=%llu cutoff_instret=%llu cutoff_time=%llu\n",t->pid,p->session,p->image_id,exec?"exec":"exit",t->comm,selected(),cutoff[0],cutoff[1],cutoff[2]);
++ pr_emerg("SSA_EXPORT pid=%d uid=%u role=%u test=%u legacy=%u pool=%lu complete=%u depth=%llu next=%llu spill=%llu events=%u session=%llu\n",
++  t->pid,p->uid,p->role,p->test,p->legacy,p->pool->base,complete,depth,next,spill,p->n,p->session);
+  for(i=0;i<p->n;i++){
+   struct ssa_event *e=&p->events[i];
+-  pr_emerg("SSA_SWITCH pid=%d test=%u role=%u event=%u to=%d from=%d depth=%llu rid=%llu state=%lu ivcsw=%lu cause=%016llx csr_cause=%016llx resumed=%u preempt=%u\n",
+-   t->pid,p->test,p->role,i,e->other,e->from,e->depth,e->rid,e->task_state,e->nivcsw,e->cause,e->csr_cause,e->resumed,e->preempt);
+-  for(j=0;j<3;j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx\n",t->pid,i,j,e->s[j],e->r[j],e->r[j]-e->s[j]);
++  pr_emerg("SSA_SWITCH pid=%d test=%u role=%u event=%u to=%d from=%d depth=%llu rid=%llu state=%lu ivcsw=%lu cause=%016llx csr_cause=%016llx resumed=%u preempt=%u session=%llu\n",
++   t->pid,p->test,p->role,i,e->other,e->from,e->depth,e->rid,e->task_state,e->nivcsw,e->cause,e->csr_cause,e->resumed,e->preempt,p->session);
++  for(j=0;j<3;j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx session=%llu\n",t->pid,i,j,e->s[j],e->r[j],e->r[j]-e->s[j],p->session);
+  }
+  for(i=1;i<next && i<=EXPORT_RECORDS;i++){
+-  struct ssa_record *r=&p->pool->records[i];
+-  pr_emerg("SSA_RECORD pid=%d id=%u callee=%016llx parent=%llu cycle=%llu instret=%llu time=%llu\n",
+-   t->pid,i,r->callee,r->parent,r->count[0],r->count[1],r->count[2]);
++  struct ssa_record *r=&p->pool->records[i];unsigned int open=0;u64 f;
++  for(f=1;f<=depth && f<=256;f++)if(READ_ONCE(frame(p->pool,f)[0])==i)open++;
++  pr_emerg("SSA_RECORD pid=%d id=%u callee=%016llx parent=%llu cycle=%llu instret=%llu time=%llu session=%llu open=%u\n",
++   t->pid,i,r->callee,r->parent,r->count[0],r->count[1],r->count[2],p->session,open);
+  }
+  if(p->proof_seen && next==3 && !depth && !spill)for(j=0;j<3;j++){
+   u64 final=READ_ONCE(frame(p->pool,2)[j+1]);u64 value=p->pool->records[2].count[j];
+-  pr_emerg("SSA_ACCOUNT pid=%d test=%u role=%u counter=%u original=%016llx final=%016llx off=%016llx recorded=%016llx raw=%016llx valid=%u rebased=%u\n",
+-   t->pid,p->test,p->role,j,p->orig[j],final,p->common_off[j],value,value+final-p->orig[j],p->proof_valid,final-p->orig[j]==p->common_off[j]);
++  pr_emerg("SSA_ACCOUNT pid=%d test=%u role=%u counter=%u original=%016llx final=%016llx off=%016llx recorded=%016llx raw=%016llx valid=%u rebased=%u session=%llu\n",
++   t->pid,p->test,p->role,j,p->orig[j],final,p->common_off[j],value,value+final-p->orig[j],p->proof_valid,final-p->orig[j]==p->common_off[j],p->session);
++ }
++ if(exec)for(i=1;i<=depth && i<=256;i++){
++  volatile u64 *f=frame(p->pool,i);
++  pr_emerg("SSA_OPEN pid=%d session=%llu frame=%u rid=%llu status=abandoned entry_cycle=%llu entry_instret=%llu entry_time=%llu\n",t->pid,p->session,i,READ_ONCE(f[0]),READ_ONCE(f[1]),READ_ONCE(f[2]),READ_ONCE(f[3]));
+  }
+- pr_emerg("SSA_EXIT pid=%d complete=%u selector=%lu\n",t->pid,complete,selected());
++ if(exec)pr_emerg("SSA_EXEC_END pid=%d session=%llu complete=%u selector=%lu\n",t->pid,p->session,complete,selected());
++ else pr_emerg("SSA_EXIT pid=%d complete=%u selector=%lu session=%llu\n",t->pid,complete,selected(),p->session);
+  p->pool->busy=false;t->ssa_hpm=NULL;kfree(p);local_irq_restore(irq);
+ }
++void ssa_hpm_exit(struct task_struct *t){finish_session(t,false);}
++/* Called only after exec_mmap has committed: old userspace cannot return. */
++void ssa_hpm_exec(struct task_struct *t){finish_session(t,true);}
+ static int __init ssa_hpm_init(void)
+ {
+  unsigned int i,j;
+-- 
+2.34.1
+

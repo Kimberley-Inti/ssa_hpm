@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "sha256": {
+    "0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
+    "exec-init.c": "83dcdb6d2ae2d8b3eb85178249631ca1423cbe31697c7129e825133e4c34f30b",
+    "build-a.py": "03679bdf4fab9c26a356225c6c8f4fa6373cfdaf34ef9c2a127fce81c8765224",
+    "run-exec.py": "ebb077acea552641627fdb93065384b3bec9d2cfb7dcd3bb2cdfc61912e748a2",
+    "grade-exec.py": "d81006d7d7f56e6ffad671141e55605c7c28dc01178b212959c6ca05a27f80ce",
+    "process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
+    "grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933"
+  }
+}

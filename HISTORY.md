@@ -170,3 +170,26 @@ project directory. Corrected A common instret short/long is278450/278470 (delta2
 legacy is1545490/1753452 (delta207962). All16+3+5 existing/new low-level checks
 remain passed, including the expected-exit42 legacy control. No new tag, main
 update, PR merge or public repository visibility change is part of this delivery.
+
+## Stage5 Linux exec lifecycle
+
+Development starts from maintenance55104eb22d160d9bf9e1e7388866ba7482a2785a
+(stage4 Draft PR#3, unchanged), not from main or an unmerged upstream PR.
+
+| Repository | Local baseline | Local stage5 commit | Standalone delivery |
+| --- | --- | --- | --- |
+| Linux | 0d6ec76e6f44802adab36e84c8ffd7b65187d91f | f327da924b3515e2d4c33bc1a8eb1e0c38807d66 | integration/ssa/linux/0003-linux-exec-lifecycle.patch |
+| Chipyard | 68611650d79c7635a7f1b28935c758f2f12fa3b8 | 6621ef7ca88a1091c13fe2e050746d3e7e6fee11 | standalone build/fixtures/checker in integration/ssa/linux |
+| Rocket | 1c78413459344d7ca1d2b3cdedbdc4a16133dee9 | unchanged | existing patches0001..0011 |
+| OpenSBI | b778927a507e4ebcc43a8ecb8d495562ef48efb3 | unchanged | existing platform patch |
+
+Linux commit separates post-commit exec retirement from normal exit, labels
+sessions/image epochs and abandoned frames, and preserves pre-commit failed exec.
+Chipyard commit adds the same-PID replacement and ENOENT fixtures, pinned image
+build and native checker, followed by the unchanged stage4 Linux regression.
+These source commits are retained in local source repositories, with author/date
+and commit text preserved in the kernel format-patch. Reproduction uses public
+baselines and these patches/files; it never needs the local SHAs to be fetchable.
+Runtime evidence and final maintenance commit mapping follow after native completion.
+
+Chipyard follow-up `02ddc90abb4806e136f1e96b1580702df39cc4b7` documents session retirement and counter boundaries in ABI.md; it does not alter the built image or RTL.
