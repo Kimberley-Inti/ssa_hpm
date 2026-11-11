@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "method": "Independent installed public-source checker regrades the same completed native log; not a second Linux execution",
+  "actual_checker_exit": 0,
+  "checker_sha256": "ef5833a0000bc456bb0253d7a35315248c5d48fea9d9f352090ee9c2ce31f04f",
+  "log_sha256": "7b39c0099d8622038e3726eda6609e9a1e220ba844d30529f3dde4041d01a249",
+  "new_checks": 70,
+  "lifecycle_checks": 37,
+  "regression_checks": 176,
+  "historical_regression_gates": 173,
+  "extra_gates": [
+    "test3_role1_sample3_0",
+    "test3_role1_sample3_1",
+    "test3_role1_sample3_2"
+  ]
+}

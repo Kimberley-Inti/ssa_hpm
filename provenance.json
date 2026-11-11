@@ -593,6 +593,7 @@
     "width": 40,
     "config": "SSAHPMEventRocketConfig",
     "semantics": "actual increment interval, inclusive, every-open-frame R-S excluded modulo40",
-    "status": "five new RTL checks and24 actual lowlevel regressions passed; Linux simulation ongoing"
+    "status": "passed: actual Rocket Linux70 event/37 lifecycle/176 process checks; all173 historical process gates retained;24 existing lowlevel plus5 new RTL tests; independent RTL rebuild and clean final public patch application",
+    "native_evidence": "evidence/stage6/linux/summary.json"
   }
 }

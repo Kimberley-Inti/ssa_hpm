@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/tmp/ssa-hpm-stage6/progress/simulator-progress",
+    "+permissive",
+    "+loadmem=/tmp/ssa-hpm-linux-final/boot-a.hex",
+    "+max-cycles=1500000000",
+    "+permissive-off",
+    "/tmp/ssa-hpm-linux-final/boot-a.elf"
+  ],
+  "exit_code": 0,
+  "seconds": 19238.926602509004,
+  "sha256": {
+    "/tmp/ssa-hpm-linux-final/boot-a.elf": "864a99e3bc391c029f9d68bbadf2202294eb29e8765e97fb84f6677182d50d61",
+    "/tmp/ssa-hpm-linux-final/boot-a.hex": "9495daa35fa8722c15247c6a2884f5dfee70d047eae8c66b9e155296c8e6d28a",
+    "/tmp/ssa-hpm-stage6/progress/simulator-progress": "5d0ad7923007c12b67f18c613550d2476d7ef501d21849e90e8b9b7233450b52"
+  },
+  "log_sha256": "7b39c0099d8622038e3726eda6609e9a1e220ba844d30529f3dde4041d01a249"
+}

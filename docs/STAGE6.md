@@ -1,7 +1,6 @@
 # Stage6: one real DTLB event attributed to software contexts
 
-RTL acceptance passed. The actual independent Rocket/Verilator Linux run is in
-progress; Linux and its combined stage4/stage5 regression are not yet accepted.
+Actual RTL and independent Rocket/Verilator Linux acceptance passed. Native exit0, normal power-down; 70 event gates,37 lifecycle gates and176 process checks passed, including all173 historical process gates.
 
 ## Event and contract
 
@@ -148,3 +147,52 @@ dependency modules/toolchain and caches were reused; see independent-model-build
 ### Native scheduling defect found before acceptance
 
 The initial Linux run reached the context export but then looped in `ssa_hpm_switch`. The actual PC trace and disassembly located the resume loop: `d[3]` still held only three temporary deltas while ABI2 iterated four counters. The fourth write corrupted adjacent stack state. It is now `d[4]`; a new-directory clean patch application reproduces the corrected kernel tree. The stopped run is failure evidence, not accepted Linux results. The corrected independent kernel and firmware were rebuilt and the full Linux suite restarted using the unchanged verified Rocket model.
+
+## Actual Linux results
+
+The freshly built independent Linux/OpenSBI image ran 19238.93 host seconds. All70 new event gates,37 unchanged stage5 lifecycle gates and176 stage4 checks (all173 historical gates plus three samples for an additional real scheduling event) passed. This was one real Rocket RTL Linux execution, not a Spike event model. Kernel/firmware source trees match local commits exactly. See evidence/stage6/linux/execution.json for the actual command, exit status and immutable model/image/log hashes.
+
+| Test | Role | PID | Session | Pool | Fourth count in common |
+| --- | --- | --- | --- | --- | --- |
+| 8 | 0 | 17 | 4 | 0x88000000 | 2 |
+| 9 | 2 | 18 | 5 | 0x88000000 | 1069 |
+| 9 | 1 | 19 | 6 | 0x8c000000 | 7 |
+| 10 | 2 | 20 | 7 | 0x88000000 | 1077 |
+| 10 | 1 | 21 | 8 | 0x8c000000 | 1130 |
+| 5 | 0 | 22 | 9 | 0x88000000 | 64 |
+| 6 | 0 | 22 | 10 | 0x88000000 | 128 |
+| 7 | 0 | 23 | 11 | 0x88000000 | 128 |
+
+Fourth-counter pause proofs (all values modulo2^40):
+
+| Test | Role | Original | Rebased | Excluded | Recorded | Raw |
+| --- | --- | --- | --- | --- | --- | --- |
+| 9 | 2 | 5002 | 5010 | 8 | 1069 | 1077 |
+| 9 | 1 | 5010 | 6133 | 1123 | 7 | 1130 |
+| 10 | 2 | 6917 | 6917 | 8 | 1077 | 1077 |
+| 10 | 1 | 6925 | 6925 | 1123 | 1130 | 1130 |
+
+Both pairs have actual IRQ5 A→B→(unmonitored task)→A evidence, B open-frame sleep/resume and reciprocal cycle sample chronology. The corrected fourth snapshot equals original plus sum(R-S); the legacy snapshot stays unchanged and fails that positive identity. B page faults/kernel work and export inside A's pause are included in the excluded interval; resume translations/handoff costs outside it remain charged. U-mode HPM3 read was rejected with SIGILL. The context test reused four records for warm/cold/warm paths. Extended exec exported the old closed child and abandoned parent once, replaced the image under the same PID, then enabled a fresh session and exited; ENOENT kept the original open frame/session until normal return.
+
+The current original-regression differences are:
+
+| Counter | Corrected long-short | Legacy long-short | Additional excluded interval |
+| --- | --- | --- | --- |
+| cycle | 9824 | 197399 | 219299 |
+| instret | 4238 | 200919 | 210529 |
+| time | 99 | 1974 | 2192 |
+
+These are new-image results, not a requirement to reproduce historical4205/211029 or20/207962. All unchanged sampled accounting identities, parent/child checks, negative-control relations and actual shutdown gates passed. Independent installed-checker regrading is recorded separately and does not represent a second Linux execution.
+
+## Final source delivery and independent verification
+
+| Component | Source commit |
+| --- | --- |
+| chipyard | `d954827faca21a1534ac89db748896f0c319c559` |
+| rocket | `469bfac7de26bfbb03298787ad030898c6de24c9` |
+| linux | `49943b80f864a41e4ac13108a77f921e013d3570` |
+| opensbi | `34520a712309790d3e9a005194b763467b980fdb` |
+
+A final new workspace `/tmp/ssa-hpm-stage6-final-apply` fetched the public Chipyard/Rocket baselines, applied every current patch and matched the complete expected file manifest and both ROM banks. The corrected kernel patch also applied in a separate directory and matched the development tree. The prior independent model rebuild and its five test executions are reused because Rocket source did not change after them. The corrected independent kernel and firmware were incrementally rebuilt using the existing pinned compiler/build caches. No second Linux execution is claimed: the independently installed checker regraded the same completed raw log and reproduced70/37/176 passes. See final-public-apply.json, resume-array-fix.json, linux-image-build.json and independent-linux-regrade/.
+
+The process checker adds three assertions automatically for one extra real scheduling event in legacy test3 (counter0/1/2). Its176 gates contain every historical173 gate; no old gate was removed. Each completed native result has exit0 and `reboot: Power down`.

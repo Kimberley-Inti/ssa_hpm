@@ -225,13 +225,13 @@ It retains main, v0.1.0 and every earlier Draft PR.
   standalone tests/build scripts are delivered once under integration/ssa.
 
 These are local source development commits retained on stage6 branches. Public
-reproduction replays the patches on reachable upstream baselines; independent
-Linux/OpenSBI tree hashes match development exactly. Linux runtime gates are
-pending while the actual independent simulation runs; implementation is not an
-acceptance claim. Source author/date/message are retained in format-patches.
+reproduction replays the patches on reachable upstream baselines; independent builds are documented in evidence/stage6/.
+At this implementation checkpoint Linux runtime gates were pending; final accepted results and the corrected kernel tree are recorded below. Source author/date/message are retained in format-patches.
 
-Chipyard3711603c (full SHA in evidence/stage6/source-commits.json) adds a nonzero repeated-record oracle, ABI2 all-register canaries, and the actual Linux timer/unmonitored-handoff chronology. These test/checker changes do not modify the running Linux image or Rocket model. Independent public-source RTL generation/model build and all five new tests passed; Linux execution remains ongoing.
+Chipyard3711603c (full SHA in evidence/stage6/source-commits.json) adds a nonzero repeated-record oracle, ABI2 all-register canaries, and the actual Linux timer/unmonitored-handoff chronology. These test/checker changes do not modify the running Linux image or Rocket model. Independent public-source RTL generation/model build and all five new tests passed; Linux execution was ongoing at this checkpoint; see final acceptance below.
 
 Chipyard 3a31d53b10babdf476473cc7d2d682e215dc7305 adds explicit ELF-identified ABI2 record trees and the Linux B512-page source-count oracle. Checker-only; running image/model unchanged.
 
 Stage6 native scheduling follow-up: Linux `49943b80f864a41e4ac13108a77f921e013d3570` corrects the fourth-delta scratch array after the initial run exposed an overrun. Both Linux commits are retained in `0004-linux-dtlb-event.patch`. Chipyard `d954827f` carries this corrected reproduction patch; maintenance `3cff382` maps and records the fix. The independent corrected tree is `4234609f62a91906b25a741f9897f17b327bcb57`; the original image build evidence is superseded by `linux-image-build.json` for final acceptance.
+
+Stage6 native acceptance completed: actual independent Linux image, clean exit0/power-down; 70 event gates,37 lifecycle gates and176 process gates (all173 historical gates plus three additional sample assertions) passed. All29 low-level tests (24 existing plus5 new) were actual new runs, and independent model rebuild repeated the5 new tests. Source/ROM ABI1 continuity remains verified; main/tags/earlier Draft PRs are unchanged.
