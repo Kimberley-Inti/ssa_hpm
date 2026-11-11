@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "tree": "ef83a163f08c58230c0c5f39ca16052228608ba8",
+  "method": "new clean source checkout of independently public-reconstructed stage6 tree; apply only stage7 patch"
+}

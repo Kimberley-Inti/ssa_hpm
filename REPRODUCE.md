@@ -157,3 +157,13 @@ See [STAGE6.md](docs/STAGE6.md). Use SSAHPMEventRocketConfig, --event image buil
 and run, then grade-events.py. Default RocketConfig and ABI1 remain available.
 One standard40-bit HPM3 counter is reserved for accepted DTLB PTW requests;
 this is not a Spike event model or a generic perf multiplexing interface.
+
+## Stage7 full-result export
+
+Use the same stage6 hash-verified SSAHPMEventRocketConfig model. After installing
+the current patch/suite set, build `ssa/linux/build-a.py --export` into a NEW
+workspace, then `ssa/linux/run-exec.py --export` into a NEW result directory.
+It chains the actual41/2/0/open-frame fixture and unchanged stage6/5/4 suites.
+`export_results.py` writes versioned JSON; `test_export_results.py` separately
+checks host-only faults/capacity. Commands and cached-build distinctions are in
+[STAGE7.md](docs/STAGE7.md); no stage7 Rocket/OpenSBI source change is required.

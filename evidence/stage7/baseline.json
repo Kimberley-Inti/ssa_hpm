@@ -1,0 +1,38 @@
+{
+  "maintenance": {
+    "path": "/home/lxf/ssa_hpm",
+    "head": "1c48e93b0055e92a565eb455a057c1e45618d81c",
+    "branch": "stage6-hpm-event-attribution",
+    "status": "",
+    "remotes": "origin\thttps://github.com/Kimberley-Inti/ssa_hpm.git (fetch)\norigin\thttps://github.com/Kimberley-Inti/ssa_hpm.git (push)"
+  },
+  "chipyard": {
+    "path": "/home/lxf/chipyard",
+    "head": "d954827faca21a1534ac89db748896f0c319c559",
+    "branch": "stage6-hpm-event-attribution",
+    "status": "M toolchains/libgloss\n M toolchains/riscv-tools/riscv-isa-sim\n M toolchains/riscv-tools/riscv-pk\n M toolchains/riscv-tools/riscv-tests\n M tools/api-config-chipsalliance\n?? ssa_firmware/\n?? tests/ssa_microcode.S\n?? tests/ssa_rom_scala.txt\n?? tests/test_ssa.c",
+    "remotes": "github-authenticated\thttps://github.com/Kimberley-Inti/SSA-HPM.git (fetch)\ngithub-authenticated\thttps://github.com/Kimberley-Inti/SSA-HPM.git (push)\norigin\thttps://Kimberley-Inti@github.com/Kimberley-Inti/SSA-HPM.git (fetch)\norigin\thttps://Kimberley-Inti@github.com/Kimberley-Inti/SSA-HPM.git (push)"
+  },
+  "rocket": {
+    "path": "/home/lxf/chipyard/generators/rocket-chip",
+    "head": "469bfac7de26bfbb03298787ad030898c6de24c9",
+    "branch": "stage6-hpm-event-attribution",
+    "status": "",
+    "remotes": "github-authenticated\thttps://github.com/Kimberley-Inti/rocket-chip.git (fetch)\ngithub-authenticated\thttps://github.com/Kimberley-Inti/rocket-chip.git (push)\nmy-fork\thttps://Kimberley-Inti@github.com/Kimberley-Inti/rocket-chip.git (fetch)\nmy-fork\thttps://Kimberley-Inti@github.com/Kimberley-Inti/rocket-chip.git (push)\norigin\thttps://github.com/Kimberley-Inti/rocket-chip.git (fetch)\norigin\thttps://github.com/Kimberley-Inti/rocket-chip.git (push)"
+  },
+  "linux": {
+    "path": "/home/lxf/ssa-linux-src/linux",
+    "head": "49943b80f864a41e4ac13108a77f921e013d3570",
+    "branch": "stage6-hpm-event-attribution",
+    "status": "",
+    "remotes": "origin\thttps://github.com/firesim/linux.git (fetch)\norigin\thttps://github.com/firesim/linux.git (push)"
+  },
+  "opensbi": {
+    "path": "/home/lxf/ssa-linux-src/opensbi",
+    "head": "34520a712309790d3e9a005194b763467b980fdb",
+    "branch": "stage6-hpm-event-attribution",
+    "status": "",
+    "remotes": "origin\thttps://github.com/riscv/opensbi.git (fetch)\norigin\thttps://github.com/riscv/opensbi.git (push)"
+  },
+  "supplied_maintenance_sha_note": "User text omitted one hex digit; verified local/GitHub source is 1c48e93b0055e92a565eb455a057c1e45618d81c"
+}

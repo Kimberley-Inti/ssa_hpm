@@ -120,3 +120,9 @@ Stage5 development: [Linux exec lifecycle](docs/STAGE5.md). Success exec, ENOENT
 
 Stage6 development: [one real DTLB request event](docs/STAGE6.md). RTL source/context/reuse/negative/wrap/ABI2 checks and actual Linux event,
 scheduling, exec and exit acceptance passed. All70 event gates,37 lifecycle gates and176 process checks passed (including all173 historical process gates).
+
+Stage7 development: [complete frozen result export](docs/STAGE7.md),
+[format and lifecycle](docs/EXPORT.md), and the project-wide
+[requirements/acceptance checklist](docs/ACCEPTANCE.md). The native Linux run is
+in progress; host protocol and independent kernel build checks alone do not
+constitute hardware acceptance.

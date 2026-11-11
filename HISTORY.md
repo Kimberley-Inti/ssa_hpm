@@ -235,3 +235,15 @@ Chipyard 3a31d53b10babdf476473cc7d2d682e215dc7305 adds explicit ELF-identified A
 Stage6 native scheduling follow-up: Linux `49943b80f864a41e4ac13108a77f921e013d3570` corrects the fourth-delta scratch array after the initial run exposed an overrun. Both Linux commits are retained in `0004-linux-dtlb-event.patch`. Chipyard `d954827f` carries this corrected reproduction patch; maintenance `3cff382` maps and records the fix. The independent corrected tree is `4234609f62a91906b25a741f9897f17b327bcb57`; the original image build evidence is superseded by `linux-image-build.json` for final acceptance.
 
 Stage6 native acceptance completed: actual independent Linux image, clean exit0/power-down; 70 event gates,37 lifecycle gates and176 process gates (all173 historical gates plus three additional sample assertions) passed. All29 low-level tests (24 existing plus5 new) were actual new runs, and independent model rebuild repeated the5 new tests. Source/ROM ABI1 continuity remains verified; main/tags/earlier Draft PRs are unchanged.
+
+## Stage7 result export (from accepted stage6)
+
+Actual maintenance baseline `1c48e93b0055e92a565eb455a057c1e45618d81c`; PR5 remains Draft/Open against stage5. User's supplied SHA had one missing digit; local and remote branch agree on the full SHA above.
+
+Linux `49943b80f864a41e4ac13108a77f921e013d3570` → `b92b11252f5b9a5ce2a3c33298fa3b8bef93c836` removes the32-record export/completeness limit, snapshots on STOP, reads frozen current-task chunks of16, emits versioned metadata/checksums/status and releases only after terminal export. New op5 exports STOPPED state once without releasing; later exit/exec releases it. Both author/date/message and source diff are retained in linux patch0005.
+
+Chipyard `d954827faca21a1534ac89db748896f0c319c559` → `b4d90067` carries the Linux patch,41/2/0/open-frame fixture, host parser and fault tests, ABI and versioned build/run/check entry. Source full SHAs/tree hashes are in evidence/stage7/source-commits.json. Rocket `469bfac7de26bfbb03298787ad030898c6de24c9` and OpenSBI `34520a712309790d3e9a005194b763467b980fdb` are unchanged; no RTL rebuild is claimed.
+
+The project acceptance matrix (docs/ACCEPTANCE.md) distinguishes original core requirements, adopted single-hart Linux adaptations, deferred original data-flow objectives and optional extensions. Public-source independent kernel/firmware build and36 host checks passed at this checkpoint; native Linux validation remains running.
+
+Chipyard `a96ebf15` strengthens the host-only session-boundary oracle by rejecting injected foreign payloads;36 host checks pass. It does not change the already built/running image or the reused Rocket model.

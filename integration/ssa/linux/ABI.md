@@ -36,10 +36,11 @@ No PID, physical address, virtual address, user mapping or record pointer is acc
 
 | op | Arguments | Result |
 | --- | --- | --- |
-| 1 START | flags0/1 ABI1, flags2/3 ABI2 normal/legacy; role0..2/test0..10 diagnostic labels | 0, or negative errno |
+| 1 START | flags0/1 ABI1, flags2/3 ABI2 normal/legacy; role0..2/test0..14 diagnostic labels | 0, or negative errno |
 | 2 STOP | other arguments0 | number of allocated records; rejects open/spilled frames |
 | 3 STATUS | other arguments0 | 0 only if current task has no descriptor and selector0; diagnostic for the unmonitored parent/new image |
 | 4 QUERY | other arguments0 | current RUNNING task's open depth; logs identity/depth/next_id without accepting a pointer |
+| 5 EXPORT | other arguments0, current STOPPED descriptor | emit version1 stream once, return0; EBUSY running, EALREADY repeated, EINVAL absent/nonzero args, EIO terminal read failure |
 
 There are two concurrent pool slots. START returns EBUSY for an existing descriptor
 or no available slot; invalid labels/flags return EINVAL, allocation failure ENOMEM,
@@ -71,9 +72,11 @@ The retained microcode ABI is:
 | dictionary | 262144 u32 buckets immediately below stack; starts base-1065024 |
 | records | 262144 entries of128B starting base-37748736; record0 reserved |
 
-Only metadata/dictionary/stack and a bounded record window are mapped into the
-kernel. They are not mapped into user processes. Kernel export is complete only
-with closed frames, zero spill/allocation error and at most32 allocated records.
+Metadata/dictionary/stack and an8KiB proof window are retained; export maps/copies
+at most16 records (2KiB) per chunk through the entire262143 usable-ID capacity.
+Pools are never user-mapped. Complete transport and complete activations are
+separate: all allocated records can be exported with an incomplete status for
+open frames, spill, allocation errors or monitor state errors.
 Abrupt exit with open frames is marked incomplete; unwinding is not implemented.
 
 ## Counts and evidence
@@ -120,7 +123,9 @@ identity. The post-exec_mmap hook in flush_old_exec runs after the old address
 space cannot return, before the new image enters userspace. It samples cutoff
 counters, clears the selector and freezes the descriptor, emits SSA_SESSION and
 bounded SSA_EXPORT/SSA_RECORD data, then SSA_OPEN for any abandoned frames and
-SSA_EXEC_END. With interrupts masked it releases the slot, detaches the descriptor and frees it. Export
+SSA_EXEC_END. Stage7 additionally emits versioned chunk framing and explicit
+release. Only freeze/release transitions mask IRQs; mapping/output run with IRQs
+enabled and the descriptor remains STOPPED and owned until terminal export. Export
 is once per session; later new-image exit cannot export the old descriptor.
 
 Unfinished activations are not fabricated as normal returns and add no partial
@@ -135,7 +140,9 @@ exec_mmap and changes neither descriptor nor frame/session identity. Failures
 after the commit point can kill the task and are not claimed to return safely.
 Counter rebasing and stage4 S/R boundaries are unchanged; cutoff values are
 diagnostics, not partial open-frame totals. Multithreaded/setuid exec, signal
-handler exec and complete-capacity export remain unverified.
+handler exec and full-capacity runtime stress remain unverified. Stage7 removes
+the32-record limit; actual41-record acceptance and host capacity boundaries are
+reported separately.
 
 ## Optional DTLB request profile (stage6, ABI2)
 
@@ -147,7 +154,7 @@ The minimal kernel does not share this counter with perf or another selector.
 
 START flags bit1 enables ABI2; bit0 retains the legacy no-rebase negative control.
 Thus flags0/1 retain ABI1 and flags2/3 select ABI2 normal/legacy. Diagnostic labels
-now allow0..10. Unsupported hardware rejects bit1 with ENODEV before allocation.
+now allow0..14. Unsupported hardware rejects bit1 with ENODEV before allocation.
 CSR0x5c0 bit1 selects the extended SCCodeTable, latched on each private invocation;
 bit0 retains the user-notification policy. The original104-instruction ABI1 ROM
 is byte-identical; ABI2 adds a fourth sample/update. Opt-in ABI2 instruction
@@ -196,3 +203,23 @@ exec and exit clear bit1 as well as the selector. Committed exec exports the old
 ABI2 session once, marks open frames abandoned without partial totals, releases
 its slot and detaches it. The replacement starts unmonitored, then explicitly
 STARTs a fresh session. Pre-commit ENOENT retains all four snapshots/session/tree.
+
+## Versioned complete results (stage7)
+
+STOP now preserves its cutoff snapshot. op5 exports a STOPPED current-task session
+once and retains its descriptor/pool until exec or exit; repeated op5 returns
+EALREADY. Without op5, exit or committed exec automatically exports first. The
+new stream version1 encloses the existing ABI1/ABI2 record rows in numbered
+16-record chunks with counts and64-bit word checksums. Counter names, widths,
+selector, total, session, image, status, per-record open counts and abandoned frame
+IDs are explicit. SSA_XEND is authoritative for transfer completeness and
+SSA_XRELEASE precedes actual pool reuse. No remote PID/address/cursor is accepted;
+internal read_chunk validates current ownership and frozen bounds. See the
+maintenance repository docs/EXPORT.md and docs/ACCEPTANCE.md.
+
+Host export_results.py rejects missing/duplicate/truncated/corrupt streams, writes
+explicit partial JSON on errors and can print a bounded call-tree summary. Old
+pre-v1 logs use the unchanged historical graders; no synthetic hashes are added.
+This does not change inclusive counting, paused interval exclusion or40-bit DTLB
+occurrence-interval semantics. Allocation exhaustion is status4, not silent loss;
+full-capacity execution is distinct from the host-tested capacity arithmetic.
