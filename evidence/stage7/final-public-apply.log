@@ -1,0 +1,19 @@
+FETCH https://github.com/ucb-bar/chipyard.git 2d03d10837fc1a7569d10ae2c91c8132c7fee77d
+FETCH https://github.com/chipsalliance/rocket-chip.git 44b0b8249279d25bd75ea693b725d9ff1b96e2ab
+APPLY patches/chipyard/0001-constellation-dependency.patch
+APPLY patches/chipyard/0002-fesvr-verilator-build.patch
+APPLY patches/chipyard/0003-dtlb-hpm-config.patch
+APPLY patches/rocket-chip/0001-9c6d44169.patch
+APPLY patches/rocket-chip/0002-1543ea544.patch
+APPLY patches/rocket-chip/0003-1f200edb0.patch
+APPLY patches/rocket-chip/0004-d047a8548.patch
+APPLY patches/rocket-chip/0005-07a9c3fa8.patch
+APPLY patches/rocket-chip/0006-23f5a64f6.patch
+APPLY patches/rocket-chip/0007-539c3b10f.patch
+APPLY patches/rocket-chip/0008-986407bc6.patch
+APPLY patches/rocket-chip/0009-trap-context-isolation.patch
+APPLY patches/rocket-chip/0010-sv39-pc-width.patch
+APPLY patches/rocket-chip/0011-linux-user-pool-privileges.patch
+APPLY patches/rocket-chip/0012-dtlb-request-attribution.patch
+PASS: public baseline fetch, clean patch application, exact accepted source hashes, ROM check
+Workspace: /tmp/ssa-hpm-stage7/final-public-apply

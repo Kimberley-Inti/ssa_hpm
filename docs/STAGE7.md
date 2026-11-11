@@ -89,3 +89,22 @@ checkpoint, not yet the entire Linux/regression acceptance. The initial missing
 END was from live incomplete input. Exit143 belonged only to the intentionally
 restarted old monitor (session16333); native PID301709 remained running.
 Evidence: evidence/stage7/first41/ and monitor-restart.json.
+
+## Four-case native checkpoint
+
+The new fixture completed all four real children and emitted its suite END.
+23 export-specific gates passed:41/2/0 records, explicit STOP/export/repeat and
+busy behavior, one abandoned parent with a closed child, exactELF identities,
+all record/chunk hashes and release-before-reuse. Parsed sessions1/2/3 are
+semantically complete; session4 has status1(open), records_complete1 and
+complete=false. Every pool was released. The frozen-prefix checkpoint deliberately
+uses exit-code-1: overall power-down and old-suite regression are pending, not
+failed hardware cases or final acceptance. Its25-gate precheck has exactly those
+two pending gates; see evidence/stage7/export-fixture/.
+
+The chained original lifecycle payload lives at /lifecycle. Historical graders
+use the logical init role, so grade-export remaps that role to the actual
+/lifecycle ELF only for delegated old checks; new /init remains the export
+fixture. Exact archived-stage6 /init hash/symbol equality was verified. A historical
+log check reproduced two wrong-role tree failures before mapping and all70/37/176
+passes after mapping. This is an oracle correction, not another Linux execution.

@@ -1,0 +1,11 @@
+{
+  "valid": true,
+  "sessions": 1,
+  "records": 41,
+  "errors": []
+}
+session 1 reason exit complete True
+1 @10696 instret=4733 dtlb=2
+  2 @10506 instret=46 dtlb=0
+  3 @10510 instret=23 dtlb=0
+  4 @1051a instret=23 dtlb=0
