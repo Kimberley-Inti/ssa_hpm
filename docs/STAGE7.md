@@ -122,3 +122,13 @@ resume the runner after child exit to reap the actual kernel exit status. A
 separate real subprocess.run host check verified that sequence; any actual action
 is recorded in timeout-protection.json, never presented as a native failure or
 a second simulation. At this checkpoint no extension action has occurred.
+
+## Actual lifecycle checkpoint
+
+The same native boot completed original success/ENOENT/replacement-exit cases.
+35 lifecycle-specific gates pass; only final shutdown and later stage4 regression
+remain pending in its37-gate summary. PID18 old/new sessions5/6 have image2/3,
+closed leaf3318/6618, old abandoned parent and new closed tree; both terminal
+checksums and pool releases parsed correctly. Failed exec session7 preserves
+its old tree and returns normally. These are new native results, not the earlier
+archived-log role-map oracle check. See evidence/stage7/lifecycle-checkpoint/.
