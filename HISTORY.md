@@ -247,3 +247,5 @@ Chipyard `d954827faca21a1534ac89db748896f0c319c559` → `b4d90067` carries the L
 The project acceptance matrix (docs/ACCEPTANCE.md) distinguishes original core requirements, adopted single-hart Linux adaptations, deferred original data-flow objectives and optional extensions. Public-source independent kernel/firmware build and36 host checks passed at this checkpoint; native Linux validation remains running.
 
 Chipyard `a96ebf15` strengthens the host-only session-boundary oracle by rejecting injected foreign payloads;36 host checks pass. It does not change the already built/running image or the reused Rocket model.
+
+A new public Chipyard/Rocket fetch/application matched the final stage7 source manifest and both ROM banks. Its installed suite passed36 host tests; recompiling all7 userspace ELFs there reproduced exactly the hashes of the running independent image payloads. These are actual fresh checks; the native Linux execution remains pending.

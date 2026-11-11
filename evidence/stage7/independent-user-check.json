@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "method": "recompile all7 freestanding ELFs from installed independent suite; exact hashes equal image payloads",
+  "hashes": {
+    "init": "c349c205b0fb6144c577a32d51dc196eca96c6dffb015533ee7df4e6d39d19a7",
+    "lifecycle": "1eb902eec7b127c373fc81d7f0c7c219a7223ecbd5288d8144bc323ab0f7434f",
+    "next": "cc3fd8ca092e17fa8ebdc998e4a85b8e78a91bef8f4eb86f31e74636168b7c30",
+    "regress": "0508242f54803f9b2f86120b31785fff01b27c1db38c37bedffdbcb5cad75d7f",
+    "events": "8659713cd726d150c3034d0f120b395af5c4763e81ddbf30159d8d0f1300d663",
+    "eventexec": "282bc10a2913ab9a55435e5ff8654546e19c8818d24e25f0a7b109b0f49d0708",
+    "eventnext": "50de09eb203db82aee435fb90f9623bc286a370e32e38c3d173566e899b4af7f"
+  }
+}
