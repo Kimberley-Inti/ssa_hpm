@@ -44,7 +44,7 @@ python3 ssa/linux/build-progress.py --workspace "$PWD" \
 python3 ssa/linux/build-a.py --export --work /tmp/ssa-export-linux --jobs 6
 python3 ssa/linux/run-exec.py --export --work /tmp/ssa-export-linux \
   --simulator /tmp/ssa-export-model/simulator-progress \
-  --out-dir /tmp/ssa-export-results --timeout 43200
+  --out-dir /tmp/ssa-export-results --timeout 172800
 python3 ssa/linux/export_results.py /tmp/ssa-export-results/rocket-linux-events.txt \
   --out /tmp/ssa-export-results/monitoring.json --tree-limit 64
 python3 ssa/linux/test_export_results.py --out /tmp/ssa-export-host.json
@@ -108,3 +108,17 @@ use the logical init role, so grade-export remaps that role to the actual
 fixture. Exact archived-stage6 /init hash/symbol equality was verified. A historical
 log check reproduced two wrong-role tree failures before mapping and all70/37/176
 passes after mapping. This is an oracle correction, not another Linux execution.
+
+## Host runtime budget
+
+The current VM run exceeded7h before the full chained suite completed. New
+--export runs default to172800 host seconds (48h); an explicit --timeout overrides
+it. Legacy modes retain21600. This changes only host supervision, not target
+cycles or counters. The running image/model are immutable and were not restarted.
+The already-running command initially requested43200; a narrowly scoped host
+supervisor is armed to preserve it only if that limit is approached: stop only
+the verified waiting Python runner, allow the native child to continue, then
+resume the runner after child exit to reap the actual kernel exit status. A
+separate real subprocess.run host check verified that sequence; any actual action
+is recorded in timeout-protection.json, never presented as a native failure or
+a second simulation. At this checkpoint no extension action has occurred.

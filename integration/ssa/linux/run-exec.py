@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run a pinned Linux exec fixture and the affected stage4 regression in one boot."""
 import argparse,hashlib,json,pathlib,subprocess,time
-p=argparse.ArgumentParser();p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--simulator',type=pathlib.Path,required=True);p.add_argument('--out-dir',type=pathlib.Path,required=True);p.add_argument('--timeout',type=int,default=21600);a=p.parse_args();a.event=a.event or a.export_test;w=a.work.resolve();out=a.out_dir.resolve();out.mkdir(parents=True,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--simulator',type=pathlib.Path,required=True);p.add_argument('--out-dir',type=pathlib.Path,required=True);p.add_argument('--timeout',type=int,default=None);a=p.parse_args();a.timeout=a.timeout if a.timeout is not None else (172800 if a.export_test else 21600);a.event=a.event or a.export_test;w=a.work.resolve();out=a.out_dir.resolve();out.mkdir(parents=True,exist_ok=True)
 log=out/('rocket-linux-events.txt' if a.event else 'rocket-linux-exec.txt')
 if log.exists() or (out/'execution.json').exists():raise SystemExit('Refusing to overwrite an existing execution; use a new result directory')
 h=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
