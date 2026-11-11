@@ -31,7 +31,7 @@ for test,count,abi,reason in [(11,41,2,'exit'),(12,2,1,'stop'),(13,0,1,'stop'),(
 # Preserve actual boot profile and remove only the separately accepted new fixture.
 base=o/'regression';base.mkdir(exist_ok=True)
 if start>=0 and end>start:
- f=base/'console.txt';f.write_text(s[:start]+s[end+len('SSA_RESULT_EXPORT_SUITE_END'):]);code=subprocess.run(['python3',str(pathlib.Path(__file__).with_name('grade-events.py')),str(f),'--exit-code',str(a.exit_code),'--users',str(a.users),'--out-dir',str(base)]).returncode
+ f=base/'console.txt';f.write_text(s[:start]+s[end+len('SSA_RESULT_EXPORT_SUITE_END'):]);reg_users=dict(users);reg_users['init']=users['lifecycle'];regfile=base/'user-elfs.json';regfile.write_text(json.dumps(reg_users,indent=2)+'\n');code=subprocess.run(['python3',str(pathlib.Path(__file__).with_name('grade-events.py')),str(f),'--exit-code',str(a.exit_code),'--users',str(regfile),'--out-dir',str(base)]).returncode
  check('stage6_event_lifecycle_process_regression',code==0)
 else:check('stage6_event_lifecycle_process_regression',False)
 r={'passed':all(c.values()),'checks':c,'source_log':str(a.log),'results':'results.json','sessions':len(q['sessions']),'target_sessions':exports};(o/'summary.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({'passed':r['passed'],'checks':len(c),'failed':[k for k,v in c.items() if not v]},indent=2));raise SystemExit(0 if r['passed'] else 1)

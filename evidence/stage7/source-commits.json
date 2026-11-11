@@ -1,7 +1,7 @@
 {
   "chipyard": {
-    "head": "4687cdbe94a1b21e3f5ec2246fe6ebe0bf76b3c1",
-    "tree": "08404d8dd647707cc222b84f9715f286640dfa01",
+    "head": "28c03f08a9c66b30fbfe51b130a8bbada85876d1",
+    "tree": "a6022c4c598ee491cc169aa0e39c9d0efa61230c",
     "branch": "stage7-result-export"
   },
   "rocket": {
