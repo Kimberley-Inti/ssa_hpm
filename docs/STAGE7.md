@@ -76,3 +76,16 @@ Linux development tree exactly; see evidence/stage7/source-match.json.
 Source/full-SHA mapping: evidence/stage7/source-commits.json and HISTORY.md.
 The native run must have actual exit0, normal power-down, a complete versioned
 stream and all new/affected checkers passing before this stage is accepted.
+
+## Native41-record checkpoint
+
+The first real session completed with41 records,3 chunks (16/16/9), IDs1..41,
+all40 leaves parent1 and exactELF callee addresses. Repeated leaf ID2 instret46
+versus23 in other leaves proves record reuse. Header/end status0, complete1;
+END word checksum871b3b3ee92eb291. The pool release marker was captured.
+The parser accepted all chunk/end hashes, and host mutations of this real prefix
+(missing chunk, duplicate chunk, missing END) were all rejected. This is a passed
+checkpoint, not yet the entire Linux/regression acceptance. The initial missing
+END was from live incomplete input. Exit143 belonged only to the intentionally
+restarted old monitor (session16333); native PID301709 remained running.
+Evidence: evidence/stage7/first41/ and monitor-restart.json.

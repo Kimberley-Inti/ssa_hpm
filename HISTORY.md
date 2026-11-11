@@ -251,3 +251,5 @@ Chipyard `a96ebf15` strengthens the host-only session-boundary oracle by rejecti
 A new public Chipyard/Rocket fetch/application matched the final stage7 source manifest and both ROM banks. Its installed suite passed36 host tests; recompiling all7 userspace ELFs there reproduced exactly the hashes of the running independent image payloads. These are actual fresh checks; the native Linux execution remains pending.
 
 Chipyard `4687cdbe` adds optional --native-log replay and missing/duplicate/truncated mutation checks against the real completed41-record prefix. Host-only; running image/model unchanged. The independent installed validation script is refreshed after the public source reconstruction; its original compilation/source evidence remains distinct.
+
+Native stage7 checkpoint: actual41-record/3-chunk session completed and released its pool, exactIDs/ELF tree/checksums passed;36 synthetic host checks plus4 checks on actual captured-prefix/mutations passed. Remaining native cases and affected regressions are still running. Monitor exit143 is recorded separately and is not a native failure.
