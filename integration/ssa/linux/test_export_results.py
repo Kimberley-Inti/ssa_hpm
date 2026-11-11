@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Host-only protocol fault injection; not hardware-capacity execution."""
-import json,pathlib,argparse
+import json,pathlib,argparse,re,hashlib
 from export_results import parse,plan,digest,SEED,CAPACITY,CHUNK,NAMES
 
 def fixture(n=33,abi=2):
@@ -33,5 +33,18 @@ def run():
  q=parse(short);check('explicit_io_abort_parseable',q['valid'] and not q['sessions'][0]['complete'])
  q=parse(base.replace('SSA_XRELEASE session=1 pid=10 pool=123 reason=exit\n',''));check('explicit_stop_pool_can_remain_held',q['valid'] and not q['sessions'][0]['released'])
  return {'passed':all(c.values()),'coverage':'host-only fault injection and capacity arithmetic; not full-capacity RTL execution','checks':c}
+def native_tests(path):
+ from export_results import normalize
+ s=normalize(path.read_text(errors='replace'));end=re.search(r'^SSA_XRELEASE[^\n]*\n',s,re.M)
+ if not end:raise ValueError('No completed/released native export yet')
+ s=s[:end.end()];q=parse(s);checks={'native_first_export_valid':q['valid'] and len(q['sessions'])==1 and q['sessions'][0]['header']['total']==41 and q['sessions'][0]['chunks']==3 and q['sessions'][0]['released']}
+ ls=s.splitlines(True);a=next(i for i,l in enumerate(ls) if l.startswith('SSA_XCHUNK ') and 'seq=1 ' in l);b=next(i for i,l in enumerate(ls) if l.startswith('SSA_XCHUNK_END ') and 'seq=1 ' in l)+1
+ cases={'native_missing_chunk':''.join(ls[:a]+ls[b:]),'native_duplicate_chunk':''.join(ls[:b]+ls[a:b]+ls[b:]),'native_missing_END':s[:s.index('SSA_XEND ')]}
+ for name,text in cases.items():checks[name+'_detected']=not parse(text)['valid']
+ return {'passed':all(checks.values()),'coverage':'actual completed41-record native prefix regraded; negatives are host mutations, not new hardware faults','prefix_sha256':hashlib.sha256(s.encode()).hexdigest(),'checks':checks}
+
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--out',type=pathlib.Path,required=True);a=p.parse_args();q=run();a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps(q,indent=2)+'\n');print(json.dumps({'passed':q['passed'],'checks':len(q['checks']),'failed':[k for k,v in q['checks'].items() if not v]},indent=2));raise SystemExit(0 if q['passed'] else 1)
+ p=argparse.ArgumentParser();p.add_argument('--out',type=pathlib.Path,required=True);p.add_argument('--native-log',type=pathlib.Path);a=p.parse_args();q=run()
+ if a.native_log:
+  q['native']=native_tests(a.native_log);q['passed']=q['passed'] and q['native']['passed']
+ a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps(q,indent=2)+'\n');print(json.dumps({'passed':q['passed'],'checks':len(q['checks']),'failed':[k for k,v in q['checks'].items() if not v],'native':q.get('native')},indent=2));raise SystemExit(0 if q['passed'] else 1)

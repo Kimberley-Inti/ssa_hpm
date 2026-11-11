@@ -249,3 +249,5 @@ The project acceptance matrix (docs/ACCEPTANCE.md) distinguishes original core r
 Chipyard `a96ebf15` strengthens the host-only session-boundary oracle by rejecting injected foreign payloads;36 host checks pass. It does not change the already built/running image or the reused Rocket model.
 
 A new public Chipyard/Rocket fetch/application matched the final stage7 source manifest and both ROM banks. Its installed suite passed36 host tests; recompiling all7 userspace ELFs there reproduced exactly the hashes of the running independent image payloads. These are actual fresh checks; the native Linux execution remains pending.
+
+Chipyard `4687cdbe` adds optional --native-log replay and missing/duplicate/truncated mutation checks against the real completed41-record prefix. Host-only; running image/model unchanged. The independent installed validation script is refreshed after the public source reconstruction; its original compilation/source evidence remains distinct.

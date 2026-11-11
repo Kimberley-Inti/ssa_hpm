@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "d954827faca21a1534ac89db748896f0c319c559",
-    "development_delivery": "a96ebf15a6ec33042bd1ee50c384fc94b4da98ea",
+    "development_delivery": "4687cdbe94a1b21e3f5ec2246fe6ebe0bf76b3c1",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -540,7 +540,7 @@
     "ssa/linux/export-init.c": "efdeee1cb5559aef782fbf7f8ec515d64fe08b2681e3e70c86f7ae6856e79a37",
     "ssa/linux/export_results.py": "673589028e1098c5b91dad296af89b02a3a6fdebb235d146782b61dc09b8ae4d",
     "ssa/linux/grade-export.py": "d29de3b2cc6d44538e561fe815978542293b0f6c0994e7a25f0f3751c08e1eca",
-    "ssa/linux/test_export_results.py": "88e80eabd44955ba39e89f3a25c130f04822363ebc6c5ca5610eed7e340b73ac"
+    "ssa/linux/test_export_results.py": "89bc8def2d1d096419a2721a7fa98d91b067e5a7b9e5f929757fe58cdc4d5cd3"
   },
   "development_stage": {
     "name": "stage2-trap-isolation",

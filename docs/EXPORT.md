@@ -139,3 +139,15 @@ The bounded target-memory claim applies to kernel chunk buffers/mappings. The
 offline Python validator retains the input and reconstructed records in host RAM
 (O(records)), including parent/key indexes. It is not a constant-memory host
 streaming database. Target export does not depend on host-side heap capacity.
+
+After the real41-record export has completed, replay the same captured data and
+its deliberately damaged copies with:
+
+```sh
+python3 ssa/linux/test_export_results.py --native-log /path/to/rocket-linux-events.txt \
+  --out /tmp/export-real-log-negatives.json
+```
+
+These are host mutations of actual native evidence, not extra hardware failures.
+The original log is read only. Missing END during a live export remains pending,
+while missing END in a finished capture is a genuine validation error.
