@@ -96,3 +96,14 @@ events: event.hex event-selector-negative.hex event-context-negative.hex event-w
 event-abi.riscv: start.S test.c abi.S test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DABI -DEVENT_ABI start.S test.c abi.S -o $@
 events: event-abi.hex
+
+cache.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCACHE_EVENT event_start.S events.c -o $@
+cache-selector-negative.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCACHE_EVENT -DWRONG_SELECTOR event_start.S events.c -o $@
+cache-context-negative.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCACHE_EVENT -DSWAP_CONTEXT event_start.S events.c -o $@
+cache-wrap.riscv: event_start.S events.c test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCACHE_EVENT -DCOUNTER_WRAP event_start.S events.c -o $@
+.PHONY: cache-events
+cache-events: cache.hex cache-selector-negative.hex cache-context-negative.hex cache-wrap.hex

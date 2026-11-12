@@ -1,6 +1,13 @@
 #include <stdint.h>
 #include <stddef.h>
 #define BASE 0x88000000UL
+#ifdef CACHE_EVENT
+#define EVENT_FIELD " cache="
+#define EVENT_SELECTOR 0x202
+#else
+#define EVENT_FIELD " dtlb="
+#define EVENT_SELECTOR 0x1002
+#endif
 #define RECORDS ((volatile Record *)(BASE - 36UL*1024*1024))
 #define DICT ((volatile uint32_t *)(BASE - 1065024))
 #define META ((volatile uint64_t *)(BASE - 64))
@@ -72,14 +79,17 @@ static void supervisor(void){
  uint64_t lo=RECORDS[2].reserved[0],hi=RECORDS[4].reserved[0];
  print("SSA_EVENT_GLOBAL before=");number(a);print(" warm=");number(b);print(" mid=");number(mid);print(" cold=");number(c);print("\n");
  for(uint64_t i=1;i<META[1];i++){
-  print("SSA_EVENT_RECORD id=");number(i);print(" parent=");number(RECORDS[i].parent);print(" callee=");number(RECORDS[i].callee);print(" dtlb=");number(RECORDS[i].reserved[0]);print("\n");
+  print("SSA_EVENT_RECORD id=");number(i);print(" parent=");number(RECORDS[i].parent);print(" callee=");number(RECORDS[i].callee);print(EVENT_FIELD);number(RECORDS[i].reserved[0]);print("\n");
  }
  uint64_t mask=(1UL<<40)-1;
  int ok=META[0]==0 && META[1]==5 && lo<=6 && hi>=100 && hi<=270 && ((c-b)&mask)>=hi && ((c-b)&mask)<=hi+8 && RECORDS[1].reserved[0]>=lo && RECORDS[3].reserved[0]>=hi;
+#ifdef CACHE_EVENT
+ ok=META[0]==0 && META[1]==5 && hi>=128 && hi>lo+64 && ((c-b)&mask)>=hi && ((c-b)&mask)<hi+128 && RECORDS[1].reserved[0]>=lo && RECORDS[3].reserved[0]>=hi;
+#endif
 #ifdef COUNTER_WRAP
  ok=ok && c<a;
 #endif
- print(ok?"SSA PASS: DTLB request source, parent contexts, interval boundary\n":"SSA NEGATIVE: wrong selector or swapped contexts detected\n");
+ print(ok?"SSA PASS: selected event source, parent contexts, interval boundary\n":"SSA NEGATIVE: wrong selector or swapped contexts detected\n");
  register unsigned long a0 asm("a0")=ok?0:42;asm volatile("ecall"::"r"(a0));__builtin_unreachable();
 }
 int main(void){
@@ -92,10 +102,15 @@ int main(void){
 #ifdef WRONG_SELECTOR
  unsigned long sel=0;
 #else
- unsigned long sel=0x1002;
+ unsigned long sel=EVENT_SELECTOR;
 #endif
 #ifdef COUNTER_WRAP
- unsigned long initial=(1UL<<40)-8;
+ unsigned long initial=(1UL<<40)-
+#ifdef CACHE_EVENT
+ 128;
+#else
+ 8;
+#endif
 #else
  unsigned long initial=0;
 #endif

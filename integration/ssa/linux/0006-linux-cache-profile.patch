@@ -1,0 +1,64 @@
+From 275125fabacde9e83f4bff6863bf25012537e0ed Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Thu, 12 Nov 2026 13:59:44 +0800
+Subject: [PATCH] Describe a fixed Cache profile in ABI2 frozen session exports
+
+---
+ kernel/ssa_hpm.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 6972e3481..8a40c4dcf 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -44,6 +44,15 @@ static u64 next_session;
+ static volatile u64 *meta(struct ssa_pool *p){return (void *)((char *)p->top+TOP_SIZE-64);}
+ static volatile u64 *frame(struct ssa_pool *p,u64 n){return (void *)((char *)meta(p)-n*64);}
+ #define EVENT_MASK ((1ULL<<40)-1)
++#ifdef SSA_CACHE_PROFILE
++#define HPM_SELECTOR 514U
++#define HPM_NAME "dcache_a_transactions"
++#define HPM_FIELD "cache"
++#else
++#define HPM_SELECTOR 4098U
++#define HPM_NAME "dtlb_accepted_ptw_requests"
++#define HPM_FIELD "dtlb"
++#endif
+ static unsigned int nr(struct ssa_hpm_state *p){return p->event?4:3;}
+ static void sample(u64 *v,bool event){
+  asm volatile("fence rw,rw; csrr %0,cycle; csrr %1,instret; csrr %2,time"
+@@ -115,7 +124,7 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+   memset((void *)meta(p->pool),0,64);WRITE_ONCE(meta(p->pool)[1],1);
+   current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base,p->event);
+   pr_emerg("SSA_BEGIN pid=%d session=%llu image=%llu pool=%lu depth=%llu next=%llu selector=%lu\n",current->pid,p->session,p->image_id,p->pool->base,READ_ONCE(meta(p->pool)[0]),READ_ONCE(meta(p->pool)[1]),selected());
+-  if(p->event)pr_emerg("SSA_EVENT_BEGIN pid=%d session=%llu abi=2 selector=4098 width=40 depth=0 next=1\n",current->pid,p->session);
++  if(p->event)pr_emerg("SSA_EVENT_BEGIN pid=%d session=%llu abi=2 selector=%u width=40 depth=0 next=1 profile=%s\n",current->pid,p->session,HPM_SELECTOR,HPM_NAME);
+   local_irq_restore(irq);return 0;
+  }
+  if(flags || role || test)return -EINVAL;
+@@ -190,10 +199,10 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+   pr_emerg("SSA_SWITCH pid=%d test=%u role=%u event=%u to=%d from=%d depth=%llu rid=%llu state=%lu ivcsw=%lu cause=%016llx csr_cause=%016llx resumed=%u preempt=%u session=%llu\n",t->pid,p->test,p->role,i,e->other,e->from,e->depth,e->rid,e->task_state,e->nivcsw,e->cause,e->csr_cause,e->resumed,e->preempt,p->session);
+   for(j=0;j<nr(p);j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx session=%llu\n",t->pid,i,j,e->s[j],e->r[j],(e->r[j]-e->s[j])&(j==3?EVENT_MASK:~0ULL),p->session);
+  }
+- pr_emerg("SSA_XBEGIN version=1 session=%llu pid=%d image=%llu abi=%u total=%llu capacity=%u chunk=%u counters=%u reason=%s pool=%lu next=%llu depth=%llu spill=%llu errors=%llu status=%u legacy=%u policy=%s\n",p->session,t->pid,p->image_id,p->event?2:1,total,RECORD_SLOTS-1,EXPORT_CHUNK,nr(p),reason,p->pool->base,next,depth,spill,errors,status,p->legacy,p->legacy?"interval_inclusive_no_rebase":"interval_inclusive_pause_rebase");
++ pr_emerg("SSA_XBEGIN version=1 session=%llu pid=%d image=%llu abi=%u total=%llu capacity=%u chunk=%u counters=%u reason=%s pool=%lu next=%llu depth=%llu spill=%llu errors=%llu status=%u legacy=%u policy=%s profile=%s\n",p->session,t->pid,p->image_id,p->event?2:1,total,RECORD_SLOTS-1,EXPORT_CHUNK,nr(p),reason,p->pool->base,next,depth,spill,errors,status,p->legacy,p->legacy?"interval_inclusive_no_rebase":"interval_inclusive_pause_rebase",p->event?HPM_NAME:"base");
+  for(j=0;j<nr(p);j++){
+-  static const char *names[]={"cycle","instret","time","dtlb_accepted_ptw_requests"};
+-  pr_emerg("SSA_XCOUNTER session=%llu index=%u name=%s width=%u selector=%u\n",p->session,j,names[j],j==3?40:64,j==3?4098:0);
++  static const char *names[]={"cycle","instret","time",HPM_NAME};
++  pr_emerg("SSA_XCOUNTER session=%llu index=%u name=%s width=%u selector=%u\n",p->session,j,names[j],j==3?40:64,j==3?HPM_SELECTOR:0);
+  }
+  if(total)buf=kmalloc_array(EXPORT_CHUNK,sizeof(*buf),GFP_KERNEL);
+  if(total && !buf)status|=XS_IO;
+@@ -205,7 +214,7 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+    struct ssa_record *r=&buf[k];u64 id=first+k;unsigned int open=0;
+    for(i=0;i<depth && i<256;i++)if(open_ids[i]==id)open++;
+    pr_emerg("SSA_RECORD pid=%d id=%llu callee=%016llx parent=%llu cycle=%llu instret=%llu time=%llu session=%llu open=%u\n",t->pid,id,r->callee,r->parent,r->count[0],r->count[1],r->count[2],p->session,open);
+-   if(p->event)pr_emerg("SSA_EVENT_RECORD pid=%d session=%llu id=%llu parent=%llu callee=%016llx dtlb=%llu open=%u\n",t->pid,p->session,id,r->parent,r->callee,r->reserved[0],open);
++   if(p->event)pr_emerg("SSA_EVENT_RECORD pid=%d session=%llu id=%llu parent=%llu callee=%016llx " HPM_FIELD "=%llu open=%u\n",t->pid,p->session,id,r->parent,r->callee,r->reserved[0],open);
+    {u64 words[]={id,r->parent,r->callee,r->count[0],r->count[1],r->count[2],p->event?r->reserved[0]:0,open};
+     for(j=0;j<ARRAY_SIZE(words);j++){h=export_hash(h,words[j]);allhash=export_hash(allhash,words[j]);}}
+   }
+-- 
+2.34.1
+

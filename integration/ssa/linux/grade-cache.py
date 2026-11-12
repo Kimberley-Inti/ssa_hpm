@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Directed real Cache Linux acceptance, retaining version1 export oracles."""
+import argparse,json,pathlib,subprocess
+from export_results import parse,normalize
+p=argparse.ArgumentParser();p.add_argument('log',type=pathlib.Path);p.add_argument('--exit-code',required=True,type=int);p.add_argument('--users',required=True,type=pathlib.Path);p.add_argument('--out-dir',required=True,type=pathlib.Path);a=p.parse_args();o=a.out_dir;o.mkdir(parents=True,exist_ok=True);src=pathlib.Path(__file__).parent
+u=json.loads(a.users.read_text());u['events']=u['init'];roles=o/'event-user-roles.json';roles.write_text(json.dumps(u,indent=2)+'\n');cmds=[]
+for script,extra,users,out in [('grade-events.py',['--profile','cache','--no-baseline'],roles,o/'event'),('grade-export.py',['--fixture-role','regress','--no-regression'],a.users,o/'export')]:
+ cmd=['python3',str(src/script),str(a.log),'--exit-code',str(a.exit_code),'--users',str(users),'--out-dir',str(out),*extra];r=subprocess.run(cmd);cmds.append({'command':cmd,'exit_code':r.returncode})
+q=parse(a.log.read_text());(o/'results.json').write_text(json.dumps(q,indent=2)+'\n');checks={'real_cache_event_and_lifecycle':cmds[0]['exit_code']==0,'complete_export_fixture':cmds[1]['exit_code']==0,'twelve_owned_sessions':q['valid'] and len(q['sessions'])==12 and all(s['released'] for s in q['sessions']),'configured_profile_identified':q['valid'] and all(s['header']['profile']==('dcache_a_transactions' if s['header']['abi']==2 else 'base') for s in q['sessions'])};r={'passed':all(checks.values()),'scope':'one actual singlehart Rocket Linux Cache boot; directed timer/exec/export, not another complete historical stage4 run','checks':checks,'dependencies':cmds,'sessions':len(q['sessions']),'records':sum(len(s['records']) for s in q['sessions'])};(o/'summary.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2));raise SystemExit(0 if r['passed'] else 1)

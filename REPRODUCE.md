@@ -175,3 +175,11 @@ replay uses the same raw run; it is not a second native simulation. Fresh --expo
 runs default to172800 host seconds; the actual long run's original43200 limit
 was preserved using the separately audited runner-only pause/resume protocol.
 For a cheap committed-log recheck, use the two commands at the end of STAGE7.md.
+
+## Stage8 fixed Cache profile
+
+Use `build-a.py --cache` and `run-exec.py --cache` with SSAHPMEventRocketConfig;
+see docs/STAGE8.md for exact build, RTL/source oracle and Linux commands. Public
+patch order adds Rocket0013, Linux0006 after0005, and OpenSBI0003 after0002.
+The builder applies both kernel/firmware profile flags together; default builds
+retain DTLB. Data-stream metadata distinguishes the profiles within memory ABI2.

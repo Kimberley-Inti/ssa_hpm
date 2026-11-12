@@ -1,0 +1,42 @@
+From bccfc47a4aecbef59aa4d4c73f15159b78ab123c Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Thu, 12 Nov 2026 14:11:23 +0800
+Subject: [PATCH] Trace native D-cache HPM source and actual counter CSR
+ sampling
+
+---
+ src/main/scala/rocket/RocketCore.scala | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/src/main/scala/rocket/RocketCore.scala b/src/main/scala/rocket/RocketCore.scala
+index 380a8ed7b..dbd98c9e3 100644
+--- a/src/main/scala/rocket/RocketCore.scala
++++ b/src/main/scala/rocket/RocketCore.scala
+@@ -1264,6 +1264,24 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+           csr.io.counters(0).eventSel, ssa_trap_mode)
+       }
+     }
++    // Native D$ miss EventSet entry counts completed outbound TL A transactions.
++    // This read-only trace does not create/filter the event or alter the selector.
++    if (nPerfCounters > 0) {
++      when (PlusArg("ssa_cache_trace", default = 0).orR &&
++        (io.dmem.perf.acquire || csr.io.counters(0).inc.orR)) {
++        printf("SSA_CACHE_EDGE cyc=%x src=%d inc=%d sel=%x private=%d\n",
++          csr.io.time, io.dmem.perf.acquire, csr.io.counters(0).inc,
++          csr.io.counters(0).eventSel, ssa_trap_mode)
++      }
++    }
++    when (PlusArg("ssa_cache_trace", default = 0).orR && csr.io.rw.cmd =/= CSR.N) {
++      when (csr.io.rw.addr === 0xb03.U && csr.io.rw.cmd === CSR.W) {
++        printf("SSA_CACHE_RESET cyc=%x value=%x\n", csr.io.time, csr.io.rw.wdata)
++      }
++      when (csr.io.rw.addr === 0xc03.U) {
++        printf("SSA_CACHE_SAMPLE cyc=%x value=%x\n", csr.io.time, csr.io.rw.rdata)
++      }
++    }
+     csr.io.counters foreach { c => c.inc := RegNext(perfEvents.evaluate(c.eventSel)) }
+ 
+     val coreMonitorBundle = Wire(new CoreMonitorBundle(xLen, fLen))
+-- 
+2.34.1
+

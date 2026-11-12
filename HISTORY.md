@@ -281,3 +281,15 @@ Final evidence/requirements decision is in evidence/stage7/summary.json and
 docs/ACCEPTANCE.md. The final maintenance evidence commit continues the existing
 stage7-result-export history and updates Draft PR6 against stage6; main, tags and
 earlier PR branches remain unchanged.
+
+## Stage8 fixed Cache profile (from accepted stage7)
+
+Maintenance starts at2c63845c4bd262594f6d5ed0e4fc12773957d833; PR6 is retained
+Draft/Open. Linux275125fab adds fixed-profile export metadata without altering
+pool ownership/rebase logic; OpenSBI43f02ff selects native0x202 only under the
+matching opt-in build flag. Rocketbccfc47a4 adds read-only Cache source/reset/CSR
+traces, keeping EventSet and ROM semantics unchanged; patch0013. Chipyard4cc1b033
+carries profile patches, explicit host parsing, source/negative/wrap oracles and
+a directed Cache/Linux event/exec/export fixture. Full SHAs and source trees are
+in evidence/stage8/source-commits.json; format-patches preserve authors/messages.
+Implementation checkpoint only: Cache RTL/Linux acceptance is still pending.

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "scope": "New stage8 parser/shared graders on accepted archived stage7 native log; no new Linux run",
+  "source_log": "evidence/stage7/linux/rocket-linux-events.txt",
+  "sha256": "17f30d2231bb10d9bf584fedb550c3c416c23e5a1f6d7e132fb1b7f0951aaa68"
+}

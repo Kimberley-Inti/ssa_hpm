@@ -127,3 +127,7 @@ Stage7 accepted: [complete frozen result export](docs/STAGE7.md),
 exported41 records in3 chunks; the full boot passed25 export,70 event,37 exec
 and179 process checks and shut down with exit0. All24 sessions/87 records were
 validated and released; [final evidence](evidence/stage7/summary.json).
+
+Stage8 in progress: [native Cache profile](docs/STAGE8.md), fixed HPM3 selector
+0x202 and explicit version1 profile metadata. D03 remains pending actual RTL/Linux
+acceptance; default DTLB0x1002 and ABI1/2 meanings remain identifiable.
