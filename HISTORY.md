@@ -309,3 +309,26 @@ rebase while the child is corrected. Full source heads are in stage8 metadata.
 These are host/checker-only changes; the running model and image are unchanged.
 Native Linux context4/131 and corrected193=10688-10495 versus legacy10752
 (off10556not subtracted) have passed checkpoints; exec/full-export/shutdown pending.
+
+Stage8 final acceptance: all5 new Cache cases plus all29 prior low-level cases
+(23RTL+6Spike references) passed on the newly generated RTL/Verilator model.
+The independent installed suite repeated all5 Cache tests with fresh images on
+that verified model, not a second model build. Host profile/protocol tests48
+and4 mutations/rechecks of the real Cache41 session pass. Latest source mapping
+includes generic41-session selection and parent-frame/all-counter pause guards;
+source SHAs in evidence/stage8/source-commits.json and patches retain the history.
+
+Corrected independent Linux image completed19620.89s with actual native/runner0
+and normal power-down.39 aggregate/all-counter,69 Cache context/timer/exec and
+24 full-export gates pass.12 sessions63 records13 chunks all transferred/released;
+open6/12 are marked semantic-incomplete. Common contexts4/131, correctedA
+193=10688-10495, legacy10752 retaining10556paused. Old/new/failed exec leaf65/290/130;
+41-record END e9872487db2fd6d0. The superseded initial200000-cycle early boot
+(signal-handler0 without shutdown/userspace) remains explicitly rejected and
+retained. Updated checkers replay the same final log independently; historical
+stage7 replay25/70/37/179 remains distinguished from new native execution.
+
+D03 is closed for one explicitly defined native Cache event, including uncached/
+PTW/kernel/private traffic, not unique retired load misses. D02 classification
+is next; generic transparent loader/multicore/unwind and other extended goals
+remain scoped in ACCEPTANCE.md. Main/tags/earlier PRs are unchanged.

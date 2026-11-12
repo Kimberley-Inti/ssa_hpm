@@ -1,0 +1,164 @@
+{
+  "passed": true,
+  "D03": "one native Cache event gap closed for the accepted singlehart interval-attribution profile",
+  "event": {
+    "name": "dcache_a_transactions",
+    "native_name": "Rocket D$ miss",
+    "selector": 514,
+    "event_set": 2,
+    "event_bit": 1,
+    "width": 40,
+    "source": "blocking DCache.io.cpu.perf.acquire := edge.done(tl_out_a)",
+    "condition": "completed outbound TileLink A transaction handshake, cached acquisition and uncached requests; not unique retired load misses/refill beats",
+    "attribution": "registered increments in actual CSR sampling intervals, inclusive children/kernel/trap/private ROM; normal profile subtracts every-open-frame S..R modulo40; pre-S/post-R and resumed-task pollution effects stay charged"
+  },
+  "native": {
+    "exit_code": 0,
+    "runner_exit_code": 0,
+    "normal_powerdown": true,
+    "seconds": 19620.893044265016,
+    "harness_cycles_last": 75200000,
+    "accepted_full_runs": 1,
+    "superseded_pre_userspace_boots": 1,
+    "note": "Superseded initial boot was intentionally stopped at200000 cycles while workload backing was corrected; signal handler returned0 but no shutdown/userspace markers and checkers rejected it. Preserved separately."
+  },
+  "linux_checks": {
+    "overall": {
+      "passed": true,
+      "checks": 39,
+      "file": "linux/summary.json"
+    },
+    "cache_events_exec": {
+      "passed": true,
+      "checks": 69,
+      "file": "linux/event/summary.json"
+    },
+    "full_export": {
+      "passed": true,
+      "checks": 24,
+      "file": "linux/export/summary.json"
+    }
+  },
+  "export": {
+    "version": 1,
+    "sessions": 12,
+    "records": 63,
+    "chunks": 13,
+    "all_records_transferred": true,
+    "all_pools_released": true,
+    "semantic_open_sessions": [
+      6,
+      12
+    ],
+    "large": {
+      "session": 9,
+      "records": 41,
+      "chunk_sizes": [
+        16,
+        16,
+        9
+      ],
+      "end_hash": "e9872487db2fd6d0",
+      "exact_ids_parents_elf_keys": true
+    }
+  },
+  "linux_observations": {
+    "common_two_parents": [
+      4,
+      131
+    ],
+    "inclusive_parents": [
+      13,
+      135
+    ],
+    "corrected_A": {
+      "raw": 10688,
+      "paused": 10495,
+      "recorded": 193
+    },
+    "corrected_B_common": 730,
+    "legacy_A": {
+      "raw_and_recorded": 10752,
+      "paused_not_removed": 10556
+    },
+    "exec_leaf_counts": {
+      "old_closed": 65,
+      "new_store_and_read": 290,
+      "failed_repeat": 130
+    },
+    "normal_parent_extra_cache": [
+      12,
+      17
+    ]
+  },
+  "rtl": {
+    "new_cache_cases": 5,
+    "source_context_selector_swap_wrap": 4,
+    "cache_all_register_canary": 1,
+    "bidirectional_source_replay": "cache-source-replay.json",
+    "global_counter_samples": {
+      "before": 4,
+      "warm": 16,
+      "mid": 156,
+      "cold": 288
+    },
+    "common_hot_repeated_cold": [
+      1,
+      261
+    ],
+    "previous_actual_cases": [
+      {
+        "name": "rtl_base",
+        "tests": 11,
+        "passed": true,
+        "file": "rtl-regression/rtl-summary.json"
+      },
+      {
+        "name": "rtl_dtlb_and_abi",
+        "tests": 5,
+        "passed": true,
+        "file": "rtl-dtlb/summary.json"
+      },
+      {
+        "name": "spike_references",
+        "tests": 5,
+        "passed": true,
+        "file": "spike/spike-summary.json"
+      },
+      {
+        "name": "process_reference_and_rtl",
+        "tests": 3,
+        "passed": true,
+        "file": "process-regression/summary.json"
+      },
+      {
+        "name": "permissions_rtl",
+        "tests": 5,
+        "passed": true,
+        "file": "probes/summary.json"
+      }
+    ],
+    "previous_total": 29,
+    "independent_final_suite_cases": 5,
+    "independent_model_build": false,
+    "independent_model_reuse": "verified same generated source/model; fresh benchmark images"
+  },
+  "host_checks": {
+    "synthetic": 48,
+    "real_cache41_and_host_mutations": 4,
+    "report": "final-host-tests.json"
+  },
+  "historical_only": "Accepted stage7 raw log replayed with updated shared readers/graders25/70/37/179; NOT another old Linux workload run. DTLB/base old lowlevel tests WERE freshly rerun on new model; Spike has no SSA/Cache extension.",
+  "independent": "Fresh public Chipyard/Rocket patch reconstruction and complete source manifest; fresh public Linux/SBI source build, incremental corrected user/initramfs/kernel/FW payload relink using that verified cache; all7 installed user ELFs byte-identical; final same-log regrade identical. No second full RTL model build.",
+  "raw_log_sha256": "881e85fbe2a9600088bb81d5810d2341122ed9c04759cf1509010af1f6653c06",
+  "model_sha256": "796d4752b2bc46aec87adf11c538c1a712071d8ce763568c8a7205d8fcdbf5ee",
+  "image_elf_sha256": "991b5ea21c581a9dcd20be0b4f2647e83e60d2d816a288c983ac9f3be6d19e9c",
+  "source_commits": "source-commits.json",
+  "limitations": [
+    "single hart and fixed boot profile, not simultaneous Cache/DTLB counters or perf sharing",
+    "Cache primitive includes PTW/kernel/private/uncached traffic and delayed increments; no request-owner attribution or cache partitioning",
+    "actual41-record serial coverage, not maximum capacity or native I/O-failure injection",
+    "D02 scalar/stream/random access classification remains for next round; general transparent Linux automatic loader enable not accepted",
+    "multicore/migration, nonlocal unwind, multithread/setuid/expandedexec and all Cache/TLB events remain out of scope"
+  ]
+}

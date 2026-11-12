@@ -1,0 +1,42 @@
+{
+  "valid": true,
+  "sessions": 12,
+  "records": 63,
+  "errors": []
+}
+session 1 reason stop complete True
+1 @105aa instret=276 cache=13
+  2 @1058a instret=58 cache=4
+3 @105be instret=778 cache=135
+session 2 reason exit complete True
+1 @102a6 instret=211993 cache=742
+  2 @1014c instret=211880 cache=730
+session 3 reason exit complete True
+1 @102a6 instret=283000 cache=210
+  2 @1014c instret=282887 cache=193
+session 4 reason exit complete True
+1 @102a6 instret=333421 cache=850
+  2 @1014c instret=333308 cache=837
+session 5 reason exit complete True
+1 @102a6 instret=3343048 cache=10770
+  2 @1014c instret=3342935 cache=10752
+session 6 reason exec complete False
+1 @1027a instret=0 cache=0 open=1
+  2 @1014c instret=3645 cache=65
+session 7 reason exit complete True
+1 @1029c instret=12356 cache=299
+  2 @1014c instret=12243 cache=290
+session 8 reason exit complete True
+1 @1027a instret=112091 cache=552
+  2 @1014c instret=7290 cache=130
+session 9 reason exit complete True
+1 @10696 instret=4733 cache=186
+  2 @10506 instret=46 cache=2
+  3 @10510 instret=23 cache=1
+session 10 reason stop complete True
+1 @106c6 instret=120
+  2 @10506 instret=21
+session 11 reason stop complete True
+session 12 reason exit complete False
+1 @106d8 instret=0 cache=0 open=1
+  2 @10506 instret=23 cache=1

@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "b610880dd4a0bcab4808398b62f290b13a613979",
-    "development_delivery": "ab7d9e9723c457d33173e8d8183d3d5268b6b89d",
+    "development_delivery": "897f5d3043aeab785ef4700bc0c4b6f45c25cbc9",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -540,7 +540,7 @@
     "ssa/linux/export-init.c": "111ffec1ebd715bf3ad99396f1c68711b2f7064261ce798aea2be07565f94053",
     "ssa/linux/export_results.py": "951d74661b44cfbed357dedeb879bebabb460f81a0be7b4ed45d0c8034602ad6",
     "ssa/linux/grade-export.py": "c05dfa726cb9dac118bdce1117d4b81c51ed059c7399690d943e9eb627c0ad53",
-    "ssa/linux/test_export_results.py": "db53cd7ed191026f99d9c313b0ab7ea9ccdede6581461a27bdcaccd13c6dc1c6",
+    "ssa/linux/test_export_results.py": "bbda4053d06e1dabfe47deca45cb1fdaa2b2b819be3bd46952715f1a944e460c",
     "ssa/verify_cache.py": "2b0c9e9ddc2907d096e0cc3130d84979b87d8bc951326a92fa51113bed902518",
     "ssa/linux/0006-linux-cache-profile.patch": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526",
     "ssa/linux/0003-opensbi-cache-profile.patch": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9",
@@ -627,11 +627,15 @@
   "stage8": {
     "baseline": "2c63845c4bd262594f6d5ed0e4fc12773957d833",
     "branch": "stage8-cache-event-attribution",
-    "status": "implementation and public Linux image build ready; actual RTL/Linux acceptance pending",
+    "status": "accepted:5 Cache RTL+29 prior lowlevel, actual Linux39/69/24 gates,48+4host checks, normal shutdown/native0",
     "profile": "dcache_a_transactions",
     "selector": 514,
     "width": 40,
     "abi": 2,
-    "source_commits": "evidence/stage8/source-commits.json"
+    "source_commits": "evidence/stage8/source-commits.json",
+    "evidence": "evidence/stage8/summary.json",
+    "accepted_full_linux_runs": 1,
+    "superseded_early_boots": 1,
+    "D03_closed": true
   }
 }

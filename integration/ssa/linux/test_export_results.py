@@ -40,13 +40,15 @@ def run():
  return {'passed':all(c.values()),'coverage':'host-only fault injection and capacity arithmetic; not full-capacity RTL execution','checks':c}
 def native_tests(path):
  from export_results import normalize
- s=normalize(path.read_text(errors='replace'));end=re.search(r'^SSA_XRELEASE[^\n]*\n',s,re.M)
- if not end:raise ValueError('No completed/released native export yet')
- s=s[:end.end()];q=parse(s);checks={'native_first_export_valid':q['valid'] and len(q['sessions'])==1 and q['sessions'][0]['header']['total']==41 and q['sessions'][0]['chunks']==3 and q['sessions'][0]['released']}
+ s=normalize(path.read_text(errors='replace'));allq=parse(s)
+ selected=next((x for x in allq['sessions'] if x['header']['total']==41 and 'end' in x and x['released']),None)
+ if selected is None:raise ValueError('No completed/released41-record native export yet')
+ sid=selected['header']['session'];tags={'SSA_BEGIN','SSA_XBEGIN','SSA_XCOUNTER','SSA_XCHUNK','SSA_RECORD','SSA_EVENT_RECORD','SSA_XCHUNK_END','SSA_XFRAME','SSA_XEND','SSA_XRELEASE'}
+ s='\n'.join(l for l in s.splitlines() if l.split(' ',1)[0] in tags and re.search(r'\bsession='+str(sid)+r'\b',l))+'\n';q=parse(s);checks={'native_first_export_valid':q['valid'] and len(q['sessions'])==1 and q['sessions'][0]['header']['total']==41 and q['sessions'][0]['chunks']==3 and q['sessions'][0]['released']}
  ls=s.splitlines(True);a=next(i for i,l in enumerate(ls) if l.startswith('SSA_XCHUNK ') and 'seq=1 ' in l);b=next(i for i,l in enumerate(ls) if l.startswith('SSA_XCHUNK_END ') and 'seq=1 ' in l)+1
  cases={'native_missing_chunk':''.join(ls[:a]+ls[b:]),'native_duplicate_chunk':''.join(ls[:b]+ls[a:b]+ls[b:]),'native_missing_END':s[:s.index('SSA_XEND ')]}
  for name,text in cases.items():checks[name+'_detected']=not parse(text)['valid']
- return {'passed':all(checks.values()),'coverage':'actual completed41-record native prefix regraded; negatives are host mutations, not new hardware faults','prefix_sha256':hashlib.sha256(s.encode()).hexdigest(),'checks':checks}
+ return {'passed':all(checks.values()),'coverage':'actual completed41-record native protocol rows regraded; negatives are host mutations, not new hardware faults','selected_session':sid,'extraction':'unchanged normalized protocol rows belonging to that session','prefix_sha256':hashlib.sha256(s.encode()).hexdigest(),'checks':checks}
 
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--out',type=pathlib.Path,required=True);p.add_argument('--native-log',type=pathlib.Path);a=p.parse_args();q=run()

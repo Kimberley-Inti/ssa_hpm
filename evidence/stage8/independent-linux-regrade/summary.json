@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "scope": "one actual singlehart Rocket Linux Cache boot; directed timer/exec/export, not another complete historical stage4 run",
+  "checks": {
+    "real_cache_event_and_lifecycle": true,
+    "complete_export_fixture": true,
+    "twelve_owned_sessions": true,
+    "configured_profile_identified": true,
+    "four_task_sampling_protocol": true,
+    "session2_parent_restored_all_counters": true,
+    "session2_counter0_samples": true,
+    "session2_counter0_record_identity": true,
+    "session2_counter1_samples": true,
+    "session2_counter1_record_identity": true,
+    "session2_counter2_samples": true,
+    "session2_counter2_record_identity": true,
+    "session2_counter3_samples": true,
+    "session2_counter3_record_identity": true,
+    "session3_parent_restored_all_counters": true,
+    "session3_counter0_samples": true,
+    "session3_counter0_record_identity": true,
+    "session3_counter1_samples": true,
+    "session3_counter1_record_identity": true,
+    "session3_counter2_samples": true,
+    "session3_counter2_record_identity": true,
+    "session3_counter3_samples": true,
+    "session3_counter3_record_identity": true,
+    "session4_counter0_samples": true,
+    "session4_counter0_record_identity": true,
+    "session4_counter1_samples": true,
+    "session4_counter1_record_identity": true,
+    "session4_counter2_samples": true,
+    "session4_counter2_record_identity": true,
+    "session4_counter3_samples": true,
+    "session4_counter3_record_identity": true,
+    "session5_counter0_samples": true,
+    "session5_counter0_record_identity": true,
+    "session5_counter1_samples": true,
+    "session5_counter1_record_identity": true,
+    "session5_counter2_samples": true,
+    "session5_counter2_record_identity": true,
+    "session5_counter3_samples": true,
+    "session5_counter3_record_identity": true
+  },
+  "dependencies": [
+    {
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage8/public-apply/ssa/linux/grade-events.py",
+        "/tmp/ssa-hpm-stage8/linux-rtl/rocket-linux-events.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage8/independent-linux-regrade/event-user-roles.json",
+        "--out-dir",
+        "/tmp/ssa-hpm-stage8/independent-linux-regrade/event",
+        "--profile",
+        "cache",
+        "--no-baseline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage8/public-apply/ssa/linux/grade-export.py",
+        "/tmp/ssa-hpm-stage8/linux-rtl/rocket-linux-events.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage8/linux-rtl/user-elfs.json",
+        "--out-dir",
+        "/tmp/ssa-hpm-stage8/independent-linux-regrade/export",
+        "--fixture-role",
+        "regress",
+        "--no-regression"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "sessions": 12,
+  "records": 63
+}
