@@ -30,6 +30,8 @@
     "cache_wrong_payload_detected": true,
     "cache_missing_profile_detected": true,
     "unknown_profile_detected": true,
+    "cache_scalar_channel_injection_detected": true,
+    "cache_dual_payload_detected": true,
     "maximum_capacity_bounded_plan": true,
     "invalid_capacity_-1": true,
     "invalid_capacity_262144": true,

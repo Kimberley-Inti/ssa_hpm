@@ -107,3 +107,7 @@ cache-wrap.riscv: event_start.S events.c test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DCACHE_EVENT -DCOUNTER_WRAP event_start.S events.c -o $@
 .PHONY: cache-events
 cache-events: cache.hex cache-selector-negative.hex cache-context-negative.hex cache-wrap.hex
+
+cache-abi.riscv: start.S test.c abi.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DABI -DEVENT_ABI -DCACHE_EVENT start.S test.c abi.S -o $@
+cache-events: cache-abi.hex

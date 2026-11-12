@@ -37,3 +37,8 @@ for name,expected in [('cache',0),('cache-selector-negative',42),('cache-context
  else:checks['all_records_present']=False
  q={'name':name,'passed':all(checks.values()),'checks':checks,'command':cmd,'exit_code':r.returncode,'expected_exit':expected,'seconds':time.monotonic()-start,'source_pulses':sum(x['src'] for x in edges),'increments':sum(x['inc'] for x in edges),'global':g,'records':records,'reset':reset,'csr_samples':samples,'original_log':str(log),'log_sha256':hashlib.sha256(log.read_bytes()).hexdigest(),'event_excerpt':excerpt.name,'excerpt_sha256':hashlib.sha256(excerpt.read_bytes()).hexdigest()};tests.append(q);(o/'summary.json').write_text(json.dumps({'passed':all(t['passed'] for t in tests),'event':'dcache_a_transactions','selector':514,'width':40,'tests':tests},indent=2)+'\n');print(name,q['passed'],[k for k,v in checks.items() if not v],flush=True)
  if not q['passed']:raise SystemExit(1)
+
+name='cache-abi';cmd=[a.simulator,'+permissive','+loadmem=ssa/cache-abi.hex','+max-cycles=2000000','+permissive-off','ssa/cache-abi.riscv'];log=o/(name+'.txt');start=time.monotonic()
+with log.open('w') as f:r=subprocess.run(cmd,cwd=root,stdout=f,stderr=subprocess.STDOUT,timeout=900)
+checks={'native_exit':r.returncode==0,'all_register_canaries_and_x5_calls':'SSA PASS: shadow registers' in log.read_text()}
+tests.append({'name':name,'passed':all(checks.values()),'checks':checks,'command':cmd,'exit_code':r.returncode,'seconds':time.monotonic()-start});(o/'summary.json').write_text(json.dumps({'passed':all(t['passed'] for t in tests),'event':'dcache_a_transactions','selector':514,'width':40,'tests':tests},indent=2)+'\n');print(name,all(checks.values()),flush=True);raise SystemExit(0 if all(checks.values()) else 1)

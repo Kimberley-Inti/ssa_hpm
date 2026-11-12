@@ -1,0 +1,296 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "event",
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_event_trace=1",
+        "+loadmem=ssa/event.hex",
+        "+max-cycles=1000000",
+        "+permissive-off",
+        "ssa/event.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 13.332030802004738,
+      "passed": true,
+      "checks": {
+        "actual_expected_exit": true,
+        "observed_real_requests": true,
+        "selector": true,
+        "source_to_registered_increment": true,
+        "one_cycle_latency": true,
+        "records": true,
+        "global_counter_matches_source": true,
+        "warm_interval": true,
+        "cold_interval": true,
+        "nonzero_repeated_record_accumulation": true,
+        "expected_context_contrast": true
+      },
+      "requests": 257,
+      "increments": 257,
+      "private_request_pulses": 0,
+      "global": {
+        "before": 2,
+        "warm": 2,
+        "mid": 129,
+        "cold": 257
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "dtlb": 0
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "dtlb": 0
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484074,
+          "dtlb": 255
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "dtlb": 255
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/rtl-dtlb/event.raw.txt",
+      "original_sha256": "25456afc6d8752b1849bb52921336e823896fd6bc5d3f914777934392b4bbf77",
+      "excerpt": "event.txt",
+      "model_sha256": "404a2a53b220a22e900627e6819875f3d79898456c55fbf863422aa084df2392"
+    },
+    {
+      "name": "event-selector-negative",
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_event_trace=1",
+        "+loadmem=ssa/event-selector-negative.hex",
+        "+max-cycles=1000000",
+        "+permissive-off",
+        "ssa/event-selector-negative.riscv"
+      ],
+      "exit_code": 42,
+      "expected_exit": 42,
+      "seconds": 13.592948712001089,
+      "passed": true,
+      "checks": {
+        "actual_expected_exit": true,
+        "observed_real_requests": true,
+        "selector": true,
+        "source_to_registered_increment": true,
+        "one_cycle_latency": true,
+        "records": true,
+        "global_counter_matches_source": true,
+        "warm_interval": true,
+        "cold_interval": true,
+        "missed_event_negative_detected": true
+      },
+      "requests": 257,
+      "increments": 0,
+      "private_request_pulses": 0,
+      "global": {
+        "before": 0,
+        "warm": 0,
+        "mid": 0,
+        "cold": 0
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "dtlb": 0
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "dtlb": 0
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484074,
+          "dtlb": 0
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "dtlb": 0
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/rtl-dtlb/event-selector-negative.raw.txt",
+      "original_sha256": "e16f8259d91aebdcbe35c1b0c49cc6603a247389259a4ee85dcb81696533071d",
+      "excerpt": "event-selector-negative.txt",
+      "model_sha256": "404a2a53b220a22e900627e6819875f3d79898456c55fbf863422aa084df2392"
+    },
+    {
+      "name": "event-context-negative",
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_event_trace=1",
+        "+loadmem=ssa/event-context-negative.hex",
+        "+max-cycles=1000000",
+        "+permissive-off",
+        "ssa/event-context-negative.riscv"
+      ],
+      "exit_code": 42,
+      "expected_exit": 42,
+      "seconds": 12.233894473989494,
+      "passed": true,
+      "checks": {
+        "actual_expected_exit": true,
+        "observed_real_requests": true,
+        "selector": true,
+        "source_to_registered_increment": true,
+        "one_cycle_latency": true,
+        "records": true,
+        "global_counter_matches_source": true,
+        "warm_interval": true,
+        "cold_interval": true,
+        "misattribution_negative_detected": true
+      },
+      "requests": 130,
+      "increments": 130,
+      "private_request_pulses": 0,
+      "global": {
+        "before": 2,
+        "warm": 129,
+        "mid": 130,
+        "cold": 130
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "dtlb": 127
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "dtlb": 127
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484076,
+          "dtlb": 1
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "dtlb": 1
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/rtl-dtlb/event-context-negative.raw.txt",
+      "original_sha256": "93811e882f8c5554f23e2920594256954672b4314994c0de78216bb1fe771073",
+      "excerpt": "event-context-negative.txt",
+      "model_sha256": "404a2a53b220a22e900627e6819875f3d79898456c55fbf863422aa084df2392"
+    },
+    {
+      "name": "event-wrap",
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_event_trace=1",
+        "+loadmem=ssa/event-wrap.hex",
+        "+max-cycles=1000000",
+        "+permissive-off",
+        "ssa/event-wrap.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 13.371926052001072,
+      "passed": true,
+      "checks": {
+        "actual_expected_exit": true,
+        "observed_real_requests": true,
+        "selector": true,
+        "source_to_registered_increment": true,
+        "one_cycle_latency": true,
+        "records": true,
+        "global_counter_matches_source": true,
+        "warm_interval": true,
+        "cold_interval": true,
+        "nonzero_repeated_record_accumulation": true,
+        "expected_context_contrast": true,
+        "counter_wrapped": true
+      },
+      "requests": 257,
+      "increments": 257,
+      "private_request_pulses": 0,
+      "global": {
+        "before": 1099511627770,
+        "warm": 1099511627770,
+        "mid": 121,
+        "cold": 249
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "dtlb": 0
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "dtlb": 0
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484074,
+          "dtlb": 255
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "dtlb": 255
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/rtl-dtlb/event-wrap.raw.txt",
+      "original_sha256": "9b6bcf1fab84a3e4d00194e65c3d39531931660ea30aac5dd83e6607be3224d4",
+      "excerpt": "event-wrap.txt",
+      "model_sha256": "404a2a53b220a22e900627e6819875f3d79898456c55fbf863422aa084df2392"
+    },
+    {
+      "name": "event-abi",
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+loadmem=ssa/event-abi.hex",
+        "+max-cycles=1000000",
+        "+permissive-off",
+        "ssa/event-abi.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 1.745998548984062,
+      "passed": true,
+      "meaning": "actual ABI2 ROM executes against every-register canaries, x5 calls/returns and ordinary jumps"
+    }
+  ]
+}

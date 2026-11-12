@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "command": [
+    "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+    "+permissive",
+    "+loadmem=ssa/cache-abi.hex",
+    "+max-cycles=2000000",
+    "+permissive-off",
+    "ssa/cache-abi.riscv"
+  ],
+  "exit_code": 0,
+  "seconds": 1.8071935179759748
+}

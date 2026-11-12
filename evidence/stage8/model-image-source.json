@@ -1,0 +1,16 @@
+{
+  "linux": {
+    "source": "275125fabacde9e83f4bff6863bf25012537e0ed",
+    "tree": "4ff7eafd7b1b797b0bfc8a6b91fbef16f524c584"
+  },
+  "opensbi": {
+    "source": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91"
+  },
+  "model": {
+    "/tmp/ssa-hpm-stage8/progress/simulator-progress": "796d4752b2bc46aec87adf11c538c1a712071d8ce763568c8a7205d8fcdbf5ee",
+    "/tmp/ssa-hpm-stage8/independent-linux/boot-a.elf": "991b5ea21c581a9dcd20be0b4f2647e83e60d2d816a288c983ac9f3be6d19e9c",
+    "/tmp/ssa-hpm-stage8/independent-linux/boot-a.hex": "c379013618ab5ca01321c9285dcdc69b53363ea32a0820586f80f7ae81c53452"
+  },
+  "corrected_workload": "build-report-prefault.json; distinct physical page writes before monitoring"
+}

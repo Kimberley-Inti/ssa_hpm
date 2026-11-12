@@ -31,7 +31,7 @@ deb=w/'binutils.deb';urllib.request.urlretrieve(url,deb)
 assert hashlib.sha256(deb.read_bytes()).hexdigest()=='b20f8bdabeff0a43fba1efdc8b1c1d359d93e8a135d11041fd90ed945c23e866'
 host=w/'host-tools';host.mkdir();run(['dpkg-deb','-x',deb,host]);b=host/'compiler-bin';b.mkdir();(b/'ld').symlink_to('../usr/bin/riscv64-linux-gnu-ld');env['LD_LIBRARY_PATH']=str(host/'usr/lib/x86_64-linux-gnu')+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
 def user(source,name,flags=[]):
- run([a.cross+'gcc',*flags,'-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start','-Wl,--build-id=none',src/source,'-o',w/name])
+ run([a.cross+'gcc',*flags,*(['-DCACHE_PROFILE_TEST'] if a.cache else []),'-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start','-Wl,--build-id=none',src/source,'-o',w/name])
 ref=['-DREFERENCE'] if a.reference else []
 user('cache-init.c' if a.cache else 'export-init.c' if a.export_test else 'exec-init.c' if a.exec_test else 'process-init.c' if a.process else 'init.c','init',ref+(['-DCHAIN_EVENTS'] if a.event else []))
 if a.export_test:user('exec-init.c','lifecycle',ref+['-DCHAIN_EVENTS'])

@@ -293,3 +293,11 @@ carries profile patches, explicit host parsing, source/negative/wrap oracles and
 a directed Cache/Linux event/exec/export fixture. Full SHAs and source trees are
 in evidence/stage8/source-commits.json; format-patches preserve authors/messages.
 Implementation checkpoint only: Cache RTL/Linux acceptance is still pending.
+
+Chipyardf246f721 adds Cache-mode register canaries, physically backed user pages
+(prefault writes outside monitored intervals), and rejects mixed-profile/scalar
+event payload injection. Cache4source/negative/wrap tests plus a separate Cache
+ABI canary pass; all29 previous low-level tests (23RTL+6Spike) pass on the newly
+generated model. The independent installed suite repeats all5 Cache tests with
+verified reused model. Corrected Cache Linux image is running; the one superseded
+early boot before userspace is separately retained, never counted as acceptance.

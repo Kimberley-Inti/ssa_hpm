@@ -16,6 +16,14 @@ static __attribute__((always_inline)) inline long api(long op,long flags,long ro
 static __attribute__((always_inline)) inline void work(unsigned long n){asm volatile(".option push\n.option norvc\n1:\n.rept 64\nnop\n.endr\naddi %0,%0,-1\nbnez %0,1b\n.option pop":"+r"(n)::"memory");}
 #ifdef SSA_EVENT_SUITE
 static volatile u64 event_pages[512*512] __attribute__((aligned(4096)));
+#ifdef CACHE_PROFILE_TEST
+/* Read-only BSS would alias Linux's shared zero page. Give each page real backing
+ * BEFORE monitoring so this measures cache traffic, not allocation faults. */
+static __attribute__((always_inline)) inline void prepare_pages(void){
+ for(u64 i=0;i<512;i++)event_pages[i*512]=i+1;
+ asm volatile("fence rw,rw":::"memory");
+}
+#endif
 static __attribute__((always_inline)) inline void touch_pages(u64 n){
  for(u64 i=0;i<n;i++){u64 x=event_pages[i*512];asm volatile(""::"r"(x):"memory");}
  asm volatile("fence rw,rw":::"memory");
@@ -37,6 +45,9 @@ static void job(long role,long amount,long test,long legacy,int *pipefd){
  require(C(146,1000,0,0)==0);require(C(174,0,0,0)==1000);
  #ifdef SSA_EVENT_SUITE
  legacy|=2;
+#endif
+#if defined(CACHE_PROFILE_TEST) && defined(SSA_EVENT_SUITE)
+ if(role==2)prepare_pages();
 #endif
  require(api(1,legacy,role,test)==0);
  /* Only inlined syscalls execute while selected, except the two measured calls. */

@@ -77,3 +77,24 @@ in evidence/stage8/. Public Linux/OpenSBI sources are newly fetched and built;
 existing toolchain/Chipyard dependency/ccache caches may be reused. Independent
 public Chipyard/Rocket patch reconstruction must match the implementation file
 manifest; any reuse of the already built model must be identified explicitly.
+
+## Workload correction before accepted Linux execution
+
+Read-only BSS pages may alias the Linux shared zero page. Cache fixtures therefore
+write each page before START to obtain distinct physical backing, then prewarm
+and fence. Page allocation/initial writes are outside monitoring. The page-stride
+lines conflict in the4-way L1, giving a reproducible data working set rather than
+using virtual-address count as a proxy. PTW/private-ROM/kernel Cache traffic is
+still included by the native event. The initial automatic launch raced this
+preflight correction and was stopped at200000 harness cycles before userspace;
+the simulator handled SIGTERM and returned0, but no power-down/test markers exist
+and all graders rejected it. That superseded early boot is explicitly retained,
+not counted as accepted Linux evidence. The corrected image has its own hashes
+and run. See superseded-linux-start.json and linux-image-build.json.
+
+Cache-mode all-register/x5 call/return canaries also pass in a dedicated ABI2
+fixture; default DTLB/base/permissions/traps/process RTL regressions and six Spike
+references pass on the newly generated model. An independently installed suite
+repeated the four source/negative/wrap tests and the Cache canary on fresh test
+images against that same verified model. This is model reuse, not a second model
+build. Host parser tests now48, including payload-channel confusion detection.

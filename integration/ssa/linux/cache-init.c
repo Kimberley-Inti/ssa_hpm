@@ -7,7 +7,7 @@ static __attribute__((noinline,noclone)) void event_common(u64 n){touch_pages(n)
 static __attribute__((noinline,noclone)) void event_warm(void){event_common(1);asm volatile("":::"memory");}
 static __attribute__((noinline,noclone)) void event_cold(void){event_common(128);asm volatile("":::"memory");}
 static void context_child(void){
- priority(0,0);require(C(146,1000,0,0)==0);touch_pages(512);
+ priority(0,0);require(C(146,1000,0,0)==0);prepare_pages();touch_pages(512);
  require(api(1,2,0,8)==0);event_warm();event_cold();event_warm();require(api(2,0,0,0)==4);require(api(5,0,0,0)==0);require(api(5,0,0,0)==-114);die(0);
 }
 static void counter_security_child(void){

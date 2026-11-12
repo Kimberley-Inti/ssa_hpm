@@ -24,7 +24,7 @@ def run():
   cache=fixture(n).replace('policy=interval_inclusive_pause_rebase\n','policy=interval_inclusive_pause_rebase profile=dcache_a_transactions\n').replace('name=dtlb_accepted_ptw_requests','name=dcache_a_transactions').replace('selector=4098','selector=514').replace(' dtlb=',' cache=')
   q=parse(cache);check(f'valid_cache_{n}',q['valid'] and q['sessions'][0]['header']['profile']=='dcache_a_transactions')
   if n==41:
-   for name,broken in [('cache_wrong_selector',cache.replace('selector=514','selector=4098')),('cache_wrong_payload',cache.replace(' cache=',' dtlb=')),('cache_missing_profile',cache.replace(' profile=dcache_a_transactions','')),('unknown_profile',cache.replace('profile=dcache_a_transactions','profile=unknown'))]:check(name+'_detected',not parse(broken)['valid'])
+   for name,broken in [('cache_wrong_selector',cache.replace('selector=514','selector=4098')),('cache_wrong_payload',cache.replace(' cache=',' dtlb=')),('cache_missing_profile',cache.replace(' profile=dcache_a_transactions','')),('unknown_profile',cache.replace('profile=dcache_a_transactions','profile=unknown')),('cache_scalar_channel_injection',cache.replace('SSA_RECORD pid=10 session=1 id=1 ', 'SSA_RECORD pid=10 session=1 cache=1 id=1 ')),('cache_dual_payload',cache.replace(' cache=1 ', ' cache=1 dtlb=1 '))]:check(name+'_detected',not parse(broken)['valid'])
  p=list(plan(CAPACITY));check('maximum_capacity_bounded_plan',len(p)==16384 and p[0]==(0,1,16) and p[-1]==(16383,262129,15) and sum(x[2] for x in p)==CAPACITY and all(1<=x[2]<=16 for x in p))
  for n in [-1,CAPACITY+1]:
   try:list(plan(n));check(f'invalid_capacity_{n}',False)
