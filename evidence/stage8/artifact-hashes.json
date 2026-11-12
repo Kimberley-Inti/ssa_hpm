@@ -120,6 +120,7 @@
     "superseded-early-boot/runner-status.json": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027",
     "superseded-early-boot/runner.txt": "b5f337f4fad24b8d175aa5599907d7bd93036d07410d18cbea46a82b97e0a81c",
     "superseded-linux-start.json": "46886d549fd140f712b7796dbf367800443881a186bc039ad97c08ef4edb6ec4",
-    "versions.json": "6169af720c4da9cc32810018f1494c38752b1cde52ba827628e85c30e985efc8"
+    "versions.json": "6169af720c4da9cc32810018f1494c38752b1cde52ba827628e85c30e985efc8",
+    "final-publication-audit.json": "384188f2e6d3410ee2339f27356abf65536507846b32895d673f98c112d8d39a"
   }
 }
