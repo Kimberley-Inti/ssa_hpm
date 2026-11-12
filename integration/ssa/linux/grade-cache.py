@@ -20,6 +20,11 @@ exports=[x for x in rows('SSA_EXPORT') if x['test'] in (9,10)];sw=rows('SSA_SWIT
 checks['four_task_sampling_protocol']=len(exports)==4
 for e in exports:
  sid=e['session'];active={x['event'] for x in sw if x['pid']==e['pid'] and x['depth']>=2 and x['rid']==2};rr=by[sid]['records'];record=next((x for x in rr if x['id']==2),{})
+ # Parent body only calls this child. A missed parent rebase would leak the
+ # large measured pause even if the child's entry were corrected correctly.
+ if not e['legacy']:
+  limits={'cycle':50000,'instret':4096,'time':500,'cache':512}
+  checks[f'session{sid}_parent_restored_all_counters']=len(rr)==2 and all(0<=rr[0][k]-record[k]<v for k,v in limits.items())
  for i,key in enumerate(['cycle','instret','time','cache']):
   mask=(1<<(40 if i==3 else 64))-1;ss=[x for x in samples if x['pid']==e['pid'] and x['event'] in active and x['counter']==i];ac=[x for x in accounts if x['pid']==e['pid'] and x['counter']==i]
   checks[f'session{sid}_counter{i}_samples']=bool(ss) and all((x['R']-x['S'])&mask==x['delta'] for x in ss)

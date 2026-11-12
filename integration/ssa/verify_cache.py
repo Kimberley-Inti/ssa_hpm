@@ -22,6 +22,7 @@ for name,expected in [('cache',0),('cache-selector-negative',42),('cache-context
  active=[x for x in edges if reset and x['cyc']>reset['cyc']]
  checks['fixed_selector']=all(x['sel']==(0x202 if enabled else 0) for x in active)
  checks['registered_source_to_increment']=all(bycycle.get(x['cyc']+1,{}).get('inc',0)==(x['src'] if enabled else 0) for x in active if x['src'])
+ checks['no_orphan_increment']=all(e['inc']==(bycycle.get(e['cyc']-1,{}).get('src',0) if enabled else 0) for e in active if e['cyc']>reset['cyc']+1) if reset else False
  if reset:
   checks['all_csr_samples_match_real_hpm_increments']=bool(samples) and all(x['value']==(reset['value']+sum(e['inc'] for e in edges if reset['cyc']<e['cyc']<x['cyc']))&mask for x in samples if x['cyc']>reset['cyc'])
   checks['reported_global_from_actual_csr_reads']=all(any(x['value']==v for x in samples) for v in g.values())

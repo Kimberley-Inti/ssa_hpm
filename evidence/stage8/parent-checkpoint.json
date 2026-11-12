@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "actual completed corrected pair record differences; bounded no-work parent excludes leaking a full pause",
+  "checks": [
+    {
+      "session": 2,
+      "extra_parent_counts": {
+        "cycle": 729,
+        "instret": 113,
+        "time": 7,
+        "cache": 12
+      },
+      "passed": true
+    },
+    {
+      "session": 3,
+      "extra_parent_counts": {
+        "cycle": 904,
+        "instret": 113,
+        "time": 9,
+        "cache": 17
+      },
+      "passed": true
+    }
+  ]
+}

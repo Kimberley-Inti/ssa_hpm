@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "scope": "Actual context and two timer-pair checkpoints, exec/full export/shutdown pending",
+  "checks": {
+    "test9_role2_counter0": true,
+    "test9_role2_counter1": true,
+    "test9_role2_counter2": true,
+    "test9_role2_counter3": true,
+    "test9_role1_counter0": true,
+    "test9_role1_counter1": true,
+    "test9_role1_counter2": true,
+    "test9_role1_counter3": true,
+    "test10_role2_counter0": true,
+    "test10_role2_counter1": true,
+    "test10_role2_counter2": true,
+    "test10_role2_counter3": true,
+    "test10_role1_counter0": true,
+    "test10_role1_counter1": true,
+    "test10_role1_counter2": true,
+    "test10_role1_counter3": true,
+    "negative_control_detected": true
+  },
+  "A_by_test": {
+    "9": {
+      "pid": 17,
+      "test": 9,
+      "role": 1,
+      "counter": 3,
+      "original": 233851,
+      "final": 244346,
+      "off": 10495,
+      "recorded": 193,
+      "raw": 10688,
+      "valid": 1,
+      "rebased": 1,
+      "session": 3
+    },
+    "10": {
+      "pid": 19,
+      "test": 10,
+      "role": 1,
+      "counter": 3,
+      "original": 337727,
+      "final": 337727,
+      "off": 10556,
+      "recorded": 10752,
+      "raw": 10752,
+      "valid": 1,
+      "rebased": 0,
+      "session": 5
+    }
+  }
+}

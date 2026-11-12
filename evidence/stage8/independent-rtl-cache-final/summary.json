@@ -1,0 +1,425 @@
+{
+  "passed": true,
+  "event": "dcache_a_transactions",
+  "selector": 514,
+  "width": 40,
+  "tests": [
+    {
+      "name": "cache",
+      "passed": true,
+      "checks": {
+        "native_exit": true,
+        "actual_cache_source": true,
+        "reset_observed": true,
+        "global_four_samples": true,
+        "two_parent_contexts": true,
+        "exact_elf_context_keys": true,
+        "fixed_selector": true,
+        "registered_source_to_increment": true,
+        "no_orphan_increment": true,
+        "all_csr_samples_match_real_hpm_increments": true,
+        "reported_global_from_actual_csr_reads": true,
+        "parent_includes_child": true,
+        "interval_boundary": true,
+        "context_contrast": true,
+        "repeated_context_accumulates": true
+      },
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_cache_trace=1",
+        "+loadmem=ssa/cache.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/cache.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 14.48658889302169,
+      "source_pulses": 404,
+      "increments": 334,
+      "global": {
+        "before": 4,
+        "warm": 16,
+        "mid": 156,
+        "cold": 288
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "cache": 7
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "cache": 1
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484074,
+          "cache": 267
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "cache": 261
+        }
+      ],
+      "reset": {
+        "cyc": 5645,
+        "value": 0
+      },
+      "csr_samples": [
+        {
+          "cyc": 5940,
+          "value": 4
+        },
+        {
+          "cyc": 7027,
+          "value": 16
+        },
+        {
+          "cyc": 12943,
+          "value": 156
+        },
+        {
+          "cyc": 17981,
+          "value": 288
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/independent-rtl-cache-final/cache.raw.txt",
+      "log_sha256": "ee2c6fd3b8ac4fdf31b5c091e26b8aa846da2c1d3c687aa39d88f6aa9176b537",
+      "event_excerpt": "cache.txt",
+      "excerpt_sha256": "291a6796a056658fb0628b898e53a1c311b1c7cd40e05afeb1c048bbf91e1922"
+    },
+    {
+      "name": "cache-selector-negative",
+      "passed": true,
+      "checks": {
+        "native_exit": true,
+        "actual_cache_source": true,
+        "reset_observed": true,
+        "global_four_samples": true,
+        "two_parent_contexts": true,
+        "exact_elf_context_keys": true,
+        "fixed_selector": true,
+        "registered_source_to_increment": true,
+        "no_orphan_increment": true,
+        "all_csr_samples_match_real_hpm_increments": true,
+        "reported_global_from_actual_csr_reads": true,
+        "parent_includes_child": true,
+        "interval_boundary": true,
+        "missing_selector_detected": true
+      },
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_cache_trace=1",
+        "+loadmem=ssa/cache-selector-negative.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/cache-selector-negative.riscv"
+      ],
+      "exit_code": 42,
+      "expected_exit": 42,
+      "seconds": 14.42610487100319,
+      "source_pulses": 405,
+      "increments": 0,
+      "global": {
+        "before": 0,
+        "warm": 0,
+        "mid": 0,
+        "cold": 0
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "cache": 0
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "cache": 0
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484074,
+          "cache": 0
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "cache": 0
+        }
+      ],
+      "reset": {
+        "cyc": 5642,
+        "value": 0
+      },
+      "csr_samples": [
+        {
+          "cyc": 5936,
+          "value": 0
+        },
+        {
+          "cyc": 7023,
+          "value": 0
+        },
+        {
+          "cyc": 12935,
+          "value": 0
+        },
+        {
+          "cyc": 17868,
+          "value": 0
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/independent-rtl-cache-final/cache-selector-negative.raw.txt",
+      "log_sha256": "7c2e7bcc6a065c69d672ba6a27bf8172a691ddf730fd73337c96b8e347c7d2c6",
+      "event_excerpt": "cache-selector-negative.txt",
+      "excerpt_sha256": "6026d75404d0e03a121658da1fcfa278e2cd9c4d5331f3ff8fa3f8014b1a6b57"
+    },
+    {
+      "name": "cache-context-negative",
+      "passed": true,
+      "checks": {
+        "native_exit": true,
+        "actual_cache_source": true,
+        "reset_observed": true,
+        "global_four_samples": true,
+        "two_parent_contexts": true,
+        "exact_elf_context_keys": true,
+        "fixed_selector": true,
+        "registered_source_to_increment": true,
+        "no_orphan_increment": true,
+        "all_csr_samples_match_real_hpm_increments": true,
+        "reported_global_from_actual_csr_reads": true,
+        "parent_includes_child": true,
+        "interval_boundary": true,
+        "swapped_workload_detected": true
+      },
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_cache_trace=1",
+        "+loadmem=ssa/cache-context-negative.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/cache-context-negative.riscv"
+      ],
+      "exit_code": 42,
+      "expected_exit": 42,
+      "seconds": 13.33307017601328,
+      "source_pulses": 276,
+      "increments": 206,
+      "global": {
+        "before": 4,
+        "warm": 146,
+        "mid": 156,
+        "cold": 160
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "cache": 137
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "cache": 131
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484076,
+          "cache": 9
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "cache": 3
+        }
+      ],
+      "reset": {
+        "cyc": 5645,
+        "value": 0
+      },
+      "csr_samples": [
+        {
+          "cyc": 5940,
+          "value": 4
+        },
+        {
+          "cyc": 11926,
+          "value": 146
+        },
+        {
+          "cyc": 12965,
+          "value": 156
+        },
+        {
+          "cyc": 13584,
+          "value": 159
+        },
+        {
+          "cyc": 13585,
+          "value": 159
+        },
+        {
+          "cyc": 13586,
+          "value": 159
+        },
+        {
+          "cyc": 13781,
+          "value": 160
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/independent-rtl-cache-final/cache-context-negative.raw.txt",
+      "log_sha256": "d4d83840008ff6ee3c036e03364efe2e4f4340be6b61cac0d63698d4fb412256",
+      "event_excerpt": "cache-context-negative.txt",
+      "excerpt_sha256": "934588219efaef1f19b35fb191dd253c2478cd6aa901bc67bb7d52295b93e3b2"
+    },
+    {
+      "name": "cache-wrap",
+      "passed": true,
+      "checks": {
+        "native_exit": true,
+        "actual_cache_source": true,
+        "reset_observed": true,
+        "global_four_samples": true,
+        "two_parent_contexts": true,
+        "exact_elf_context_keys": true,
+        "fixed_selector": true,
+        "registered_source_to_increment": true,
+        "no_orphan_increment": true,
+        "all_csr_samples_match_real_hpm_increments": true,
+        "reported_global_from_actual_csr_reads": true,
+        "parent_includes_child": true,
+        "interval_boundary": true,
+        "context_contrast": true,
+        "repeated_context_accumulates": true,
+        "forty_bit_wrap": true
+      },
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+verbose",
+        "+ssa_cache_trace=1",
+        "+loadmem=ssa/cache-wrap.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/cache-wrap.riscv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 14.49222383002052,
+      "source_pulses": 406,
+      "increments": 336,
+      "global": {
+        "before": 1099511627652,
+        "warm": 1099511627666,
+        "mid": 32,
+        "cold": 165
+      },
+      "records": [
+        {
+          "id": 1,
+          "parent": 0,
+          "callee": 2147484054,
+          "cache": 9
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "callee": 2147484028,
+          "cache": 1
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "callee": 2147484074,
+          "cache": 269
+        },
+        {
+          "id": 4,
+          "parent": 3,
+          "callee": 2147484028,
+          "cache": 263
+        }
+      ],
+      "reset": {
+        "cyc": 5647,
+        "value": 1099511627648
+      },
+      "csr_samples": [
+        {
+          "cyc": 5942,
+          "value": 1099511627652
+        },
+        {
+          "cyc": 6905,
+          "value": 1099511627665
+        },
+        {
+          "cyc": 6906,
+          "value": 1099511627665
+        },
+        {
+          "cyc": 6907,
+          "value": 1099511627665
+        },
+        {
+          "cyc": 7102,
+          "value": 1099511627666
+        },
+        {
+          "cyc": 13105,
+          "value": 32
+        },
+        {
+          "cyc": 18139,
+          "value": 165
+        }
+      ],
+      "original_log": "/tmp/ssa-hpm-stage8/independent-rtl-cache-final/cache-wrap.raw.txt",
+      "log_sha256": "05f34750ee5313c9f0fccfc20ce90e0883a10f70f317a93a7ec0623e5e2dda8c",
+      "event_excerpt": "cache-wrap.txt",
+      "excerpt_sha256": "86ba0bbe192342e13fdf5cb08f2d639976b6aedd5ab2796f536ad413fd830a02"
+    },
+    {
+      "name": "cache-abi",
+      "passed": true,
+      "checks": {
+        "native_exit": true,
+        "all_register_canaries_and_x5_calls": true
+      },
+      "command": [
+        "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+        "+permissive",
+        "+loadmem=ssa/cache-abi.hex",
+        "+max-cycles=2000000",
+        "+permissive-off",
+        "ssa/cache-abi.riscv"
+      ],
+      "exit_code": 0,
+      "seconds": 1.8101056720188353
+    }
+  ]
+}

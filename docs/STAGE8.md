@@ -100,3 +100,25 @@ references pass on the newly generated model. An independently installed suite
 repeated the four source/negative/wrap tests and the Cache canary on fresh test
 images against that same verified model. This is model reuse, not a second model
 build. Host parser tests now48, including payload-channel confusion detection.
+
+## Actual Linux checkpoints (not final acceptance)
+
+The corrected boot reached userspace. Session1 exported four complete Cache
+records, exact parent/ELF keys: common under small-working-set parent counts4,
+under128-page parent131; inclusive parents13/135. Both warm activations reuse
+IDs1/2. Metadata saysCache/40bits/selector514; explicit STOP/export/repeat rejection
+and release passed. A label such as warm names the small working set, not a claim
+that every access hits: START clears a1MiB dictionary, and monitoring/cold paths
+can evict prewarmed lines. The measured event includes their traffic as specified.
+
+The corrected true timer pair completed: A has two open frames at cutout and
+returns after resume; Cache10688raw-10495paused=193recorded. B common730 includes
+real512-page Cache traffic and interval overhead. All four counter sample/record
+identities passed on both tasks. Residual193 includes pre-S/post-R own kernel/ROM
+and possible post-resume misses, not a promise of cache partitioning or a measure
+of only A's retired data misses. Other suites and overall shutdown remain pending.
+
+The Cache-mode replacement-image common performs a store sweep and a read sweep
+of128 already-backed pages; old/failed exec leafs read64 pages per activation.
+Initial backing faults/writes happen before START. Counts are not compared to
+DTLB absolute values or to identical load-only work across images.

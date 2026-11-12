@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "New bidirectional source/increment oracle replayed on original captured real RTL traces; no additional native run",
+  "tests": [
+    {
+      "name": "cache",
+      "passed": true,
+      "post_reset_edge_rows": 668
+    },
+    {
+      "name": "cache-selector-negative",
+      "passed": true,
+      "post_reset_edge_rows": 335
+    },
+    {
+      "name": "cache-context-negative",
+      "passed": true,
+      "post_reset_edge_rows": 412
+    },
+    {
+      "name": "cache-wrap",
+      "passed": true,
+      "post_reset_edge_rows": 672
+    }
+  ]
+}

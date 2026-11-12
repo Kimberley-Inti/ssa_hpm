@@ -301,3 +301,11 @@ ABI canary pass; all29 previous low-level tests (23RTL+6Spike) pass on the newly
 generated model. The independent installed suite repeats all5 Cache tests with
 verified reused model. Corrected Cache Linux image is running; the one superseded
 early boot before userspace is separately retained, never counted as acceptance.
+
+Stage8 oracle follow-ups: Root25cec803 audits all four actual Linux sample/record
+identities; c0898e68 checks both directions of source/registered increments; the
+latest root commit adds bounded no-work parent checks to catch a missed parent
+rebase while the child is corrected. Full source heads are in stage8 metadata.
+These are host/checker-only changes; the running model and image are unchanged.
+Native Linux context4/131 and corrected193=10688-10495 versus legacy10752
+(off10556not subtracted) have passed checkpoints; exec/full-export/shutdown pending.
