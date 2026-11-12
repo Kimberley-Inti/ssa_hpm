@@ -151,3 +151,13 @@ python3 ssa/linux/test_export_results.py --native-log /path/to/rocket-linux-even
 These are host mutations of actual native evidence, not extra hardware failures.
 The original log is read only. Missing END during a live export remains pending,
 while missing END in a finished capture is a genuine validation error.
+
+## Accepted coverage
+
+Actual single-hart Rocket/Linux exported41 records in3 chunks plus small/zero/open
+sessions, then completed all affected event/exec/process suites. Across the single
+boot24 sessions/87 records/25 chunks passed and all pools were released. Open
+sessions4/5/13 are semantic-incomplete but transport-complete. See STAGE7.md and
+evidence/stage7/summary.json for raw logs, checksums, counters and exact hashes.
+The host's maximum-capacity plan and corrupt-stream tests are not native full-pool
+or native I/O fault-injection coverage.

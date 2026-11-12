@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "failed": [],
+  "comparison": {
+    "cycle": {
+      "fixed_long_minus_short": 620,
+      "legacy_long_minus_short": 202135,
+      "excluded_long_minus_short": 208444,
+      "B_fixed_long_minus_short": 211894,
+      "parent_fixed_long_minus_short": 649,
+      "parent_legacy_long_minus_short": 202137
+    },
+    "instret": {
+      "fixed_long_minus_short": -40,
+      "legacy_long_minus_short": 202484,
+      "excluded_long_minus_short": 205617,
+      "B_fixed_long_minus_short": 205118,
+      "parent_fixed_long_minus_short": -40,
+      "parent_legacy_long_minus_short": 202484
+    },
+    "time": {
+      "fixed_long_minus_short": 6,
+      "legacy_long_minus_short": 2022,
+      "excluded_long_minus_short": 2085,
+      "B_fixed_long_minus_short": 2120,
+      "parent_fixed_long_minus_short": 6,
+      "parent_legacy_long_minus_short": 2022
+    }
+  }
+}
+{
+  "passed": true,
+  "failed": []
+}
+{
+  "passed": true,
+  "checks": 70,
+  "failed": []
+}
+{
+  "passed": true,
+  "checks": 25,
+  "failed": []
+}

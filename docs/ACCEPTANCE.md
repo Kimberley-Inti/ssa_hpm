@@ -21,8 +21,8 @@
 | C06 适配 | 设计p6进程背景、p12–13；stage2语义 | trap不生成应用调用上下文、返回恢复 | trap depth/overflow、U-only通知、IRQ屏蔽私有ROM；stage2实际陷阱与中断、stage4实际Linux | 已验收；不声称过滤trap事件计数 |
 | C07 适配 | 设计p11–13生命周期未细化；stage3/4 ABI | 单hart任务独占池，开放帧跨抢占恢复，排除采样暂停区间 | task descriptor、S/R、所有开放帧平移；stage4/5/6真实A→B→A，stage6校正7与负对照1130 | 已验收；不是硬件缓存分区 |
 | C08 适配 | 设计p13–14 TODO；stage5规则 | exec旧/新会话区分、失败返回旧会话、退出导出 | post-exec_mmap hook、session/self_exec_id、ENOENT；stage5 37检查、stage6 ABI2旧64/新128/失败128 | 已验收，限pre-commit ENOENT/非多线程/非setuid |
-| C09 核心 | 设计p13 §4/p14 §4.1–4.2 TODO | 将性能数据与上下文存入文件并离线重建 | stage7冻结会话→16记录批次→主机JSON；parent/callee与开放帧RID足以还原树，无须转储哈希桶 | 本轮验收，最终结果见evidence/stage7/summary.json；不得以主机合成样例代替Linux |
-| C10 核心导出边界 | 设计p10–11记录空间；stage7用户要求 | 全部已分配记录，而非32条截断 | 最多262143有效ID；逐批映射/拷贝2KiB；实际41条/3块、零/少量/开放帧；最大容量算术与故障注入单列 | 本轮验收；不声称真实串口跑满262143条 |
+| C09 核心 | 设计p13 §4/p14 §4.1–4.2 TODO | 将性能数据与上下文存入文件并离线重建 | stage7冻结会话→16记录批次→主机JSON；parent/callee与开放帧RID足以还原树，无须转储哈希桶 | 已验收：真实Rocket/Linux退出0，25项导出检查；见evidence/stage7/summary.json |
+| C10 核心导出边界 | 设计p10–11记录空间；stage7用户要求 | 全部已分配记录，而非32条截断 | 最多262143有效ID；逐批映射/拷贝2KiB；实际41条/3块、零/少量/开放帧；最大容量算术与故障注入单列 | 已验收：真实41条/3块、2条、0条及开放帧；不声称真实串口跑满262143条 |
 | D01 后续数据流目标与适配 | 设计p12，HPM p4–5 | 可编程事件随软件上下文记录 | stage6现有DTLB accepted PTW requests，selector0x1002、40位；实际源→HPM→上下文→Linux导出 | 一种TLB事件已验收；按增量发生区间，非请求发起者标签 |
 | D02 原文后续目标 | 设计p12 §3.1(2) | 标量/流式/随机访存分类 | 无分类器；原文未定义窗口、步长、重放/投机和混合流规则 | 未实现且需先补规范；完整数据流目标的必做项，核心三计数器阶段不以此为前置 |
 | D03 原文后续目标 | 设计p12 Cache miss/TLB miss | Cache与TLB访问行为扩展 | 仅DTLB请求已覆盖；无Cache miss归因验收 | Cache事件仍为完整数据流目标的必做项；所有Cache/TLB事件全集是可选扩展 |
@@ -47,7 +47,13 @@ cycle/instret/time顺序沿用内存ABI（原文列举顺序不是内存布局�
 
 - **要宣称完整原始数据流愿景完成**：必须定义并实现D02三类访存、补D03至少一种真实Cache事件，并为分类/事件边界提供端到端证据。仅DTLB事件不能替代这些目标。
 - **要宣称通用Linux软件透明监测完成**：必须补不改应用的启动/exec启用策略、动态链接边界及相应测试；当前显式prctl测试环境是已采用的有限适配。
-- **当前单hart受限profile收尾必做**：以C01–C10/D01和上述六项门槛为基础，生成最终固定版本的统一验收证据；本轮若某项不通过必须标为剩余项，不能以历史日志代替。
+- **当前单hart受限profile**：C01–C10/D01与上述门槛已按实际覆盖收尾，统一证据为evidence/stage7/summary.json；完整传输24会话/87记录，25/70/37/179项本轮真实Linux检查通过。未修改的低层RTL/Spike采用已核验历史证据，不伪称重跑。
 - **可选扩展**：多hart/迁移、所有厂商Cache/TLB事件、非局部展开、perf共享、多线程/setuid/复杂exec、最大容量长时串口压力、GUI/guest文件服务。它们未在原文给出当前profile的可执行要求，不擅自提升为本轮阻塞。
 
 相关来源与证据入口：[第一阶段](accepted-delivery.md)、[stage2](STAGE2.md)、[stage3](STAGE3.md)、[stage4](STAGE4.md)、[stage5](STAGE5.md)、[stage6](STAGE6.md)、[历史](../HISTORY.md)、[ABI](../integration/ssa/linux/ABI.md)。
+
+第七阶段验收补充：41条实际记录解除原32条上限，3块及END校验/树匹配通过；
+最大262143条边界、缺块/重复/截断和校验错误是主机逻辑覆盖，未跑满容量串口。
+同一次真实Linux执行包含STOP/零记录/开放帧/两种ABI的exec及池释放、DTLB暂停
+扣除与旧协议负对照。原设计数据流愿景的D02/D03及通用透明Linux的C05限制仍保留。
+下一轮优先建议D03的一种真实Cache事件，再明确D02分类规范；不扩大本轮验收范围。

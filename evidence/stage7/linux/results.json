@@ -1,0 +1,2579 @@
+{
+  "format_version": 1,
+  "valid": true,
+  "errors": [],
+  "sessions": [
+    {
+      "header": {
+        "version": 1,
+        "session": 1,
+        "pid": 14,
+        "image": 1,
+        "abi": 2,
+        "total": 41,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 42,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 1,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 1,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 1,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 1,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 14,
+          "id": 1,
+          "callee": 67222,
+          "parent": 0,
+          "cycle": 22282,
+          "instret": 4733,
+          "time": 223,
+          "session": 1,
+          "open": 0,
+          "dtlb": 2
+        },
+        {
+          "pid": 14,
+          "id": 2,
+          "callee": 66822,
+          "parent": 1,
+          "cycle": 194,
+          "instret": 46,
+          "time": 2,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 3,
+          "callee": 66832,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 4,
+          "callee": 66842,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 5,
+          "callee": 66852,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 6,
+          "callee": 66862,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 7,
+          "callee": 66872,
+          "parent": 1,
+          "cycle": 113,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 8,
+          "callee": 66882,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 9,
+          "callee": 66892,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 10,
+          "callee": 66902,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 11,
+          "callee": 66912,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 12,
+          "callee": 66922,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 13,
+          "callee": 66932,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 14,
+          "callee": 66942,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 15,
+          "callee": 66952,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 16,
+          "callee": 66962,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 17,
+          "callee": 66972,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 18,
+          "callee": 66982,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 19,
+          "callee": 66992,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 20,
+          "callee": 67002,
+          "parent": 1,
+          "cycle": 113,
+          "instret": 23,
+          "time": 2,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 21,
+          "callee": 67012,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 22,
+          "callee": 67022,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 23,
+          "callee": 67032,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 24,
+          "callee": 67042,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 25,
+          "callee": 67052,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 26,
+          "callee": 67062,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 27,
+          "callee": 67072,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 28,
+          "callee": 67082,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 29,
+          "callee": 67092,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 30,
+          "callee": 67102,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 31,
+          "callee": 67112,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 32,
+          "callee": 67122,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 33,
+          "callee": 67132,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 34,
+          "callee": 67142,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 35,
+          "callee": 67152,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 36,
+          "callee": 67162,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 37,
+          "callee": 67172,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 38,
+          "callee": 67182,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 39,
+          "callee": 67192,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 40,
+          "callee": 67202,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 41,
+          "callee": 67212,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 3,
+      "hash": 9735440160877621905,
+      "released": true,
+      "end": {
+        "session": 1,
+        "chunks": 3,
+        "emitted": 41,
+        "total": 41,
+        "hash": 9735440160877621905,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 2,
+        "pid": 15,
+        "image": 1,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "stop",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 2,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 2,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 2,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 15,
+          "id": 1,
+          "callee": 67270,
+          "parent": 0,
+          "cycle": 723,
+          "instret": 120,
+          "time": 7,
+          "session": 2,
+          "open": 0
+        },
+        {
+          "pid": 15,
+          "id": 2,
+          "callee": 66822,
+          "parent": 1,
+          "cycle": 100,
+          "instret": 21,
+          "time": 1,
+          "session": 2,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 6808350630059487995,
+      "released": true,
+      "end": {
+        "session": 2,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 6808350630059487995,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 3,
+        "pid": 16,
+        "image": 1,
+        "abi": 1,
+        "total": 0,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "stop",
+        "pool": 2281701376,
+        "next": 1,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 3,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 3,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 3,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [],
+      "frames": [],
+      "chunks": 0,
+      "hash": 14695981039346656037,
+      "released": true,
+      "end": {
+        "session": 3,
+        "chunks": 0,
+        "emitted": 0,
+        "total": 0,
+        "hash": 14695981039346656037,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 4,
+        "pid": 17,
+        "image": 1,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 1,
+        "spill": 0,
+        "errors": 0,
+        "status": 1,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 4,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 4,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 4,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 4,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 17,
+          "id": 1,
+          "callee": 67288,
+          "parent": 0,
+          "cycle": 0,
+          "instret": 0,
+          "time": 0,
+          "session": 4,
+          "open": 1,
+          "dtlb": 0
+        },
+        {
+          "pid": 17,
+          "id": 2,
+          "callee": 66822,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 4,
+          "open": 0,
+          "dtlb": 0
+        }
+      ],
+      "frames": [
+        {
+          "session": 4,
+          "frame": 1,
+          "rid": 1,
+          "status": "abandoned"
+        }
+      ],
+      "chunks": 1,
+      "hash": 9701258977773032188,
+      "released": true,
+      "end": {
+        "session": 4,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 9701258977773032188,
+        "status": 1,
+        "records_complete": 1
+      },
+      "complete": false
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 5,
+        "pid": 18,
+        "image": 2,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exec",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 1,
+        "spill": 0,
+        "errors": 0,
+        "status": 1,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 5,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 5,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 5,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 18,
+          "id": 1,
+          "callee": 66082,
+          "parent": 0,
+          "cycle": 0,
+          "instret": 0,
+          "time": 0,
+          "session": 5,
+          "open": 1
+        },
+        {
+          "pid": 18,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 3496,
+          "instret": 3318,
+          "time": 35,
+          "session": 5,
+          "open": 0
+        }
+      ],
+      "frames": [
+        {
+          "session": 5,
+          "frame": 1,
+          "rid": 1,
+          "status": "abandoned"
+        }
+      ],
+      "chunks": 1,
+      "hash": 6388416404387266639,
+      "released": true,
+      "end": {
+        "session": 5,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 6388416404387266639,
+        "status": 1,
+        "records_complete": 1
+      },
+      "complete": false
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 6,
+        "pid": 18,
+        "image": 3,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 6,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 6,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 6,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 18,
+          "id": 1,
+          "callee": 66082,
+          "parent": 0,
+          "cycle": 7370,
+          "instret": 6717,
+          "time": 73,
+          "session": 6,
+          "open": 0
+        },
+        {
+          "pid": 18,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 6780,
+          "instret": 6618,
+          "time": 68,
+          "session": 6,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 15505236259199539325,
+      "released": true,
+      "end": {
+        "session": 6,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 15505236259199539325,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 7,
+        "pid": 19,
+        "image": 2,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 7,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 7,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 7,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 19,
+          "id": 1,
+          "callee": 66082,
+          "parent": 0,
+          "cycle": 173326,
+          "instret": 117419,
+          "time": 1735,
+          "session": 7,
+          "open": 0
+        },
+        {
+          "pid": 19,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 6992,
+          "instret": 6636,
+          "time": 70,
+          "session": 7,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 10464605231920287097,
+      "released": true,
+      "end": {
+        "session": 7,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 10464605231920287097,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 8,
+        "pid": 21,
+        "image": 3,
+        "abi": 2,
+        "total": 4,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 5,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 8,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 8,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 8,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 8,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 21,
+          "id": 1,
+          "callee": 66944,
+          "parent": 0,
+          "cycle": 1305,
+          "instret": 276,
+          "time": 13,
+          "session": 8,
+          "open": 0,
+          "dtlb": 3
+        },
+        {
+          "pid": 21,
+          "id": 2,
+          "callee": 66912,
+          "parent": 1,
+          "cycle": 249,
+          "instret": 58,
+          "time": 2,
+          "session": 8,
+          "open": 0,
+          "dtlb": 2
+        },
+        {
+          "pid": 21,
+          "id": 3,
+          "callee": 66964,
+          "parent": 0,
+          "cycle": 2452,
+          "instret": 778,
+          "time": 25,
+          "session": 8,
+          "open": 0,
+          "dtlb": 128
+        },
+        {
+          "pid": 21,
+          "id": 4,
+          "callee": 66912,
+          "parent": 3,
+          "cycle": 1914,
+          "instret": 664,
+          "time": 19,
+          "session": 8,
+          "open": 0,
+          "dtlb": 127
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 6519542481548941784,
+      "released": true,
+      "end": {
+        "session": 8,
+        "chunks": 1,
+        "emitted": 4,
+        "total": 4,
+        "hash": 6519542481548941784,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 9,
+        "pid": 22,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 9,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 9,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 9,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 9,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 22,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 567817,
+          "instret": 452600,
+          "time": 5680,
+          "session": 9,
+          "open": 0,
+          "dtlb": 1070
+        },
+        {
+          "pid": 22,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 566988,
+          "instret": 452487,
+          "time": 5672,
+          "session": 9,
+          "open": 0,
+          "dtlb": 1069
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 11943613638464003700,
+      "released": true,
+      "end": {
+        "session": 9,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 11943613638464003700,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 10,
+        "pid": 23,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 10,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 10,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 10,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 10,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 23,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 294678,
+          "instret": 278755,
+          "time": 2947,
+          "session": 10,
+          "open": 0,
+          "dtlb": 8
+        },
+        {
+          "pid": 23,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 293724,
+          "instret": 278642,
+          "time": 2937,
+          "session": 10,
+          "open": 0,
+          "dtlb": 6
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 2444049720154304228,
+      "released": true,
+      "end": {
+        "session": 10,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 2444049720154304228,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 11,
+        "pid": 24,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 11,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 11,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 11,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 11,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 24,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 719247,
+          "instret": 589252,
+          "time": 7193,
+          "session": 11,
+          "open": 0,
+          "dtlb": 1078
+        },
+        {
+          "pid": 24,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 718479,
+          "instret": 589139,
+          "time": 7185,
+          "session": 11,
+          "open": 0,
+          "dtlb": 1077
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 3539040179658058959,
+      "released": true,
+      "end": {
+        "session": 11,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 3539040179658058959,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 12,
+        "pid": 25,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 12,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 12,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 12,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 12,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 25,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 4181181,
+          "instret": 3294453,
+          "time": 41812,
+          "session": 12,
+          "open": 0,
+          "dtlb": 1135
+        },
+        {
+          "pid": 25,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 4180272,
+          "instret": 3294340,
+          "time": 41802,
+          "session": 12,
+          "open": 0,
+          "dtlb": 1133
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 9894180539162657209,
+      "released": true,
+      "end": {
+        "session": 12,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 9894180539162657209,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 13,
+        "pid": 26,
+        "image": 4,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exec",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 1,
+        "spill": 0,
+        "errors": 0,
+        "status": 1,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 13,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 13,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 13,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 13,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 26,
+          "id": 1,
+          "callee": 66170,
+          "parent": 0,
+          "cycle": 0,
+          "instret": 0,
+          "time": 0,
+          "session": 13,
+          "open": 1,
+          "dtlb": 0
+        },
+        {
+          "pid": 26,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 4359,
+          "instret": 3645,
+          "time": 44,
+          "session": 13,
+          "open": 0,
+          "dtlb": 64
+        }
+      ],
+      "frames": [
+        {
+          "session": 13,
+          "frame": 1,
+          "rid": 1,
+          "status": "abandoned"
+        }
+      ],
+      "chunks": 1,
+      "hash": 7972182543243952792,
+      "released": true,
+      "end": {
+        "session": 13,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 7972182543243952792,
+        "status": 1,
+        "records_complete": 1
+      },
+      "complete": false
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 14,
+        "pid": 26,
+        "image": 5,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 14,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 14,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 14,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 14,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 26,
+          "id": 1,
+          "callee": 66170,
+          "parent": 0,
+          "cycle": 9246,
+          "instret": 7378,
+          "time": 92,
+          "session": 14,
+          "open": 0,
+          "dtlb": 130
+        },
+        {
+          "pid": 26,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 8639,
+          "instret": 7265,
+          "time": 86,
+          "session": 14,
+          "open": 0,
+          "dtlb": 128
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 5715052688328450251,
+      "released": true,
+      "end": {
+        "session": 14,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 5715052688328450251,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 15,
+        "pid": 27,
+        "image": 4,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 15,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 15,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 15,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 15,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 27,
+          "id": 1,
+          "callee": 66170,
+          "parent": 0,
+          "cycle": 172614,
+          "instret": 118039,
+          "time": 1726,
+          "session": 15,
+          "open": 0,
+          "dtlb": 169
+        },
+        {
+          "pid": 27,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 19567,
+          "instret": 11900,
+          "time": 195,
+          "session": 15,
+          "open": 0,
+          "dtlb": 134
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 4740458076510576403,
+      "released": true,
+      "end": {
+        "session": 15,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 4740458076510576403,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 16,
+        "pid": 28,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 16,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 16,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 16,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 28,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 7438,
+          "instret": 6722,
+          "time": 75,
+          "session": 16,
+          "open": 0
+        },
+        {
+          "pid": 28,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 6820,
+          "instret": 6623,
+          "time": 68,
+          "session": 16,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 17732701913544951361,
+      "released": true,
+      "end": {
+        "session": 16,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 17732701913544951361,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 17,
+        "pid": 33,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 17,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 17,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 17,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 33,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 10795,
+          "instret": 4216,
+          "time": 108,
+          "session": 17,
+          "open": 0
+        },
+        {
+          "pid": 33,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 10044,
+          "instret": 4117,
+          "time": 101,
+          "session": 17,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 18068880024588758044,
+      "released": true,
+      "end": {
+        "session": 17,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 18068880024588758044,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 18,
+        "pid": 34,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 18,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 18,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 18,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 34,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 296630,
+          "instret": 278702,
+          "time": 2966,
+          "session": 18,
+          "open": 0
+        },
+        {
+          "pid": 34,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 295843,
+          "instret": 278603,
+          "time": 2958,
+          "session": 18,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 17615613138071409329,
+      "released": true,
+      "end": {
+        "session": 18,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 17615613138071409329,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 19,
+        "pid": 35,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 19,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 19,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 19,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 35,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 222600,
+          "instret": 209334,
+          "time": 2228,
+          "session": 19,
+          "open": 0
+        },
+        {
+          "pid": 35,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 221938,
+          "instret": 209235,
+          "time": 2221,
+          "session": 19,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 14595909384992762631,
+      "released": true,
+      "end": {
+        "session": 19,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 14595909384992762631,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 20,
+        "pid": 36,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 20,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 20,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 20,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 36,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 297279,
+          "instret": 278662,
+          "time": 2972,
+          "session": 20,
+          "open": 0
+        },
+        {
+          "pid": 36,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 296463,
+          "instret": 278563,
+          "time": 2964,
+          "session": 20,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 6050754560534889494,
+      "released": true,
+      "end": {
+        "session": 20,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 6050754560534889494,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 21,
+        "pid": 37,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 21,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 21,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 21,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 37,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 135547,
+          "instret": 115438,
+          "time": 1356,
+          "session": 21,
+          "open": 0
+        },
+        {
+          "pid": 37,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 134839,
+          "instret": 115339,
+          "time": 1349,
+          "session": 21,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 2472049009756486781,
+      "released": true,
+      "end": {
+        "session": 21,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 2472049009756486781,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 22,
+        "pid": 38,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 22,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 22,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 22,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 38,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 2908341,
+          "instret": 2283578,
+          "time": 29083,
+          "session": 22,
+          "open": 0
+        },
+        {
+          "pid": 38,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 2907530,
+          "instret": 2283479,
+          "time": 29075,
+          "session": 22,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 14058087494809395259,
+      "released": true,
+      "end": {
+        "session": 22,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 14058087494809395259,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 23,
+        "pid": 39,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 23,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 23,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 23,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 39,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 396131,
+          "instret": 369213,
+          "time": 3962,
+          "session": 23,
+          "open": 0
+        },
+        {
+          "pid": 39,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 395441,
+          "instret": 369114,
+          "time": 3955,
+          "session": 23,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 12400023389745427409,
+      "released": true,
+      "end": {
+        "session": 23,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 12400023389745427409,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 24,
+        "pid": 40,
+        "image": 5,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 24,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 24,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 24,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 40,
+          "id": 1,
+          "callee": 66126,
+          "parent": 0,
+          "cycle": 3110478,
+          "instret": 2486062,
+          "time": 31105,
+          "session": 24,
+          "open": 0
+        },
+        {
+          "pid": 40,
+          "id": 2,
+          "callee": 65812,
+          "parent": 1,
+          "cycle": 3109665,
+          "instret": 2485963,
+          "time": 31097,
+          "session": 24,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 12214564619216715695,
+      "released": true,
+      "end": {
+        "session": 24,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 12214564619216715695,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    }
+  ]
+}

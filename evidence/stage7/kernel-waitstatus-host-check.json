@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "host_only": true,
+  "method": "Read Linux proc stat field52 from a real unreaped zombie before parent wait",
+  "kernel_wait_status": 1792,
+  "decoded_native_code": 7,
+  "parent_reaped_code": 7
+}

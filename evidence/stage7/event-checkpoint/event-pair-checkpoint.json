@@ -1,0 +1,374 @@
+{
+  "valid": true,
+  "scope": "actual native corrected and legacy event pairs; remaining suites and shutdown pending",
+  "sessions": [
+    {
+      "header": {
+        "version": 1,
+        "session": 9,
+        "pid": 22,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 9,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 9,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 9,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 9,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 22,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 567817,
+          "instret": 452600,
+          "time": 5680,
+          "session": 9,
+          "open": 0,
+          "dtlb": 1070
+        },
+        {
+          "pid": 22,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 566988,
+          "instret": 452487,
+          "time": 5672,
+          "session": 9,
+          "open": 0,
+          "dtlb": 1069
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 11943613638464003700,
+      "released": true,
+      "end": {
+        "session": 9,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 11943613638464003700,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 10,
+        "pid": 23,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 10,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 10,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 10,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 10,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 23,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 294678,
+          "instret": 278755,
+          "time": 2947,
+          "session": 10,
+          "open": 0,
+          "dtlb": 8
+        },
+        {
+          "pid": 23,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 293724,
+          "instret": 278642,
+          "time": 2937,
+          "session": 10,
+          "open": 0,
+          "dtlb": 6
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 2444049720154304228,
+      "released": true,
+      "end": {
+        "session": 10,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 2444049720154304228,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 11,
+        "pid": 24,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 11,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 11,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 11,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 11,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 24,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 719247,
+          "instret": 589252,
+          "time": 7193,
+          "session": 11,
+          "open": 0,
+          "dtlb": 1078
+        },
+        {
+          "pid": 24,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 718479,
+          "instret": 589139,
+          "time": 7185,
+          "session": 11,
+          "open": 0,
+          "dtlb": 1077
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 3539040179658058959,
+      "released": true,
+      "end": {
+        "session": 11,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 3539040179658058959,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 12,
+        "pid": 25,
+        "image": 3,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2348810240,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 1,
+        "policy": "interval_inclusive_no_rebase"
+      },
+      "counters": [
+        {
+          "session": 12,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 12,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 12,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 12,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 25,
+          "id": 1,
+          "callee": 66214,
+          "parent": 0,
+          "cycle": 4181181,
+          "instret": 3294453,
+          "time": 41812,
+          "session": 12,
+          "open": 0,
+          "dtlb": 1135
+        },
+        {
+          "pid": 25,
+          "id": 2,
+          "callee": 65868,
+          "parent": 1,
+          "cycle": 4180272,
+          "instret": 3294340,
+          "time": 41802,
+          "session": 12,
+          "open": 0,
+          "dtlb": 1133
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 9894180539162657209,
+      "released": true,
+      "end": {
+        "session": 12,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 9894180539162657209,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    }
+  ]
+}

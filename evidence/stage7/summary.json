@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "engine": "Actual single-hart Rocket/Verilator Linux; independent public-source kernel/OpenSBI image",
+  "native_exit_code": 0,
+  "normal_powerdown": true,
+  "execution_seconds": 51379.88647874001,
+  "actual_native_runs": 1,
+  "checks": {
+    "export": {
+      "passed": true,
+      "checks": 25,
+      "path": "linux/summary.json"
+    },
+    "events": {
+      "passed": true,
+      "checks": 70,
+      "path": "linux/regression/summary.json"
+    },
+    "exec": {
+      "passed": true,
+      "checks": 37,
+      "path": "linux/regression/baseline/summary.json"
+    },
+    "process": {
+      "passed": true,
+      "checks": 179,
+      "path": "linux/regression/baseline/regression/summary.json"
+    }
+  },
+  "host": {
+    "passed": true,
+    "synthetic_checks": 36,
+    "real_prefix_and_host_mutation_checks": 4,
+    "report": "final-host-tests.json"
+  },
+  "export": {
+    "version": 1,
+    "sessions": 24,
+    "records": 87,
+    "chunks": 25,
+    "all_records_transferred": true,
+    "all_pools_released": true,
+    "semantic_incomplete_sessions": [
+      4,
+      5,
+      13
+    ],
+    "first_session": {
+      "records": 41,
+      "chunks": 3,
+      "chunk_sizes": [
+        16,
+        16,
+        9
+      ],
+      "ids": "1..41",
+      "tree": "root1 plus40 distinct leaves parent1; leaf00 reused",
+      "end_hash": "871b3b3ee92eb291"
+    }
+  },
+  "counter_scope": "ABI1 cycle/instret/time64; ABI2 DTLB accepted PTW requests40 selector0x1002 occurrence intervals inclusive, pause S..R excluded by rebasing open frames",
+  "event_evidence": {
+    "warm_common": 2,
+    "cold_common": 127,
+    "corrected_A": {
+      "raw": 1131,
+      "excluded": 1125,
+      "recorded": 6
+    },
+    "legacy_A": {
+      "raw": 1133,
+      "excluded_but_not_subtracted": 1125,
+      "recorded": 1133
+    }
+  },
+  "process_comparison": {
+    "cycle": {
+      "fixed_long_minus_short": 620,
+      "legacy_long_minus_short": 202135,
+      "excluded_long_minus_short": 208444,
+      "B_fixed_long_minus_short": 211894,
+      "parent_fixed_long_minus_short": 649,
+      "parent_legacy_long_minus_short": 202137
+    },
+    "instret": {
+      "fixed_long_minus_short": -40,
+      "legacy_long_minus_short": 202484,
+      "excluded_long_minus_short": 205617,
+      "B_fixed_long_minus_short": 205118,
+      "parent_fixed_long_minus_short": -40,
+      "parent_legacy_long_minus_short": 202484
+    },
+    "time": {
+      "fixed_long_minus_short": 6,
+      "legacy_long_minus_short": 2022,
+      "excluded_long_minus_short": 2085,
+      "B_fixed_long_minus_short": 2120,
+      "parent_fixed_long_minus_short": 6,
+      "parent_legacy_long_minus_short": 2022
+    }
+  },
+  "historical_process_checks_retained": 176,
+  "additional_checks": [
+    "test4_role1_sample3_0",
+    "test4_role1_sample3_1",
+    "test4_role1_sample3_2"
+  ],
+  "independent": {
+    "public_apply": "final-public-apply.json",
+    "kernel_build": "linux-build.json",
+    "kernel_tree_match": "source-match.json",
+    "current_installed_manifest": "independent-validation-refresh.json",
+    "same_log_checker_replay": "independent-final-check.json"
+  },
+  "reused_not_rerun": [
+    "unchanged stage6 Rocket model hash/source/config",
+    "accepted low-level RTL and Spike references; no SSA extension in Spike",
+    "toolchain and Chipyard dependency caches"
+  ],
+  "source_commits": "source-commits.json",
+  "log_sha256": "17f30d2231bb10d9bf584fedb550c3c416c23e5a1f6d7e132fb1b7f0951aaa68",
+  "model_sha256": "5d0ad7923007c12b67f18c613550d2476d7ef501d21849e90e8b9b7233450b52",
+  "host_supervision": "timeout-protection.json: only runner paused near original12h limit, native never stopped; kernel wait0 captured before runner resumed and reaped0",
+  "limitations": [
+    "actual serial41 records, not262143 maximum capacity",
+    "capacity arithmetic and corrupt/missing/repeated/truncated streams tested on host; no native I/O-failure injection",
+    "singlehart, two prototype pools, explicit prctl lifecycle",
+    "original dataflow classification and one Cache event remain later original objectives",
+    "generic transparent Linux automatic enable/loader policy, multicore/migration/nonlocal unwind unverified"
+  ]
+}

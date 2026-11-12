@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "scope": "Independent installed checker entry replayed against SAME completed native log; not another Linux simulation",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "/tmp/ssa-hpm-stage7/final-public-apply/ssa/linux/grade-export.py",
+        "/tmp/ssa-hpm-stage7/linux-rtl/rocket-linux-events.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage7/linux-rtl/user-elfs.json",
+        "--out-dir",
+        "/tmp/ssa-hpm-stage7/independent-linux-regrade"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "/tmp/ssa-hpm-stage7/final-public-apply/ssa/linux/test_export_results.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage7/linux-rtl/rocket-linux-events.txt",
+        "--out",
+        "/tmp/ssa-hpm-stage7/final-host-tests.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "/tmp/ssa-hpm-stage7/final-public-apply/ssa/linux/export_results.py",
+        "/tmp/ssa-hpm-stage7/linux-rtl/rocket-linux-events.txt",
+        "--out",
+        "/tmp/ssa-hpm-stage7/final-cli-results.json",
+        "--tree-limit",
+        "3"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_manifest": "independent-validation-refresh.json",
+  "native_log_sha256": "17f30d2231bb10d9bf584fedb550c3c416c23e5a1f6d7e132fb1b7f0951aaa68",
+  "same_check_results": true,
+  "same_structured_records": true
+}

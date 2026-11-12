@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "coverage": "host process supervision only; Bash\u2192Python subprocess.run\u2192native toy",
+  "outer_shell_survived_runner_stop": true,
+  "native_toy_actual_exit": 0,
+  "outer_exit": 0,
+  "output": "INNER_REAPED_0\nOUTER_RETURN=0"
+}

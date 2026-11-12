@@ -261,3 +261,23 @@ Native four-case export checkpoint passed23 specialized gates:41/2/0/open sessio
 Chipyard `b610880d` raises only the default host timeout for fresh --export runs to48h after the observed slow native run exceeded7h with suites remaining; explicit flags and legacy defaults remain intact. Current native process/image/model unchanged. Host supervision actions, if needed near its original12h deadline, are separately audited and actual child exit status still reaped by the same runner. No actual extension action at this checkpoint.
 
 Actual stage7 native lifecycle checkpoint:35 original lifecycle gates pass, with only overall shutdown/affected-stage4 gates pending. Success old/new SID5/6 underPID18 have images2/3 and leaf3318/6618; ENOENT session7 retains and closes its tree. The running boot continues into events/process fixtures. Checkpoint overall status remains false until the dependent gates complete.
+
+Stage7 final acceptance (same single native run, no restart): independently built
+public-source Linux/OpenSBI image exited0 with normal power-down after51379.89s.
+All25 export,70 event,37 exec and179 process checks passed; the latter retains
+all176 stage6 checks plus3 assertions for an additional real scheduler sample.
+36 synthetic host checks and4 real-prefix/host-mutation checks also pass. The
+independently installed checker replays the same raw log identically.24 sessions,
+87 records,25 chunks all transferred/released; first41-record END871b3b3ee92eb291.
+Actual corrected DTLB6=1131-1125 versus legacy1133; corrected instret long-short-40
+versus legacy202484. In-flight summaries remain explicitly historical.
+
+Only the waiting host runner was paused near its original12h deadline; native
+execution continued, kernel wait0 was captured, and runner resumed/reaped0. The
+monitor's143 is separate. No Rocket/OpenSBI source change or new low-level RTL/
+Spike execution. Source delivery remains Chipyard b610880dd4a0bcab4808398b62f290b13a613979,
+Linux b92b11252f5b9a5ce2a3c33298fa3b8bef93c836, Rocket469bfac7 and OpenSBI34520a7.
+Final evidence/requirements decision is in evidence/stage7/summary.json and
+docs/ACCEPTANCE.md. The final maintenance evidence commit continues the existing
+stage7-result-export history and updates Draft PR6 against stage6; main, tags and
+earlier PR branches remain unchanged.

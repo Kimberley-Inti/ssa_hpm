@@ -1,8 +1,9 @@
 # Stage7: complete frozen monitoring results
 
-Status: implementation,36 host tests and independent public Linux/OpenSBI image
-build passed. Actual Rocket/Verilator Linux export and affected regression are
-running; final acceptance is not yet claimed.
+Status: accepted on actual single-hart Rocket/Verilator Linux. One independent
+public-source kernel/OpenSBI image completed normally (native exit0/power-down).
+25 export,70 event,37 exec and179 process checks passed, plus36 synthetic host
+checks and4 real-prefix/host-mutation checks. Full evidence: [summary](../evidence/stage7/summary.json).
 
 Scope and final-project decisions are in [ACCEPTANCE.md](ACCEPTANCE.md). The new
 format, counter semantics, synchronization and compatibility are in
@@ -77,7 +78,13 @@ Source/full-SHA mapping: evidence/stage7/source-commits.json and HISTORY.md.
 The native run must have actual exit0, normal power-down, a complete versioned
 stream and all new/affected checkers passing before this stage is accepted.
 
-## Native41-record checkpoint
+## Historical in-flight checkpoints
+
+The following checkpoints preserve the evidence available during the single long
+run. Their pending/false global summaries are superseded by the final acceptance
+below; no native rerun was used.
+
+### Native41-record checkpoint
 
 The first real session completed with41 records,3 chunks (16/16/9), IDs1..41,
 all40 leaves parent1 and exactELF callee addresses. Repeated leaf ID2 instret46
@@ -90,7 +97,7 @@ END was from live incomplete input. Exit143 belonged only to the intentionally
 restarted old monitor (session16333); native PID301709 remained running.
 Evidence: evidence/stage7/first41/ and monitor-restart.json.
 
-## Four-case native checkpoint
+### Four-case native checkpoint
 
 The new fixture completed all four real children and emitted its suite END.
 23 export-specific gates passed:41/2/0 records, explicit STOP/export/repeat and
@@ -109,7 +116,7 @@ fixture. Exact archived-stage6 /init hash/symbol equality was verified. A histor
 log check reproduced two wrong-role tree failures before mapping and all70/37/176
 passes after mapping. This is an oracle correction, not another Linux execution.
 
-## Host runtime budget
+### Host runtime budget
 
 The current VM run exceeded7h before the full chained suite completed. New
 --export runs default to172800 host seconds (48h); an explicit --timeout overrides
@@ -123,7 +130,7 @@ separate real subprocess.run host check verified that sequence; any actual actio
 is recorded in timeout-protection.json, never presented as a native failure or
 a second simulation. At this checkpoint no extension action has occurred.
 
-## Actual lifecycle checkpoint
+### Actual lifecycle checkpoint
 
 The same native boot completed original success/ENOENT/replacement-exit cases.
 35 lifecycle-specific gates pass; only final shutdown and later stage4 regression
@@ -132,3 +139,76 @@ closed leaf3318/6618, old abandoned parent and new closed tree; both terminal
 checksums and pool releases parsed correctly. Failed exec session7 preserves
 its old tree and returns normally. These are new native results, not the earlier
 archived-log role-map oracle check. See evidence/stage7/lifecycle-checkpoint/.
+
+## Final native acceptance
+
+The same simulation finished after51379.89 host seconds. Native exit0 was recorded
+both in execution.json and in the kernel zombie wait status before resuming its
+waiting Python runner. The runner then reaped0 and all delegated graders returned0.
+Normal `reboot: Power down`, four `SSA LINUX DUAL USER PASS` markers and the final
+process-fixture PASS are present. No model restart or second Linux execution.
+The host supervisor acted at42039.43s: STOP only the waiting runner, let the native
+child run, capture raw kernel wait0, CONT runner. This avoided its original12h
+host timeout; future documented commands use48h. Actual actions are preserved in
+[timeout-protection.json](../evidence/stage7/timeout-protection.json).
+
+| Actual check layer | Passed | Evidence |
+| --- | ---: | --- |
+| Stage7 export / terminal checks |25/25|linux/summary.json|
+| Stage6 event and dependencies |70/70|linux/regression/summary.json|
+| Stage5 exec and dependencies |37/37|linux/regression/baseline/summary.json|
+| Stage4 process and sampling |179/179|linux/regression/baseline/regression/summary.json|
+| Host capacity/protocol faults |36/36|final-host-tests.json|
+| Real41-record prefix plus host mutations |4/4|final-host-tests.json|
+
+The179 process checks retain all176 stage6 checks (including all173 original
+stage4 checks). The three extra assertions validate a fourth actual sample event
+in the last legacy A; no historical gate was removed. Counts across layers are
+separate gates, not separate simulation counts.
+
+The complete version1 stream contains24 sessions,87 records and25 chunks. Every
+session transferred its declared record count and released its own pool. Semantic
+incomplete sessions4/5/13 deliberately mark an abandoned parent (fixture and old
+ABI1/ABI2 exec); valid transport does not turn an unfinished call into a return.
+The first41-record session has chunks16/16/9 and END871b3b3ee92eb291; allIDs,
+parent/callee relationships, repeated-context reuse and all checksums passed.
+Explicit STOP/op5, duplicate-export rejection, held-pool busy rejection and empty
+session checks passed. Old/new same-PID exec epochs were separately exported once,
+release preceded pool reuse, and failedENOENT retained the old session.
+
+Actual DTLB common contexts count2(warm) versus127(cold). Corrected A resumes from
+depth2 and records6=1131(raw)-1125(paused); legacy A deliberately records1133(raw),
+retaining its1125 paused events. Original three-counter corrected long-short deltas
+are cycle620,instret-40,time6; legacy deltas202135/202484/2022. Open-frame sample
+identities passed for every counter; pre-S/post-R costs remain included. Absolute
+values are this run's observations, not substituted historical expectations.
+
+The independent public reconstruction's installed graders replayed the SAME
+completed raw log and produced identical record JSON and all check booleans;
+[report](../evidence/stage7/independent-final-check.json). This is an independent
+entry-point check, not a second Linux run. Its7 rebuilt userspace ELFs match the
+running image; the fresh public Linux/OpenSBI build matches the source trees.
+Unchanged Rocket model, low-level RTL and Spike evidence were verified/reused;
+there was no new RTL generation, model build or Spike run in this stage.
+
+Raw log: [rocket-linux-events.txt](../evidence/stage7/linux/rocket-linux-events.txt),
+SHA256 `17f30d2231bb10d9bf584fedb550c3c416c23e5a1f6d7e132fb1b7f0951aaa68`.
+Image/model hashes and actual argv are in linux/execution.json. All artifact
+hashes are in artifact-hashes.json; in-flight checkpoint summaries remain labeled.
+
+To check the committed evidence without launching another simulation:
+
+```sh
+python3 integration/ssa/linux/grade-export.py \
+  evidence/stage7/linux/rocket-linux-events.txt --exit-code 0 \
+  --users evidence/stage7/linux/user-elfs.json --out-dir /tmp/ssa-export-recheck
+python3 integration/ssa/linux/test_export_results.py \
+  --native-log evidence/stage7/linux/rocket-linux-events.txt \
+  --out /tmp/ssa-export-host-recheck.json
+```
+
+Actual target coverage is41 records, not262143; maximum arithmetic and malformed
+streams are host-only tests. No guest filesystem service, native mapping-fault
+injection, cancellation/retry, multicore or arbitrary unwind is claimed. The
+current single-hart profile's core acceptance is complete. Remaining original
+extended objectives and optional work are distinguished in ACCEPTANCE.md.

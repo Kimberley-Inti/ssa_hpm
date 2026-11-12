@@ -604,7 +604,7 @@
   "stage7": {
     "baseline": "1c48e93b0055e92a565eb455a057c1e45618d81c",
     "branch": "stage7-result-export",
-    "status": "host protocol36 checks and public-source Linux/OpenSBI build passed; actual Linux acceptance running",
+    "status": "accepted: actual independent Rocket/Linux boot exit0,25export/70event/37exec/179process gates plus36+4host checks",
     "linux_base": "49943b80f864a41e4ac13108a77f921e013d3570",
     "linux_delivery": "b92b11252f5b9a5ce2a3c33298fa3b8bef93c836",
     "linux_tree": "ef83a163f08c58230c0c5f39ca16052228608ba8",
@@ -614,6 +614,9 @@
     "export_version": 1,
     "capacity": 262143,
     "chunk_records": 16,
-    "required_checklist": "docs/ACCEPTANCE.md"
+    "required_checklist": "docs/ACCEPTANCE.md",
+    "evidence": "evidence/stage7/summary.json",
+    "source_commits": "evidence/stage7/source-commits.json",
+    "native_runs": 1
   }
 }

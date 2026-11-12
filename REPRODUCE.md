@@ -167,3 +167,11 @@ It chains the actual41/2/0/open-frame fixture and unchanged stage6/5/4 suites.
 `export_results.py` writes versioned JSON; `test_export_results.py` separately
 checks host-only faults/capacity. Commands and cached-build distinctions are in
 [STAGE7.md](docs/STAGE7.md); no stage7 Rocket/OpenSBI source change is required.
+
+Stage7 acceptance completed on the independently built image: native exit0 and
+normal power-down,25/70/37/179 check gates. See evidence/stage7/summary.json,
+linux/execution.json and independent-final-check.json. The independent checker
+replay uses the same raw run; it is not a second native simulation. Fresh --export
+runs default to172800 host seconds; the actual long run's original43200 limit
+was preserved using the separately audited runner-only pause/resume protocol.
+For a cheap committed-log recheck, use the two commands at the end of STAGE7.md.
