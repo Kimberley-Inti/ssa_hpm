@@ -72,6 +72,7 @@
     "summary.json": "9c9ebeaaf756bd984b29d5b5f5416a6cacacae78fd97484a09300b87e56d4cbc",
     "timeout-protection.json": "27f8bde8fb045ddc27e6c6389d79e2589aa42c877972810135d63cff8e885b74",
     "timeout-reap-outer-check.json": "205869b91899e3ebf476915c97501b2914daf20dd9fb4fcced4d5c00f2ed265e",
-    "timeout-resume-host-check.json": "117f0b0a464991163f79e792f4b3044834d7c237def4b37abe4d95a0e0cd7e3b"
+    "timeout-resume-host-check.json": "117f0b0a464991163f79e792f4b3044834d7c237def4b37abe4d95a0e0cd7e3b",
+    "final-publication-audit.json": "a20a23bd4bd085cdb250c5398b8ec1ba386e3a8d7bae10b2b7b6d3ac5848e761"
   }
 }
