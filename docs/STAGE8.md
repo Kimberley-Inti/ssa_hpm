@@ -1,7 +1,8 @@
 # Stage8: native Cache event attribution
 
-Status: implementation/public Linux image build prepared; actual RTL and Linux
-acceptance pending. D03 is not closed until both pass. Base: accepted stage7,
+Status: five Cache RTL cases and all29 prior low-level cases passed on the new
+model. Corrected independent Linux image is running; Linux acceptance is pending.
+D03 is not closed until that passes. Base: accepted stage7,
 2c63845c4bd262594f6d5ed0e4fc12773957d833; PR6 remains Draft/Open.
 
 The native D$ miss EventSet entry has selector0x202 (set2,bit1). In the actual
@@ -55,7 +56,8 @@ python3 ssa/linux/export_results.py \
 python3 ssa/linux/test_export_results.py --out /tmp/ssa-cache-host.json
 ```
 
-The bare-metal oracle traces real Cache source pulses, registered increments,
+The bare-metal oracle (four source/negative/wrap cases plus one Cache-mode register
+canary) traces real Cache source pulses, registered increments,
 actual HPM CSR reset/reads and ELF-identified context keys. A one-line hot working
 set contrasts with128 page-stride lines thrashing the same set; the cold context
 is repeated. No prefetcher is introduced. Wrong-selector and swapped-context
