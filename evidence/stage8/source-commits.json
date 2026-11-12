@@ -1,7 +1,7 @@
 {
   "chipyard": {
-    "head": "f246f7210e4f92fa8b42e595c445a6930d713338",
-    "tree": "26d7a1226f12638e2193a6c9956e8f0f9e8b50b7",
+    "head": "25cec803f13dc386326202133a7816614c0e37ad",
+    "tree": "1c432c2d7cf2dc4578a2d2c93cc12de375b31ee3",
     "branch": "stage8-cache-event-attribution"
   },
   "rocket": {

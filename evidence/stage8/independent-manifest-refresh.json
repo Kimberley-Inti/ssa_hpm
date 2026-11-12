@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "scope": "Refresh installed project files after prefault/canary/host-check follow-up; original public Git patch reconstruction unchanged",
+  "scope": "same independent public patch reconstruction, refresh only host/test follow-ups; exact full installed implementation manifest verified",
   "files": {
     "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "69ecd3b32f54046fecec3b0702bb98601fa85821f98e48472c4293d66dabe49f",
     "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "9de81f69f54d0a29bd3f317e572a9aec8910006a9c769dcc978b00b72819bcbd",
@@ -66,6 +66,6 @@
     "ssa/linux/0006-linux-cache-profile.patch": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526",
     "ssa/linux/0003-opensbi-cache-profile.patch": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9",
     "ssa/linux/cache-init.c": "7eb2e0f90b463b74242bf4e0fcaf17040ce4bc03552682157aca88fb5a3f526d",
-    "ssa/linux/grade-cache.py": "4459cb8c19f26228628cb98a986a8fe9b98c84dbd2206721dcb775a6aae27171"
+    "ssa/linux/grade-cache.py": "49cf7611aed90425fd895e1ee439e20140badfcbf8e40133ab35c255e4341a0f"
   }
 }
