@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "coverage": "new public-source reconstruction and actual Linux/OpenSBI image build; existing Rocket model reused",
+  "linux_development_tree": "a28522f6eabe937ea93347f32d21b8b251324fcf",
+  "linux_public_tree": "a28522f6eabe937ea93347f32d21b8b251324fcf",
+  "firmware_unchanged_source_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+  "rootfs_contains_manual_exec_dependency": true,
+  "rootfs_contains_new_auto_exec_target": true,
+  "kernel_image_sha256": "862c37d32b8c8bbeb6b97555af98aff18bcccc489f4845431ee6ea03666f3279",
+  "frozen_boot_sha256": "e599ca9e424972735e4fae7829b13408735782f2f41553d056740cffa7d0c1a2"
+}

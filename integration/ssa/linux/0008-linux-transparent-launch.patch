@@ -1,0 +1,220 @@
+From 8b865bfe4c40332446227e2fbf6b442ab0bc651a Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Fri, 13 Nov 2026 20:32:01 +0800
+Subject: [PATCH] SSA-HPM: arm trusted exec policy and auto-start owned
+ sessions at ELF readiness
+
+---
+ fs/binfmt_elf.c         |  6 +++++
+ include/linux/sched.h   |  2 ++
+ include/linux/ssa_hpm.h | 13 ++++++++--
+ kernel/exit.c           |  2 +-
+ kernel/fork.c           |  5 ++++
+ kernel/ssa_hpm.c        | 55 +++++++++++++++++++++++++++++++++++++++--
+ 6 files changed, 78 insertions(+), 5 deletions(-)
+
+diff --git a/fs/binfmt_elf.c b/fs/binfmt_elf.c
+index 13f25e241..db179529b 100644
+--- a/fs/binfmt_elf.c
++++ b/fs/binfmt_elf.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include <linux/module.h>
++#include <linux/ssa_hpm.h>
+ #include <linux/kernel.h>
+ #include <linux/fs.h>
+ #include <linux/mm.h>
+@@ -843,6 +844,10 @@ static int load_elf_binary(struct linux_binprm *bprm)
+ 	if (retval)
+ 		goto out_free_dentry;
+ 
++	retval = ssa_hpm_exec_check(bprm);
++	if (retval)
++		goto out_free_dentry;
++
+ 	/* Flush all traces of the currently running executable */
+ 	retval = flush_old_exec(bprm);
+ 	if (retval)
+@@ -1152,6 +1157,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
+ 
+ 	finalize_exec(bprm);
+ 	start_thread(regs, elf_entry, bprm->p);
++	ssa_hpm_exec_ready(elf_entry,e_entry,interp_load_addr);
+ 	retval = 0;
+ out:
+ 	return retval;
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 0c4a1e35c..71ed54d0b 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -640,6 +640,8 @@ struct task_struct {
+ #endif
+ #ifdef CONFIG_SSA_HPM
+ 	struct ssa_hpm_state *ssa_hpm;
++	unsigned int ssa_launch_policy, ssa_launch_role, ssa_launch_test;
++	int ssa_launch_error;
+ #endif
+ 	/* -1 unrunnable, 0 runnable, >0 stopped: */
+ 	volatile long			state;
+diff --git a/include/linux/ssa_hpm.h b/include/linux/ssa_hpm.h
+index e688e884f..5cf2dba20 100644
+--- a/include/linux/ssa_hpm.h
++++ b/include/linux/ssa_hpm.h
+@@ -4,16 +4,25 @@
+ #include <linux/errno.h>
+ #include <linux/types.h>
+ struct task_struct;
++struct linux_binprm;
+ #ifdef CONFIG_SSA_HPM
+ void ssa_hpm_fork(struct task_struct *p);
++void ssa_hpm_fork_done(struct task_struct *p);
+ void ssa_hpm_switch(struct task_struct *prev, struct task_struct *next, bool preempt);
+-void ssa_hpm_exit(struct task_struct *p);
++void ssa_hpm_exit(struct task_struct *p, long code);
++int ssa_hpm_exec_check(struct linux_binprm *bprm);
++int ssa_hpm_clone_check(unsigned long flags);
++void ssa_hpm_exec_ready(unsigned long entry,unsigned long app,unsigned long interp);
+ void ssa_hpm_exec(struct task_struct *p);
+ long ssa_hpm_prctl(unsigned long op, unsigned long flags, unsigned long role, unsigned long test);
+ #else
+ static inline void ssa_hpm_fork(struct task_struct *p) {}
++static inline void ssa_hpm_fork_done(struct task_struct *p) {}
+ static inline void ssa_hpm_switch(struct task_struct *p, struct task_struct *n, bool v) {}
+-static inline void ssa_hpm_exit(struct task_struct *p) {}
++static inline void ssa_hpm_exit(struct task_struct *p,long c) {}
++static inline int ssa_hpm_exec_check(struct linux_binprm *b) {return 0;}
++static inline int ssa_hpm_clone_check(unsigned long f) {return 0;}
++static inline void ssa_hpm_exec_ready(unsigned long e,unsigned long a,unsigned long i) {}
+ static inline void ssa_hpm_exec(struct task_struct *p) {}
+ static inline long ssa_hpm_prctl(unsigned long o,unsigned long f,unsigned long r,unsigned long t) {return -EINVAL;}
+ #endif
+diff --git a/kernel/exit.c b/kernel/exit.c
+index 8efcb0ff4..d5de25f82 100644
+--- a/kernel/exit.c
++++ b/kernel/exit.c
+@@ -730,7 +730,7 @@ void __noreturn do_exit(long code)
+ 
+ 	ptrace_event(PTRACE_EVENT_EXIT, code);
+ 
+-	ssa_hpm_exit(tsk);
++	ssa_hpm_exit(tsk,code);
+ 	validate_creds_for_do_exit(tsk);
+ 
+ 	/*
+diff --git a/kernel/fork.c b/kernel/fork.c
+index b024dfb7d..d26ce9a50 100644
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -1839,6 +1839,10 @@ static __latent_entropy struct task_struct *copy_process(
+ 	u64 clone_flags = args->flags;
+ 	struct nsproxy *nsp = current->nsproxy;
+ 
++	retval = ssa_hpm_clone_check(clone_flags);
++	if (retval)
++		return ERR_PTR(retval);
++
+ 	/*
+ 	 * Don't allow sharing the root directory with processes in a different
+ 	 * namespace
+@@ -2159,6 +2163,7 @@ static __latent_entropy struct task_struct *copy_process(
+ 
+ 	/* ok, now we should be set up.. */
+ 	p->pid = pid_nr(pid);
++	ssa_hpm_fork_done(p);
+ 	if (clone_flags & CLONE_THREAD) {
+ 		p->exit_signal = -1;
+ 		p->group_leader = current->group_leader;
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 17428f9d4..0e3ce18a4 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -1,6 +1,10 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /* Single-hart SSA-HPM prototype. Physical pools are outside managed Linux RAM. */
+ #include <linux/init.h>
++#include <linux/capability.h>
++#include <linux/binfmts.h>
++#include <linux/sched/signal.h>
++#include <linux/fs.h>
+ #include <linux/io.h>
+ #include <linux/slab.h>
+ #include <linux/sched.h>
+@@ -97,7 +101,29 @@ static void resume_task(struct task_struct *t,struct task_struct *other)
+  }
+  p->state=RUNNING;csr_write(0x5c1,p->classify?p->session:0);select_pool(p->pool->base,p->event);
+ }
+-void ssa_hpm_fork(struct task_struct *t){t->ssa_hpm=NULL;}
++void ssa_hpm_fork(struct task_struct *t){
++ t->ssa_hpm=NULL;t->ssa_launch_policy=0;t->ssa_launch_role=0;t->ssa_launch_test=0;t->ssa_launch_error=0;
++}
++void ssa_hpm_fork_done(struct task_struct *t){
++ if(current->ssa_launch_policy)pr_emerg("SSA_AUTO_FORK parent=%d child=%d inherited=0 test=%u\n",current->pid,t->pid,current->ssa_launch_test);
++}
++int ssa_hpm_clone_check(unsigned long flags){
++ if((current->ssa_launch_policy || current->ssa_hpm) && (flags&CLONE_THREAD)){
++  pr_emerg("SSA_AUTO_REJECT pid=%d reason=threads errno=95\n",current->pid);return -EOPNOTSUPP;
++ }
++ return 0;
++}
++int ssa_hpm_exec_check(struct linux_binprm *bprm){
++ const char *reason=NULL;
++ if(!current->ssa_launch_policy)return 0;
++ if(!task_no_new_privs(current))reason="no_new_privs";
++ else if(get_nr_threads(current)!=1)reason="threads";
++ else if(bprm->recursion_depth!=1)reason="format";
++ else if(file_inode(bprm->file)->i_mode&(S_ISUID|S_ISGID))reason="setid";
++ else if(!uid_eq(bprm->cred->euid,current_euid()) || !gid_eq(bprm->cred->egid,current_egid()))reason="credentials";
++ if(reason){current->ssa_launch_error=-EPERM;pr_emerg("SSA_AUTO_REJECT pid=%d reason=%s errno=1\n",current->pid,reason);return -EPERM;}
++ return 0;
++}
+ void ssa_hpm_switch(struct task_struct *prev,struct task_struct *next,bool preempt)
+ {
+  if(!available)return;
+@@ -110,7 +136,18 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+ {
+  struct ssa_hpm_state *p=current->ssa_hpm;unsigned long irq;unsigned int i;
+  if(!available)return -ENODEV;
++ if(op==6 || op==7){
++  if(!capable(CAP_SYS_ADMIN))return -EPERM;
++  if(p)return -EBUSY;
++  if(op==7){if(flags || role || test)return -EINVAL;current->ssa_launch_policy=0;return 0;}
++  if(flags>7 || role>2 || test>14)return -EINVAL;
++  if(!task_no_new_privs(current) || get_nr_threads(current)!=1)return -EPERM;
++  current->ssa_launch_policy=0x100|flags;current->ssa_launch_role=role;current->ssa_launch_test=test;current->ssa_launch_error=0;
++  pr_emerg("SSA_AUTO_ARM pid=%d flags=%lu role=%lu test=%lu fork_inherit=0 exec_inherit=1\n",current->pid,flags,role,test);
++  return 0;
++ }
+  if(op==1){
++  if(get_nr_threads(current)!=1)return -EOPNOTSUPP;
+   if(flags>7 || role>2 || test>14)return -EINVAL;
+   if((flags&2) && !event_available)return -ENODEV;
+   if(p)return -EBUSY;
+@@ -279,9 +316,23 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+  return status&XS_IO?-EIO:0;
+ }
+ static void finish_session(struct task_struct *t,bool exec){export_session(t,exec?"exec":"exit",true);}
+-void ssa_hpm_exit(struct task_struct *t){finish_session(t,false);}
++void ssa_hpm_exit(struct task_struct *t,long code){
++ if(t->ssa_launch_policy)pr_emerg("SSA_AUTO_END pid=%d code=%ld signal=%ld monitored=%u error=%d\n",t->pid,code,code&127,!!t->ssa_hpm,t->ssa_launch_error);
++ finish_session(t,false);
++}
+ /* Called only after exec_mmap has committed: old userspace cannot return. */
+ void ssa_hpm_exec(struct task_struct *t){finish_session(t,true);}
++/* ELF ready: mappings/creds/stack finalized and start_thread prepared, no U instruction yet.
++ * The old session was retired only at exec_mmap commitment. A late loader failure
++ * never calls this hook, and ordinary ENOENT returns with the old descriptor. */
++void ssa_hpm_exec_ready(unsigned long entry,unsigned long app,unsigned long interp){
++ long error;
++ if(!current->ssa_launch_policy)return;
++ error=ssa_hpm_prctl(1,current->ssa_launch_policy&7,current->ssa_launch_role,current->ssa_launch_test);
++ current->ssa_launch_error=error;
++ if(error)select_pool(0,false);
++ pr_emerg("SSA_AUTO_RESULT pid=%d image=%llu test=%u role=%u flags=%u enabled=%u error=%ld reason=%s dynamic=%u entry=%016lx app=%016lx interp=%016lx session=%llu\n",current->pid,(u64)current->self_exec_id,current->ssa_launch_test,current->ssa_launch_role,current->ssa_launch_policy&7,!error,error,error==-EBUSY?"pool_exhausted":error?"enable_failed":"enabled",!!interp,entry,app,interp,current->ssa_hpm?current->ssa_hpm->session:0);
++}
+ static int __init ssa_hpm_init(void)
+ {
+  unsigned int i,j;
+-- 
+2.34.1
+

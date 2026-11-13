@@ -370,3 +370,19 @@ reuse are recorded in evidence/stage9/source-commits.json and summary.json.
 Final Chipyard suite head `6abb37ea5316bb2cad9b8280b2485cf631d482c8` adds exact capacity/FIFO
 metadata accounting (139inputs=130classified+9dropped,54evictions) to the unchanged
 actual RTL logs. Kernel/RTL/image sources are unchanged by the host followups.
+
+
+## Stage10 controlled transparent launch (implementation checkpoint)
+
+| Original repository / stage9 base | New source commit | Meaning / standalone mapping |
+| --- | --- | --- |
+| Linux e341319bc75a2c2c1443d4b8654c9270f922aaf8 | 8b865bfe4c40332446227e2fbf6b442ab0bc651a | trusted exec policy/fork clearing/ELF readiness/exit reason; integration/ssa/linux/0008-linux-transparent-launch.patch |
+| Chipyard 6abb37ea5316bb2cad9b8280b2485cf631d482c8 | 4dbc51534c13a2fcf950bb9322b68ab6892a2eac | ordinary static/dynamic/DSO/capacity fixtures, trusted init, builder/runner/policy; standalone integration/ssa |
+| Chipyard previous row | 59b7d7916f8c0367733a6cbee2d342af13abf775 | host automatic-session bijection/profile/uid checks and semantic negative tool |
+| Rocket bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2 | unchanged | stage9 model/hash reused, no Scala/ROM edits |
+| OpenSBI 43f02ffb329d9c86b2ff2138dc450b2060778ffe | unchanged | fixed Cache/DTLB profile entry retained |
+
+Source commit messages/authorship remain in local source repos and the Linux
+mail patch; public reconstruction starts at the unchanged accessible bases.
+Stage10 maintenance starts at24fa1cde07a7af6de77c136789867ce730c60f91 on its own
+branch. Native acceptance is still running at this implementation checkpoint.

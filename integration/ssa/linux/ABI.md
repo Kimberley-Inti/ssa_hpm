@@ -290,3 +290,31 @@ Evictions restart evidence without dropping accumulated counts. RID>=64 or
 unsupported framed state cannot silently be merged into parent counts. The base
 export remains full capacity; the sidecar explicitly declares63usable rows.
 See the maintenance repository docs/CLASSIFICATION.md for full scope and examples.
+
+
+## Controlled automatic ELF launch (stage10)
+
+The existing START/STOP/EXPORT operations remain compatible. The optional trusted
+policy uses two new operations on the current task:
+
+| op | Arguments | Result |
+| --- | --- | --- |
+| 6 ARM_EXEC | flags0..7, role0..2, test0..14 | CAP_SYS_ADMIN + no_new_privs + one thread + no descriptor; arm successful-exec inheritance, fork clears |
+| 7 DISARM_EXEC | other arguments0 | CAP_SYS_ADMIN and no descriptor; remove future policy |
+
+A successful ELF replacement retires the old session at the existing commit
+hook, then automatically STARTs at final ELF readiness before first U execution.
+Failure ENOENT preserves the old descriptor. Selected setid/credential-changing,
+recursive script and multithread forms are rejected before commit. Armed or
+monitored CLONE_THREAD is rejected. Pool exhaustion is fail-open with an explicit
+SSA_AUTO_RESULT error and no session; there is no mid-image retry. Normal exit
+and signal termination export before release, with abandoned-frame markers.
+Unselected processes remain unselected, and children do not inherit the policy.
+
+Static entry and dynamic PT_INTERP entry are both covered; the latter includes
+loader/application/DSO calls in one epoch with raw callee addresses and explicit
+entry/app/interp metadata. Loader continuation frames may remain open. This is
+not a promise of universal unwinding, arbitrary setuid/thread runtimes or a stable
+upstream ABI. [Transparent policy](transparent/POLICY.md) specifies lifecycle,
+authority, profile/capacity and accounting boundaries. Only the actual stage10
+Linux evidence establishes which fixture forms have passed.

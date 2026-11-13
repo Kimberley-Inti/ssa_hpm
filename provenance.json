@@ -6,8 +6,8 @@
     "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
-    "development_base": "897f5d3043aeab785ef4700bc0c4b6f45c25cbc9",
-    "development_delivery": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+    "development_base": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+    "development_delivery": "59b7d7916f8c0367733a6cbee2d342af13abf775",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -510,7 +510,7 @@
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
-    "ssa/linux/build-a.py": "b375f213ce564ffd701f1d089db10f1534b55d55765e4bec99db3ce40f5a31e4",
+    "ssa/linux/build-a.py": "8ad35b68d45a570e33b910e9a299d318e466241e245d17122100c47ca43d7eb4",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "38b8e091d5188090402fc43c93cc5906dc66dc0e24c5a5a16d3177f501387f24",
@@ -522,7 +522,7 @@
     "ssa/linux/process-init.c": "1d677ee09a0c2bfcf9210d50f12be099265c8f585ff851d7419907fd075d8554",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "d25b73a104d94153dcc3a027d0f4699d5d494b93d4d75048afdc3ac223b39cb8",
+    "ssa/linux/ABI.md": "8345b817f7c1b71678e922acedbc01d4b5e6adaccc13a99a18c4c0b94dec04a3",
     "ssa/linux/exec-init.c": "ca7a5fcc61b089359b384ee50e0e5d3e83e11ae62e597b74afefab83b3f1235a",
     "ssa/linux/grade-exec.py": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
     "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
@@ -563,9 +563,22 @@
     "generators/rocket-chip/src/main/scala/rocket/SSAMemoryClassifier.scala": "c05ddac21192eee261a1495792cf15936922957cf1a83ebc0653d5cce019e71c",
     "ssa/classification/check_wb.py": "6e717c99dad3f3cf37109068058b557993a042e72019b8da53e29203a0d31b27",
     "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3",
-    "ssa/linux/test_classification_native.py": "f26625bec059f1718be8397cadf11a229b0228f578f48997e3f4deb61b15074c"
+    "ssa/linux/test_classification_native.py": "f26625bec059f1718be8397cadf11a229b0228f578f48997e3f4deb61b15074c",
+    "ssa/linux/0008-linux-transparent-launch.patch": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2",
+    "ssa/linux/transparent/POLICY.md": "ca8a0935c4f059591dfdcef4eedd99d3473ce5319c71cfdddc9f1a74e2804f3d",
+    "ssa/linux/transparent/build-users.py": "927c6f02fc97d2a17e07c4b913280503aef4635ccb76d9c174abea475f13921f",
+    "ssa/linux/transparent/capacity.S": "34c216dcce20583471f0aeb0dfccb7947d4d471c8a6cb6d0afee480d3e4bcbd1",
+    "ssa/linux/transparent/capacity.c": "b06094326b913c18008aac9ee67aa83e6348926c115414b7ad224aeef9e4b769",
+    "ssa/linux/transparent/grade.py": "267f688404e43dea0413c8a03a2e1147b7ab556ff980f5edf75caa4c09743ba6",
+    "ssa/linux/transparent/launcher.c": "8f8011baa8616b23faddffb8d4ce69109bdc4ddebb10dcfd18a8e431f2c3e145",
+    "ssa/linux/transparent/plain-entry.S": "9e440e25f542e7fc6754f36b8a6a7e915b9ef66e48fce1ad9c49e2c6a7f3afee",
+    "ssa/linux/transparent/plain.c": "d1c14402e58b129c9a546a036dd775dcee92a06d8ffa14a5de6f56fac57d8da7",
+    "ssa/linux/transparent/run.py": "c6449dbf5f42bda09ba5056079aeb6e4c75924ff7854267893f6e0b1e8a6eb02",
+    "ssa/linux/transparent/shared.c": "679182a37a3496499f41219b0a3331df43c096967a9b42a72ca545b473914cf9",
+    "ssa/linux/transparent/syscall.h": "12ff3d760c0b1a3a2fc5b310c936719351e53bd208ccdf44f529b2ca5d67f8cd",
+    "ssa/linux/transparent/negative.py": "0c04ec9a2e31ecb0d8aef1ec773b4dad55fb388d71cdf9b20647d530cff2f6e6"
   },
-  "development_stage": "stage9-memory-classification",
+  "development_stage": "stage10-transparent-launch",
   "stage3": {
     "base_release": "2d646a615b357e3e883289d91d0b903ac14baec4",
     "implementation": "integration/ssa/process.h",
@@ -659,5 +672,11 @@
       "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
     },
     "evidence": "evidence/stage9/summary.json"
+  },
+  "stage10": {
+    "status": "implementation committed; native Linux acceptance running",
+    "base": "24fa1cde07a7af6de77c136789867ce730c60f91",
+    "kernel_commit": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
+    "policy": "controlled CAP_SYS_ADMIN+no_new_privs single-thread ELF exec; fork does not inherit"
   }
 }

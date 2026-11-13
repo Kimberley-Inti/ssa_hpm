@@ -222,3 +222,13 @@ an in-progress prefix is not a full passing boot. Rules/profile metadata and bot
 base and classification terminal checksums must pass. Kernel/SBI/source dependency
 caches may be reused; source reconstruction and rebuilt test/user images are
 reported separately from reuse of an already verified model.
+
+
+## Stage10 controlled transparent launch
+
+See docs/STAGE10.md and integration/ssa/linux/transparent/POLICY.md. The new
+--transparent entry reconstructs Linux with incremental patch0008 and builds
+ordinary static ELF, standard musl PT_INTERP/DSO and manual compatibility fixtures.
+The fixed target selection is made by the trusted test init before privilege drop;
+targets contain no SSA API calls. run.py freezes native status and grades both
+automatic and old manual suites; do not infer success from an incomplete prefix.

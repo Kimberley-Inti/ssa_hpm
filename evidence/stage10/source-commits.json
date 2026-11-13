@@ -1,0 +1,24 @@
+{
+  "chipyard": {
+    "head": "59b7d7916f8c0367733a6cbee2d342af13abf775",
+    "branch": "stage10-transparent-launch",
+    "tree": "2d70f66c3bbe7ae633bb2b82d8455a0e2b981b37"
+  },
+  "rocket_chip": {
+    "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "branch": "stage10-transparent-launch",
+    "tree": "0c41414a848beded9c96acc413a3d85eec00ef9b"
+  },
+  "linux": {
+    "head": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
+    "branch": "stage10-transparent-launch",
+    "tree": "a28522f6eabe937ea93347f32d21b8b251324fcf"
+  },
+  "opensbi": {
+    "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "branch": "stage10-transparent-launch",
+    "tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91"
+  },
+  "maintenance_base": "24fa1cde07a7af6de77c136789867ce730c60f91",
+  "note": "Rocket/OpenSBI unchanged; source branches preserved, new Linux hook and standalone suite only"
+}

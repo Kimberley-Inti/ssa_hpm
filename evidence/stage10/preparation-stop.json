@@ -1,0 +1,6 @@
+{
+  "native_pid": 50551,
+  "reason": "preflight closure failed: class-regress execs /classnext, absent from first rootfs; no Linux acceptance claimed",
+  "signal": "SIGTERM",
+  "preserve_original_log": true
+}

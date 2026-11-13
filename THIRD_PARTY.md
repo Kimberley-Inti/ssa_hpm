@@ -47,3 +47,14 @@ pinned in build-a.py. No toolchain binary or deb is distributed in this repo.
 Stage5 adds an incremental Linux GPL-2.0-only exec/session patch, an original
 freestanding exec fixture (MIT SPDX as marked), and project build/check scripts.
 No new upstream source tree or binary dependency is redistributed.
+
+
+## Stage10 dynamic loader dependency
+
+The builder fetches musl1.2.5 from https://musl.libc.org/releases/musl-1.2.5.tar.gz,
+SHA256 a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4.
+It builds the unmodified standard RV64 shared libc/loader (MIT, Rich Felker et al.;
+individual upstream notices retained). A cache is accepted only after all regular
+source files match that pinned archive. Neither musl source tree nor binaries are
+redistributed here. The small ordinary executable/DSO fixtures are project MIT
+sources as marked. Build hashes and reuse boundaries are recorded in evidence.
