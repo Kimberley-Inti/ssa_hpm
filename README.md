@@ -15,7 +15,7 @@ Software Semantic Aware Hardware Performance Monitoring：为 RISC-V Rocket 的�
 - 修复微码 PC/重放/退休握手、前端更新、返回识别和跨微码入口的长延迟写回 bank。
 - 补齐 C++17/FESVR/Verilator 构建兼容、正确十六进制 loadmem、自动验收与调用树 JSON 导出。
 
-计数是**包含子调用和快照区间内监测开销的累计值**，未扣除微码开销。实际验收得到
+HPM 计数是**包含子调用和快照区间内监测开销的累计值**，未扣除微码开销。实际验收得到
 6 条预期上下文记录；`parent_a/common`、`parent_b/common` 的 instret 分别为
 **14452、7226**。短函数的 mtime 增量可为 0，不能用 Spike cycle 冒充 RTL 周期。
 
@@ -135,3 +135,14 @@ with12 sessions/63 records and normal shutdown/exit0. D03's one-Cache-event gap
 is closed under the documented native interval semantics; default DTLB0x1002
 and ABI1/2 remain identifiable. [Evidence](evidence/stage8/summary.json).
 Scalar/stream/random classification remains next-round work.
+
+
+## 第九阶段：访存分类
+
+[D02规则1](docs/CLASSIFICATION.md)与[实际验收](docs/STAGE9.md)已完成：退休整数
+load/store按虚拟地址及调用记录区分标量重复、固定步长、未识别规律，另计预热。
+分类计数独占并过滤内核/微码；HPM原有包含子调用的计数规则保持。硬件有2epoch、
+16历史/epoch、63分类记录的明确上限及完整性状态。实际Rocket/Linux7会话20记录、
+26检查通过，含exec、失败返回、零记录和开放帧定时器抢占；交换任务计数且修复
+校验值的主机负对照仍被语义检查拒绝。4项RTL及独立重放、34既有低层检查（原29项加5项Cache）通过。
+完整复现入口和证据见[REPRODUCE.md](REPRODUCE.md)及[evidence/stage9](evidence/stage9/summary.json)。

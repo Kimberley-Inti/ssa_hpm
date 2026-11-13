@@ -1,0 +1,1222 @@
+{
+  "passed": true,
+  "checks": {
+    "native_exit0": true,
+    "normal_shutdown": true,
+    "suite_complete": true,
+    "no_guest_failure": true,
+    "complete_transport": true,
+    "seven_sessions": true,
+    "context_patterns": true,
+    "same_callee_different_parents": true,
+    "class_coverage_valid": true,
+    "all_pools_released": true,
+    "explicit_stop": true,
+    "zero_session": true,
+    "exec_open_observed": true,
+    "exec_old_closed_classification": true,
+    "exec_open_is_partial_not_fake_return": true,
+    "exec_new_clean_epoch": true,
+    "failed_exec_history_preserved": true,
+    "two_task_context_chains": true,
+    "two_task_history_isolation": true,
+    "actual_A_B_A_open_preemption": true,
+    "timer_switch_sample_chronology": true,
+    "unmonitored_handoff": true,
+    "all_pause_samples_modulo_correct": true,
+    "both_stacks_restored": true,
+    "same_virtual_callee_independent_epoch": true,
+    "existing_inclusive_counter_relationships": true
+  },
+  "export": {
+    "valid": true,
+    "errors": [],
+    "classification_sessions": [
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 1,
+          "total": 6,
+          "emitted": 6,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 0,
+          "inputs": 72,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 1,
+            "id": 1,
+            "total": 4,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67060,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 2,
+            "total": 32,
+            "warmup": 4,
+            "scalar": 14,
+            "stream": 12,
+            "irregular": 2,
+            "parent": 1,
+            "callee": 65824,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 3,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67004,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 4,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 12,
+            "irregular": 0,
+            "parent": 3,
+            "callee": 65824,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 5,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67032,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 6,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 6,
+            "irregular": 6,
+            "parent": 5,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 12822945750356303074,
+        "end": {
+          "session": 1,
+          "emitted": 6,
+          "hash": 12822945750356303074
+        },
+        "complete": true
+      },
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 2,
+          "total": 4,
+          "emitted": 4,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 1,
+          "spill": 0,
+          "unframed": 0,
+          "inputs": 39,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 2,
+            "id": 1,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67060,
+            "open": 0
+          },
+          {
+            "session": 2,
+            "id": 2,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 6,
+            "stream": 6,
+            "irregular": 0,
+            "parent": 1,
+            "callee": 65824,
+            "open": 0
+          },
+          {
+            "session": 2,
+            "id": 3,
+            "total": 5,
+            "warmup": 5,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67088,
+            "open": 1
+          },
+          {
+            "session": 2,
+            "id": 4,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 6,
+            "irregular": 6,
+            "parent": 3,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 1662204750566985167,
+        "end": {
+          "session": 2,
+          "emitted": 4,
+          "hash": 1662204750566985167
+        },
+        "complete": true
+      },
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 3,
+          "total": 2,
+          "emitted": 2,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 0,
+          "inputs": 18,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 3,
+            "id": 1,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 66896,
+            "open": 0
+          },
+          {
+            "session": 3,
+            "id": 2,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 12,
+            "irregular": 0,
+            "parent": 1,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 18252294352985890306,
+        "end": {
+          "session": 3,
+          "emitted": 2,
+          "hash": 18252294352985890306
+        },
+        "complete": true
+      },
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 4,
+          "total": 2,
+          "emitted": 2,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 0,
+          "inputs": 39,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 4,
+            "id": 1,
+            "total": 7,
+            "warmup": 7,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67088,
+            "open": 0
+          },
+          {
+            "session": 4,
+            "id": 2,
+            "total": 32,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 12,
+            "irregular": 16,
+            "parent": 1,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 473464119337282988,
+        "end": {
+          "session": 4,
+          "emitted": 2,
+          "hash": 473464119337282988
+        },
+        "complete": true
+      },
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 5,
+          "total": 0,
+          "emitted": 0,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 0,
+          "inputs": 0,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [],
+        "hash": 14695981039346656037,
+        "end": {
+          "session": 5,
+          "emitted": 0,
+          "hash": 14695981039346656037
+        },
+        "complete": true
+      },
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 6,
+          "total": 3,
+          "emitted": 3,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 2,
+          "inputs": 42,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 6,
+            "id": 1,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67630,
+            "open": 0
+          },
+          {
+            "session": 6,
+            "id": 2,
+            "total": 6,
+            "warmup": 6,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 1,
+            "callee": 67230,
+            "open": 0
+          },
+          {
+            "session": 6,
+            "id": 3,
+            "total": 32,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 24,
+            "irregular": 4,
+            "parent": 2,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 1079276020782908181,
+        "end": {
+          "session": 6,
+          "emitted": 3,
+          "hash": 1079276020782908181
+        },
+        "complete": true
+      },
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 7,
+          "total": 3,
+          "emitted": 3,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 2,
+          "inputs": 40,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 7,
+            "id": 1,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67630,
+            "open": 0
+          },
+          {
+            "session": 7,
+            "id": 2,
+            "total": 4,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 1,
+            "callee": 67230,
+            "open": 0
+          },
+          {
+            "session": 7,
+            "id": 3,
+            "total": 32,
+            "warmup": 4,
+            "scalar": 14,
+            "stream": 12,
+            "irregular": 2,
+            "parent": 2,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 3223904988209114781,
+        "end": {
+          "session": 7,
+          "emitted": 3,
+          "hash": 3223904988209114781
+        },
+        "complete": true
+      }
+    ],
+    "context_export": {
+      "format_version": 1,
+      "valid": true,
+      "errors": [],
+      "sessions": [
+        {
+          "header": {
+            "version": 1,
+            "session": 1,
+            "pid": 14,
+            "image": 1,
+            "abi": 2,
+            "total": 6,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "stop",
+            "pool": 2281701376,
+            "next": 7,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 1,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 1,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 1,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 1,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 14,
+              "id": 1,
+              "callee": 67060,
+              "parent": 0,
+              "cycle": 1484,
+              "instret": 342,
+              "time": 14,
+              "session": 1,
+              "open": 0,
+              "cache": 14
+            },
+            {
+              "pid": 14,
+              "id": 2,
+              "callee": 65824,
+              "parent": 1,
+              "cycle": 417,
+              "instret": 120,
+              "time": 4,
+              "session": 1,
+              "open": 0,
+              "cache": 5
+            },
+            {
+              "pid": 14,
+              "id": 3,
+              "callee": 67004,
+              "parent": 0,
+              "cycle": 787,
+              "instret": 176,
+              "time": 8,
+              "session": 1,
+              "open": 0,
+              "cache": 8
+            },
+            {
+              "pid": 14,
+              "id": 4,
+              "callee": 65824,
+              "parent": 3,
+              "cycle": 202,
+              "instret": 60,
+              "time": 2,
+              "session": 1,
+              "open": 0,
+              "cache": 3
+            },
+            {
+              "pid": 14,
+              "id": 5,
+              "callee": 67032,
+              "parent": 0,
+              "cycle": 761,
+              "instret": 176,
+              "time": 8,
+              "session": 1,
+              "open": 0,
+              "cache": 8
+            },
+            {
+              "pid": 14,
+              "id": 6,
+              "callee": 65824,
+              "parent": 5,
+              "cycle": 231,
+              "instret": 60,
+              "time": 3,
+              "session": 1,
+              "open": 0,
+              "cache": 4
+            }
+          ],
+          "frames": [],
+          "chunks": 1,
+          "hash": 8549190724259394054,
+          "released": true,
+          "end": {
+            "session": 1,
+            "chunks": 1,
+            "emitted": 6,
+            "total": 6,
+            "hash": 8549190724259394054,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        },
+        {
+          "header": {
+            "version": 1,
+            "session": 2,
+            "pid": 15,
+            "image": 1,
+            "abi": 2,
+            "total": 4,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "exec",
+            "pool": 2281701376,
+            "next": 5,
+            "depth": 1,
+            "spill": 0,
+            "errors": 0,
+            "status": 1,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 2,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 2,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 2,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 2,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 15,
+              "id": 1,
+              "callee": 67060,
+              "parent": 0,
+              "cycle": 993,
+              "instret": 176,
+              "time": 10,
+              "session": 2,
+              "open": 0,
+              "cache": 11
+            },
+            {
+              "pid": 15,
+              "id": 2,
+              "callee": 65824,
+              "parent": 1,
+              "cycle": 278,
+              "instret": 60,
+              "time": 2,
+              "session": 2,
+              "open": 0,
+              "cache": 4
+            },
+            {
+              "pid": 15,
+              "id": 3,
+              "callee": 67088,
+              "parent": 0,
+              "cycle": 0,
+              "instret": 0,
+              "time": 0,
+              "session": 2,
+              "open": 1,
+              "cache": 0
+            },
+            {
+              "pid": 15,
+              "id": 4,
+              "callee": 65824,
+              "parent": 3,
+              "cycle": 319,
+              "instret": 60,
+              "time": 4,
+              "session": 2,
+              "open": 0,
+              "cache": 6
+            }
+          ],
+          "frames": [
+            {
+              "session": 2,
+              "frame": 1,
+              "rid": 3,
+              "status": "abandoned"
+            }
+          ],
+          "chunks": 1,
+          "hash": 7202329225027212737,
+          "released": true,
+          "end": {
+            "session": 2,
+            "chunks": 1,
+            "emitted": 4,
+            "total": 4,
+            "hash": 7202329225027212737,
+            "status": 1,
+            "records_complete": 1
+          },
+          "complete": false
+        },
+        {
+          "header": {
+            "version": 1,
+            "session": 3,
+            "pid": 15,
+            "image": 2,
+            "abi": 2,
+            "total": 2,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "exit",
+            "pool": 2281701376,
+            "next": 3,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 3,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 3,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 3,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 3,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 15,
+              "id": 1,
+              "callee": 66896,
+              "parent": 0,
+              "cycle": 918,
+              "instret": 176,
+              "time": 10,
+              "session": 3,
+              "open": 0,
+              "cache": 11
+            },
+            {
+              "pid": 15,
+              "id": 2,
+              "callee": 65824,
+              "parent": 1,
+              "cycle": 258,
+              "instret": 60,
+              "time": 3,
+              "session": 3,
+              "open": 0,
+              "cache": 4
+            }
+          ],
+          "frames": [],
+          "chunks": 1,
+          "hash": 15185298487011797273,
+          "released": true,
+          "end": {
+            "session": 3,
+            "chunks": 1,
+            "emitted": 2,
+            "total": 2,
+            "hash": 15185298487011797273,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        },
+        {
+          "header": {
+            "version": 1,
+            "session": 4,
+            "pid": 16,
+            "image": 1,
+            "abi": 2,
+            "total": 2,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "exit",
+            "pool": 2281701376,
+            "next": 3,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 4,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 4,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 4,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 4,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 16,
+              "id": 1,
+              "callee": 67088,
+              "parent": 0,
+              "cycle": 16073,
+              "instret": 3549,
+              "time": 160,
+              "session": 4,
+              "open": 0,
+              "cache": 114
+            },
+            {
+              "pid": 16,
+              "id": 2,
+              "callee": 65824,
+              "parent": 1,
+              "cycle": 571,
+              "instret": 120,
+              "time": 6,
+              "session": 4,
+              "open": 0,
+              "cache": 10
+            }
+          ],
+          "frames": [],
+          "chunks": 1,
+          "hash": 6484579556534087508,
+          "released": true,
+          "end": {
+            "session": 4,
+            "chunks": 1,
+            "emitted": 2,
+            "total": 2,
+            "hash": 6484579556534087508,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        },
+        {
+          "header": {
+            "version": 1,
+            "session": 5,
+            "pid": 17,
+            "image": 1,
+            "abi": 2,
+            "total": 0,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "stop",
+            "pool": 2281701376,
+            "next": 1,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 5,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 5,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 5,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 5,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [],
+          "frames": [],
+          "chunks": 0,
+          "hash": 14695981039346656037,
+          "released": true,
+          "end": {
+            "session": 5,
+            "chunks": 0,
+            "emitted": 0,
+            "total": 0,
+            "hash": 14695981039346656037,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        },
+        {
+          "header": {
+            "version": 1,
+            "session": 6,
+            "pid": 18,
+            "image": 1,
+            "abi": 2,
+            "total": 3,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "exit",
+            "pool": 2281701376,
+            "next": 4,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 6,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 6,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 6,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 6,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 18,
+              "id": 1,
+              "callee": 67630,
+              "parent": 0,
+              "cycle": 10994,
+              "instret": 3314,
+              "time": 111,
+              "session": 6,
+              "open": 0,
+              "cache": 86
+            },
+            {
+              "pid": 18,
+              "id": 2,
+              "callee": 67230,
+              "parent": 1,
+              "cycle": 10308,
+              "instret": 3201,
+              "time": 105,
+              "session": 6,
+              "open": 0,
+              "cache": 78
+            },
+            {
+              "pid": 18,
+              "id": 3,
+              "callee": 65824,
+              "parent": 2,
+              "cycle": 495,
+              "instret": 120,
+              "time": 6,
+              "session": 6,
+              "open": 0,
+              "cache": 6
+            }
+          ],
+          "frames": [],
+          "chunks": 1,
+          "hash": 16661410895914811770,
+          "released": true,
+          "end": {
+            "session": 6,
+            "chunks": 1,
+            "emitted": 3,
+            "total": 3,
+            "hash": 16661410895914811770,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        },
+        {
+          "header": {
+            "version": 1,
+            "session": 7,
+            "pid": 19,
+            "image": 1,
+            "abi": 2,
+            "total": 3,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "exit",
+            "pool": 2348810240,
+            "next": 4,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 7,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 7,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 7,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 7,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 19,
+              "id": 1,
+              "callee": 67630,
+              "parent": 0,
+              "cycle": 299438,
+              "instret": 279057,
+              "time": 2994,
+              "session": 7,
+              "open": 0,
+              "cache": 181
+            },
+            {
+              "pid": 19,
+              "id": 2,
+              "callee": 67230,
+              "parent": 1,
+              "cycle": 298732,
+              "instret": 278944,
+              "time": 2987,
+              "session": 7,
+              "open": 0,
+              "cache": 170
+            },
+            {
+              "pid": 19,
+              "id": 3,
+              "callee": 65824,
+              "parent": 2,
+              "cycle": 522,
+              "instret": 120,
+              "time": 5,
+              "session": 7,
+              "open": 0,
+              "cache": 8
+            }
+          ],
+          "frames": [],
+          "chunks": 1,
+          "hash": 6035701424997088998,
+          "released": true,
+          "end": {
+            "session": 7,
+            "chunks": 1,
+            "emitted": 3,
+            "total": 3,
+            "hash": 6035701424997088998,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        }
+      ]
+    }
+  }
+}

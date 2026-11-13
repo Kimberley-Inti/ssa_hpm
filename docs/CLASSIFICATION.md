@@ -1,4 +1,4 @@
-# Memory classification rule 1 — stage9 design supplement (not yet accepted)
+# Memory classification rule 1 — stage9 design supplement
 
 Design PDF physical page12 §3.1(2) names scalar/stream/random, but defines no
 algorithm. The following is an explicit project choice, not a quotation from it.
@@ -28,6 +28,8 @@ Examples (W warmup, S scalar, T stream, I irregular):
 | 32,24,16,8 | W,W,T,T |
 | 0,32,8,80,0 | W,W,I,I,I |
 | 0,0,0,8,16,24 | W,W,S,I,T,T |
+| same PC:0,4096,8,4104,16,4112 | W,W,I,I,I,I |
+| alternating PCs A:0,8,16,24 / B:4096,4096,4096,4096 | W,W,W,W,T,S,T,S |
 
 Distinct PCs/op/width/parent-contexts have separate history; interleaved addresses
 at the same key may become irregular. Repeated calls to the same context retain
@@ -35,7 +37,7 @@ history. On eviction the next observation warms up; publish eviction count and
 history discontinuity. A mode switch is classified per access, not a dominant
 label for the whole session.
 
-Proposed bounded hardware: two session banks, matching the two trusted physical
+Bounded hardware: two session banks, matching the two trusted physical
 Linux pools; each has16 histories, a256-depth record-ID stack mirror, and64
 counter rows (RID1..63 usable). Five64-bit exclusive counters per row: input,
 warmup,scalar,stream,irregular. RID overflow, stack spill/mismatch and counter
@@ -54,8 +56,10 @@ DTLB/Cache profiles and their sampling semantics remain unchanged.
 Acceptance requires independent reference-vs-real-retired-trace comparison,
 context/eviction/replay/fault boundaries and negative mutations, followed by
 actual Rocket/Verilator Linux switching, exec, stop and complete export.
-Until these pass D02 remains unaccepted. Resource size and exact CSR/export
-layout will be fixed against the implementation and measured elaboration.
+These gates passed in stage9:4RTL fixtures, independent replay, direct WB
+reference comparison, and one actual Linux run with26gates/7sessions/20records.
+D02 is accepted for this bounded definition; see STAGE9.md and its evidence.
+Resources below are declared logical state, not physical synthesis/placed area.
 
 ## CSR and transport layout (implementation)
 
@@ -93,8 +97,8 @@ counts and is marked by the existing frame/open metadata; it is not claimed to
 have normally returned. Existing HPM closed-activation counts are not fabricated.
 
 Logical state (not placed area): counter memory40960bits, mirror stack9216bits,
-history6880bits, epoch/base/control/statistics870bits =57926bits, plus70 CSR bits.
-Two associative16-way comparisons and asynchronous row reads are combinational;
+history6880bits, epoch/base/control/statistics870bits =57926bits, plus70 CSR bits. Two extra64-bit shadow-register read ports are combinational.
+A16-way associative lookup over the selected bank and asynchronous row reads are combinational;
 reset takes64cycles outside monitored user execution. At most one retired scalar
 access is observed each cycle. The64-row sidecar is an explicit capacity limit,
 separate from262143 base context records; records beyond63 remain in the full

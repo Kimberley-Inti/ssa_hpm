@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "coverage": "10 completed STOP/exec/new-image-exit gates on original running native log prefix, no claim of native exit or final lifecycle acceptance",
+  "checks": {
+    "complete_transport": true,
+    "context_patterns": true,
+    "same_callee_different_parents": true,
+    "class_coverage_valid": true,
+    "explicit_stop": true,
+    "exec_open_observed": true,
+    "exec_old_closed_classification": true,
+    "exec_open_is_partial_not_fake_return": true,
+    "exec_new_clean_epoch": true,
+    "existing_inclusive_counter_relationships": true
+  },
+  "native_exit_code": null
+}

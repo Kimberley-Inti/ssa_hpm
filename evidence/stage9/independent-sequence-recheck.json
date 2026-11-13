@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "coverage": "final independent reference and exact VA oracle on existing independent native logs, not new RTL execution",
+  "coverage": "final exact VA/FIFO/capacity oracle on existing independent native4logs; no new hardware execution",
   "cases": {
     "classification": {
       "passed": true,
@@ -14,6 +14,7 @@
         "input_partition": true,
         "workload_contexts": true,
         "reference_all_observations": true,
+        "eviction_metadata_matches_reference": true,
         "fault_excluded": true
       },
       "observations": 72,
@@ -143,6 +144,7 @@
         "input_partition": true,
         "workload_contexts": true,
         "reference_all_observations": true,
+        "eviction_metadata_matches_reference": true,
         "fault_excluded": true
       },
       "observations": 72,
@@ -282,7 +284,9 @@
         "input_partition": true,
         "workload_contexts": true,
         "reference_all_observations": true,
-        "fault_excluded": true
+        "eviction_metadata_matches_reference": true,
+        "fault_excluded": true,
+        "exact_capacity_accounting": true
       },
       "observations": 130,
       "errors": [],
@@ -981,6 +985,7 @@
         "input_partition": true,
         "workload_contexts": true,
         "reference_all_observations": true,
+        "eviction_metadata_matches_reference": true,
         "fault_excluded": true,
         "class_interleave_scalar": true,
         "class_interleave_stream": true,

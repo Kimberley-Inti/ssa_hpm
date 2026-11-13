@@ -39,7 +39,9 @@ def check(text,elf):
       'drops_marked':(rows.get(0,[0]*8)[7]>0 if capacity else rows.get(0,[0]*8)[7]==0),'stack_restored':rows.get(0,[0]*8)[1:3]==[0,0],
       'input_partition':rows.get(0,[0]*8)[5]==len(events)+rows.get(0,[0]*8)[3]+rows.get(0,[0]*8)[7],
       'workload_contexts':dict(accesses)==expected,'reference_all_observations':not errors,
+      'eviction_metadata_matches_reference':rows.get(0,[0]*8)[6]==sum(c.evictions for c in models.values()),
       'fault_excluded':not any(d['pc']==sy.get('class_fault_access') for d in events)}
+    if capacity:checks['exact_capacity_accounting']=rows[0][5]==72+2+65 and rows[0][7]==72-63
     if patterns:
         for name,kind in [('class_interleave_scalar','scalar'),('class_interleave_stream','stream')]:
             checks[name]=[NAMES[d['category']] for d in events if d['pc']==sy[name]]==['warmup']*2+[kind]*6

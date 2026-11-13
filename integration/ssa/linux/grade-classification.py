@@ -18,10 +18,12 @@ def grade(text,code):
     checks['zero_session']=any(s['header']['total']==0 and s['header']['inputs']==s['header']['unframed'] and not s['records'] for s in sessions)
     old=next((s for s in sessions if base[s['header']['session']]['header']['reason']=='exec'),None)
     checks['exec_open_observed']=bool(old) and old['header']['depth']==1 and base[old['header']['session']]['header']['status']==1
+    checks['exec_old_closed_classification']=bool(old) and old['header']['total']==4 and vector(old,2)==[16,4,6,6,0] and vector(old,4)==[16,4,0,6,6]
+    checks['exec_open_is_partial_not_fake_return']=bool(old) and old['records'][2]['open']==1 and old['records'][2]['total']>0 and all(base[old['header']['session']]['records'][2][k]==0 for k in ['cycle','instret','time','cache'])
     replacement=None
     if old:
         oldb=base[old['header']['session']]['header']
-        replacement=next((s for s in sessions if (lambda b:b['pid']==oldb['pid'] and b['image']>oldb['image'])(base[s['header']['session']]['header'])),None)
+        replacement=next((s for s in sessions if (lambda b:b['pid']==oldb['pid'] and b['image']==oldb['image']+1)(base[s['header']['session']]['header'])),None)
     checks['exec_new_clean_epoch']=bool(replacement) and replacement['header']['session']!=old['header']['session'] and replacement['header']['total']==2 and vector(replacement,2)==[16,4,0,12,0]
     checks['failed_exec_history_preserved']=any(s['header']['total']==2 and vector(s,2)==[32,4,0,12,16] for s in sessions)
     rows=[]
@@ -29,19 +31,25 @@ def grade(text,code):
         if l.startswith('SSA_EXPORT '):rows.append({k:int(v) for k,v in re.findall(r'(\w+)=(\d+)',l)})
     role={d['role']:next((s for s in sessions if s['header']['session']==d['session']),None) for d in rows if d['role'] in (1,2)}
     a,b=role.get(1),role.get(2)
+    checks['two_task_context_chains']=bool(a and b) and all(s['header']['total']==3 and [r['parent'] for r in s['records']]==[0,1,2] for s in [a,b])
     checks['two_task_history_isolation']=bool(a and b) and vector(a,3)==[32,4,14,12,2] and vector(b,3)==[32,4,0,24,4]
     if a and b:
         ab,bb=base[a['header']['session']]['header'],base[b['header']['session']]['header']
         switches=[]
         for l in text.splitlines():
             if l.startswith('SSA_SWITCH '):switches.append({k:int(v,16) if k in ['cause','csr_cause'] else int(v) for k,v in re.findall(r'(\w+)=([0-9a-f]+)',l)})
-        checks['actual_A_B_A_open_preemption']=any(e['pid']==ab['pid'] and e['to']==bb['pid'] and e['depth']==2 and e['resumed']==1 and e['preempt']==1 for e in switches)
+        # PREEMPT_NONE still preempts user tasks on IRQ return via schedule(false).
+        # The hook's preempt argument is not proof of a user task yielding.
+        def timer_preemption(e):
+            mask=(1<<63)|255
+            return e['pid']==ab['pid'] and e['to']==bb['pid'] and e['depth']==2 and e['rid']==2 and e['resumed']==1 and e['state']==0 and e['ivcsw']>0 and any((e[k]&mask)==((1<<63)|5) for k in ['cause','csr_cause'])
+        checks['actual_A_B_A_open_preemption']=any(timer_preemption(e) for e in switches)
         samples=[]
         for l in text.splitlines():
             if l.startswith('SSA_SAMPLE '):samples.append({k:int(v,16) if k in ['S','R','delta'] else int(v) for k,v in re.findall(r'(\w+)=([0-9a-f]+)',l)})
         ordered=False
         for ae in switches:
-            if ae['pid']!=ab['pid'] or ae['to']!=bb['pid'] or ae['depth']!=2 or not ae['preempt'] or not ae['resumed']:continue
+            if not timer_preemption(ae):continue
             for be in switches:
                 if be['pid']!=bb['pid'] or be['from']!=ab['pid'] or be['depth']!=2 or not be['state'] or not be['resumed']:continue
                 az=[z for z in samples if z['pid']==ab['pid'] and z['event']==ae['event'] and z['counter']==0]

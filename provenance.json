@@ -6,8 +6,8 @@
     "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
-    "development_base": "b610880dd4a0bcab4808398b62f290b13a613979",
-    "development_delivery": "897f5d3043aeab785ef4700bc0c4b6f45c25cbc9",
+    "development_base": "897f5d3043aeab785ef4700bc0c4b6f45c25cbc9",
+    "development_delivery": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -550,19 +550,20 @@
     "ssa/classification/workload.S": "fcc70b1470304885d959524a098e281fbce59ade963b62fcc5236f66a901bc47",
     "ssa/classification/run.py": "d101d5a32fb11b331d90df97576b4483112c93361ce8bba54f598ebf7c283bdb",
     "ssa/classification/bare.c": "06aa2c35f409ec475b3f4528f6e84e53f0c1218f1e11048baae64a0511e09e8d",
-    "ssa/classification/check_trace.py": "a9d02082a8cca00623c682470abffa03aeee83f791068c8dc5b1921514932aaf",
-    "ssa/classification/test_reference.py": "484a6983314663977ff30446ff09d64141f78b7265b2de08c2a66f0800067eac",
+    "ssa/classification/check_trace.py": "b8abbde9c34c67f282d6c1ad9585a76d896d8840e4c3b24c307bf256c8375f6c",
+    "ssa/classification/test_reference.py": "1dbd67d145d1bfb9243739c0df41a694202a6acd3c8f2df0b3d8f487eafc211e",
     "ssa/classification/reference.py": "b608a71d5bf5397ba5cda39178f31c025fd03aad87921711b01dddd195ad401e",
     "ssa/classification/trap-start.S": "97f821fd64fadda002fc9b1653b8e929413438dd3605446e6c13bcf651380682",
     "ssa/linux/classification_results.py": "6022bdef3104d9aa464fd0dd6af323d7cfc14b0ecb323fae80deea42673c112c",
-    "ssa/linux/grade-classification.py": "259da8cbfe2e8222a68ba5e06ed38bb57d4a2255a3dde937e7db90b886698a9c",
+    "ssa/linux/grade-classification.py": "3eacfed8e5f1ce364ae160efb223de8fc136853096755eb3d732714f5ce66151",
     "ssa/linux/run-classification.py": "6b03e1f51b17de30ba2473826cda96719898665eb55f4bce660ba178f6a21c89",
     "ssa/linux/classification-init.c": "700a5a8ca3f3589145802112f45926736dc675c40aa669ba93d15419045978b3",
     "ssa/linux/test_classification_results.py": "df9dee4fdbbd90e73d58d435a3985a7a8f6533778fe94d71c59a8e275e3a4ea3",
     "ssa/linux/0007-linux-memory-classification.patch": "28c5ad48c0fbce21f59160c4d5a6a98e3ae991af2f8562f72e8ce183693acced",
     "generators/rocket-chip/src/main/scala/rocket/SSAMemoryClassifier.scala": "c05ddac21192eee261a1495792cf15936922957cf1a83ebc0653d5cce019e71c",
     "ssa/classification/check_wb.py": "6e717c99dad3f3cf37109068058b557993a042e72019b8da53e29203a0d31b27",
-    "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3"
+    "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3",
+    "ssa/linux/test_classification_native.py": "f26625bec059f1718be8397cadf11a229b0228f578f48997e3f4deb61b15074c"
   },
   "development_stage": "stage9-memory-classification",
   "stage3": {
@@ -648,8 +649,15 @@
     "D03_closed": true
   },
   "stage9": {
-    "status": "implementation under actual RTL/Linux validation; D02 not yet accepted",
+    "status": "accepted bounded rule1 on actual RTL and single-hart Linux; native0, normalshutdown,26checks",
     "base": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
-    "public_reconstruction": "same pinned public bases plus0014 Rocket patch and installed standalone suite"
+    "public_reconstruction": "same pinned public bases plus0014 Rocket patch and installed standalone suite",
+    "source_delivery": {
+      "chipyard": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+      "rocket": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "linux": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
+      "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
+    },
+    "evidence": "evidence/stage9/summary.json"
   }
 }

@@ -19,6 +19,13 @@ class Rules(unittest.TestCase):
         c=Classifier(); c.observe(1,100,0); c.observe(2,100,999); c.observe(1,100,8)
         self.assertEqual(c.observe(1,100,16),'stream')
         self.assertEqual(c.observe(2,100,999),'warmup')
+    def test_same_pc_mixed_streams(self):
+        self.seq([0,4096,8,4104,16,4112], 'warmup warmup irregular irregular irregular irregular')
+    def test_distinct_pc_scalar_and_stream(self):
+        c=Classifier();actual=[]
+        for i in range(4):
+            actual += [c.observe(1,100,i*8),c.observe(1,104,4096)]
+        self.assertEqual(actual,'warmup warmup warmup warmup stream scalar stream scalar'.split())
     def test_eviction(self):
         c=Classifier(2)
         for pc in (100,104,108): c.observe(1,pc,0)

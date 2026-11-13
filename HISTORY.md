@@ -334,7 +334,7 @@ is next; generic transparent loader/multicore/unwind and other extended goals
 remain scoped in ACCEPTANCE.md. Main/tags/earlier PRs are unchanged.
 
 
-## Stage9 memory classification — implementation mapping (acceptance in progress)
+## Stage9 memory classification — implementation mapping and accepted scope
 
 The stage8 head cdcf64fd5a9e2321b43fd68070b3ee45d12b42de and Draft PR7 are retained.
 New work is on stage9-memory-classification; no main/tag/merge changes.
@@ -351,5 +351,22 @@ Patch author/date/message are retained in each mail patch. Original source SHAs
 remain in local development repositories/backup branches; the new upstream-based
 reconstruction is judged by exact tree/file hashes, not a claim that local source
 commit IDs can be fetched publicly. Later host-only followups do not imply a new
-RTL/image build. Final maintenance commit mapping and actual Linux outcome will
-be recorded after the running acceptance finishes.
+RTL/image build. The implementation checkpoint is maintenance commit d247fce86372a9581a3efff427b63369e98f426b; final Linux evidence and documentation follow it on the same branch.
+
+Stage9 source followup `dbaaa7ca454445be679de9206baa80c08a6f2561` records explicit mixed-stream reference examples
+and strict old/partial/new exec observation checks. It changes host verification
+only; user fixture, kernel, RTL and frozen running images remain unchanged.
+
+Host-only followup `6b0c03dbf8dc941c636dba90b039d204e22da10f` fixes the checker's preempt-argument assumption.
+The pinned PREEMPT_NONE RISC-V IRQ-return path tails schedule(), which invokes
+__schedule(false); runnable state, involuntary switches, timer cause and sample
+chronology prove user preemption. No hardware/kernel/user-image rerun was needed.
+
+Stage9 final acceptance: one original native run completed0, normal powerdown,
+26/26gates,7sessions/20records. Semantic owner-swap mutation retains valid checksums
+but fails attribution. Complete source heads, host-only followups and cached-model
+reuse are recorded in evidence/stage9/source-commits.json and summary.json.
+
+Final Chipyard suite head `6abb37ea5316bb2cad9b8280b2485cf631d482c8` adds exact capacity/FIFO
+metadata accounting (139inputs=130classified+9dropped,54evictions) to the unchanged
+actual RTL logs. Kernel/RTL/image sources are unchanged by the host followups.
