@@ -1,0 +1,1154 @@
+{
+  "passed": true,
+  "coverage": "additional exact ELF-linked virtual address oracle on unchanged native logs; no rerun",
+  "cases": {
+    "classification": {
+      "passed": true,
+      "checks": {
+        "exact_virtual_sequences": true,
+        "observed": true,
+        "record_count": true,
+        "trace_matches_rows": true,
+        "drops_marked": true,
+        "stack_restored": true,
+        "input_partition": true,
+        "workload_contexts": true,
+        "reference_all_observations": true,
+        "fault_excluded": true
+      },
+      "observations": 72,
+      "errors": [],
+      "contexts": {
+        "2": [
+          "warmup",
+          "warmup",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar"
+        ],
+        "4": [
+          "warmup",
+          "warmup",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream"
+        ],
+        "6": [
+          "warmup",
+          "warmup",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular"
+        ]
+      },
+      "rows": {
+        "0": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "1": [
+          4,
+          4,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "2": [
+          32,
+          4,
+          14,
+          12,
+          2,
+          72,
+          0,
+          0
+        ],
+        "3": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "4": [
+          16,
+          4,
+          0,
+          12,
+          0,
+          72,
+          0,
+          0
+        ],
+        "5": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "6": [
+          16,
+          4,
+          0,
+          6,
+          6,
+          72,
+          0,
+          0
+        ]
+      }
+    },
+    "classification-fault": {
+      "passed": true,
+      "checks": {
+        "exact_virtual_sequences": true,
+        "observed": true,
+        "record_count": true,
+        "trace_matches_rows": true,
+        "drops_marked": true,
+        "stack_restored": true,
+        "input_partition": true,
+        "workload_contexts": true,
+        "reference_all_observations": true,
+        "fault_excluded": true
+      },
+      "observations": 72,
+      "errors": [],
+      "contexts": {
+        "2": [
+          "warmup",
+          "warmup",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar"
+        ],
+        "4": [
+          "warmup",
+          "warmup",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream"
+        ],
+        "6": [
+          "warmup",
+          "warmup",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular"
+        ]
+      },
+      "rows": {
+        "0": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "1": [
+          4,
+          4,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "2": [
+          32,
+          4,
+          14,
+          12,
+          2,
+          72,
+          0,
+          0
+        ],
+        "3": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "4": [
+          16,
+          4,
+          0,
+          12,
+          0,
+          72,
+          0,
+          0
+        ],
+        "5": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ],
+        "6": [
+          16,
+          4,
+          0,
+          6,
+          6,
+          72,
+          0,
+          0
+        ],
+        "7": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0
+        ]
+      }
+    },
+    "classification-capacity": {
+      "passed": true,
+      "checks": {
+        "exact_virtual_sequences": true,
+        "observed": true,
+        "record_count": true,
+        "trace_matches_rows": true,
+        "drops_marked": true,
+        "stack_restored": true,
+        "input_partition": true,
+        "workload_contexts": true,
+        "reference_all_observations": true,
+        "fault_excluded": true
+      },
+      "observations": 130,
+      "errors": [],
+      "contexts": {
+        "2": [
+          "warmup",
+          "warmup",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar"
+        ],
+        "4": [
+          "warmup",
+          "warmup",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream"
+        ],
+        "6": [
+          "warmup",
+          "warmup",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular"
+        ]
+      },
+      "rows": {
+        "0": [
+          9,
+          0,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "1": [
+          4,
+          4,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "2": [
+          32,
+          4,
+          14,
+          12,
+          2,
+          139,
+          54,
+          9
+        ],
+        "3": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "4": [
+          16,
+          4,
+          0,
+          12,
+          0,
+          139,
+          54,
+          9
+        ],
+        "5": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "6": [
+          16,
+          4,
+          0,
+          6,
+          6,
+          139,
+          54,
+          9
+        ],
+        "7": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "8": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "9": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "10": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "11": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "12": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "13": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "14": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "15": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "16": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "17": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "18": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "19": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "20": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "21": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "22": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "23": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "24": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "25": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "26": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "27": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "28": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "29": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "30": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "31": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "32": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "33": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "34": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "35": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "36": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "37": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "38": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "39": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "40": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "41": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "42": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "43": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "44": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "45": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "46": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "47": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "48": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "49": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "50": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "51": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "52": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "53": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "54": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "55": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "56": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "57": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "58": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "59": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "60": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "61": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "62": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ],
+        "63": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          139,
+          54,
+          9
+        ]
+      }
+    },
+    "classification-patterns": {
+      "passed": true,
+      "checks": {
+        "exact_virtual_sequences": true,
+        "observed": true,
+        "record_count": true,
+        "trace_matches_rows": true,
+        "drops_marked": true,
+        "stack_restored": true,
+        "input_partition": true,
+        "workload_contexts": true,
+        "reference_all_observations": true,
+        "fault_excluded": true,
+        "class_interleave_scalar": true,
+        "class_interleave_stream": true,
+        "all_store_widths": true,
+        "store_streams": true
+      },
+      "observations": 134,
+      "errors": [],
+      "contexts": {
+        "2": [
+          "warmup",
+          "warmup",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar",
+          "scalar"
+        ],
+        "4": [
+          "warmup",
+          "warmup",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream",
+          "stream"
+        ],
+        "6": [
+          "warmup",
+          "warmup",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular",
+          "irregular"
+        ],
+        "8": [
+          "warmup",
+          "warmup",
+          "scalar",
+          "irregular",
+          "stream",
+          "stream"
+        ]
+      },
+      "rows": {
+        "0": [
+          9,
+          0,
+          0,
+          0,
+          0,
+          134,
+          6,
+          0
+        ],
+        "1": [
+          4,
+          4,
+          0,
+          0,
+          0,
+          134,
+          6,
+          0
+        ],
+        "2": [
+          32,
+          4,
+          14,
+          12,
+          2,
+          134,
+          6,
+          0
+        ],
+        "3": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          134,
+          6,
+          0
+        ],
+        "4": [
+          16,
+          4,
+          0,
+          12,
+          0,
+          134,
+          6,
+          0
+        ],
+        "5": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          134,
+          6,
+          0
+        ],
+        "6": [
+          16,
+          4,
+          0,
+          6,
+          6,
+          134,
+          6,
+          0
+        ],
+        "7": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          134,
+          6,
+          0
+        ],
+        "8": [
+          12,
+          4,
+          1,
+          6,
+          1,
+          134,
+          6,
+          0
+        ],
+        "9": [
+          16,
+          4,
+          6,
+          6,
+          0,
+          134,
+          6,
+          0
+        ],
+        "10": [
+          32,
+          8,
+          0,
+          24,
+          0,
+          134,
+          6,
+          0
+        ]
+      }
+    }
+  }
+}

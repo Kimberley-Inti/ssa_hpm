@@ -332,3 +332,24 @@ D03 is closed for one explicitly defined native Cache event, including uncached/
 PTW/kernel/private traffic, not unique retired load misses. D02 classification
 is next; generic transparent loader/multicore/unwind and other extended goals
 remain scoped in ACCEPTANCE.md. Main/tags/earlier PRs are unchanged.
+
+
+## Stage9 memory classification — implementation mapping (acceptance in progress)
+
+The stage8 head cdcf64fd5a9e2321b43fd68070b3ee45d12b42de and Draft PR7 are retained.
+New work is on stage9-memory-classification; no main/tag/merge changes.
+
+| Original source | Stage8 base | Stage9 original SHA | Work / standalone mapping |
+| --- | --- | --- | --- |
+| Rocket Chip local stage9 | bccfc47a4aecbef59aa4d4c73f15159b78ab123c | bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2 | bounded classifier, WB observer, shadow-stack mirror, S CSRs; patches/rocket-chip/0014-memory-classification.patch |
+| Linux local stage9 | 275125fabacde9e83f4bff6863bf25012537e0ed | e341319bc75a2c2c1443d4b8654c9270f922aaf8 | epoch ownership/select/reset/frozen sidecar export; integration/ssa/linux/0007-linux-memory-classification.patch |
+| Chipyard local stage9 | 897f5d3043aeab785ef4700bc0c4b6f45c25cbc9 | 845de089885afe175d941d8e6a2211ea0829d629 | source gitlink, independent rule1 reference, RTL/user fixtures and build/run/grade entries; standalone integration/ssa |
+| Chipyard local stage9 followup | previous row | 8be38abe85e787ff135ea14fd0513ae6b51a11c6 | host export ordering/progress/overflow checks, Linux scheduler chronology, ABI documentation |
+| OpenSBI | 43f02ffb329d9c86b2ff2138dc450b2060778ffe | unchanged | fixed Cache/DTLB profiles retained; no stage9 firmware patch |
+
+Patch author/date/message are retained in each mail patch. Original source SHAs
+remain in local development repositories/backup branches; the new upstream-based
+reconstruction is judged by exact tree/file hashes, not a claim that local source
+commit IDs can be fetched publicly. Later host-only followups do not imply a new
+RTL/image build. Final maintenance commit mapping and actual Linux outcome will
+be recorded after the running acceptance finishes.

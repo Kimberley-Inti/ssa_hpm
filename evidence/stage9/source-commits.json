@@ -1,0 +1,23 @@
+{
+  "chipyard": {
+    "head": "8be38abe85e787ff135ea14fd0513ae6b51a11c6",
+    "tree": "3ae6d4af262da4aafaed3a0843e574827dfdfa10",
+    "branch": "stage9-memory-classification",
+    "implementation_commit": "845de089885afe175d941d8e6a2211ea0829d629"
+  },
+  "rocket": {
+    "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+    "branch": "stage9-memory-classification"
+  },
+  "linux": {
+    "head": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
+    "tree": "5a3847a07da4caaf415b72d9d824edbac63d26f3",
+    "branch": "stage9-memory-classification"
+  },
+  "opensbi": {
+    "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+    "branch": "stage9-memory-classification"
+  }
+}

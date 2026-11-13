@@ -1,0 +1,4 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 36465
+SSA PASS: shadow registers, x5 call/return, ordinary JALR jump
+[UART] UART0 is here (stdin/stdout).

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "coverage": "host-only refresh/complete82-file manifest verification after parser/protocol fixes; no RTL/image/model changes",
+  "updated": [
+    "ssa/linux/ABI.md",
+    "ssa/linux/classification_results.py",
+    "ssa/linux/test_classification_results.py"
+  ],
+  "matched_files": 82
+}

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fixed-version baseline boot image. All downloaded/build outputs stay outside Git."""
 import argparse,hashlib,json,os,pathlib,shutil,subprocess,urllib.request
-p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--classification',action='store_true');p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+if a.classification:a.cache=True
 if a.cache:a.export_test=True
 if a.export_test:a.event=True
 if a.event:a.exec_test=True
@@ -23,6 +24,7 @@ if a.exec_test and not a.reference:run(['git','am',src/'0003-linux-exec-lifecycl
 if a.event and not a.reference:run(['git','am',src/'0004-linux-dtlb-event.patch'],linux)
 if a.export_test and not a.reference:run(['git','am',src/'0005-linux-result-export.patch'],linux)
 if a.export_test and not a.reference:run(['git','am',src/'0006-linux-cache-profile.patch'],linux)
+if a.classification and not a.reference:run(['git','am',src/'0007-linux-memory-classification.patch'],linux)
 run(['git','am',src/'0001-opensbi-rocket-platform.patch'],sbi)
 if a.event and not a.reference:run(['git','am',src/'0002-opensbi-dtlb-profile.patch'],sbi)
 if a.event and not a.reference:run(['git','am',src/'0003-opensbi-cache-profile.patch'],sbi)
@@ -33,7 +35,7 @@ host=w/'host-tools';host.mkdir();run(['dpkg-deb','-x',deb,host]);b=host/'compile
 def user(source,name,flags=[]):
  run([a.cross+'gcc',*flags,*(['-DCACHE_PROFILE_TEST'] if a.cache else []),'-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start','-Wl,--build-id=none',src/source,'-o',w/name])
 ref=['-DREFERENCE'] if a.reference else []
-user('cache-init.c' if a.cache else 'export-init.c' if a.export_test else 'exec-init.c' if a.exec_test else 'process-init.c' if a.process else 'init.c','init',ref+(['-DCHAIN_EVENTS'] if a.event else []))
+user('classification-init.c' if a.classification else 'cache-init.c' if a.cache else 'export-init.c' if a.export_test else 'exec-init.c' if a.exec_test else 'process-init.c' if a.process else 'init.c','init',ref+(['-DCHAIN_EVENTS'] if a.event else []))
 if a.export_test:user('exec-init.c','lifecycle',ref+['-DCHAIN_EVENTS'])
 if a.exec_test:
  user('exec-init.c','next',ref+['-DNEXT_IMAGE'])
@@ -42,11 +44,13 @@ if a.event:
  user('event-init.c','events',ref)
  user('exec-init.c','eventexec',ref+['-DEVENT_SESSION'])
  user('exec-init.c','eventnext',ref+['-DEVENT_SESSION','-DNEXT_IMAGE'])
+if a.classification:user('classification-init.c','classnext',['-DCLASS_NEXT'])
 listing=w/'initramfs.list';contents=f'dir /dev 0755 0 0\nnod /dev/console 0600 0 0 c 5 1\nfile /init {w}/init 0755 0 0\n'
 if a.exec_test:contents+=f'file /next {w}/next 0755 0 0\nfile /regress {w}/regress 0755 0 0\n'
 if a.event:
  for name in ['events','eventexec','eventnext']:contents+=f'file /{name} {w}/{name} 0755 0 0\n'
 if a.export_test:contents+=f'file /lifecycle {w}/lifecycle 0755 0 0\n'
+if a.classification:contents+=f'file /classnext {w}/classnext 0755 0 0\n'
 listing.write_text(contents)
 (linux/'.config').write_text((src/'kernel-a.config').read_text().replace('@INITRAMFS_LIST@',str(listing)))
 km=['make','ARCH=riscv','CROSS_COMPILE='+a.cross,'CC='+a.cross+'gcc -B'+str(b)+'/', 'LD='+str(host/'usr/bin/riscv64-linux-gnu-ld')]

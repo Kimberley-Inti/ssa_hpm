@@ -191,3 +191,34 @@ See evidence/stage8/summary.json, linux/execution.json, source-commits.json,
 linux-image-build.json and independent-final-check.json; no second independent
 full model rebuild or second accepted full Linux run is implied. The final
 STAGE8.md block rechecks committed raw evidence without simulation.
+
+
+## Stage9 memory classification (rule1)
+
+Use the same public Chipyard/Rocket bases and full ordered patch chain;0014 adds
+classification without changing the ROMs or ABI1/2 HPM layouts. The installed
+suite includes the independent reference, four real RTL fixtures and a directed
+Linux lifecycle fixture. See docs/CLASSIFICATION.md and docs/STAGE9.md for the
+bounded observation semantics and exact commands. `--classification` builds a
+fresh Cache-profile Linux image with the classification patch; default base,
+`--event` DTLB and `--cache` entries remain compatible.
+
+```sh
+python3 ssa/classification/test_reference.py
+make -C ssa classification
+python3 ssa/classification/run.py --simulator sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig --out-dir /tmp/ssa-rule1-rtl
+python3 ssa/classification/build-trace.py --workspace "$PWD" --config SSAHPMEventRocketConfig --out /tmp/ssa-rule1-wb-model
+/tmp/ssa-rule1-wb-model/simulator-progress +permissive +loadmem=ssa/classification-fault.hex +max-cycles=5000000 +permissive-off ssa/classification-fault.riscv > /tmp/ssa-rule1-wb.txt 2>&1
+python3 ssa/classification/check_wb.py /tmp/ssa-rule1-wb.txt --out /tmp/ssa-rule1-wb.json
+python3 ssa/linux/build-a.py --classification --work /tmp/ssa-rule1-linux --jobs 6
+python3 ssa/linux/run-classification.py --work /tmp/ssa-rule1-linux --simulator sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig --out-dir /tmp/ssa-rule1-linux-results
+python3 ssa/linux/classification_results.py /tmp/ssa-rule1-linux-results/rocket-linux-classification.txt --out /tmp/ssa-rule1-classified.json
+```
+
+Use new work/results directories. The read-only WB harness links the unchanged
+model archive and observes candidates before the clock edge; it does not write
+RTL state. Linux execution records exact native status and hashes before grading;
+an in-progress prefix is not a full passing boot. Rules/profile metadata and both
+base and classification terminal checksums must pass. Kernel/SBI/source dependency
+caches may be reused; source reconstruction and rebuilt test/user images are
+reported separately from reuse of an already verified model.

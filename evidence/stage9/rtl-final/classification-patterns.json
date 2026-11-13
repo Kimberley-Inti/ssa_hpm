@@ -1,0 +1,198 @@
+{
+  "passed": true,
+  "checks": {
+    "observed": true,
+    "record_count": true,
+    "trace_matches_rows": true,
+    "drops_marked": true,
+    "stack_restored": true,
+    "input_partition": true,
+    "workload_contexts": true,
+    "reference_all_observations": true,
+    "fault_excluded": true,
+    "class_interleave_scalar": true,
+    "class_interleave_stream": true,
+    "all_store_widths": true,
+    "store_streams": true
+  },
+  "observations": 134,
+  "errors": [],
+  "contexts": {
+    "2": [
+      "warmup",
+      "warmup",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar"
+    ],
+    "4": [
+      "warmup",
+      "warmup",
+      "stream",
+      "stream",
+      "stream",
+      "stream",
+      "stream",
+      "stream"
+    ],
+    "6": [
+      "warmup",
+      "warmup",
+      "irregular",
+      "irregular",
+      "irregular",
+      "irregular",
+      "irregular",
+      "irregular"
+    ],
+    "8": [
+      "warmup",
+      "warmup",
+      "scalar",
+      "irregular",
+      "stream",
+      "stream"
+    ]
+  },
+  "rows": {
+    "0": [
+      9,
+      0,
+      0,
+      0,
+      0,
+      134,
+      6,
+      0
+    ],
+    "1": [
+      4,
+      4,
+      0,
+      0,
+      0,
+      134,
+      6,
+      0
+    ],
+    "2": [
+      32,
+      4,
+      14,
+      12,
+      2,
+      134,
+      6,
+      0
+    ],
+    "3": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      134,
+      6,
+      0
+    ],
+    "4": [
+      16,
+      4,
+      0,
+      12,
+      0,
+      134,
+      6,
+      0
+    ],
+    "5": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      134,
+      6,
+      0
+    ],
+    "6": [
+      16,
+      4,
+      0,
+      6,
+      6,
+      134,
+      6,
+      0
+    ],
+    "7": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      134,
+      6,
+      0
+    ],
+    "8": [
+      12,
+      4,
+      1,
+      6,
+      1,
+      134,
+      6,
+      0
+    ],
+    "9": [
+      16,
+      4,
+      6,
+      6,
+      0,
+      134,
+      6,
+      0
+    ],
+    "10": [
+      32,
+      8,
+      0,
+      24,
+      0,
+      134,
+      6,
+      0
+    ]
+  },
+  "command": [
+    "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+    "+permissive",
+    "+verbose",
+    "+loadmem=/home/lxf/chipyard/ssa/classification-patterns.hex",
+    "+max-cycles=5000000",
+    "+permissive-off",
+    "/home/lxf/chipyard/ssa/classification-patterns.riscv"
+  ],
+  "exit_code": 0,
+  "seconds": 22.578764240000055,
+  "sha256": {
+    "/home/lxf/chipyard/ssa/classification-patterns.riscv": "3b9768bfc7b2084aa0cbd6dc7a70596da50cb107b365e3dd16a81c7f12d57e11",
+    "/tmp/ssa-hpm-stage9/rtl-final/classification-patterns.txt": "21126d57b868797cb349df8be304b8e162aff31a829511d7aa55bcba06c836f3",
+    "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig": "639699b919b10858d647903f342c055e780ac8cf7890db44730b700f411426db"
+  },
+  "negative_category_detected": true,
+  "negative_context_detected": true
+}

@@ -1,0 +1,8 @@
+{
+  "url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/7",
+  "state": "open",
+  "draft": true,
+  "base": "stage7-result-export",
+  "head": "stage8-cache-event-attribution",
+  "sha": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de"
+}

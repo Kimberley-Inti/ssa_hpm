@@ -15,9 +15,9 @@
     "base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
     "accepted_base": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
     "accepted_delivery": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
-    "expected_tree": "ab070df808531aced29957281f5b564865b73edd",
-    "development_base": "469bfac7de26bfbb03298787ad030898c6de24c9",
-    "development_delivery": "bccfc47a4aecbef59aa4d4c73f15159b78ab123c",
+    "expected_tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+    "development_base": "bccfc47a4aecbef59aa4d4c73f15159b78ab123c",
+    "development_delivery": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
     "accepted_v010_tree": "927a21fc6283a2e5f96adcf84a7d4a381829fccd"
   },
   "constellation": {
@@ -481,8 +481,8 @@
     "meaning": "Track the ignored environment helper and guard the absent legacy test; accepted delivery refs unchanged."
   },
   "expected_files": {
-    "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "69ecd3b32f54046fecec3b0702bb98601fa85821f98e48472c4293d66dabe49f",
-    "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "9de81f69f54d0a29bd3f317e572a9aec8910006a9c769dcc978b00b72819bcbd",
+    "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "182b0c1aad954bcf8fed8de23d1fd06b97dc114324ea5db7262eb735eb620672",
+    "generators/rocket-chip/src/main/scala/rocket/CSR.scala": "c8ca3b095ab85f5755e4e4c4b240e51424c5d94317246aff87e4c287e2fae83c",
     "generators/rocket-chip/src/main/scala/rocket/IDecode.scala": "a2f6fefae2d38f6414fcf8f0c4eeaa6d49205f3072bb578a121592e459c92377",
     "generators/rocket-chip/src/main/resources/ssa/microcode.S": "597eec1ec9966cfc73474e42003559d102a6f9463b576f2e3a5a4d3b107d24b2",
     "generators/rocket-chip/scripts/gen-ssa-rom.py": "8ca2dacdd6b694435624d75746949215d25f4e04107cf1fdfc63422563fd8585",
@@ -491,7 +491,7 @@
     "ssa/abi.S": "a0021451f71d59c23cea1242146059ed0bb7ed49458ec4624d24351bd2ec42e5",
     "ssa/test.ld": "abe19976736741556e3deb41ecd354653f0486f1f64fb74c07586a24cc92b0cb",
     "ssa/env.sh": "3b24ac29129c513816ff23906c362d90539d2b6526195b01520271a253ddb2f3",
-    "ssa/Makefile": "022b16fafa03eec30894f5e96f09f99b50978b32dbe112c4a572c5b252cd7c5b",
+    "ssa/Makefile": "7c6052cae7acae701e6369e1ac14d291ac689a28a065ff5e358496a69d562138",
     "ssa/.gitignore": "26e6b76a6e6548d850a3f518f2a5382586e38aa52b60c461319800da1ccd4dbd",
     "ssa/gen_rom.py": "4d911732547482931789efcbedc3b461112fec247a1aac700502874f559fb5a7",
     "ssa/elf_to_hex.py": "4f49a1d6389cb2abf906720b45f1acefa42a97c30569d4fe180e26d2e1365104",
@@ -510,19 +510,19 @@
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
-    "ssa/linux/build-a.py": "c9850f4a5dd8f327c00b20340ee39505bdbb4e2b34c55ab284f590c5cb86b18b",
+    "ssa/linux/build-a.py": "b375f213ce564ffd701f1d089db10f1534b55d55765e4bec99db3ce40f5a31e4",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "38b8e091d5188090402fc43c93cc5906dc66dc0e24c5a5a16d3177f501387f24",
     "ssa/linux/kernel-a.config": "2c4aed8c9c01a5e48c45688a9b699b0c7e6143a83a5a4922a25b0cd0b5d1028d",
     "ssa/linux/verify-probes.py": "016311615e802eac699572dc32e9114fd3b52259b742974da9ad41a38dc1fb13",
     "ssa/linux/run-process.py": "868b4bafbb459db7111da7934571ebcf9d37c1a6459e4500e2c109a2ed5afd68",
-    "ssa/linux/user-probe.S": "a0b658bf48786a69eb479d789d0999894c3fb4b5f59fe1edb7f97938d54c706f",
+    "ssa/linux/user-probe.S": "5f0de31511517f066e787059a2e8047d707096804e575c486ae3464fcc098542",
     "ssa/linux/0002-linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
     "ssa/linux/process-init.c": "1d677ee09a0c2bfcf9210d50f12be099265c8f585ff851d7419907fd075d8554",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "e681bc65253c098226ee28faef1e69611f7f9290e50c5b7bf5e62ee911bc52b8",
+    "ssa/linux/ABI.md": "d25b73a104d94153dcc3a027d0f4699d5d494b93d4d75048afdc3ac223b39cb8",
     "ssa/linux/exec-init.c": "ca7a5fcc61b089359b384ee50e0e5d3e83e11ae62e597b74afefab83b3f1235a",
     "ssa/linux/grade-exec.py": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
     "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
@@ -545,17 +545,26 @@
     "ssa/linux/0006-linux-cache-profile.patch": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526",
     "ssa/linux/0003-opensbi-cache-profile.patch": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9",
     "ssa/linux/cache-init.c": "7eb2e0f90b463b74242bf4e0fcaf17040ce4bc03552682157aca88fb5a3f526d",
-    "ssa/linux/grade-cache.py": "32f3e49b66f55c2c5b0e1faca88024bdb34388599147905949ab7e38539d6065"
+    "ssa/linux/grade-cache.py": "32f3e49b66f55c2c5b0e1faca88024bdb34388599147905949ab7e38539d6065",
+    "ssa/classification/capacity.S": "f235163c9b00bca97e5b7937f59a2cef5fc07b69ade8df7d71a6262ea06f971b",
+    "ssa/classification/workload.S": "fcc70b1470304885d959524a098e281fbce59ade963b62fcc5236f66a901bc47",
+    "ssa/classification/run.py": "d101d5a32fb11b331d90df97576b4483112c93361ce8bba54f598ebf7c283bdb",
+    "ssa/classification/bare.c": "06aa2c35f409ec475b3f4528f6e84e53f0c1218f1e11048baae64a0511e09e8d",
+    "ssa/classification/check_trace.py": "a9d02082a8cca00623c682470abffa03aeee83f791068c8dc5b1921514932aaf",
+    "ssa/classification/test_reference.py": "484a6983314663977ff30446ff09d64141f78b7265b2de08c2a66f0800067eac",
+    "ssa/classification/reference.py": "b608a71d5bf5397ba5cda39178f31c025fd03aad87921711b01dddd195ad401e",
+    "ssa/classification/trap-start.S": "97f821fd64fadda002fc9b1653b8e929413438dd3605446e6c13bcf651380682",
+    "ssa/linux/classification_results.py": "6022bdef3104d9aa464fd0dd6af323d7cfc14b0ecb323fae80deea42673c112c",
+    "ssa/linux/grade-classification.py": "259da8cbfe2e8222a68ba5e06ed38bb57d4a2255a3dde937e7db90b886698a9c",
+    "ssa/linux/run-classification.py": "6b03e1f51b17de30ba2473826cda96719898665eb55f4bce660ba178f6a21c89",
+    "ssa/linux/classification-init.c": "700a5a8ca3f3589145802112f45926736dc675c40aa669ba93d15419045978b3",
+    "ssa/linux/test_classification_results.py": "df9dee4fdbbd90e73d58d435a3985a7a8f6533778fe94d71c59a8e275e3a4ea3",
+    "ssa/linux/0007-linux-memory-classification.patch": "28c5ad48c0fbce21f59160c4d5a6a98e3ae991af2f8562f72e8ce183693acced",
+    "generators/rocket-chip/src/main/scala/rocket/SSAMemoryClassifier.scala": "c05ddac21192eee261a1495792cf15936922957cf1a83ebc0653d5cce019e71c",
+    "ssa/classification/check_wb.py": "6e717c99dad3f3cf37109068058b557993a042e72019b8da53e29203a0d31b27",
+    "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3"
   },
-  "development_stage": {
-    "name": "stage2-trap-isolation",
-    "baseline_tag": "v0.1.0",
-    "baseline_commit": "0421e67203e0cfb63d96699f061ffa7d8d00fddf",
-    "counter_semantics": "unchanged interval-inclusive; handler tree transitions suppressed",
-    "status_csr": "0xcc0",
-    "scope": "matched architectural traps and returns, per-hart depth, saturation fail-closed",
-    "patch": "patches/rocket-chip/0009-trap-context-isolation.patch"
-  },
+  "development_stage": "stage9-memory-classification",
   "stage3": {
     "base_release": "2d646a615b357e3e883289d91d0b903ac14baec4",
     "implementation": "integration/ssa/process.h",
@@ -637,5 +646,10 @@
     "accepted_full_linux_runs": 1,
     "superseded_early_boots": 1,
     "D03_closed": true
+  },
+  "stage9": {
+    "status": "implementation under actual RTL/Linux validation; D02 not yet accepted",
+    "base": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
+    "public_reconstruction": "same pinned public bases plus0014 Rocket patch and installed standalone suite"
   }
 }

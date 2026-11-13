@@ -180,3 +180,35 @@ S..R exclusion for normal mode. Late increments belong to their sampling interva
 post-R resumed-task cache effects remain charged. See ABI.md and STAGE8.md for
 exact source/limits. Actual Cache41 rows/3chunks plus small/empty/open andexec
 passed in Linux; full source logs/results are in evidence/stage8/.
+
+## Optional memory classification sidecar (rule1)
+
+Stage9 START bit2 appends SSA_MBEGIN/MRECORD/MEND before the base stream's XEND.
+It does not change stream v1 counter payloads, ABI1/2 offsets, profile selectors
+or their inclusive interval semantics. Old readers can still consume those
+counters; classification-aware readers must validate both channels.
+
+MBEGIN declares version1,rule1,session,total,emitted,width64,aggregation exclusive,
+scope retired_integer_virtual,history16,capacity63,status,depth,spill,unframed,
+inputs,evictions,dropped. MRECORD rows have ordered id1..min(total,63),total,
+warmup,scalar,stream,irregular. MEND carries session,emitted and a word checksum
+with the original FNV recurrence over each row's id and five counters. Session
+links to base pid/image/parent/callee/open metadata. Records beyond63 remain in
+base export; sidecar coverage is explicitly incomplete, never falsely full.
+
+Status bits0epoch-present,1reset-busy,2mirror-invalid,3history-discontinuous,
+4counter-overflow,5active-spill. Counts are modulo2^64 with a sticky overflow
+flag. The host verifies partition sums modulo2^64 and requires an overflow flag
+when wrap is directly evident. Overflow is parseable but semantically incomplete.
+History eviction is reported separately from lost counts. Unframed observations
+have no RID; unsupported framed observations increment dropped. Open activations
+retain observed exclusive classification counts and base abandoned-frame IDs;
+this does not fabricate closed-activation HPM results.
+
+classification_results.py validates ordering, checksum, counts, metadata, session
+ownership and terminal presence, and joins rows to the checked base call tree.
+It normalizes the same read-only progress labels as export_results.py, preserving
+raw captures. test_classification_results.py distinguishes host-only protocol
+faults/64-bit arithmetic from native hardware evidence. Freeze, short IRQ-masked
+row reads, STOP/exec/exit and bank ownership follow the base export lifecycle;
+a bank is never reset/reused before the owning session reaches terminal export.

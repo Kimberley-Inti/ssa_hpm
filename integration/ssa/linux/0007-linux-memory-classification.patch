@@ -1,0 +1,111 @@
+From e341319bc75a2c2c1443d4b8654c9270f922aaf8 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Fri, 13 Nov 2026 13:32:38 +0800
+Subject: [PATCH] SSA-HPM: isolate classification epochs and export exclusive
+ memory categories
+
+---
+ kernel/ssa_hpm.c | 41 +++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 37 insertions(+), 4 deletions(-)
+
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 8a40c4dcf..17428f9d4 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -30,7 +30,7 @@ struct ssa_event {u64 s[4],r[4],depth,rid,cause,csr_cause; int other,from; unsig
+ struct ssa_hpm_state {
+  struct ssa_pool *pool;
+  unsigned int state,role,test,uid,n;
+- bool event;
++ bool event,classify;
+  bool frozen,exported;
+  u64 cutoff[4],open_ids[256];
+  bool legacy,bad,proof_seen,proof_valid;
+@@ -60,6 +60,7 @@ static void sample(u64 *v,bool event){
+  if(event)asm volatile("csrr %0,0xc03":"=r"(v[3])::"memory");
+ }
+ static void select_pool(unsigned long b,bool event){
++ if(!b)csr_write(0x5c1,0);
+  if(event)csr_set(0x5c0,2);else csr_clear(0x5c0,2);
+  asm volatile("csrw 0x800,%0"::"r"(b):"memory");}
+ static unsigned long selected(void){unsigned long b;asm volatile("csrr %0,0x800":"=r"(b));return b;}
+@@ -94,7 +95,7 @@ static void resume_task(struct task_struct *t,struct task_struct *other)
+  if(!p->legacy)for(n=1;n<=e->depth;n++)for(j=0;j<nr(p);j++){
+   volatile u64 *f=frame(p->pool,n);WRITE_ONCE(f[j+1],(READ_ONCE(f[j+1])+d[j])&(j==3?EVENT_MASK:~0ULL));
+  }
+- p->state=RUNNING;select_pool(p->pool->base,p->event);
++ p->state=RUNNING;csr_write(0x5c1,p->classify?p->session:0);select_pool(p->pool->base,p->event);
+ }
+ void ssa_hpm_fork(struct task_struct *t){t->ssa_hpm=NULL;}
+ void ssa_hpm_switch(struct task_struct *prev,struct task_struct *next,bool preempt)
+@@ -110,19 +111,25 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+  struct ssa_hpm_state *p=current->ssa_hpm;unsigned long irq;unsigned int i;
+  if(!available)return -ENODEV;
+  if(op==1){
+-  if(flags>3 || role>2 || test>14)return -EINVAL;
++  if(flags>7 || role>2 || test>14)return -EINVAL;
+   if((flags&2) && !event_available)return -ENODEV;
+   if(p)return -EBUSY;
+   p=kzalloc(sizeof(*p),GFP_KERNEL);if(!p)return -ENOMEM;
+   local_irq_save(irq);
+   for(i=0;i<ARRAY_SIZE(pools);i++)if(!pools[i].busy)break;
+   if(i==ARRAY_SIZE(pools)){local_irq_restore(irq);kfree(p);return -EBUSY;}
+-  p->pool=&pools[i];p->pool->busy=true;p->legacy=flags&1;p->event=!!(flags&2);p->role=role;p->test=test;
++  p->pool=&pools[i];p->pool->busy=true;p->legacy=flags&1;p->event=!!(flags&2);p->classify=!!(flags&4);p->role=role;p->test=test;
+   p->uid=__kuid_val(current_uid());p->state=RUNNING;
+   p->session=++next_session;p->image_id=READ_ONCE(current->self_exec_id);
+   memset((char *)p->pool->top+TOP_SIZE-1065024,0,262144*4);
+   memset((void *)meta(p->pool),0,64);WRITE_ONCE(meta(p->pool)[1],1);
+   current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base,p->event);
++  csr_write(0x5c1,p->classify?p->session:0);
++  if(p->classify){
++   csr_write(0x5c3,i);csr_write(0x5c2,1);
++   while(csr_read(0x5c2)&2)cpu_relax();
++   csr_write(0x5c3,0);
++  }
+   pr_emerg("SSA_BEGIN pid=%d session=%llu image=%llu pool=%lu depth=%llu next=%llu selector=%lu\n",current->pid,p->session,p->image_id,p->pool->base,READ_ONCE(meta(p->pool)[0]),READ_ONCE(meta(p->pool)[1]),selected());
+   if(p->event)pr_emerg("SSA_EVENT_BEGIN pid=%d session=%llu abi=2 selector=%u width=40 depth=0 next=1 profile=%s\n",current->pid,p->session,HPM_SELECTOR,HPM_NAME);
+   local_irq_restore(irq);return 0;
+@@ -168,6 +175,31 @@ static int read_chunk(struct task_struct *t,struct ssa_hpm_state *p,u64 sid,
+  if(!v)return -ENOMEM;
+  memcpy(out,v,count*sizeof(*out));memunmap(v);return 0;
+ }
++/* Read one frozen sidecar row. IRQ exclusion protects the hart CSR selector;
++ * pool ownership protects the epoch bank until XRELEASE. No user selector API. */
++static void class_row(struct ssa_hpm_state *p,unsigned int id,u64 v[8])
++{
++ unsigned long irq;
++ local_irq_save(irq);
++ csr_write(0x5c1,p->session);csr_write(0x5c3,id);
++ v[0]=csr_read(0x5c4);v[1]=csr_read(0x5c5);v[2]=csr_read(0x5c6);v[3]=csr_read(0x5c7);
++ v[4]=csr_read(0x5c8);v[5]=csr_read(0x5c9);v[6]=csr_read(0x5ca);v[7]=csr_read(0x5cb);
++ csr_write(0x5c1,0);
++ local_irq_restore(irq);
++}
++static void export_class(struct ssa_hpm_state *p,u64 total)
++{
++ u64 v[8],h=14695981039346656037ULL;unsigned int i,j,n=min_t(u64,total,63);
++ class_row(p,0,v);
++ pr_emerg("SSA_MBEGIN version=1 rule=1 session=%llu total=%llu emitted=%u width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=%llu depth=%llu spill=%llu unframed=%llu inputs=%llu evictions=%llu dropped=%llu\n",p->session,total,n,v[0],v[1],v[2],v[3],v[5],v[6],v[7]);
++ for(i=1;i<=n;i++){
++  class_row(p,i,v);
++  pr_emerg("SSA_MRECORD session=%llu id=%u total=%llu warmup=%llu scalar=%llu stream=%llu irregular=%llu\n",p->session,i,v[0],v[1],v[2],v[3],v[4]);
++  h=export_hash(h,i);for(j=0;j<5;j++)h=export_hash(h,v[j]);
++  cond_resched();
++ }
++ pr_emerg("SSA_MEND session=%llu emitted=%u hash=%016llx\n",p->session,n,h);
++}
+ static long export_session(struct task_struct *t,const char *reason,bool release)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm;unsigned long irq;unsigned int i,j,status=0;
+@@ -223,6 +255,7 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+   seq++;cond_resched();
+  }
+  kfree(buf);
++ if(p->classify)export_class(p,total);
+  for(i=0;i<depth && i<256;i++)pr_emerg("SSA_XFRAME session=%llu frame=%u rid=%llu status=abandoned\n",p->session,i+1,open_ids[i]);
+  pr_emerg("SSA_XEND session=%llu chunks=%llu emitted=%llu total=%llu hash=%016llx status=%u records_complete=%u\n",p->session,seq,emitted,total,allhash,status,emitted==total && !(status&XS_IO));
+  if(p->proof_seen && next==3 && !depth && !spill)for(j=0;j<nr(p);j++){
+-- 
+2.34.1
+

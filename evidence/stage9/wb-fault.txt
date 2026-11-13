@@ -1,0 +1,95 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 39005
+SSA_WB_MEM cycle=2022 pc=800000ea va=80008308 valid=0 replay=1 exception=0 observe=0 miss=1 rid=1 store=1 size=3
+SSA_WB_MEM cycle=2042 pc=800000ea va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=1 store=1 size=3
+SSA_WB_MEM cycle=2382 pc=80000398 va=800084a0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2384 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2391 pc=80000398 va=800084a8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2393 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2400 pc=80000398 va=800084b0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2402 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2409 pc=80000398 va=800084b8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2411 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2415 pc=80000398 va=800084c0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2417 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2424 pc=80000398 va=800084c8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2426 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2433 pc=80000398 va=800084d0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2435 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2442 pc=80000398 va=800084d8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2444 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=2605 pc=800000fe va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=1 store=0 size=3
+SSA_WB_MEM cycle=3083 pc=80000106 va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=3 store=1 size=3
+SSA_WB_MEM cycle=3363 pc=80000398 va=800084e0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3365 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3372 pc=80000398 va=800084e8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3374 pc=8000039c va=80008598 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3381 pc=80000398 va=800084f0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3383 pc=8000039c va=800085a0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3387 pc=80000398 va=800084f8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3389 pc=8000039c va=800085a8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3393 pc=80000398 va=80008500 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3395 pc=8000039c va=800085b0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3399 pc=80000398 va=80008508 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3401 pc=8000039c va=800085b8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3405 pc=80000398 va=80008510 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3407 pc=8000039c va=800085c0 valid=0 replay=1 exception=0 observe=0 miss=1 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3427 pc=8000039c va=800085c0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3434 pc=80000398 va=80008518 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3436 pc=8000039c va=800085c8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=4 store=0 size=3
+SSA_WB_MEM cycle=3597 pc=8000011a va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=3 store=0 size=3
+SSA_WB_MEM cycle=4038 pc=80000122 va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=5 store=1 size=3
+SSA_WB_MEM cycle=4318 pc=80000398 va=80008520 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4320 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4327 pc=80000398 va=80008528 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4329 pc=8000039c va=80008690 valid=0 replay=1 exception=0 observe=0 miss=1 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4349 pc=8000039c va=80008690 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4353 pc=80000398 va=80008530 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4355 pc=8000039c va=800085d0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4359 pc=80000398 va=80008538 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4361 pc=8000039c va=80008810 valid=0 replay=1 exception=0 observe=0 miss=1 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4381 pc=8000039c va=80008810 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4385 pc=80000398 va=80008540 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4387 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4391 pc=80000398 va=80008548 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4393 pc=8000039c va=800085d8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4397 pc=80000398 va=80008550 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4399 pc=8000039c va=800087c8 valid=0 replay=1 exception=0 observe=0 miss=1 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4419 pc=8000039c va=800087c8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4423 pc=80000398 va=80008558 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4425 pc=8000039c va=800085b0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=6 store=0 size=3
+SSA_WB_MEM cycle=4586 pc=80000136 va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=5 store=0 size=3
+SSA_WB_MEM cycle=4964 pc=800000ea va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=1 store=1 size=3
+SSA_WB_MEM cycle=5168 pc=80000398 va=800084a0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5170 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5177 pc=80000398 va=800084a8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5179 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5186 pc=80000398 va=800084b0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5188 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5192 pc=80000398 va=800084b8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5194 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5198 pc=80000398 va=800084c0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5200 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5204 pc=80000398 va=800084c8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5206 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5210 pc=80000398 va=800084d0 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5212 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5216 pc=80000398 va=800084d8 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5218 pc=8000039c va=80008590 valid=1 replay=0 exception=0 observe=1 miss=0 rid=2 store=0 size=3
+SSA_WB_MEM cycle=5379 pc=800000fe va=80008308 valid=1 replay=0 exception=0 observe=1 miss=0 rid=1 store=0 size=3
+SSA_WB_MEM cycle=5847 pc=800003aa va=0 valid=0 replay=0 exception=1 observe=0 miss=1 rid=7 store=0 size=3
+SSA_WB_MEM cycle=5884 pc=8000003e va=80000490 valid=0 replay=1 exception=0 observe=0 miss=1 rid=7 store=0 size=3
+SSA_WB_MEM cycle=5898 pc=8000003e va=80000490 valid=0 replay=1 exception=0 observe=0 miss=1 rid=7 store=0 size=3
+SSA_WB_MEM cycle=5915 pc=8000003e va=80000490 valid=1 replay=0 exception=0 observe=0 miss=0 rid=7 store=0 size=3
+SSA_WB_MEM cycle=5918 pc=80000044 va=80000490 valid=1 replay=0 exception=0 observe=0 miss=0 rid=7 store=1 size=3
+SSA_CLASS_ROW 0000000000000000 0000000000000001 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000001 0000000000000004 0000000000000004 0000000000000000 0000000000000000 0000000000000000 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000002 0000000000000020 0000000000000004 000000000000000e 000000000000000c 0000000000000002 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000003 0000000000000002 0000000000000002 0000000000000000 0000000000000000 0000000000000000 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000004 0000000000000010 0000000000000004 0000000000000000 000000000000000c 0000000000000000 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000005 0000000000000002 0000000000000002 0000000000000000 0000000000000000 0000000000000000 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000006 0000000000000010 0000000000000004 0000000000000000 0000000000000006 0000000000000006 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_ROW 0000000000000007 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000048 0000000000000000 0000000000000000
+SSA_CLASS_FAULT_EXPECTED
+SSA_CLASS_DONE
+[UART] UART0 is here (stdin/stdout).

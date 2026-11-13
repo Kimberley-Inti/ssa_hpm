@@ -1,0 +1,16 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/chipyard.TestHarness.SSAHPMEventRocketConfig",
+    "-f",
+    "/tmp/ssa-hpm-stage9/wb-trace-model/progress-model.mk",
+    "/tmp/ssa-hpm-stage9/wb-trace-model/simulator-progress",
+    "CFG_CXXFLAGS_STD_NEWEST=-std=c++17",
+    "LINK=/usr/bin/g++ -B/usr/bin/",
+    "-j4"
+  ],
+  "model_sha256": "32eaf5297b7a3741ef7634b2ff08f20465256b1e3187f34990352fd42d6cf357",
+  "model_unchanged": true,
+  "simulator_sha256": "0d02b40584989e72dc11f77aff15f6a49bff1305f886db28b5363fea1bb9acb1"
+}
