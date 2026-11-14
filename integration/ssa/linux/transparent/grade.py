@@ -19,7 +19,9 @@ def grade(text,code,users):
  text=normalize(text);auto=text.split('AUTO_SUITE_START',1)[-1].split('AUTO_SUITE_END',1)[0];q=parse(auto);c={}
  def check(k,v):c[k]=bool(v)
  check('native_exit0',code==0);check('normal_powerdown','Power down' in text);check('auto_suite_complete','AUTO_SUITE_END' in text);check('no_guest_failure',not any(x in text for x in ['PLAIN_TEST_FAIL','LAUNCH_EXEC_FAIL','Kernel panic']))
- check('complete_exports',q['valid']);base={s['header']['session']:s for s in q['context_export']['sessions']};cls={s['header']['session']:s for s in q['classification_sessions']}
+ check('complete_exports',q['valid'])
+ if not q['valid']:return {'passed':False,'checks':c,'exports':q,'auto_results':fields(auto,'SSA_AUTO_RESULT')}
+ base={s['header']['session']:s for s in q['context_export']['sessions']};cls={s['header']['session']:s for s in q['classification_sessions']}
  starts=fields(auto,'SSA_AUTO_RESULT');arms=fields(auto,'SSA_AUTO_ARM');ends=fields(auto,'SSA_AUTO_END');reject=fields(auto,'SSA_AUTO_REJECT');forks=fields(auto,'SSA_AUTO_FORK');switches=fields(auto,'SSA_SWITCH');samples=fields(auto,'SSA_SAMPLE')
  pids=[];pending=False
  for line in auto.splitlines():
@@ -78,7 +80,8 @@ def grade(text,code,users):
  check('all_pause_deltas_modulo_correct',bool(samples) and all(z['delta']==((z['R']-z['S'])&((1<<(40 if z['counter']==3 else 64))-1)) for z in samples))
  ds=sessions(dyn);dr=result(dyn);check('dynamic_actual_execution',len(ds)==len(dr)==1 and dr[0]['enabled'] and dr[0]['dynamic']==1 and 'PLAIN_DYNAMIC_OK' in auto)
  if len(ds)==len(dr)==1:
-  s=ds[0];x=dr[0];check('dynamic_interpreter_records',x['entry']!=x['app'] and x['interp']>0 and any(x['interp']<=z['callee']<x['interp']+0x100000 for z in s['records']))
+  s=ds[0];x=dr[0];check('dynamic_application_record',any(z['callee']==users['inputs']['plain-dynamic']['symbols']['dynamic_parent'] and z['instret']>0 for z in s['records']));check('dynamic_interpreter_records',x['entry']!=x['app'] and x['interp']>0 and any(x['interp']<=z['callee']<x['interp']+0x100000 for z in s['records']))
+  check('dynamic_closed_subtrees_inclusive',all(all(z[k]>=sum(c[k] for c in s['records'] if c['parent']==z['id']) for k in ['cycle','instret','time']) for z in s['records'] if not z['open']))
   match=re.search(r'PLAIN_DYN_ANCHOR\s+(0x[0-9a-f]{16})',auto);check('dynamic_shared_function_record',bool(match) and any(z['callee']==int(match[1],16) and z['instret']>0 for z in s['records']))
   check('dynamic_no_silent_state_loss',s['end']['records_complete']==1 and not(s['header']['status']&~1))
  cs=sessions(cap);check('capacity_session',len(cs)==1)

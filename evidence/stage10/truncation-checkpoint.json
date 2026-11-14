@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "coverage": "host-only truncation mutation of completed automatic prefix; native/manual completion still pending",
+  "detected_errors": [
+    {
+      "line": 1241,
+      "tag": "SSA_XRELEASE",
+      "error": "release before END or duplicate release"
+    },
+    {
+      "session": 10,
+      "error": "truncated export: missing END"
+    }
+  ],
+  "no_checker_traceback": true
+}

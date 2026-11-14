@@ -396,3 +396,18 @@ Host-only followup 0d88f5baa08268d82728784cdc41be023bbf8ee9 requires complete no
 The same live native run has verified static, successful/failed exec, fork/signal,
 resource and automatic A/B preemption prefixes. Full dynamic/capacity/manual
 acceptance is pending; no C05 final acceptance is implied by this checkpoint.
+
+Host followups5de3401c0c7c209aa414de5319340d8c4b2c22ac and9ac5adcecba65f3906d9c0b70fe1741000ff0415 add an independent ELF-linked64-record
+capacity oracle. Row-capacity loss is explicitly dropped>0/semantic-complete=false;
+it does not set the separate invalid-shadow-stack bit. Hardware/kernel/image
+are unchanged. The same real Linux run completed the musl dynamic prefix:
+105records/7chunks, return0, one abandoned loader continuationRID10.
+
+The real automatic prefix completed at76.3Mcycles:48semantic gates,10sessions/
+195base records, dynamic105records/7chunks (one loader continuation abandoned),
+capacity64records/4chunks with63classification rows/1explicit drop/48evictions.
+Ten independent ELF-linked capacity gates passed. Later host followups add
+actual dynamic application/inclusive subtree checks and structured truncation
+rejection; all source SHAs/dates/messages are in stage10/source-commits.json.
+The appended original manual regression and final native shutdown are still
+running at this checkpoint, so C05 is not yet marked finally accepted.

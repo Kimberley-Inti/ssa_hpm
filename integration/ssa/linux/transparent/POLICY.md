@@ -49,7 +49,7 @@ not claimed. Unselected programs follow normal Linux loader behavior.
    entry/app/interp addresses. Same PID does not imply the same session.
 4. Enter the new image. On normal exit or signal termination, freeze/export once
    before release. SSA_AUTO_END records Linux exit code/signal and monitoring
-   enable failure. Remaining open frames are abandoned, never normal returns.
+   enable failure. Its error is the last policy-check/start error; monitored independently states whether a descriptor exists. A rejected precommit attempt need not destroy an existing session. Remaining open frames are abandoned, never normal returns.
 
 ENOENT pathname lookup is the exercised failed-return path. It never reaches the
 commit hook, so the old session, open frames, history and selection continue.
@@ -75,7 +75,7 @@ TL A transactions, fixed jointly by the kernel/OpenSBI build profile. Automatic
 policy does not reprogram the hart selector per task. Existing base/DTLB/Cache
 builders and explicit interfaces remain compatible. The directed automatic image
 uses Cache; the dynamic case uses ABI1, and the capacity case ABI1+classification.
-Classification is exclusive, retired integer virtual-address rule1 with source
+The262143-ID base record allocator retains its existing bounds guard: exhaustion is exported as allocation_errors/XS_ALLOC and incomplete records, without pretending missing calls were counted. This stage does not stream262143 real Linux records; the existing low-level guard and host capacity arithmetic are separately reused. Classification is exclusive, retired integer virtual-address rule1 with source
 filtering;16 FIFO history entries and63 counter rows per epoch. Capacity beyond
 RID63 leaves complete base records but explicitly increments dropped and marks
 classification semantic coverage incomplete. Transport completeness is separate.

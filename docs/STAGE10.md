@@ -1,8 +1,6 @@
 # Stage10: controlled transparent Linux launch
 
-Status: implementation and independent build completed; actual Rocket/Linux
-acceptance is running. No passing C05 claim is made until its native end, shutdown
-and semantic checks are recorded.
+Status: all automatic scenarios completed with48semantic gates and10independent ELF-linked capacity gates passed (same original Rocket/Linux run). The appended manual regression and final native shutdown are still running. C05 final acceptance remains pending those results.
 
 ## Baseline and behavior
 
@@ -85,3 +83,34 @@ PT_INTERP/DSO and capacity programs, all0). This only diagnoses target binaries;
 it is explicitly not Rocket/kernel policy/SSA evidence. The actual accepted
 Linux image uses uncompressed initramfs to bound software inflate cost; old gzip
 preparation and the missing-dependency preparation are preserved and not passed.
+
+## Completed automatic prefix
+
+The actual native run reached AUTO_SUITE_END at76.3Mcycles:10owned sessions,
+195base records.48automatic semantic gates pass; native exit/shutdown remain
+separate pending gates. See automatic-checkpoint.json and component checkpoints.
+
+- Static6records exactly match ordinary ELF callees/parents and known class vectors.
+- Same-PID exec exports old closed records plus abandoned frame, then clean new
+ image/session. ENOENT preserves history; fork child is unselected, CLONE_THREAD
+ is rejected, SIGTERM15 exports an abandoned frame and releases the pool.
+- Identical unselected ELF creates no session, setid is rejected, a third task
+ reports pool_exhausted/-16 while two independent holders retain their histories.
+- Timer cause, runnable state, involuntary switching, two open frames/RID2 and
+ reciprocal S/R chronology prove automatic A→B→A including an unmonitored handoff.
+ Both histories and all modular pause deltas match, and both call trees close.
+- The actual musl interpreter/app/DSO returns0.105records/7chunks are complete;
+ entry/app/interp metadata, application ELF and live DSO anchor match records.
+ One loader continuationRID10 remains abandoned as specified.104closed records
+ preserve inclusive cycle/instret/time relationships; activation completeness
+ is false while transport is complete. This is not universal loader unwinding.
+- Capacity64base records/4chunks match all target ELF callees and parents.63sidecar
+ rows contain64classified accesses (2parent warmups+62leaf warmups),1dropped access
+ and48FIFOevictions. Status9 means valid epoch+eviction, not invalid stack. The
+ dropped field/total>63 explicitly makes classification coverage incomplete.
+ Ten independent ELF-linked gates pass; the262143-ID maximum remains host/older
+ low-level guard coverage rather than a full-size Linux UART run.
+
+All tests are ordinary no-SSA target ELFs; trusted init alone arms the policy.
+The tested automatic image covers flags0/4/6 and fixed Cache ABI2. Existing DTLB
+manual/profile evidence is reused; a new automatic-DTLB native run is not claimed.
