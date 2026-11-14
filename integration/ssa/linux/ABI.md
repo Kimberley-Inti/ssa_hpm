@@ -36,7 +36,7 @@ No PID, physical address, virtual address, user mapping or record pointer is acc
 
 | op | Arguments | Result |
 | --- | --- | --- |
-| 1 START | flags0 normal or1 legacy negative; role0..2/test0..7 diagnostic labels | 0, or negative errno |
+| 1 START | flags0/1 ABI1, flags2/3 ABI2 normal/legacy; role0..2/test0..10 diagnostic labels | 0, or negative errno |
 | 2 STOP | other arguments0 | number of allocated records; rejects open/spilled frames |
 | 3 STATUS | other arguments0 | 0 only if current task has no descriptor and selector0; diagnostic for the unmonitored parent/new image |
 | 4 QUERY | other arguments0 | current RUNNING task's open depth; logs identity/depth/next_id without accepting a pointer |
@@ -136,3 +136,63 @@ after the commit point can kill the task and are not claimed to return safely.
 Counter rebasing and stage4 S/R boundaries are unchanged; cutoff values are
 diagnostics, not partial open-frame totals. Multithreaded/setuid exec, signal
 handler exec and complete-capacity export remain unverified.
+
+## Optional DTLB request profile (stage6, ABI2)
+
+Use SSAHPMEventRocketConfig (one hart, one standard HPM counter). Firmware selects
+mhpmevent3=0x1002, initializes mhpmcounter3 once, clears mcountinhibit bit3, leaves
+mcounteren bit3 set and clears scounteren bit3. Only the kernel reads hpmcounter3;
+unprivileged reads trap. These enable bits control access, not event filtering.
+The minimal kernel does not share this counter with perf or another selector.
+
+START flags bit1 enables ABI2; bit0 retains the legacy no-rebase negative control.
+Thus flags0/1 retain ABI1 and flags2/3 select ABI2 normal/legacy. Diagnostic labels
+now allow0..10. Unsupported hardware rejects bit1 with ENODEV before allocation.
+CSR0x5c0 bit1 selects the extended SCCodeTable, latched on each private invocation;
+bit0 retains the user-notification policy. The original104-instruction ABI1 ROM
+is byte-identical; ABI2 adds a fourth sample/update. Opt-in ABI2 instruction
+counts include those additional monitor instructions, so scalar instruction
+oracles are not transferred to ABI2 workloads. No overhead subtraction is used.
+
+Pool sizes and all existing offsets remain unchanged. ABI2 frame offset32 holds
+the fourth entry snapshot; record offset40 (previously reserved[0]) holds DTLB
+request counts. Values are zero-extended40-bit, including record accumulation;
+all fourth-counter subtraction, rebasing and accumulation is modulo2^40. A
+sampling interval must contain fewer than2^40 events to avoid ambiguity. The
+three original counters retain their64-bit semantics. ABI1 does not read/export
+the reserved field. Allocation initializes the fourth record count and every
+ABI2 push initializes its fourth frame snapshot, including reused physical slots.
+SSA_EVENT_BEGIN carries abi2/selector4098/width40; SSA_EVENT_RECORD carries the
+fourth count without changing the original SSA_RECORD format. SSA_SAMPLE and
+SSA_ACCOUNT counter3 carry its pause/resume proof. SSA_EVENT_SESSION carries the
+cutoff and policy after clearing bit1; SSA_EVENT_OPEN marks abandoned snapshots.
+
+The source is io.dmem.perf.tlbMiss, wired to DCache io.ptw.req.fire(): a data-side
+translation walk request accepted by the PTW. It is not a count of distinct pages,
+page faults, cache refills, or retired loads. Replays/retries may cause further
+accepted walks. Existing EventSet2 bit4 is selected by(1<<12)|2 =0x1002. The
+registered HPM increment is one cycle after the source handshake. Intervals are
+measured at the fourth counter's actual CSR snapshot points; an increment crossing
+a call/return or scheduler boundary belongs to the interval containing that
+increment, regardless of the initiating request's original context. This is not
+request-owner attribution. Counter samples are not simultaneous with the other
+three counters. The dependent-load/fence fixture tests the observed return
+boundary, not a universal drain of every possible speculative request.
+
+There is no privilege, trap or notification-mode filter on the event source.
+S/U translation requests can count; a faulted/squashed access can still cause an
+accepted request. The trusted ROM uses physical M-privilege data accesses and
+does not itself require translation in this profile, but a delayed external walk
+accepted during ROM execution would still follow interval attribution. Parent
+counts include child calls and monitor/trap/kernel work inside their windows.
+While paused, every open fourth snapshot is increased by its sampled R-S modulo
+2^40, excluding events within that interval from other tasks and their kernel
+work. Pre-S and post-R handoff/restore costs remain charged by the stage4 policy.
+Stopping selection does not freeze/reset the hart's global HPM counter.
+
+Fork clears ownership as before. Pause clears selection and bit1; resume restores
+the owning task's bit1 and pool after rebasing all four snapshots. STOP, committed
+exec and exit clear bit1 as well as the selector. Committed exec exports the old
+ABI2 session once, marks open frames abandoned without partial totals, releases
+its slot and detaches it. The replacement starts unmonitored, then explicitly
+STARTs a fresh session. Pre-commit ENOENT retains all four snapshots/session/tree.

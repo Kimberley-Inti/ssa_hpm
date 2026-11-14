@@ -1,0 +1,152 @@
+{
+  "linked": [
+    {
+      "path": "generators/boom",
+      "sha": "fac2c370c9deae97ca52aca6b34857e9ac0f6e9d"
+    },
+    {
+      "path": "generators/constellation",
+      "sha": "dce9eb03b44ad442a552242546f1672bdc15fce3"
+    },
+    {
+      "path": "generators/cva6",
+      "sha": "31fd9cdf801b407acee3989622902db59e474f90"
+    },
+    {
+      "path": "generators/fft-generator",
+      "sha": "40357f00a8f091e97be9dbf39256e511dac6c494"
+    },
+    {
+      "path": "generators/gemmini",
+      "sha": "c47cb7f3eb5c18390f176f3a53c43c8546d487d2"
+    },
+    {
+      "path": "generators/hwacha",
+      "sha": "7cc6354351457c6b5bf186cdd34297ee5caeb22a"
+    },
+    {
+      "path": "generators/ibex",
+      "sha": "0eac465e3e9e06eceba111b4b43d5178ede817c2"
+    },
+    {
+      "path": "generators/icenet",
+      "sha": "e14c1e8c54851d3fa7bc55fbbc6fc48873a3b2a9"
+    },
+    {
+      "path": "generators/nvdla",
+      "sha": "2b17011b266025704b958efeeca2363c0cdd446d"
+    },
+    {
+      "path": "generators/riscv-sodor",
+      "sha": "fc56b7128f8d5fd3d9022e19ee53c93e0ecfad05"
+    },
+    {
+      "path": "generators/sha3",
+      "sha": "88ada85a84253434ea5cef729d90cd74796aa442"
+    },
+    {
+      "path": "generators/sifive-blocks",
+      "sha": "e8adf0e3ef94f76f73001fbeda767d6899c60eb3"
+    },
+    {
+      "path": "generators/sifive-cache",
+      "sha": "2e47c707e04dbbbdbf81561a979c055f87ac8df2"
+    },
+    {
+      "path": "generators/testchipip",
+      "sha": "f99b1eb59a34d7934059904f03237d5bc8d4a680"
+    },
+    {
+      "path": "sims/firesim",
+      "sha": "37d4fd03d68af44bfe22712c102ec0c2b361c9f7"
+    },
+    {
+      "path": "software/firemarshal",
+      "sha": "e6f9e31d99a1e6b19f4280beb8f32cc8e16ee4bb"
+    },
+    {
+      "path": "toolchains/libgloss",
+      "sha": "04b249764b1bc0b784b9f7ff422084f4b53a07ef"
+    },
+    {
+      "path": "toolchains/riscv-tools/riscv-isa-sim",
+      "sha": "ce42f1b55a3fa5a3a522439b5370be2256f68862"
+    },
+    {
+      "path": "toolchains/riscv-tools/riscv-pk",
+      "sha": "e8e6b3aaee44d43b48164fbd377864c3a682dbd3"
+    },
+    {
+      "path": "toolchains/riscv-tools/riscv-tests",
+      "sha": "1ce128fa78c24bb0ed399c647e7139322b5353a7"
+    },
+    {
+      "path": "tools/DRAMSim2",
+      "sha": "49ec2f32eea6687a36acdb8d1d636d992d9e8daa"
+    },
+    {
+      "path": "tools/api-config-chipsalliance",
+      "sha": "fd8df1105a92065425cd353b6855777e35bd79b4"
+    },
+    {
+      "path": "tools/axe",
+      "sha": "4a7cf86960425fbf0b6224865b745ff511dc5742"
+    },
+    {
+      "path": "tools/barstools",
+      "sha": "064c8be7bb3d86eccfd603c614f74de6de1c3f4a"
+    },
+    {
+      "path": "tools/chisel-testers",
+      "sha": "ce4e027e5f3d871df59236b8471ea3e5be40130e"
+    },
+    {
+      "path": "tools/dromajo/dromajo-src",
+      "sha": "09fbef4565429f641a7eb93f190ad0e45e11d7f8"
+    },
+    {
+      "path": "tools/dsptools",
+      "sha": "a1809fbae9e49de7213116bbec79252645292e39"
+    },
+    {
+      "path": "tools/rocket-dsp-utils",
+      "sha": "0ffb46ad12d0335a1d44bc283bae596abfd79606"
+    },
+    {
+      "path": "tools/torture",
+      "sha": "b2b66a66d51b360e0ae95017774d03377c78c574"
+    },
+    {
+      "path": "vlsi/hammer",
+      "sha": "41105f964fa235820e27136fd0faa87b33c62b2b"
+    },
+    {
+      "path": "generators/rocket-chip/api-config-chipsalliance",
+      "sha": "fd8df1105a92065425cd353b6855777e35bd79b4"
+    },
+    {
+      "path": "generators/rocket-chip/hardfloat",
+      "sha": "70455e53f233a06cb5a342d125e22b7b1505c271"
+    },
+    {
+      "path": "generators/rocket-chip/torture",
+      "sha": "99d8b2b441ecaa18b852505bb7718ee04e2753f5"
+    }
+  ],
+  "unavailable": [
+    "fpga/fpga-shells",
+    "software/coremark",
+    "software/nvdla-workload",
+    "software/spec2017",
+    "toolchains/esp-tools/esp-tools-feedstock",
+    "toolchains/esp-tools/riscv-isa-sim",
+    "toolchains/esp-tools/riscv-pk",
+    "toolchains/esp-tools/riscv-tests",
+    "toolchains/riscv-tools/riscv-openocd",
+    "toolchains/riscv-tools/riscv-tools-feedstock",
+    "vlsi/hammer-cadence-plugins",
+    "vlsi/hammer-mentor-plugins",
+    "vlsi/hammer-synopsys-plugins"
+  ],
+  "mismatched": []
+}

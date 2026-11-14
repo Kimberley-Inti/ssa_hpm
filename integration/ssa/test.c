@@ -62,6 +62,9 @@ __attribute__((noinline,section(".collision_b"))) void collision_b(void) {
     ENTER(collision_b); result+=2; LEAVE();
 }
 static void enable(void) {
+#ifdef EVENT_ABI
+    asm volatile("csrw 0x323,%0;csrw 0xb03,zero;csrw 0x5c0,%1"::"r"(0x1002UL),"r"(2UL):"memory");
+#endif
 #ifndef REFERENCE
     asm volatile("csrw 0x800,%0" :: "r"(BASE) : "memory");
 #endif

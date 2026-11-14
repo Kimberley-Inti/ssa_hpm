@@ -203,3 +203,35 @@ Stage5 publication follow-up: the installer excludes locally ignored Python byte
 Stage5 native acceptance:37 lifecycle gates and173 affected stage4 Linux checks passed in one actual independent public-source rebuilt image execution, clean exit0/power-down. Source implementation maps to maintenance4a5ca6f61cdcf00faa1aab0822f471febcd60765; oracle/provenance follow-ups are d2dcd01 and281f536. Final evidence is in evidence/stage5/. Main, tags and stage4 PR are unchanged.
 
 Final Chipyard source delivery `c8be3fd4d10a758ea378f2b8f349eff6e2dc9de9` includes the test/checker changes and the atomic-release-order ABI clarification; Linux remains `f327da924b3515e2d4c33bc1a8eb1e0c38807d66`. Native model and firmware sources are unchanged. Current instret corrected/legacy long-minus-short is4205/211029, with raw214873 minus excluded210668 =4205. Historical stage4 remains20/207962 under its original image.
+
+## Stage6 DTLB request interval attribution
+
+Maintenance starts at3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d, stage5 Draft PR#4.
+It retains main, v0.1.0 and every earlier Draft PR.
+
+- Rocket baseline1c78413459344d7ca1d2b3cdedbdc4a16133dee9 →
+  469bfac7de26bfbb03298787ad030898c6de24c9: optional ABI2 ROM, 40-bit fourth
+  record/frame counter, supervisor mode bit and opt-in actual PTW/HPM trace;
+  patch0012. Original104-word ABI1 ROM is byte-identical.
+- Linux baselinef327da924b3515e2d4c33bc1a8eb1e0c38807d66 →07fb4b1ef
+  (full SHA in source metadata): fourth per-task snapshots, modular pause/resume,
+  bounded event export and all existing exec/exit semantics; event patch0004.
+- OpenSBI baselineb778927a507e4ebcc43a8ecb8d495562ef48efb3 →c83d3aa then34520a7:
+  standard HPM3 selector/reset/inhibit profile, then U-mode counter permission
+  denial while keeping supervisor access. Both source commits retained in0002.
+- Chipyard baselinec8be3fd4d10a758ea378f2b8f349eff6e2dc9de9 →8d07f53b then6abd0f37:
+  separate event config, actual RTL controls, Linux event/context/preemption/exec
+  fixtures, verifier selection and ABI documentation. Config only is patch0003;
+  standalone tests/build scripts are delivered once under integration/ssa.
+
+These are local source development commits retained on stage6 branches. Public
+reproduction replays the patches on reachable upstream baselines; independent builds are documented in evidence/stage6/.
+At this implementation checkpoint Linux runtime gates were pending; final accepted results and the corrected kernel tree are recorded below. Source author/date/message are retained in format-patches.
+
+Chipyard3711603c (full SHA in evidence/stage6/source-commits.json) adds a nonzero repeated-record oracle, ABI2 all-register canaries, and the actual Linux timer/unmonitored-handoff chronology. These test/checker changes do not modify the running Linux image or Rocket model. Independent public-source RTL generation/model build and all five new tests passed; Linux execution was ongoing at this checkpoint; see final acceptance below.
+
+Chipyard 3a31d53b10babdf476473cc7d2d682e215dc7305 adds explicit ELF-identified ABI2 record trees and the Linux B512-page source-count oracle. Checker-only; running image/model unchanged.
+
+Stage6 native scheduling follow-up: Linux `49943b80f864a41e4ac13108a77f921e013d3570` corrects the fourth-delta scratch array after the initial run exposed an overrun. Both Linux commits are retained in `0004-linux-dtlb-event.patch`. Chipyard `d954827f` carries this corrected reproduction patch; maintenance `3cff382` maps and records the fix. The independent corrected tree is `4234609f62a91906b25a741f9897f17b327bcb57`; the original image build evidence is superseded by `linux-image-build.json` for final acceptance.
+
+Stage6 native acceptance completed: actual independent Linux image, clean exit0/power-down; 70 event gates,37 lifecycle gates and176 process gates (all173 historical gates plus three additional sample assertions) passed. All29 low-level tests (24 existing plus5 new) were actual new runs, and independent model rebuild repeated the5 new tests. Source/ROM ABI1 continuity remains verified; main/tags/earlier Draft PRs are unchanged.

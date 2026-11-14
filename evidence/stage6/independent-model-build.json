@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "actual_model_rebuild": true,
+  "workspace": "/tmp/ssa-hpm-public-apply",
+  "source_report": "public-source-apply.json",
+  "dependencies": "dependency-reuse.json",
+  "validation_followup": "independent-validation-files.json",
+  "config": "SSAHPMEventRocketConfig",
+  "command": [
+    "make",
+    "-C",
+    "/tmp/ssa-hpm-public-apply/sims/verilator",
+    "CONFIG=SSAHPMEventRocketConfig",
+    "-j4",
+    "OPT_FAST=-O3",
+    "OPT_SLOW=-O3",
+    "LINK=/usr/bin/g++ -B/usr/bin/"
+  ],
+  "exit_code": 0,
+  "simulator_sha256": "3428c0e6f29c2bbc1ee852aaebf8f5dd4f7dc5f6100ae3bbd9c2466ac2f816fe",
+  "tests": "independent-rtl-events/summary.json",
+  "scope": "new RTL generated and model rebuilt from patched public baselines; local fixed-SHA dependencies/toolchain and compiler caches reused; independent Linux source/image is separately tested in the ongoing native execution"
+}

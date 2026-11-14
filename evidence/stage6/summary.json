@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "event": "DTLB accepted PTW requests (DCache io.ptw.req.fire)",
+  "selector": 4098,
+  "width": 40,
+  "semantics": "inclusive occurrence interval; modulo2^40; every open frame excludes sampled pause R-S; no request-owner or privilege source filter",
+  "linux": {
+    "exit_code": 0,
+    "normal_shutdown": true,
+    "event_checks": 70,
+    "lifecycle_checks": 37,
+    "process_checks": 176,
+    "historical_process_gates_retained": 173,
+    "raw_log": "linux/rocket-linux-events.txt",
+    "log_sha256": "7b39c0099d8622038e3726eda6609e9a1e220ba844d30529f3dde4041d01a249",
+    "warm_common": 2,
+    "cold_common": 127,
+    "corrected_A": {
+      "raw": 1130,
+      "off": 1123,
+      "recorded": 7
+    },
+    "legacy_A": {
+      "raw": 1130,
+      "off": 1123,
+      "recorded": 1130
+    },
+    "exec_leaf_counts": {
+      "old_closed": 64,
+      "new_image": 128,
+      "failed_exec_return": 128
+    }
+  },
+  "lowlevel": {
+    "existing_spike_reference": 6,
+    "existing_rtl": 18,
+    "new_rtl": 5,
+    "independent_new_rtl_rerun": 5
+  },
+  "independent_reproduction": {
+    "final_public_fetch_apply": true,
+    "corrected_kernel_patch_tree_match": true,
+    "actual_model_rebuild": true,
+    "actual_independent_kernel_firmware_rebuild": true,
+    "same_log_independent_checker_regrade": true,
+    "second_linux_execution": false
+  },
+  "sources": {
+    "chipyard": {
+      "head": "d954827faca21a1534ac89db748896f0c319c559",
+      "tree": "b7c212e1183086fee7d6ef85e2faa537a7e5c018",
+      "branch": "stage6-hpm-event-attribution"
+    },
+    "rocket": {
+      "head": "469bfac7de26bfbb03298787ad030898c6de24c9",
+      "tree": "05441ac9cd76f5362397215141ab8e3d4b9b418a",
+      "branch": "stage6-hpm-event-attribution"
+    },
+    "linux": {
+      "head": "49943b80f864a41e4ac13108a77f921e013d3570",
+      "tree": "4234609f62a91906b25a741f9897f17b327bcb57",
+      "branch": "stage6-hpm-event-attribution"
+    },
+    "opensbi": {
+      "head": "34520a712309790d3e9a005194b763467b980fdb",
+      "tree": "7b9ddfe46a8f677349bf5b88d37f01cab2c32be5",
+      "branch": "stage6-hpm-event-attribution"
+    }
+  },
+  "limitations": [
+    "single hart only",
+    "one DTLB event only",
+    "no request-owner tagging; delayed increments follow sample interval",
+    "no microarchitectural TLB/cache partitioning",
+    "no multicore migration, generic memory classes, all Cache/TLB events, nonlocal unwinding or full-capacity export"
+  ]
+}

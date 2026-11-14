@@ -1,0 +1,1970 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 45441
+SSA_HPM_PROFILE selector=4098 width=40 counter=0 user=0
+
+OpenSBI v0.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name       : SSSA_HOST_PROGRESS cycles=100000 pc=80005478 prv=3 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+SA-HPM RocketConfig hart0
+Platform Features   : timer,mfdeleg
+Platform HART Count : 1
+Boot HART ID        : 0
+Boot HART ISA       : rv64imafdcsux
+BOOT HART Features  : pmp,scounteren,mcounteren
+BOOT HART PMP Count : 16
+Firmware Base       : 0x80000000
+Firmware Size       : 64 KB
+Runtime SBI Version : 0.2
+
+MIDELEG : 0x0000000000000222
+MEDELEG : 0x000000000000b109
+PMP0    : 0x0000000080000000-0x000000008000ffff (A)
+PMP1    : 0x0000000000000000-0x000SSA_HOST_PROGRESS cycles=200000 pc=80004ec4 prv=3 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+00001ffffffff (A,R,W,X)
+SSA_HOST_PROGRESS cycles=300000 pc=80201040 prv=1 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+SSA_HOST_PROGRESS cycles=400000 pc=80201040 prv=1 trapdepth=0 private=0
+SSA_CSR scause=0 sepc=0 stval=0 satp_mode=0 satp_ppn=0
+SSA_HOST_PROGRESS cycles=500000 pc=e00032de42 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+OF: fdt: IgnoringSSA_HOST_PROGRESS cycles=600000 pc=80006578 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+ memory range 0x80000000 - 0x80200000
+Forcing kernel command line to: console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 logSSA_HOST_PROGRESS cycles=700000 pc=800063e6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+level=7
+Linux version 5.7.0-rc3+ (lxf@ubuntu22) (gcc version 15.1.0 (), GNU ld (GNU Binutils for Ubuntu) 2.38) #2 Wed Nov 11 02:17:47 CSTSSA_HOST_PROGRESS cycles=800000 pc=80006358 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+ 2026
+earlycon: sbi0 at I/O port 0x0 (options '')
+printk: bootconsole [sbi0] enabled
+initrd not fouSSA_HOST_PROGRESS cycles=900000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80218
+nd or empty - disabling initrd
+Zone ranges:
+SSA_HOST_PROGRESS cycles=1000000 pc=80000580 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+  DMA32    [mem 0x0000000080200000-0x0000000081ffffff]
+  Normal   empty
+Movable zone start for each node
+Early memory nodeSSA_HOST_PROGRESS cycles=1100000 pc=8000681c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ ranges
+  node   0: [mem 0x0000000080200000-0x0000000081ffffff]
+Initmem setup node 0 [mem 0x0000000080200000-0x0000000081SSA_HOST_PROGRESS cycles=1200000 pc=800061b8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ffffff]
+SSA_HOST_PROGRESS cycles=1300000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1500000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1600000 pc=e0000133d4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1700000 pc=e000013534 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1800000 pc=e000013504 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=1900000 pc=e0000134d4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2000000 pc=e0000134d4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2100000 pc=e0000134d4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2200000 pc=e000320d44 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2300000 pc=e000320cc4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2400000 pc=e000320c00 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2500000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=2600000 pc=e000339a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+software IO TLB: mapped [mem 0x81f4e000-0x81f8e000] (0SSA_HOST_PROGRESS cycles=2700000 pc=80000586 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+MB)
+SBI specification v0.2 detected
+SBI implementation ID=0x1 Version=0x8
+SBI v0.2 TIME extension detected
+SSSA_HOST_PROGRESS cycles=2800000 pc=80006334 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+BI v0.2 IPI extension detected
+SBI v0.2 RFENCE extension detected
+elf_hwcap is 0x112d
+SSA_HOST_PROGRESS cycles=2900000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+Built 1 zonelists, mSSA_HOST_PROGRESS cycles=3000000 pc=80006572 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+obility grouping on.  Total pages: 7575
+Kernel command line: console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 loglevSSA_HOST_PROGRESS cycles=3100000 pc=80006268 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+el=7
+Dentry cache hash tSSA_HOST_PROGRESS cycles=3200000 pc=800068c8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+able entries: 4096 (order: 3, 32768 bytes, linear)
+Inode-cache hash table entries: 2048 (order: 2, 16SSA_HOST_PROGRESS cycles=3300000 pc=800065be prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+384 bytes, linear)
+Sorting __ex_table...
+SSA_HOST_PROGRESS cycles=3400000 pc=e00033994c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+mem auto-init: stack:off, heap alloc:off, heap free:off
+SSA_HOST_PROGRESS cycles=3500000 pc=e000013278 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3600000 pc=e00027f1d4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3700000 pc=e00027f1b8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3800000 pc=e000280e74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=3900000 pc=e000280e74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4000000 pc=e00027f1c0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+Memory: 21432K/30720K available (1271K kernel code, 2906K rwSSA_HOST_PROGRESS cycles=4100000 pc=80006344 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+data, 2048K rodata, 116K init, 201K bss, 9288K reserved, 0K cma-reserved)
+SSA_HOST_PROGRESS cycles=4200000 pc=e000261c14 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1,SSA_HOST_PROGRESS cycles=4300000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ Nodes=1
+SSA_HOST_PROGRESS cycles=4400000 pc=e00021ac54 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+NR_IRQS: 0, nr_irqs: 0, preallocated irqs: 0
+SSA_HOST_PROGRESS cycles=4500000 pc=e000325788 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4600000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4700000 pc=e00032578c prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=4800000 pc=e000325788 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+plic: mapped 1 interrupts with 1 handlers for 2 contexts.
+SSA_HOST_PROGRESS cycles=4900000 pc=e00023cc82 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=5000000 pc=e00032c454 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=5100000 pc=8000547c prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [0]
+clocksource: riscv_clocksource: mask: 0xffffffffffffffff mSSA_HOST_PROGRESS cycles=5200000 pc=80005404 prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+ax_cycles: 0x1d854df40, max_idle_ns: 3526361616960 ns
+sched_clock: 64 bits at 1000kHz, resolution 1000ns, wraps every 219902SSA_HOST_PROGRESS cycles=5300000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+3255500ns
+printk: console [hvc0] enabled
+printk: console [hvc0] enabled
+printk: bootconsole [sbi0] disSSA_HOST_PROGRESS cycles=5400000 pc=800065fc prv=3 trapdepth=2 private=0
+SSA_CSR scause=c sepc=80200090 stval=80200090 satp_mode=8 satp_ppn=80a1a
+abled
+printk: bootconsole [sbi0] disabled
+Calibrating delay loop (skipped) preset value.SSA_HOST_PROGRESS cycles=5500000 pc=800065d0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+. 200.00 BogoMIPS (lpj=100000)
+pid_max: default: 4096 minimum: 301
+SSA_HOST_PROGRESS cycles=5600000 pc=e000261b6c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+SSA_HOST_PROGRESS cycles=5700000 pc=e000240646 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+SSA_HOST_PROGRESS cycles=5800000 pc=e000285f46 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=5900000 pc=e0002877c8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a4c stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6000000 pc=e000285e98 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000261d34 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6100000 pc=e000205942 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a50 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6200000 pc=e000225c02 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000223514 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6300000 pc=e00021ddbe prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002219c0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6400000 pc=e00021d2a4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000281704 stval=0 satp_mode=8 satp_ppn=80a1a
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+SSA_HOST_PROGRESS cycles=6500000 pc=e00030b304 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6600000 pc=e000245dd6 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000314b44 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6700000 pc=e00032d1ec prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000314b44 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00031559c stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=6900000 pc=e000329094 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000222b18 stval=0 satp_mode=8 satp_ppn=80a1a
+clocksource: Switched to SSA_HOST_PROGRESS cycles=7000000 pc=80005420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000229a18 stval=0 satp_mode=8 satp_ppn=80a1a
+clocksource riscv_clocksource
+SSA_HOST_PROGRESS cycles=7100000 pc=e00032da74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a8 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7200000 pc=e000339a24 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00032e510 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7300000 pc=e0002d50cc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002d5120 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7400000 pc=e0002d4e0c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002d4f14 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7500000 pc=e0002d50f4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002d50ac stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7600000 pc=e000339904 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002d50d0 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7700000 pc=e0002dfa9c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00029a994 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7800000 pc=e00033d638 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00032d56c stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=7900000 pc=e00032e502 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339904 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8000000 pc=e00029bcb6 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002998c8 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8100000 pc=e000299f82 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339904 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8200000 pc=e00032d144 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000299888 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8300000 pc=e000225582 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002219c0 stval=0 satp_mode=8 satp_ppn=80a1a
+workingset: timestamp_bits=62 max_order=13 bucket_order=0
+SSA_HOST_PROGRESS cycles=8400000 pc=e000001ac0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000261d34 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8500000 pc=80002642 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000205cac stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8600000 pc=e00032e450 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00032e474 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=8700000 pc=80009800 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000246bb4 stval=0 satp_mode=8 satp_ppn=80a1a
+random: get_random_bytes called from 0xffffffe000206e48 with crng_init=0
+SSA_HOST_PROGRESS cycles=8800000 pc=e000225402 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_EVENT_CAPABLE value=1
+SSA_LINUX_READY user_triggers=1 harts=1 export_limit=32
+SSA_HOST_PROGRESS cycles=8900000 pc=8000a0bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=9000000 pc=e000339a44 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=9100000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a80 stval=0 satp_mode=8 satp_ppn=80a1a
+Freeing unused kernel memory: 116K
+Run /init as init process
+SSA_HOST_PROGRESS cycles=9200000 pc=8000262c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80a1a
+SSA_HOST_PROGRESS cycles=9300000 pc=e00020f554 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000267054 stval=0 satp_mode=8 satp_ppn=818af
+SSA EXEC FIXTURE START
+SSA_HOST_PROGRESS cycles=9400000 pc=e000283102 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b2 stval=0 satp_mode=8 satp_ppn=818af
+SSA_HOST_PROGRESS cycles=9500000 pc=800088d6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1049a stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=9600000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=9700000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=9800000 pc=e000339a7c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=9900000 pc=e000339a3c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=10000000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=10100000 pc=e000339a4c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=10200000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_HOST_PROGRESS cycles=10300000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80210
+SSA_BEGIN pid=14 session=1 image=1 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=10400000 pc=800026e2 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80210
+SSA_CHECK pid=14 session=1 image=1 depthSSA_HOST_PROGRESS cycles=10500000 pc=800099bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10248 stval=0 satp_mode=8 satp_ppn=80210
+=1 next=3 selector=2281701376
+SSA_HOST_PROGRESS cycles=10600000 pc=e000275542 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+SSA_SESSION pid=14 session=1 image=1 reason=exec comm=init selector=0 cutoff_cycle=10613827 cutoSSA_HOST_PROGRESS cycles=10700000 pc=e0002fa670 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+ff_instret=5456879 cutoff_time=106148
+SSA_EXPORT pid=14 uid=1000 role=0 test=5 legacy=0 pool=2281701376 complete=0 depSSA_HOST_PROGRESS cycles=10800000 pc=e0002f94bc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+th=1 next=3 spill=0 events=1 session=1
+SSA_SWITCH pid=14 test=5 role=0 event=0 to=13 from=7 depth=0 rid=0 state=0 ivSSA_HOST_PROGRESS cycles=10900000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+csw=1 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=1
+SSA_SAMPLE pid=14 event=0 counter=0 SSSA_HOST_PROGRESS cycles=11000000 pc=8000623c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+=00000000009f4d84 R=00000000009f7db6 delta=0000000000003032 session=1
+SSA_SAMPLE pid=14 event=0 counter=1 S=000000000052041bSSA_HOST_PROGRESS cycles=11100000 pc=80006258 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+ R=0000000000521269 delta=0000000000000e4e session=1
+SSA_SAMPLE pid=14 event=0 counter=2 S=00000000000197d6 R=0000000000019SSA_HOST_PROGRESS cycles=11200000 pc=80009a48 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+850 delta=000000000000007a session=1
+SSA_RECORD pid=14 id=1 callee=0000000000010222 parent=0 cycle=0 instret=0 time=0 sessiSSA_HOST_PROGRESS cycles=11300000 pc=8000658a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+on=1 open=1
+SSA_RECORD pid=14 id=2 callee=0000000000010114 parent=1 cycle=3490 instret=3318 time=35 session=1 open=0
+SSA_HOST_PROGRESS cycles=11400000 pc=e00032e5ec prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+SSA_OPEN pid=14 session=1 frame=1 rid=1 status=abandoned entry_cycle=10454202 entry_instret=5379389 entry_time=104542
+SSA_HOST_PROGRESS cycles=11500000 pc=e000339988 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80216
+SSA_EXEC_END pid=14 session=1 complete=0 selector=0
+SSA_HOST_PROGRESS cycles=11600000 pc=e00029376c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000281680 stval=0 satp_mode=8 satp_ppn=80216
+SSA EXEC IMAGE B ENTER
+SSA_UNMONITORED pid=14 selector=0
+SSA_HOST_PROGRESS cycles=11700000 pc=800097d8 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=11800000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=11900000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=12000000 pc=e000339a80 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=12100000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=12200000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=12300000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=12400000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_HOST_PROGRESS cycles=12500000 pc=e00032da82 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10296 stval=0 satp_mode=8 satp_ppn=80216
+SSA_BEGIN pid=14 session=2 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=12600000 pc=e000224ac8 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80216
+SSA EXEC IMAGE B PASS
+SSA_SESSION pid=14 session=2 image=SSA_HOST_PROGRESS cycles=12700000 pc=80009a1c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+2 reason=exit comm=next selector=0 cutoff_cycle=12659088 cutoff_instret=6542955 cutoff_time=126597
+SSA_EXPORT pid=14 uiSSA_HOST_PROGRESS cycles=12800000 pc=8000680a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+d=1000 role=0 test=6 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=1 session=2
+SSA_SWITCH pid=14SSA_HOST_PROGRESS cycles=12900000 pc=80005404 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+ test=6 role=0 event=0 to=13 from=13 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 sSSA_HOST_PROGRESS cycles=13000000 pc=8000547c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+ession=2
+SSA_SAMPLE pid=14 event=0 counter=0 S=0000000000c08206 R=0000000000c09f62 delta=0000000000001d5c session=2
+SSA_HOST_PROGRESS cycles=13100000 pc=e00032dcdc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+SSA_SAMPLE pid=14 event=0 counter=1 S=00000000006370d9 R=0000000000637a0b delta=0000000000000932 session=2
+SSA_SAMPLSSA_HOST_PROGRESS cycles=13200000 pc=800062c2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+E pid=14 event=0 counter=2 S=000000000001ecd6 R=000000000001ed20 delta=000000000000004a session=2
+SSA_RECORD pid=14 id=1 cSSA_HOST_PROGRESS cycles=13300000 pc=80005438 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+allee=0000000000010222 parent=0 cycle=7395 instret=6717 time=74 session=2 open=0
+SSA_RECORD pid=14 id=2 callee=000000000001SSA_HOST_PROGRESS cycles=13400000 pc=80006538 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102e2 stval=0 satp_mode=8 satp_ppn=80216
+0114 parent=1 cycle=6801 instret=6618 time=68 session=2 open=0
+SSA_EXIT pid=14 complete=1 selector=0 session=2
+SSA_HOST_PROGRESS cycles=13500000 pc=80002684 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80216
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=13600000 pc=800026e2 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=818af
+SSA EXEC SUCCESS CHILD PASS
+SSA_HOST_PROGRESS cycles=13700000 pc=e0003290ce prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000279440 stval=0 satp_mode=8 satp_ppn=818af
+SSA_HOST_PROGRESS cycles=13800000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=13900000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=14000000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=14100000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=14200000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=14300000 pc=e000339a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=14400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=14500000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+SSA_BEGIN pid=15 session=3 image=1 pool=22817013SSA_HOST_PROGRESS cycles=14600000 pc=80000580 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104d2 stval=0 satp_mode=8 satp_ppn=80214
+76 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=14700000 pc=e00032e602 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10248 stval=0 satp_mode=8 satp_ppn=80214
+SSA_CHECK pid=15 session=3 image=1 depth=1 next=3 selector=2281701376
+SSSA_HOST_PROGRESS cycles=14800000 pc=80004ed0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10292 stval=0 satp_mode=8 satp_ppn=80214
+SA_CHECK pid=15 session=3 image=1 depth=1 next=3 selector=2281701376
+SSA_SESSION pid=15 session=3 image=1 reasoSSA_HOST_PROGRESS cycles=14900000 pc=800063c2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+n=exit comm=init selector=0 cutoff_cycle=14856329 cutoff_instret=7676367 cutoff_time=148568
+SSA_EXPORT pid=15 uid=1000 rSSA_HOST_PROGRESS cycles=15000000 pc=800005b6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+ole=0 test=7 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=1 session=3
+SSA_SWITCH pid=15 test=7 SSA_HOST_PROGRESS cycles=15100000 pc=80006358 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+role=0 event=0 to=13 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=3SSA_HOST_PROGRESS cycles=15200000 pc=80005464 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+
+SSA_SAMPLE pid=15 event=0 counter=0 S=0000000000dfdbb7 R=0000000000e02ddc delta=0000000000005225 session=3
+SSSA_HOST_PROGRESS cycles=15300000 pc=800005bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+SA_SAMPLE pid=15 event=0 counter=1 S=0000000000734b66 R=0000000000736a3d delta=0000000000001ed7 session=3
+SSA_SAMPLE pid=15SSA_HOST_PROGRESS cycles=15400000 pc=80006518 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+ event=0 counter=2 S=0000000000023d18 R=0000000000023dea delta=00000000000000d2 session=3
+SSA_RECORD pid=15 id=1 callee=0SSA_HOST_PROGRESS cycles=15500000 pc=80004ee2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+000000000010222 parent=0 cycle=161354 instret=111402 time=1614 session=3 open=0
+SSA_RECORD pid=15 id=2 callee=0000000000010SSA_HOST_PROGRESS cycles=15600000 pc=e000202f7c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10510 stval=0 satp_mode=8 satp_ppn=80214
+114 parent=1 cycle=6978 instret=6636 time=70 session=3 open=0
+SSA_EXIT pid=15 complete=1 selector=0 session=3
+SSA_HOST_PROGRESS cycles=15700000 pc=e00023d9e4 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80214
+SSA_UNMONITORSSA_HOST_PROGRESS cycles=15800000 pc=8000619e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d478 stval=0 satp_mode=8 satp_ppn=818af
+ED pid=1 selector=0
+SSA EXEC ENOENT CHILD PASS
+SSA EXEC FIXTURE PASS
+SSA EXEC REGRESSION BEGINSSA_HOST_PROGRESS cycles=15900000 pc=80003742 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002f9e58 stval=0 satp_mode=8 satp_ppn=818af
+
+SSA_HOST_PROGRESS cycles=16000000 pc=e0002d40a4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000255918 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HPM_EVENT_SUITE_START
+SSA_HOST_PROGRESS cycles=16100000 pc=e000279442 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002056bc stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=16200000 pc=e00026b724 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1055a stval=0 satp_mode=8 satp_ppn=80207
+SSA HPM COUNTER PERMISSION PASS
+SSA_HOST_PROGRESS cycles=16300000 pc=e0003398e8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a2c stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=16400000 pc=e0002371ee prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00023abac stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=16500000 pc=10cee prv=0 trapdepth=0 private=0
+SSA_CSR scause=d sepc=10cec stval=87000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=16600000 pc=e000203464 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10cec stval=123000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=16700000 pc=e000339a94 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10cec stval=1c1000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=16800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=16900000 pc=e000339a4c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=17000000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=17100000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=17200000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=17300000 pc=e000339a3c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=17400000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=17500000 pc=e000339a0c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+SSA_BEGIN pid=17 session=4 image=2 pool=2281701SSA_HOST_PROGRESS cycles=17600000 pc=80003712 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d10 stval=0 satp_mode=8 satp_ppn=80207
+376 depth=0 next=1 selector=2281701376
+SSA_EVENT_BEGIN pid=17 session=4 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=17700000 pc=80000548 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80207
+SSA_SESSION pid=17 session=4 image=2 reason=exit comm=events seleSSA_HOST_PROGRESS cycles=17800000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+ctor=0 cutoff_cycle=17737983 cutoff_instret=9170653 cutoff_time=177385
+SSA_EXPORT pid=17 uid=1000 role=0 test=8 legacy=SSA_HOST_PROGRESS cycles=17900000 pc=e0002f94ac prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+0 pool=2281701376 complete=1 depth=0 next=5 spill=0 events=0 session=4
+SSA_RECORD pid=17 id=1 callee=0000000000010580 paSSA_HOST_PROGRESS cycles=18000000 pc=80003718 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+rent=0 cycle=1301 instret=276 time=12 session=4 open=0
+SSA_EVENT_RECORD pid=17 session=4 id=1 parent=0 callee=00000000000105SSA_HOST_PROGRESS cycles=18100000 pc=800062c6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+80 dtlb=3 open=0
+SSA_RECORD pid=17 id=2 callee=0000000000010560 parent=1 cycle=257 instret=58 time=2 session=4 open=0
+SSA_HOST_PROGRESS cycles=18200000 pc=e00032df78 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+SSA_EVENT_RECORD pid=17 session=4 id=2 parent=1 callee=0000000000010560 dtlb=2 open=0
+SSA_RECORD pid=17 id=3 callSSA_HOST_PROGRESS cycles=18300000 pc=800068bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+ee=0000000000010594 parent=0 cycle=2395 instret=778 time=24 session=4 open=0
+SSA_EVENT_RECORD pid=17 session=4 id=3 parent=0 SSA_HOST_PROGRESS cycles=18400000 pc=800065ec prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+callee=0000000000010594 dtlb=128 open=0
+SSA_RECORD pid=17 id=4 callee=0000000000010560 parent=3 cycle=1876 instret=664 tiSSA_HOST_PROGRESS cycles=18500000 pc=800063da prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+me=18 session=4 open=0
+SSA_EVENT_RECORD pid=17 session=4 id=4 parent=3 callee=0000000000010560 dtlb=127 open=0
+SSSA_HOST_PROGRESS cycles=18600000 pc=80009a3a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10d5e stval=0 satp_mode=8 satp_ppn=80207
+SA_EVENT_SESSION pid=17 session=4 reason=exit cutoff=4242 policy=1
+SSA_EXIT pid=17 complete=1 selector=0 session=4
+SSA_HOST_PROGRESS cycles=18700000 pc=8000372c prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=18800000 pc=e0002bcb1c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00026b59c stval=0 satp_mode=8 satp_ppn=80207
+SSA_UNMONITORED pid=1 selector=0
+SSA HPM CONTEXT PASS
+SSA_HOST_PROGRESS cycles=18900000 pc=e000286c36 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10e52 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=19000000 pc=e0002a9648 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=19100000 pc=e000248e84 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=102cc stval=102cc satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=19200000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19300000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19500000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19600000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19700000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=19900000 pc=e000339a54 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+SSA_BEGIN pid=18 session=5 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_EVSSA_HOST_PROGRESS cycles=20000000 pc=80005410 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80207
+ENT_BEGIN pid=18 session=5 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=20100000 pc=e000220c82 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104dc stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=20200000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20300000 pc=e000339a3c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20400000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20500000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20600000 pc=e000339a18 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20700000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=20900000 pc=e000339a0c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_BEGIN pid=19 session=6 image=2 pool=2348810240 depth=0 next=1 selector=234881SSA_HOST_PROGRESS cycles=21000000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+0240
+SSA_EVENT_BEGIN pid=19 session=6 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=21100000 pc=8000881a prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=21200000 pc=101b0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=21300000 pc=e0002034a8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=25000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=21400000 pc=e000200c74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=bc000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=21500000 pc=e000200d60 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=159000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=21600000 pc=e000200bfc prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=1f5000 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=21700000 pc=10168 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=1022c stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=21800000 pc=101d0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10208 stval=0 satp_mode=8 satp_ppn=80207
+SSA_SESSION pid=18 session=5 image=2 reason=exit comm=eventsSSA_HOST_PROGRESS cycles=21900000 pc=800053fc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+ selector=0 cutoff_cycle=21840303 cutoff_instret=11258158 cutoff_time=218407
+SSA_EXPORT pid=18 uid=1000 role=2 test=9 SSA_HOST_PROGRESS cycles=22000000 pc=80006384 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2 session=5
+SSA_SWITCH pid=18 test=9 role=2 event=0SSA_HOST_PROGRESS cycles=22100000 pc=80000580 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+ to=7 from=19 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=5
+SSA_HOST_PROGRESS cycles=22200000 pc=e000339980 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+SSA_SAMPLE pid=18 event=0 counter=0 S=000000000132acb4 R=0000000001428f11 delta=00000000000fe25d session=5
+SSA_SAMPLE pidSSA_HOST_PROGRESS cycles=22300000 pc=80009a3a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+=18 event=0 counter=1 S=00000000009e9a2e R=0000000000a30ac5 delta=0000000000047097 session=5
+SSA_SAMPLE pid=18 event=0 countSSA_HOST_PROGRESS cycles=22400000 pc=800065b2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+er=2 S=000000000003111b R=00000000000339c3 delta=00000000000028a8 session=5
+SSA_SAMPLE pid=18 event=0 counter=3 S=000000000SSA_HOST_PROGRESS cycles=22500000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+000124f R=000000000000137d delta=000000000000012e session=5
+SSA_SWITCH pid=18 test=9 role=2 event=1 to=19 from=19 depSSA_HOST_PROGRESS cycles=22600000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+th=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=5
+SSA_SAMPLE pid=1SSA_HOST_PROGRESS cycles=22700000 pc=80005444 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+8 event=1 counter=0 S=000000000142beb4 R=000000000144c589 delta=00000000000206d5 session=5
+SSA_SAMPLE pid=18 event=1 counteSSA_HOST_PROGRESS cycles=22800000 pc=80006314 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+r=1 S=0000000000a31795 R=0000000000a4e7a6 delta=000000000001d011 session=5
+SSA_SAMPLE pid=18 event=1 counter=2 S=0000000000SSA_HOST_PROGRESS cycles=22900000 pc=80006322 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+033a3f R=0000000000033f6d delta=000000000000052e session=5
+SSA_SAMPLE pid=18 event=1 counter=3 S=000000000000138d R=00000000SSA_HOST_PROGRESS cycles=23000000 pc=80004566 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+00001395 delta=0000000000000008 session=5
+SSA_RECORD pid=18 id=1 callee=00000000000102a6 parent=0 cycle=561547 instret=45SSA_HOST_PROGRESS cycles=23100000 pc=8000547a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+2493 time=5617 session=5 open=0
+SSA_EVENT_RECORD pid=18 session=5 id=1 parent=0 callee=00000000000102a6 dtlb=1070 open=0
+SSA_HOST_PROGRESS cycles=23200000 pc=e00032e5b0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+SSA_RECORD pid=18 id=2 callee=000000000001014c parent=1 cycle=560765 instret=452380 time=5610 session=5 open=0
+SSSA_HOST_PROGRESS cycles=23300000 pc=80000564 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+SA_EVENT_RECORD pid=18 session=5 id=2 parent=1 callee=000000000001014c dtlb=1069 open=0
+SSA_ACCOUNT pid=18 test=9 rolSSA_HOST_PROGRESS cycles=23400000 pc=80006340 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+e=2 counter=0 original=000000000142a4f9 final=000000000144abce off=00000000000206d5 recorded=0000000000088e7d raw=00000000000a9552 valid=SSA_HOST_PROGRESS cycles=23500000 pc=800063bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+1 rebased=1 session=5
+SSA_ACCOUNT pid=18 test=9 role=2 counter=1 original=0000000000a31030 final=0000000000a4e041 offSSA_HOST_PROGRESS cycles=23600000 pc=80005478 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+=000000000001d011 recorded=000000000006e71c raw=000000000008b72d valid=1 rebased=1 session=5
+SSA_ACCOUNT pid=18 test=9SSA_HOST_PROGRESS cycles=23700000 pc=80000616 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+ role=2 counter=2 original=00000000000339f8 final=0000000000033f26 off=000000000000052e recorded=00000000000015ea raw=0000000000001b18 vaSSA_HOST_PROGRESS cycles=23800000 pc=80006268 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+lid=1 rebased=1 session=5
+SSA_ACCOUNT pid=18 test=9 role=2 counter=3 original=000000000000138a final=0000000000001392 oSSA_HOST_PROGRESS cycles=23900000 pc=80004566 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+ff=0000000000000008 recorded=000000000000042d raw=0000000000000435 valid=1 rebased=1 session=5
+SSA_EVENT_SESSION pid=18 sessioSSA_HOST_PROGRESS cycles=24000000 pc=80004334 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80207
+n=5 reason=exit cutoff=6081 policy=1
+SSA_EXIT pid=18 complete=1 selector=0 session=5
+SSA_HOST_PROGRESS cycles=24100000 pc=80002664 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80207
+SSA_HOST_PROGRESS cycles=24200000 pc=e00022a470 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00026b740 stval=0 satp_mode=8 satp_ppn=80207
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=24300000 pc=10194 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10250 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=24400000 pc=101c8 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10234 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SESSION pid=19 session=6 SSA_HOST_PROGRESS cycles=24500000 pc=800061dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+image=2 reason=exit comm=events selector=0 cutoff_cycle=24463699 cutoff_instret=13375548 cutoff_time=244641
+SSA_EXPORTSSA_HOST_PROGRESS cycles=24600000 pc=800065d4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ pid=19 uid=1000 role=1 test=9 legacy=0 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3 session=6
+SSA_SWSSA_HOST_PROGRESS cycles=24700000 pc=80009a26 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ITCH pid=19 test=9 role=1 event=0 to=13 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 pSSA_HOST_PROGRESS cycles=24800000 pc=e000202f90 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+reempt=0 session=6
+SSA_SAMPLE pid=19 event=0 counter=0 S=0000000001422ad6 R=0000000001425a01 delta=0000000000002f2b sessionSSA_HOST_PROGRESS cycles=24900000 pc=8000371e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+=6
+SSA_SAMPLE pid=19 event=0 counter=1 S=0000000000a2ef64 R=0000000000a2fdb4 delta=0000000000000e50 session=6
+SSA_HOST_PROGRESS cycles=25000000 pc=e0002f9482 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=19 event=0 counter=2 S=00000000000338c4 R=000000000003393d delta=0000000000000079 session=6
+SSA_SAMPLE pid=1SSA_HOST_PROGRESS cycles=25100000 pc=e0002f94c8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+9 event=0 counter=3 S=0000000000001369 R=000000000000136b delta=0000000000000002 session=6
+SSA_SWITCH pid=19 test=9 roSSA_HOST_PROGRESS cycles=25200000 pc=800005d0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+le=1 event=1 to=18 from=18 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=6SSA_HOST_PROGRESS cycles=25300000 pc=800054c4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+
+SSA_SAMPLE pid=19 event=1 counter=0 S=0000000001428afd R=000000000142c25e delta=0000000000003761 session=6
+SSSSA_HOST_PROGRESS cycles=25400000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+A_SAMPLE pid=19 event=1 counter=1 S=0000000000a308f9 R=0000000000a31961 delta=0000000000001068 session=6
+SSA_SAMPLE pid=19 SSA_HOST_PROGRESS cycles=25500000 pc=80005454 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+event=1 counter=2 S=00000000000339bb R=0000000000033a46 delta=000000000000008b session=6
+SSA_SAMPLE pid=19 event=1 counter=3SSA_HOST_PROGRESS cycles=25600000 pc=800061f2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ S=000000000000137c R=000000000000138e delta=0000000000000012 session=6
+SSA_SWITCH pid=19 test=9 role=1 event=2 to=18 SSA_HOST_PROGRESS cycles=25700000 pc=800065c2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 session=6
+SSA_SSSA_HOST_PROGRESS cycles=25800000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+AMPLE pid=19 event=2 counter=0 S=000000000144c1ca R=000000000172b27a delta=00000000002df0b0 session=6
+SSA_SAMPLE pid=19 evenSSA_HOST_PROGRESS cycles=25900000 pc=80004340 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+t=2 counter=1 S=0000000000a4e5da R=0000000000c99f52 delta=000000000024b978 session=6
+SSA_SAMPLE pid=19 event=2 counter=2 S=SSA_HOST_PROGRESS cycles=26000000 pc=80006822 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+0000000000033f65 R=000000000003b500 delta=000000000000759b session=6
+SSA_SAMPLE pid=19 event=2 counter=3 S=0000000000001394 SSA_HOST_PROGRESS cycles=26100000 pc=800005e2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+R=00000000000017f7 delta=0000000000000463 session=6
+SSA_RECORD pid=19 id=1 callee=00000000000102a6 parent=0 cycle=297377 SSA_HOST_PROGRESS cycles=26200000 pc=80004eba prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+instret=278737 time=2974 session=6 open=0
+SSA_EVENT_RECORD pid=19 session=6 id=1 parent=0 callee=00000000000102a6 dtlb=9 openSSA_HOST_PROGRESS cycles=26300000 pc=80003722 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+=0
+SSA_RECORD pid=19 id=2 callee=000000000001014c parent=1 cycle=296466 instret=278624 time=2965 session=6 open=0
+SSA_HOST_PROGRESS cycles=26400000 pc=e000332544 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+SSA_EVENT_RECORD pid=19 session=6 id=2 parent=1 callee=000000000001014c dtlb=7 open=0
+SSA_ACCOUNT pid=19 test=9 SSA_HOST_PROGRESS cycles=26500000 pc=8000060e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+role=1 counter=0 original=000000000142cbc4 final=000000000170bc74 off=00000000002df0b0 recorded=0000000000048612 raw=00000000003276c2 valSSA_HOST_PROGRESS cycles=26600000 pc=8000548a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+id=1 rebased=1 session=6
+SSA_ACCOUNT pid=19 test=9 role=1 counter=1 original=0000000000a31c93 final=0000000000c7d60b SSA_HOST_PROGRESS cycles=26700000 pc=800099c0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+off=000000000024b978 recorded=0000000000044060 raw=000000000028f9d8 valid=1 rebased=1 session=6
+SSA_ACCOUNT pid=19 tesSSA_HOST_PROGRESS cycles=26800000 pc=800061b2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+t=9 role=1 counter=2 original=0000000000033a5b final=000000000003aff6 off=000000000000759b recorded=0000000000000b95 raw=0000000000008130 SSA_HOST_PROGRESS cycles=26900000 pc=800065b2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+valid=1 rebased=1 session=6
+SSA_ACCOUNT pid=19 test=9 role=1 counter=3 original=0000000000001392 final=00000000000017SSA_HOST_PROGRESS cycles=27000000 pc=80009a3a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+f5 off=0000000000000463 recorded=0000000000000007 raw=000000000000046a valid=1 rebased=1 session=6
+SSA_EVENT_SESSION pid=19 seSSA_HOST_PROGRESS cycles=27100000 pc=80006406 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ssion=6 reason=exit cutoff=6142 policy=1
+SSA_EXIT pid=19 complete=1 selector=0 session=6
+SSA_HOST_PROGRESS cycles=27200000 pc=e000314418 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=27300000 pc=e000286070 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002219c0 stval=0 satp_mode=8 satp_ppn=80213
+SSA_UNMONITORED pid=1 selector=0
+SSA HPM SWITCH PASSSSA_HOST_PROGRESS cycles=27400000 pc=800068c2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002f9e58 stval=0 satp_mode=8 satp_ppn=80214
+
+SSA_HOST_PROGRESS cycles=27500000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80214
+SSA_HOST_PROGRESS cycles=27600000 pc=e000339a28 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=102cc stval=102cc satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=27700000 pc=e000339a84 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=27800000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=27900000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=28000000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=28100000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=28200000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=28300000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=28400000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+SSA_BEGIN pid=20 session=7 image=2 pool=2281701376 depth=0 next=1 selector=22817SSA_HOST_PROGRESS cycles=28500000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=80213
+01376
+SSA_EVENT_BEGIN pid=20 session=7 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=28600000 pc=80004338 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=28700000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=28800000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=28900000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29000000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29100000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29200000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29300000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+SSA_BEGIN pid=21 session=8 image=2 pool=2348810240 depth=0 next=1 SSA_HOST_PROGRESS cycles=29500000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1040e stval=0 satp_mode=8 satp_ppn=8021d
+selector=2348810240
+SSA_EVENT_BEGIN pid=21 session=8 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=29600000 pc=80008744 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29700000 pc=10168 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10248 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=29800000 pc=e0002034bc prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=26000 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=29900000 pc=e00026c8b0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=be000 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=30000000 pc=e00033c870 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=159000 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=30100000 pc=e000339a7c prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10296 stval=1f7000 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=30200000 pc=101c0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10178 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=30300000 pc=10180 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101d8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SESSION pid=20 session=7 image=2 reason=exit comm=events sSSA_HOST_PROGRESS cycles=30400000 pc=80004ed2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+elector=0 cutoff_cycle=30338486 cutoff_instret=16920086 cutoff_time=303390
+SSA_EXPORT pid=20 uid=1000 role=2 test=10 lSSA_HOST_PROGRESS cycles=30500000 pc=80006374 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+egacy=1 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2 session=7
+SSA_SWITCH pid=20 test=10 role=2 event=0SSA_HOST_PROGRESS cycles=30600000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ to=7 from=21 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=7
+SSA_HOST_PROGRESS cycles=30700000 pc=e00032d6f4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=20 event=0 counter=0 S=0000000001b4a591 R=0000000001c46acc delta=00000000000fc53b session=7
+SSA_SAMPLE pidSSA_HOST_PROGRESS cycles=30800000 pc=800068c8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+=20 event=0 counter=1 S=0000000000f530f5 R=0000000000f998f3 delta=00000000000467fe session=7
+SSA_SAMPLE pid=20 event=0 countSSA_HOST_PROGRESS cycles=30900000 pc=80004334 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+er=2 S=0000000000045dd5 R=0000000000048633 delta=000000000000285e session=7
+SSA_SAMPLE pid=20 event=0 counter=3 S=000000000SSA_HOST_PROGRESS cycles=31000000 pc=80006304 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+00019ca R=0000000000001af8 delta=000000000000012e session=7
+SSA_SWITCH pid=20 test=10 role=2 event=1 to=21 from=21 depSSA_HOST_PROGRESS cycles=31100000 pc=800005b2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+th=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=7
+SSA_SAMPLE pid=2SSA_HOST_PROGRESS cycles=31200000 pc=e0002f9498 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+0 event=1 counter=0 S=0000000001c498a0 R=0000000001c67815 delta=000000000001df75 session=7
+SSA_SAMPLE pid=20 event=1 counteSSA_HOST_PROGRESS cycles=31300000 pc=e0002fa654 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+r=1 S=0000000000f9a5a1 R=0000000000fb4d5c delta=000000000001a7bb session=7
+SSA_SAMPLE pid=20 event=1 counter=2 S=0000000000SSA_HOST_PROGRESS cycles=31400000 pc=e0002fa640 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+0486a9 R=0000000000048b74 delta=00000000000004cb session=7
+SSA_SAMPLE pid=20 event=1 counter=3 S=0000000000001b08 R=0000000SSA_HOST_PROGRESS cycles=31500000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+000001b10 delta=0000000000000008 session=7
+SSA_RECORD pid=20 id=1 callee=00000000000102a6 parent=0 cycle=682050 instret=56SSA_HOST_PROGRESS cycles=31600000 pc=80006402 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+0740 time=6820 session=7 open=0
+SSA_EVENT_RECORD pid=20 session=7 id=1 parent=0 callee=00000000000102a6 dtlb=1078 open=0
+SSA_HOST_PROGRESS cycles=31700000 pc=e00032e454 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+SSA_RECORD pid=20 id=2 callee=000000000001014c parent=1 cycle=681292 instret=560627 time=6813 session=7 open=0
+SSSA_HOST_PROGRESS cycles=31800000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+SA_EVENT_RECORD pid=20 session=7 id=2 parent=1 callee=000000000001014c dtlb=1077 open=0
+SSA_ACCOUNT pid=20 test=10 rolSSA_HOST_PROGRESS cycles=31900000 pc=8000545c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+e=2 counter=0 original=0000000001c480fb final=0000000001c480fb off=000000000001df75 recorded=00000000000a654c raw=00000000000a654c valid=1SSA_HOST_PROGRESS cycles=32000000 pc=800043a6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ rebased=0 session=7
+SSA_ACCOUNT pid=20 test=10 role=2 counter=1 original=0000000000f99e52 final=0000000000f99e52 off=SSA_HOST_PROGRESS cycles=32100000 pc=80004548 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+000000000001a7bb recorded=0000000000088df3 raw=0000000000088df3 valid=1 rebased=0 session=7
+SSA_ACCOUNT pid=20 test=10 SSA_HOST_PROGRESS cycles=32200000 pc=8000658a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+role=2 counter=2 original=0000000000048669 final=0000000000048669 off=00000000000004cb recorded=0000000000001a9d raw=0000000000001a9d valSSA_HOST_PROGRESS cycles=32300000 pc=800062a2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+id=1 rebased=0 session=7
+SSA_ACCOUNT pid=20 test=10 role=2 counter=3 original=0000000000001b05 final=0000000000001b05 SSA_HOST_PROGRESS cycles=32400000 pc=80005448 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+off=0000000000000008 recorded=0000000000000435 raw=0000000000000435 valid=1 rebased=0 session=7
+SSA_EVENT_SESSION pid=20 sessSSA_HOST_PROGRESS cycles=32500000 pc=800063cc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=80213
+ion=7 reason=exit cutoff=7996 policy=1
+SSA_EXIT pid=20 complete=1 selector=0 session=7
+SSA_HOST_PROGRESS cycles=32600000 pc=80008906 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=32700000 pc=e000267a06 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00026b73c stval=0 satp_mode=8 satp_ppn=80213
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=32800000 pc=10228 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10208 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=32900000 pc=101b4 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101c0 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_SSSA_HOST_PROGRESS cycles=33000000 pc=80003718 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ESSION pid=21 session=8 image=2 reason=exit comm=events selector=0 cutoff_cycle=32981538 cutoff_instret=19055466 cutoff_time=329820
+SSA_HOST_PROGRESS cycles=33100000 pc=e00032df70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_EXPORT pid=21 uid=1000 role=1 test=10 legacy=1 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3 session=8
+SSA_HOST_PROGRESS cycles=33200000 pc=e00032da8c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_SWITCH pid=21 test=10 role=1 event=0 to=13 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000SSA_HOST_PROGRESS cycles=33300000 pc=e0002fa65c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+000000000005 resumed=1 preempt=0 session=8
+SSA_SAMPLE pid=21 event=0 counter=0 S=0000000001c4063b R=0000000001c434ed delta=SSA_HOST_PROGRESS cycles=33400000 pc=e0002f9494 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+0000000000002eb2 session=8
+SSA_SAMPLE pid=21 event=0 counter=1 S=0000000000f97d9e R=0000000000f98bee delta=0000000000000e50SSA_HOST_PROGRESS cycles=33500000 pc=e0002f94a4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ session=8
+SSA_SAMPLE pid=21 event=0 counter=2 S=0000000000048533 R=00000000000485aa delta=0000000000000077 session=8
+SSA_HOST_PROGRESS cycles=33600000 pc=e000332528 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_SAMPLE pid=21 event=0 counter=3 S=0000000000001ae4 R=0000000000001ae6 delta=0000000000000002 session=8
+SSSSA_HOST_PROGRESS cycles=33700000 pc=80006314 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+A_SWITCH pid=21 test=10 role=1 event=1 to=20 from=20 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumSSA_HOST_PROGRESS cycles=33800000 pc=8000059a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ed=1 preempt=0 session=8
+SSA_SAMPLE pid=21 event=1 counter=0 S=0000000001c46539 R=0000000001c49bfa delta=00000000000036c1 sSSA_HOST_PROGRESS cycles=33900000 pc=8000370a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ession=8
+SSA_SAMPLE pid=21 event=1 counter=1 S=0000000000f99727 R=0000000000f9a76d delta=0000000000001046 session=8
+SSA_HOST_PROGRESS cycles=34000000 pc=e00033998c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_SAMPLE pid=21 event=1 counter=2 S=0000000000048629 R=00000000000486b1 delta=0000000000000088 session=8
+SSA_SAMPLESSA_HOST_PROGRESS cycles=34100000 pc=80000548 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ pid=21 event=1 counter=3 S=0000000000001af7 R=0000000000001b09 delta=0000000000000012 session=8
+SSA_SWITCH pid=21 teSSA_HOST_PROGRESS cycles=34200000 pc=8000060e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+st=10 role=1 event=2 to=20 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 sessSSA_HOST_PROGRESS cycles=34300000 pc=80000548 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ion=8
+SSA_SAMPLE pid=21 event=2 counter=0 S=0000000001c67479 R=0000000001f467f4 delta=00000000002df37b session=8
+SSA_HOST_PROGRESS cycles=34400000 pc=8000a0da prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_SAMPLE pid=21 event=2 counter=1 S=0000000000fb4b90 R=0000000001201276 delta=000000000024c6e6 session=8
+SSA_SAMPLE piSSA_HOST_PROGRESS cycles=34500000 pc=8000060e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+d=21 event=2 counter=2 S=0000000000048b6d R=000000000005010e delta=00000000000075a1 session=8
+SSA_SAMPLE pid=21 event=2 couSSA_HOST_PROGRESS cycles=34600000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+nter=3 S=0000000000001b0f R=0000000000001f72 delta=0000000000000463 session=8
+SSA_RECORD pid=21 id=1 callee=0000000000010SSA_HOST_PROGRESS cycles=34700000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+2a6 parent=0 cycle=3315778 instret=2692983 time=33157 session=8 open=0
+SSA_EVENT_RECORD pid=21 session=8 id=1 parent=0 calleeSSA_HOST_PROGRESS cycles=34800000 pc=80009a30 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+=00000000000102a6 dtlb=1132 open=0
+SSA_RECORD pid=21 id=2 callee=000000000001014c parent=1 cycle=3314893 instret=2692870 tSSA_HOST_PROGRESS cycles=34900000 pc=80000548 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+ime=33149 session=8 open=0
+SSA_EVENT_RECORD pid=21 session=8 id=2 parent=1 callee=000000000001014c dtlb=1130 open=0
+SSA_HOST_PROGRESS cycles=35000000 pc=e00033997c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_ACCOUNT pid=21 test=10 role=1 counter=0 original=0000000001c4a681 final=0000000001c4a681 off=00000000002df37b recorded=000SSA_HOST_PROGRESS cycles=35100000 pc=80005426 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+00000003294cd raw=00000000003294cd valid=1 rebased=0 session=8
+SSA_ACCOUNT pid=21 test=10 role=1 counter=1 original=00SSA_HOST_PROGRESS cycles=35200000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+00000000f9aa93 final=0000000000f9aa93 off=000000000024c6e6 recorded=0000000000291706 raw=0000000000291706 valid=1 rebased=0 session=8
+SSA_HOST_PROGRESS cycles=35300000 pc=e00032e068 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_ACCOUNT pid=21 test=10 role=1 counter=2 original=00000000000486c9 final=00000000000486c9 off=00000000000075a1 recorded=SSA_HOST_PROGRESS cycles=35400000 pc=80006268 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+000000000000817d raw=000000000000817d valid=1 rebased=0 session=8
+SSA_ACCOUNT pid=21 test=10 role=1 counter=3 originalSSA_HOST_PROGRESS cycles=35500000 pc=80004ebc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+=0000000000001b0d final=0000000000001b0d off=0000000000000463 recorded=000000000000046a raw=000000000000046a valid=1 rebased=0 session=8
+SSA_HOST_PROGRESS cycles=35600000 pc=e00022d144 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_EVENT_SESSION pid=21 session=8 reason=exit cutoff=8057 policy=1
+SSA_EXIT pid=21 complete=1 selector=0 session=8
+SSA_HOST_PROGRESS cycles=35700000 pc=e0002f9566 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10542 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=35800000 pc=e00022575c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=8021d
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=35900000 pc=e0002ec6e0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10142 stval=0 satp_mode=8 satp_ppn=80214
+SSA HPM SWITCH PASS
+SSA_HPM_EVENT_EXEC_BEGIN
+SSA_HOST_PROGRESS cycles=36000000 pc=e00033a628 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000281768 stval=0 satp_mode=8 satp_ppn=80214
+SSA EXSSA_HOST_PROGRESS cycles=36100000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10142 stval=0 satp_mode=8 satp_ppn=8021d
+EC FIXTURE START
+SSA_HOST_PROGRESS cycles=36200000 pc=e000283190 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=1040e stval=1040e satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36300000 pc=e000200d9c prv=0 trapdepth=0 private=0
+SSA_CSR scause=d sepc=10520 stval=60000 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36400000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36500000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36600000 pc=e000339a54 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36700000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=36900000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=37000000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=37100000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_BEGIN pid=22 session=9 image=3 pool=2281701376 depth=0 next=1 selSSA_HOST_PROGRESS cycles=37200000 pc=800062ce prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+ector=2281701376
+SSA_EVENT_BEGIN pid=22 session=9 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=37300000 pc=8000060e prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80218
+SSA_CHECK pid=22 session=9 image=3 depth=1 next=3 selector=2281701376
+SSA_HOST_PROGRESS cycles=37400000 pc=e0002a40c2 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80218
+SSA_SESSION pid=2SSA_HOST_PROGRESS cycles=37500000 pc=8000656e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+2 session=9 image=3 reason=exec comm=eventexec selector=0 cutoff_cycle=37470505 cutoff_instret=21947105 cutoff_time=374719
+SSA_HOST_PROGRESS cycles=37600000 pc=8000a244 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+SSA_EXPORT pid=22 uid=1000 role=0 test=5 legacy=0 pool=2281701376 complete=0 depth=1 next=3 spill=0 events=0 session=9
+SSA_HOST_PROGRESS cycles=37700000 pc=e00032d6fc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+SSA_RECORD pid=22 id=1 callee=000000000001027a parent=0 cycle=0 instret=0 time=0 session=9 open=1
+SSA_EVENT_RECORD pid=22SSA_HOST_PROGRESS cycles=37800000 pc=80004eb8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+ session=9 id=1 parent=0 callee=000000000001027a dtlb=0 open=1
+SSA_RECORD pid=22 id=2 callee=000000000001014c parent=1 cyclSSA_HOST_PROGRESS cycles=37900000 pc=80006300 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+e=4371 instret=3645 time=43 session=9 open=0
+SSA_EVENT_RECORD pid=22 session=9 id=2 parent=1 callee=000000000001014c dtlb=64SSA_HOST_PROGRESS cycles=38000000 pc=800062ca prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+ open=0
+SSA_EVENT_SESSION pid=22 session=9 reason=exec cutoff=9071 policy=1
+SSA_OPEN pid=22 session=9 frame=1 SSA_HOST_PROGRESS cycles=38100000 pc=800061ba prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+rid=1 status=abandoned entry_cycle=37316742 entry_instret=21867176 entry_time=373167
+SSA_EVENT_OPEN pid=22 session=9 frame=1 riSSA_HOST_PROGRESS cycles=38200000 pc=800061d2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=102c8 stval=0 satp_mode=8 satp_ppn=80211
+d=1 entry=8946
+SSA_EXEC_END pid=22 session=9 complete=0 selector=0
+SSA_HOST_PROGRESS cycles=38300000 pc=e00021f96c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80211
+SSA EXEC IMAGE B ENTER
+SSA_HOST_PROGRESS cycles=38400000 pc=e000339980 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102d2 stval=0 satp_mode=8 satp_ppn=80211
+SSA_UNMONITORED pid=22 selector=0
+SSA_HOST_PROGRESS cycles=38500000 pc=e000200c70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=102e8 stval=79000 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=38600000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=38700000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=38800000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=38900000 pc=e000339a7c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=39000000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=39100000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=39200000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_HOST_PROGRESS cycles=39300000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+SSA_BEGIN pid=22 session=10 image=4 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_EVENTSSA_HOST_PROGRESS cycles=39400000 pc=80004332 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1030c stval=0 satp_mode=8 satp_ppn=80211
+_BEGIN pid=22 session=10 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=39500000 pc=e000200c98 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10330 stval=0 satp_mode=8 satp_ppn=80211
+SSA EXEC IMAGE B PASS
+SSA_SESSION pid=22 session=10 image=4 reason=exit comm=eventnext selector=0 cutofSSA_HOST_PROGRESS cycles=39600000 pc=80000570 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10358 stval=0 satp_mode=8 satp_ppn=80211
+f_cycle=39525769 cutoff_instret=23029339 cutoff_time=395264
+SSA_EXPORT pid=22 uid=1000 role=0 test=6 legacy=0 pool=2281SSA_HOST_PROGRESS cycles=39700000 pc=80006216 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10358 stval=0 satp_mode=8 satp_ppn=80211
+701376 complete=1 depth=0 next=3 spill=0 events=0 session=10
+SSA_RECORD pid=22 id=1 callee=000000000001027a parent=0 cyclSSA_HOST_PROGRESS cycles=39800000 pc=800005a2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10358 stval=0 satp_mode=8 satp_ppn=80211
+e=9331 instret=7378 time=94 session=10 open=0
+SSA_EVENT_RECORD pid=22 session=10 id=1 parent=0 callee=000000000001027a dtlb=SSA_HOST_PROGRESS cycles=39900000 pc=800053ee prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10358 stval=0 satp_mode=8 satp_ppn=80211
+130 open=0
+SSA_RECORD pid=22 id=2 callee=000000000001014c parent=1 cycle=8638 instret=7265 time=87 session=10 open=0
+SSA_HOST_PROGRESS cycles=40000000 pc=e00032dc54 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10358 stval=0 satp_mode=8 satp_ppn=80211
+SSA_EVENT_RECORD pid=22 session=10 id=2 parent=1 callee=000000000001014c dtlb=128 open=0
+SSA_EVENT_SESSION pid=22 sessiSSA_HOST_PROGRESS cycles=40100000 pc=800005c8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10358 stval=0 satp_mode=8 satp_ppn=80211
+on=10 reason=exit cutoff=9796 policy=1
+SSA_EXIT pid=22 complete=1 selector=0 session=10
+SSA_HOST_PROGRESS cycles=40200000 pc=e000314460 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80211
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=40300000 pc=e0002ebcfc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10142 stval=0 satp_mode=8 satp_ppn=8021d
+SSA EXEC SUCCESS CHILD PASS
+SSA_HOST_PROGRESS cycles=40400000 pc=e0003398e8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=f sepc=10416 stval=3ffff2ce5c satp_mode=8 satp_ppn=8021d
+SSA_HOST_PROGRESS cycles=40500000 pc=e000200ce8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=d sepc=10520 stval=47000 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=40600000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=40700000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=40800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=40900000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=41000000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=41100000 pc=e000339a4c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=41200000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=41300000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+SSA_BEGIN pid=23 session=11 image=3 pool=2281701376 depth=0 next=1SSA_HOST_PROGRESS cycles=41400000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10548 stval=0 satp_mode=8 satp_ppn=80218
+ selector=2281701376
+SSA_EVENT_BEGIN pid=23 session=11 abi=2 selector=4098 width=40 depth=0 next=1
+SSA_HOST_PROGRESS cycles=41500000 pc=80002636 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80218
+SSA_CHECK pid=23 session=11 image=3 depth=1 next=3 selector=22817013SSA_HOST_PROGRESS cycles=41600000 pc=e0002fa658 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=102a0 stval=0 satp_mode=8 satp_ppn=80218
+76
+SSA_CHECK pid=23 session=11 image=3 depth=1 next=3 selector=2281701376
+SSA_HOST_PROGRESS cycles=41700000 pc=80006516 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002480b4 stval=0 satp_mode=8 satp_ppn=80218
+SSA_SESSION pid=23 session=11 image=3 reason=exit comm=eventexec selector=0 cutoff_cycle=4SSA_HOST_PROGRESS cycles=41800000 pc=80009a3a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+1718748 cutoff_instret=24137184 cutoff_time=417192
+SSA_EXPORT pid=23 uid=1000 role=0 test=7 legacy=0 pool=2281701376 cSSA_HOST_PROGRESS cycles=41900000 pc=8000655c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+omplete=1 depth=0 next=3 spill=0 events=2 session=11
+SSA_SWITCH pid=23 test=7 role=0 event=0 to=13 from=13 depth=0 riSSA_HOST_PROGRESS cycles=42000000 pc=800005a0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+d=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=11
+SSA_SAMPLE pid=23 evenSSA_HOST_PROGRESS cycles=42100000 pc=800005f2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+t=0 counter=0 S=0000000002799be7 R=000000000279b9b0 delta=0000000000001dc9 session=11
+SSA_SAMPLE pid=23 event=0 counter=1 SSA_HOST_PROGRESS cycles=42200000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+S=00000000016e65d2 R=00000000016e6f06 delta=0000000000000934 session=11
+SSA_SAMPLE pid=23 event=0 counter=2 S=0000000000065SSA_HOST_PROGRESS cycles=42300000 pc=80004eca prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+610 R=000000000006565a delta=000000000000004a session=11
+SSA_SAMPLE pid=23 event=0 counter=3 S=000000000000290f R=0000000000SSA_HOST_PROGRESS cycles=42400000 pc=800061c0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+00290f delta=0000000000000000 session=11
+SSA_SWITCH pid=23 test=7 role=0 event=1 to=7 from=7 depth=1 rid=1 state=0 ivSSA_HOST_PROGRESS cycles=42500000 pc=80006322 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+csw=4 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=11
+SSA_SAMPLE pid=23 event=1 counter=0SSA_HOST_PROGRESS cycles=42600000 pc=80004ec0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+ S=00000000027c5c47 R=00000000027c7455 delta=000000000000180e session=11
+SSA_SAMPLE pid=23 event=1 counter=1 S=000000000170SSA_HOST_PROGRESS cycles=42700000 pc=80004edc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+32fd R=0000000001703a9b delta=000000000000079e session=11
+SSA_SAMPLE pid=23 event=1 counter=2 S=0000000000065d1b R=000000000SSA_HOST_PROGRESS cycles=42800000 pc=800005c4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+0065d57 delta=000000000000003c session=11
+SSA_SAMPLE pid=23 event=1 counter=3 S=0000000000002971 R=0000000000002978 delta=0SSA_HOST_PROGRESS cycles=42900000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+000000000000007 session=11
+SSA_RECORD pid=23 id=1 callee=000000000001027a parent=0 cycle=177353 instret=119473 time=1775 seSSA_HOST_PROGRESS cycles=43000000 pc=800065e8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+ssion=11 open=0
+SSA_EVENT_RECORD pid=23 session=11 id=1 parent=0 callee=000000000001027a dtlb=164 open=0
+SSASSA_HOST_PROGRESS cycles=43100000 pc=8000059c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+_RECORD pid=23 id=2 callee=000000000001014c parent=1 cycle=8778 instret=7290 time=87 session=11 open=0
+SSA_EVENT_RECORD pid=SSA_HOST_PROGRESS cycles=43200000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+23 session=11 id=2 parent=1 callee=000000000001014c dtlb=128 open=0
+SSA_EVENT_SESSION pid=23 session=11 reason=exit cutoff=106SSA_HOST_PROGRESS cycles=43300000 pc=80009a40 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10586 stval=0 satp_mode=8 satp_ppn=80218
+83 policy=1
+SSA_EXIT pid=23 complete=1 selector=0 session=11
+SSA_HOST_PROGRESS cycles=43400000 pc=80000594 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80218
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=43500000 pc=8000965e prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=8021d
+SSA EXEC ENOENT CHILD PASS
+SSA EXEC FIXTURE PASS
+SSA EXEC REGRESSION BEGIN
+SSA_HPM_EVENSSA_HOST_PROGRESS cycles=43600000 pc=80006416 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=10142 stval=0 satp_mode=8 satp_ppn=8021d
+T_SUITE_END
+SSA_HOST_PROGRESS cycles=43700000 pc=e0002715c2 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000281124 stval=0 satp_mode=8 satp_ppn=80218
+SSA LINUX PROCESS FIXTURE START
+SSA_HOST_PROGRESS cycles=43800000 pc=e000285e74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a0c stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=43900000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44000000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44100000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44200000 pc=e000339a18 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44300000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44400000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44500000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44600000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=44700000 pc=e000332738 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_BEGIN pid=24 session=12 image=4 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=44800000 pc=800026be prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80204
+SSA_SESSION pid=24 session=12 image=4 reason=exit comm=regress SSA_HOST_PROGRESS cycles=44900000 pc=800053f0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+selector=0 cutoff_cycle=44838430 cutoff_instret=25963429 cutoff_time=448391
+SSA_EXPORT pid=24 uid=1000 role=0 test=0 leSSA_HOST_PROGRESS cycles=45000000 pc=800005f6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+gacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=1 session=12
+SSA_SWITCH pid=24 test=0 role=0 event=0 SSA_HOST_PROGRESS cycles=45100000 pc=8000370e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+to=13 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=12
+SSA_HOST_PROGRESS cycles=45200000 pc=e00033998c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+SSA_SAMPLE pid=24 event=0 counter=0 S=0000000002abd392 R=0000000002ac03b0 delta=000000000000301e session=12
+SSA_SAMPLE pid=SSA_HOST_PROGRESS cycles=45300000 pc=80006534 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+24 event=0 counter=1 S=00000000018bfeab R=00000000018c0cf9 delta=0000000000000e4e session=12
+SSA_SAMPLE pid=24 event=0 counteSSA_HOST_PROGRESS cycles=45400000 pc=e0002f9488 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+r=2 S=000000000006d69c R=000000000006d717 delta=000000000000007b session=12
+SSA_RECORD pid=24 id=1 callee=000000000001024eSSA_HOST_PROGRESS cycles=45500000 pc=80006304 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ parent=0 cycle=7414 instret=6722 time=74 session=12 open=0
+SSA_RECORD pid=24 id=2 callee=0000000000010114 parent=1 cycle=SSA_HOST_PROGRESS cycles=45600000 pc=e000202f9c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+6829 instret=6623 time=68 session=12 open=0
+SSA_EXIT pid=24 complete=1 selector=0 session=12
+SSA_HOST_PROGRESS cycles=45700000 pc=e00023eca0 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80204
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=45800000 pc=e000200c4a prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1010a stval=0 satp_mode=8 satp_ppn=80218
+SSA LINUX B USER PASS
+SSA_HOST_PROGRESS cycles=45900000 pc=e000339930 prv=1 trapdepth=1 private=0
+SSA_CSR scause=f sepc=10278 stval=3fffe78e28 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=46000000 pc=e000339938 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000204fa4 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=46100000 pc=e00027fcac prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10500 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=46200000 pc=e000209d2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1028e stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=46300000 pc=e00033c976 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339964 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=46400000 pc=e00033a4f0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000281190 stval=0 satp_mode=8 satp_ppn=80218
+SSA LINUX SECURITY USER PASS
+SSA_HOST_PROGRESS cycles=46500000 pc=e0002816dc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000285e68 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=46600000 pc=e000339990 prv=1 trapdepth=1 private=0
+SSA_CSR scause=f sepc=10278 stval=3fffe78e28 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=46700000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=46800000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=46900000 pc=e000339a3c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=47000000 pc=e000339a1c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=47100000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=47200000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=47300000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=47400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_BEGIN pid=29 session=13 image=4 pool=2281701SSA_HOST_PROGRESS cycles=47500000 pc=800065fc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+376 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=47600000 pc=e000286098 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002219c0 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=47700000 pc=e000339a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=47800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=47900000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48000000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48100000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48200000 pc=e000339a2c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48300000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_BEGIN pid=30 session=14 image=4 pool=2348810240 depth=0 next=1 selector=2348810240
+SSA_HOST_PROGRESS cycles=48500000 pc=80000608 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48600000 pc=101c8 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=103e0 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=48700000 pc=e000339980 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+SSA_SESSION pid=29 session=13 image=4 reason=exit comm=regress selector=0 cutoff_cycle=48689738 cutoff_instret=27552388 cutoff_tiSSA_HOST_PROGRESS cycles=48800000 pc=800062bc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+me=486903
+SSA_EXPORT pid=29 uid=1000 role=2 test=1 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2 SSA_HOST_PROGRESS cycles=48900000 pc=8000627e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+session=13
+SSA_SWITCH pid=29 test=1 role=2 event=0 to=7 from=30 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 SSA_HOST_PROGRESS cycles=49000000 pc=8000373c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+csr_cause=0000000000000008 resumed=1 preempt=0 session=13
+SSA_SAMPLE pid=29 event=0 counter=0 S=0000000002d5e48d R=0000000SSA_HOST_PROGRESS cycles=49100000 pc=8000681e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+002e4f505 delta=00000000000f1078 session=13
+SSA_SAMPLE pid=29 event=0 counter=1 S=00000000019f18ff R=0000000001a2d12a deltaSSA_HOST_PROGRESS cycles=49200000 pc=80009a46 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+=000000000003b82b session=13
+SSA_SAMPLE pid=29 event=0 counter=2 S=000000000007424e R=00000000000768dd delta=000000000000268SSA_HOST_PROGRESS cycles=49300000 pc=80006604 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+f session=13
+SSA_SWITCH pid=29 test=1 role=2 event=1 to=30 from=30 depth=2 rid=2 state=1 ivcsw=1 cause=00000000000000SSA_HOST_PROGRESS cycles=49400000 pc=800062a2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+08 csr_cause=0000000000000008 resumed=1 preempt=0 session=13
+SSA_SAMPLE pid=29 event=1 counter=0 S=0000000002e5246d R=00000SSA_HOST_PROGRESS cycles=49500000 pc=800063e4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+00002e6dc71 delta=000000000001b804 session=13
+SSA_SAMPLE pid=29 event=1 counter=1 S=0000000001a2ddbc R=0000000001a46006 delSSA_HOST_PROGRESS cycles=49600000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ta=000000000001824a session=13
+SSA_SAMPLE pid=29 event=1 counter=2 S=0000000000076958 R=0000000000076dbc delta=000000000000SSA_HOST_PROGRESS cycles=49700000 pc=80009a3a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0464 session=13
+SSA_RECORD pid=29 id=1 callee=000000000001024e parent=0 cycle=10731 instret=4200 time=110 session=13 open=SSA_HOST_PROGRESS cycles=49800000 pc=80000608 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0
+SSA_RECORD pid=29 id=2 callee=0000000000010114 parent=1 cycle=10049 instret=4101 time=103 session=13 open=0
+SSA_HOST_PROGRESS cycles=49900000 pc=e000339980 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+SSA_ACCOUNT pid=29 test=1 role=2 counter=0 original=0000000002e50be1 final=0000000002e6c3e5 off=000000000001b804 recorded=0000000SSA_HOST_PROGRESS cycles=50000000 pc=800061fa prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+000002741 raw=000000000001df45 valid=1 rebased=1 session=13
+SSA_ACCOUNT pid=29 test=1 role=2 counter=1 original=000000SSA_HOST_PROGRESS cycles=50100000 pc=8000632a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0001a2d67a final=0000000001a458c4 off=000000000001824a recorded=0000000000001005 raw=000000000001924f valid=1 rebased=1 session=13
+SSA_HOST_PROGRESS cycles=50200000 pc=e00032e548 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+SSA_ACCOUNT pid=29 test=1 role=2 counter=2 original=0000000000076914 final=0000000000076d78 off=0000000000000464 recorded=00000SSA_HOST_PROGRESS cycles=50300000 pc=8000620a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+00000000067 raw=00000000000004cb valid=1 rebased=1 session=13
+SSA_EXIT pid=29 complete=1 selector=0 session=13
+SSA_HOST_PROGRESS cycles=50400000 pc=8000a0c2 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=50500000 pc=e000200d9c prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10292 stval=0 satp_mode=8 satp_ppn=80218
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=50600000 pc=101c0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101bc stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=50700000 pc=101bc prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10158 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SESSION pid=30 session=14 image=4 reason=exSSA_HOST_PROGRESS cycles=50800000 pc=8000370a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+it comm=regress selector=0 cutoff_cycle=50750687 cutoff_instret=29218399 cutoff_time=507510
+SSA_EXPORT pid=30 uid=1000SSA_HOST_PROGRESS cycles=50900000 pc=8000642e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ role=1 test=1 legacy=0 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3 session=14
+SSA_SWITCH pid=30 test=SSA_HOST_PROGRESS cycles=51000000 pc=80000616 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+1 role=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=SSA_HOST_PROGRESS cycles=51100000 pc=80006234 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+14
+SSA_SAMPLE pid=30 event=0 counter=0 S=0000000002e4a8d2 R=0000000002e4c051 delta=000000000000177f session=14
+SSA_HOST_PROGRESS cycles=51200000 pc=e00032d6f4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=30 event=0 counter=1 S=0000000001a2bd23 R=0000000001a2c40a delta=00000000000006e7 session=14
+SSA_SAMPLE piSSA_HOST_PROGRESS cycles=51300000 pc=80000548 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+d=30 event=0 counter=2 S=000000000007681b R=0000000000076857 delta=000000000000003c session=14
+SSA_SWITCH pid=30 testSSA_HOST_PROGRESS cycles=51400000 pc=80005488 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+=1 role=1 event=1 to=29 from=29 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 sessioSSA_HOST_PROGRESS cycles=51500000 pc=80004ec8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+n=14
+SSA_SAMPLE pid=30 event=1 counter=0 S=0000000002e4f0a7 R=0000000002e52833 delta=000000000000378c session=14
+SSA_HOST_PROGRESS cycles=51600000 pc=80008826 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=30 event=1 counter=1 S=0000000001a2cf60 R=0000000001a2df86 delta=0000000000001026 session=14
+SSA_SAMPLE pSSA_HOST_PROGRESS cycles=51700000 pc=800061a4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+id=30 event=1 counter=2 S=00000000000768d4 R=0000000000076960 delta=000000000000008c session=14
+SSA_SWITCH pid=30 tesSSA_HOST_PROGRESS cycles=51800000 pc=800065d8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+t=1 role=1 event=2 to=29 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 sessiSSA_HOST_PROGRESS cycles=51900000 pc=80005408 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+on=14
+SSA_SAMPLE pid=30 event=2 counter=0 S=0000000002e6d8a5 R=0000000003036114 delta=00000000001c886f session=14
+SSA_HOST_PROGRESS cycles=52000000 pc=e000339984 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=30 event=2 counter=1 S=0000000001a45e3c R=0000000001baffb6 delta=000000000016a17a session=14
+SSA_SAMPLESSA_HOST_PROGRESS cycles=52100000 pc=80006606 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ pid=30 event=2 counter=2 S=0000000000076db4 R=000000000007b6c0 delta=000000000000490c session=14
+SSA_RECORD pid=30 id=1 SSA_HOST_PROGRESS cycles=52200000 pc=80006242 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+callee=000000000001024e parent=0 cycle=295368 instret=278646 time=2953 session=14 open=0
+SSA_RECORD pid=30 id=2 callee=00SSA_HOST_PROGRESS cycles=52300000 pc=80006550 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+00000000010114 parent=1 cycle=294476 instret=278547 time=2944 session=14 open=0
+SSA_ACCOUNT pid=30 test=1 role=1 countSSA_HOST_PROGRESS cycles=52400000 pc=800005a6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+er=0 original=0000000002e557ca final=000000000301e039 off=00000000001c886f recorded=0000000000047e4c raw=00000000002106bb valid=1 rebasedSSA_HOST_PROGRESS cycles=52500000 pc=80005488 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+=1 session=14
+SSA_ACCOUNT pid=30 test=1 role=1 counter=1 original=0000000001a2f317 final=0000000001b99491 off=00000000SSA_HOST_PROGRESS cycles=52600000 pc=8000636c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0016a17a recorded=0000000000044013 raw=00000000001ae18d valid=1 rebased=1 session=14
+SSA_ACCOUNT pid=30 test=1 role=1 SSA_HOST_PROGRESS cycles=52700000 pc=8000541e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+counter=2 original=00000000000769d6 final=000000000007b2e2 off=000000000000490c recorded=0000000000000b80 raw=000000000000548c valid=1 rebSSA_HOST_PROGRESS cycles=52800000 pc=80004ebc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ased=1 session=14
+SSA_EXIT pid=30 complete=1 selector=0 session=14
+SSA_HOST_PROGRESS cycles=52900000 pc=800088b8 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80213
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=53000000 pc=e00023d0c2 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00022d1a4 stval=0 satp_mode=8 satp_ppn=80218
+SSA LINUX DUAL USER PASS
+SSA_HOST_PROGRESS cycles=53100000 pc=e00022a46e prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002a9640 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=53200000 pc=80000570 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e00027e8dc stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=53300000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=53400000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=53500000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=53600000 pc=e000339a84 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=53700000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=53800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=53900000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=54000000 pc=e000339a0c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_BEGIN pid=31 sSSA_HOST_PROGRESS cycles=54100000 pc=80006314 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+ession=15 image=4 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=54200000 pc=e00033d542 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10482 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=54300000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=54400000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=54500000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=54600000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=54700000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=54800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=54900000 pc=e000339a44 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=55000000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_BEGIN pid=32 session=16 image=4 pool=2348810240 depth=0 next=1 selector=234SSA_HOST_PROGRESS cycles=55100000 pc=80003712 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+8810240
+SSA_HOST_PROGRESS cycles=55200000 pc=101f8 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8 sepc=103e0 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=55300000 pc=10140 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10190 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=55400000 pc=101e0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=1024c stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=55500000 pc=10224 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10170 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=55600000 pc=e000247e74 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104c0 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SESSION pid=31 session=15 image=4 reason=exit comm=regress selector=0 cutoff_cycle=55600597 cutoff_instret=3197SSA_HOST_PROGRESS cycles=55700000 pc=800061ea prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+8502 cutoff_time=556009
+SSA_EXPORT pid=31 uid=1000 role=2 test=2 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spiSSA_HOST_PROGRESS cycles=55800000 pc=80006368 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ll=0 events=2 session=15
+SSA_SWITCH pid=31 test=2 role=2 event=0 to=7 from=32 depth=0 rid=0 state=1 ivcsw=1 cause=0SSA_HOST_PROGRESS cycles=55900000 pc=80005476 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=15
+SSA_SAMPLE pid=31 event=0 counter=0 S=0000000003SSA_HOST_PROGRESS cycles=56000000 pc=80000594 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+3afe8e R=000000000349c8a4 delta=00000000000eca16 session=15
+SSA_SAMPLE pid=31 event=0 counter=1 S=0000000001de4b6a R=000000SSA_HOST_PROGRESS cycles=56100000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0001e1e3d0 delta=0000000000039866 session=15
+SSA_SAMPLE pid=31 event=0 counter=2 S=000000000008451f R=0000000000086afb deltSSA_HOST_PROGRESS cycles=56200000 pc=80006250 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+a=00000000000025dc session=15
+SSA_SWITCH pid=31 test=2 role=2 event=1 to=32 from=32 depth=2 rid=2 state=1 ivcsw=1 cauSSA_HOST_PROGRESS cycles=56300000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+se=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=15
+SSA_SAMPLE pid=31 event=1 counter=0 S=0000000SSA_HOST_PROGRESS cycles=56400000 pc=800061e6 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0034a1f2b R=00000000034d180c delta=000000000002f8e1 session=15
+SSA_SAMPLE pid=31 event=1 counter=1 S=0000000001e200e7 R=000SSA_HOST_PROGRESS cycles=56500000 pc=80006384 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0000001e4c85e delta=000000000002c777 session=15
+SSA_SAMPLE pid=31 event=1 counter=2 S=0000000000086bda R=0000000000087374 dSSA_HOST_PROGRESS cycles=56600000 pc=80006354 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+elta=000000000000079a session=15
+SSA_RECORD pid=31 id=1 callee=000000000001024e parent=0 cycle=232036 instret=213527 time=SSA_HOST_PROGRESS cycles=56700000 pc=8000656a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+2322 session=15 open=0
+SSA_RECORD pid=31 id=2 callee=0000000000010114 parent=1 cycle=220608 instret=209199 time=2208 sessSSA_HOST_PROGRESS cycles=56800000 pc=80006580 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ion=15 open=0
+SSA_ACCOUNT pid=31 test=2 role=2 counter=0 original=00000000034a08a4 final=00000000034d0185 off=0000000SSA_HOST_PROGRESS cycles=56900000 pc=8000619c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+00002f8e1 recorded=0000000000035dc0 raw=00000000000656a1 valid=1 rebased=1 session=15
+SSA_ACCOUNT pid=31 test=2 role=2SSA_HOST_PROGRESS cycles=57000000 pc=e0002f94b4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ counter=1 original=0000000001e1f9a5 final=0000000001e4c11c off=000000000002c777 recorded=000000000003312f raw=000000000005f8a6 valid=1 rSSA_HOST_PROGRESS cycles=57100000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ebased=1 session=15
+SSA_ACCOUNT pid=31 test=2 role=2 counter=2 original=0000000000086b9b final=0000000000087335 off=00SSA_HOST_PROGRESS cycles=57200000 pc=80004ee8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0000000000079a recorded=00000000000008a0 raw=000000000000103a valid=1 rebased=1 session=15
+SSA_EXIT pid=31 complete=1 selector=0SSA_HOST_PROGRESS cycles=57300000 pc=80006392 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ session=15
+SSA_HOST_PROGRESS cycles=57400000 pc=e0002233d4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e00026b648 stval=0 satp_mode=8 satp_ppn=80213
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=57500000 pc=10220 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10158 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=57600000 pc=e00022cdec prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_SESSION pid=32 session=16 image=4 reason=exit comm=regress selector=0 cutoff_cycle=57588130 cutoff_instret=33566719 cutoff_time=5SSA_HOST_PROGRESS cycles=57700000 pc=80006518 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+75885
+SSA_EXPORT pid=32 uid=1000 role=1 test=2 legacy=0 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3 sesSSA_HOST_PROGRESS cycles=57800000 pc=80006230 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+sion=16
+SSA_SWITCH pid=32 test=2 role=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csrSSA_HOST_PROGRESS cycles=57900000 pc=80000606 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+_cause=8000000000000005 resumed=1 preempt=0 session=16
+SSA_SAMPLE pid=32 event=0 counter=0 S=0000000003497ac1 R=0000000003SSA_HOST_PROGRESS cycles=58000000 pc=800065ba prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+4992d4 delta=0000000000001813 session=16
+SSA_SAMPLE pid=32 event=0 counter=1 S=0000000001e1cfc9 R=0000000001e1d6b0 delta=00SSA_HOST_PROGRESS cycles=58100000 pc=e0002fa65c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+000000000006e7 session=16
+SSA_SAMPLE pid=32 event=0 counter=2 S=0000000000086a35 R=0000000000086a71 delta=000000000000003c SSA_HOST_PROGRESS cycles=58200000 pc=80005470 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+session=16
+SSA_SWITCH pid=32 test=2 role=1 event=1 to=31 from=31 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 cSSA_HOST_PROGRESS cycles=58300000 pc=8000650e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+sr_cause=0000000000000008 resumed=1 preempt=0 session=16
+SSA_SAMPLE pid=32 event=1 counter=0 S=000000000349c37c R=00000000SSA_HOST_PROGRESS cycles=58400000 pc=8000626a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+034a2331 delta=0000000000005fb5 session=16
+SSA_SAMPLE pid=32 event=1 counter=1 S=0000000001e1e206 R=0000000001e202b1 delta=SSA_HOST_PROGRESS cycles=58500000 pc=80006394 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+00000000000020ab session=16
+SSA_SAMPLE pid=32 event=1 counter=2 S=0000000000086af1 R=0000000000086be2 delta=00000000000000f1SSA_HOST_PROGRESS cycles=58600000 pc=800005e4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+ session=16
+SSA_SWITCH pid=32 test=2 role=1 event=2 to=31 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=800000000000000SSA_HOST_PROGRESS cycles=58700000 pc=80005400 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+5 csr_cause=8000000000000005 resumed=1 preempt=0 session=16
+SSA_SAMPLE pid=32 event=2 counter=0 S=00000000034d1516 R=000000SSA_HOST_PROGRESS cycles=58800000 pc=8000642e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+00036cf628 delta=00000000001fe112 session=16
+SSA_SAMPLE pid=32 event=2 counter=1 S=0000000001e4c694 R=0000000001fe9e6f deltSSA_HOST_PROGRESS cycles=58900000 pc=80005420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+a=000000000019d7db session=16
+SSA_SAMPLE pid=32 event=2 counter=2 S=000000000008736d R=000000000008c509 delta=00000000000051SSA_HOST_PROGRESS cycles=59000000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+9c session=16
+SSA_RECORD pid=32 id=1 callee=000000000001024e parent=0 cycle=305175 instret=282884 time=3052 session=16 opSSA_HOST_PROGRESS cycles=59100000 pc=80004eb2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+en=0
+SSA_RECORD pid=32 id=2 callee=0000000000010114 parent=1 cycle=304300 instret=282785 time=3043 session=16 open=0
+SSA_HOST_PROGRESS cycles=59200000 pc=e00032dee4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_ACCOUNT pid=32 test=2 role=1 counter=0 original=00000000034a2d0c final=00000000036a0e1e off=00000000001fe112 recorded=SSA_HOST_PROGRESS cycles=59300000 pc=80005400 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+000000000004a4ac raw=00000000002485be valid=1 rebased=1 session=16
+SSA_ACCOUNT pid=32 test=2 role=1 counter=1 originalSSA_HOST_PROGRESS cycles=59400000 pc=800061cc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+=0000000001e205c8 final=0000000001fbdda3 off=000000000019d7db recorded=00000000000450a1 raw=00000000001e287c valid=1 rebased=1 session=16SSA_HOST_PROGRESS cycles=59500000 pc=8000621a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+
+SSA_ACCOUNT pid=32 test=2 role=1 counter=2 original=0000000000086bf8 final=000000000008bd94 off=000000000000519c recordSSA_HOST_PROGRESS cycles=59600000 pc=800061a4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+ed=0000000000000be3 raw=0000000000005d7f valid=1 rebased=1 session=16
+SSA_EXIT pid=32 complete=1 selector=0 session=16
+SSA_HOST_PROGRESS cycles=59700000 pc=8000877e prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=59800000 pc=e0002080dc prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000254e70 stval=0 satp_mode=8 satp_ppn=80218
+SSA_UNMONITORED pid=1 selector=0
+SSA LINUX DUAL USER PASS
+SSA_HOST_PROGRESS cycles=59900000 pc=e00028e882 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=10644 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=60000000 pc=e000339882 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002816c0 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=60100000 pc=800088fa prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=1030e stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=60200000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60300000 pc=e000339a54 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60400000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60500000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60600000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60700000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60800000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=60900000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_BEGIN pid=33 session=17 image=4 pool=2281701376 depth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=61000000 pc=e00023c1b4 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=61100000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61200000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61300000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61400000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61500000 pc=e000339a84 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61600000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61700000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=61800000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_BEGIN pid=34 session=1SSA_HOST_PROGRESS cycles=61900000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+8 image=4 pool=2348810240 depth=0 next=1 selector=2348810240
+SSA_HOST_PROGRESS cycles=62000000 pc=e000295a44 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103dc stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=62100000 pc=101fc prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=1014c stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=62200000 pc=e000314420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_SESSION pid=33 session=17 image=4 reason=exit comm=regress selector=0 cutoff_cycle=62189201 cutoff_instret=36086062 cutoff_timSSA_HOST_PROGRESS cycles=62300000 pc=8000056e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+e=621896
+SSA_EXPORT pid=33 uid=1000 role=2 test=3 legacy=1 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=2 SSA_HOST_PROGRESS cycles=62400000 pc=800063be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+session=17
+SSA_SWITCH pid=33 test=3 role=2 event=0 to=7 from=34 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 SSA_HOST_PROGRESS cycles=62500000 pc=8000640c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+csr_cause=0000000000000008 resumed=1 preempt=0 session=17
+SSA_SAMPLE pid=33 event=0 counter=0 S=0000000003a359e9 R=0000000SSA_HOST_PROGRESS cycles=62600000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+003b22abc delta=00000000000ed0d3 session=17
+SSA_SAMPLE pid=33 event=0 counter=1 S=0000000002209cda R=0000000002243fc1 deltaSSA_HOST_PROGRESS cycles=62700000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+=000000000003a2e7 session=17
+SSA_SAMPLE pid=33 event=0 counter=2 S=0000000000095047 R=0000000000097633 delta=00000000000025SSA_HOST_PROGRESS cycles=62800000 pc=80009a3a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+ec session=17
+SSA_SWITCH pid=33 test=3 role=2 event=1 to=34 from=34 depth=2 rid=2 state=1 ivcsw=1 cause=00000000000000SSA_HOST_PROGRESS cycles=62900000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+08 csr_cause=0000000000000008 resumed=1 preempt=0 session=17
+SSA_SAMPLE pid=33 event=1 counter=0 S=0000000003b258e7 R=00000SSA_HOST_PROGRESS cycles=63000000 pc=80005464 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+00003b4d97e delta=0000000000028097 session=17
+SSA_SAMPLE pid=33 event=1 counter=1 S=0000000002244c47 R=000000000226973b delSSA_HOST_PROGRESS cycles=63100000 pc=80005484 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+ta=0000000000024af4 session=17
+SSA_SAMPLE pid=33 event=1 counter=2 S=00000000000976ab R=0000000000097d11 delta=000000000000SSA_HOST_PROGRESS cycles=63200000 pc=80006560 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+0666 session=17
+SSA_RECORD pid=33 id=1 callee=000000000001024e parent=0 cycle=174535 instret=154321 time=1745 session=17 oSSA_HOST_PROGRESS cycles=63300000 pc=80000560 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+pen=0
+SSA_RECORD pid=33 id=2 callee=0000000000010114 parent=1 cycle=173810 instret=154222 time=1738 session=17 open=0
+SSA_HOST_PROGRESS cycles=63400000 pc=e00032e570 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_ACCOUNT pid=33 test=3 role=2 counter=0 original=0000000003b240b0 final=0000000003b240b0 off=0000000000028097 recordedSSA_HOST_PROGRESS cycles=63500000 pc=80006372 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+=000000000002a6f2 raw=000000000002a6f2 valid=1 rebased=0 session=17
+SSA_ACCOUNT pid=33 test=3 role=2 counter=1 originaSSA_HOST_PROGRESS cycles=63600000 pc=8000634c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+l=0000000002244505 final=0000000002244505 off=0000000000024af4 recorded=0000000000025a6e raw=0000000000025a6e valid=1 rebased=0 session=17SSA_HOST_PROGRESS cycles=63700000 pc=80006530 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+
+SSA_ACCOUNT pid=33 test=3 role=2 counter=2 original=0000000000097668 final=0000000000097668 off=0000000000000666 recoSSA_HOST_PROGRESS cycles=63800000 pc=80003742 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=8021b
+rded=00000000000006ca raw=00000000000006ca valid=1 rebased=0 session=17
+SSA_EXIT pid=33 complete=1 selector=0 session=17
+SSA_HOST_PROGRESS cycles=63900000 pc=e00023d34c prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=8021b
+SSA_HOST_PROGRESS cycles=64000000 pc=e0002ffed0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000286020 stval=0 satp_mode=8 satp_ppn=80218
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=64100000 pc=10160 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101cc stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=64200000 pc=101c8 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10178 stval=0 satp_mode=8 satp_ppn=80204
+SSA_SESSION pid=34 session=18 image=4 reason=exit comm=regress selector=0 cutoff_cycle=64211036 cutofSSA_HOST_PROGRESS cycles=64300000 pc=80000574 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+f_instret=37707331 cutoff_time=642114
+SSA_EXPORT pid=34 uid=1000 role=1 test=3 legacy=1 pool=2348810240 complete=1 depSSA_HOST_PROGRESS cycles=64400000 pc=800061c2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+th=0 next=3 spill=0 events=4 session=18
+SSA_SWITCH pid=34 test=3 role=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcSSA_HOST_PROGRESS cycles=64500000 pc=80006372 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+sw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=18
+SSA_SAMPLE pid=34 event=0 counter=0 SSSA_HOST_PROGRESS cycles=64600000 pc=80006548 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+=0000000003b1ddce R=0000000003b1f5cf delta=0000000000001801 session=18
+SSA_SAMPLE pid=34 event=0 counter=1 S=0000000002242bc6SSA_HOST_PROGRESS cycles=64700000 pc=800061d8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ R=00000000022432ad delta=00000000000006e7 session=18
+SSA_SAMPLE pid=34 event=0 counter=2 S=000000000009756f R=0000000000097SSA_HOST_PROGRESS cycles=64800000 pc=80006392 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+5ab delta=000000000000003c session=18
+SSA_SWITCH pid=34 test=3 role=1 event=1 to=33 from=33 depth=0 rid=0 state=0 ivcswSSA_HOST_PROGRESS cycles=64900000 pc=80006510 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=18
+SSA_SAMPLE pid=34 event=1 counter=0 S=00SSA_HOST_PROGRESS cycles=65000000 pc=80006564 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+00000003b226a7 R=0000000003b25cd4 delta=000000000000362d session=18
+SSA_SAMPLE pid=34 event=1 counter=1 S=0000000002243df7 SSA_HOST_PROGRESS cycles=65100000 pc=8000630c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+R=0000000002244e11 delta=000000000000101a session=18
+SSA_SAMPLE pid=34 event=1 counter=2 S=000000000009762a R=0000000000097SSA_HOST_PROGRESS cycles=65200000 pc=8000642e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+6b3 delta=0000000000000089 session=18
+SSA_SWITCH pid=34 test=3 role=1 event=2 to=33 from=7 depth=2 rid=2 state=0 ivcswSSA_HOST_PROGRESS cycles=65300000 pc=e0002f94a4 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 session=18
+SSA_SAMPLE pid=34 event=2 counter=0 S=0SSA_HOST_PROGRESS cycles=65400000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+000000003b4d5b8 R=0000000003d15bff delta=00000000001c8647 session=18
+SSA_SAMPLE pid=34 event=2 counter=1 S=0000000002269571SSA_HOST_PROGRESS cycles=65500000 pc=80009a34 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ R=00000000023d408d delta=000000000016ab1c session=18
+SSA_SAMPLE pid=34 event=2 counter=2 S=0000000000097d09 R=000000000009cSSA_HOST_PROGRESS cycles=65600000 pc=8000620e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+60f delta=0000000000004906 session=18
+SSA_SWITCH pid=34 test=3 role=1 event=3 to=13 from=13 depth=2 rid=2 state=0 ivcsSSA_HOST_PROGRESS cycles=65700000 pc=e0002f94a0 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+w=5 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 session=18
+SSA_SAMPLE pid=34 event=3 counter=0 S=SSA_HOST_PROGRESS cycles=65800000 pc=800099de prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0000000003d35edd R=0000000003d379e4 delta=0000000000001b07 session=18
+SSA_SAMPLE pid=34 event=3 counter=1 S=00000000023f0eaSSA_HOST_PROGRESS cycles=65900000 pc=80004ee2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+8 R=00000000023f1793 delta=00000000000008eb session=18
+SSA_SAMPLE pid=34 event=3 counter=2 S=000000000009cb36 R=000000000009SSA_HOST_PROGRESS cycles=66000000 pc=80000570 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+cb7a delta=0000000000000044 session=18
+SSA_RECORD pid=34 id=1 callee=000000000001024e parent=0 cycle=2187177 instret=1772SSA_HOST_PROGRESS cycles=66100000 pc=800005ae prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+495 time=21872 session=18 open=0
+SSA_RECORD pid=34 id=2 callee=0000000000010114 parent=1 cycle=2186369 instret=1772396 tiSSA_HOST_PROGRESS cycles=66200000 pc=80003722 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+me=21864 session=18 open=0
+SSA_ACCOUNT pid=34 test=3 role=1 counter=0 original=0000000003b265f3 final=0000000003b265f3SSA_HOST_PROGRESS cycles=66300000 pc=e0002fa660 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ off=00000000001ca14e recorded=0000000000215c81 raw=0000000000215c81 valid=1 rebased=0 session=18
+SSA_ACCOUNT pid=34 SSA_HOST_PROGRESS cycles=66400000 pc=80006550 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+test=3 role=1 counter=1 original=000000000224511c final=000000000224511c off=000000000016b407 recorded=00000000001b0b6c raw=00000000001b0bSSA_HOST_PROGRESS cycles=66500000 pc=80006412 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+6c valid=1 rebased=0 session=18
+SSA_ACCOUNT pid=34 test=3 role=1 counter=2 original=00000000000976c7 final=00000000000SSA_HOST_PROGRESS cycles=66600000 pc=80006818 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+976c7 off=000000000000494a recorded=0000000000005568 raw=0000000000005568 valid=1 rebased=0 session=18
+SSA_EXIT pid=34 complete=SSA_HOST_PROGRESS cycles=66700000 pc=800061b8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+1 selector=0 session=18
+SSA_HOST_PROGRESS cycles=66800000 pc=800043c2 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80204
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=66900000 pc=e0002f9606 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1010a stval=0 satp_mode=8 satp_ppn=80218
+SSA LINUX DUAL USER PASS
+SSA_HOST_PROGRESS cycles=67000000 pc=e00021c0b8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000339a84 stval=0 satp_mode=8 satp_ppn=80218
+SSA_HOST_PROGRESS cycles=67100000 pc=e000281d84 prv=1 trapdepth=1 private=0
+SSA_CSR scause=c sepc=10274 stval=10274 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67200000 pc=e000339a4c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67300000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67400000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67500000 pc=e000339a30 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67600000 pc=e000339a6c prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67700000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67800000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=67900000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+SSA_BEGIN pid=35 session=19 image=4 pool=2281701376 deSSA_HOST_PROGRESS cycles=68000000 pc=8000642c prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80204
+pth=0 next=1 selector=2281701376
+SSA_HOST_PROGRESS cycles=68100000 pc=e000285e80 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=1037e stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68200000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68300000 pc=e000339a10 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68400000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68500000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68600000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68700000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68800000 pc=e000339a50 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=68900000 pc=e000339a70 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=103b4 stval=0 satp_mode=8 satp_ppn=80213
+SSA_BEGIN pid=36 session=20 image=4 pool=2348810240 depth=0 next=1 selector=2348810240
+SSA_HOST_PROGRESS cycles=69000000 pc=80008906 prv=3 trapdepth=3 private=0
+SSA_CSR scause=8000000000000005 sepc=e000248244 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=69100000 pc=101b0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101f8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=69200000 pc=10124 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=1024c stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=69300000 pc=101b0 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=1013c stval=0 satp_mode=8 satp_ppn=80204
+SSA_HOST_PROGRESS cycles=69400000 pc=e000215608 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104c0 stval=0 satp_mode=8 satp_ppn=80204
+SSA_SESSION pid=35 session=19 image=4 reason=exit comm=regress selector=0 cutoff_cycle=69400622 cutoff_instret=40SSA_HOST_PROGRESS cycles=69500000 pc=800062e2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+738053 cutoff_time=694010
+SSA_EXPORT pid=35 uid=1000 role=2 test=4 legacy=1 pool=2281701376 complete=1 depth=0 next=3 sSSA_HOST_PROGRESS cycles=69600000 pc=80000540 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+pill=0 events=2 session=19
+SSA_SWITCH pid=35 test=4 role=2 event=0 to=7 from=36 depth=0 rid=0 state=1 ivcsw=1 cause=SSA_HOST_PROGRESS cycles=69700000 pc=80005436 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=19
+SSA_SAMPLE pid=35 event=0 counter=0 S=0000000004SSA_HOST_PROGRESS cycles=69800000 pc=e0002f9488 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0ea17d R=00000000041d8ff1 delta=00000000000eee74 session=19
+SSA_SAMPLE pid=35 event=0 counter=1 S=0000000002650703 R=000000SSA_HOST_PROGRESS cycles=69900000 pc=8000370e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+000268af85 delta=000000000003a882 session=19
+SSA_SAMPLE pid=35 event=0 counter=2 S=00000000000a62e9 R=00000000000a8922 deltSSA_HOST_PROGRESS cycles=70000000 pc=80000554 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+a=0000000000002639 session=19
+SSA_SWITCH pid=35 test=4 role=2 event=1 to=36 from=36 depth=2 rid=2 state=1 ivcsw=1 cauSSA_HOST_PROGRESS cycles=70100000 pc=800099dc prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+se=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=19
+SSA_SAMPLE pid=35 event=1 counter=0 S=00000000SSA_HOST_PROGRESS cycles=70200000 pc=80000574 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+041dbf6c R=00000000041fab1a delta=000000000001ebae session=19
+SSA_SAMPLE pid=35 event=1 counter=1 S=000000000268bc0b R=0000SSA_HOST_PROGRESS cycles=70300000 pc=80000592 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0000026a71e8 delta=000000000001b5dd session=19
+SSA_SAMPLE pid=35 event=1 counter=2 S=00000000000a899d R=00000000000a8e86 deSSA_HOST_PROGRESS cycles=70400000 pc=80006258 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+lta=00000000000004e9 session=19
+SSA_RECORD pid=35 id=1 callee=000000000001024e parent=0 cycle=347583 instret=321252 time=SSA_HOST_PROGRESS cycles=70500000 pc=80004538 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+3476 session=19 open=0
+SSA_RECORD pid=35 id=2 callee=0000000000010114 parent=1 cycle=346990 instret=321153 time=3470 sessSSA_HOST_PROGRESS cycles=70600000 pc=8000681e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ion=19 open=0
+SSA_ACCOUNT pid=35 test=4 role=2 counter=0 original=00000000041da65d final=00000000041da65d off=00000000SSA_HOST_PROGRESS cycles=70700000 pc=800062da prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+0001ebae recorded=0000000000054b6e raw=0000000000054b6e valid=1 rebased=0 session=19
+SSA_ACCOUNT pid=35 test=4 role=2 SSA_HOST_PROGRESS cycles=70800000 pc=80006420 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+counter=1 original=000000000268b4c9 final=000000000268b4c9 off=000000000001b5dd recorded=000000000004e681 raw=000000000004e681 valid=1 rebSSA_HOST_PROGRESS cycles=70900000 pc=80004eb2 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ased=0 session=19
+SSA_ACCOUNT pid=35 test=4 role=2 counter=2 original=00000000000a8958 final=00000000000a8958 off=00000SSA_HOST_PROGRESS cycles=71000000 pc=80006516 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+000000004e9 recorded=0000000000000d8e raw=0000000000000d8e valid=1 rebased=0 session=19
+SSA_EXIT pid=35 complete=1 selector=0 sSSA_HOST_PROGRESS cycles=71100000 pc=800067fe prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80204
+ession=19
+SSA_HOST_PROGRESS cycles=71200000 pc=e000222842 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8000000000000005 sepc=e000267508 stval=0 satp_mode=8 satp_ppn=80204
+SSA_UNMONITORED pid=1 selector=0
+SSA_HOST_PROGRESS cycles=71300000 pc=1014c prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=10200 stval=0 satp_mode=8 satp_ppn=80213
+SSA_HOST_PROGRESS cycles=71400000 pc=10158 prv=0 trapdepth=0 private=0
+SSA_CSR scause=8000000000000005 sepc=101ec stval=0 satp_mode=8 satp_ppn=80213
+SSA_SESSION pid=36 session=20 image=4 reason=exit coSSA_HOST_PROGRESS cycles=71500000 pc=800061a0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+mm=regress selector=0 cutoff_cycle=71447020 cutoff_instret=42393310 cutoff_time=714474
+SSA_EXPORT pid=36 uid=1000 role=SSA_HOST_PROGRESS cycles=71600000 pc=e0002f94c8 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+1 test=4 legacy=1 pool=2348810240 complete=1 depth=0 next=3 spill=0 events=3 session=20
+SSA_SWITCH pid=36 test=4 roleSSA_HOST_PROGRESS cycles=71700000 pc=80006330 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=20
+SSA_HOST_PROGRESS cycles=71800000 pc=e000339984 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=36 event=0 counter=0 S=00000000041d40a9 R=00000000041d5963 delta=00000000000018ba session=20
+SSASSA_HOST_PROGRESS cycles=71900000 pc=800068be prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+_SAMPLE pid=36 event=0 counter=1 S=0000000002689b8a R=000000000268a271 delta=00000000000006e7 session=20
+SSA_SAMPLE pid=36 evSSA_HOST_PROGRESS cycles=72000000 pc=80006514 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+ent=0 counter=2 S=00000000000a8858 R=00000000000a8898 delta=0000000000000040 session=20
+SSA_SWITCH pid=36 test=4 role=SSA_HOST_PROGRESS cycles=72100000 pc=800005ba prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+1 event=1 to=35 from=35 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=20
+SSA_HOST_PROGRESS cycles=72200000 pc=e000339988 prv=1 trapdepth=1 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+SSA_SAMPLE pid=36 event=1 counter=0 S=00000000041d8b6f R=00000000041dc29d delta=000000000000372e session=20
+SSASSA_HOST_PROGRESS cycles=72300000 pc=80004340 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+_SAMPLE pid=36 event=1 counter=1 S=000000000268adbb R=000000000268bdd5 delta=000000000000101a session=20
+SSA_SAMPLE pid=36 SSA_HOST_PROGRESS cycles=72400000 pc=800005e8 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+event=1 counter=2 S=00000000000a8919 R=00000000000a89a3 delta=000000000000008a session=20
+SSA_SWITCH pid=36 test=4 roSSA_HOST_PROGRESS cycles=72500000 pc=e000202f98 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+le=1 event=2 to=35 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 session=20SSA_HOST_PROGRESS cycles=72600000 pc=80006816 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+
+SSA_SAMPLE pid=36 event=2 counter=0 S=00000000041fa6ff R=00000000043f61ad delta=00000000001fbaae session=20
+SSSA_HOST_PROGRESS cycles=72700000 pc=80004eb4 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+SA_SAMPLE pid=36 event=2 counter=1 S=00000000026a701e R=0000000002843c6c delta=000000000019cc4e session=20
+SSA_SAMPLE pid=3SSA_HOST_PROGRESS cycles=72800000 pc=80006818 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+6 event=2 counter=2 S=00000000000a8e7d R=00000000000adfb6 delta=0000000000005139 session=20
+SSA_RECORD pid=36 id=1 callee=SSA_HOST_PROGRESS cycles=72900000 pc=8000057e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+000000000001024e parent=0 cycle=2384569 instret=1973414 time=23846 session=20 open=0
+SSA_RECORD pid=36 id=2 callee=000000SSA_HOST_PROGRESS cycles=73000000 pc=80006334 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0000010114 parent=1 cycle=2383768 instret=1973315 time=23838 session=20 open=0
+SSA_ACCOUNT pid=36 test=4 role=1 countSSA_HOST_PROGRESS cycles=73100000 pc=800063ee prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+er=0 original=00000000041dcbf6 final=00000000041dcbf6 off=00000000001fbaae recorded=0000000000245f98 raw=0000000000245f98 valid=1 rebasedSSA_HOST_PROGRESS cycles=73200000 pc=80006260 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+=0 session=20
+SSA_ACCOUNT pid=36 test=4 role=1 counter=1 original=000000000268c0e0 final=000000000268c0e0 off=00000000SSA_HOST_PROGRESS cycles=73300000 pc=800068c0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+0019cc4e recorded=00000000001e1c43 raw=00000000001e1c43 valid=1 rebased=0 session=20
+SSA_ACCOUNT pid=36 test=4 role=1 SSA_HOST_PROGRESS cycles=73400000 pc=80006422 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+counter=2 original=00000000000a89b8 final=00000000000a89b8 off=0000000000005139 recorded=0000000000005d1e raw=0000000000005d1e valid=1 reSSA_HOST_PROGRESS cycles=73500000 pc=8000656a prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=104e8 stval=0 satp_mode=8 satp_ppn=80213
+based=0 session=20
+SSA_EXIT pid=36 complete=1 selector=0 session=20
+SSA_HOST_PROGRESS cycles=73600000 pc=80000616 prv=1 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e000247584 stval=0 satp_mode=8 satp_ppn=80213
+SSSA_HOST_PROGRESS cycles=73700000 pc=800005e0 prv=3 trapdepth=2 private=0
+SSA_CSR scause=8 sepc=106c0 stval=0 satp_mode=8 satp_ppn=80218
+SA_UNMONITORED pid=1 selector=0
+SSA LINUX DUAL USER PASS
+SSA LINUX PROCESS FIXTURE PASSSSA_HOST_PROGRESS cycles=73800000 pc=8000651e prv=3 trapdepth=2 private=0
+SSA_CSR scause=8000000000000005 sepc=e0002f9e58 stval=0 satp_mode=8 satp_ppn=80218
+
+reboot: Power down
+[UART] UART0 is here (stdin/stdout).

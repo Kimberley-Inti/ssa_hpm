@@ -1,0 +1,328 @@
+From 469bfac7de26bfbb03298787ad030898c6de24c9 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 00:19:30 +0800
+Subject: [PATCH] Attribute optional standard DTLB PTW-request HPM3 intervals
+ to SSA records
+
+---
+ scripts/gen-ssa-rom.py                 |  28 +++--
+ src/main/resources/ssa/microcode.S     |  22 ++++
+ src/main/scala/rocket/CSR.scala        |   7 +-
+ src/main/scala/rocket/RocketCore.scala | 137 ++++++++++++++++++++++++-
+ 4 files changed, 179 insertions(+), 15 deletions(-)
+
+diff --git a/scripts/gen-ssa-rom.py b/scripts/gen-ssa-rom.py
+index 0e73f88b7..c8cf7dcb4 100644
+--- a/scripts/gen-ssa-rom.py
++++ b/scripts/gen-ssa-rom.py
+@@ -5,20 +5,26 @@ root = pathlib.Path(__file__).resolve().parents[1]
+ parser = argparse.ArgumentParser()
+ parser.add_argument('--check', action='store_true')
+ args = parser.parse_args()
+-with tempfile.TemporaryDirectory() as d:
+-    obj = pathlib.Path(d) / 'microcode.elf'
+-    prefix = os.environ.get('CROSS_COMPILE', 'riscv64-unknown-elf-')
+-    subprocess.run([prefix+'gcc', '-nostdlib', '-march=rv64g', '-mabi=lp64d',
+-                    '-Wl,-Ttext=0', '-Wl,--no-relax', str(root/'src/main/resources/ssa/microcode.S'), '-o', str(obj)], check=True)
+-    dump = subprocess.check_output([prefix+'objdump', '-d', str(obj)], text=True)
+-words = re.findall(r'^\s*[0-9a-f]+:\s+([0-9a-f]{8})\s', dump, re.M)
+-assert 0 < len(words) <= 256
+ p = root/'src/main/scala/rocket/RocketCore.scala'
+ s = p.read_text()
+-rom = '    val ssa_rom_data = Seq(\n' + ',\n'.join('      "h'+w+'"' for w in words) + '\n    )'
+-updated = re.sub(r'    val ssa_rom_data = Seq\(.*?\n    \)', lambda _: rom, s, count=1, flags=re.S)
++updated = s
++counts = []
++for event, name in [(False, 'ssa_rom_data'), (True, 'ssa_event_rom_data')]:
++    with tempfile.TemporaryDirectory() as d:
++        obj = pathlib.Path(d) / 'microcode.elf'
++        prefix = os.environ.get('CROSS_COMPILE', 'riscv64-unknown-elf-')
++        subprocess.run([prefix+'gcc', '-nostdlib', '-march=rv64g', '-mabi=lp64d',
++                        *(['-DSSA_HPM_EVENT'] if event else []), '-Wl,-Ttext=0', '-Wl,--no-relax',
++                        str(root/'src/main/resources/ssa/microcode.S'), '-o', str(obj)], check=True)
++        dump = subprocess.check_output([prefix+'objdump', '-d', str(obj)], text=True)
++    words = re.findall(r'^\s*[0-9a-f]+:\s+([0-9a-f]{8})\s', dump, re.M)
++    assert 0 < len(words) <= 256
++    counts.append(len(words))
++    rom = '    val '+name+' = Seq(\n' + ',\n'.join('      "h'+w+'"' for w in words) + '\n    )'
++    updated, n = re.subn(r'    val '+name+r' = Seq\(.*?\n    \)', lambda _: rom, updated, count=1, flags=re.S)
++    assert n == 1, name
+ if args.check:
+     assert s == updated, 'SCCodeTable differs from ssa/microcode.S; run ssa/gen_rom.py'
+ else:
+     p.write_text(updated)
+-print(f'SCCodeTable: {len(words)} instructions ({len(words)*4} bytes)')
++print('SCCodeTable instruction counts, ABI1/ABI2:', counts)
+diff --git a/src/main/resources/ssa/microcode.S b/src/main/resources/ssa/microcode.S
+index f91623223..402fc83fc 100644
+--- a/src/main/resources/ssa/microcode.S
++++ b/src/main/resources/ssa/microcode.S
+@@ -55,6 +55,9 @@ allocate:
+     sd zero, 16(t6)
+     sd zero, 24(t6)
+     sd zero, 32(t6)
++#ifdef SSA_HPM_EVENT
++    sd zero, 40(t6)          # ABI2: DTLB accepted PTW requests
++#endif
+     lwu t0, 0(a4)
+     sd t0, 88(t6)
+     sw t5, 0(a4)
+@@ -71,6 +74,10 @@ push:
+     sd t0, 8(t6)
+     sd t1, 16(t6)
+     sd a3, 24(t6)
++#ifdef SSA_HPM_EVENT
++    csrr a4, 0xb03
++    sd a4, 32(t6)          # ABI2 fourth entry snapshot
++#endif
+     j normal_exit
+ full:
+     ld t0, 24(t2)
+@@ -91,6 +98,9 @@ pop:
+     csrr t1, minstret
+     li a3, 0x200bff8
+     ld a3, 0(a3)
++#ifdef SSA_HPM_EVENT
++    csrr a4, 0xb03
++#endif
+     slli t6, t3, 6
+     sub t6, t2, t6
+     ld t5, 0(t6)
+@@ -100,6 +110,12 @@ pop:
+     sub t1, t1, t4
+     ld t4, 24(t6)
+     sub a3, a3, t4
++#ifdef SSA_HPM_EVENT
++    ld t4, 32(t6)
++    sub a4, a4, t4
++    li a5, 0xffffffffff
++    and a4, a4, a5         # counter3 is 40 bits, including wrap
++#endif
+     li t6, -37748736
+     add t6, a0, t6
+     slli t5, t5, 7
+@@ -113,6 +129,12 @@ pop:
+     ld t4, 32(t6)
+     add t4, t4, a3
+     sd t4, 32(t6)
++#ifdef SSA_HPM_EVENT
++    ld t4, 40(t6)
++    add t4, t4, a4
++    and t4, t4, a5
++    sd t4, 40(t6)
++#endif
+     addi t3, t3, -1
+     sd t3, 0(t2)
+ normal_exit:
+diff --git a/src/main/scala/rocket/CSR.scala b/src/main/scala/rocket/CSR.scala
+index 12cd403bc..a5a1d75ed 100644
+--- a/src/main/scala/rocket/CSR.scala
++++ b/src/main/scala/rocket/CSR.scala
+@@ -290,6 +290,7 @@ class CSRFileIO(implicit p: Parameters) extends CoreBundle
+   //[Edited1]========================
+   val scbasereg = Output(UInt(xLen.W))
+   val ssa_context_active = Output(Bool())
++  val ssa_event_enabled = Output(Bool())
+   //=================================
+ 
+   val vector = usingVector.option(new Bundle {
+@@ -491,6 +492,8 @@ class CSRFile(
+   // traps in software. Privilege, rather than a per-hart nesting history,
+   // defines application notifications in the opt-in Linux policy.
+   val reg_ssa_user_only = RegInit(false.B)
++  val reg_ssa_event_enabled = RegInit(false.B)
++  io.ssa_event_enabled := reg_ssa_event_enabled
+   io.ssa_context_active := Mux(reg_ssa_user_only, reg_mstatus.prv === PRV.U,
+     !reg_ssa_trap_depth.orR) && !reg_ssa_trap_overflow
+   //===================================
+@@ -687,7 +690,7 @@ class CSRFile(
+ 
+   //[Edited 3]==========================
+   read_mapping += 0x800 -> reg_scbasereg
+-  read_mapping += 0x5c0 -> reg_ssa_user_only.asUInt
++  read_mapping += 0x5c0 -> Cat(reg_ssa_event_enabled, reg_ssa_user_only)
+   // Custom user read-only CSR: depth[7:0], sticky fail-closed overflow[8].
+   read_mapping += 0xcc0 -> Cat(reg_ssa_trap_overflow, reg_ssa_trap_depth)
+   //====================================
+@@ -1250,7 +1253,7 @@ class CSRFile(
+ 
+     //[Edited 4]===============================================
+     when (decoded_addr(0x800))         {reg_scbasereg := wdata}
+-    when (decoded_addr(0x5c0))         {reg_ssa_user_only := wdata(0)}
++    when (decoded_addr(0x5c0))         {reg_ssa_user_only := wdata(0); reg_ssa_event_enabled := (if (nPerfCounters > 0) wdata(1) else false.B)}
+     //=========================================================
+ 
+     if (mtvecWritable)
+diff --git a/src/main/scala/rocket/RocketCore.scala b/src/main/scala/rocket/RocketCore.scala
+index d1fb7c2ad..380a8ed7b 100644
+--- a/src/main/scala/rocket/RocketCore.scala
++++ b/src/main/scala/rocket/RocketCore.scala
+@@ -391,10 +391,132 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+       "h01c3b023",
+       "h00060067"
+     )
++    val ssa_event_rom_data = Seq(
++      "hfc050393",
++      "h0003be03",
++      "h0103be83",
++      "h10058a63",
++      "h100e9263",
++      "h10000293",
++      "h0e5e7e63",
++      "h00000693",
++      "h000e0863",
++      "h006e1293",
++      "h405382b3",
++      "h0002b683",
++      "h00165293",
++      "h00d2c2b3",
++      "h00040337",
++      "hfff3031b",
++      "h0062f2b3",
++      "h00229293",
++      "hffefc337",
++      "hfc03031b",
++      "h00650333",
++      "h00530733",
++      "h00076f03",
++      "hfdc007b7",
++      "h00f507b3",
++      "h020f0263",
++      "h007f1293",
++      "h00578fb3",
++      "h000fb283",
++      "h00c29663",
++      "h008fb283",
++      "h04d28663",
++      "h058fbf03",
++      "hfe1ff06f",
++      "h0083bf03",
++      "h000402b7",
++      "h065f7c63",
++      "h001f0293",
++      "h0053b423",
++      "h007f1293",
++      "h00578fb3",
++      "h00cfb023",
++      "h00dfb423",
++      "h000fb823",
++      "h000fbc23",
++      "h020fb023",
++      "h020fb423",
++      "h00076283",
++      "h045fbc23",
++      "h01e72023",
++      "h001e0e13",
++      "h01c3b023",
++      "h006e1293",
++      "h40538fb3",
++      "h01efb023",
++      "hb00022f3",
++      "hb0202373",
++      "h0200c6b7",
++      "hff86869b",
++      "h0006b683",
++      "h005fb423",
++      "h006fb823",
++      "h00dfbc23",
++      "hb0302773",
++      "h02efb023",
++      "h0d00006f",
++      "h0183b283",
++      "h00128293",
++      "h0053bc23",
++      "h001e8e93",
++      "h01d3b823",
++      "h0b80006f",
++      "h000e8863",
++      "hfffe8e93",
++      "h01d3b823",
++      "h0a80006f",
++      "h0a0e0263",
++      "hb00022f3",
++      "hb0202373",
++      "h0200c6b7",
++      "hff86869b",
++      "h0006b683",
++      "hb0302773",
++      "h006e1f93",
++      "h41f38fb3",
++      "h000fbf03",
++      "h008fbe83",
++      "h41d282b3",
++      "h010fbe83",
++      "h41d30333",
++      "h018fbe83",
++      "h41d686b3",
++      "h020fbe83",
++      "h41d70733",
++      "h0010079b",
++      "h02879793",
++      "hfff78793",
++      "h00f77733",
++      "hfdc00fb7",
++      "h01f50fb3",
++      "h007f1f13",
++      "h01ef8fb3",
++      "h010fbe83",
++      "h005e8eb3",
++      "h01dfb823",
++      "h018fbe83",
++      "h006e8eb3",
++      "h01dfbc23",
++      "h020fbe83",
++      "h00de8eb3",
++      "h03dfb023",
++      "h028fbe83",
++      "h00ee8eb3",
++      "h00fefeb3",
++      "h03dfb423",
++      "hfffe0e13",
++      "h01c3b023",
++      "h00060067"
++    )
++    val ssa_event_rom = chisel3.VecInit(ssa_event_rom_data.map(x => x.U(32.W)))
++    val ssa_event_active = RegInit(false.B)
+     val ssa_rom = chisel3.VecInit(ssa_rom_data.map(x => x.U(32.W)))
+     val ssa_pc = RegInit(0.U(8.W))
+     val ssa_base_pc = "h10000000".U(64.W)
+-    val ssa_inst_raw = ssa_rom(ssa_pc)
++    val ssa_inst_raw = Mux(ssa_event_active, ssa_event_rom(ssa_pc), ssa_rom(ssa_pc))
+ 
+     val id_expanded_inst = ibuf.io.inst.map(_.bits.inst)
+     val orig_id_raw_inst = ibuf.io.inst.map(_.bits.raw)
+@@ -1132,6 +1254,16 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+ 
+     // evaluate performance counters
+     val icache_blocked = !(io.imem.resp.valid || RegNext(io.imem.resp.valid))
++    val ssa_dtlb_request = io.dmem.perf.tlbMiss
++    chisel3.dontTouch(ssa_dtlb_request)
++    if (nPerfCounters > 0) {
++      when (PlusArg("ssa_event_trace", default = 0).orR &&
++        (ssa_dtlb_request || csr.io.counters(0).inc.orR)) {
++        printf("SSA_DTLB_EDGE cyc=%x src=%d inc=%d sel=%x private=%d\n",
++          csr.io.time, ssa_dtlb_request, csr.io.counters(0).inc,
++          csr.io.counters(0).eventSel, ssa_trap_mode)
++      }
++    }
+     csr.io.counters foreach { c => c.inc := RegNext(perfEvents.evaluate(c.eventSel)) }
+ 
+     val coreMonitorBundle = Wire(new CoreMonitorBundle(xLen, fLen))
+@@ -1231,12 +1363,13 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+ 
+     val wb_target_pc = RegEnable(mem_npc, mem_pc_valid)
+ 
+-    val ssa_rom_limit = (ssa_rom_data.length - 1).U
++    val ssa_rom_limit = Mux(ssa_event_active, (ssa_event_rom_data.length - 1).U, (ssa_rom_data.length - 1).U)
+     val normal_exit = ssa_trap_mode && wb_valid && wb_reg_inst === "h00060067".U
+     enter_ssa := (is_call_wb || is_ret_wb) && !ssa_trap_mode
+     exit_ssa := normal_exit
+ 
+     when (enter_ssa) {
++      ssa_event_active := csr.io.ssa_event_enabled
+       ssa_trap_mode := true.B
+       ssa_pc := 0.U
+       ssa_busy := false.B
+-- 
+2.34.1
+

@@ -1,0 +1,216 @@
+From 07fb4b1efd171f1453b1bcd13ce113a7e6f1b307 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 00:04:45 +0800
+Subject: [PATCH 1/2] Preserve optional DTLB request counter across Linux
+ monitoring sessions
+
+---
+ kernel/ssa_hpm.c | 68 ++++++++++++++++++++++++++++--------------------
+ 1 file changed, 40 insertions(+), 28 deletions(-)
+
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 6fe786dfd..7b53935f9 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -19,65 +19,71 @@
+ #define STOPPED 3
+ struct ssa_record {u64 callee,parent,count[3],reserved[6],next,rsv,pad[3];};
+ struct ssa_pool {unsigned long base; void *top; struct ssa_record *records; bool busy;};
+-struct ssa_event {u64 s[3],r[3],depth,rid,cause,csr_cause; int other,from; unsigned long task_state,nivcsw; bool resumed,preempt;};
++struct ssa_event {u64 s[4],r[4],depth,rid,cause,csr_cause; int other,from; unsigned long task_state,nivcsw; bool resumed,preempt;};
+ struct ssa_hpm_state {
+  struct ssa_pool *pool;
+  unsigned int state,role,test,uid,n;
++ bool event;
+  bool legacy,bad,proof_seen,proof_valid;
+  u64 session, image_id;
+- u64 off[3],orig[3],common_off[3];
++ u64 off[4],orig[4],common_off[4];
+  struct ssa_event events[MAX_EVENTS];
+ };
+ static struct ssa_pool pools[2]={{.base=0x88000000UL},{.base=0x8c000000UL}};
+-static bool available;
++static bool available,event_available;
+ static u64 next_session;
+ static volatile u64 *meta(struct ssa_pool *p){return (void *)((char *)p->top+TOP_SIZE-64);}
+ static volatile u64 *frame(struct ssa_pool *p,u64 n){return (void *)((char *)meta(p)-n*64);}
+-static void sample(u64 *v){
++#define EVENT_MASK ((1ULL<<40)-1)
++static unsigned int nr(struct ssa_hpm_state *p){return p->event?4:3;}
++static void sample(u64 *v,bool event){
+  asm volatile("fence rw,rw; csrr %0,cycle; csrr %1,instret; csrr %2,time"
+   :"=r"(v[0]),"=r"(v[1]),"=r"(v[2])::"memory");
++ if(event)asm volatile("csrr %0,0xc03":"=r"(v[3])::"memory");
+ }
+-static void select_pool(unsigned long b){asm volatile("csrw 0x800,%0"::"r"(b):"memory");}
++static void select_pool(unsigned long b,bool event){
++ if(event)csr_set(0x5c0,2);else csr_clear(0x5c0,2);
++ asm volatile("csrw 0x800,%0"::"r"(b):"memory");}
+ static unsigned long selected(void){unsigned long b;asm volatile("csrr %0,0x800":"=r"(b));return b;}
+ static void pause_task(struct task_struct *t,struct task_struct *other,bool preempt)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm; struct ssa_event *e;
+  volatile u64 *m=meta(p->pool);u64 depth=READ_ONCE(m[0]);unsigned int j;
+  if(p->state!=RUNNING)return;
+- if(selected()!=p->pool->base || depth>256 || p->n>=MAX_EVENTS){p->bad=true;select_pool(0);p->state=STOPPED;return;}
++ if(selected()!=p->pool->base || depth>256 || p->n>=MAX_EVENTS){p->bad=true;select_pool(0,false);p->state=STOPPED;return;}
+  e=&p->events[p->n++]; e->depth=depth;e->other=other?other->pid:0;e->preempt=preempt;
+  e->task_state=READ_ONCE(t->state);e->nivcsw=t->nivcsw;
+  e->cause=task_pt_regs(t)->cause;e->csr_cause=csr_read(CSR_SCAUSE);
+  if(depth)e->rid=READ_ONCE(frame(p->pool,depth)[0]);
+  if(depth>=2 && READ_ONCE(frame(p->pool,2)[0])==2){
+-  if(!p->proof_seen){for(j=0;j<3;j++)p->orig[j]=READ_ONCE(frame(p->pool,2)[j+1]);p->proof_seen=true;p->proof_valid=true;}
+-  else for(j=0;j<3;j++)if(READ_ONCE(frame(p->pool,2)[j+1])!=p->orig[j]+(p->legacy?0:p->common_off[j]))p->proof_valid=false;
++  if(!p->proof_seen){for(j=0;j<nr(p);j++)p->orig[j]=READ_ONCE(frame(p->pool,2)[j+1]);p->proof_seen=true;p->proof_valid=true;}
++  else for(j=0;j<nr(p);j++)if(READ_ONCE(frame(p->pool,2)[j+1])!=((p->orig[j]+(p->legacy?0:p->common_off[j]))&(j==3?EVENT_MASK:~0ULL)))p->proof_valid=false;
+  }
+- sample(e->s);select_pool(0);p->state=PAUSED;
++ sample(e->s,p->event);select_pool(0,false);p->state=PAUSED;
+ }
+ static void resume_task(struct task_struct *t,struct task_struct *other)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm;struct ssa_event *e;
+  volatile u64 *m;u64 d[3],n;unsigned int j;
+  if(p->state!=PAUSED)return;
+- if(selected() || !p->n){p->bad=true;select_pool(0);p->state=STOPPED;return;}
++ if(selected() || !p->n){p->bad=true;select_pool(0,false);p->state=STOPPED;return;}
+  e=&p->events[p->n-1];m=meta(p->pool);n=READ_ONCE(m[0]);
+  if(n!=e->depth || n>256){p->bad=true;p->state=STOPPED;return;}
+- sample(e->r);e->resumed=true;e->from=other?other->pid:0;
+- for(j=0;j<3;j++){d[j]=e->r[j]-e->s[j];p->off[j]+=d[j];}
++ sample(e->r,p->event);e->resumed=true;e->from=other?other->pid:0;
++ for(j=0;j<nr(p);j++){d[j]=(e->r[j]-e->s[j])&(j==3?EVENT_MASK:~0ULL);p->off[j]=(p->off[j]+d[j])&(j==3?EVENT_MASK:~0ULL);}
+  if(p->proof_seen && n>=2 && READ_ONCE(frame(p->pool,2)[0])==2)
+-  for(j=0;j<3;j++)p->common_off[j]+=d[j];
+- if(!p->legacy)for(n=1;n<=e->depth;n++)for(j=0;j<3;j++){
+-  volatile u64 *f=frame(p->pool,n);WRITE_ONCE(f[j+1],READ_ONCE(f[j+1])+d[j]);
++  for(j=0;j<nr(p);j++)p->common_off[j]=(p->common_off[j]+d[j])&(j==3?EVENT_MASK:~0ULL);
++ if(!p->legacy)for(n=1;n<=e->depth;n++)for(j=0;j<nr(p);j++){
++  volatile u64 *f=frame(p->pool,n);WRITE_ONCE(f[j+1],(READ_ONCE(f[j+1])+d[j])&(j==3?EVENT_MASK:~0ULL));
+  }
+- p->state=RUNNING;select_pool(p->pool->base);
++ p->state=RUNNING;select_pool(p->pool->base,p->event);
+ }
+ void ssa_hpm_fork(struct task_struct *t){t->ssa_hpm=NULL;}
+ void ssa_hpm_switch(struct task_struct *prev,struct task_struct *next,bool preempt)
+ {
+  if(!available)return;
+  if(prev->ssa_hpm)pause_task(prev,next,preempt);
+- else select_pool(0);
++ else select_pool(0,false);
+  if(next->ssa_hpm)resume_task(next,prev);
+ }
+ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsigned long test)
+@@ -85,19 +91,21 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+  struct ssa_hpm_state *p=current->ssa_hpm;unsigned long irq;unsigned int i;
+  if(!available)return -ENODEV;
+  if(op==1){
+-  if(flags>1 || role>2 || test>7)return -EINVAL;
++  if(flags>3 || role>2 || test>10)return -EINVAL;
++  if((flags&2) && !event_available)return -ENODEV;
+   if(p)return -EBUSY;
+   p=kzalloc(sizeof(*p),GFP_KERNEL);if(!p)return -ENOMEM;
+   local_irq_save(irq);
+   for(i=0;i<ARRAY_SIZE(pools);i++)if(!pools[i].busy)break;
+   if(i==ARRAY_SIZE(pools)){local_irq_restore(irq);kfree(p);return -EBUSY;}
+-  p->pool=&pools[i];p->pool->busy=true;p->legacy=flags;p->role=role;p->test=test;
++  p->pool=&pools[i];p->pool->busy=true;p->legacy=flags&1;p->event=!!(flags&2);p->role=role;p->test=test;
+   p->uid=__kuid_val(current_uid());p->state=RUNNING;
+   p->session=++next_session;p->image_id=READ_ONCE(current->self_exec_id);
+   memset((char *)p->pool->top+TOP_SIZE-1065024,0,262144*4);
+   memset((void *)meta(p->pool),0,64);WRITE_ONCE(meta(p->pool)[1],1);
+-  current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base);
++  current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base,p->event);
+   pr_emerg("SSA_BEGIN pid=%d session=%llu image=%llu pool=%lu depth=%llu next=%llu selector=%lu\n",current->pid,p->session,p->image_id,p->pool->base,READ_ONCE(meta(p->pool)[0]),READ_ONCE(meta(p->pool)[1]),selected());
++  if(p->event)pr_emerg("SSA_EVENT_BEGIN pid=%d session=%llu abi=2 selector=4098 width=40 depth=0 next=1\n",current->pid,p->session);
+   local_irq_restore(irq);return 0;
+  }
+  if(flags || role || test)return -EINVAL;
+@@ -118,15 +126,15 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+  local_irq_save(irq);
+  if(p->state!=RUNNING || selected()!=p->pool->base || p->bad){local_irq_restore(irq);return -EIO;}
+  if(READ_ONCE(meta(p->pool)[0]) || READ_ONCE(meta(p->pool)[2])){local_irq_restore(irq);return -EBUSY;}
+- select_pool(0);p->state=STOPPED;i=READ_ONCE(meta(p->pool)[1]);
++ select_pool(0,false);p->state=STOPPED;i=READ_ONCE(meta(p->pool)[1]);
+  local_irq_restore(irq);return i?i-1:-EIO;
+ }
+ static void finish_session(struct task_struct *t,bool exec)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm;unsigned long irq;unsigned int i,j;
+- volatile u64 *m;u64 depth,next,spill,cutoff[3];bool complete;
++ volatile u64 *m;u64 depth,next,spill,cutoff[4]={0};bool complete;
+  if(!p)return;
+- local_irq_save(irq);sample(cutoff);select_pool(0);p->state=STOPPED;m=meta(p->pool);
++ local_irq_save(irq);sample(cutoff,p->event);select_pool(0,false);p->state=STOPPED;m=meta(p->pool);
+  depth=READ_ONCE(m[0]);next=READ_ONCE(m[1]);spill=READ_ONCE(m[2]);
+  complete=!p->bad && !depth && !spill && !READ_ONCE(m[3]) && next>0 && next<=EXPORT_RECORDS+1;
+  pr_emerg("SSA_SESSION pid=%d session=%llu image=%llu reason=%s comm=%s selector=%lu cutoff_cycle=%llu cutoff_instret=%llu cutoff_time=%llu\n",t->pid,p->session,p->image_id,exec?"exec":"exit",t->comm,selected(),cutoff[0],cutoff[1],cutoff[2]);
+@@ -136,22 +144,25 @@ static void finish_session(struct task_struct *t,bool exec)
+   struct ssa_event *e=&p->events[i];
+   pr_emerg("SSA_SWITCH pid=%d test=%u role=%u event=%u to=%d from=%d depth=%llu rid=%llu state=%lu ivcsw=%lu cause=%016llx csr_cause=%016llx resumed=%u preempt=%u session=%llu\n",
+    t->pid,p->test,p->role,i,e->other,e->from,e->depth,e->rid,e->task_state,e->nivcsw,e->cause,e->csr_cause,e->resumed,e->preempt,p->session);
+-  for(j=0;j<3;j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx session=%llu\n",t->pid,i,j,e->s[j],e->r[j],e->r[j]-e->s[j],p->session);
++  for(j=0;j<nr(p);j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx session=%llu\n",t->pid,i,j,e->s[j],e->r[j],(e->r[j]-e->s[j])&(j==3?EVENT_MASK:~0ULL),p->session);
+  }
+  for(i=1;i<next && i<=EXPORT_RECORDS;i++){
+   struct ssa_record *r=&p->pool->records[i];unsigned int open=0;u64 f;
+   for(f=1;f<=depth && f<=256;f++)if(READ_ONCE(frame(p->pool,f)[0])==i)open++;
+   pr_emerg("SSA_RECORD pid=%d id=%u callee=%016llx parent=%llu cycle=%llu instret=%llu time=%llu session=%llu open=%u\n",
+    t->pid,i,r->callee,r->parent,r->count[0],r->count[1],r->count[2],p->session,open);
++  if(p->event)pr_emerg("SSA_EVENT_RECORD pid=%d session=%llu id=%u parent=%llu callee=%016llx dtlb=%llu open=%u\n",t->pid,p->session,i,r->parent,r->callee,r->reserved[0],open);
+  }
+- if(p->proof_seen && next==3 && !depth && !spill)for(j=0;j<3;j++){
+-  u64 final=READ_ONCE(frame(p->pool,2)[j+1]);u64 value=p->pool->records[2].count[j];
++ if(p->proof_seen && next==3 && !depth && !spill)for(j=0;j<nr(p);j++){
++  u64 final=READ_ONCE(frame(p->pool,2)[j+1]);u64 mask=j==3?EVENT_MASK:~0ULL;u64 diff=(final-p->orig[j])&mask;u64 value=j==3?p->pool->records[2].reserved[0]:p->pool->records[2].count[j];
+   pr_emerg("SSA_ACCOUNT pid=%d test=%u role=%u counter=%u original=%016llx final=%016llx off=%016llx recorded=%016llx raw=%016llx valid=%u rebased=%u session=%llu\n",
+-   t->pid,p->test,p->role,j,p->orig[j],final,p->common_off[j],value,value+final-p->orig[j],p->proof_valid,final-p->orig[j]==p->common_off[j],p->session);
++   t->pid,p->test,p->role,j,p->orig[j],final,p->common_off[j],value,(value+diff)&mask,p->proof_valid,diff==p->common_off[j],p->session);
+  }
++ if(p->event)pr_emerg("SSA_EVENT_SESSION pid=%d session=%llu reason=%s cutoff=%llu policy=%lu\n",t->pid,p->session,exec?"exec":"exit",cutoff[3],csr_read(0x5c0));
+  if(exec)for(i=1;i<=depth && i<=256;i++){
+   volatile u64 *f=frame(p->pool,i);
+   pr_emerg("SSA_OPEN pid=%d session=%llu frame=%u rid=%llu status=abandoned entry_cycle=%llu entry_instret=%llu entry_time=%llu\n",t->pid,p->session,i,READ_ONCE(f[0]),READ_ONCE(f[1]),READ_ONCE(f[2]),READ_ONCE(f[3]));
++  if(p->event)pr_emerg("SSA_EVENT_OPEN pid=%d session=%llu frame=%u rid=%llu entry=%llu\n",t->pid,p->session,i,READ_ONCE(f[0]),READ_ONCE(f[4]));
+  }
+  if(exec)pr_emerg("SSA_EXEC_END pid=%d session=%llu complete=%u selector=%lu\n",t->pid,p->session,complete,selected());
+  else pr_emerg("SSA_EXIT pid=%d complete=%u selector=%lu session=%llu\n",t->pid,complete,selected(),p->session);
+@@ -172,7 +183,8 @@ static int __init ssa_hpm_init(void)
+    return -ENOMEM;
+   }
+  }
+- select_pool(0);csr_write(0x5c0,1);available=true;
++ select_pool(0,false);csr_write(0x5c0,3);event_available=!!(csr_read(0x5c0)&2);csr_write(0x5c0,1);available=true;
++ pr_emerg("SSA_EVENT_CAPABLE value=%u\n",event_available);
+  pr_emerg("SSA_LINUX_READY user_triggers=1 harts=1 export_limit=%u\n",EXPORT_RECORDS);
+  return 0;
+ }
+-- 
+2.34.1
+
+
+From 49943b80f864a41e4ac13108a77f921e013d3570 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 02:17:13 +0800
+Subject: [PATCH 2/2] Fix fourth-counter resume scratch array bounds
+
+---
+ kernel/ssa_hpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 7b53935f9..aaa3fdf48 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -64,7 +64,7 @@ static void pause_task(struct task_struct *t,struct task_struct *other,bool pree
+ static void resume_task(struct task_struct *t,struct task_struct *other)
+ {
+  struct ssa_hpm_state *p=t->ssa_hpm;struct ssa_event *e;
+- volatile u64 *m;u64 d[3],n;unsigned int j;
++ volatile u64 *m;u64 d[4],n;unsigned int j;
+  if(p->state!=PAUSED)return;
+  if(selected() || !p->n){p->bad=true;select_pool(0,false);p->state=STOPPED;return;}
+  e=&p->events[p->n-1];m=meta(p->pool);n=READ_ONCE(m[0]);
+-- 
+2.34.1
+

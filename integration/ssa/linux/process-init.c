@@ -14,8 +14,18 @@ static __attribute__((always_inline)) inline long api(long op,long flags,long ro
 #endif
 }
 static __attribute__((always_inline)) inline void work(unsigned long n){asm volatile(".option push\n.option norvc\n1:\n.rept 64\nnop\n.endr\naddi %0,%0,-1\nbnez %0,1b\n.option pop":"+r"(n)::"memory");}
+#ifdef SSA_EVENT_SUITE
+static volatile u64 event_pages[512*512] __attribute__((aligned(4096)));
+static __attribute__((always_inline)) inline void touch_pages(u64 n){
+ for(u64 i=0;i<n;i++){u64 x=event_pages[i*512];asm volatile(""::"r"(x):"memory");}
+ asm volatile("fence rw,rw":::"memory");
+}
+#endif
 static __attribute__((noinline,noclone)) void common(long role,long amount){
  if(role==2){long ts[2]={0,1000000};C(101,ts,0,0);}
+#ifdef SSA_EVENT_SUITE
+ if(role==2)touch_pages(512);
+#endif
  work(amount);
 }
 static __attribute__((noinline,noclone)) void parent(long role,long amount){common(role,amount);asm volatile("":::"memory");}
@@ -25,6 +35,9 @@ static void priority(long policy,long prio){int p=prio;require(C(119,0,policy,&p
 static void job(long role,long amount,long test,long legacy,int *pipefd){
  priority(role==2?1:0,role==2?1:0);
  require(C(146,1000,0,0)==0);require(C(174,0,0,0)==1000);
+ #ifdef SSA_EVENT_SUITE
+ legacy|=2;
+#endif
  require(api(1,legacy,role,test)==0);
  /* Only inlined syscalls execute while selected, except the two measured calls. */
  if(pipefd){char token='x';if(role==2){if(C(63,pipefd[0],&token,1)!=1)die(91);}else if(C(64,pipefd[1],&token,1)!=1)die(92);}

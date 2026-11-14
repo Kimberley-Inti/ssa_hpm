@@ -1,0 +1,68 @@
+From c83d3aadaef39a9ddb3cb2e25bb89399ff856126 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 00:04:46 +0800
+Subject: [PATCH 1/2] Select and initialize Rocket DTLB PTW-request HPM3
+ profile
+
+---
+ platform/ssa_rocket/platform.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/platform/ssa_rocket/platform.c b/platform/ssa_rocket/platform.c
+index 1e291a8..11fbbd3 100644
+--- a/platform/ssa_rocket/platform.c
++++ b/platform/ssa_rocket/platform.c
+@@ -4,6 +4,7 @@
+  */
+ #include <sbi/riscv_asm.h>
+ #include <sbi/sbi_platform.h>
++#include <sbi/sbi_console.h>
+ #include <sbi_utils/irqchip/plic.h>
+ #include <sbi_utils/sys/clint.h>
+ #include <sbi_utils/sys/htif.h>
+@@ -12,7 +13,15 @@ static struct clint_data clint={.addr=0x2000000,.first_hartid=0,.hart_count=1,.h
+ static int irq_init(bool cold){int r=0;if(cold)r=plic_cold_irqchip_init(&plic);return r?r:plic_warm_irqchip_init(&plic,0,1);}
+ static int ipi_init(bool cold){int r=0;if(cold)r=clint_cold_ipi_init(&clint);return r?r:clint_warm_ipi_init();}
+ static int timer_init(bool cold){int r=0;if(cold)r=clint_cold_timer_init(&clint,NULL);return r?r:clint_warm_timer_init();}
++static int hpm_init(bool cold){
++ csr_write(0x323,0x1002); /* event set2, DTLB accepted PTW request bit4 */
++ csr_write(0xb03,0);
++ csr_clear(0x320,8);
++ sbi_printf("SSA_HPM_PROFILE selector=%lu width=40 counter=%lu\n",csr_read(0x323),csr_read(0xb03));
++ return 0;
++}
+ static const struct sbi_platform_operations ops={
++ .final_init=hpm_init,
+  .console_putc=htif_putc,.console_getc=htif_getc,
+  .irqchip_init=irq_init,.ipi_init=ipi_init,.ipi_send=clint_ipi_send,.ipi_clear=clint_ipi_clear,
+  .timer_init=timer_init,.timer_value=clint_timer_value,
+-- 
+2.34.1
+
+
+From 34520a712309790d3e9a005194b763467b980fdb Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 00:12:54 +0800
+Subject: [PATCH 2/2] Keep global DTLB counter private to supervisor monitoring
+
+---
+ platform/ssa_rocket/platform.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/platform/ssa_rocket/platform.c b/platform/ssa_rocket/platform.c
+index 11fbbd3..ec8a991 100644
+--- a/platform/ssa_rocket/platform.c
++++ b/platform/ssa_rocket/platform.c
+@@ -17,7 +17,8 @@ static int hpm_init(bool cold){
+  csr_write(0x323,0x1002); /* event set2, DTLB accepted PTW request bit4 */
+  csr_write(0xb03,0);
+  csr_clear(0x320,8);
+- sbi_printf("SSA_HPM_PROFILE selector=%lu width=40 counter=%lu\n",csr_read(0x323),csr_read(0xb03));
++ csr_clear(0x106,8); /* HPM3 is kernel-managed; U-mode cannot read it. */
++ sbi_printf("SSA_HPM_PROFILE selector=%lu width=40 counter=%lu user=%lu\n",csr_read(0x323),csr_read(0xb03),csr_read(0x106)&8);
+  return 0;
+ }
+ static const struct sbi_platform_operations ops={
+-- 
+2.34.1
+

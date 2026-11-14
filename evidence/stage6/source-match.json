@@ -1,0 +1,11 @@
+{
+  "linux": {
+    "development_tree": "4234609f62a91906b25a741f9897f17b327bcb57",
+    "independent_tree": "4234609f62a91906b25a741f9897f17b327bcb57"
+  },
+  "opensbi": {
+    "development_tree": "7b9ddfe46a8f677349bf5b88d37f01cab2c32be5",
+    "independent_tree": "7b9ddfe46a8f677349bf5b88d37f01cab2c32be5"
+  },
+  "event_profile": "selector0x1002/width40; U-mode denied, S-mode enabled"
+}

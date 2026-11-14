@@ -1,0 +1,43 @@
+[
+  {
+    "name": "spike-process",
+    "command": [
+      "spike",
+      "ssa/process-reference.riscv"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.04
+  },
+  {
+    "name": "rtl-process-legacy",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/process-legacy.hex",
+      "+max-cycles=50000000",
+      "+permissive-off",
+      "ssa/process-legacy.riscv"
+    ],
+    "exit_code": 42,
+    "expected_exit_code": 42,
+    "passed": true,
+    "seconds": 22.03
+  },
+  {
+    "name": "rtl-process",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/process.hex",
+      "+max-cycles=50000000",
+      "+permissive-off",
+      "ssa/process.riscv"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 21.7
+  }
+]

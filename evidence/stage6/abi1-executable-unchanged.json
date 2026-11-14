@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "binary_sha256": "9402eabe969373f29dcfa8ba77461958030bd62127e25fddd35161916091a9a1",
+  "meaning": "full objcopy executable image before/after the conditional ABI2 canary test addition is byte-identical; debug ELF metadata is not the oracle"
+}

@@ -1,0 +1,156 @@
+[
+  {
+    "name": "rtl-context",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/test.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/test.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 25.39
+  },
+  {
+    "name": "rtl-boundary",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/boundary.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/boundary.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 42.13
+  },
+  {
+    "name": "rtl-abi",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/abi.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/abi.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 1.69
+  },
+  {
+    "name": "rtl-late",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/late.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/late.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 1.65
+  },
+  {
+    "name": "rtl-disabled-reference",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/reference.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 25.04
+  },
+  {
+    "name": "rtl-trap",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/trap.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/trap.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 9.21
+  },
+  {
+    "name": "rtl-trap-status",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/trap-status.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/trap-status.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 8.25
+  },
+  {
+    "name": "rtl-trap-nested",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/trap-nested.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/trap-nested.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 9.67
+  },
+  {
+    "name": "rtl-trap-irq",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/trap-irq.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/trap-irq.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 8.74
+  },
+  {
+    "name": "rtl-trap-overflow",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/trap-overflow.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/trap-overflow.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 52.38
+  },
+  {
+    "name": "rtl-trap-readonly",
+    "command": [
+      "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/trap-readonly.hex",
+      "+max-cycles=5000000",
+      "+permissive-off",
+      "ssa/trap-readonly.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 8.89
+  }
+]

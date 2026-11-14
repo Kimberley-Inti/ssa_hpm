@@ -1,0 +1,42 @@
+From 8d07f53b8ed7fa36eae0da59d35f07cf6fd861d3 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Wed, 11 Nov 2026 00:19:30 +0800
+Subject: [PATCH] Add DTLB event configuration, RTL controls and Linux session
+ acceptance
+
+---
+ .../chipyard/src/main/scala/config/RocketConfigs.scala   | 3 +++
+ .../src/main/scala/config/fragments/TileFragments.scala  | 9 +++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/generators/chipyard/src/main/scala/config/RocketConfigs.scala b/generators/chipyard/src/main/scala/config/RocketConfigs.scala
+index 73e13470..e03e6f00 100644
+--- a/generators/chipyard/src/main/scala/config/RocketConfigs.scala
++++ b/generators/chipyard/src/main/scala/config/RocketConfigs.scala
+@@ -246,3 +246,6 @@ class MulticlockAXIOverSerialConfig extends Config(
+   new freechips.rocketchip.subsystem.WithNBigCores(2) ++
+   new chipyard.config.AbstractConfig)
+ // DOC include end: MulticlockAXIOverSerialConfig
++
++class SSAHPMEventRocketConfig extends Config(
++  new chipyard.config.WithSSAHPMEventCounter ++ new RocketConfig)
+diff --git a/generators/chipyard/src/main/scala/config/fragments/TileFragments.scala b/generators/chipyard/src/main/scala/config/fragments/TileFragments.scala
+index 906f2a95..cba1254b 100644
+--- a/generators/chipyard/src/main/scala/config/fragments/TileFragments.scala
++++ b/generators/chipyard/src/main/scala/config/fragments/TileFragments.scala
+@@ -65,3 +65,12 @@ class WithRocketDCacheScratchpad extends Config((site, here, up) => {
+   }
+ })
+ 
++
++// SSA-HPM ABI2 uses one standard 40-bit programmable counter, selected by firmware.
++class WithSSAHPMEventCounter extends Config((site, here, up) => {
++  case TilesLocated(InSubsystem) => up(TilesLocated(InSubsystem), site) map {
++    case tp: RocketTileAttachParams => tp.copy(tileParams = tp.tileParams.copy(
++      core = tp.tileParams.core.copy(nPerfCounters = 1)))
++    case other => other
++  }
++})
+-- 
+2.34.1
+

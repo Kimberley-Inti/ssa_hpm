@@ -3,6 +3,7 @@
 import argparse, json, pathlib, subprocess, time
 root=pathlib.Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser()
+p.add_argument('--simulator',default='sims/verilator/simulator-chipyard-RocketConfig')
 p.add_argument('--rtl-only',action='store_true')
 p.add_argument('--only-traps',action='store_true')
 p.add_argument('--out-dir',type=pathlib.Path)
@@ -21,7 +22,7 @@ if not a.spike_only:
                                 ('abi','abi',['shadow registers']),
                                 ('late','late',['shadow registers']),
                                 ('disabled-reference','reference',['nested, parents, reuse, restore, collision, counters'])]:
-        tests.append(('rtl-'+name,['sims/verilator/simulator-chipyard-RocketConfig','+permissive',
+        tests.append(('rtl-'+name,[a.simulator,'+permissive',
                                  '+loadmem=ssa/'+binary+'.hex','+max-cycles=5000000',
                                  '+permissive-off','ssa/'+binary+'.riscv'],markers))
 if a.only_traps:
@@ -36,7 +37,7 @@ if not a.spike_only:
                         ('trap-irq','timer interrupt, handler isolation'),
                         ('trap-overflow','trap depth overflow latches fail-closed'),
                         ('trap-readonly','read-only trap status CSR rejects writes')]:
-        tests.append(('rtl-'+name,['sims/verilator/simulator-chipyard-RocketConfig','+permissive',
+        tests.append(('rtl-'+name,[a.simulator,'+permissive',
                                   '+loadmem=ssa/'+name+'.hex','+max-cycles=5000000',
                                   '+permissive-off','ssa/'+name+'.riscv'],[marker]))
 results=[]
