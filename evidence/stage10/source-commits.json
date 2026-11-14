@@ -1,8 +1,8 @@
 {
   "chipyard": {
-    "head": "59b7d7916f8c0367733a6cbee2d342af13abf775",
+    "head": "0d88f5baa08268d82728784cdc41be023bbf8ee9",
     "branch": "stage10-transparent-launch",
-    "tree": "2d70f66c3bbe7ae633bb2b82d8455a0e2b981b37"
+    "tree": "b002f13529d5cf0c30eedcdb28a1dae9485c9c2b"
   },
   "rocket_chip": {
     "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",

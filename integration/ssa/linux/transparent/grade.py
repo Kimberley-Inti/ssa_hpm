@@ -39,6 +39,7 @@ def grade(text,code,users):
  check('unprivileged_arm_denied','LAUNCH_UNPRIV_ARM_DENIED' in auto)
  check('ten_auto_sessions_exact',len(base)==10 and len(starts)==11 and len([x for x in starts if x['enabled']])==10 and {x['session'] for x in starts if x['enabled']}==set(base))
  exports=fields(auto,'SSA_EXPORT');check('ordinary_targets_uid1000',len(exports)==len(base) and all(x['uid']==1000 for x in exports))
+ check('noncapacity_classification_complete',all(x['complete'] for sid,x in cls.items() if base[sid]['header']['pid']!=cap))
  check('profiles_and_sidecar_owned',len(cls)==9 and all(s['header']['legacy']==0 and s['header']['profile']==('dcache_a_transactions' if s['header']['pid'] not in [dyn,cap] else 'base') and ((s['header']['session'] in cls)==(s['header']['pid']!=dyn)) for s in base.values()))
  check('closed_records_inclusive_counters',all(all(r[k]>=sum(z[k] for z in s['records'] if z['parent']==r['id']) for k in ['cycle','instret','time']+(['cache'] if s['header']['abi']==2 else [])) for s in base.values() if s['complete'] for r in s['records']))
  ss=sessions(stat);check('static_one_session',len(ss)==1)

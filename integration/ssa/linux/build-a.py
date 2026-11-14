@@ -64,6 +64,7 @@ km=['make','ARCH=riscv','CROSS_COMPILE='+a.cross,'CC='+a.cross+'gcc -B'+str(b)+'
 
 if a.process:
  run(['scripts/config','--disable' if a.reference else '--enable','SSA_HPM','--disable','HZ_250','--enable','HZ_1000'],linux)
+if a.transparent:run(['scripts/config','--disable','INITRAMFS_COMPRESSION_GZIP','--enable','INITRAMFS_COMPRESSION_NONE'],linux)
 run(km+['olddefconfig'],linux);run(km+['KCFLAGS=-misa-spec=2.2'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'KAFLAGS=-misa-spec=2.2','-j'+a.jobs,'Image'],linux)
 run(['dtc','-I','dts','-O','dtb','-o',w/'rocket.dtb',src/'rocket.dts'])
 run(['make','PLATFORM=ssa_rocket','CROSS_COMPILE='+a.cross,'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei','platform-cflags-y=-std=gnu11'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'FW_PAYLOAD_PATH='+str(linux/'arch/riscv/boot/Image'),'FW_PAYLOAD_FDT_PATH='+str(w/'rocket.dtb'),'FW_PAYLOAD_FDT_ADDR=0x81e00000','-j'+a.jobs],sbi)

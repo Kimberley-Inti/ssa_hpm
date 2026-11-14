@@ -386,3 +386,13 @@ Source commit messages/authorship remain in local source repos and the Linux
 mail patch; public reconstruction starts at the unchanged accessible bases.
 Stage10 maintenance starts at24fa1cde07a7af6de77c136789867ce730c60f91 on its own
 branch. Native acceptance is still running at this implementation checkpoint.
+
+Root followup3c07385f8aac9acfaeb65d87e8a71aec557486dd selects uncompressed
+initramfs for --transparent only. A gzip preparation boot was superseded before
+user acceptance to avoid long RTL software inflate of the new standard loader.
+The same target ELFs and unchanged kernel monitoring source/model are retained.
+
+Host-only followup 0d88f5baa08268d82728784cdc41be023bbf8ee9 requires complete noncapacity sidecar coverage.
+The same live native run has verified static, successful/failed exec, fork/signal,
+resource and automatic A/B preemption prefixes. Full dynamic/capacity/manual
+acceptance is pending; no C05 final acceptance is implied by this checkpoint.

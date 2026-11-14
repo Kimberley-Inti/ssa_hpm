@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
-    "development_delivery": "59b7d7916f8c0367733a6cbee2d342af13abf775",
+    "development_delivery": "0d88f5baa08268d82728784cdc41be023bbf8ee9",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -510,7 +510,7 @@
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
-    "ssa/linux/build-a.py": "8ad35b68d45a570e33b910e9a299d318e466241e245d17122100c47ca43d7eb4",
+    "ssa/linux/build-a.py": "8b86b0036ee270b403ee2f4ee4e5bf3c98ac6623cfca39c072665f660094fe39",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "38b8e091d5188090402fc43c93cc5906dc66dc0e24c5a5a16d3177f501387f24",
@@ -569,7 +569,7 @@
     "ssa/linux/transparent/build-users.py": "927c6f02fc97d2a17e07c4b913280503aef4635ccb76d9c174abea475f13921f",
     "ssa/linux/transparent/capacity.S": "34c216dcce20583471f0aeb0dfccb7947d4d471c8a6cb6d0afee480d3e4bcbd1",
     "ssa/linux/transparent/capacity.c": "b06094326b913c18008aac9ee67aa83e6348926c115414b7ad224aeef9e4b769",
-    "ssa/linux/transparent/grade.py": "267f688404e43dea0413c8a03a2e1147b7ab556ff980f5edf75caa4c09743ba6",
+    "ssa/linux/transparent/grade.py": "6718e2376882eceaf5a6d5e83f9b790e1f6aeb229ba38a3de1a5f4385e49569b",
     "ssa/linux/transparent/launcher.c": "8f8011baa8616b23faddffb8d4ce69109bdc4ddebb10dcfd18a8e431f2c3e145",
     "ssa/linux/transparent/plain-entry.S": "9e440e25f542e7fc6754f36b8a6a7e915b9ef66e48fce1ad9c49e2c6a7f3afee",
     "ssa/linux/transparent/plain.c": "d1c14402e58b129c9a546a036dd775dcee92a06d8ffa14a5de6f56fac57d8da7",

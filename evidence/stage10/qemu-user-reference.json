@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "coverage": "new QEMU user-mode ordinary ELF/loader smoke only; NOT SSA, kernel policy, Rocket or Linux boot acceptance",
+  "package": "qemu-user-static_1%3a6.2+dfsg-2ubuntu6.31_amd64.deb",
+  "package_sha256": "2d22939f98f2ee8b84c5cc53b01082a4a937cfc7b4a8aa432788b9eaf4a14a41",
+  "cases": [
+    {
+      "command": [
+        "/tmp/ssa-hpm-stage10/qemu-reference/usr/bin/qemu-riscv64-static",
+        "-L",
+        "/tmp/ssa-hpm-stage10/qemu-reference/guest",
+        "/tmp/ssa-hpm-stage10/independent-linux/plain",
+        "static"
+      ],
+      "exit_code": 0,
+      "output": "PLAIN_STATIC_OK\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "/tmp/ssa-hpm-stage10/qemu-reference/usr/bin/qemu-riscv64-static",
+        "-L",
+        "/tmp/ssa-hpm-stage10/qemu-reference/guest",
+        "/tmp/ssa-hpm-stage10/independent-linux/plain-dynamic",
+        "dynamic"
+      ],
+      "exit_code": 0,
+      "output": "PLAIN_DYN_ANCHOR\n0x000000400089d260\nPLAIN_DYNAMIC_OK\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "/tmp/ssa-hpm-stage10/qemu-reference/usr/bin/qemu-riscv64-static",
+        "-L",
+        "/tmp/ssa-hpm-stage10/qemu-reference/guest",
+        "/tmp/ssa-hpm-stage10/independent-linux/plain-capacity",
+        "capacity"
+      ],
+      "exit_code": 0,
+      "output": "PLAIN_CAPACITY_OK\n",
+      "passed": true
+    }
+  ]
+}

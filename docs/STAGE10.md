@@ -46,7 +46,7 @@ and model SHA256 d266da6457c89af8ec4f3daea0c8574ed048764fc15e25b54de3a1a23c458d6
 are reused. No new RTL generation or second model build is claimed. The first
 preparation boot was intentionally stopped before user acceptance after preflight
 found missing /classnext for the appended old regression. The rootfs was rebuilt
-with both /classnext and /plain-next before the final image was frozen. SIGTERM's
+with both /classnext and /plain-next. A second preparation boot revealed the large standard loader gzip inflate dominated RTL startup. It was preserved and superseded by the same ELF contents in an uncompressed initramfs, which --transparent now selects. This is a packaging/runtime optimization, not a monitoring fix or passing run. SIGTERM's
 native0 is not an acceptance result; preparation-stop.json records this explicitly.
 
 ## Reproduce
@@ -79,3 +79,9 @@ coverage. A64-record fixture must export all4base chunks while marking the
 performance overhead benchmarks and universal ELF symbolization remain separate.
 The final implementation/review/performance/optional checklist is
 [FINAL_CHECKLIST.md](FINAL_CHECKLIST.md).
+
+Ordinary ELF sanity was additionally executed in QEMU user mode (static, musl
+PT_INTERP/DSO and capacity programs, all0). This only diagnoses target binaries;
+it is explicitly not Rocket/kernel policy/SSA evidence. The actual accepted
+Linux image uses uncompressed initramfs to bound software inflate cost; old gzip
+preparation and the missing-dependency preparation are preserved and not passed.
