@@ -6,8 +6,8 @@
     "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
-    "development_base": "339d349d35e308f2912c5db55c42c6e4adcb18ba",
-    "development_delivery": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+    "development_base": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+    "development_delivery": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -16,7 +16,7 @@
     "accepted_base": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
     "accepted_delivery": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
     "expected_tree": "535c551af33cce20384ca2f8c3560ac5e70cdca4",
-    "development_base": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+    "development_base": "3f4ab938660454b101c67f6929bfebae5be1a138",
     "development_delivery": "3f4ab938660454b101c67f6929bfebae5be1a138",
     "accepted_v010_tree": "927a21fc6283a2e5f96adcf84a7d4a381829fccd"
   },
@@ -491,7 +491,7 @@
     "ssa/abi.S": "a0021451f71d59c23cea1242146059ed0bb7ed49458ec4624d24351bd2ec42e5",
     "ssa/test.ld": "abe19976736741556e3deb41ecd354653f0486f1f64fb74c07586a24cc92b0cb",
     "ssa/env.sh": "3b24ac29129c513816ff23906c362d90539d2b6526195b01520271a253ddb2f3",
-    "ssa/Makefile": "266fb7980551fbdf622f8fcdc9af9fc5498064f0cc8ddbbe1b605f0cd8034f75",
+    "ssa/Makefile": "c90936849ca8b798dd52c7d2b47797a74f70f97519960375ff8fcd0c67ad08d9",
     "ssa/.gitignore": "26e6b76a6e6548d850a3f518f2a5382586e38aa52b60c461319800da1ccd4dbd",
     "ssa/gen_rom.py": "4d911732547482931789efcbedc3b461112fec247a1aac700502874f559fb5a7",
     "ssa/elf_to_hex.py": "4f49a1d6389cb2abf906720b45f1acefa42a97c30569d4fe180e26d2e1365104",
@@ -500,7 +500,11 @@
     "ssa/analyze.py": "8c6800f3175c57c9f6499888f565643a539f7b458f44c1d493fd3176309d9526",
     "ssa/test.c": "3957dab54f420008ba4412b59d5d8dc3d8f21a3b0645af85e2defec7ab5da6c0",
     "ssa/trap_entry.S": "a93c62480a82f7fc65b01869f8fd0defc311f589d8d547e263c6585773f78790",
-    "ssa/traps.c": "26a865c5d348e101fd951b0150a2008363a60d010cf453c055e1332217e0abbe"
+    "ssa/traps.c": "26a865c5d348e101fd951b0150a2008363a60d010cf453c055e1332217e0abbe",
+    "ssa/process_entry.S": "1246914a1a8572845212608e7240cc4a44a160edc2291f536eca3101f2c05460",
+    "ssa/processes.c": "28eb4732d235956d8a76961789fb58d54fd04770a7d0a38868546af8381610f5",
+    "ssa/verify_process.py": "b289740a117c809adb1271448735a7e4174be485a2afb02d651075bb596d437a",
+    "ssa/process.h": "264ac1afd3e5de0bc5a3069357a5dfaab58b2ace7e76a7a7e3cbae53c0dc9cef"
   },
   "development_stage": {
     "name": "stage2-trap-isolation",
@@ -510,5 +514,13 @@
     "status_csr": "0xcc0",
     "scope": "matched architectural traps and returns, per-hart depth, saturation fail-closed",
     "patch": "patches/rocket-chip/0009-trap-context-isolation.patch"
+  },
+  "stage3": {
+    "base_release": "2d646a615b357e3e883289d91d0b903ac14baec4",
+    "implementation": "integration/ssa/process.h",
+    "rocket_source_changed": false,
+    "source_commit": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+    "delivery": "standalone integration files; no duplicate source patch",
+    "scope": "single-hart M-mode scheduler protocol; not Linux"
   }
 }

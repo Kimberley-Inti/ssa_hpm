@@ -98,3 +98,23 @@ result=46、返回后 depth=0；两条父路径的 common instret 为 14452/7226
 `trap`、`trap-status`、`trap-nested`、`trap-irq`、`trap-overflow`、`trap-readonly`；
 两项新增 Spike 用例只验证标准陷阱/定时器指令，不验证自定义 CSR 或透明上下文。
 状态 CSR、溢出和计数口径详见 `docs/STAGE2.md`。本分支不发布新标签。
+
+
+## 第三阶段（基于 stage2）
+
+使用本分支的 apply.py 与 provenance.json，仍应用 9 个 Rocket 补丁和 2 个 Chipyard
+补丁，Rocket tree 与 stage2 相同。安装新的 integration/ssa（包含 process.h、
+process_entry.S、processes.c、verify_process.py）；不再重复交付 Chipyard 测试补丁。
+本轮有修改的源码仓库仅 Chipyard，Rocket 依赖 3f4ab938660454b101c67f6929bfebae5be1a138。
+按前述 make 命令重新生成 RTL，然后运行原 16 项与新进程协议测试：
+
+```bash
+python3 ssa/verify.py --out-dir /tmp/stage3-regression
+python3 ssa/verify_process.py --out-dir /tmp/stage3-process
+# 在独立项目仓库中执行：
+python3 scripts/check_process_evidence.py /tmp/stage3-process --report /tmp/stage3-relationships.json
+```
+
+新 suite 包含 Spike 参考通过、旧协议 RTL 预期退出 42、修复协议 RTL 退出 0。
+负对照绝不可当作普通退出零测试。实际两个任务与 Linux 进程集成的区别、三种
+计数器的归因区间和剩余依赖见 docs/STAGE3.md。原 16 项回归数量不变。

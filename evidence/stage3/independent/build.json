@@ -1,0 +1,11 @@
+{
+  "workspace": "/tmp/ssa-process-rebuild-final",
+  "configuration": "RocketConfig",
+  "build_command": "source ssa/env.sh; make -C sims/verilator CONFIG=RocketConfig -j8 LINK='/usr/bin/g++ -B/usr/bin/'",
+  "exit_code": 0,
+  "scala_compilation": "339 Rocket Scala sources recompiled",
+  "rtl_generated": true,
+  "new_simulator": true,
+  "dependencies": "matching pinned Git sources linked from original workspace; toolchain/Conda/sbt/ccache reused",
+  "simulator_sha256": "814ddf11b5939c73fa5289e7719205e6ab43ae4efb0ea2d7197b549dc2b78e84"
+}

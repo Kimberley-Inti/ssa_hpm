@@ -1,0 +1,12 @@
+2026-11-09T10:04:11+08:00
+503d5ccdb6634a05f46181ecd23648cfbb4e61b8
+3f4ab938660454b101c67f6929bfebae5be1a138
+160000 commit 3f4ab938660454b101c67f6929bfebae5be1a138	generators/rocket-chip
+openjdk version "17.0.20.1" 2026-08-18
+OpenJDK Runtime Environment (build 17.0.20.1+1-1-22.04-Ubuntu)
+OpenJDK 64-Bit Server VM (build 17.0.20.1+1-1-22.04-Ubuntu, mixed mode, sharing)
+riscv64-unknown-elf-gcc () 15.1.0
+Spike RISC-V ISA Simulator 1.1.1-dev
+
+Verilator 4.226 2022-08-31 rev v4.226
+6f58d5af94d3d083f5c687a2baf21e54b8ef50343b83314b8886b46d89e299aa  /opt/riscv/bin/spike

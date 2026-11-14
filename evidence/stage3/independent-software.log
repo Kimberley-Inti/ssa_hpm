@@ -1,0 +1,96 @@
+make: Entering directory '/tmp/ssa-process-rebuild-final/ssa'
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld start.S test.c -o test.riscv
+sed -e 's/\.globl _start/.globl sc_event/' -e 's/^_start:/sc_event:/' -e 's/\.word 0x00060067/ret/' microcode.S > reference.S
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DBOUNDARY start.S test.c -o boundary.riscv
+test.c:90:12: warning: 'check' defined but not used [-Wunused-function]
+   90 | static int check(void) {
+      |            ^~~~~
+test.c:36:13: warning: 'number' defined but not used [-Wunused-function]
+   36 | static void number(uint64_t x) {
+      |             ^~~~~~
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: boundary.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DBOUNDARY -DREFERENCE start.S test.c reference.S -o boundary-reference.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: test.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DABI start.S test.c abi.S -o abi.riscv
+test.c:90:12: warning: 'check' defined but not used [-Wunused-function]
+   90 | static int check(void) {
+      |            ^~~~~
+test.c:36:13: warning: 'number' defined but not used [-Wunused-function]
+   36 | static void number(uint64_t x) {
+      |             ^~~~~~
+test.c:90:12: warning: 'check' defined but not used [-Wunused-function]
+   90 | static int check(void) {
+      |            ^~~~~
+test.c:36:13: warning: 'number' defined but not used [-Wunused-function]
+   36 | static void number(uint64_t x) {
+      |             ^~~~~~
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: abi.riscv has a LOAD segment with RWX permissions
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: boundary-reference.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DABI -DREFERENCE start.S test.c abi.S reference.S -o abi-reference.riscv
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DABI -DLATE start.S test.c abi.S -o late.riscv
+test.c:90:12: warning: 'check' defined but not used [-Wunused-function]
+   90 | static int check(void) {
+      |            ^~~~~
+test.c:36:13: warning: 'number' defined but not used [-Wunused-function]
+   36 | static void number(uint64_t x) {
+      |             ^~~~~~
+test.c:90:12: warning: 'check' defined but not used [-Wunused-function]
+   90 | static int check(void) {
+      |            ^~~~~
+test.c:36:13: warning: 'number' defined but not used [-Wunused-function]
+   36 | static void number(uint64_t x) {
+      |             ^~~~~~
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: late.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-objcopy -O binary test.riscv test.bin
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: abi-reference.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-objcopy -O binary boundary.riscv boundary.bin
+riscv64-unknown-elf-objcopy -O binary abi.riscv abi.bin
+riscv64-unknown-elf-objcopy -O binary late.riscv late.bin
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST start.S trap_entry.S traps.c -o trap.riscv
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DCHECK_STATUS start.S trap_entry.S traps.c -o trap-status.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=1 start.S trap_entry.S traps.c -o trap-nested.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-status.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=2 start.S trap_entry.S traps.c -o trap-irq.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-nested.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=3 -DNESTING=256 start.S trap_entry.S traps.c -o trap-overflow.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-irq.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DCHECK_STATUS -DTRAP_KIND=4 start.S trap_entry.S traps.c -o trap-readonly.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-readonly.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DREFERENCE -DTRAP_KIND=1 start.S trap_entry.S traps.c -o trap-reference.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-overflow.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DREFERENCE -DTRAP_KIND=2 start.S trap_entry.S traps.c -o trap-irq-reference.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-reference.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST start.S process_entry.S processes.c -o process.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: trap-irq-reference.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DLEGACY_SWITCH start.S process_entry.S processes.c -o process-legacy.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: process-legacy.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DTRAP_TEST -DREFERENCE start.S process_entry.S processes.c -o process-reference.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: process.riscv has a LOAD segment with RWX permissions
+riscv64-unknown-elf-gcc -march=rv64gc -mabi=lp64d -mcmodel=medany -O1 -g -ffreestanding -fno-builtin -fno-optimize-sibling-calls -msmall-data-limit=0 -Wall -Wextra -nostdlib -nostartfiles -Wl,--no-relax -T test.ld -DREFERENCE start.S test.c reference.S -o reference.riscv
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: process-reference.riscv has a LOAD segment with RWX permissions
+python3 elf_to_hex.py test.bin test.hex
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: reference.riscv has a LOAD segment with RWX permissions
+python3 elf_to_hex.py boundary.bin boundary.hex
+python3 elf_to_hex.py abi.bin abi.hex
+python3 elf_to_hex.py late.bin late.hex
+riscv64-unknown-elf-objcopy -O binary reference.riscv reference.bin
+riscv64-unknown-elf-objcopy -O binary trap.riscv trap.bin
+riscv64-unknown-elf-objcopy -O binary trap-status.riscv trap-status.bin
+riscv64-unknown-elf-objcopy -O binary trap-nested.riscv trap-nested.bin
+riscv64-unknown-elf-objcopy -O binary trap-irq.riscv trap-irq.bin
+riscv64-unknown-elf-objcopy -O binary trap-overflow.riscv trap-overflow.bin
+riscv64-unknown-elf-objcopy -O binary trap-readonly.riscv trap-readonly.bin
+riscv64-unknown-elf-objcopy -O binary process.riscv process.bin
+riscv64-unknown-elf-objcopy -O binary process-legacy.riscv process-legacy.bin
+python3 elf_to_hex.py reference.bin reference.hex
+python3 elf_to_hex.py trap.bin trap.hex
+python3 elf_to_hex.py trap-status.bin trap-status.hex
+python3 elf_to_hex.py trap-nested.bin trap-nested.hex
+python3 elf_to_hex.py trap-irq.bin trap-irq.hex
+python3 elf_to_hex.py trap-overflow.bin trap-overflow.hex
+python3 elf_to_hex.py trap-readonly.bin trap-readonly.hex
+python3 elf_to_hex.py process.bin process.hex
+python3 elf_to_hex.py process-legacy.bin process-legacy.hex
+rm process-legacy.bin abi.bin reference.bin trap-readonly.bin test.bin trap.bin trap-status.bin trap-overflow.bin process.bin late.bin trap-nested.bin boundary.bin trap-irq.bin
+make: Leaving directory '/tmp/ssa-process-rebuild-final/ssa'

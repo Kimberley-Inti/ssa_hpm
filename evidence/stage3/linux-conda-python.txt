@@ -1,0 +1,2 @@
+sudo: a password is required
+No riscv toolchain detected. Please install riscv-tools.

@@ -1,0 +1,4 @@
+make: Entering directory '/home/lxf/chipyard/sims/verilator'
+Running with RISCV=/opt/riscv
+make: Nothing to be done for 'default'.
+make: Leaving directory '/home/lxf/chipyard/sims/verilator'

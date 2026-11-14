@@ -79,3 +79,21 @@ Cache/TLB 事件尚未验证；七个扩展事件槽仅预留。内存池必须�
 仿真**；其中原第一阶段 8 项保持通过，6 条记录及 `14452/7226` 不变。实际命令、
 源码提交及模型范围见 [阶段说明](docs/STAGE2.md) 和
 [分层验证汇总](evidence/stage2/summary.json)。本分支不发布新标签、不修改 main。
+
+
+## 当前开发分支：stage3-process-isolation
+
+基于 stage2，补齐单 hart 调度器监测池暂停、恢复、退出协议。恢复时校正所有开放
+调用帧的计数快照，排除其他任务的执行区间。两个实际整数 CPU 上下文在同一
+Rocket hart 上交替运行，池分离、未返回帧恢复、退出结果读取和拒绝非法生命周期
+均通过 RTL 测试。旧直接切池的 A.common.instret 为 1486/4952；新协议为 215/215。
+
+这是 M-mode 受控调度闭环，尚非 Linux 进程集成。Rocket 源码依赖 stage2，未新增
+RTL 修改；公开基线与原有九个 Rocket 补丁不变，新增接口和测试仅在 integration
+交付一次。详见 [STAGE3](docs/STAGE3.md)；最终证据见
+[evidence/stage3/summary.json](evidence/stage3/summary.json)。
+
+
+第三阶段最终验证：开发树与独立公开基线重建均通过原 16 项回归及新增进程协议
+检查（含旧协议预期退出 42 的负对照）。独立重编译 Scala、RTL 和 Verilator 通过。
+Spike 仍无 SSA 扩展；Linux 集成尚未完成，详见阶段说明。

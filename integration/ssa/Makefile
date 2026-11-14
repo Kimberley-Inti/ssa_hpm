@@ -58,3 +58,11 @@ trap-readonly.riscv: start.S trap_entry.S traps.c test.ld
 .PHONY: traps
 traps: trap.hex trap-status.hex trap-nested.hex trap-irq.hex trap-overflow.hex trap-readonly.hex trap-reference.riscv trap-irq-reference.riscv
 all: traps
+
+process.riscv: start.S process_entry.S processes.c process.h test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST start.S process_entry.S processes.c -o $@
+process-legacy.riscv: start.S process_entry.S processes.c process.h test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DLEGACY_SWITCH start.S process_entry.S processes.c -o $@
+process-reference.riscv: start.S process_entry.S processes.c process.h test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DTRAP_TEST -DREFERENCE start.S process_entry.S processes.c -o $@
+all: process.hex process-legacy.hex process-reference.riscv

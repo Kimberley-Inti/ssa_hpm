@@ -93,3 +93,22 @@ First-stage main/tag and the two existing Draft PR branches are not moved.
 其后的验证提交收录独立公开基线重建、339 个 Rocket Scala 源文件编译、新 RTL 和新
 Verilator 的 16 项实际结果。原始验收证据与本次 baseline/development/independent
 证据分开保存；全部实现位于本轮独立分支，v0.1.0 和 main 保持不变。
+
+
+## stage3-process-isolation
+
+从 stage2 独立维护仓库提交 `2d646a615b357e3e883289d91d0b903ac14baec4` 新建分支。
+已回读 GitHub stage2 分支与 Draft PR #1，二者 head 一致；未移动 main、v0.1.0 或旧 PR。
+
+| 原仓库/分支 | 本轮基线 | 本轮源码提交 | 独立仓库对应内容 |
+| --- | --- | --- | --- |
+| Kimberley-Inti/SSA-HPM / stage3-process-isolation | fa0ccc7be59a624acc1dcd80af211919be17cd56 | 503d5ccdb6634a05f46181ecd23648cfbb4e61b8 | integration/ssa 的进程协议、双栈调度及验证器；不重复打测试补丁 |
+| Rocket Chip | 3f4ab938660454b101c67f6929bfebae5be1a138 | 无新源码提交 | 原有 0001–0009 补丁保持不变，expected_tree 同 stage2 |
+
+本轮原创提交未重写先前开发历史。首次实现提交和后续独立重建证据提交形成两个
+有意义的维护仓库提交；其 SHA 可由本分支 git log 核验。源码提交说明为
+“Add single-hart monitoring pool lifecycle and off-CPU attribution regression”。
+Chipyard ssa/README.md 的本轮说明在维护仓库整理为 docs/STAGE3.md；运行源文件
+和 Makefile 一致，历史 integration/ssa/README.md 不替代当前阶段说明。
+
+本轮接口与测试整理提交：`aad36f0ecad6fce9fbd661760c9505bc1e653e6d`，对应 Chipyard `503d5ccdb6634a05f46181ecd23648cfbb4e61b8`。后续验证提交仅补充实际重建证据和文档。
