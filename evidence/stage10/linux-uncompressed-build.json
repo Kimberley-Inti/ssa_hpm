@@ -1,0 +1,405 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "stage4-linux"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "https://github.com/firesim/linux.git",
+        "5f5fd87b36e21ed59b759b69eebfa1c74955cb37"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "stage4-linux"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "https://github.com/riscv/opensbi.git",
+        "a98258d0b537a295f517bbc8d813007336731fa9"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0001-stack-pointer-declaration.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0002-linux-task-pools.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0003-linux-exec-lifecycle.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0004-linux-dtlb-event.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0005-linux-result-export.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0006-linux-cache-profile.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0007-linux-memory-classification.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0008-linux-transparent-launch.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0001-opensbi-rocket-platform.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0002-opensbi-dtlb-profile.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0003-opensbi-cache-profile.patch"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "dpkg-deb",
+        "-x",
+        "/tmp/ssa-hpm-stage10/independent-linux/binutils.deb",
+        "/tmp/ssa-hpm-stage10/independent-linux/host-tools"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/linux/transparent/build-users.py",
+        "--work",
+        "/tmp/ssa-hpm-stage10/independent-linux",
+        "--cross",
+        "/opt/riscv/bin/riscv64-unknown-elf-",
+        "--ld-dir",
+        "/tmp/ssa-hpm-stage10/independent-linux/host-tools/compiler-bin",
+        "--jobs",
+        "6",
+        "--musl-cache",
+        "/tmp/ssa-hpm-stage10/musl-1.2.5"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    },
+    {
+      "argv": [
+        "scripts/config",
+        "--enable",
+        "SSA_HPM",
+        "--disable",
+        "HZ_250",
+        "--enable",
+        "HZ_1000"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/independent-linux/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-hpm-stage10/independent-linux/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "olddefconfig"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/independent-linux/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-hpm-stage10/independent-linux/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j6",
+        "Image"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "dtc",
+        "-I",
+        "dts",
+        "-O",
+        "dtb",
+        "-o",
+        "/tmp/ssa-hpm-stage10/independent-linux/rocket.dtb",
+        "/home/lxf/chipyard/ssa/linux/rocket.dts"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    },
+    {
+      "argv": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE",
+        "FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage10/independent-linux/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage10/independent-linux/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j6"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "-O",
+        "binary",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.elf",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.bin"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/elf_to_hex.py",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.bin",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.hex"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    }
+  ],
+  "images": {
+    "boot-a.elf": "2729e7627e074b2de0ea40e686939246f99979c26c70c88c2323ec93dcf0fdc9",
+    "boot-a.bin": "9a903af790a246528bc304203eb77f3052699c4e857a3893646833e750279d69",
+    "boot-a.hex": "5d2664f1a5dde9bd1684fda21388c55d05548fc2ab0555c7370257b42a36bf04"
+  },
+  "followup_commands": [
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/linux/transparent/build-users.py",
+        "--work",
+        "/tmp/ssa-hpm-stage10/independent-linux",
+        "--cross",
+        "/opt/riscv/bin/riscv64-unknown-elf-",
+        "--ld-dir",
+        "/tmp/ssa-hpm-stage10/independent-linux/host-tools/compiler-bin",
+        "--jobs",
+        "6",
+        "--musl-cache",
+        "/tmp/ssa-hpm-stage10/musl-1.2.5"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/independent-linux/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-hpm-stage10/independent-linux/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j6",
+        "Image"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE",
+        "FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage10/independent-linux/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage10/independent-linux/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j6"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "-O",
+        "binary",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.elf",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.bin"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/elf_to_hex.py",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.bin",
+        "/tmp/ssa-hpm-stage10/independent-linux/boot-a.hex"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/independent-linux"
+    }
+  ],
+  "followup_reason": "trusted launcher now asserts unprivileged ARM returns EPERM; no simulation used the earlier image",
+  "uncompressed_followup_commands": [
+    {
+      "argv": [
+        "scripts/config",
+        "--disable",
+        "INITRAMFS_COMPRESSION_GZIP",
+        "--enable",
+        "INITRAMFS_COMPRESSION_NONE",
+        "--set-str",
+        "INITRAMFS_SOURCE",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/initramfs.list"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/uncompressed-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "olddefconfig"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/uncompressed-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j6",
+        "Image"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/uncompressed-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE",
+        "FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage10/uncompressed-linux/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage10/uncompressed-linux/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j6"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/uncompressed-linux/opensbi"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "-O",
+        "binary",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.elf",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.bin"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/uncompressed-linux"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/elf_to_hex.py",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.bin",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.hex"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage10/uncompressed-linux"
+    }
+  ],
+  "uncompressed_followup_reason": "Copy independently reconstructed public-source workspace and cached objects; change only initramfs compression to avoid slow C gzip inflate in RTL; same target ELF bytes and model",
+  "initramfs_compression": "none"
+}

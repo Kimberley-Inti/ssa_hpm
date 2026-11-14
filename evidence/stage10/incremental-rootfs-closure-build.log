@@ -1,0 +1,30 @@
+UPDATE python3
+PASS: separate ordinary ELFs contain no SSA calls, dynamic PT_INTERP/DT_NEEDED verified
+UPDATE make
+  CALL    scripts/atomic/check-atomics.sh
+  CALL    scripts/checksyscalls.sh
+usr/Makefile:64: target '/tmp/ssa-hpm-stage10/independent-linux/plain' given more than once in the same rule
+  GEN     usr/initramfs_data.cpio
+  CHK     include/generated/compile.h
+  GZIP    usr/initramfs_inc_data
+  AS      usr/initramfs_data.o
+  AR      usr/built-in.a
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  AR      init/built-in.a
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+  MODINFO modules.builtin.modinfo
+  GEN     modules.builtin
+  LD      vmlinux
+  SYSMAP  System.map
+  OBJCOPY arch/riscv/boot/Image
+  Kernel: arch/riscv/boot/Image is ready
+UPDATE make
+ AS        platform/ssa_rocket/firmware/fw_payload.o
+ ELF       platform/ssa_rocket/firmware/fw_payload.elf
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /tmp/ssa-hpm-stage10/independent-linux/opensbi/build/platform/ssa_rocket/firmware/fw_payload.elf has a LOAD segment with RWX permissions
+ OBJCOPY   platform/ssa_rocket/firmware/fw_payload.bin
+PASS UPDATED FROZEN IMAGE

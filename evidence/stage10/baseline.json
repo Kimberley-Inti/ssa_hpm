@@ -1,0 +1,26 @@
+{
+  "maintenance": {
+    "head": "24fa1cde07a7af6de77c136789867ce730c60f91",
+    "status": ""
+  },
+  "chipyard": {
+    "head": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+    "status": " ? toolchains/libgloss\n ? toolchains/riscv-tools/riscv-isa-sim\n ? toolchains/riscv-tools/riscv-pk\n ? toolchains/riscv-tools/riscv-tests\n ? tools/api-config-chipsalliance\n?? ssa_firmware/\n?? tests/ssa_microcode.S\n?? tests/ssa_rom_scala.txt\n?? tests/test_ssa.c\n"
+  },
+  "rocket": {
+    "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "status": ""
+  },
+  "linux": {
+    "head": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
+    "status": ""
+  },
+  "opensbi": {
+    "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "status": ""
+  },
+  "model": {
+    "path": "/tmp/ssa-hpm-stage9/progress/simulator-progress",
+    "sha256": "d266da6457c89af8ec4f3daea0c8574ed048764fc15e25b54de3a1a23c458d62"
+  }
+}

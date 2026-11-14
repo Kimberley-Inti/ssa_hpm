@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/tmp/ssa-hpm-stage9/progress/simulator-progress",
+    "+permissive",
+    "+loadmem=/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.hex",
+    "+max-cycles=2500000000",
+    "+permissive-off",
+    "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.elf"
+  ],
+  "native_exit_code": 0,
+  "seconds": 27484.929591309,
+  "sha256": {
+    "/tmp/ssa-hpm-stage9/progress/simulator-progress": "d266da6457c89af8ec4f3daea0c8574ed048764fc15e25b54de3a1a23c458d62",
+    "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.elf": "2729e7627e074b2de0ea40e686939246f99979c26c70c88c2323ec93dcf0fdc9",
+    "/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.hex": "5d2664f1a5dde9bd1684fda21388c55d05548fc2ab0555c7370257b42a36bf04"
+  },
+  "log_sha256": "c1813f3abe357d51a2d27f582d9b5919ebd92f6b6d9502c605eb586effc2a38b",
+  "original_native_log_sha256": "22c09c71788464d1044e7051ccb8792e93e3df1cf54e0ee99095f167a729b204",
+  "coverage": "normalized manual suffix of same original native run, not a second simulation"
+}

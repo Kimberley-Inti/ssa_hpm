@@ -1,0 +1,7 @@
+{
+  "native_pid": 52302,
+  "reason": "supersede gzip preparation boot with same ordinary ELF contents in uncompressed initramfs; actual PC was inflate_fast, no user acceptance reached",
+  "signal": "SIGTERM",
+  "no_acceptance_claimed": true,
+  "original_frozen_image_preserved": true
+}

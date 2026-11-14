@@ -370,3 +370,65 @@ reuse are recorded in evidence/stage9/source-commits.json and summary.json.
 Final Chipyard suite head `6abb37ea5316bb2cad9b8280b2485cf631d482c8` adds exact capacity/FIFO
 metadata accounting (139inputs=130classified+9dropped,54evictions) to the unchanged
 actual RTL logs. Kernel/RTL/image sources are unchanged by the host followups.
+
+
+## Stage10 controlled transparent launch (implementation checkpoint)
+
+| Original repository / stage9 base | New source commit | Meaning / standalone mapping |
+| --- | --- | --- |
+| Linux e341319bc75a2c2c1443d4b8654c9270f922aaf8 | 8b865bfe4c40332446227e2fbf6b442ab0bc651a | trusted exec policy/fork clearing/ELF readiness/exit reason; integration/ssa/linux/0008-linux-transparent-launch.patch |
+| Chipyard 6abb37ea5316bb2cad9b8280b2485cf631d482c8 | 4dbc51534c13a2fcf950bb9322b68ab6892a2eac | ordinary static/dynamic/DSO/capacity fixtures, trusted init, builder/runner/policy; standalone integration/ssa |
+| Chipyard previous row | 59b7d7916f8c0367733a6cbee2d342af13abf775 | host automatic-session bijection/profile/uid checks and semantic negative tool |
+| Rocket bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2 | unchanged | stage9 model/hash reused, no Scala/ROM edits |
+| OpenSBI 43f02ffb329d9c86b2ff2138dc450b2060778ffe | unchanged | fixed Cache/DTLB profile entry retained |
+
+Source commit messages/authorship remain in local source repos and the Linux
+mail patch; public reconstruction starts at the unchanged accessible bases.
+Stage10 maintenance starts at24fa1cde07a7af6de77c136789867ce730c60f91 on its own
+branch. Native acceptance is still running at this implementation checkpoint.
+
+Root followup3c07385f8aac9acfaeb65d87e8a71aec557486dd selects uncompressed
+initramfs for --transparent only. A gzip preparation boot was superseded before
+user acceptance to avoid long RTL software inflate of the new standard loader.
+The same target ELFs and unchanged kernel monitoring source/model are retained.
+
+Host-only followup 0d88f5baa08268d82728784cdc41be023bbf8ee9 requires complete noncapacity sidecar coverage.
+The same live native run has verified static, successful/failed exec, fork/signal,
+resource and automatic A/B preemption prefixes. Full dynamic/capacity/manual
+acceptance is pending; no C05 final acceptance is implied by this checkpoint.
+
+Host followups5de3401c0c7c209aa414de5319340d8c4b2c22ac and9ac5adcecba65f3906d9c0b70fe1741000ff0415 add an independent ELF-linked64-record
+capacity oracle. Row-capacity loss is explicitly dropped>0/semantic-complete=false;
+it does not set the separate invalid-shadow-stack bit. Hardware/kernel/image
+are unchanged. The same real Linux run completed the musl dynamic prefix:
+105records/7chunks, return0, one abandoned loader continuationRID10.
+
+The real automatic prefix completed at76.3Mcycles:48semantic gates,10sessions/
+195base records, dynamic105records/7chunks (one loader continuation abandoned),
+capacity64records/4chunks with63classification rows/1explicit drop/48evictions.
+Ten independent ELF-linked capacity gates passed. Later host followups add
+actual dynamic application/inclusive subtree checks and structured truncation
+rejection; all source SHAs/dates/messages are in stage10/source-commits.json.
+The appended original manual regression and final native shutdown are still
+running at this checkpoint, so C05 is not yet marked finally accepted.
+
+
+Stage10 final acceptance completed on the ORIGINAL native run: process/runner/
+both checkers0, normal powerdown at~102.3Mcycles,27484.93host seconds.50automatic
+and26old manual gates pass, with17sessions/215records completely exported/released.
+Independent ELF capacity10, automatic semantic/terminal negatives4 and the manual
+repaired-checksum owner negative pass. Public installed checkers replay the same
+capture with exactly equal JSON; no second native simulation/model build is claimed.
+Chipyard final suite7db7a2a43da0149319cb16906666ae2afbb072e9 includes the host-only
+inclusive subtree/address/structured-truncation followups. Linux remains8b865...;
+Rocket/OpenSBI are unchanged. Full source heads/author dates/messages are in
+source-commits.json. Final evidence and documentation follow maintenance checkpoint
+848ba24f8efd42da690efed7207e5823f0de09ec on the SAME stage10 branch/Draft PR9.
+C05 is now accepted only for the controlled tested ELF policy; all limitations,
+remaining overall review and performance work remain explicit.
+
+Final Chipyard host-only followup f05e1a0dfa274f5505c80445cdc0d0205af54d86 adds a portable completed-run
+postcheck entry: original native/log receipt verification,50automatic/26manual/
+10capacity checks and the automatic/manual semantic negatives. It was executed
+against the same finished capture in both development and installed public suites;
+no frozen image/model/RTL source changed and no new native run was performed.

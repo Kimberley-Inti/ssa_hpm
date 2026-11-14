@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "configuration_only_change": "INITRAMFS_COMPRESSION_NONE",
+  "native_source_work": "/tmp/ssa-hpm-stage10/uncompressed-linux",
+  "same_target_hashes": true,
+  "source_tree": "a28522f6eabe937ea93347f32d21b8b251324fcf",
+  "images": {
+    "boot-a.elf": "2729e7627e074b2de0ea40e686939246f99979c26c70c88c2323ec93dcf0fdc9",
+    "boot-a.bin": "9a903af790a246528bc304203eb77f3052699c4e857a3893646833e750279d69",
+    "boot-a.hex": "5d2664f1a5dde9bd1684fda21388c55d05548fc2ab0555c7370257b42a36bf04"
+  },
+  "uncompressed_cpio_sha256": "59fca97545b2459177e1e36c68bd47a48846c08fbcf207120ab4acc3f8eef4d0",
+  "note": "new kernel/firmware rebuilt from copied independent source and cached objects; original gzip preparation preserved, no duplicate native simulation"
+}

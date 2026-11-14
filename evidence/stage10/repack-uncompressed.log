@@ -1,0 +1,795 @@
+REPACK {'argv': ['scripts/config', '--disable', 'INITRAMFS_COMPRESSION_GZIP', '--enable', 'INITRAMFS_COMPRESSION_NONE', '--set-str', 'INITRAMFS_SOURCE', '/tmp/ssa-hpm-stage10/uncompressed-linux/initramfs.list'], 'cwd': '/tmp/ssa-hpm-stage10/uncompressed-linux/linux'}
+REPACK {'argv': ['make', 'ARCH=riscv', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/compiler-bin/', 'LD=/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/usr/bin/riscv64-linux-gnu-ld', 'olddefconfig'], 'cwd': '/tmp/ssa-hpm-stage10/uncompressed-linux/linux'}
+scripts/kconfig/conf  --olddefconfig Kconfig
+#
+# configuration written to .config
+#
+REPACK {'argv': ['make', 'ARCH=riscv', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/compiler-bin/', 'LD=/tmp/ssa-hpm-stage10/uncompressed-linux/host-tools/usr/bin/riscv64-linux-gnu-ld', 'KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE', 'KAFLAGS=-misa-spec=2.2', '-j6', 'Image'], 'cwd': '/tmp/ssa-hpm-stage10/uncompressed-linux/linux'}
+scripts/kconfig/conf  --syncconfig Kconfig
+  CC      scripts/mod/devicetable-offsets.s
+  CC      scripts/mod/empty.o
+  MKELF   scripts/mod/elfconfig.h
+  HOSTCC  scripts/mod/modpost.o
+  HOSTCC  scripts/mod/sumversion.o
+  HOSTCC  scripts/mod/file2alias.o
+  HOSTLD  scripts/mod/modpost
+  CC      kernel/bounds.s
+  CALL    scripts/atomic/check-atomics.sh
+  CC      arch/riscv/kernel/asm-offsets.s
+  CALL    scripts/checksyscalls.sh
+usr/Makefile:64: target '/tmp/ssa-hpm-stage10/independent-linux/plain' given more than once in the same rule
+  AS      usr/initramfs_data.o
+  CHK     include/generated/compile.h
+  CC      init/main.o
+  CC      init/do_mounts.o
+  AR      usr/built-in.a
+  UPD     include/generated/compile.h
+  CC      init/do_mounts_initrd.o
+  CC      arch/riscv/kernel/soc.o
+  CC      arch/riscv/mm/init.o
+  CC      kernel/fork.o
+  CC      arch/riscv/kernel/cpu.o
+  CC      arch/riscv/mm/extable.o
+  CC      arch/riscv/kernel/cpufeature.o
+  CC      init/initramfs.o
+  CC      init/calibrate.o
+  AS      arch/riscv/kernel/entry.o
+  CC      arch/riscv/mm/fault.o
+  CC      arch/riscv/mm/pageattr.o
+  CC      arch/riscv/kernel/irq.o
+  CC      init/init_task.o
+  CC      arch/riscv/mm/cacheflush.o
+  CC      arch/riscv/kernel/process.o
+  CC      arch/riscv/mm/context.o
+  CC      kernel/exec_domain.o
+  CC      kernel/panic.o
+  CC      init/version.o
+  AR      init/built-in.a
+  CC      arch/riscv/kernel/ptrace.o
+  AR      arch/riscv/mm/built-in.a
+  CC      arch/riscv/kernel/reset.o
+  CC      arch/riscv/kernel/setup.o
+  CC      arch/riscv/kernel/signal.o
+  CC      kernel/cpu.o
+  CC      fs/open.o
+  CC      mm/filemap.o
+  CC      kernel/exit.o
+  CC      arch/riscv/kernel/syscall_table.o
+  CC      kernel/softirq.o
+  CC      mm/mempool.o
+  CC      fs/read_write.o
+  CC      arch/riscv/kernel/sys_riscv.o
+  CC      arch/riscv/kernel/time.o
+  CC      kernel/resource.o
+  CC      mm/oom_kill.o
+  CC      mm/fadvise.o
+  CC      mm/maccess.o
+  CC      arch/riscv/kernel/traps.o
+  CC      arch/riscv/kernel/riscv_ksyms.o
+  CC      fs/file_table.o
+  CC      kernel/sysctl.o
+  CC      mm/page-writeback.o
+  CC      mm/readahead.o
+  CC      arch/riscv/kernel/stacktrace.o
+  CC      security/commoncap.o
+  CC      fs/super.o
+  CC      arch/riscv/kernel/cacheinfo.o
+  CC      kernel/sysctl_binary.o
+  CC      security/min_addr.o
+  CC      mm/swap.o
+  CC      arch/riscv/kernel/patch.o
+  CC      arch/riscv/kernel/vdso.o
+  CC      fs/char_dev.o
+  AR      security/built-in.a
+  CC      kernel/capability.o
+  LDS     arch/riscv/kernel/vdso/vdso.lds
+  AS      arch/riscv/kernel/vdso/rt_sigreturn.o
+  CC      arch/riscv/kernel/perf_regs.o
+  CC      mm/truncate.o
+  AS      arch/riscv/kernel/vdso/gettimeofday.o
+  AS      arch/riscv/kernel/vdso/clock_gettime.o
+  AS      arch/riscv/kernel/vdso/clock_getres.o
+  AS      arch/riscv/kernel/vdso/getcpu.o
+  CC      mm/vmscan.o
+  CC      fs/stat.o
+  AS      arch/riscv/kernel/vdso/flush_icache.o
+  CC      kernel/ptrace.o
+  VDSOLD  arch/riscv/kernel/vdso/vdso-dummy.o
+  CC      mm/shmem.o
+  CC      arch/riscv/kernel/sbi.o
+  VDSOLD  arch/riscv/kernel/vdso/vdso.so.dbg
+  CC      fs/exec.o
+  LD      arch/riscv/kernel/vdso/vdso-syms.o
+  OBJCOPY arch/riscv/kernel/vdso/vdso.so
+  AS      arch/riscv/kernel/vdso/vdso.o
+  AR      arch/riscv/kernel/vdso/built-in.a
+  AS      arch/riscv/kernel/head.o
+  CC      fs/pipe.o
+  LDS     arch/riscv/kernel/vmlinux.lds
+  CC      kernel/user.o
+  AR      arch/riscv/kernel/built-in.a
+  AR      arch/riscv/built-in.a
+  CC      fs/namei.o
+  CC      kernel/signal.o
+  CC      fs/fcntl.o
+  CC      mm/util.o
+  CC      mm/mmzone.o
+  CC      fs/ioctl.o
+  CC      fs/readdir.o
+  CC      fs/select.o
+  CC      mm/vmstat.o
+  CC      kernel/sys.o
+  CC      fs/dcache.o
+  CC      drivers/irqchip/irqchip.o
+  CC      mm/backing-dev.o
+  CC      kernel/umh.o
+  CC      fs/inode.o
+  CC      drivers/irqchip/irq-sifive-plic.o
+  CC      fs/attr.o
+  CC      mm/mm_init.o
+  AR      drivers/irqchip/built-in.a
+  CC      mm/mmu_context.o
+  CC      kernel/workqueue.o
+  CC      drivers/pci/of.o
+  CC      kernel/pid.o
+  CC      mm/percpu.o
+  CC      kernel/task_work.o
+  CC      fs/bad_inode.o
+  AR      drivers/pci/built-in.a
+  CC      fs/file.o
+  CC      drivers/clk/clk-devres.o
+  CC      fs/filesystems.o
+  CC      drivers/tty/tty_io.o
+  CC      kernel/extable.o
+  CC      drivers/clk/clk-bulk.o
+  CC      mm/slab_common.o
+  CC      mm/compaction.o
+  CC      drivers/clk/clkdev.o
+  CC      fs/namespace.o
+  CC      kernel/params.o
+  CC      drivers/tty/n_tty.o
+  CC      drivers/clk/clk.o
+In file included from ./include/linux/rculist.h:10,
+                 from ./include/linux/pid.h:5,
+                 from ./include/linux/sched.h:14,
+                 from ./include/linux/ratelimit.h:6,
+                 from ./include/linux/dev_printk.h:16,
+                 from ./include/linux/device.h:15,
+                 from ./include/linux/node.h:18,
+                 from ./include/linux/cpu.h:17,
+                 from mm/compaction.c:11:
+In function '__list_cut_position',
+    inlined from 'list_cut_position' at ./include/linux/list.h:382:3,
+    inlined from 'move_freelist_tail' at mm/compaction.c:1220:3:
+./include/linux/list.h:352:21: warning: storing the address of local variable 'sublist' in '*&freepage_6(D)->D.11638.D.11584.lru.next' [-Wdangling-pointer=]
+  352 |         entry->next = list;
+      |         ~~~~~~~~~~~~^~~~~~
+mm/compaction.c: In function 'move_freelist_tail':
+mm/compaction.c:1217:19: note: 'sublist' declared here
+ 1217 |         LIST_HEAD(sublist);
+      |                   ^~~~~~~
+./include/linux/list.h:24:26: note: in definition of macro 'LIST_HEAD'
+   24 |         struct list_head name = LIST_HEAD_INIT(name)
+      |                          ^~~~
+mm/compaction.c:1215:61: note: 'freepage' declared here
+ 1215 | move_freelist_tail(struct list_head *freelist, struct page *freepage)
+      |                                                ~~~~~~~~~~~~~^~~~~~~~
+  CC      kernel/kthread.o
+  CC      mm/vmacache.o
+  CC      kernel/sys_ni.o
+  CC      lib/lockref.o
+  CC      kernel/nsproxy.o
+  CC      lib/bcd.o
+  CC      drivers/tty/tty_ioctl.o
+  CC      mm/interval_tree.o
+  CC      lib/sort.o
+  CC      lib/parser.o
+  CC      fs/seq_file.o
+  CC      drivers/clk/clk-divider.o
+  CC      kernel/notifier.o
+  CC      lib/debug_locks.o
+  CC      lib/random32.o
+  CC      drivers/tty/tty_ldisc.o
+  CC      kernel/ksysfs.o
+  CC      drivers/clk/clk-fixed-factor.o
+  CC      fs/xattr.o
+  CC      mm/list_lru.o
+  CC      lib/bust_spinlocks.o
+  CC      kernel/cred.o
+  CC      drivers/clk/clk-fixed-rate.o
+  CC      drivers/tty/tty_buffer.o
+  CC      lib/kasprintf.o
+  CC      mm/workingset.o
+  CC      drivers/clk/clk-gate.o
+  CC      fs/libfs.o
+  CC      kernel/reboot.o
+  CC      lib/bitmap.o
+  CC      drivers/tty/tty_port.o
+  CC      drivers/clk/clk-multiplier.o
+  CC      mm/debug.o
+  CC      drivers/tty/tty_mutex.o
+  CC      drivers/clk/clk-mux.o
+  CC      kernel/async.o
+  CC      fs/fs-writeback.o
+  CC      lib/scatterlist.o
+  CC      mm/gup.o
+  CC      drivers/tty/tty_ldsem.o
+  CC      drivers/clk/clk-composite.o
+  CC      kernel/range.o
+In file included from drivers/tty/tty_ldsem.c:28:
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from 'down_write_failed' at drivers/tty/tty_ldsem.c:253:2,
+    inlined from '__ldsem_down_write_nested' at drivers/tty/tty_ldsem.c:324:8,
+    inlined from 'ldsem_down_write' at drivers/tty/tty_ldsem.c:366:9:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '((struct list_head *)sem)[2].prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+drivers/tty/tty_ldsem.c: In function 'ldsem_down_write':
+drivers/tty/tty_ldsem.c:232:29: note: 'waiter' declared here
+  232 |         struct ldsem_waiter waiter;
+      |                             ^~~~~~
+drivers/tty/tty_ldsem.c:363:51: note: 'sem' declared here
+  363 | int __sched ldsem_down_write(struct ld_semaphore *sem, long timeout)
+      |                              ~~~~~~~~~~~~~~~~~~~~~^~~
+  CC      kernel/smpboot.o
+fs/fs-writeback.c: In function 'wb_writeback.isra':
+fs/fs-writeback.c:1848:31: warning: storing the address of local variable 'oldest_jif' in '*work.older_than_this' [-Wdangling-pointer=]
+ 1848 |         work->older_than_this = &oldest_jif;
+      |         ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+fs/fs-writeback.c:1842:23: note: 'oldest_jif' declared here
+ 1842 |         unsigned long oldest_jif;
+      |                       ^~~~~~~~~~
+fs/fs-writeback.c:1838:52: note: 'work' declared here
+ 1838 |                          struct wb_writeback_work *work)
+      |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+  CC      drivers/tty/tty_baudrate.o
+  CC      lib/list_sort.o
+  CC      drivers/clk/clk-fractional-divider.o
+  CC      fs/pnode.o
+  CC      lib/uuid.o
+  CC      kernel/ucount.o
+  CC      mm/highmem.o
+  CC      drivers/tty/tty_jobctrl.o
+  CC      lib/iov_iter.o
+  CC      drivers/clk/clk-gpio.o
+  CC      kernel/groups.o
+  CC      fs/splice.o
+  CC      drivers/tty/n_null.o
+  CC      mm/memory.o
+  CC      drivers/clk/clk-conf.o
+  CC      drivers/clk/analogbits/wrpll-cln28hpc.o
+  CC      kernel/sched/core.o
+  CC      drivers/tty/hvc/hvc_console.o
+  AR      drivers/clk/analogbits/built-in.a
+  CC      drivers/clk/sifive/fu540-prci.o
+  CC      lib/clz_ctz.o
+  CC      fs/sync.o
+  CC      lib/bsearch.o
+  AR      drivers/clk/sifive/built-in.a
+  AR      drivers/clk/built-in.a
+  CC      drivers/tty/hvc/hvc_riscv_sbi.o
+  CC      fs/utimes.o
+  CC      mm/mincore.o
+  CC      mm/mlock.o
+  CC      lib/find_bit.o
+  CC      kernel/sched/loadavg.o
+  AR      drivers/tty/hvc/built-in.a
+  CC      drivers/tty/serial/serial_core.o
+  CC      lib/llist.o
+  CC      fs/d_path.o
+  CC      lib/memweight.o
+  CC      lib/kfifo.o
+  CC      mm/mmap.o
+  CC      lib/percpu-refcount.o
+  CC      kernel/sched/clock.o
+  CC      fs/stack.o
+  CC      arch/riscv/lib/delay.o
+  CC      lib/rhashtable.o
+  CC      drivers/tty/serial/earlycon.o
+  CC      fs/fs_struct.o
+  AS      arch/riscv/lib/memcpy.o
+  CC      kernel/sched/cputime.o
+  AS      arch/riscv/lib/memset.o
+  AS      arch/riscv/lib/tishift.o
+  AS      arch/riscv/lib/uaccess.o
+  CC      fs/statfs.o
+  AR      arch/riscv/lib/lib.a
+  CC      kernel/sched/idle.o
+  CC      drivers/tty/serial/earlycon-riscv-sbi.o
+  CC      mm/mmu_gather.o
+  CC      lib/once.o
+  CC      lib/refcount.o
+  CC      mm/mprotect.o
+  CC      fs/fs_pin.o
+  CC      drivers/tty/serial/sifive.o
+  CC      lib/usercopy.o
+  CC      kernel/sched/fair.o
+  CC      kernel/sched/rt.o
+  CC      fs/nsfs.o
+  CC      lib/errseq.o
+  CC      mm/mremap.o
+  CC      lib/bucket_locks.o
+  AR      drivers/tty/serial/built-in.a
+  AR      drivers/tty/built-in.a
+  CC      drivers/char/mem.o
+  CC      fs/fs_types.o
+  CC      lib/generic-radix-tree.o
+  CC      mm/msync.o
+  CC      kernel/sched/deadline.o
+  CC      fs/fs_context.o
+  CC      kernel/locking/mutex.o
+  CC      drivers/char/random.o
+  CC      mm/page_vma_mapped.o
+  CC      lib/string_helpers.o
+In file included from ./include/linux/mutex.h:15,
+                 from kernel/locking/mutex.c:21:
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from '__mutex_add_waiter' at kernel/locking/mutex.c:213:2,
+    inlined from '__mutex_lock_common' at kernel/locking/mutex.c:985:3,
+    inlined from '__mutex_lock.constprop' at kernel/locking/mutex.c:1103:9:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '*(struct list_head *)((char *)lock + 8).prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+kernel/locking/mutex.c: In function '__mutex_lock.constprop':
+kernel/locking/mutex.c:930:29: note: 'waiter' declared here
+  930 |         struct mutex_waiter waiter;
+      |                             ^~~~~~
+kernel/locking/mutex.c:1100:28: note: 'lock' declared here
+ 1100 | __mutex_lock(struct mutex *lock, long state, unsigned int subclass,
+      |              ~~~~~~~~~~~~~~^~~~
+  CC      fs/fs_parser.o
+  CC      kernel/locking/semaphore.o
+  CC      lib/hexdump.o
+  CC      mm/pagewalk.o
+  CC      kernel/sched/wait.o
+In file included from ./include/linux/rculist.h:10,
+                 from ./include/linux/pid.h:5,
+                 from ./include/linux/sched.h:14,
+                 from kernel/locking/semaphore.c:30:
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from '__down_common' at kernel/locking/semaphore.c:209:2,
+    inlined from '__down_killable' at kernel/locking/semaphore.c:247:9:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '*(struct list_head *)((char *)sem + 8).prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+kernel/locking/semaphore.c: In function '__down_killable':
+kernel/locking/semaphore.c:207:33: note: 'waiter' declared here
+  207 |         struct semaphore_waiter waiter;
+      |                                 ^~~~~~
+kernel/locking/semaphore.c:245:63: note: 'sem' declared here
+  245 | static noinline int __sched __down_killable(struct semaphore *sem)
+      |                                             ~~~~~~~~~~~~~~~~~~^~~
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from '__down_common' at kernel/locking/semaphore.c:209:2,
+    inlined from '__down_timeout' at kernel/locking/semaphore.c:252:9:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '*(struct list_head *)((char *)sem + 8).prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+kernel/locking/semaphore.c: In function '__down_timeout':
+kernel/locking/semaphore.c:207:33: note: 'waiter' declared here
+  207 |         struct semaphore_waiter waiter;
+      |                                 ^~~~~~
+kernel/locking/semaphore.c:250:62: note: 'sem' declared here
+  250 | static noinline int __sched __down_timeout(struct semaphore *sem, long timeout)
+      |                                            ~~~~~~~~~~~~~~~~~~^~~
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from '__down_common' at kernel/locking/semaphore.c:209:2,
+    inlined from '__down' at kernel/locking/semaphore.c:237:2:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '*(struct list_head *)((char *)sem + 8).prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+kernel/locking/semaphore.c: In function '__down':
+kernel/locking/semaphore.c:207:33: note: 'waiter' declared here
+  207 |         struct semaphore_waiter waiter;
+      |                                 ^~~~~~
+kernel/locking/semaphore.c:235:55: note: 'sem' declared here
+  235 | static noinline void __sched __down(struct semaphore *sem)
+      |                                     ~~~~~~~~~~~~~~~~~~^~~
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from '__down_common' at kernel/locking/semaphore.c:209:2,
+    inlined from '__down_interruptible' at kernel/locking/semaphore.c:242:9:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '*(struct list_head *)((char *)sem + 8).prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+kernel/locking/semaphore.c: In function '__down_interruptible':
+kernel/locking/semaphore.c:207:33: note: 'waiter' declared here
+  207 |         struct semaphore_waiter waiter;
+      |                                 ^~~~~~
+kernel/locking/semaphore.c:240:68: note: 'sem' declared here
+  240 | static noinline int __sched __down_interruptible(struct semaphore *sem)
+      |                                                  ~~~~~~~~~~~~~~~~~~^~~
+  CC      fs/fsopen.o
+  CC      drivers/char/misc.o
+  CC      lib/kstrtox.o
+  CC      kernel/locking/rwsem.o
+  CC      mm/pgtable-generic.o
+In file included from ./include/linux/rculist.h:10,
+                 from ./include/linux/pid.h:5,
+                 from ./include/linux/sched.h:14,
+                 from kernel/locking/rwsem.c:20:
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from 'rwsem_down_write_slowpath' at kernel/locking/rwsem.c:1172:2:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'waiter' in '((struct list_head *)sem)[1].prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+kernel/locking/rwsem.c: In function 'rwsem_down_write_slowpath':
+kernel/locking/rwsem.c:1141:29: note: 'waiter' declared here
+ 1141 |         struct rwsem_waiter waiter;
+      |                             ^~~~~~
+kernel/locking/rwsem.c:1136:48: note: 'sem' declared here
+ 1136 | rwsem_down_write_slowpath(struct rw_semaphore *sem, int state)
+      |                           ~~~~~~~~~~~~~~~~~~~~~^~~
+  CC      lib/math/div64.o
+  CC      kernel/sched/wait_bit.o
+  CC      kernel/locking/percpu-rwsem.o
+  AR      drivers/char/built-in.a
+  CC      lib/math/gcd.o
+  CC      fs/no-block.o
+In file included from ./include/linux/preempt.h:11,
+                 from ./include/linux/percpu.h:6,
+                 from kernel/locking/percpu-rwsem.c:3:
+In function '__list_add',
+    inlined from 'list_add_tail' at ./include/linux/list.h:100:2,
+    inlined from '__add_wait_queue_entry_tail' at ./include/linux/wait.h:185:2,
+    inlined from 'percpu_rwsem_wait' at kernel/locking/percpu-rwsem.c:152:3:
+./include/linux/list.h:70:20: warning: storing the address of local variable 'wq_entry' in '((struct list_head *)((char *)sem + 8))[3].prev' [-Wdangling-pointer=]
+   70 |         next->prev = new;
+      |         ~~~~~~~~~~~^~~~~
+In file included from kernel/locking/percpu-rwsem.c:4:
+kernel/locking/percpu-rwsem.c: In function 'percpu_rwsem_wait':
+kernel/locking/percpu-rwsem.c:141:26: note: 'wq_entry' declared here
+  141 |         DEFINE_WAIT_FUNC(wq_entry, percpu_rwsem_wake_function);
+      |                          ^~~~~~~~
+./include/linux/wait.h:1136:33: note: in definition of macro 'DEFINE_WAIT_FUNC'
+ 1136 |         struct wait_queue_entry name = {                                        \
+      |                                 ^~~~
+kernel/locking/percpu-rwsem.c:139:59: note: 'sem' declared here
+  139 | static void percpu_rwsem_wait(struct percpu_rw_semaphore *sem, bool reader)
+      |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+  CC      lib/math/lcm.o
+  AR      kernel/locking/built-in.a
+  CC      mm/rmap.o
+  CC      lib/math/int_pow.o
+  CC      drivers/base/component.o
+  CC      lib/crypto/chacha.o
+  CC      lib/math/int_sqrt.o
+  CC      fs/anon_inodes.o
+  AR      lib/crypto/built-in.a
+  CC      mm/vmalloc.o
+  CC      lib/math/reciprocal_div.o
+  CC      kernel/sched/swait.o
+  CC      lib/math/rational.o
+  CC      drivers/base/core.o
+  CC      fs/binfmt_elf.o
+  CC      drivers/base/bus.o
+  AR      lib/math/built-in.a
+  CC      lib/pci_iomap.o
+  CC      kernel/sched/completion.o
+  CC      drivers/base/dd.o
+  CC      lib/iomap_copy.o
+  CC      fs/ramfs/inode.o
+  CC      mm/process_vm_access.o
+  CC      lib/devres.o
+  CC      drivers/base/syscore.o
+  AR      kernel/sched/built-in.a
+  CC      kernel/power/qos.o
+  CC      kernel/printk/printk.o
+  CC      fs/ramfs/file-mmu.o
+  CC      lib/hweight.o
+  CC      lib/bitrev.o
+  CC      mm/page_alloc.o
+  CC      drivers/base/driver.o
+  AR      kernel/power/built-in.a
+  CC      drivers/base/class.o
+  AR      fs/ramfs/built-in.a
+  AR      fs/built-in.a
+  CC      lib/crc32.o
+  CC      mm/init-mm.o
+  CC      lib/zlib_inflate/inffast.o
+mm/page_alloc.c: In function 'mem_init_print_info':
+mm/page_alloc.c:7641:27: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7645:9: note: in expansion of macro 'adj_init_size'
+ 7645 |         adj_init_size(__init_begin, __init_end, init_data_size,
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: note: use '&__init_begin[0] <= &_sinittext[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7645:9: note: in expansion of macro 'adj_init_size'
+ 7645 |         adj_init_size(__init_begin, __init_end, init_data_size,
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7645:9: note: in expansion of macro 'adj_init_size'
+ 7645 |         adj_init_size(__init_begin, __init_end, init_data_size,
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: note: use '&_sinittext[0] < &__init_end[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7645:9: note: in expansion of macro 'adj_init_size'
+ 7645 |         adj_init_size(__init_begin, __init_end, init_data_size,
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7647:9: note: in expansion of macro 'adj_init_size'
+ 7647 |         adj_init_size(_stext, _etext, codesize, _sinittext, init_code_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: note: use '&_stext[0] <= &_sinittext[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7647:9: note: in expansion of macro 'adj_init_size'
+ 7647 |         adj_init_size(_stext, _etext, codesize, _sinittext, init_code_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7647:9: note: in expansion of macro 'adj_init_size'
+ 7647 |         adj_init_size(_stext, _etext, codesize, _sinittext, init_code_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: note: use '&_sinittext[0] < &_etext[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7647:9: note: in expansion of macro 'adj_init_size'
+ 7647 |         adj_init_size(_stext, _etext, codesize, _sinittext, init_code_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7648:9: note: in expansion of macro 'adj_init_size'
+ 7648 |         adj_init_size(_sdata, _edata, datasize, __init_begin, init_data_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: note: use '&_sdata[0] <= &__init_begin[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7648:9: note: in expansion of macro 'adj_init_size'
+ 7648 |         adj_init_size(_sdata, _edata, datasize, __init_begin, init_data_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7648:9: note: in expansion of macro 'adj_init_size'
+ 7648 |         adj_init_size(_sdata, _edata, datasize, __init_begin, init_data_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: note: use '&__init_begin[0] < &_edata[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7648:9: note: in expansion of macro 'adj_init_size'
+ 7648 |         adj_init_size(_sdata, _edata, datasize, __init_begin, init_data_size);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7649:9: note: in expansion of macro 'adj_init_size'
+ 7649 |         adj_init_size(_stext, _etext, codesize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: note: use '&_stext[0] <= &__start_rodata[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7649:9: note: in expansion of macro 'adj_init_size'
+ 7649 |         adj_init_size(_stext, _etext, codesize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7649:9: note: in expansion of macro 'adj_init_size'
+ 7649 |         adj_init_size(_stext, _etext, codesize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: note: use '&__start_rodata[0] < &_etext[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7649:9: note: in expansion of macro 'adj_init_size'
+ 7649 |         adj_init_size(_stext, _etext, codesize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7650:9: note: in expansion of macro 'adj_init_size'
+ 7650 |         adj_init_size(_sdata, _edata, datasize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:27: note: use '&_sdata[0] <= &__start_rodata[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                           ^~
+mm/page_alloc.c:7650:9: note: in expansion of macro 'adj_init_size'
+ 7650 |         adj_init_size(_sdata, _edata, datasize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: warning: comparison between two arrays [-Warray-compare]
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7650:9: note: in expansion of macro 'adj_init_size'
+ 7650 |         adj_init_size(_sdata, _edata, datasize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+mm/page_alloc.c:7641:41: note: use '&__start_rodata[0] < &_edata[0]' to compare the addresses
+ 7641 |                 if (start <= pos && pos < end && size > adj) \
+      |                                         ^
+mm/page_alloc.c:7650:9: note: in expansion of macro 'adj_init_size'
+ 7650 |         adj_init_size(_sdata, _edata, datasize, __start_rodata, rosize);
+      |         ^~~~~~~~~~~~~
+  CC      kernel/printk/printk_safe.o
+  CC      lib/zlib_inflate/inflate.o
+  CC      lib/zlib_inflate/infutil.o
+  AR      kernel/printk/built-in.a
+  CC      drivers/base/platform.o
+  CC      kernel/irq/irqdesc.o
+  CC      kernel/irq/handle.o
+  CC      kernel/irq/manage.o
+  CC      lib/zlib_inflate/inftrees.o
+  CC      drivers/base/cpu.o
+  CC      lib/zlib_inflate/inflate_syms.o
+  CC      kernel/irq/spurious.o
+  CC      mm/memblock.o
+  CC      mm/dmapool.o
+  AR      lib/zlib_inflate/built-in.a
+  CC      drivers/base/firmware.o
+  CC      lib/lzo/lzo1x_decompress_safe.o
+  CC      kernel/irq/resend.o
+  CC      kernel/rcu/update.o
+  CC      drivers/base/init.o
+  AR      lib/lzo/built-in.a
+  CC      mm/slub.o
+  CC      lib/lz4/lz4_decompress.o
+  CC      drivers/base/map.o
+  CC      kernel/irq/chip.o
+  CC      kernel/irq/dummychip.o
+  CC      kernel/rcu/sync.o
+  CC      drivers/base/devres.o
+  CC      lib/xz/xz_dec_syms.o
+  CC      kernel/rcu/srcutiny.o
+  AR      lib/lz4/built-in.a
+  CC      kernel/rcu/tiny.o
+  CC      kernel/irq/devres.o
+  CC      drivers/base/attribute_container.o
+  CC      mm/migrate.o
+  CC      lib/xz/xz_dec_stream.o
+  CC      drivers/base/transport_class.o
+  AR      kernel/rcu/built-in.a
+  CC      kernel/irq/irqdomain.o
+  CC      lib/xz/xz_dec_lzma2.o
+  CC      drivers/base/topology.o
+  CC      drivers/base/container.o
+  CC      lib/syscall.o
+  AR      mm/built-in.a
+  CC      lib/xz/xz_dec_bcj.o
+  CC      lib/checksum.o
+  CC      drivers/base/property.o
+  CC      kernel/dma/mapping.o
+  CC      drivers/base/cacheinfo.o
+  AR      kernel/irq/built-in.a
+  CC      kernel/up.o
+  CC      kernel/time/time.o
+  AR      lib/xz/built-in.a
+  CC      lib/strncpy_from_user.o
+  CC      kernel/dma/direct.o
+  CC      kernel/dma/dummy.o
+  CC      kernel/time/timer.o
+  CC      lib/strnlen_user.o
+  CC      drivers/base/devcon.o
+  CC      lib/argv_split.o
+  CC      kernel/dma/coherent.o
+  CC      kernel/elfcore.o
+  CC      kernel/time/hrtimer.o
+  CC      drivers/base/swnode.o
+  CC      lib/cmdline.o
+  CC      lib/ctype.o
+  CC      kernel/dma/swiotlb.o
+  CC      drivers/base/power/clock_ops.o
+  CC      lib/dec_and_lock.o
+  CC      kernel/time/timekeeping.o
+  CC      lib/decompress.o
+  CC      kernel/irq_work.o
+  CC      lib/decompress_bunzip2.o
+  CC      kernel/iomem.o
+  AR      drivers/base/power/built-in.a
+  AR      drivers/base/built-in.a
+  AR      kernel/dma/built-in.a
+  CC      kernel/ssa_hpm.o
+  CC      drivers/input/serio/serio.o
+  CC      drivers/input/serio/serport.o
+  CC      lib/decompress_inflate.o
+  CC      kernel/time/ntp.o
+  CC      lib/decompress_unlz4.o
+  CC      drivers/input/serio/libps2.o
+  CC      lib/decompress_unlzma.o
+  CC      kernel/time/clocksource.o
+  CC      lib/decompress_unlzo.o
+  CC      lib/decompress_unxz.o
+  CC      lib/dump_stack.o
+  CC      kernel/time/jiffies.o
+  AR      drivers/input/serio/built-in.a
+  CC      kernel/time/timer_list.o
+  CC      kernel/time/timeconv.o
+  CC      lib/earlycpio.o
+  CC      drivers/clocksource/timer-of.o
+  CC      drivers/of/base.o
+  CC      drivers/clocksource/timer-probe.o
+  CC      lib/extable.o
+  CC      kernel/time/timecounter.o
+  CC      drivers/clocksource/timer-riscv.o
+  CC      kernel/time/alarmtimer.o
+  CC      lib/fdt.o
+  CC      lib/fdt_addresses.o
+  CC      lib/fdt_empty_tree.o
+  CC      lib/fdt_ro.o
+  AR      drivers/clocksource/built-in.a
+  CC      drivers/of/device.o
+  CC      drivers/of/platform.o
+  CC      drivers/of/property.o
+  CC      kernel/time/posix-timers.o
+  CC      drivers/of/fdt.o
+  CC      lib/fdt_rw.o
+  CC      drivers/of/fdt_address.o
+  CC      lib/fdt_strerror.o
+  CC      kernel/time/posix-cpu-timers.o
+  CC      drivers/nvmem/core.o
+  CC      lib/fdt_sw.o
+  CC      lib/fdt_wip.o
+  CC      drivers/of/address.o
+  CC      kernel/time/posix-clock.o
+  CC      kernel/time/itimer.o
+  CC      lib/flex_proportions.o
+  AR      drivers/nvmem/built-in.a
+  CC      lib/idr.o
+  CC      kernel/time/clockevents.o
+  CC      kernel/time/tick-common.o
+  CC      kernel/time/sched_clock.o
+  CC      lib/ioremap.o
+  CC      drivers/of/irq.o
+  CC      lib/irq_regs.o
+  CC      lib/is_single_threaded.o
+  CC      lib/klist.o
+  CC      lib/kobject.o
+  CC      lib/kobject_uevent.o
+  AR      kernel/time/built-in.a
+  AR      kernel/built-in.a
+  CC      drivers/of/of_reserved_mem.o
+  CC      lib/logic_pio.o
+  CC      lib/memcat_p.o
+  CC      lib/nmi_backtrace.o
+  CC      lib/nodemask.o
+  AR      drivers/of/built-in.a
+  AR      drivers/built-in.a
+  CC      lib/plist.o
+  CC      lib/radix-tree.o
+  CC      lib/ratelimit.o
+  CC      lib/rbtree.o
+  CC      lib/seq_buf.o
+  CC      lib/sha1.o
+  CC      lib/show_mem.o
+  CC      lib/siphash.o
+  CC      lib/string.o
+  CC      lib/timerqueue.o
+  CC      lib/vsprintf.o
+  CC      lib/win_minmax.o
+  CC      lib/xarray.o
+  AR      lib/built-in.a
+  AR      lib/lib.a
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  AR      init/built-in.a
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+  MODINFO modules.builtin.modinfo
+  GEN     modules.builtin
+  LD      vmlinux
+  SYSMAP  System.map
+  OBJCOPY arch/riscv/boot/Image
+  Kernel: arch/riscv/boot/Image is ready
+REPACK {'argv': ['make', 'PLATFORM=ssa_rocket', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei', 'platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE', 'FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage10/uncompressed-linux/linux/arch/riscv/boot/Image', 'FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage10/uncompressed-linux/rocket.dtb', 'FW_PAYLOAD_FDT_ADDR=0x81e00000', '-j6'], 'cwd': '/tmp/ssa-hpm-stage10/uncompressed-linux/opensbi'}
+ AS        platform/ssa_rocket/firmware/fw_payload.o
+ ELF       platform/ssa_rocket/firmware/fw_payload.elf
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /tmp/ssa-hpm-stage10/uncompressed-linux/opensbi/build/platform/ssa_rocket/firmware/fw_payload.elf has a LOAD segment with RWX permissions
+ OBJCOPY   platform/ssa_rocket/firmware/fw_payload.bin
+REPACK {'argv': ['/opt/riscv/bin/riscv64-unknown-elf-objcopy', '-O', 'binary', '/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.elf', '/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.bin'], 'cwd': '/tmp/ssa-hpm-stage10/uncompressed-linux'}
+REPACK {'argv': ['python3', '/home/lxf/chipyard/ssa/elf_to_hex.py', '/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.bin', '/tmp/ssa-hpm-stage10/uncompressed-linux/boot-a.hex'], 'cwd': '/tmp/ssa-hpm-stage10/uncompressed-linux'}
+PASS UNCOMPRESSED IMAGE

@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "command": [
+    "python3",
+    "/tmp/ssa-hpm-stage10/public-install/ssa/linux/transparent/build-users.py",
+    "--work",
+    "/tmp/ssa-hpm-stage10/independent-users",
+    "--cross",
+    "/opt/riscv/bin/riscv64-unknown-elf-",
+    "--ld-dir",
+    "/tmp/ssa-hpm-stage10/independent-linux/host-tools/compiler-bin",
+    "--musl-cache",
+    "/tmp/ssa-hpm-stage10/musl-1.2.5"
+  ],
+  "exit_code": 0,
+  "ordinary_and_manual_elf_hash_equality": {
+    "init": true,
+    "plain": false,
+    "plain-next": false,
+    "plain-capacity": false,
+    "plain-dynamic": false,
+    "libplain.so": true,
+    "ld-musl-riscv64.so.1": true,
+    "class-regress": true,
+    "classnext": true
+  },
+  "preparation_note": "initial manual invocation used nonexistent host-tools/bin and selected bare-metal ld (-shared unsupported); corrected to builder-recorded host-tools/compiler-bin",
+  "coverage": "fresh users built from public installed suite; compiler/binutils and byte-verified musl loader cache reused; not a second kernel/model build",
+  "comparison": {
+    "init": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": true
+    },
+    "plain": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": false,
+      "nonruntime_difference": "GCC random temporary assembly STT_FILE object names in non-loaded string table only"
+    },
+    "plain-next": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": false,
+      "nonruntime_difference": "GCC random temporary assembly STT_FILE object names in non-loaded string table only"
+    },
+    "plain-capacity": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": false,
+      "nonruntime_difference": "GCC random temporary assembly STT_FILE object names in non-loaded string table only"
+    },
+    "plain-dynamic": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": false,
+      "nonruntime_difference": "GCC random temporary assembly STT_FILE object names in non-loaded string table only"
+    },
+    "libplain.so": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": true
+    },
+    "ld-musl-riscv64.so.1": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": true
+    },
+    "class-regress": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": true
+    },
+    "classnext": {
+      "runtime_load_segments_and_entry_equal": true,
+      "symbols_equal": true,
+      "exact_elf_equal": true
+    }
+  }
+}

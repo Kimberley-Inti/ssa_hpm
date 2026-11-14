@@ -1,0 +1,159 @@
+{
+  "stage": 10,
+  "passed": true,
+  "native_exit_code": 0,
+  "normal_shutdown": true,
+  "runner_exit": {
+    "native_exit_code": 0,
+    "auto_checker_exit_code": 0,
+    "manual_checker_exit_code": 0
+  },
+  "actual_native_runs": {
+    "completed_final": 1,
+    "superseded_preparations": 2,
+    "note": "same final run executes automatic plus old manual; native0 without shutdown in terminated preparations is not a pass"
+  },
+  "automatic": {
+    "passed": true,
+    "checks": 50,
+    "semantic_checks": 48,
+    "sessions": 10,
+    "base_records": 195
+  },
+  "manual_linux_regression": {
+    "passed": true,
+    "checks": 26,
+    "sessions": 7,
+    "records": 20
+  },
+  "classification_capacity": {
+    "base_records": 64,
+    "chunks": 4,
+    "sidecar_rows": 63,
+    "dropped": 1,
+    "evictions": 48,
+    "status": 9,
+    "coverage_complete": false,
+    "independent_elf_gates": 10
+  },
+  "dynamic": {
+    "profile": "unmodified musl1.2.5 PT_INTERP plus DT_NEEDED DSO",
+    "records": 105,
+    "chunks": 7,
+    "transport_complete": true,
+    "activation_complete": false,
+    "abandoned_frames": [
+      {
+        "session": 9,
+        "frame": 1,
+        "rid": 10,
+        "status": "abandoned"
+      }
+    ]
+  },
+  "negative_controls": {
+    "actual_native": [
+      "disabled identical ELF",
+      "unprivileged ARM",
+      "selected setid",
+      "thread rejection",
+      "third pool exhaustion"
+    ],
+    "host_only": "four automatic semantic/terminal mutations and manual repaired-checksum owner mutation; same capture, no faulty hardware rerun"
+  },
+  "unchanged_lowlevel": "34historical cases status/hash/golden rechecked,6Spike reference/28RTL,not newly executed",
+  "model_reused_sha256": "d266da6457c89af8ec4f3daea0c8574ed048764fc15e25b54de3a1a23c458d62",
+  "new_scala_or_model_build": false,
+  "native_seconds": 27484.929591309,
+  "native_log_sha256": "22c09c71788464d1044e7051ccb8792e93e3df1cf54e0ee99095f167a729b204",
+  "host_commands": [
+    [
+      "python3",
+      "ssa/linux/transparent/negative.py",
+      "--native-log",
+      "/tmp/ssa-hpm-stage10/linux-uncompressed/rocket-linux-transparent.txt",
+      "--execution",
+      "/tmp/ssa-hpm-stage10/linux-uncompressed/execution.json",
+      "--users",
+      "/tmp/ssa-hpm-stage10/uncompressed-linux/transparent-users.json",
+      "--out",
+      "/home/lxf/ssa_hpm/evidence/stage10/automatic-negatives.json"
+    ],
+    [
+      "python3",
+      "ssa/linux/transparent/check-capacity-elf.py",
+      "--native-log",
+      "/tmp/ssa-hpm-stage10/linux-uncompressed/rocket-linux-transparent.txt",
+      "--work",
+      "/tmp/ssa-hpm-stage10/uncompressed-linux",
+      "--out",
+      "/home/lxf/ssa_hpm/evidence/stage10/capacity-elf-final.json"
+    ],
+    [
+      "python3",
+      "ssa/linux/test_classification_native.py",
+      "--native-log",
+      "/tmp/ssa-hpm-stage10/linux-uncompressed/manual-regression.txt",
+      "--execution",
+      "/home/lxf/ssa_hpm/evidence/stage10/manual-suffix-execution.json",
+      "--out",
+      "/home/lxf/ssa_hpm/evidence/stage10/manual-semantic-negative.json"
+    ]
+  ],
+  "limitations": [
+    "single hart/single thread/no privilege gain/controlled known ELF cohort",
+    "fork clears automatic policy; no inherited child session",
+    "same-scope LIFO notifications; no generic nonlocal/signal-handler unwind",
+    "dynamic loader continuation explicitly abandoned; raw addresses require exact ELF/load mapping",
+    "two pool slots,63classification rows,16FIFO history",
+    "automatic image flags0/4/6 Cache ABI2/base; no new automatic-DTLB native run",
+    "full262143-base-record UART stress not run; host/old lowlevel guard coverage",
+    "systematic performance overhead and final whole-project review still pending"
+  ],
+  "all_sessions": {
+    "base_sessions": 17,
+    "base_records": 215,
+    "all_transport_complete_and_released": true,
+    "activation_complete_sessions": 13,
+    "abandoned_frames": [
+      {
+        "session": 2,
+        "frame": 1,
+        "rid": 3,
+        "status": "abandoned"
+      },
+      {
+        "session": 4,
+        "frame": 1,
+        "rid": 3,
+        "status": "abandoned"
+      },
+      {
+        "session": 9,
+        "frame": 1,
+        "rid": 10,
+        "status": "abandoned"
+      },
+      {
+        "session": 12,
+        "frame": 1,
+        "rid": 3,
+        "status": "abandoned"
+      }
+    ],
+    "classification_sessions": 16,
+    "classification_rows": 109,
+    "classification_incomplete_sessions": [
+      10
+    ]
+  },
+  "independent_final_oracle_replay_passed": true,
+  "fresh_host_tests": {
+    "rule_examples": 14,
+    "sidecar_protocol": 21,
+    "export_protocol": 48
+  },
+  "portable_postcheck_entry_passed_development_and_independent": true,
+  "frozen_elf_embedded_image_identity_passed": true,
+  "source_commits": "source-commits.json"
+}

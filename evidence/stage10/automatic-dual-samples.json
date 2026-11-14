@@ -1,0 +1,113 @@
+{
+  "coverage": "actual live automatic dual prefix, not full-run status",
+  "switches": [
+    {
+      "pid": 23,
+      "test": 11,
+      "role": 2,
+      "event": 1,
+      "to": 24,
+      "from": 24,
+      "depth": 2,
+      "rid": 2,
+      "state": 1,
+      "ivcsw": 1,
+      "cause": 8,
+      "csr_cause": 8,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 7
+    },
+    {
+      "pid": 24,
+      "test": 11,
+      "role": 1,
+      "event": 2,
+      "to": 23,
+      "from": 7,
+      "depth": 2,
+      "rid": 2,
+      "state": 0,
+      "ivcsw": 5,
+      "cause": 9223372036854775813,
+      "csr_cause": 9223372036854775813,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 8
+    }
+  ],
+  "samples": [
+    {
+      "pid": 23,
+      "event": 1,
+      "counter": 0,
+      "S": 39799490,
+      "R": 39937705,
+      "delta": 138215,
+      "session": 7
+    },
+    {
+      "pid": 23,
+      "event": 1,
+      "counter": 1,
+      "S": 21916289,
+      "R": 22039390,
+      "delta": 123101,
+      "session": 7
+    },
+    {
+      "pid": 23,
+      "event": 1,
+      "counter": 2,
+      "S": 397999,
+      "R": 399380,
+      "delta": 1381,
+      "session": 7
+    },
+    {
+      "pid": 23,
+      "event": 1,
+      "counter": 3,
+      "S": 325215,
+      "R": 325351,
+      "delta": 136,
+      "session": 7
+    },
+    {
+      "pid": 24,
+      "event": 2,
+      "counter": 0,
+      "S": 39936687,
+      "R": 43190440,
+      "delta": 3253753,
+      "session": 8
+    },
+    {
+      "pid": 24,
+      "event": 2,
+      "counter": 1,
+      "S": 22038927,
+      "R": 24548636,
+      "delta": 2509709,
+      "session": 8
+    },
+    {
+      "pid": 24,
+      "event": 2,
+      "counter": 2,
+      "S": 399371,
+      "R": 431908,
+      "delta": 32537,
+      "session": 8
+    },
+    {
+      "pid": 24,
+      "event": 2,
+      "counter": 3,
+      "S": 325347,
+      "R": 332969,
+      "delta": 7622,
+      "session": 8
+    }
+  ]
+}

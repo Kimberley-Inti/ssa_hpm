@@ -1,0 +1,36 @@
+{
+  "chipyard": {
+    "head": "f05e1a0dfa274f5505c80445cdc0d0205af54d86",
+    "branch": "stage10-transparent-launch",
+    "tree": "a41880ac09603ff22fab159ebc7868c0543e1150",
+    "stage10_commits": [
+      "4dbc51534c13a2fcf950bb9322b68ab6892a2eac 2026-11-13T21:24:12+08:00 SSA-HPM: build controlled transparent Linux launch and ordinary ELF acceptance fixtures",
+      "59b7d7916f8c0367733a6cbee2d342af13abf775 2026-11-13T21:45:53+08:00 SSA-HPM: verify automatic session bijection, profile ownership and semantic negatives",
+      "3c07385f8aac9acfaeb65d87e8a71aec557486dd 2026-11-13T22:57:52+08:00 SSA-HPM: use uncompressed transparent initramfs to bound RTL Linux startup cost",
+      "0d88f5baa08268d82728784cdc41be023bbf8ee9 2026-11-14T08:05:07+08:00 SSA-HPM: require complete classification coverage for noncapacity automatic sessions",
+      "5de3401c0c7c209aa414de5319340d8c4b2c22ac 2026-11-14T09:51:19+08:00 SSA-HPM: verify all capacity records against target ELF and exact FIFO/drop accounting",
+      "9ac5adcecba65f3906d9c0b70fe1741000ff0415 2026-11-14T09:52:31+08:00 SSA-HPM: distinguish explicit row-capacity drops from invalid shadow-stack status",
+      "47e46afed48f3d6d1d11bd8e19e9a9c3225d13d5 2026-11-14T10:04:14+08:00 SSA-HPM: link dynamic application records to the ordinary target ELF",
+      "85274e7a47b04715e6ba048b700612939ee74130 2026-11-14T11:03:30+08:00 SSA-HPM: audit inclusive dynamic/capacity counts and specify allocation-error boundaries",
+      "7db7a2a43da0149319cb16906666ae2afbb072e9 2026-11-14T11:06:45+08:00 SSA-HPM: return structured rejection for truncated automatic exports",
+      "f05e1a0dfa274f5505c80445cdc0d0205af54d86 2026-11-14T13:24:03+08:00 SSA-HPM: provide portable completed-run replay and negative-control entry"
+    ]
+  },
+  "rocket_chip": {
+    "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "branch": "stage10-transparent-launch",
+    "tree": "0c41414a848beded9c96acc413a3d85eec00ef9b"
+  },
+  "linux": {
+    "head": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
+    "branch": "stage10-transparent-launch",
+    "tree": "a28522f6eabe937ea93347f32d21b8b251324fcf"
+  },
+  "opensbi": {
+    "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "branch": "stage10-transparent-launch",
+    "tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91"
+  },
+  "maintenance_base": "24fa1cde07a7af6de77c136789867ce730c60f91",
+  "note": "Rocket/OpenSBI unchanged; source branches preserved, new Linux hook and standalone suite only"
+}

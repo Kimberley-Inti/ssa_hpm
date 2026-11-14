@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "coverage": "post-run byte identity of the actual frozen uncompressed kernel/rootfs/firmware; no new simulation",
+  "algorithm": "SVR4 newc070701 headers,4-byte align, SHA256 of regular-file content",
+  "all_targets": {
+    "init": {
+      "sha256": "b591aefdddb458df2cddea8597b83a516103976a37a278efb30af2d1e9dbf968",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 13240
+    },
+    "plain": {
+      "sha256": "c5ac4bc035bcc6063e65a1ec4643166c6c88a67c3670e8e3d69a7ddcb3be0104",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 5560
+    },
+    "plain-next": {
+      "sha256": "6df66149624b9ecbcc1ba87f949392da23a9486b3eaccf7d1646a0065867bb52",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 2632
+    },
+    "plain-capacity": {
+      "sha256": "87281f5ff1e453f254f60b305e3dc2488452227a38b0c15767812e0658caf7c7",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 5416
+    },
+    "plain-dynamic": {
+      "sha256": "cddf4b47f95664aa490b551df4f90af18d058e9bc99e6f768c1309dc0ea1d0e8",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 7264
+    },
+    "lib/libplain.so": {
+      "sha256": "61118fd30c1db5c3d305745a373e8c0b8949170087b7ce6e9b8c6d317eeee21c",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 5840
+    },
+    "lib/ld-musl-riscv64.so.1": {
+      "sha256": "fd8c5ae0146c23931edb8158a9776e5e55f6cd63d34705df06816d869aab0d6d",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 617416
+    },
+    "class-regress": {
+      "sha256": "8f08f91e81049ea8efae592ae79fcde1a0c056602f76f5840201507b5247b1d7",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 7784
+    },
+    "classnext": {
+      "sha256": "ad0f11038c07fcc49dcf564d00a8a15f3525d757d908aacf5474e2a6ff7faa88",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 5224
+    }
+  },
+  "setid_same_plain_bytes_root4755": {
+    "sha256": "c5ac4bc035bcc6063e65a1ec4643166c6c88a67c3670e8e3d69a7ddcb3be0104",
+    "mode": "0o4755",
+    "uid": 0,
+    "gid": 0,
+    "bytes": 5560
+  },
+  "cpio_embedded_in_linux_image": true,
+  "linux_image_embedded_in_boot_elf": true,
+  "boot_elf_sha256": "2729e7627e074b2de0ea40e686939246f99979c26c70c88c2323ec93dcf0fdc9"
+}
