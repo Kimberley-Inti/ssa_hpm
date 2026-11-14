@@ -7,7 +7,7 @@
     "accepted_base": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
     "accepted_delivery": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
     "development_base": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
-    "development_delivery": "7db7a2a43da0149319cb16906666ae2afbb072e9",
+    "development_delivery": "f05e1a0dfa274f5505c80445cdc0d0205af54d86",
     "environment_source": "58a7acde9598b4e08d11e5b5f3da0e146e138078"
   },
   "rocket_chip": {
@@ -577,7 +577,8 @@
     "ssa/linux/transparent/shared.c": "679182a37a3496499f41219b0a3331df43c096967a9b42a72ca545b473914cf9",
     "ssa/linux/transparent/syscall.h": "12ff3d760c0b1a3a2fc5b310c936719351e53bd208ccdf44f529b2ca5d67f8cd",
     "ssa/linux/transparent/negative.py": "0c04ec9a2e31ecb0d8aef1ec773b4dad55fb388d71cdf9b20647d530cff2f6e6",
-    "ssa/linux/transparent/check-capacity-elf.py": "d3d5f777658bdd54e1f1992bc4244dd9075fec9416cc50086a591350270d64c3"
+    "ssa/linux/transparent/check-capacity-elf.py": "d3d5f777658bdd54e1f1992bc4244dd9075fec9416cc50086a591350270d64c3",
+    "ssa/linux/transparent/check-results.py": "0724fc1b76354887d5564e65691946c13f2e5fad8cc48e4d023dc99058305903"
   },
   "development_stage": "stage10-transparent-launch",
   "stage3": {
@@ -675,9 +676,13 @@
     "evidence": "evidence/stage9/summary.json"
   },
   "stage10": {
-    "status": "all automatic Linux scenarios48semantic gates and10ELF capacity gates passed; original native continues appended manual regression",
+    "status": "accepted controlled ELF scope:actual native0+powerdown,50automatic/26manual/10capacity gates,17sessions215records; original model reused",
     "base": "24fa1cde07a7af6de77c136789867ce730c60f91",
     "kernel_commit": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
-    "policy": "controlled CAP_SYS_ADMIN+no_new_privs single-thread ELF exec; fork does not inherit"
+    "policy": "controlled CAP_SYS_ADMIN+no_new_privs single-thread ELF exec; fork does not inherit",
+    "evidence": "evidence/stage10/summary.json",
+    "source_commits": "evidence/stage10/source-commits.json",
+    "C05_scope": "single-hart/single-thread/nonprivileged audited static ELF and musl PT_INTERP/DSO; no universal runtime/unwind claim",
+    "independent": "public patch/source/build verification plus same-capture installed oracle equality; no second model/native build"
   }
 }

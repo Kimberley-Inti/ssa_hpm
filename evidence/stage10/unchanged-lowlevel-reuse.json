@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "coverage": "historical stage9 evidence integrity/status and golden-row recheck ONLY; no new Spike or RTL execution",
+  "unchanged_rocket_head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+  "unchanged_rocket_tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+  "same_original_linux_model_sha256": "d266da6457c89af8ec4f3daea0c8574ed048764fc15e25b54de3a1a23c458d62",
+  "historical_tests": 34,
+  "spike_reference_cases": 6,
+  "rocket_rtl_cases": 28,
+  "reports": {
+    "regression-base": {
+      "tests": 16,
+      "all_historical_passed": true,
+      "original_summary_sha256": "087825463c61aa54912c6acc05434cb6f99e338e39c3d29d75ba98333a335ead",
+      "original_capture_hashes": {
+        "rtl-trap-nested.txt": "f681c02612c4eac9d408e624255ebecc8dcc7a61767e24dd85165ce9f63e18f9",
+        "spike-irq.txt": "f127fe341d955cf0b6df216d3646773b9778b7d4e2cadf9f9e74ab1728bf6f28",
+        "rtl-trap-irq.txt": "8070588d811337c913fbf40c8987bf584b41cc8af0b69142e624de8575b04310",
+        "rtl-late.txt": "38790842725e2257fbc172734d8ef6537634159973a9dac4bc0c81ec62975c3a",
+        "rtl-boundary.txt": "53caa807fcdc876068acaaa5f9a44d2cba08b4144bdfe69841bbb5f70f9e01fe",
+        "spike-abi.txt": "8840c2a6d7fbbd23c5074950688cf82bf4baca1d30ee151a3143ad8268e553e1",
+        "rtl-context.txt": "37f2df9249a25df3e1677539cfac87f1f4ae5ac7eacef0104c85cc9b75d3e341",
+        "spike-traps.txt": "dcda52eb16f12b42aab0ebe1667ac61d924ebfd64e84b0da787bbf19b3bed280",
+        "spike-boundary.txt": "b3830e3dcd2ce2357796942d55605de5231cb1ca602352603b163e182c3e3ab0",
+        "rtl-abi.txt": "57aed8373f040987e2f547c112f78b94521477ab2b603cb1baea0e3203b62789",
+        "spike-context.txt": "b58cc111f5f31088a568108e481df003f1f58c34964871a330582c085beffeba",
+        "rtl-trap-overflow.txt": "ca1cd20aa86ea47f57c02badf7a9c5a38decc37a94a2c0bf59623aa412965a80",
+        "rtl-trap.txt": "52c0e398ef1f765095a2cca5da43ebbde4d26bd1463818d4234035474e38d357",
+        "rtl-trap-status.txt": "f7a35e371d0ca0aad8a711028a089f61c9e2716df98d1f0c6e2a21a527a7f4f6",
+        "rtl-disabled-reference.txt": "6915cc00c0900d40f98586ec276be1d9e78e5f635980e16ec793982848fd0c60",
+        "rtl-trap-readonly.txt": "73a9379aa78a2f031dc45f7d5cbdf162d46cb4f0c8ff47c1cf20d2876cc8053b"
+      }
+    },
+    "regression-process": {
+      "tests": 3,
+      "all_historical_passed": true,
+      "original_summary_sha256": "a228179cfada7abd5a913791b633f8bef713e56dbe68e92eb2c87bbdf99234ea",
+      "original_capture_hashes": {
+        "rtl-process.txt": "05265345fe919f92d89d6971fafeb4794adeb9ad0c48aa9d04ed85f210cc8603",
+        "spike-process.txt": "95834fbe564f8d7d104178fe79aaafe0d86965986a3b3949662ef38555db7336",
+        "rtl-process-legacy.txt": "77ed82e47eabaa211d1e7a117dd849c54c6c38b9baa3a212726f7e99a6fd108a"
+      }
+    },
+    "regression-probes": {
+      "tests": 5,
+      "all_historical_passed": true,
+      "original_summary_sha256": "f84a7353e009358ec7cefe30fd8dd85c550f139a26680c0d1881b820c478d52c",
+      "original_capture_hashes": {
+        "user-csr.txt": "1bc35a12401dbfe768467666634fd41e2aa0356c16c3360ef439afcbfb5b4ae0",
+        "sv39.txt": "69d071de13a78dc964200def075481bab3dd3336b81e4bca07e6dbde57b91331",
+        "user-pool.txt": "f78b2453db7994776d2f8334e966b59a7fb3454af73d7ce085ef29734c8a2724",
+        "user-write.txt": "b7c73d245bdbd502892a844c83068f49c2f4610cea219c94d81c242edf3ccda0",
+        "supervisor-policy.txt": "733fceaf6743c3b5084d71a12916bd97a52312025df869b126ea8ad00d88d7fd"
+      }
+    },
+    "regression-dtlb": {
+      "tests": 5,
+      "all_historical_passed": true,
+      "original_summary_sha256": "2c609947027bb410407aaef1a364a2098c80079932399718aea74bb4d3423b44",
+      "original_capture_hashes": {
+        "event-context-negative.txt": "646df3da1a7d888b00734da716a9c5b1f334b07caba3623b615d874f2fbe560a",
+        "event-abi.txt": "d16623ff64f0171f15a195a4c66bfa651bc7bbc259f652c5dcf49edddaaa5b75",
+        "event-wrap.txt": "8ba79bf7fafc6b0609cf77780e8ca73d97f87a7a6fdc6cd5f4aac41f75708a77",
+        "event-selector-negative.txt": "1de60d3513237c4cde75f9bf7142481f97079339c5dd624c9af9e62ddc471655",
+        "event.txt": "c6497ec43c5c84ced85336531f782b21a1dcdd7bbb71035767d19af602c21cc2"
+      }
+    },
+    "regression-cache": {
+      "tests": 5,
+      "all_historical_passed": true,
+      "original_summary_sha256": "cbb506e7762915c4449dee0ad2abc444e9d66254e268b08d8aa3829f02cbad57",
+      "original_capture_hashes": {
+        "cache-wrap.txt": "86ba0bbe192342e13fdf5cb08f2d639976b6aedd5ab2796f536ad413fd830a02",
+        "cache-abi.txt": "a50d494fd8d9711ea004af7739f425c78f926d613fc7da47e6cb9345fe8082a4",
+        "cache-selector-negative.txt": "6026d75404d0e03a121658da1fcfa278e2cd9c4d5331f3ff8fa3f8014b1a6b57",
+        "cache-context-negative.txt": "934588219efaef1f19b35fb191dd253c2478cd6aa901bc67bb7d52295b93e3b2",
+        "cache.txt": "291a6796a056658fb0628b898e53a1c311b1c7cd40e05afeb1c048bbf91e1922"
+      }
+    }
+  },
+  "golden_records": [
+    [
+      1,
+      2147484074,
+      0,
+      30534,
+      14791,
+      305,
+      0
+    ],
+    [
+      2,
+      2147484020,
+      1,
+      29109,
+      14452,
+      292,
+      0
+    ],
+    [
+      3,
+      2147484118,
+      0,
+      15336,
+      7427,
+      153,
+      0
+    ],
+    [
+      4,
+      2147484020,
+      3,
+      14534,
+      7226,
+      146,
+      0
+    ],
+    [
+      5,
+      2148007936,
+      0,
+      182,
+      44,
+      2,
+      0
+    ],
+    [
+      6,
+      2148532224,
+      0,
+      100,
+      22,
+      1,
+      5
+    ]
+  ],
+  "golden_common_instret": [
+    14452,
+    7226
+  ]
+}

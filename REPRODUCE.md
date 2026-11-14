@@ -232,3 +232,26 @@ ordinary static ELF, standard musl PT_INTERP/DSO and manual compatibility fixtur
 The fixed target selection is made by the trusted test init before privilege drop;
 targets contain no SSA API calls. run.py freezes native status and grades both
 automatic and old manual suites; do not infer success from an incomplete prefix.
+
+
+Stage10 final acceptance is complete: native0, normal powerdown,50automatic and
+26manual gates in the SAME actual boot; independent capacity10 and automatic
+host mutations4 also pass. Seventeen sessions/215records are transport-complete
+and released; expected open activations and classifier capacity loss retain
+explicit incomplete statuses. Exact no-model committed-log replay commands are
+at the end of STAGE10.md. Fresh --transparent builds choose uncompressed initramfs
+and include BOTH manual/classnext and automatic/plain-next exec dependencies.
+The final original model is SHA256 d266da6457c89af8ec4f3daea0c8574ed048764fc15e25b54de3a1a23c458d62;
+source/image/ELF/log identities and source reconstruction versus reuse scope are
+in evidence/stage10/. The standard installed model or equivalent read-only progress
+harness can run the fixture; do not claim a second native run for checker replay.
+
+After a new successful run:
+
+```sh
+python3 ssa/linux/transparent/check-results.py --results /tmp/ssa-auto-results --work /tmp/ssa-auto-linux
+```
+
+It checks the completed native receipts and reruns all host oracles/negatives
+without starting a simulator. Preserve the work directory for the actual ELF
+capacity/address checks; committed-log-only replay needs no binaries/model.

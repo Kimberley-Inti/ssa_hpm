@@ -411,3 +411,24 @@ actual dynamic application/inclusive subtree checks and structured truncation
 rejection; all source SHAs/dates/messages are in stage10/source-commits.json.
 The appended original manual regression and final native shutdown are still
 running at this checkpoint, so C05 is not yet marked finally accepted.
+
+
+Stage10 final acceptance completed on the ORIGINAL native run: process/runner/
+both checkers0, normal powerdown at~102.3Mcycles,27484.93host seconds.50automatic
+and26old manual gates pass, with17sessions/215records completely exported/released.
+Independent ELF capacity10, automatic semantic/terminal negatives4 and the manual
+repaired-checksum owner negative pass. Public installed checkers replay the same
+capture with exactly equal JSON; no second native simulation/model build is claimed.
+Chipyard final suite7db7a2a43da0149319cb16906666ae2afbb072e9 includes the host-only
+inclusive subtree/address/structured-truncation followups. Linux remains8b865...;
+Rocket/OpenSBI are unchanged. Full source heads/author dates/messages are in
+source-commits.json. Final evidence and documentation follow maintenance checkpoint
+848ba24f8efd42da690efed7207e5823f0de09ec on the SAME stage10 branch/Draft PR9.
+C05 is now accepted only for the controlled tested ELF policy; all limitations,
+remaining overall review and performance work remain explicit.
+
+Final Chipyard host-only followup f05e1a0dfa274f5505c80445cdc0d0205af54d86 adds a portable completed-run
+postcheck entry: original native/log receipt verification,50automatic/26manual/
+10capacity checks and the automatic/manual semantic negatives. It was executed
+against the same finished capture in both development and installed public suites;
+no frozen image/model/RTL source changed and no new native run was performed.

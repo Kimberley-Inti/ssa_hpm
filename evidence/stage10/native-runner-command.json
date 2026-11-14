@@ -1,0 +1,13 @@
+{
+  "pid": 68984,
+  "command": [
+    "python3",
+    "ssa/linux/transparent/run.py",
+    "--work",
+    "/tmp/ssa-hpm-stage10/uncompressed-linux",
+    "--simulator",
+    "/tmp/ssa-hpm-stage9/progress/simulator-progress",
+    "--out-dir",
+    "/tmp/ssa-hpm-stage10/linux-uncompressed"
+  ]
+}

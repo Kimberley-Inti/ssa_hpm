@@ -21,7 +21,7 @@ HPM 计数是**包含子调用和快照区间内监测开销的累计值**，未
 
 ## 验证与边界
 
-既有验收：实际 Scala 编译、RTL 生成及 Verilator 构建成功；3 项 Spike 参考测试、
+第一阶段既有验收：实际 Scala 编译、RTL 生成及 Verilator 构建成功；3 项 Spike 参考测试、
 5 项 Rocket RTL 仿真通过。Spike **没有 SSA 扩展**：它验证显式调用同一汇编例程的
 参考数据结构行为，以及基础指令；Rocket RTL 验证透明硬件路径，包括嵌套、重复、
 不同父上下文、返回恢复、哈希碰撞、258 次递归/256 帧容量、记录耗尽、x5 链接、
@@ -31,14 +31,14 @@ HPM 计数是**包含子调用和快照区间内监测开销的累计值**，未
 - [本次发布验证](evidence/publication/) 来自新下载的上游基线和补丁重建，独立标注。
 - [复现指南](REPRODUCE.md) 给出准确基线、依赖、应用顺序和实际命令。
 
-v0.1.0 验证平台是单核 RV64GC RocketConfig、裸机 M mode、关闭中断。后续阶段
-分别增加 trap 与受控任务切换验证；本分支已通过真实 Rocket Linux 启动，进程监测
-验收状态见第四阶段说明。完整 loader/exec、多核、任务迁移、非局部展开和后续
-访存分类、Cache/TLB 事件仍未验证；七个扩展事件槽仅预留。
+v0.1.0 当时的验证平台为单核 RV64GC RocketConfig、裸机 M mode、关闭中断。
+后续已完成真实Linux生命周期/抢占、DTLB与Cache独立profile、访存分类及受控自动
+启用；各阶段实际范围见下文与[ACCEPTANCE.md](docs/ACCEPTANCE.md)。多核/迁移、
+非局部展开与通用任意运行时仍不在当前受测范围。
 
 ## 内容组织
 
-- `patches/rocket-chip/`：按顺序应用的 11 个实现补丁（v0.1.0 为前 8 个），含 canonical 微码源码。
+- `patches/rocket-chip/`：按顺序应用的 14 个实现补丁（v0.1.0 为前 8 个），含 canonical 微码源码。
 - `patches/chipyard/`：可获取的 Constellation 依赖固定与仿真器构建补丁。
 - `patches/history/`：旧测试版本补丁，仅用于开发档案，不参与当前复现。
 - `integration/ssa/`：原创测试与构建/分析脚本；由安装脚本放入 Chipyard 的 `ssa/`。
@@ -97,9 +97,9 @@ RTL 修改；公开基线与原有九个 Rocket 补丁不变，新增接口和�
 
 第三阶段最终验证：开发树与独立公开基线重建均通过原 16 项回归及新增进程协议
 检查（含旧协议预期退出 42 的负对照）。独立重编译 Scala、RTL 和 Verilator 通过。
-Spike 仍无 SSA 扩展；Linux 集成尚未完成，详见阶段说明。
+Spike 仍无 SSA 扩展；第三阶段当时Linux集成尚未完成，详见阶段说明。
 
-## 当前开发分支：stage4-linux-process-isolation
+## 第四阶段：stage4-linux-process-isolation
 
 已在实际 Rocket/Verilator 上启动单 hart Linux 5.7-rc3，运行 PID1 并正常关机，
 退出码为 0。新增 Sv39 PC 宽度修复、U-mode 池选择保护、私有 ROM 物理访存
@@ -134,7 +134,7 @@ cases and actual Linux context/timer/exec/full export passed (39/69/24 gates),
 with12 sessions/63 records and normal shutdown/exit0. D03's one-Cache-event gap
 is closed under the documented native interval semantics; default DTLB0x1002
 and ABI1/2 remain identifiable. [Evidence](evidence/stage8/summary.json).
-Scalar/stream/random classification remains next-round work.
+Classification was next-round work at stage8 and is accepted under rule1 in stage9 below.
 
 
 ## 第九阶段：访存分类
@@ -146,3 +146,19 @@ load/store按虚拟地址及调用记录区分标量重复、固定步长、未�
 26检查通过，含exec、失败返回、零记录和开放帧定时器抢占；交换任务计数且修复
 校验值的主机负对照仍被语义检查拒绝。4项RTL及独立重放、34既有低层检查（原29项加5项Cache）通过。
 完整复现入口和证据见[REPRODUCE.md](REPRODUCE.md)及[evidence/stage9](evidence/stage9/summary.json)。
+
+
+## 第十阶段：受控透明启用
+
+可信启动器配置策略后，普通静态和musl PT_INTERP/共享库ELF无需调用SSA启停接口，
+即可自动建会话、跨成功/失败exec、抢占恢复及退出导出。fork不继承；setid/thread
+明确拒绝；池满明确报告未启用。实际单次Rocket/Linux运行自然退出0并正常关机：
+50自动检查、26旧Linux回归和10独立ELF容量检查通过，17会话/215记录全部传输释放。
+动态105记录/7批次中一个加载器延续帧显式abandoned；分类容量63行外的1次访问
+明确dropped且覆盖状态不完整，未伪造完整性。目标ELF哈希及无SSA接口检查均留存。
+
+见[STAGE10](docs/STAGE10.md)、[策略](integration/ssa/linux/transparent/POLICY.md)、
+[证据](evidence/stage10/summary.json)和[最终剩余清单](docs/FINAL_CHECKLIST.md)。
+C05只在受测的单hart/单线程/非提权/已审核LIFO ELF范围关闭。源码与模型复用、
+公开基线独立构建和同日志独立复核分别标注；未声称新跑全部低层RTL或自动DTLB。
+整体候选审查与系统性性能开销评估仍待完成；main、标签与合并由维护者决定。

@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "coverage": "final installed public-source host oracles regrade the SAME original completed native capture; NOT second RTL/Linux execution",
+  "original_log_sha256": "22c09c71788464d1044e7051ccb8792e93e3df1cf54e0ee99095f167a729b204",
+  "checks": [
+    {
+      "name": "automatic",
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage10/public-install/ssa/linux/transparent/grade.py",
+        "/tmp/ssa-hpm-stage10/linux-uncompressed/rocket-linux-transparent.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/transparent-users.json",
+        "--out",
+        "/tmp/ssa-hpm-stage10/independent-final/automatic.json"
+      ],
+      "exit_code": 0,
+      "exact_json_matches_development_checker": true
+    },
+    {
+      "name": "manual",
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage10/public-install/ssa/linux/grade-classification.py",
+        "/tmp/ssa-hpm-stage10/linux-uncompressed/manual-regression.txt",
+        "--exit-code",
+        "0",
+        "--out",
+        "/tmp/ssa-hpm-stage10/independent-final/manual.json"
+      ],
+      "exit_code": 0,
+      "exact_json_matches_development_checker": true
+    },
+    {
+      "name": "capacity",
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage10/public-install/ssa/linux/transparent/check-capacity-elf.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage10/linux-uncompressed/rocket-linux-transparent.txt",
+        "--work",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux",
+        "--out",
+        "/tmp/ssa-hpm-stage10/independent-final/capacity.json"
+      ],
+      "exit_code": 0,
+      "exact_json_matches_development_checker": true
+    },
+    {
+      "name": "automatic-negative",
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage10/public-install/ssa/linux/transparent/negative.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage10/linux-uncompressed/rocket-linux-transparent.txt",
+        "--execution",
+        "/tmp/ssa-hpm-stage10/linux-uncompressed/execution.json",
+        "--users",
+        "/tmp/ssa-hpm-stage10/uncompressed-linux/transparent-users.json",
+        "--out",
+        "/tmp/ssa-hpm-stage10/independent-final/automatic-negative.json"
+      ],
+      "exit_code": 0,
+      "exact_json_matches_development_checker": true
+    },
+    {
+      "name": "manual-negative",
+      "command": [
+        "python3",
+        "/tmp/ssa-hpm-stage10/public-install/ssa/linux/test_classification_native.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage10/linux-uncompressed/manual-regression.txt",
+        "--execution",
+        "/home/lxf/ssa_hpm/evidence/stage10/manual-suffix-execution.json",
+        "--out",
+        "/tmp/ssa-hpm-stage10/independent-final/manual-negative.json"
+      ],
+      "exit_code": 0,
+      "exact_json_matches_development_checker": true
+    }
+  ],
+  "source_manifest": "public-final-followup.json",
+  "fresh_user_runtime_equivalence": "independent-users.json",
+  "public_kernel_build": "independent-build-check.json",
+  "model_reused": true,
+  "second_model_build": false,
+  "portable_postcheck_entry": {
+    "passed": true,
+    "same_result_gates": true,
+    "source_files": 98,
+    "checks": [
+      {
+        "name": "automatic",
+        "checks": 50,
+        "exit_code": 0
+      },
+      {
+        "name": "manual",
+        "checks": 26,
+        "exit_code": 0
+      },
+      {
+        "name": "capacity",
+        "checks": 10,
+        "exit_code": 0
+      },
+      {
+        "name": "automatic-negatives",
+        "checks": 4,
+        "exit_code": 0
+      },
+      {
+        "name": "manual-negative",
+        "checks": 3,
+        "exit_code": 0
+      }
+    ],
+    "note": "command paths differ by development/public source location; all five validation results agree; no new native execution"
+  }
+}

@@ -1,6 +1,11 @@
 # Stage10: controlled transparent Linux launch
 
-Status: all automatic scenarios completed with48semantic gates and10independent ELF-linked capacity gates passed (same original Rocket/Linux run). The appended manual regression and final native shutdown are still running. C05 final acceptance remains pending those results.
+Status: accepted within the controlled single-hart/single-thread/non-privilege-
+gaining ELF scope below. The original native run completed0, normal powerdown,
+50automatic gates and26manual regression gates. Ten independent ELF capacity
+gates, four automatic host mutations and the manual owner-swap negative pass.
+C05 is closed only for this tested launch policy, not arbitrary Linux runtimes.
+Final evidence: [summary](../evidence/stage10/summary.json).
 
 ## Baseline and behavior
 
@@ -55,7 +60,7 @@ After the standard public installation (REPRODUCE.md), choose new directories:
 source ssa/env.sh
 python3 ssa/linux/build-a.py --transparent --work /tmp/ssa-auto-linux --jobs 6
 python3 ssa/linux/transparent/run.py --work /tmp/ssa-auto-linux --simulator sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig --out-dir /tmp/ssa-auto-results
-python3 ssa/linux/transparent/grade.py /tmp/ssa-auto-results/rocket-linux-transparent.txt --exit-code 0 --users /tmp/ssa-auto-linux/transparent-users.json --out /tmp/ssa-auto-grade.json
+python3 ssa/linux/transparent/check-results.py --results /tmp/ssa-auto-results --work /tmp/ssa-auto-linux
 ```
 
 --transparent builds the Cache-profile kernel/firmware, the ordinary static and
@@ -72,7 +77,7 @@ Single hart, single thread, no privilege-gaining target, fixed2pools, existing
 LIFO notification ABI, no generic unwind. Dynamic loader/app/DSO share the session
 and raw addresses; loader continuation frames may be abandoned at exit. Data
 transport completeness is separate from complete activations and classifier
-coverage. A64-record fixture must export all4base chunks while marking the
+coverage. The actual64-record fixture exported all4base chunks and marked the
 63-row sidecar's dropped observation explicitly. Full-capacity UART stress,
 performance overhead benchmarks and universal ELF symbolization remain separate.
 The final implementation/review/performance/optional checklist is
@@ -84,11 +89,12 @@ it is explicitly not Rocket/kernel policy/SSA evidence. The actual accepted
 Linux image uses uncompressed initramfs to bound software inflate cost; old gzip
 preparation and the missing-dependency preparation are preserved and not passed.
 
-## Completed automatic prefix
+## Actual automatic acceptance
 
 The actual native run reached AUTO_SUITE_END at76.3Mcycles:10owned sessions,
-195base records.48automatic semantic gates pass; native exit/shutdown remain
-separate pending gates. See automatic-checkpoint.json and component checkpoints.
+195base records.48automatic semantic gates plus actual native0 and powerdown
+make50final gates. Earlier component checkpoints remain explicitly labelled as
+live prefixes; automatic-final.json records the completed run.
 
 - Static6records exactly match ordinary ELF callees/parents and known class vectors.
 - Same-PID exec exports old closed records plus abandoned frame, then clean new
@@ -114,3 +120,77 @@ separate pending gates. See automatic-checkpoint.json and component checkpoints.
 All tests are ordinary no-SSA target ELFs; trusted init alone arms the policy.
 The tested automatic image covers flags0/4/6 and fixed Cache ABI2. Existing DTLB
 manual/profile evidence is reused; a new automatic-DTLB native run is not claimed.
+
+## Final native and regression evidence
+
+The original runner/native PIDs68984/68986 were monitored through natural exit;
+no replacement simulation was started on resumption. At the interrupted96.9M
+checkpoint5/7manual exports meant the final pair was still printing. At99.2M the
+capture had6/7 and was outputting task32/session17 snapshots. It subsequently
+reached7/7, SSA_CLASSIFICATION_SUITE_END and `reboot: Power down` at~102.3Mcycles.
+Native and both checker exits are0. Runtime27484.93host seconds is simulator wall
+time, not an application performance measurement.
+
+| Actual coverage | Result / evidence |
+| --- | --- |
+| Automatic ordinary static/exec/fork/signal/selection/resources/timer/dynamic/capacity | 50/50gates,10sessions/195records; automatic-final.json |
+| Original explicit lifecycle/classification/process fixture in the SAME boot | 26/26gates,7sessions/20records; manual-final.json |
+| Full transport and release | 17sessions/215records, all END checksums and releases valid |
+| Intentional incomplete activations | sessions2/4/9/12 each export one abandoned frame; not fabricated returns |
+| Bounded classification | 16sidecars/109rows; only capacity session10 lacks full semantic coverage (63rows/1drop) |
+| Independent ELF capacity oracle | 10/10: all64addresses/parents/nonzero HPM, inclusive parent, exact warmups/input/FIFO/drop |
+| Actual negative controls | identical ELF without policy; unprivileged ARM; setid/thread rejection; third pool exhausted |
+| Host-only automatic mutations | missing auto hook, wrong target identity, repaired-checksum wrong category owner, missing END all rejected |
+| Host-only original manual mutation | repaired-checksum A/B category swap remains valid transport but fails attribution |
+| New host protocol/reference tests | 14rule examples,21sidecar cases,48export cases |
+| Unchanged low-level coverage | 34historical cases (6Spike reference/28RTL) status/hash and6golden records14452/7226 rechecked; not new runs |
+
+The model/boot/log SHA256 and actual native command/status are in
+linux-execution.json. linux-rocket-linux-transparent.txt is the unchanged raw
+capture, including read-only host progress diagnostics. manual-regression.txt is
+its explicitly normalized suffix, not another native run. Only known diagnostic
+lines are removed by the existing normalizer; raw capture remains canonical.
+
+Public baselines, patch application, kernel tree and final98file manifest were
+verified. Fresh independently installed user programs have equal PT_LOAD/entry/
+symbols; the previously documented STT_FILE differences do not change runtime
+code. Independent installed automatic/manual/capacity/negative checkers produce
+exactly equal JSON on this SAME capture (independent-final-check.json). This is
+source reconstruction/build plus same-log independent checking, not a second
+full Linux simulation, cold-machine install, Scala or C++ model build.
+
+## Source delivery and cheap committed-log replay
+
+Linux8b865bfe4c40332446227e2fbf6b442ab0bc651a;
+Chipyard suitef05e1a0dfa274f5505c80445cdc0d0205af54d86. The final source followup only adds a portable completed-run postcheck entry; the frozen kernel/user image and model are unchanged.
+Rocket/OpenSBI remain the baseline heads above. Linux patch0008 follows0007;
+no new Rocket/Chipyard Scala/OpenSBI implementation patch is required. Project
+fixtures/build/check scripts are installed once as standalone integration/ssa.
+Full original author/date/message mappings are in source-commits.json and HISTORY.
+
+From the maintenance checkout, these recheck committed evidence without a model:
+
+```sh
+python3 integration/ssa/linux/transparent/grade.py evidence/stage10/linux-rocket-linux-transparent.txt --exit-code 0 --users evidence/stage10/ordinary-elf-build.json --out /tmp/ssa-auto-recheck.json
+python3 integration/ssa/linux/grade-classification.py evidence/stage10/manual-regression.txt --exit-code 0 --out /tmp/ssa-manual-recheck.json
+python3 integration/ssa/linux/transparent/negative.py --native-log evidence/stage10/linux-rocket-linux-transparent.txt --execution evidence/stage10/linux-execution.json --users evidence/stage10/ordinary-elf-build.json --out /tmp/ssa-auto-negative.json
+python3 integration/ssa/linux/test_classification_native.py --native-log evidence/stage10/manual-regression.txt --execution evidence/stage10/manual-suffix-execution.json --out /tmp/ssa-manual-negative.json
+```
+
+For a new boot use the earlier build/run commands in new directories. The capacity
+ELF check additionally takes `--work /tmp/ssa-auto-linux` and needs its frozen
+plain-capacity binary plus transparent-users.json. Base/DTLB/Cache explicit
+entries retain their earlier meanings; the automatic image actually exercised
+flags0/4/6 with fixed Cache ABI2. Automatic DTLB, flags2-only, generic signal
+handlers/nonlocal transfer, vfork/shared-mm and arbitrary dynamic runtimes are
+not newly accepted by extrapolation. Trusted target selection is an audited
+allowlist, not static detection of every unsupported binary control-flow pattern.
+
+`check-results.py` requires the original native and both checker exits0 and exact
+log identity, then runs all50/26/10 checks and automatic/manual negatives. It
+writes `results/postcheck/` and never starts a simulator. The final source
+followup was actually executed on the completed run from both development and
+public installed suites; see postcheck-entry.json/independent-postcheck-entry.json.
+The frozen newc archive's nine ELF SHA256 values (and identical root4755 plain
+copy) were also verified inside Linux Image and the actual boot ELF; see
+elf-image-identity.json. No target ELF was modified to enable monitoring.

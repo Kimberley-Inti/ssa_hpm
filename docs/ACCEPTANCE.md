@@ -17,7 +17,7 @@
 | C02 核心 | 设计p8–9 | SCStack维护调用/返回，默认256层 | 64B帧（手写修订）保存record和快照；stage1 boundary实际258层展开、stage2 trap/IRQ | 已验收；溢出帧按既定spill规则，不是任意展开 |
 | C03 核心 | 设计p9–11 | SCDict键为(parent,callee)，链式碰撞、记录只增不删、0保留 | 完整PC、256K桶、ID链；stage1碰撞/复用/容量保护RTL；stage6同父非零重复事件 | 已验收 |
 | C04 核心 | 设计p11–12，HPM p3 | HPERecords包含cycle/time/instret | 128B记录，64位三计数；time取CLINT及同源SBI time；stage1/4/6原始日志 | 已验收；父计数包含子调用和区间内开销 |
-| C05 核心与适配 | 设计p8、p11–13 | 软件透明地维护上下文；预留36MiB、SCBaseReg、SCCodeTable | Rocket私有ROM，无逐函数插桩；独占固定物理池和显式prctl替代通用loader/SP调整；stage4 U/S权限探针 | 函数监测透明已验收；通用不修改应用的自动启用/loader方案未验收 |
+| C05 核心与受控适配 | 设计p8、p11–13；stage10策略 | 无逐函数插桩；由可信启动策略让普通ELF无需SSA启停调用 | ARM_EXEC权限/NNP→ELF就绪启用，fork清策略，成功/失败exec、SIGTERM、真实抢占及完整导出；普通ELF哈希/反汇编；stage10实际50自动+26回归+10ELF容量检查 | 已验收受控单hart/单线程/非提权静态与musl PT_INTERP/DSO范围；加载器延续帧显式abandoned；任意线程/提权/非局部/信号handler运行时不外推支持，见STAGE10与FINAL_CHECKLIST |
 | C06 适配 | 设计p6进程背景、p12–13；stage2语义 | trap不生成应用调用上下文、返回恢复 | trap depth/overflow、U-only通知、IRQ屏蔽私有ROM；stage2实际陷阱与中断、stage4实际Linux | 已验收；不声称过滤trap事件计数 |
 | C07 适配 | 设计p11–13生命周期未细化；stage3/4 ABI | 单hart任务独占池，开放帧跨抢占恢复，排除采样暂停区间 | task descriptor、S/R、所有开放帧平移；stage4/5/6真实A→B→A，stage6校正7与负对照1130 | 已验收；不是硬件缓存分区 |
 | C08 适配 | 设计p13–14 TODO；stage5规则 | exec旧/新会话区分、失败返回旧会话、退出导出 | post-exec_mmap hook、session/self_exec_id、ENOENT；stage5 37检查、stage6 ABI2旧64/新128/失败128 | 已验收，限pre-commit ENOENT/非多线程/非setuid |
@@ -46,7 +46,7 @@ cycle/instret/time顺序沿用内存ABI（原文列举顺序不是内存布局�
 ## 后续“必做”与可选扩展
 
 - **要宣称完整原始数据流愿景完成**：D03的一种真实Cache事件已按stage8声明口径完成；第九阶段已独立实现并验收D02规则1，提供退休访存参考序列、上下文、Linux生命周期和错归属负对照；并非以Cache/TLB计数替代分类。该完成结论限定于各行明确记录的适配范围。
-- **要宣称通用Linux软件透明监测完成**：必须补不改应用的启动/exec启用策略、动态链接边界及相应测试；当前显式prctl测试环境是已采用的有限适配。
+- **受控Linux透明启用**：stage10已补齐可信启动/exec启用及静态、musl动态边界的实际测试；通用任意Linux程序仍超出当前LIFO/单线程/非提权/已审核ELF范围，不能从C05受限验收外推。
 - **当前单hart受限profile**：C01–C10/D01与上述门槛已按stage7实际覆盖收尾，统一证据为evidence/stage7/summary.json；完整传输24会话/87记录，25/70/37/179项本轮真实Linux检查通过。未修改的低层RTL/Spike采用已核验历史证据，不伪称重跑。
 - **可选扩展**：多hart/迁移、所有厂商Cache/TLB事件、非局部展开、perf共享、多线程/setuid/复杂exec、最大容量长时串口压力、GUI/guest文件服务。它们未在原文给出当前profile的可执行要求，不擅自提升为本轮阻塞。
 
@@ -77,9 +77,30 @@ S..R扣除。4RTL及独立重放、2新CSR权限探针、34既有低层检查（
 主机算术/传输检查；未实际运行2^64次访问。模型与独立执行复用范围见STAGE9。
 
 - 当前受测单hart显式启用profile内，C01–C10/D01–D03没有遗留D02实现缺口。
-- 要宣称通用Linux“无需修改应用”的原设计透明性，C05仍需自动loader/exec启用、
- 动态链接边界及相应真实测试。当前prctl/固定物理池是明确采用的有限适配。
+- 第九阶段当时C05尚缺自动loader/exec启用与动态边界；第十阶段已按下述受控范围验收。
+ 固定物理池仍是对原始虚拟栈/loader方案的明确适配。
 - 当前分类支持整数退休load/store1/2/4/8B、2会话/63行/16历史；淘汰重新预热、
  容量外访问显式dropped，非规则不代表数学随机。FP/vector/AMO/PTW不在观察范围。
 - 多核/迁移、非局部展开、全Cache/TLB集合、复杂exec/多线程/setuid、通用GUI
  仍是后续可选或需另立协议的扩展，不能从本轮结果外推为已支持。
+
+
+## 第十阶段 C05 收尾与最终交付范围
+
+[STAGE10](STAGE10.md)及[evidence/stage10/summary.json](../evidence/stage10/summary.json)
+记录原Rocket/Verilator Linux运行自然退出0、正常关机、自动50/50和旧Linux26/26检查。
+另10项ELF容量检查、4项自动主机变异及手工接口的重校验错归属负对照通过。
+17会话/215已分配基础记录全部完成传输和释放；4个预期开放帧标abandoned。
+动态程序的加载器/应用/DSO同会话，105记录/7批次，加载器延续RID10保留不完整状态。
+64基础记录/4批次与ELF逐项匹配；分类63行、1次dropped、48FIFO淘汰及覆盖不完整均可解析。
+
+可信init仅对固定已审核目标配置CAP_SYS_ADMIN+no_new_privs策略，随后降uid/gid1000。
+目标没有SSA启停/导出接口；相同ELF未选择时无会话。fork清策略；setid和线程创建明确拒绝；
+池满fail-open并报告pool_exhausted，成功/失败exec和SIGTERM退出按既定边界处理。
+本轮自动镜像实测flags0/4/6、固定Cache profile；DTLB手工入口/34项低层证据按未改源码和
+模型哈希复用，未伪称新跑自动DTLB或重新生成RTL。原golden14452/7226仍逐行复核一致。
+
+当前受测适配范围内，C05原有“不改目标程序启用”的缺口已关闭。普通默认信号终止不同于
+自定义信号handler/非局部展开；后者无通用自动检测/恢复协议，不在已审核目标范围。
+全面项目完成还需候选版本整体审查、统一最终矩阵和性能开销量化，详见
+[FINAL_CHECKLIST](FINAL_CHECKLIST.md)。多hart/迁移、全事件、宽指令分类、通用符号化等仍属可选扩展。
