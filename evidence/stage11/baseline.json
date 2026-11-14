@@ -1,0 +1,37 @@
+{
+  "maintenance": {
+    "path": "/home/lxf/ssa_hpm",
+    "head": "6ef19d6e85dfe55983794342620a026005a67d20",
+    "tree": "5987f0536197d0e45990e55a443860c56422185b",
+    "branch": "stage10-transparent-launch",
+    "status": ""
+  },
+  "chipyard": {
+    "path": "/home/lxf/chipyard",
+    "head": "f05e1a0dfa274f5505c80445cdc0d0205af54d86",
+    "tree": "a41880ac09603ff22fab159ebc7868c0543e1150",
+    "branch": "stage10-transparent-launch",
+    "status": "? toolchains/libgloss\n ? toolchains/riscv-tools/riscv-isa-sim\n ? toolchains/riscv-tools/riscv-pk\n ? toolchains/riscv-tools/riscv-tests\n ? tools/api-config-chipsalliance\n?? ssa_firmware/\n?? tests/ssa_microcode.S\n?? tests/ssa_rom_scala.txt\n?? tests/test_ssa.c"
+  },
+  "rocket": {
+    "path": "/home/lxf/chipyard/generators/rocket-chip",
+    "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+    "branch": "stage10-transparent-launch",
+    "status": ""
+  },
+  "linux": {
+    "path": "/home/lxf/ssa-linux-src/linux",
+    "head": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
+    "tree": "a28522f6eabe937ea93347f32d21b8b251324fcf",
+    "branch": "stage10-transparent-launch",
+    "status": ""
+  },
+  "opensbi": {
+    "path": "/home/lxf/ssa-linux-src/opensbi",
+    "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+    "branch": "stage10-transparent-launch",
+    "status": ""
+  }
+}

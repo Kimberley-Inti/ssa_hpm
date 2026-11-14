@@ -212,3 +212,15 @@ raw captures. test_classification_results.py distinguishes host-only protocol
 faults/64-bit arithmetic from native hardware evidence. Freeze, short IRQ-masked
 row reads, STOP/exec/exit and bank ownership follow the base export lifecycle;
 a bank is never reset/reused before the owning session reaches terminal export.
+
+## Final candidate: declared classification sidecars
+
+New XBEGIN producers add `classification`, `class_rule`, and `class_rows`.
+Enabled rule1 declares min(total,63) rows, even for an empty sidecar. Disabled
+classification declares zero rule/rows. The combined classification parser
+checks this declaration, so losing the entire MBEGIN..MEND block is detected.
+A base-only parser still validates only base transport. Use
+`integration/ssa/linux/classification_results.py` for mixed/classified captures.
+Legacy ABI1/ABI2 captures remain readable and report `legacy_undeclared`; absence
+of an entire legacy sidecar cannot be inferred from its base header alone.
+This additive version1 extension does not change counter meanings or record ABI.

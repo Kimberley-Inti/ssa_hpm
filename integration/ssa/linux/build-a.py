@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fixed-version baseline boot image. All downloaded/build outputs stay outside Git."""
 import argparse,hashlib,json,os,pathlib,shutil,subprocess,urllib.request
-p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--classification',action='store_true');p.add_argument('--transparent',action='store_true');p.add_argument('--musl-cache',type=pathlib.Path);p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--classification',action='store_true');p.add_argument('--transparent',action='store_true');p.add_argument('--performance',action='store_true');p.add_argument('--musl-cache',type=pathlib.Path);p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+if a.performance:a.transparent=True
 if a.transparent:a.classification=True
 if a.classification:a.cache=True
 if a.cache:a.export_test=True
@@ -27,6 +28,8 @@ if a.export_test and not a.reference:run(['git','am',src/'0005-linux-result-expo
 if a.export_test and not a.reference:run(['git','am',src/'0006-linux-cache-profile.patch'],linux)
 if a.classification and not a.reference:run(['git','am',src/'0007-linux-memory-classification.patch'],linux)
 if a.transparent and not a.reference:run(['git','am',src/'0008-linux-transparent-launch.patch'],linux)
+if a.transparent and not a.reference:run(['git','am',src/'0009-linux-cost-probes.patch'],linux)
+if a.classification and not a.reference:run(['git','am',src/'0010-linux-classification-contract.patch'],linux)
 run(['git','am',src/'0001-opensbi-rocket-platform.patch'],sbi)
 if a.event and not a.reference:run(['git','am',src/'0002-opensbi-dtlb-profile.patch'],sbi)
 if a.event and not a.reference:run(['git','am',src/'0003-opensbi-cache-profile.patch'],sbi)
@@ -40,6 +43,12 @@ if a.transparent:
  cmd=['python3',src/'transparent/build-users.py','--work',w,'--cross',a.cross,'--ld-dir',b,'--jobs',a.jobs]
  if a.musl_cache:cmd+=['--musl-cache',a.musl_cache]
  run(cmd);listing=w/'initramfs.list'
+ if a.performance:
+  shutil.copyfile(w/'init',w/'transparent-init')
+  run([a.cross+'gcc','-B'+str(b)+'/', '-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start',src/'transparent/plain-entry.S',src.parent/'performance/linux.c','-o',w/'perf-target'])
+  shutil.copyfile(w/'perf-target',w/'init')
+  listing.write_text(listing.read_text()+f'file /perf-target {w}/perf-target 0755 0 0\n')
+  (w/'performance-users.json').write_text(json.dumps({name:hashlib.sha256((w/name).read_bytes()).hexdigest() for name in ['init','perf-target']},indent=2)+'\n')
 else:
  ref=['-DREFERENCE'] if a.reference else []
  user('classification-init.c' if a.classification else 'cache-init.c' if a.cache else 'export-init.c' if a.export_test else 'exec-init.c' if a.exec_test else 'process-init.c' if a.process else 'init.c','init',ref+(['-DCHAIN_EVENTS'] if a.event else []))
@@ -65,8 +74,8 @@ km=['make','ARCH=riscv','CROSS_COMPILE='+a.cross,'CC='+a.cross+'gcc -B'+str(b)+'
 if a.process:
  run(['scripts/config','--disable' if a.reference else '--enable','SSA_HPM','--disable','HZ_250','--enable','HZ_1000'],linux)
 if a.transparent:run(['scripts/config','--disable','INITRAMFS_COMPRESSION_GZIP','--enable','INITRAMFS_COMPRESSION_NONE'],linux)
-run(km+['olddefconfig'],linux);run(km+['KCFLAGS=-misa-spec=2.2'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'KAFLAGS=-misa-spec=2.2','-j'+a.jobs,'Image'],linux)
+run(km+['olddefconfig'],linux);run(km+['KCFLAGS=-misa-spec=2.2'+(' -DSSA_CACHE_PROFILE' if a.cache else '')+(' -DSSA_COST_PROFILE' if a.performance else ''),'KAFLAGS=-misa-spec=2.2','-j'+a.jobs,'Image'],linux)
 run(['dtc','-I','dts','-O','dtb','-o',w/'rocket.dtb',src/'rocket.dts'])
 run(['make','PLATFORM=ssa_rocket','CROSS_COMPILE='+a.cross,'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei','platform-cflags-y=-std=gnu11'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'FW_PAYLOAD_PATH='+str(linux/'arch/riscv/boot/Image'),'FW_PAYLOAD_FDT_PATH='+str(w/'rocket.dtb'),'FW_PAYLOAD_FDT_ADDR=0x81e00000','-j'+a.jobs],sbi)
 shutil.copyfile(sbi/'build/platform/ssa_rocket/firmware/fw_payload.elf',w/'boot-a.elf');run([a.cross+'objcopy','-O','binary',w/'boot-a.elf',w/'boot-a.bin']);run(['python3',src.parent/'elf_to_hex.py',w/'boot-a.bin',w/'boot-a.hex'])
-(w/'build-report.json').write_text(json.dumps(dict(passed=True,commands=commands,images={f:hashlib.sha256((w/f).read_bytes()).hexdigest() for f in ['boot-a.elf','boot-a.bin','boot-a.hex']}),indent=2)+'\n')
+(w/'build-report.json').write_text(json.dumps(dict(passed=True,performance=bool(a.performance),linux_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=linux,text=True).strip(),opensbi_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=sbi,text=True).strip(),config_sha256=hashlib.sha256((linux/'.config').read_bytes()).hexdigest(),commands=commands,images={f:hashlib.sha256((w/f).read_bytes()).hexdigest() for f in ['boot-a.elf','boot-a.bin','boot-a.hex']}),indent=2)+'\n')

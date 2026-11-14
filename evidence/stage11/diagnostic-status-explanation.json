@@ -1,0 +1,43 @@
+{
+  "ps_finished_pilot": {
+    "command": [
+      "ps",
+      "-p",
+      "102933",
+      "-o",
+      "stat,etime"
+    ],
+    "exit_code": 1,
+    "output": "STAT     ELAPSED\n",
+    "meaning": "PID no longer exists; this is not a retrieved simulator native exit status"
+  },
+  "interleaving_before": {
+    "passed": false,
+    "coverage": "host-only synthetic measurement protocol fault injection",
+    "checks": {
+      "valid": true,
+      "missing": true,
+      "duplicate": true,
+      "wrong_checksum": true,
+      "no_end": true,
+      "no_calibration": true,
+      "no_init": true,
+      "progress_interleaving": false
+    }
+  },
+  "interleaving_after": {
+    "passed": true,
+    "coverage": "host-only synthetic measurement protocol fault injection",
+    "checks": {
+      "valid": true,
+      "missing": true,
+      "duplicate": true,
+      "wrong_checksum": true,
+      "no_end": true,
+      "no_calibration": true,
+      "no_init": true,
+      "progress_interleaving": true
+    }
+  },
+  "interpretation": "The historical combined version/readout command ended with ps on the finished pilot, returning1. The separate host interleaving reproduction intentionally returned1 before its repair. Neither establishes a failed native formal run. Other early cat-on-not-yet-created status files also returned1 and are not test receipts."
+}

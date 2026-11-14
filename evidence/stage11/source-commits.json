@@ -1,0 +1,11 @@
+{
+  "baseline_maintenance": "6ef19d6e85dfe55983794342620a026005a67d20",
+  "candidate": {
+    "chipyard": "bc07c7710c24f111e9c4f88ac199fb1794748ef5",
+    "rocket_chip": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "linux": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
+    "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
+  },
+  "config": "SSAHPMEventRocketConfig",
+  "status": "frozen source; validation in progress"
+}

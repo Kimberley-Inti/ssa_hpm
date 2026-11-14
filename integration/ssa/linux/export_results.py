@@ -40,6 +40,8 @@ def parse(text):
     need(sid in starts and sid not in sessions,'missing START or duplicate export');st=starts[sid]
     need(d['version']==1 and d['abi'] in (1,2),'unsupported format/ABI')
     profile=d.get('profile','dtlb_accepted_ptw_requests' if d['abi']==2 else 'base');need(profile in PROFILES if d['abi']==2 else profile=='base','unsupported profile');d['profile']=profile
+    if 'classification' in d:
+     need(d['classification'] in (0,1) and d.get('class_rule')==(1 if d['classification'] else 0) and d.get('class_rows')==(min(d['total'],63) if d['classification'] else 0),'classification declaration mismatch')
     need(d['pid']==st['pid'] and d['image']==st['image'] and d['pool']==st['pool'],'session/image/pool ownership mismatch')
     need(d['capacity']==CAPACITY and d['chunk']==CHUNK,'capacity/chunk mismatch')
     need(0<=d['total']<=CAPACITY and d['counters']==(4 if d['abi']==2 else 3),'total/counters out of bounds')

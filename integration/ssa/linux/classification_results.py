@@ -45,6 +45,13 @@ def parse(text):
                 s['end']=d;s['complete']=not(h['status']&~9 or h['dropped'] or h['total']>63)
         except (KeyError,ValueError,TypeError) as e:errors.append({'line':n,'error':str(e)})
     contexts={s['header']['session']:s for s in base['sessions']}
+    for sid,ctx in contexts.items():
+        h=ctx['header']
+        if 'classification' not in h:continue  # Legacy format cannot promise whole-sidecar detection.
+        if bool(h['classification']) != (sid in sessions):
+            errors.append({'session':sid,'error':'declared classification sidecar missing or unexpected'})
+        elif sid in sessions and (sessions[sid]['header']['rule']!=h['class_rule'] or sessions[sid]['header']['emitted']!=h['class_rows']):
+            errors.append({'session':sid,'error':'classification declaration/sidecar mismatch'})
     for sid,s in sessions.items():
         if 'end' not in s:errors.append({'session':sid,'error':'truncated classification export'})
         if sid not in contexts or s['header']['total']!=contexts[sid]['header']['total']:
@@ -57,6 +64,6 @@ def parse(text):
                 if r['id']>len(ctx['records']):errors.append({'session':sid,'error':'missing base context for classification row'});continue
                 r.update({k:ctx['records'][r['id']-1][k] for k in ['parent','callee','open']})
     if not sessions:errors.append({'error':'no classification sessions'})
-    return {'valid':not errors,'errors':errors,'classification_sessions':list(sessions.values()),'context_export':base}
+    return {'valid':not errors,'errors':errors,'classification_sessions':list(sessions.values()),'context_export':base,'classification_contracts':{str(sid):'declared' if 'classification' in x['header'] else 'legacy_undeclared' for sid,x in contexts.items()}}
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('log',type=pathlib.Path);p.add_argument('--out',type=pathlib.Path,required=True);a=p.parse_args();q=parse(a.log.read_text());a.out.write_text(json.dumps(q,indent=2)+'\n');print(json.dumps({'valid':q['valid'],'sessions':len(q['classification_sessions']),'errors':q['errors'][:8]},indent=2));raise SystemExit(0 if q['valid'] else 2)

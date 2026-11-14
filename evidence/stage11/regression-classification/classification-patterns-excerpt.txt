@@ -1,0 +1,149 @@
+SSA_MEM_OBS session=                   1 rid=     1 pc=00000000800000ca va=00000000800082f8 store=1 size=3 category=0 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=0000000080008490 store=0 size=3 category=0 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=0 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=0000000080008498 store=0 size=3 category=0 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=0 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084a0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084a8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084b0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084b8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084c0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084c8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     1 pc=00000000800000de va=00000000800082f8 store=0 size=3 category=0 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=     3 pc=00000000800000e6 va=00000000800082f8 store=1 size=3 category=0 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=00000000800084d0 store=0 size=3 category=0 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=0 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=00000000800084d8 store=0 size=3 category=0 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=0000000080008588 store=0 size=3 category=0 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=00000000800084e0 store=0 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=0000000080008590 store=0 size=3 category=2 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=00000000800084e8 store=0 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=0000000080008598 store=0 size=3 category=2 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=00000000800084f0 store=0 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=00000000800085a0 store=0 size=3 category=2 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=00000000800084f8 store=0 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=00000000800085a8 store=0 size=3 category=2 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=0000000080008500 store=0 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=00000000800085b0 store=0 size=3 category=2 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=000000008000038c va=0000000080008508 store=0 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=     4 pc=0000000080000390 va=00000000800085b8 store=0 size=3 category=2 slot= 6 eviction=0
+SSA_MEM_OBS session=                   1 rid=     3 pc=00000000800000fa va=00000000800082f8 store=0 size=3 category=0 slot= 7 eviction=0
+SSA_MEM_OBS session=                   1 rid=     5 pc=0000000080000102 va=00000000800082f8 store=1 size=3 category=0 slot= 8 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008510 store=0 size=3 category=0 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=0 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008518 store=0 size=3 category=0 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=0000000080008680 store=0 size=3 category=0 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008520 store=0 size=3 category=2 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=00000000800085c0 store=0 size=3 category=3 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008528 store=0 size=3 category=2 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=0000000080008800 store=0 size=3 category=3 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008530 store=0 size=3 category=2 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=3 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008538 store=0 size=3 category=2 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=00000000800085c8 store=0 size=3 category=3 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008540 store=0 size=3 category=2 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=00000000800087b8 store=0 size=3 category=3 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=000000008000038c va=0000000080008548 store=0 size=3 category=2 slot= 9 eviction=0
+SSA_MEM_OBS session=                   1 rid=     6 pc=0000000080000390 va=00000000800085a0 store=0 size=3 category=3 slot=10 eviction=0
+SSA_MEM_OBS session=                   1 rid=     5 pc=0000000080000116 va=00000000800082f8 store=0 size=3 category=0 slot=11 eviction=0
+SSA_MEM_OBS session=                   1 rid=     1 pc=00000000800000ca va=00000000800082f8 store=1 size=3 category=0 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=0000000080008490 store=0 size=3 category=3 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=0000000080008498 store=0 size=3 category=3 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084a0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084a8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084b0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084b8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084c0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=000000008000038c va=00000000800084c8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     2 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=     1 pc=00000000800000de va=00000000800082f8 store=0 size=3 category=0 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=     7 pc=000000008000011e va=00000000800082f8 store=1 size=3 category=0 slot=12 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=000000008000038c va=0000000080008550 store=0 size=3 category=0 slot=13 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=0 slot=14 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=000000008000038c va=0000000080008558 store=0 size=3 category=0 slot=13 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=0 slot=14 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=000000008000038c va=0000000080008560 store=0 size=3 category=2 slot=13 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=0000000080000390 va=0000000080008580 store=0 size=3 category=1 slot=14 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=000000008000038c va=0000000080008568 store=0 size=3 category=2 slot=13 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=0000000080000390 va=0000000080008588 store=0 size=3 category=3 slot=14 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=000000008000038c va=0000000080008570 store=0 size=3 category=2 slot=13 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=0000000080000390 va=0000000080008590 store=0 size=3 category=2 slot=14 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=000000008000038c va=0000000080008578 store=0 size=3 category=2 slot=13 eviction=0
+SSA_MEM_OBS session=                   1 rid=     8 pc=0000000080000390 va=0000000080008598 store=0 size=3 category=2 slot=14 eviction=0
+SSA_MEM_OBS session=                   1 rid=     7 pc=0000000080000132 va=00000000800082f8 store=0 size=3 category=0 slot=15 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=0 slot= 0 eviction=1
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=0000000080008580 store=0 size=3 category=0 slot= 1 eviction=1
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=0 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=0000000080008588 store=0 size=3 category=0 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=1 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=0000000080008590 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=1 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=0000000080008598 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=1 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=00000000800085a0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=1 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=00000000800085a8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=1 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=00000000800085b0 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003a6 va=0000000080008580 store=0 size=3 category=1 slot= 0 eviction=0
+SSA_MEM_OBS session=                   1 rid=     9 pc=00000000800003aa va=00000000800085b8 store=0 size=3 category=2 slot= 1 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=0000000080008580 store=1 size=0 category=0 slot= 2 eviction=1
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=0000000080008580 store=1 size=1 category=0 slot= 3 eviction=1
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=0000000080008580 store=1 size=2 category=0 slot= 4 eviction=1
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=0000000080008580 store=1 size=3 category=0 slot= 5 eviction=1
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=0000000080008588 store=1 size=0 category=0 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=0000000080008588 store=1 size=1 category=0 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=0000000080008588 store=1 size=2 category=0 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=0000000080008588 store=1 size=3 category=0 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=0000000080008590 store=1 size=0 category=2 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=0000000080008590 store=1 size=1 category=2 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=0000000080008590 store=1 size=2 category=2 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=0000000080008590 store=1 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=0000000080008598 store=1 size=0 category=2 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=0000000080008598 store=1 size=1 category=2 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=0000000080008598 store=1 size=2 category=2 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=0000000080008598 store=1 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=00000000800085a0 store=1 size=0 category=2 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=00000000800085a0 store=1 size=1 category=2 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=00000000800085a0 store=1 size=2 category=2 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=00000000800085a0 store=1 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=00000000800085a8 store=1 size=0 category=2 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=00000000800085a8 store=1 size=1 category=2 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=00000000800085a8 store=1 size=2 category=2 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=00000000800085a8 store=1 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=00000000800085b0 store=1 size=0 category=2 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=00000000800085b0 store=1 size=1 category=2 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=00000000800085b0 store=1 size=2 category=2 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=00000000800085b0 store=1 size=3 category=2 slot= 5 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003ba va=00000000800085b8 store=1 size=0 category=2 slot= 2 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003be va=00000000800085b8 store=1 size=1 category=2 slot= 3 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c2 va=00000000800085b8 store=1 size=2 category=2 slot= 4 eviction=0
+SSA_MEM_OBS session=                   1 rid=    10 pc=00000000800003c6 va=00000000800085b8 store=1 size=3 category=2 slot= 5 eviction=0
+SSA_CLASS_ROW 0000000000000000 0000000000000009 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000001 0000000000000004 0000000000000004 0000000000000000 0000000000000000 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000002 0000000000000020 0000000000000004 000000000000000e 000000000000000c 0000000000000002 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000003 0000000000000002 0000000000000002 0000000000000000 0000000000000000 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000004 0000000000000010 0000000000000004 0000000000000000 000000000000000c 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000005 0000000000000002 0000000000000002 0000000000000000 0000000000000000 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000006 0000000000000010 0000000000000004 0000000000000000 0000000000000006 0000000000000006 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000007 0000000000000002 0000000000000002 0000000000000000 0000000000000000 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000008 000000000000000c 0000000000000004 0000000000000001 0000000000000006 0000000000000001 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 0000000000000009 0000000000000010 0000000000000004 0000000000000006 0000000000000006 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_ROW 000000000000000a 0000000000000020 0000000000000008 0000000000000000 0000000000000018 0000000000000000 0000000000000086 0000000000000006 0000000000000000
+SSA_CLASS_PATTERNS_EXPECTED
+SSA_CLASS_DONE
+*** PASSED *** Completed after 66786 cycles
+[UART] UART0 is here (stdin/stdout).

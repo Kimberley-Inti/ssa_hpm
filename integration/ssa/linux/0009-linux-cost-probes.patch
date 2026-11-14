@@ -1,0 +1,239 @@
+From bf5a1bc53f4131b9b7be9648f80b32d061cb0a09 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Sat, 14 Nov 2026 14:20:56 +0800
+Subject: [PATCH] ssa: add opt-in target counter probes for final cost
+ evaluation
+
+---
+ fs/exec.c               |  2 +
+ include/linux/sched.h   |  4 ++
+ include/linux/ssa_hpm.h |  7 ++++
+ kernel/ssa_hpm.c        | 82 ++++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 93 insertions(+), 2 deletions(-)
+
+diff --git a/fs/exec.c b/fs/exec.c
+index 086f6c6d4..efbecb71d 100644
+--- a/fs/exec.c
++++ b/fs/exec.c
+@@ -1786,6 +1786,7 @@ static int __do_execve_file(int fd, struct filename *filename,
+ 
+ 	if (IS_ERR(filename))
+ 		return PTR_ERR(filename);
++	ssa_hpm_cost_exec_begin();
+ 
+ 	/*
+ 	 * We move the actual failure in case of RLIMIT_NPROC excess from
+@@ -1916,6 +1917,7 @@ static int __do_execve_file(int fd, struct filename *filename,
+ 	if (displaced)
+ 		reset_files_struct(displaced);
+ out_ret:
++	ssa_hpm_cost_exec_end(retval);
+ 	if (filename)
+ 		putname(filename);
+ 	return retval;
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 71ed54d0b..540bf0fc1 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -642,6 +642,10 @@ struct task_struct {
+ 	struct ssa_hpm_state *ssa_hpm;
+ 	unsigned int ssa_launch_policy, ssa_launch_role, ssa_launch_test;
+ 	int ssa_launch_error;
++#ifdef SSA_COST_PROFILE
++	u64 ssa_cost_exec_start[3];
++	bool ssa_cost_exec_pending;
++#endif
+ #endif
+ 	/* -1 unrunnable, 0 runnable, >0 stopped: */
+ 	volatile long			state;
+diff --git a/include/linux/ssa_hpm.h b/include/linux/ssa_hpm.h
+index 5cf2dba20..66933d75a 100644
+--- a/include/linux/ssa_hpm.h
++++ b/include/linux/ssa_hpm.h
+@@ -26,4 +26,11 @@ static inline void ssa_hpm_exec_ready(unsigned long e,unsigned long a,unsigned l
+ static inline void ssa_hpm_exec(struct task_struct *p) {}
+ static inline long ssa_hpm_prctl(unsigned long o,unsigned long f,unsigned long r,unsigned long t) {return -EINVAL;}
+ #endif
++#if defined(CONFIG_SSA_HPM) && defined(SSA_COST_PROFILE)
++void ssa_hpm_cost_exec_begin(void);
++void ssa_hpm_cost_exec_end(long result);
++#else
++static inline void ssa_hpm_cost_exec_begin(void) {}
++static inline void ssa_hpm_cost_exec_end(long result) {}
++#endif
+ #endif
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index 0e3ce18a4..d7a294e8f 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -30,9 +30,16 @@
+ #define STOPPED 3
+ struct ssa_record {u64 callee,parent,count[3],reserved[6],next,rsv,pad[3];};
+ struct ssa_pool {unsigned long base; void *top; struct ssa_record *records; bool busy;};
+-struct ssa_event {u64 s[4],r[4],depth,rid,cause,csr_cause; int other,from; unsigned long task_state,nivcsw; bool resumed,preempt;};
++struct ssa_event {
++#ifdef SSA_COST_PROFILE
++ u64 pause_cost[3],resume_cost[3];
++#endif
++ u64 s[4],r[4],depth,rid,cause,csr_cause; int other,from; unsigned long task_state,nivcsw; bool resumed,preempt;};
+ struct ssa_hpm_state {
+  struct ssa_pool *pool;
++#ifdef SSA_COST_PROFILE
++ u64 init_cost[3];
++#endif
+  unsigned int state,role,test,uid,n;
+  bool event,classify;
+  bool frozen,exported;
+@@ -63,6 +70,29 @@ static void sample(u64 *v,bool event){
+   :"=r"(v[0]),"=r"(v[1]),"=r"(v[2])::"memory");
+  if(event)asm volatile("csrr %0,0xc03":"=r"(v[3])::"memory");
+ }
++/* Optional measurement build only. Never print inside the scheduler path. */
++#ifdef SSA_COST_PROFILE
++static void cost_delta(u64 *out,const u64 *start) {
++ u64 end[3];unsigned int j;sample(end,false);
++ for(j=0;j<3;j++)out[j]=end[j]-start[j];
++}
++static void cost_print(const char *phase,u64 session,const u64 *v,u64 detail) {
++ pr_emerg("SSA_COST phase=%s pid=%d session=%llu cycle=%llu instret=%llu time=%llu detail=%llu\n",phase,current->pid,session,v[0],v[1],v[2],detail);
++}
++#endif
++#ifdef SSA_COST_PROFILE
++void ssa_hpm_cost_exec_begin(void) {
++ if(current->ssa_launch_test==14 || (current->ssa_hpm && current->ssa_hpm->test==14)){
++  sample(current->ssa_cost_exec_start,false);current->ssa_cost_exec_pending=true;
++ }
++}
++void ssa_hpm_cost_exec_end(long result) {
++ if(current->ssa_cost_exec_pending){
++  u64 v[3];cost_delta(v,current->ssa_cost_exec_start);current->ssa_cost_exec_pending=false;
++  cost_print(result<0?"exec_failed":"exec_ready",current->ssa_hpm?current->ssa_hpm->session:0,v,(u64)result);
++ }
++}
++#endif
+ static void select_pool(unsigned long b,bool event){
+  if(!b)csr_write(0x5c1,0);
+  if(event)csr_set(0x5c0,2);else csr_clear(0x5c0,2);
+@@ -102,6 +132,9 @@ static void resume_task(struct task_struct *t,struct task_struct *other)
+  p->state=RUNNING;csr_write(0x5c1,p->classify?p->session:0);select_pool(p->pool->base,p->event);
+ }
+ void ssa_hpm_fork(struct task_struct *t){
++#ifdef SSA_COST_PROFILE
++ t->ssa_cost_exec_pending=false;
++#endif
+  t->ssa_hpm=NULL;t->ssa_launch_policy=0;t->ssa_launch_role=0;t->ssa_launch_test=0;t->ssa_launch_error=0;
+ }
+ void ssa_hpm_fork_done(struct task_struct *t){
+@@ -127,8 +160,20 @@ int ssa_hpm_exec_check(struct linux_binprm *bprm){
+ void ssa_hpm_switch(struct task_struct *prev,struct task_struct *next,bool preempt)
+ {
+  if(!available)return;
++#ifdef SSA_COST_PROFILE
++ if(prev->ssa_hpm && prev->ssa_hpm->test==14 && prev->ssa_hpm->state==RUNNING){
++  u64 a[3];struct ssa_hpm_state *p=prev->ssa_hpm;sample(a,false);pause_task(prev,next,preempt);
++  if(p->n)cost_delta(p->events[p->n-1].pause_cost,a);
++ }else
++#endif
+  if(prev->ssa_hpm)pause_task(prev,next,preempt);
+  else select_pool(0,false);
++#ifdef SSA_COST_PROFILE
++ if(next->ssa_hpm && next->ssa_hpm->test==14 && next->ssa_hpm->state==PAUSED){
++  u64 a[3];struct ssa_hpm_state *p=next->ssa_hpm;sample(a,false);resume_task(next,prev);
++  if(p->n)cost_delta(p->events[p->n-1].resume_cost,a);
++ }else
++#endif
+  if(next->ssa_hpm)resume_task(next,prev);
+ }
+ static long export_session(struct task_struct *t,const char *reason,bool release);
+@@ -158,6 +203,9 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+   p->pool=&pools[i];p->pool->busy=true;p->legacy=flags&1;p->event=!!(flags&2);p->classify=!!(flags&4);p->role=role;p->test=test;
+   p->uid=__kuid_val(current_uid());p->state=RUNNING;
+   p->session=++next_session;p->image_id=READ_ONCE(current->self_exec_id);
++#ifdef SSA_COST_PROFILE
++  if(test==14)sample(p->init_cost,false);
++#endif
+   memset((char *)p->pool->top+TOP_SIZE-1065024,0,262144*4);
+   memset((void *)meta(p->pool),0,64);WRITE_ONCE(meta(p->pool)[1],1);
+   current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base,p->event);
+@@ -167,6 +215,9 @@ long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsig
+    while(csr_read(0x5c2)&2)cpu_relax();
+    csr_write(0x5c3,0);
+   }
++#ifdef SSA_COST_PROFILE
++  if(test==14){u64 a[3];memcpy(a,p->init_cost,sizeof(a));cost_delta(p->init_cost,a);}
++#endif
+   pr_emerg("SSA_BEGIN pid=%d session=%llu image=%llu pool=%lu depth=%llu next=%llu selector=%lu\n",current->pid,p->session,p->image_id,p->pool->base,READ_ONCE(meta(p->pool)[0]),READ_ONCE(meta(p->pool)[1]),selected());
+   if(p->event)pr_emerg("SSA_EVENT_BEGIN pid=%d session=%llu abi=2 selector=%u width=40 depth=0 next=1 profile=%s\n",current->pid,p->session,HPM_SELECTOR,HPM_NAME);
+   local_irq_restore(irq);return 0;
+@@ -242,6 +293,10 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+  struct ssa_hpm_state *p=t->ssa_hpm;unsigned long irq;unsigned int i,j,status=0;
+  volatile u64 *m;u64 depth,next,spill,errors,total,emitted=0,seq=0,allhash=14695981039346656037ULL;
+  u64 *open_ids;struct ssa_record *buf=NULL;bool complete;
++#ifdef SSA_COST_PROFILE
++ u64 cost_start[3],cost_freeze[3],cost_total[3],cost_copy[3]={0};
++ if(p && p->test==14)sample(cost_start,false);
++#endif
+  if(!p)return -EINVAL;
+  open_ids=p->open_ids;
+  /* Own descriptor remains attached and slot busy until terminal/release. */
+@@ -260,6 +315,9 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+  local_irq_restore(irq);
+  /* No monitor selection; IRQs may run and scheduler may select another pool.
+   * This task stays STOPPED. It never touches SCBaseReg again while exporting. */
++#ifdef SSA_COST_PROFILE
++ if(p->test==14)cost_delta(cost_freeze,cost_start);
++#endif
+  complete=!status;
+  pr_emerg("SSA_SESSION pid=%d session=%llu image=%llu reason=%s comm=%s selector=0 cutoff_cycle=%llu cutoff_instret=%llu cutoff_time=%llu\n",t->pid,p->session,p->image_id,reason,t->comm,p->cutoff[0],p->cutoff[1],p->cutoff[2]);
+  pr_emerg("SSA_EXPORT pid=%d uid=%u role=%u test=%u legacy=%u pool=%lu complete=%u depth=%llu next=%llu spill=%llu events=%u session=%llu\n",t->pid,p->uid,p->role,p->test,p->legacy,p->pool->base,complete,depth,next,spill,p->n,p->session);
+@@ -277,7 +335,13 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+  if(total && !buf)status|=XS_IO;
+  while(emitted<total && !(status&XS_IO)){
+   u64 first=emitted+1,h=14695981039346656037ULL;unsigned int count=min_t(u64,EXPORT_CHUNK,total-emitted),k;
++#ifdef SSA_COST_PROFILE
++  u64 read_start[3],read_cost[3];if(p->test==14)sample(read_start,false);
++#endif
+   if(read_chunk(t,p,p->session,total,first,count,buf)){status|=XS_IO;break;}
++#ifdef SSA_COST_PROFILE
++  if(p->test==14){cost_delta(read_cost,read_start);for(j=0;j<3;j++)cost_copy[j]+=read_cost[j];}
++#endif
+   pr_emerg("SSA_XCHUNK session=%llu seq=%llu first=%llu count=%u\n",p->session,seq,first,count);
+   for(k=0;k<count;k++){
+    struct ssa_record *r=&buf[k];u64 id=first+k;unsigned int open=0;
+@@ -307,6 +371,19 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+  }
+  if(!strcmp(reason,"exec"))pr_emerg("SSA_EXEC_END pid=%d session=%llu complete=%u selector=0\n",t->pid,p->session,!status);
+  else if(!strcmp(reason,"exit"))pr_emerg("SSA_EXIT pid=%d complete=%u selector=0 session=%llu\n",t->pid,!status,p->session);
++#ifdef SSA_COST_PROFILE
++ if(p->test==14){
++  cost_delta(cost_total,cost_start);
++  cost_print("dictionary_init",p->session,p->init_cost,1048576);
++  cost_print("freeze",p->session,cost_freeze,depth);
++  cost_print("record_copy",p->session,cost_copy,total);
++  cost_print("export",p->session,cost_total,total);
++  for(i=0;i<p->n;i++){
++   cost_print("pause",p->session,p->events[i].pause_cost,p->events[i].depth);
++   if(p->events[i].resumed)cost_print("resume",p->session,p->events[i].resume_cost,p->events[i].depth);
++  }
++ }
++#endif
+  p->exported=true;
+ done:
+  if(release){
+@@ -327,11 +404,12 @@ void ssa_hpm_exec(struct task_struct *t){finish_session(t,true);}
+  * never calls this hook, and ordinary ENOENT returns with the old descriptor. */
+ void ssa_hpm_exec_ready(unsigned long entry,unsigned long app,unsigned long interp){
+  long error;
+- if(!current->ssa_launch_policy)return;
++ if(!current->ssa_launch_policy){ssa_hpm_cost_exec_end(0);return;}
+  error=ssa_hpm_prctl(1,current->ssa_launch_policy&7,current->ssa_launch_role,current->ssa_launch_test);
+  current->ssa_launch_error=error;
+  if(error)select_pool(0,false);
+  pr_emerg("SSA_AUTO_RESULT pid=%d image=%llu test=%u role=%u flags=%u enabled=%u error=%ld reason=%s dynamic=%u entry=%016lx app=%016lx interp=%016lx session=%llu\n",current->pid,(u64)current->self_exec_id,current->ssa_launch_test,current->ssa_launch_role,current->ssa_launch_policy&7,!error,error,error==-EBUSY?"pool_exhausted":error?"enable_failed":"enabled",!!interp,entry,app,interp,current->ssa_hpm?current->ssa_hpm->session:0);
++ ssa_hpm_cost_exec_end(0);
+ }
+ static int __init ssa_hpm_init(void)
+ {
+-- 
+2.34.1
+

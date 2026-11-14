@@ -19,4 +19,7 @@ for role,sid in sids.items():
  changed,n=re.subn(r'^SSA_MEND session='+str(sid)+r' emitted=3 hash=[0-9a-f]+$',f'SSA_MEND session={sid} emitted=3 hash={h:016x}',changed,flags=re.M);assert n==1
 reject('rechecksummed_wrong_classification_owner_detected',changed,'dual_history_isolation')
 cap=next(x for x in fields(auto,'SSA_AUTO_RESULT') if x['pid']==pids[-1])['session'];changed,n=re.subn(r'^SSA_XEND session='+str(cap)+r' [^\n]*\n','',text,flags=re.M);assert n==1;reject('missing_terminal_detected',changed,'complete_exports',False)
+changed,n=re.subn(r'^SSA_M(?:BEGIN|RECORD|END) [^\n]*\bsession=1\b[^\n]*\n','',text,flags=re.M);assert n>0
+declared=any(l.startswith('SSA_XBEGIN ') and 'session=1 ' in l and 'classification=1 ' in l for l in text.splitlines())
+reject('whole_sidecar_missing_detected',changed,'complete_exports' if declared else 'expected_classification_sidecars',not declared)
 result={'passed':all(checks.values()),'coverage':'host-only semantic mutations of the same actual native log; no faulty-kernel or second RTL execution','source_log_sha256':hashlib.sha256(raw).hexdigest(),'checks':checks,'details':results};a.out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2));raise SystemExit(0 if result['passed'] else 1)

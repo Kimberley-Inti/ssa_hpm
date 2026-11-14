@@ -1,0 +1,12 @@
+{
+  "linux": {
+    "development_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+    "production_independent_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+    "measurement_independent_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7"
+  },
+  "opensbi": {
+    "development_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+    "production_independent_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+    "measurement_independent_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91"
+  }
+}

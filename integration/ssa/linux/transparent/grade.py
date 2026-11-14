@@ -30,6 +30,10 @@ def grade(text,code,users):
  check('twelve_controlled_launches',len(pids)==12)
  if len(pids)!=12:return {'passed':False,'checks':c,'exports':q,'auto_results':starts,'launch_pids':pids}
  stat,exe,fail,disabled,setid,h1,h2,exhaust,b,a,dyn,cap=pids
+ # A whole missing optional sidecar is transport-valid but fails this fixture's
+ # declared profile contract. Reject before indexing its rows.
+ check('expected_classification_sidecars',set(cls)=={sid for sid,x in base.items() if x['header']['pid']!=dyn} and all(len(cls[sid]['records'])==min(63,base[sid]['header']['total']) for sid in cls if sid in base))
+ if not c['expected_classification_sidecars']:return {'passed':False,'checks':c,'exports':q,'auto_results':starts,'launch_pids':pids}
  def sessions(pid):return [s for s in base.values() if s['header']['pid']==pid]
  def result(pid):return [x for x in starts if x['pid']==pid]
  def counter(s,rid):return [cls[s['header']['session']]['records'][rid-1][k] for k in ['total','warmup','scalar','stream','irregular']]

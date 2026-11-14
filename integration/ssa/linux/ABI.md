@@ -318,3 +318,22 @@ not a promise of universal unwinding, arbitrary setuid/thread runtimes or a stab
 upstream ABI. [Transparent policy](transparent/POLICY.md) specifies lifecycle,
 authority, profile/capacity and accounting boundaries. Only the actual stage10
 Linux evidence establishes which fixture forms have passed.
+
+## Final-candidate export contract and optional cost probes
+
+Version1 XBEGIN may additionally carry `classification=0|1 class_rule=0|1
+class_rows=N`. New classification-enabled builds declare the sidecar before any
+payload: rule1 and min(total,63) rows, including a BEGIN/END for a zero-row
+session. A disabled declaration requires rule0/rows0 and no sidecar. The combined
+host parser rejects a completely missing declared sidecar. Legacy captures are
+accepted as `legacy_undeclared`; they cannot promise detection of an entirely
+removed optional sidecar without a fixture-specific expectation. ABI1/ABI2,
+record layout, profiles, counter widths and checksums are unchanged.
+
+`SSA_COST_PROFILE` is an optional compile-time experiment, not a user ABI.
+Only test14 sessions collect kernel dictionary/setup, scheduler pause/resume,
+freeze, record-copy, export and exec-window counter samples. Scheduler samples
+are retained until export; no scheduler-path printk is added. Exec diagnostics
+are outside application workload intervals. Probe reads/bookkeeping and any
+included formatting are disclosed in the performance report. Default builds
+compile the probes and associated fields out.

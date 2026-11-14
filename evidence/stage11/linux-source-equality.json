@@ -1,0 +1,12 @@
+{
+  "linux": {
+    "independent_tree": "b2121e025b204998eb2b20a310fc26ad4e0b8671",
+    "development_tree": "b2121e025b204998eb2b20a310fc26ad4e0b8671",
+    "matches": true
+  },
+  "opensbi": {
+    "independent_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+    "development_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+    "matches": true
+  }
+}

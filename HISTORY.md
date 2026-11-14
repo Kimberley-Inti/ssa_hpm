@@ -432,3 +432,33 @@ postcheck entry: original native/log receipt verification,50automatic/26manual/
 10capacity checks and the automatic/manual semantic negatives. It was executed
 against the same finished capture in both development and installed public suites;
 no frozen image/model/RTL source changed and no new native run was performed.
+
+## Stage11 — final candidate review and cost evaluation (validation in progress)
+
+From stage10 `6ef19d6e85dfe55983794342620a026005a67d20`, stage11 preserves all
+prior source commits, branches and tags. Source mapping is recorded in
+`evidence/stage11/source-commits.json`. Linux adds opt-in compile-time cost probes
+and a forward declaration of required classification sidecars; Chipyard adds
+independent workload-boundary measurements and strengthens the host checker.
+The Rocket/OpenSBI source versions remain unchanged. Public baseline fetch,
+patches, new Scala/RTL/Verilator build and low-level regressions have passed;
+Linux and performance acceptance remains pending. No integration/release result
+is claimed by this checkpoint. See `docs/STAGE11.md` and `docs/INTEGRATION.md`.
+
+Stage11 source development sequence (original commits retained in local source
+repositories, consolidated into this maintenance source checkpoint):
+
+| Repository | Original SHA | Work |
+|---|---|---|
+| Linux | bf5a1bc53f4131b9b7be9648f80b32d061cb0a09 | Optional target-counter cost probes |
+| Linux | 3e7c06efefeda043f100ab635b1729ce7a11afd8 | Declare expected classification sidecar |
+| Chipyard | 75de1249aac7fa9a0751d1b174c884ba4efbe0ef | Workload, runner and contract integration |
+| Chipyard | 3b0bf4ff1e0c8c8839bd0f323de7ba3ee07e177a | Complete CSR/measurement-integrity checks |
+| Chipyard | 096d24d15887025b9f08b29dd3403d0ac156a0eb | Matched manual/automatic Linux comparison |
+| Chipyard | bc07c7710c24f111e9c4f88ac199fb1794748ef5 | Normalize progress-interleaved performance rows |
+
+New maintenance scripts final.py/integrate.py, review reports and evidence are
+project delivery additions; no full upstream history is imported. Kernel patch
+mail headers retain the original source author/date/message. Later evidence
+completion will update the stage11 acceptance state without rewriting this
+source checkpoint or any preceding stage history.

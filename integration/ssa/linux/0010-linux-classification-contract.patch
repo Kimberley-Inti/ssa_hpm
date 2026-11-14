@@ -1,0 +1,26 @@
+From 3e7c06efefeda043f100ab635b1729ce7a11afd8 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Sat, 14 Nov 2026 14:39:54 +0800
+Subject: [PATCH] ssa: declare expected classification sidecar in frozen export
+ header
+
+---
+ kernel/ssa_hpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+index d7a294e8f..439d9d359 100644
+--- a/kernel/ssa_hpm.c
++++ b/kernel/ssa_hpm.c
+@@ -326,7 +326,7 @@ static long export_session(struct task_struct *t,const char *reason,bool release
+   pr_emerg("SSA_SWITCH pid=%d test=%u role=%u event=%u to=%d from=%d depth=%llu rid=%llu state=%lu ivcsw=%lu cause=%016llx csr_cause=%016llx resumed=%u preempt=%u session=%llu\n",t->pid,p->test,p->role,i,e->other,e->from,e->depth,e->rid,e->task_state,e->nivcsw,e->cause,e->csr_cause,e->resumed,e->preempt,p->session);
+   for(j=0;j<nr(p);j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx session=%llu\n",t->pid,i,j,e->s[j],e->r[j],(e->r[j]-e->s[j])&(j==3?EVENT_MASK:~0ULL),p->session);
+  }
+- pr_emerg("SSA_XBEGIN version=1 session=%llu pid=%d image=%llu abi=%u total=%llu capacity=%u chunk=%u counters=%u reason=%s pool=%lu next=%llu depth=%llu spill=%llu errors=%llu status=%u legacy=%u policy=%s profile=%s\n",p->session,t->pid,p->image_id,p->event?2:1,total,RECORD_SLOTS-1,EXPORT_CHUNK,nr(p),reason,p->pool->base,next,depth,spill,errors,status,p->legacy,p->legacy?"interval_inclusive_no_rebase":"interval_inclusive_pause_rebase",p->event?HPM_NAME:"base");
++ pr_emerg("SSA_XBEGIN version=1 session=%llu pid=%d image=%llu abi=%u total=%llu capacity=%u chunk=%u counters=%u reason=%s pool=%lu next=%llu depth=%llu spill=%llu errors=%llu status=%u legacy=%u policy=%s profile=%s classification=%u class_rule=%u class_rows=%u\n",p->session,t->pid,p->image_id,p->event?2:1,total,RECORD_SLOTS-1,EXPORT_CHUNK,nr(p),reason,p->pool->base,next,depth,spill,errors,status,p->legacy,p->legacy?"interval_inclusive_no_rebase":"interval_inclusive_pause_rebase",p->event?HPM_NAME:"base",p->classify,p->classify?1:0,p->classify?(unsigned int)min_t(u64,total,63):0);
+  for(j=0;j<nr(p);j++){
+   static const char *names[]={"cycle","instret","time",HPM_NAME};
+   pr_emerg("SSA_XCOUNTER session=%llu index=%u name=%s width=%u selector=%u\n",p->session,j,names[j],j==3?40:64,j==3?HPM_SELECTOR:0);
+-- 
+2.34.1
+
