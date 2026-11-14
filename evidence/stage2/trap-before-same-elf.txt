@@ -1,0 +1,6 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 33159
+SSA FAIL: handler changed application context; bad=0x0000000000000001 first_depth=0x0000000000000003 first_next=0x0000000000000004
+[UART] UART0 is here (stdin/stdout).
+*** FAILED *** (tohost = 31)
+*** FAILED *** (code = 31, seed 1794162378) after 43396 cycles

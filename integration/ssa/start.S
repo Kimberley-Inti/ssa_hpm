@@ -27,5 +27,10 @@ tohost: .dword 0
 fromhost: .dword 0
 .section .bss
 .balign 16
-stack: .skip 32768
+stack:
+#ifdef TRAP_TEST
+    .skip 131072
+#else
+    .skip 32768
+#endif
 stack_top:

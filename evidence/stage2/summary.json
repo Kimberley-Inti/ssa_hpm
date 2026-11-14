@@ -1,0 +1,91 @@
+{
+  "stage": "stage2-trap-isolation",
+  "baseline": "v0.1.0",
+  "project_base": "0421e67203e0cfb63d96699f061ffa7d8d00fddf",
+  "source_commits": {
+    "chipyard": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+    "rocket_chip": "3f4ab938660454b101c67f6929bfebae5be1a138"
+  },
+  "baseline_rerun": {
+    "passed": 8,
+    "total": 8
+  },
+  "development": {
+    "passed": 16,
+    "total": 16,
+    "new_rtl_generated": true
+  },
+  "independent": {
+    "passed": 16,
+    "total": 16,
+    "new_rtl_generated": true,
+    "rocket_tree": "535c551af33cce20384ca2f8c3560ac5e70cdca4",
+    "public_baselines_fetched": true,
+    "clean_patch_application": true,
+    "matching_external_modules_and_toolchain_reused": true
+  },
+  "spike_scope": "5 ISA/reference tests; no SSA extension/custom status validation",
+  "rtl_scope": "11 actual RocketConfig Verilator tests; 5 first-stage + 6 new directed trap tests",
+  "golden": {
+    "contexts": 6,
+    "common_instret": [
+      14452,
+      7226
+    ]
+  },
+  "counter_semantics": "unchanged interval-inclusive; includes handlers, child calls and monitor overhead",
+  "trap_observations": {
+    "rtl-trap-nested": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "entries": 6,
+      "max_nesting": 3,
+      "final_status": 0
+    },
+    "rtl-trap-irq": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "entries": 1,
+      "max_nesting": 1,
+      "final_status": 0
+    },
+    "rtl-trap-overflow": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "entries": 256,
+      "max_nesting": 256,
+      "final_status": 256
+    },
+    "rtl-trap": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "entries": 2,
+      "max_nesting": 1,
+      "final_status": 0
+    },
+    "rtl-trap-status": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "entries": 2,
+      "max_nesting": 1,
+      "final_status": 0
+    },
+    "rtl-trap-readonly": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "entries": 2,
+      "max_nesting": 1,
+      "final_status": 0
+    }
+  },
+  "unverified": [
+    "Linux lifecycle",
+    "multicore",
+    "S/VS delegation",
+    "debug/NMI",
+    "nonlocal exception unwinds",
+    "private microcode fault recovery",
+    "data access classification",
+    "cache/TLB attribution"
+  ]
+}

@@ -1,0 +1,7 @@
+Mon Nov  9 01:08:50 UTC 2026
+openjdk version "17.0.20.1" 2026-08-18
+OpenJDK Runtime Environment (build 17.0.20.1+1-1-22.04-Ubuntu)
+riscv64-unknown-elf-gcc () 15.1.0
+Verilator 4.226 2022-08-31 rev v4.226
+Spike RISC-V ISA Simulator 1.1.1-dev
+6f58d5af94d3d083f5c687a2baf21e54b8ef50343b83314b8886b46d89e299aa  /opt/riscv/bin/spike

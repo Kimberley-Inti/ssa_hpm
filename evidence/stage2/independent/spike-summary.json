@@ -1,0 +1,52 @@
+[
+  {
+    "name": "spike-context",
+    "command": [
+      "spike",
+      "ssa/reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.04
+  },
+  {
+    "name": "spike-boundary",
+    "command": [
+      "spike",
+      "ssa/boundary-reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.02
+  },
+  {
+    "name": "spike-abi",
+    "command": [
+      "spike",
+      "ssa/abi-reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.02
+  },
+  {
+    "name": "spike-traps",
+    "command": [
+      "spike",
+      "ssa/trap-reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.02
+  },
+  {
+    "name": "spike-irq",
+    "command": [
+      "spike",
+      "ssa/trap-irq-reference.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.04
+  }
+]

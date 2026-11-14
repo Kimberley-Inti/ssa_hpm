@@ -1,0 +1,25 @@
+{
+  "commands": {
+    "before": "/tmp/ssa-trap-stage/baseline/sims/verilator/simulator-chipyard-RocketConfig +permissive +loadmem=ssa/trap.hex +max-cycles=5000000 +permissive-off ssa/trap.riscv",
+    "after": "sims/verilator/simulator-chipyard-RocketConfig +permissive +loadmem=ssa/trap.hex +max-cycles=5000000 +permissive-off ssa/trap.riscv"
+  },
+  "exit_codes": {
+    "before": 31,
+    "after": 0
+  },
+  "inputs": {
+    "ssa/trap.riscv": "845a1070937973208664f4048df1cffa55fc26bb447949914dca6ba0fc6387a5",
+    "ssa/trap.hex": "0042332c7aa7b9830a047889f892251979f77cd6d187402cebfd17aebd6089f9"
+  },
+  "observations": {
+    "before": {
+      "handler_application_depth": 3,
+      "next_id": 4
+    },
+    "after": {
+      "handler_application_depth": 2,
+      "next_id": 3,
+      "final_trap_status": 0
+    }
+  }
+}

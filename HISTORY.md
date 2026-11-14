@@ -69,3 +69,27 @@
 
 发布包的后续两个新提交分别整理复现/来源/许可证材料，以及记录本次公开基线重建和实际回归。
 这两次整理保留当前作者日期，没有改写前面 13 个按原作者日期导入的提交；版本由 v0.1.0 标记。
+
+
+## stage2-trap-isolation (development, no new tag)
+
+Based on unchanged v0.1.0 `0421e67203e0cfb63d96699f061ffa7d8d00fddf`.
+The publication environment fix `58a7acde9598b4e08d11e5b5f3da0e146e138078`
+was replayed on the Chipyard development branch as
+`339d349d35e308f2912c5db55c42c6e4adcb18ba` (identical tree).
+
+| Source repository | Source base | New source commit | Artifact |
+| --- | --- | --- | --- |
+| Rocket Chip | `986407bc6df8d2a67572250f1df9eb2c0edeacf9` | `3f4ab938660454b101c67f6929bfebae5be1a138` | `patches/rocket-chip/0009-trap-context-isolation.patch` |
+| Chipyard | `339d349d35e308f2912c5db55c42c6e4adcb18ba` | `fa0ccc7be59a624acc1dcd80af211919be17cd56` | Updated standalone `integration/ssa` test files; no duplicate test patch |
+
+This stage implements normal architectural trap isolation, nested resume, a
+read-only state CSR and fail-closed overflow. `docs/STAGE2.md` records design
+review, the old-RTL failure, unchanged counting semantics and validation scope.
+First-stage main/tag and the two existing Draft PR branches are not moved.
+
+
+本轮独立维护仓库的实现/测试整理提交为 `3ecec6adc0c6e483d5b386f1239e5a596a545153`。
+其后的验证提交收录独立公开基线重建、339 个 Rocket Scala 源文件编译、新 RTL 和新
+Verilator 的 16 项实际结果。原始验收证据与本次 baseline/development/independent
+证据分开保存；全部实现位于本轮独立分支，v0.1.0 和 main 保持不变。
