@@ -15,8 +15,9 @@ Chipyard 上游 gitlink 原本就指向上述可获取的 Rocket 基线。原本
 作为外部复现步骤。此发布包从公开基线重放全部 SSA-HPM 补丁，消除了该依赖。
 
 依赖顺序：获取两个基线 → 应用 `patches/chipyard/0001`、`0002` → 按文件名依次
-应用 8 个 Rocket 补丁 → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
-树必须与已验收 `986407bc6df8d2a67572250f1df9eb2c0edeacf9` 的 tree 完全相同，
+依次应用当前分支的全部 11 个 Rocket 补丁 → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
+树必须与本分支 `provenance.json` 的 `rocket_chip.expected_tree` 完全相同（
+v0.1.0 对应 `986407bc6df8d2a67572250f1df9eb2c0edeacf9` 的历史树），
 同时核对核心 Scala、微码、构建文件及测试的 SHA-256。应用得到的新 commit SHA
 可能因 committer 日期而变化，不以它作为远端 fetch 依赖。顶层 gitlink 保持可获取
 的上游基线，Rocket 子工作树含补丁提交；不要用 submodule update 把它退回基线。
@@ -118,3 +119,30 @@ python3 scripts/check_process_evidence.py /tmp/stage3-process --report /tmp/stag
 新 suite 包含 Spike 参考通过、旧协议 RTL 预期退出 42、修复协议 RTL 退出 0。
 负对照绝不可当作普通退出零测试。实际两个任务与 Linux 进程集成的区别、三种
 计数器的归因区间和剩余依赖见 docs/STAGE3.md。原 16 项回归数量不变。
+
+## 第四阶段 Linux
+
+先完成上述补丁安装、依赖准备和 RocketConfig 模型构建，再按
+[integration/ssa/linux/README.md](integration/ssa/linux/README.md)
+构建固定版本的 Linux/OpenSBI/最小 initramfs。启动 A 使用 `build-a.py` 与
+`verify-a.py`；进程用例使用 `build-a.py --process` 与 `run-process.py`。
+后者会保存实际退出结果并调用严格的双向帧归因检查。
+
+本分支启动 A 已实际通过。单进程监测与权限检查 B、真实双进程抢占隔离 C 均已通过；
+原始仿真退出 0，最终统一脚本 173 项检查通过。
+已有 16+3 项回归和 5 项裸机探针的证据在 `evidence/stage4/regression-final.json`。
+复用现有工具链和依赖缓存；Linux 与 OpenSBI 源码则从固定公共基线独立获取，
+不得将 Spike 参考输出当作 Rocket Linux 或 SSA 实现的验收。
+
+
+复核已提交的原始 Linux 日志，无需重复长仿真：
+
+```bash
+python3 integration/ssa/linux/grade-process.py \
+  evidence/stage4/BC-rocket-linux-process.txt --exit-code 0 \
+  --symbols evidence/stage4/user-symbols.json --out /tmp/ssa-linux-regrade.json
+```
+
+`BC-execution.json` 保存实际命令、退出码、时长及镜像/模型哈希。此次独立重建
+运行复用了开发树重新构建的 RTL 模型和固定工具链缓存；没有声称重复编译第二份
+RTL 或重复运行 Linux。原始完整配置启动超时的尝试与后续成功结果分开记录。

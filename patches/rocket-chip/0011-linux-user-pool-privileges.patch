@@ -1,0 +1,80 @@
+From 1c78413459344d7ca1d2b3cdedbdc4a16133dee9 Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Mon, 9 Nov 2026 18:16:47 +0800
+Subject: [PATCH] Protect Linux pool selection and execute private ROM accesses
+ physically
+
+---
+ src/main/scala/rocket/CSR.scala        | 12 +++++++++++-
+ src/main/scala/rocket/RocketCore.scala |  7 +++++--
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/src/main/scala/rocket/CSR.scala b/src/main/scala/rocket/CSR.scala
+index 1e8c73dab..12cd403bc 100644
+--- a/src/main/scala/rocket/CSR.scala
++++ b/src/main/scala/rocket/CSR.scala
+@@ -487,7 +487,12 @@ class CSRFile(
+   // this per hart, independently of whether a pool is currently enabled.
+   val reg_ssa_trap_depth = RegInit(0.U(8.W))
+   val reg_ssa_trap_overflow = RegInit(false.B)
+-  io.ssa_context_active := !reg_ssa_trap_depth.orR && !reg_ssa_trap_overflow
++  // Linux restores different tasks' trap frames and firmware can redirect
++  // traps in software. Privilege, rather than a per-hart nesting history,
++  // defines application notifications in the opt-in Linux policy.
++  val reg_ssa_user_only = RegInit(false.B)
++  io.ssa_context_active := Mux(reg_ssa_user_only, reg_mstatus.prv === PRV.U,
++    !reg_ssa_trap_depth.orR) && !reg_ssa_trap_overflow
+   //===================================
+   val mtvecWidth = paddrBits min xLen
+   val reg_mtvec = mtvecInit match {
+@@ -682,6 +687,7 @@ class CSRFile(
+ 
+   //[Edited 3]==========================
+   read_mapping += 0x800 -> reg_scbasereg
++  read_mapping += 0x5c0 -> reg_ssa_user_only.asUInt
+   // Custom user read-only CSR: depth[7:0], sticky fail-closed overflow[8].
+   read_mapping += 0xcc0 -> Cat(reg_ssa_trap_overflow, reg_ssa_trap_depth)
+   //====================================
+@@ -877,7 +883,10 @@ class CSRFile(
+     val csr_addr_legal = reg_mstatus.prv >= CSR.mode(addr) ||
+       usingHypervisor && !reg_mstatus.v && reg_mstatus.prv === PRV.S && CSR.mode(addr) === PRV.H
+     val csr_exists = decodeAny(read_mapping)
++    // Keep the legacy CSR number but protect the kernel-owned pool selector.
++    // This also rejects writes, since every CSR operation needs read legality.
+     io_dec.read_illegal := !csr_addr_legal ||
++      (addr === 0x800.U && reg_mstatus.prv === PRV.U) ||
+       !csr_exists ||
+       ((addr === CSRs.satp || addr === CSRs.hgatp) && !allow_sfence_vma) ||
+       is_counter && !allow_counter ||
+@@ -1241,6 +1250,7 @@ class CSRFile(
+ 
+     //[Edited 4]===============================================
+     when (decoded_addr(0x800))         {reg_scbasereg := wdata}
++    when (decoded_addr(0x5c0))         {reg_ssa_user_only := wdata(0)}
+     //=========================================================
+ 
+     if (mtvecWritable)
+diff --git a/src/main/scala/rocket/RocketCore.scala b/src/main/scala/rocket/RocketCore.scala
+index f46ec2389..d1fb7c2ad 100644
+--- a/src/main/scala/rocket/RocketCore.scala
++++ b/src/main/scala/rocket/RocketCore.scala
+@@ -1089,11 +1089,14 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+     io.dmem.req.bits.cmd  := ex_ctrl.mem_cmd
+     io.dmem.req.bits.size := ex_reg_mem_size
+     io.dmem.req.bits.signed := !Mux(ex_reg_hls, ex_reg_inst(20), ex_reg_inst(14))
++    // Effective M privilege bypasses translation for the trusted ROM below.
++    // Keep passthrough=false: TLB passthrough is a PTW path that forces S-mode
++    // PMP checking and would reject legacy M-mode tests with reset PMP state.
+     io.dmem.req.bits.phys := Bool(false)
+     io.dmem.req.bits.addr := encodeVirtualAddress(ex_rs(0), alu.io.adder_out)
+     io.dmem.req.bits.idx.foreach(_ := io.dmem.req.bits.addr)
+-    io.dmem.req.bits.dprv := Mux(ex_reg_hls, csr.io.hstatus.spvp, csr.io.status.dprv)
+-    io.dmem.req.bits.dv := ex_reg_hls || csr.io.status.dv
++    io.dmem.req.bits.dprv := Mux(ssa_trap_mode, PRV.M, Mux(ex_reg_hls, csr.io.hstatus.spvp, csr.io.status.dprv))
++    io.dmem.req.bits.dv := !ssa_trap_mode && (ex_reg_hls || csr.io.status.dv)
+ 
+     io.dmem.s1_data.data := (if (fLen == 0) mem_reg_rs2 else Mux(mem_ctrl.fp, Fill((xLen max fLen) / fLen, io.fpu.store_data), mem_reg_rs2))
+     io.dmem.s1_kill := killm_common || mem_ldst_xcpt || fpu_kill_mem
+-- 
+2.34.1
+

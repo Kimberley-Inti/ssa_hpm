@@ -1,0 +1,341 @@
+From 0d6ec76e6f44802adab36e84c8ffd7b65187d91f Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Mon, 9 Nov 2026 18:18:07 +0800
+Subject: [PATCH] Manage single-hart SSA pools across Linux scheduling and
+ process exit
+
+---
+ include/linux/sched.h   |   4 +
+ include/linux/ssa_hpm.h |  18 +++++
+ init/Kconfig            |   9 +++
+ kernel/Makefile         |   2 +
+ kernel/exit.c           |   2 +
+ kernel/fork.c           |   2 +
+ kernel/sched/core.c     |   2 +
+ kernel/ssa_hpm.c        | 157 ++++++++++++++++++++++++++++++++++++++++
+ kernel/sys.c            |   4 +
+ 9 files changed, 200 insertions(+)
+ create mode 100644 include/linux/ssa_hpm.h
+ create mode 100644 kernel/ssa_hpm.c
+
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 4418f5cb8..0c4a1e35c 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -629,6 +629,7 @@ struct wake_q_node {
+ 	struct wake_q_node *next;
+ };
+ 
++struct ssa_hpm_state;
+ struct task_struct {
+ #ifdef CONFIG_THREAD_INFO_IN_TASK
+ 	/*
+@@ -636,6 +637,9 @@ struct task_struct {
+ 	 * must be the first element of task_struct.
+ 	 */
+ 	struct thread_info		thread_info;
++#endif
++#ifdef CONFIG_SSA_HPM
++	struct ssa_hpm_state *ssa_hpm;
+ #endif
+ 	/* -1 unrunnable, 0 runnable, >0 stopped: */
+ 	volatile long			state;
+diff --git a/include/linux/ssa_hpm.h b/include/linux/ssa_hpm.h
+new file mode 100644
+index 000000000..94c17a788
+--- /dev/null
++++ b/include/linux/ssa_hpm.h
+@@ -0,0 +1,18 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++#ifndef _LINUX_SSA_HPM_H
++#define _LINUX_SSA_HPM_H
++#include <linux/errno.h>
++#include <linux/types.h>
++struct task_struct;
++#ifdef CONFIG_SSA_HPM
++void ssa_hpm_fork(struct task_struct *p);
++void ssa_hpm_switch(struct task_struct *prev, struct task_struct *next, bool preempt);
++void ssa_hpm_exit(struct task_struct *p);
++long ssa_hpm_prctl(unsigned long op, unsigned long flags, unsigned long role, unsigned long test);
++#else
++static inline void ssa_hpm_fork(struct task_struct *p) {}
++static inline void ssa_hpm_switch(struct task_struct *p, struct task_struct *n, bool v) {}
++static inline void ssa_hpm_exit(struct task_struct *p) {}
++static inline long ssa_hpm_prctl(unsigned long o,unsigned long f,unsigned long r,unsigned long t) {return -EINVAL;}
++#endif
++#endif
+diff --git a/init/Kconfig b/init/Kconfig
+index 9e22ee8fb..6c618e59c 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -2291,3 +2291,12 @@ config ARCH_HAS_SYNC_CORE_BEFORE_USERMODE
+ # <asm/syscall_wrapper.h>.
+ config ARCH_HAS_SYSCALL_WRAPPER
+ 	def_bool n
++
++config SSA_HPM
++	bool "SSA-HPM single-hart monitored task protocol"
++	depends on RISCV && 64BIT && MMU && !SMP
++	default n
++	help
++	  Kernel-owned physical pools and user-context notifications for the
++	  SSA-HPM Rocket prototype. Requires the protected 0x800 selector,
++	  supervisor policy CSR 0x5c0, and trusted physical ROM accesses.
+diff --git a/kernel/Makefile b/kernel/Makefile
+index 4cb4130ce..6e6a9a2b0 100644
+--- a/kernel/Makefile
++++ b/kernel/Makefile
+@@ -136,3 +136,5 @@ $(obj)/kheaders_data.tar.xz: FORCE
+ 	$(call cmd,genikh)
+ 
+ clean-files := kheaders_data.tar.xz kheaders.md5
++
++obj-$(CONFIG_SSA_HPM) += ssa_hpm.o
+diff --git a/kernel/exit.c b/kernel/exit.c
+index ce2a75bc0..8efcb0ff4 100644
+--- a/kernel/exit.c
++++ b/kernel/exit.c
+@@ -5,6 +5,7 @@
+  *  Copyright (C) 1991, 1992  Linus Torvalds
+  */
+ 
++#include <linux/ssa_hpm.h>
+ #include <linux/mm.h>
+ #include <linux/slab.h>
+ #include <linux/sched/autogroup.h>
+@@ -729,6 +730,7 @@ void __noreturn do_exit(long code)
+ 
+ 	ptrace_event(PTRACE_EVENT_EXIT, code);
+ 
++	ssa_hpm_exit(tsk);
+ 	validate_creds_for_do_exit(tsk);
+ 
+ 	/*
+diff --git a/kernel/fork.c b/kernel/fork.c
+index 8c700f881..b024dfb7d 100644
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -12,6 +12,7 @@
+  * management can be a bitch. See 'mm/memory.c': 'copy_page_range()'
+  */
+ 
++#include <linux/ssa_hpm.h>
+ #include <linux/anon_inodes.h>
+ #include <linux/slab.h>
+ #include <linux/sched/autogroup.h>
+@@ -1924,6 +1925,7 @@ static __latent_entropy struct task_struct *copy_process(
+ 	p = dup_task_struct(current, node);
+ 	if (!p)
+ 		goto fork_out;
++	ssa_hpm_fork(p);
+ 
+ 	/*
+ 	 * This _must_ happen before we call free_task(), i.e. before we jump
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 9a2fbf98f..4a7ef8b5a 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -6,6 +6,7 @@
+  *
+  *  Copyright (C) 1991-2002  Linus Torvalds
+  */
++#include <linux/ssa_hpm.h>
+ #include "sched.h"
+ 
+ #include <linux/nospec.h>
+@@ -4080,6 +4081,7 @@ static void __sched notrace __schedule(bool preempt)
+ 		trace_sched_switch(preempt, prev, next);
+ 
+ 		/* Also unlocks the rq: */
++		ssa_hpm_switch(prev, next, preempt);
+ 		rq = context_switch(rq, prev, next, &rf);
+ 	} else {
+ 		rq->clock_update_flags &= ~(RQCF_ACT_SKIP|RQCF_REQ_SKIP);
+diff --git a/kernel/ssa_hpm.c b/kernel/ssa_hpm.c
+new file mode 100644
+index 000000000..6d38824dc
+--- /dev/null
++++ b/kernel/ssa_hpm.c
+@@ -0,0 +1,157 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Single-hart SSA-HPM prototype. Physical pools are outside managed Linux RAM. */
++#include <linux/init.h>
++#include <linux/io.h>
++#include <linux/slab.h>
++#include <linux/sched.h>
++#include <linux/sched/task_stack.h>
++#include <linux/cred.h>
++#include <linux/irqflags.h>
++#include <linux/ssa_hpm.h>
++#include <asm/csr.h>
++#include <asm/processor.h>
++#define TOP_SIZE 0x105000UL
++#define POOL_SIZE 37748736UL
++#define MAX_EVENTS 12
++#define EXPORT_RECORDS 32
++#define RUNNING 1
++#define PAUSED 2
++#define STOPPED 3
++struct ssa_record {u64 callee,parent,count[3],reserved[6],next,rsv,pad[3];};
++struct ssa_pool {unsigned long base; void *top; struct ssa_record *records; bool busy;};
++struct ssa_event {u64 s[3],r[3],depth,rid,cause,csr_cause; int other,from; unsigned long task_state,nivcsw; bool resumed,preempt;};
++struct ssa_hpm_state {
++ struct ssa_pool *pool;
++ unsigned int state,role,test,uid,n;
++ bool legacy,bad,proof_seen,proof_valid;
++ u64 off[3],orig[3],common_off[3];
++ struct ssa_event events[MAX_EVENTS];
++};
++static struct ssa_pool pools[2]={{.base=0x88000000UL},{.base=0x8c000000UL}};
++static bool available;
++static volatile u64 *meta(struct ssa_pool *p){return (void *)((char *)p->top+TOP_SIZE-64);}
++static volatile u64 *frame(struct ssa_pool *p,u64 n){return (void *)((char *)meta(p)-n*64);}
++static void sample(u64 *v){
++ asm volatile("fence rw,rw; csrr %0,cycle; csrr %1,instret; csrr %2,time"
++  :"=r"(v[0]),"=r"(v[1]),"=r"(v[2])::"memory");
++}
++static void select_pool(unsigned long b){asm volatile("csrw 0x800,%0"::"r"(b):"memory");}
++static unsigned long selected(void){unsigned long b;asm volatile("csrr %0,0x800":"=r"(b));return b;}
++static void pause_task(struct task_struct *t,struct task_struct *other,bool preempt)
++{
++ struct ssa_hpm_state *p=t->ssa_hpm; struct ssa_event *e;
++ volatile u64 *m=meta(p->pool);u64 depth=READ_ONCE(m[0]);unsigned int j;
++ if(p->state!=RUNNING)return;
++ if(selected()!=p->pool->base || depth>256 || p->n>=MAX_EVENTS){p->bad=true;select_pool(0);p->state=STOPPED;return;}
++ e=&p->events[p->n++]; e->depth=depth;e->other=other?other->pid:0;e->preempt=preempt;
++ e->task_state=READ_ONCE(t->state);e->nivcsw=t->nivcsw;
++ e->cause=task_pt_regs(t)->cause;e->csr_cause=csr_read(CSR_SCAUSE);
++ if(depth)e->rid=READ_ONCE(frame(p->pool,depth)[0]);
++ if(depth>=2 && READ_ONCE(frame(p->pool,2)[0])==2){
++  if(!p->proof_seen){for(j=0;j<3;j++)p->orig[j]=READ_ONCE(frame(p->pool,2)[j+1]);p->proof_seen=true;p->proof_valid=true;}
++  else for(j=0;j<3;j++)if(READ_ONCE(frame(p->pool,2)[j+1])!=p->orig[j]+(p->legacy?0:p->common_off[j]))p->proof_valid=false;
++ }
++ sample(e->s);select_pool(0);p->state=PAUSED;
++}
++static void resume_task(struct task_struct *t,struct task_struct *other)
++{
++ struct ssa_hpm_state *p=t->ssa_hpm;struct ssa_event *e;
++ volatile u64 *m;u64 d[3],n;unsigned int j;
++ if(p->state!=PAUSED)return;
++ if(selected() || !p->n){p->bad=true;select_pool(0);p->state=STOPPED;return;}
++ e=&p->events[p->n-1];m=meta(p->pool);n=READ_ONCE(m[0]);
++ if(n!=e->depth || n>256){p->bad=true;p->state=STOPPED;return;}
++ sample(e->r);e->resumed=true;e->from=other?other->pid:0;
++ for(j=0;j<3;j++){d[j]=e->r[j]-e->s[j];p->off[j]+=d[j];}
++ if(p->proof_seen && n>=2 && READ_ONCE(frame(p->pool,2)[0])==2)
++  for(j=0;j<3;j++)p->common_off[j]+=d[j];
++ if(!p->legacy)for(n=1;n<=e->depth;n++)for(j=0;j<3;j++){
++  volatile u64 *f=frame(p->pool,n);WRITE_ONCE(f[j+1],READ_ONCE(f[j+1])+d[j]);
++ }
++ p->state=RUNNING;select_pool(p->pool->base);
++}
++void ssa_hpm_fork(struct task_struct *t){t->ssa_hpm=NULL;}
++void ssa_hpm_switch(struct task_struct *prev,struct task_struct *next,bool preempt)
++{
++ if(!available)return;
++ if(prev->ssa_hpm)pause_task(prev,next,preempt);
++ else select_pool(0);
++ if(next->ssa_hpm)resume_task(next,prev);
++}
++long ssa_hpm_prctl(unsigned long op,unsigned long flags,unsigned long role,unsigned long test)
++{
++ struct ssa_hpm_state *p=current->ssa_hpm;unsigned long irq;unsigned int i;
++ if(!available)return -ENODEV;
++ if(op==1){
++  if(flags>1 || role>2 || test>4)return -EINVAL;
++  if(p)return -EBUSY;
++  p=kzalloc(sizeof(*p),GFP_KERNEL);if(!p)return -ENOMEM;
++  local_irq_save(irq);
++  for(i=0;i<ARRAY_SIZE(pools);i++)if(!pools[i].busy)break;
++  if(i==ARRAY_SIZE(pools)){local_irq_restore(irq);kfree(p);return -EBUSY;}
++  p->pool=&pools[i];p->pool->busy=true;p->legacy=flags;p->role=role;p->test=test;
++  p->uid=__kuid_val(current_uid());p->state=RUNNING;
++  memset((char *)p->pool->top+TOP_SIZE-1065024,0,262144*4);
++  memset((void *)meta(p->pool),0,64);WRITE_ONCE(meta(p->pool)[1],1);
++  current->ssa_hpm=p;asm volatile("fence rw,rw":::"memory");select_pool(p->pool->base);
++  local_irq_restore(irq);return 0;
++ }
++ if(flags || role || test)return -EINVAL;
++ if(op==3){
++  local_irq_save(irq);i=!p && !selected();local_irq_restore(irq);
++  if(i)pr_emerg("SSA_UNMONITORED pid=%d selector=0\n",current->pid);
++  return i?0:1;
++ }
++ if(op!=2 || !p)return -EINVAL;
++ local_irq_save(irq);
++ if(p->state!=RUNNING || selected()!=p->pool->base || p->bad){local_irq_restore(irq);return -EIO;}
++ if(READ_ONCE(meta(p->pool)[0]) || READ_ONCE(meta(p->pool)[2])){local_irq_restore(irq);return -EBUSY;}
++ select_pool(0);p->state=STOPPED;i=READ_ONCE(meta(p->pool)[1]);
++ local_irq_restore(irq);return i?i-1:-EIO;
++}
++void ssa_hpm_exit(struct task_struct *t)
++{
++ struct ssa_hpm_state *p=t->ssa_hpm;unsigned long irq;unsigned int i,j;
++ volatile u64 *m;u64 depth,next,spill;bool complete;
++ if(!p)return;
++ local_irq_save(irq);select_pool(0);p->state=STOPPED;m=meta(p->pool);
++ depth=READ_ONCE(m[0]);next=READ_ONCE(m[1]);spill=READ_ONCE(m[2]);
++ complete=!p->bad && !depth && !spill && !READ_ONCE(m[3]) && next>0 && next<=EXPORT_RECORDS+1;
++ pr_emerg("SSA_EXPORT pid=%d uid=%u role=%u test=%u legacy=%u pool=%lu complete=%u depth=%llu next=%llu spill=%llu events=%u\n",
++  t->pid,p->uid,p->role,p->test,p->legacy,p->pool->base,complete,depth,next,spill,p->n);
++ for(i=0;i<p->n;i++){
++  struct ssa_event *e=&p->events[i];
++  pr_emerg("SSA_SWITCH pid=%d test=%u role=%u event=%u to=%d from=%d depth=%llu rid=%llu state=%lu ivcsw=%lu cause=%016llx csr_cause=%016llx resumed=%u preempt=%u\n",
++   t->pid,p->test,p->role,i,e->other,e->from,e->depth,e->rid,e->task_state,e->nivcsw,e->cause,e->csr_cause,e->resumed,e->preempt);
++  for(j=0;j<3;j++)pr_emerg("SSA_SAMPLE pid=%d event=%u counter=%u S=%016llx R=%016llx delta=%016llx\n",t->pid,i,j,e->s[j],e->r[j],e->r[j]-e->s[j]);
++ }
++ for(i=1;i<next && i<=EXPORT_RECORDS;i++){
++  struct ssa_record *r=&p->pool->records[i];
++  pr_emerg("SSA_RECORD pid=%d id=%u callee=%016llx parent=%llu cycle=%llu instret=%llu time=%llu\n",
++   t->pid,i,r->callee,r->parent,r->count[0],r->count[1],r->count[2]);
++ }
++ if(p->proof_seen && next==3 && !depth && !spill)for(j=0;j<3;j++){
++  u64 final=READ_ONCE(frame(p->pool,2)[j+1]);u64 value=p->pool->records[2].count[j];
++  pr_emerg("SSA_ACCOUNT pid=%d test=%u role=%u counter=%u original=%016llx final=%016llx off=%016llx recorded=%016llx raw=%016llx valid=%u rebased=%u\n",
++   t->pid,p->test,p->role,j,p->orig[j],final,p->common_off[j],value,value+final-p->orig[j],p->proof_valid,final-p->orig[j]==p->common_off[j]);
++ }
++ pr_emerg("SSA_EXIT pid=%d complete=%u selector=%lu\n",t->pid,complete,selected());
++ p->pool->busy=false;t->ssa_hpm=NULL;kfree(p);local_irq_restore(irq);
++}
++static int __init ssa_hpm_init(void)
++{
++ unsigned int i,j;
++ if(num_possible_cpus()!=1)return -EINVAL;
++ for(i=0;i<ARRAY_SIZE(pools);i++){
++  pools[i].top=memremap(pools[i].base-TOP_SIZE,TOP_SIZE,MEMREMAP_WB);
++  pools[i].records=memremap(pools[i].base-POOL_SIZE,8192,MEMREMAP_WB);
++  if(!pools[i].top || !pools[i].records){
++   for(j=0;j<=i;j++){if(pools[j].top)memunmap(pools[j].top);if(pools[j].records)memunmap(pools[j].records);}
++   return -ENOMEM;
++  }
++ }
++ select_pool(0);csr_write(0x5c0,1);available=true;
++ pr_emerg("SSA_LINUX_READY user_triggers=1 harts=1 export_limit=%u\n",EXPORT_RECORDS);
++ return 0;
++}
++late_initcall(ssa_hpm_init);
+diff --git a/kernel/sys.c b/kernel/sys.c
+index d325f3ab6..72c9a404e 100644
+--- a/kernel/sys.c
++++ b/kernel/sys.c
+@@ -5,6 +5,7 @@
+  *  Copyright (C) 1991, 1992  Linus Torvalds
+  */
+ 
++#include <linux/ssa_hpm.h>
+ #include <linux/export.h>
+ #include <linux/mm.h>
+ #include <linux/utsname.h>
+@@ -2277,6 +2278,9 @@ SYSCALL_DEFINE5(prctl, int, option, unsigned long, arg2, unsigned long, arg3,
+ 
+ 	error = 0;
+ 	switch (option) {
++	case 0x535341:
++		error = ssa_hpm_prctl(arg2, arg3, arg4, arg5);
++		break;
+ 	case PR_SET_PDEATHSIG:
+ 		if (!valid_signal(arg2)) {
+ 			error = -EINVAL;
+-- 
+2.34.1
+

@@ -1,0 +1,401 @@
+{
+  "passed": true,
+  "gates": {
+    "A": {
+      "passed": true,
+      "evidence": "A-final-summary.json",
+      "seconds": 3287.93
+    },
+    "B": {
+      "passed": true,
+      "evidence": "single-process-summary.json",
+      "scope": "real Linux child monitoring, closed exit export and UID1000 denial probes on Rocket/Verilator"
+    },
+    "C": {
+      "passed": true,
+      "evidence": "BC-summary.json",
+      "normal_pairs": 2,
+      "expected_legacy_cross_talk_controls": 2,
+      "real_linux_processes": true,
+      "single_hart": true
+    }
+  },
+  "sources": {
+    "chipyard": {
+      "commit": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
+      "tree": "37d0799e35a5b3be325b7d81fd491cbda5fb37ee"
+    },
+    "rocket_chip": {
+      "commit": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
+      "tree": "8cc168563f08902d38379a6fdfeb47080d23fd3f"
+    },
+    "linux": {
+      "commit": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
+      "tree": "ef9c3b6d2e2891853aa576d211f715a8ea718ddb"
+    },
+    "opensbi": {
+      "commit": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
+      "tree": "7a5433cb3e7261a63a3c1b0218178ce9f4de2557"
+    }
+  },
+  "regressions": {
+    "stage2": {
+      "passed": true,
+      "count": 16
+    },
+    "stage3": {
+      "passed": true,
+      "count": 3
+    },
+    "probes": {
+      "passed": true,
+      "count": 5
+    }
+  },
+  "comparison": {
+    "cycle": {
+      "fixed_long_minus_short": 1667,
+      "legacy_long_minus_short": 219262,
+      "excluded_long_minus_short": 210681,
+      "B_fixed_long_minus_short": 211687,
+      "parent_fixed_long_minus_short": 1692,
+      "parent_legacy_long_minus_short": 219338
+    },
+    "instret": {
+      "fixed_long_minus_short": 20,
+      "legacy_long_minus_short": 207962,
+      "excluded_long_minus_short": 209744,
+      "B_fixed_long_minus_short": 205076,
+      "parent_fixed_long_minus_short": 20,
+      "parent_legacy_long_minus_short": 207962
+    },
+    "time": {
+      "fixed_long_minus_short": 16,
+      "legacy_long_minus_short": 2193,
+      "excluded_long_minus_short": 2106,
+      "B_fixed_long_minus_short": 2117,
+      "parent_fixed_long_minus_short": 18,
+      "parent_legacy_long_minus_short": 2192
+    }
+  },
+  "records": [
+    {
+      "pid": 14,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 7422,
+      "instret": 6722,
+      "time": 74
+    },
+    {
+      "pid": 14,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 6820,
+      "instret": 6623,
+      "time": 69
+    },
+    {
+      "pid": 19,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 10399,
+      "instret": 4125,
+      "time": 105
+    },
+    {
+      "pid": 19,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 9707,
+      "instret": 4026,
+      "time": 99
+    },
+    {
+      "pid": 20,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 296525,
+      "instret": 278549,
+      "time": 2965
+    },
+    {
+      "pid": 20,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 295685,
+      "instret": 278450,
+      "time": 2957
+    },
+    {
+      "pid": 21,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 222054,
+      "instret": 209201,
+      "time": 2223
+    },
+    {
+      "pid": 21,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 221394,
+      "instret": 209102,
+      "time": 2216
+    },
+    {
+      "pid": 22,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 298217,
+      "instret": 278569,
+      "time": 2983
+    },
+    {
+      "pid": 22,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 297352,
+      "instret": 278470,
+      "time": 2973
+    },
+    {
+      "pid": 23,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 171027,
+      "instret": 150773,
+      "time": 1710
+    },
+    {
+      "pid": 23,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 170345,
+      "instret": 150674,
+      "time": 1704
+    },
+    {
+      "pid": 24,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 1891321,
+      "instret": 1545589,
+      "time": 18914
+    },
+    {
+      "pid": 24,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 1890487,
+      "instret": 1545490,
+      "time": 18905
+    },
+    {
+      "pid": 25,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 338396,
+      "instret": 309717,
+      "time": 3384
+    },
+    {
+      "pid": 25,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 337736,
+      "instret": 309618,
+      "time": 3377
+    },
+    {
+      "pid": 26,
+      "id": 1,
+      "callee": 66126,
+      "parent": 0,
+      "cycle": 2110659,
+      "instret": 1753551,
+      "time": 21106
+    },
+    {
+      "pid": 26,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 2109749,
+      "instret": 1753452,
+      "time": 21098
+    }
+  ],
+  "exports": [
+    {
+      "pid": 14,
+      "uid": 1000,
+      "role": 0,
+      "test": 0,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 1
+    },
+    {
+      "pid": 19,
+      "uid": 1000,
+      "role": 2,
+      "test": 1,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 2
+    },
+    {
+      "pid": 20,
+      "uid": 1000,
+      "role": 1,
+      "test": 1,
+      "legacy": 0,
+      "pool": 2348810240,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 3
+    },
+    {
+      "pid": 21,
+      "uid": 1000,
+      "role": 2,
+      "test": 2,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 2
+    },
+    {
+      "pid": 22,
+      "uid": 1000,
+      "role": 1,
+      "test": 2,
+      "legacy": 0,
+      "pool": 2348810240,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 3
+    },
+    {
+      "pid": 23,
+      "uid": 1000,
+      "role": 2,
+      "test": 3,
+      "legacy": 1,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 2
+    },
+    {
+      "pid": 24,
+      "uid": 1000,
+      "role": 1,
+      "test": 3,
+      "legacy": 1,
+      "pool": 2348810240,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 3
+    },
+    {
+      "pid": 25,
+      "uid": 1000,
+      "role": 2,
+      "test": 4,
+      "legacy": 1,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 2
+    },
+    {
+      "pid": 26,
+      "uid": 1000,
+      "role": 1,
+      "test": 4,
+      "legacy": 1,
+      "pool": 2348810240,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 3
+    }
+  ],
+  "execution": {
+    "command": [
+      "/tmp/ssa-linux-stage/user-progress/simulator-progress",
+      "+permissive",
+      "+loadmem=/tmp/ssa-linux-independent-process-fast/boot-process.hex",
+      "+max-cycles=500000000",
+      "+permissive-off",
+      "/tmp/ssa-linux-independent-process-fast/boot-process.elf"
+    ],
+    "exit_code": 0,
+    "seconds": 11800.790024381,
+    "sha256": {
+      "/tmp/ssa-linux-independent-process-fast/boot-process.elf": "32d1ad10929123a9a3825c293e4e1f8aac36f3d4d6418173a3b3a7d4c81a0113",
+      "/tmp/ssa-linux-independent-process-fast/boot-process.hex": "a63c10d09f967e29b0786691f4ed40fd858fc91cd51138536c679df760e91546",
+      "/tmp/ssa-linux-stage/user-progress/simulator-progress": "5d188ac508df7ac3d27817e81665786763f54f9ce0379af6f38d44ec3cba7dc0"
+    }
+  },
+  "evidence_sha256": {
+    "A-final-summary.json": "59168d68851662c6b1f3fa77fc521536fa05f0437b5ae7c7207731aad4810e7b",
+    "BC-summary.json": "1414bd23588336e634ef9368fcbcd2d392dda12ade4b3924d359974ea47722fe",
+    "BC-execution.json": "065760ffa7592cb3a150c65aadad5e5f53da47e748b3063d247b211583cab7cc",
+    "BC-rocket-linux-process.txt": "f8bb8e8984554670be09d15f351ae7c809e07a3d52815aed2462d2300df9541c",
+    "user-symbols.json": "c4d739c89d48fd45438db8af1d626b83aba789323a04a71c3658b8fbd8475cc1"
+  },
+  "scope": {
+    "development": "Rocket RTL/model build and24 low-level/regression checks",
+    "independent": "public pinned Linux/OpenSBI reconstruction, exact source-tree match, real A/B/C execution using the rebuilt development RTL model; public Chipyard/Rocket patch/tree/file/ROM checks",
+    "reuse": "toolchains/dependency caches and rebuilt RTL model; no duplicate full RTL build or Linux replay claimed"
+  },
+  "counter_policy": "inclusive; each open frame excludes its S-to-R interval. Pre-S outgoing and post-R incoming scheduler/restore/monitor costs remain charged. cycle/instret are hart counters; time is1MHz CLINT.",
+  "remaining": [
+    "multicore/migration",
+    "full exec/loader and thread lifecycle",
+    "nonlocal unwind/abrupt open-frame completion",
+    "general in-guest file export/full-capacity export",
+    "Cache/TLB and memory-access classification events"
+  ]
+}

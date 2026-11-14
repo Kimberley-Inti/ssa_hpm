@@ -1,0 +1,205 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "stage4-linux"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "https://github.com/firesim/linux.git",
+        "5f5fd87b36e21ed59b759b69eebfa1c74955cb37"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "stage4-linux"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "https://github.com/riscv/opensbi.git",
+        "a98258d0b537a295f517bbc8d813007336731fa9"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0001-stack-pointer-declaration.patch"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0002-linux-task-pools.patch"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0001-opensbi-rocket-platform.patch"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
+    },
+    {
+      "argv": [
+        "dpkg-deb",
+        "-x",
+        "/tmp/ssa-linux-independent-process-fast/binutils.deb",
+        "/tmp/ssa-linux-independent-process-fast/host-tools"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/process-init.c",
+        "-o",
+        "/tmp/ssa-linux-independent-process-fast/init"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast"
+    },
+    {
+      "argv": [
+        "scripts/config",
+        "--enable",
+        "SSA_HPM",
+        "--disable",
+        "HZ_250",
+        "--enable",
+        "HZ_1000"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-linux-independent-process-fast/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-linux-independent-process-fast/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "olddefconfig"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-linux-independent-process-fast/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-linux-independent-process-fast/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j6",
+        "Image"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
+    },
+    {
+      "argv": [
+        "dtc",
+        "-I",
+        "dts",
+        "-O",
+        "dtb",
+        "-o",
+        "/tmp/ssa-linux-independent-process-fast/rocket.dtb",
+        "/home/lxf/chipyard/ssa/linux/rocket.dts"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast"
+    },
+    {
+      "argv": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11",
+        "FW_PAYLOAD_PATH=/tmp/ssa-linux-independent-process-fast/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-linux-independent-process-fast/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j6"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "-O",
+        "binary",
+        "/tmp/ssa-linux-independent-process-fast/boot-a.elf",
+        "/tmp/ssa-linux-independent-process-fast/boot-a.bin"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/elf_to_hex.py",
+        "/tmp/ssa-linux-independent-process-fast/boot-a.bin",
+        "/tmp/ssa-linux-independent-process-fast/boot-a.hex"
+      ],
+      "cwd": "/tmp/ssa-linux-independent-process-fast"
+    }
+  ],
+  "images": {
+    "boot-a.elf": "6de8afc0ffbdd46ff97b9cb123b3dbaaa549be9dcb9f1bfdb07955ee826b4850",
+    "boot-a.bin": "e5e700576f7f28a536a715791500e34027ce90fced2c729e8491cd3dafdfd130",
+    "boot-a.hex": "dfe39c1dfa841ec2923312dae6fd7472661d57694c88833b0a70a75f265a6a65"
+  }
+}

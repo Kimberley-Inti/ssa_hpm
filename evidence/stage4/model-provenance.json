@@ -1,0 +1,25 @@
+{
+  "rocket_commit": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
+  "rocket_tree": "8cc168563f08902d38379a6fdfeb47080d23fd3f",
+  "configuration": "chipyard.TestHarness.RocketConfig",
+  "build_exit_code": 0,
+  "hashes": {
+    "/home/lxf/chipyard/sims/verilator/simulator-chipyard-RocketConfig": "5bffa0bcfe26e0cb895fefb3f65b21a2f82b8bfd49ca08e9e9bcf3bae840b192",
+    "/tmp/ssa-linux-stage/user-progress/simulator-progress": "5d188ac508df7ac3d27817e81665786763f54f9ce0379af6f38d44ec3cba7dc0",
+    "/home/lxf/chipyard/ssa/linux/build-progress.py": "5a71ff0d2e7825f6b314b4572c150bc4f2c1a640e30fd2a1157f66ffcb6395ce",
+    "/home/lxf/chipyard/generators/rocket-chip/src/main/scala/rocket/CSR.scala": "dfdf7cb7a92493d09cbe8f9961ce0b0a7bcff4615a7f0ecc9e300219833e0ebf",
+    "/home/lxf/chipyard/generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": "e8f075c89762cb500992dd3f0d874f8851df13f3d69859468c0c2a86cee497b6",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/chipyard.TestHarness.RocketConfig.top.mems.v": "cccbb4dbe11bfe004f67cacbb62a9ce57918ade145a60898c04c88f2b0c7684e",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/IOCell.v": "cdd037ff6feb70b2a3899d7111d3c437e3d0d80d9ca090ad0e0d35d4e4276245",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/SimDRAM.v": "7d14c670cb94465027e9efee0e5ebb26311b29e8432190719d7e781296154708",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/EICG_wrapper.v": "8532a50a212f146f10208717be24168a2de73a9754786da272d0dbfcd556c307",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/SimJTAG.v": "3a5df6035e4658031b96dc27155086425fdf50af4e86e1e33036f2acd04eacf3",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/chipyard.TestHarness.RocketConfig.top.v": "c59bdb4b0a2bf13f407b8a9b53e8b34ce33d9381ebdf65f5e17a5abb62ed215f",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/plusarg_reader.v": "482a63c1f24a7ac920909620bd0df108e6954eabf9520de6e72334a2b5450efb",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/chipyard.TestHarness.RocketConfig.harness.mems.v": "eb5691f768f3fcbf8574f87e69e6292b5015aeae320e96a63a7036b9f51bdb9b",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/SimSerial.v": "642cfc8f70e502ae5192e4c9ef115f159ac81f56ac25d5cca52af92e9907c3fc",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/SimUART.v": "2ed4bc8c7fd371ff3a2df390b3e28a89b2ab526087338b4ae2d7dbba30d5f0c8",
+    "/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.RocketConfig/chipyard.TestHarness.RocketConfig.harness.v": "d6a4fd8e8a97befca34739d1d23a82da4ff88f8d06214fad888ef3486f7a55dd"
+  },
+  "scope": "native RTL model rebuilt once; Linux uses read-only host progress harness linked to the same generated model objects; independent Linux/OpenSBI image rebuilt from public pins; no second full RTL build claimed"
+}

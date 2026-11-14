@@ -1,0 +1,35 @@
+From 3b79ddfa2fb70707ace85385d6722925fffc8eea Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Mon, 9 Nov 2026 14:56:49 +0800
+Subject: [PATCH] riscv: declare stack pointer register for both unwinder
+ configurations
+
+---
+ arch/riscv/kernel/stacktrace.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/kernel/stacktrace.c b/arch/riscv/kernel/stacktrace.c
+index 02087fe53..6c854875a 100644
+--- a/arch/riscv/kernel/stacktrace.c
++++ b/arch/riscv/kernel/stacktrace.c
+@@ -12,6 +12,8 @@
+ #include <linux/stacktrace.h>
+ #include <linux/ftrace.h>
+ 
++register unsigned long sp_in_global __asm__("sp");
++
+ #ifdef CONFIG_FRAME_POINTER
+ 
+ struct stackframe {
+@@ -19,8 +21,6 @@ struct stackframe {
+ 	unsigned long ra;
+ };
+ 
+-register unsigned long sp_in_global __asm__("sp");
+-
+ void notrace walk_stackframe(struct task_struct *task, struct pt_regs *regs,
+ 			     bool (*fn)(unsigned long, void *), void *arg)
+ {
+-- 
+2.34.1
+
