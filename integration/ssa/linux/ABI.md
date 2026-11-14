@@ -8,8 +8,8 @@ The static Rocket/OpenSBI profile supplies the physical DRAM and counter sources
 
 The task descriptor, pool, dictionary, records, open frames, counter snapshots,
 accumulated excluded intervals and switch diagnostics belong to one Linux task.
-Fork clears the child's descriptor. The fixture forks before enabling and does
-not exec after enabling. The counters, trap state, notification policy and current
+Fork clears the child's descriptor. The fixtures fork before enabling. Successful
+exec retires the old descriptor; failed pre-commit exec preserves it. The counters, trap state, notification policy and current
 SCBaseReg selector belong to the hart. Counter registers are never overwritten
 on a task switch. Trap depth is not copied into task state.
 
@@ -20,6 +20,7 @@ on a task switch. Trap depth is not copied into task state.
 | switch to unmonitored task | selector cleared | keep selector0 |
 | switch in | PAUSED | sample R, rebase every open snapshot by R-S, select own pool, RUNNING |
 | STOP | RUNNING with no open/spilled frames | selector0, STOPPED, records retained |
+| committed exec | owned descriptor | selector0, bounded export, mark open frames abandoned, release slot/free descriptor |
 | do_exit | owned descriptor | selector0, bounded export, release slot, free descriptor |
 
 Interrupts are masked around sampling/state changes. Pool initialization publishes
@@ -35,9 +36,10 @@ No PID, physical address, virtual address, user mapping or record pointer is acc
 
 | op | Arguments | Result |
 | --- | --- | --- |
-| 1 START | flags0 normal or1 legacy negative; role0..2/test0..4 diagnostic labels | 0, or negative errno |
+| 1 START | flags0 normal or1 legacy negative; role0..2/test0..7 diagnostic labels | 0, or negative errno |
 | 2 STOP | other arguments0 | number of allocated records; rejects open/spilled frames |
-| 3 STATUS | other arguments0 | 0 only if current task has no descriptor and selector0; diagnostic for the unmonitored parent |
+| 3 STATUS | other arguments0 | 0 only if current task has no descriptor and selector0; diagnostic for the unmonitored parent/new image |
+| 4 QUERY | other arguments0 | current RUNNING task's open depth; logs identity/depth/next_id without accepting a pointer |
 
 There are two concurrent pool slots. START returns EBUSY for an existing descriptor
 or no available slot; invalid labels/flags return EINVAL, allocation failure ENOMEM,
@@ -46,7 +48,8 @@ It returns EIO for inconsistent state/selection and EBUSY for open/spilled frame
 The legacy flag omits snapshot rebasing only for that task; it deliberately counts
 off-CPU work and is used to demonstrate the attribution bug. It grants no access
 to another task or to privileged CSR policy. Production quotas/access policy,
-re-enable episodes, threads and exec integration are deferred.
+re-enable episodes within an existing descriptor and threads are deferred.
+After committed exec, the new image may explicitly START a fresh session.
 
 ## Privilege and memory
 
@@ -93,7 +96,7 @@ final_entry-original_entry=sum(R-S); legacy mode requires unchanged entries.
 Repeated activations remain covered by existing low-level regressions, not this
 single-activation Linux audit identity.
 
-Exports occur in do_exit before slot release and are captured to a host disk log,
+Exports occur in do_exit or after exec_mmap commitment before slot release and are captured to a host disk log,
 then decoded to JSON. Kernel logging is restricted to privileged readers; the
 fixture checks syslog denial after dropping to uid1000. This is not a general
 in-guest file export service. PASS requires actual Rocket Linux execution,
@@ -107,3 +110,29 @@ selected. Scheduling/IRQ entry work before S is charged to the outgoing interval
 rebasing, context-switch tail and restore work after R are charged to the incoming
 interval. This is the explicitly measured sampling-boundary policy. No separate
 measurement claims an exact split of those kernel handoff costs.
+
+
+## Exec sessions (stage5)
+
+Every START has a unique increasing session ID and captures Linux self_exec_id.
+The latter changes on successful image replacement; PID alone is not an export
+identity. The post-exec_mmap hook in flush_old_exec runs after the old address
+space cannot return, before the new image enters userspace. It samples cutoff
+counters, clears the selector and freezes the descriptor, emits SSA_SESSION and
+bounded SSA_EXPORT/SSA_RECORD data, then SSA_OPEN for any abandoned frames and
+SSA_EXEC_END. With interrupts masked it releases the slot, detaches the descriptor and frees it. Export
+is once per session; later new-image exit cannot export the old descriptor.
+
+Unfinished activations are not fabricated as normal returns and add no partial
+counts. Completed activations already in a record remain; `open` counts present
+frames for that record. An open export is incomplete even when its closed child
+records are valid. Fresh START resets dictionary/metadata/offsets and record
+allocation initializes counts, even when the same physical slot is reused.
+The new image starts with no descriptor/selector and opts in explicitly.
+
+ENOENT during pathname lookup is the covered failed-return path. It occurs before
+exec_mmap and changes neither descriptor nor frame/session identity. Failures
+after the commit point can kill the task and are not claimed to return safely.
+Counter rebasing and stage4 S/R boundaries are unchanged; cutoff values are
+diagnostics, not partial open-frame totals. Multithreaded/setuid exec, signal
+handler exec and complete-capacity export remain unverified.

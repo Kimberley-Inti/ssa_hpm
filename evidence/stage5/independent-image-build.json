@@ -1,0 +1,260 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "stage4-linux"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "https://github.com/firesim/linux.git",
+        "5f5fd87b36e21ed59b759b69eebfa1c74955cb37"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "stage4-linux"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "https://github.com/riscv/opensbi.git",
+        "a98258d0b537a295f517bbc8d813007336731fa9"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/opensbi"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0001-stack-pointer-declaration.patch"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0002-linux-task-pools.patch"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0003-linux-exec-lifecycle.patch"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "git",
+        "am",
+        "/home/lxf/chipyard/ssa/linux/0001-opensbi-rocket-platform.patch"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/opensbi"
+    },
+    {
+      "argv": [
+        "dpkg-deb",
+        "-x",
+        "/tmp/ssa-exec-independent/binutils.deb",
+        "/tmp/ssa-exec-independent/host-tools"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/exec-init.c",
+        "-o",
+        "/tmp/ssa-exec-independent/init"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DNEXT_IMAGE",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/exec-init.c",
+        "-o",
+        "/tmp/ssa-exec-independent/next"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/process-init.c",
+        "-o",
+        "/tmp/ssa-exec-independent/regress"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    },
+    {
+      "argv": [
+        "scripts/config",
+        "--enable",
+        "SSA_HPM",
+        "--disable",
+        "HZ_250",
+        "--enable",
+        "HZ_1000"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-exec-independent/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-exec-independent/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "olddefconfig"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-exec-independent/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-exec-independent/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j6",
+        "Image"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/linux"
+    },
+    {
+      "argv": [
+        "dtc",
+        "-I",
+        "dts",
+        "-O",
+        "dtb",
+        "-o",
+        "/tmp/ssa-exec-independent/rocket.dtb",
+        "/home/lxf/chipyard/ssa/linux/rocket.dts"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    },
+    {
+      "argv": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11",
+        "FW_PAYLOAD_PATH=/tmp/ssa-exec-independent/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-exec-independent/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j6"
+      ],
+      "cwd": "/tmp/ssa-exec-independent/opensbi"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "-O",
+        "binary",
+        "/tmp/ssa-exec-independent/boot-a.elf",
+        "/tmp/ssa-exec-independent/boot-a.bin"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/elf_to_hex.py",
+        "/tmp/ssa-exec-independent/boot-a.bin",
+        "/tmp/ssa-exec-independent/boot-a.hex"
+      ],
+      "cwd": "/tmp/ssa-exec-independent"
+    }
+  ],
+  "images": {
+    "boot-a.elf": "10035f9b262342fd674c1731c55002ad3d07390a426fdaae3fd8dee059621573",
+    "boot-a.bin": "e6b1596c059f9dae50e08c090a542e285221eef677660fb12fbab8178e26804f",
+    "boot-a.hex": "0985e8689f0fe8e76865acdaab8cd5e7cf2588f3fd463400320174be74c3e920"
+  }
+}

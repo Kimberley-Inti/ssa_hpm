@@ -1,0 +1,7 @@
+{
+  "raw_long_minus_short": 214873,
+  "paused_long_minus_short": 210668,
+  "recorded_long_minus_short": 4205,
+  "interpretation": "unchanged S/R boundary policy; remainder includes unexcluded own kernel/monitor and incoming/outgoing handoff costs outside the sample interval; no instruction trace attributes each remainder instruction to a function",
+  "identity": true
+}

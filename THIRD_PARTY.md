@@ -43,3 +43,7 @@ upstream source at build time. Main license in LICENSES/OpenSBI-BSD-2-Clause.txt
 
 The local bootstrap extracts Ubuntu's Linux-target binutils package, SHA-256
 pinned in build-a.py. No toolchain binary or deb is distributed in this repo.
+
+Stage5 adds an incremental Linux GPL-2.0-only exec/session patch, an original
+freestanding exec fixture (MIT SPDX as marked), and project build/check scripts.
+No new upstream source tree or binary dependency is redistributed.

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "kind": "installed independent public-source checker re-reading the same completed native execution, no second RTL run",
+  "workspace": "/tmp/ssa-exec-release-clean",
+  "command": [
+    "python3",
+    "/tmp/ssa-exec-release-clean/ssa/linux/grade-exec.py",
+    "/tmp/ssa-exec-stage/rtl/rocket-linux-exec.txt",
+    "--exit-code",
+    "0",
+    "--users",
+    "/tmp/ssa-exec-stage/rtl/user-elfs.json",
+    "--out-dir",
+    "/tmp/ssa-exec-stage/independent-regrade"
+  ],
+  "exit_code": 0,
+  "lifecycle_checks": 37,
+  "regression_checks": 173,
+  "checker_sha256": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
+  "source_and_installed_results_equal": true
+}

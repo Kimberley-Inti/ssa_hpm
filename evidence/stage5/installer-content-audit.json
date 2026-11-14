@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "source_ignored_bytecode_files_preserved": 9,
+  "destination_bytecode_files": 0,
+  "workspace": "/tmp/ssa-exec-release-clean",
+  "public_reconstruction": "public-project-apply.json",
+  "meaning": "actual reconstruction with local ignored caches present excludes them without deleting original files",
+  "installer_source_sha256": "a944b7ef1fcf454198c5f6d5ed2a4906d413cc954ab4ec3ad7abbffb28ab1223"
+}

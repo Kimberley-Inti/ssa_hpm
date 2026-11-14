@@ -1,0 +1,24 @@
+{
+  "method": "objdump actual immutable ELFs; stage4 known role0/100 count6623 minus five fewer non-loop user instructions; loop66*n",
+  "stage4_common_path": [
+    "addi sp,-16",
+    "mv a6,a1",
+    "li a5,2",
+    "beq role,2 (not taken)",
+    "mv a1,a6",
+    "loop66*n",
+    "addi sp,16",
+    "ret"
+  ],
+  "exec_leaf_path": [
+    "li a5,n",
+    "loop66*n",
+    "ret"
+  ],
+  "expected_instret": {
+    "test5": 3318,
+    "test6": 6618,
+    "test7": 6636
+  },
+  "initial_oracle_error": "Incorrectly assumed the stage4 and new leaf compiled paths were identical; corrected after disassembly, without changing running image."
+}

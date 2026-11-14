@@ -1,0 +1,3 @@
+  CALL    scripts/atomic/check-atomics.sh
+  CALL    scripts/checksyscalls.sh
+  CC      kernel/ssa_hpm.o

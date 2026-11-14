@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/tmp/ssa-linux-stage/user-progress/simulator-progress",
+    "+permissive",
+    "+loadmem=/tmp/ssa-exec-independent/boot-a.hex",
+    "+max-cycles=800000000",
+    "+permissive-off",
+    "/tmp/ssa-exec-independent/boot-a.elf"
+  ],
+  "exit_code": 0,
+  "seconds": 14579.590485131004,
+  "sha256": {
+    "/tmp/ssa-exec-independent/boot-a.elf": "10035f9b262342fd674c1731c55002ad3d07390a426fdaae3fd8dee059621573",
+    "/tmp/ssa-exec-independent/boot-a.hex": "0985e8689f0fe8e76865acdaab8cd5e7cf2588f3fd463400320174be74c3e920",
+    "/tmp/ssa-linux-stage/user-progress/simulator-progress": "5d188ac508df7ac3d27817e81665786763f54f9ce0379af6f38d44ec3cba7dc0"
+  },
+  "log_sha256": "23c6de89d3f84234328e98868aff23a8d6f31c32f687aaefca9d28ca338a362f"
+}

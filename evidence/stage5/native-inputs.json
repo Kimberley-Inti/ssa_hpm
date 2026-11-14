@@ -1,0 +1,45 @@
+{
+  "linux/.config": {
+    "sha256": "4f2ca72aeb6e0d055011631f6018c7f3362028393c45b412d25f72ce276801e3",
+    "bytes": 22381
+  },
+  "linux/arch/riscv/boot/Image": {
+    "sha256": "0364eb59be6681b77b149628ae6330444406a64fe4022c6eec4e2278fe6086b6",
+    "bytes": 8472372
+  },
+  "rocket.dtb": {
+    "sha256": "f360bc4d387dd7b0ad2d5a9816c5a794c858df285025f2f1b86f4db07b416b03",
+    "bytes": 1288
+  },
+  "init": {
+    "sha256": "9259b762535e9afadc1f295619fcfbc84303383b2efda21bd20efd8caff5c836",
+    "bytes": 3400
+  },
+  "next": {
+    "sha256": "cc3fd8ca092e17fa8ebdc998e4a85b8e78a91bef8f4eb86f31e74636168b7c30",
+    "bytes": 2384
+  },
+  "regress": {
+    "sha256": "0508242f54803f9b2f86120b31785fff01b27c1db38c37bedffdbcb5cad75d7f",
+    "bytes": 4504
+  },
+  "boot-a.elf": {
+    "sha256": "10035f9b262342fd674c1731c55002ad3d07390a426fdaae3fd8dee059621573",
+    "bytes": 8794152
+  },
+  "boot-a.hex": {
+    "sha256": "0985e8689f0fe8e76865acdaab8cd5e7cf2588f3fd463400320174be74c3e920",
+    "bytes": 21799701
+  },
+  "native_kernel_version": "5.7.0-rc3+",
+  "config": {
+    "CONFIG_SMP": "# CONFIG_SMP is not set",
+    "CONFIG_MMU": "CONFIG_MMU=y",
+    "CONFIG_SSA_HPM": "CONFIG_SSA_HPM=y",
+    "CONFIG_HZ": "CONFIG_HZ=1000",
+    "CONFIG_PREEMPT_NONE": "CONFIG_PREEMPT_NONE=y",
+    "CONFIG_INITRAMFS_SOURCE": "CONFIG_INITRAMFS_SOURCE=\"/tmp/ssa-exec-independent/initramfs.list\"",
+    "CONFIG_HVC_RISCV_SBI": "CONFIG_HVC_RISCV_SBI=y",
+    "CONFIG_CMDLINE": "CONFIG_CMDLINE=\"console=hvc0 earlycon=sbi rdinit=/init swiotlb=128 lpj=100000 loglevel=7\""
+  }
+}
