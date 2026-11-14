@@ -1,2 +1,5 @@
 # Preserve the canonical UART capture, including intentional CR/CRLF bytes.
 evidence/stage10/linux-rocket-linux-transparent.txt -text -whitespace
+# Mail-patch context and readelf padding are verbatim source/tool records.
+integration/ssa/linux/0008-linux-transparent-launch.patch -text -whitespace
+evidence/stage10/*-elf.txt -text -whitespace

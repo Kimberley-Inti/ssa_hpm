@@ -198,3 +198,6 @@ elf-image-identity.json. No target ELF was modified to enable monitoring.
 The canonical raw UART capture intentionally retains CR/CRLF and console padding.
 Its exact path has Git `-text -whitespace` attributes to prevent newline conversion
 and preserve the recorded SHA; source/docs retain normal whitespace checking.
+Mail-patch context/author terminators and readelf padding likewise retain their
+verbatim whitespace under narrow artifact attributes; actual Linux C changes,
+Python source and documentation remain subject to ordinary whitespace checks.
