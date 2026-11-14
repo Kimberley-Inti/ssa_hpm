@@ -1,0 +1,10 @@
+{
+  "reason": "Automatic launcher raced preflight workload correction: initial read-only BSS aliases Linux zero page. Stop this initial boot only; retain raw log/exit and rebuild physically backed Cache workload. No accepted Linux test result discarded.",
+  "driver": 347443,
+  "native": 347451,
+  "signal": "SIGTERM",
+  "wall_epoch": 1794464524.8658102,
+  "native_exit_code": 0,
+  "note": "Simulator handles SIGTERM and returned0; no guest normal shutdown or userspace tests. Graders correctly rejected; NOT an accepted run.",
+  "cycles_last": 200000
+}

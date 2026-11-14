@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "checks": 69,
+  "failed": [
+    "clean_shutdown"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "exit_code": 0,
+  "command": [
+    "python3",
+    "ssa/linux/run-exec.py",
+    "--cache",
+    "--work",
+    "/tmp/ssa-hpm-stage8/independent-linux",
+    "--simulator",
+    "/tmp/ssa-hpm-stage8/progress/simulator-progress",
+    "--out-dir",
+    "/tmp/ssa-hpm-stage8/linux-rtl",
+    "--timeout",
+    "172800"
+  ]
+}

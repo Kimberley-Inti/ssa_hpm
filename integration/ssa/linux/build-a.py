@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fixed-version baseline boot image. All downloaded/build outputs stay outside Git."""
 import argparse,hashlib,json,os,pathlib,shutil,subprocess,urllib.request
-p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+if a.cache:a.export_test=True
 if a.export_test:a.event=True
 if a.event:a.exec_test=True
 if a.exec_test:a.process=True
@@ -21,20 +22,22 @@ if a.process and not a.reference:run(['git','am',src/'0002-linux-task-pools.patc
 if a.exec_test and not a.reference:run(['git','am',src/'0003-linux-exec-lifecycle.patch'],linux)
 if a.event and not a.reference:run(['git','am',src/'0004-linux-dtlb-event.patch'],linux)
 if a.export_test and not a.reference:run(['git','am',src/'0005-linux-result-export.patch'],linux)
+if a.export_test and not a.reference:run(['git','am',src/'0006-linux-cache-profile.patch'],linux)
 run(['git','am',src/'0001-opensbi-rocket-platform.patch'],sbi)
 if a.event and not a.reference:run(['git','am',src/'0002-opensbi-dtlb-profile.patch'],sbi)
+if a.event and not a.reference:run(['git','am',src/'0003-opensbi-cache-profile.patch'],sbi)
 url='https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils-riscv64-linux-gnu_2.38-4ubuntu2.12_amd64.deb'
 deb=w/'binutils.deb';urllib.request.urlretrieve(url,deb)
 assert hashlib.sha256(deb.read_bytes()).hexdigest()=='b20f8bdabeff0a43fba1efdc8b1c1d359d93e8a135d11041fd90ed945c23e866'
 host=w/'host-tools';host.mkdir();run(['dpkg-deb','-x',deb,host]);b=host/'compiler-bin';b.mkdir();(b/'ld').symlink_to('../usr/bin/riscv64-linux-gnu-ld');env['LD_LIBRARY_PATH']=str(host/'usr/lib/x86_64-linux-gnu')+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
 def user(source,name,flags=[]):
- run([a.cross+'gcc',*flags,'-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start','-Wl,--build-id=none',src/source,'-o',w/name])
+ run([a.cross+'gcc',*flags,*(['-DCACHE_PROFILE_TEST'] if a.cache else []),'-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start','-Wl,--build-id=none',src/source,'-o',w/name])
 ref=['-DREFERENCE'] if a.reference else []
-user('export-init.c' if a.export_test else 'exec-init.c' if a.exec_test else 'process-init.c' if a.process else 'init.c','init',ref+(['-DCHAIN_EVENTS'] if a.event else []))
+user('cache-init.c' if a.cache else 'export-init.c' if a.export_test else 'exec-init.c' if a.exec_test else 'process-init.c' if a.process else 'init.c','init',ref+(['-DCHAIN_EVENTS'] if a.event else []))
 if a.export_test:user('exec-init.c','lifecycle',ref+['-DCHAIN_EVENTS'])
 if a.exec_test:
  user('exec-init.c','next',ref+['-DNEXT_IMAGE'])
- user('process-init.c','regress',ref+(['-DREFERENCE_SECURITY'] if a.reference else []))
+ user('export-init.c' if a.cache else 'process-init.c','regress',ref+(['-DCACHE_END'] if a.cache else ['-DREFERENCE_SECURITY'] if a.reference else []))
 if a.event:
  user('event-init.c','events',ref)
  user('exec-init.c','eventexec',ref+['-DEVENT_SESSION'])
@@ -50,8 +53,8 @@ km=['make','ARCH=riscv','CROSS_COMPILE='+a.cross,'CC='+a.cross+'gcc -B'+str(b)+'
 
 if a.process:
  run(['scripts/config','--disable' if a.reference else '--enable','SSA_HPM','--disable','HZ_250','--enable','HZ_1000'],linux)
-run(km+['olddefconfig'],linux);run(km+['KCFLAGS=-misa-spec=2.2','KAFLAGS=-misa-spec=2.2','-j'+a.jobs,'Image'],linux)
+run(km+['olddefconfig'],linux);run(km+['KCFLAGS=-misa-spec=2.2'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'KAFLAGS=-misa-spec=2.2','-j'+a.jobs,'Image'],linux)
 run(['dtc','-I','dts','-O','dtb','-o',w/'rocket.dtb',src/'rocket.dts'])
-run(['make','PLATFORM=ssa_rocket','CROSS_COMPILE='+a.cross,'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei','platform-cflags-y=-std=gnu11','FW_PAYLOAD_PATH='+str(linux/'arch/riscv/boot/Image'),'FW_PAYLOAD_FDT_PATH='+str(w/'rocket.dtb'),'FW_PAYLOAD_FDT_ADDR=0x81e00000','-j'+a.jobs],sbi)
+run(['make','PLATFORM=ssa_rocket','CROSS_COMPILE='+a.cross,'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei','platform-cflags-y=-std=gnu11'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'FW_PAYLOAD_PATH='+str(linux/'arch/riscv/boot/Image'),'FW_PAYLOAD_FDT_PATH='+str(w/'rocket.dtb'),'FW_PAYLOAD_FDT_ADDR=0x81e00000','-j'+a.jobs],sbi)
 shutil.copyfile(sbi/'build/platform/ssa_rocket/firmware/fw_payload.elf',w/'boot-a.elf');run([a.cross+'objcopy','-O','binary',w/'boot-a.elf',w/'boot-a.bin']);run(['python3',src.parent/'elf_to_hex.py',w/'boot-a.bin',w/'boot-a.hex'])
 (w/'build-report.json').write_text(json.dumps(dict(passed=True,commands=commands,images={f:hashlib.sha256((w/f).read_bytes()).hexdigest() for f in ['boot-a.elf','boot-a.bin','boot-a.hex']}),indent=2)+'\n')

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "Final installed checkers replay SAME completed native run, not a second Linux simulation; freshly rebuilt7 user ELFs match running payloads, manifest/source trees verified",
+  "command": [
+    "python3",
+    "/tmp/ssa-hpm-stage8/public-apply/ssa/linux/grade-cache.py",
+    "/tmp/ssa-hpm-stage8/linux-rtl/rocket-linux-events.txt",
+    "--exit-code",
+    "0",
+    "--users",
+    "/tmp/ssa-hpm-stage8/linux-rtl/user-elfs.json",
+    "--out-dir",
+    "/tmp/ssa-hpm-stage8/independent-linux-regrade"
+  ],
+  "exit_code": 0,
+  "all_check_booleans_match": true,
+  "all_structured_records_match": true,
+  "raw_log_sha256": "881e85fbe2a9600088bb81d5810d2341122ed9c04759cf1509010af1f6653c06",
+  "model_reused_for_independent_checks": true
+}

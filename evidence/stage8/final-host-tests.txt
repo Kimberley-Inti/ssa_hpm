@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": 48,
+  "failed": [],
+  "native": {
+    "passed": true,
+    "coverage": "actual completed41-record native protocol rows regraded; negatives are host mutations, not new hardware faults",
+    "selected_session": 9,
+    "extraction": "unchanged normalized protocol rows belonging to that session",
+    "prefix_sha256": "799e2906e2af84d4dc3b220a068223f7661585930f2361ea6be6c89cfb1b18d9",
+    "checks": {
+      "native_first_export_valid": true,
+      "native_missing_chunk_detected": true,
+      "native_duplicate_chunk_detected": true,
+      "native_missing_END_detected": true
+    }
+  }
+}

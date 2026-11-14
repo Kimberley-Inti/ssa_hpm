@@ -1,0 +1,29 @@
+From 43f02ffb329d9c86b2ff2138dc450b2060778ffe Mon Sep 17 00:00:00 2001
+From: Kimberley-Inti <KimIntizar@hotmail.com>
+Date: Thu, 12 Nov 2026 13:59:44 +0800
+Subject: [PATCH] Select native D-cache A transactions in an opt-in fixed
+ profile
+
+---
+ platform/ssa_rocket/platform.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/platform/ssa_rocket/platform.c b/platform/ssa_rocket/platform.c
+index ec8a991..c4358a3 100644
+--- a/platform/ssa_rocket/platform.c
++++ b/platform/ssa_rocket/platform.c
+@@ -14,7 +14,11 @@ static int irq_init(bool cold){int r=0;if(cold)r=plic_cold_irqchip_init(&plic);r
+ static int ipi_init(bool cold){int r=0;if(cold)r=clint_cold_ipi_init(&clint);return r?r:clint_warm_ipi_init();}
+ static int timer_init(bool cold){int r=0;if(cold)r=clint_cold_timer_init(&clint,NULL);return r?r:clint_warm_timer_init();}
+ static int hpm_init(bool cold){
++#ifdef SSA_CACHE_PROFILE
++ csr_write(0x323,0x202); /* native EventSet2 bit1: completed D-cache TL A */
++#else
+  csr_write(0x323,0x1002); /* event set2, DTLB accepted PTW request bit4 */
++#endif
+  csr_write(0xb03,0);
+  csr_clear(0x320,8);
+  csr_clear(0x106,8); /* HPM3 is kernel-managed; U-mode cannot read it. */
+-- 
+2.34.1
+

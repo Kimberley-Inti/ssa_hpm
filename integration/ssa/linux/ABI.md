@@ -223,3 +223,36 @@ pre-v1 logs use the unchanged historical graders; no synthetic hashes are added.
 This does not change inclusive counting, paused interval exclusion or40-bit DTLB
 occurrence-interval semantics. Allocation exhaustion is status4, not silent loss;
 full-capacity execution is distinct from the host-tested capacity arithmetic.
+
+## Fixed Cache profile (stage8, ABI2)
+
+A `build-a.py --cache` image compiles BOTH kernel and OpenSBI with
+`SSA_CACHE_PROFILE`. Firmware fixes HPM3 selector0x202 (EventSet2 bit1).
+Default builds continue to select0x1002/DTLB. START flags2/3 mean the configured
+ABI2 fourth counter; they do not give users permission to change selectors.
+The Cache profile has the SAME record/frame offsets, ROM and40-bit modular
+snapshot/rebase/accumulation as DTLB; no fifth counter/state is added.
+
+`dcache_a_transactions` counts the existing native Rocket D$ miss event:
+`DCache.io.cpu.perf.acquire = edge.done(tl_out_a)` -> EventSet2 bit1 ->
+registered HPM3 increment on the next cycle. It is completed outgoing TileLink A
+transaction handshakes, including cached acquires and uncached requests on that
+interface, NOT unique retired load misses or incoming refill beats. Accepted
+speculative/replayed transactions count when they actually occur. There is no
+request-owner tag or U/S/kernel/private-ROM source filter. The profile metadata
+and firmware boot selector must agree; the checker rejects a mismatched image.
+
+At calls/returns, increments belong to the actual CSR sampling interval even
+if a transaction originated earlier. Parents include children, kernel/trap and
+private-ROM activity inside their interval. Existing S..R subtraction excludes
+other tasks and their activity in the measured paused interval; pre-S/post-R
+work and A's own cache misses after B polluted the cache remain charged to A.
+No cache partitioning or overhead subtraction is claimed. Every interval must
+span fewer than2^40 events to avoid modular ambiguity.
+
+Version1 XBEGIN adds `profile=base|dtlb_accepted_ptw_requests|dcache_a_transactions`.
+ABI2 counter3 metadata supplies its matching name, width40 and selector4098/514.
+DTLB rows retain `dtlb=...`; Cache rows use `cache=...`. Checksums use the same
+numeric fourth word. Legacy v1 captures lacking profile mean ABI1/base or
+ABI2/DTLB; a Cache capture always requires explicit profile and matching metadata.
+The parser rejects mixed fields and selectors, preserving old ABI1/2 recognition.

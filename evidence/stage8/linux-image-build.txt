@@ -1,0 +1,35 @@
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-DCHAIN_EVENTS', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/cache-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/init']
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-DCHAIN_EVENTS', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/exec-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/lifecycle']
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-DNEXT_IMAGE', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/exec-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/next']
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-DCACHE_END', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/export-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/regress']
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/event-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/events']
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-DEVENT_SESSION', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/exec-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/eventexec']
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-gcc', '-DCACHE_PROFILE_TEST', '-DEVENT_SESSION', '-DNEXT_IMAGE', '-march=rv64imac_zicsr', '-mabi=lp64', '-O1', '-nostdlib', '-nostartfiles', '-static', '-ffreestanding', '-fno-builtin', '-fno-stack-protector', '-msmall-data-limit=0', '-fno-optimize-sibling-calls', '-Wl,--no-relax', '-Wl,-e,_start', '-Wl,--build-id=none', '/home/lxf/chipyard/ssa/linux/exec-init.c', '-o', '/tmp/ssa-hpm-stage8/independent-linux/eventnext']
+RUN ['make', 'ARCH=riscv', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage8/independent-linux/host-tools/compiler-bin/', 'LD=/tmp/ssa-hpm-stage8/independent-linux/host-tools/usr/bin/riscv64-linux-gnu-ld', 'KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE', 'KAFLAGS=-misa-spec=2.2', '-j4', 'Image']
+  CALL    scripts/atomic/check-atomics.sh
+  CALL    scripts/checksyscalls.sh
+  GEN     usr/initramfs_data.cpio
+  CHK     include/generated/compile.h
+  GZIP    usr/initramfs_inc_data
+  AS      usr/initramfs_data.o
+  AR      usr/built-in.a
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  AR      init/built-in.a
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+  MODINFO modules.builtin.modinfo
+  GEN     modules.builtin
+  LD      vmlinux
+  SYSMAP  System.map
+  OBJCOPY arch/riscv/boot/Image
+  Kernel: arch/riscv/boot/Image is ready
+RUN ['make', 'PLATFORM=ssa_rocket', 'CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-', 'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei', 'platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE', 'FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage8/independent-linux/linux/arch/riscv/boot/Image', 'FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage8/independent-linux/rocket.dtb', 'FW_PAYLOAD_FDT_ADDR=0x81e00000', '-j4']
+ AS        platform/ssa_rocket/firmware/fw_payload.o
+ ELF       platform/ssa_rocket/firmware/fw_payload.elf
+/opt/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /tmp/ssa-hpm-stage8/independent-linux/opensbi/build/platform/ssa_rocket/firmware/fw_payload.elf has a LOAD segment with RWX permissions
+ OBJCOPY   platform/ssa_rocket/firmware/fw_payload.bin
+RUN ['/opt/riscv/bin/riscv64-unknown-elf-objcopy', '-O', 'binary', '/tmp/ssa-hpm-stage8/independent-linux/boot-a.elf', '/tmp/ssa-hpm-stage8/independent-linux/boot-a.bin']
+RUN ['python3', '/home/lxf/chipyard/ssa/elf_to_hex.py', '/tmp/ssa-hpm-stage8/independent-linux/boot-a.bin', '/tmp/ssa-hpm-stage8/independent-linux/boot-a.hex']

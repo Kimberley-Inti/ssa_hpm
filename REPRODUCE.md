@@ -155,7 +155,7 @@ See [STAGE5.md](docs/STAGE5.md) for the success/ENOENT fixture, full stage4 regr
 
 See [STAGE6.md](docs/STAGE6.md). Use SSAHPMEventRocketConfig, --event image build
 and run, then grade-events.py. Default RocketConfig and ABI1 remain available.
-One standard40-bit HPM3 counter is reserved for accepted DTLB PTW requests;
+The default DTLB profile reserves one standard40-bit HPM3 counter for accepted PTW requests;
 this is not a Spike event model or a generic perf multiplexing interface.
 
 ## Stage7 full-result export
@@ -175,3 +175,19 @@ replay uses the same raw run; it is not a second native simulation. Fresh --expo
 runs default to172800 host seconds; the actual long run's original43200 limit
 was preserved using the separately audited runner-only pause/resume protocol.
 For a cheap committed-log recheck, use the two commands at the end of STAGE7.md.
+
+## Stage8 fixed Cache profile
+
+Use `build-a.py --cache` and `run-exec.py --cache` with SSAHPMEventRocketConfig;
+see docs/STAGE8.md for exact build, RTL/source oracle and Linux commands. Public
+patch order adds Rocket0013, Linux0006 after0005, and OpenSBI0003 after0002.
+The builder applies both kernel/firmware profile flags together; default builds
+retain DTLB. Data-stream metadata distinguishes the profiles within memory ABI2.
+
+Stage8 acceptance finished: actual corrected Cache/Linux image exit0 + normal
+power-down,39 aggregate/all-counter,69 Cache/timer/exec and24 export gates.
+The independent installed checker replays that same complete log identically.
+See evidence/stage8/summary.json, linux/execution.json, source-commits.json,
+linux-image-build.json and independent-final-check.json; no second independent
+full model rebuild or second accepted full Linux run is implied. The final
+STAGE8.md block rechecks committed raw evidence without simulation.

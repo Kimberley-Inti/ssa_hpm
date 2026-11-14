@@ -1,4 +1,4 @@
-# Result export v1 (stage7)
+# Result export v1 (stage7–8)
 
 This is a bounded kernel-to-host stream for the existing single-hart prototype,
 not an upstream Linux syscall ABI, guest filesystem service or raw36MiB dump.
@@ -10,9 +10,10 @@ tree. Physical slots and calling ABI are unchanged. See ACCEPTANCE.md for scope.
 ## Freeze, ownership and interfaces
 
 START flags0/1 remain ABI1 three-counter normal/legacy;2/3 remain ABI2 four-counter
-normal/legacy. Record+40 is40-bit DTLB accepted PTW requests, selector4098. The
+normal/legacy. In the default DTLB image record+40 is40-bit accepted PTW requests, selector4098. The
 other three fields remain cycle,instret,time,64-bit. No new Rocket ROM, firmware,
-selector or counting rule is introduced. The memory ABI and stream version are
+selector or counting rule was introduced by stage7; stage8 selects an alternative
+fixed native event as described below. The memory ABI and stream version are
 separate version spaces: v1 can describe either ABI1 or ABI2.
 
 prctl(0x535341,2,0,0,0) STOP still rejects open/spilled frames and freezes the
@@ -62,10 +63,10 @@ retained byte-for-byte in field meaning for the prior graders. New tags:
 | Tag | Fields / checks |
 | --- | --- |
 | SSA_XBEGIN | version1,session,pid,image,abi,total,capacity262143,chunk16,counters,reason(stop/exit/exec),pool,next,depth,spill,errors,status,legacy,policy |
-| SSA_XCOUNTER | session,index,name,width,selector; fixed indexes0cycle,1instret,2time,3dtlb_accepted_ptw_requests |
+| SSA_XCOUNTER | session,index,name,width,selector; fixed indexes0cycle,1instret,2time,3 profile-specific dtlb_accepted_ptw_requests or dcache_a_transactions |
 | SSA_XCHUNK | session,seq starting0,first starting1,count1..16 within total |
 | SSA_RECORD | pid,id,callee hex,parent,cycle,instret,time,session,open; exactly count rows in ID order |
-| SSA_EVENT_RECORD | ABI2 only, matching identity plus dtlb; exactly one after each scalar row |
+| SSA_EVENT_RECORD | ABI2 only, matching identity plus profile-specific dtlb/cache; exactly one after each scalar row |
 | SSA_XCHUNK_END | session,seq,count,hash; detects missing/duplicate/truncated chunks |
 | SSA_XFRAME | session,frame starting1,rid,status=abandoned; all retained open frames, capped at valid256-frame storage |
 | SSA_XEND | session,chunks,emitted,total,hash,status,records_complete; final transport/integrity authority |
@@ -74,7 +75,7 @@ retained byte-for-byte in field meaning for the prior graders. New tags:
 The checksum is a64-bit **word checksum v1**, not cryptographic authentication.
 Seed14695981039346656037; for each unsigned64-bit word,
 `h=((h XOR word)*1099511628211) mod 2^64`. Per-record words, in order:
-`id,parent,callee,cycle,instret,time,dtlb-or-zero,open`. Each chunk resets its seed;
+`id,parent,callee,cycle,instret,time,fourth-profile-event-or-zero,open`. Each chunk resets its seed;
 the END hash runs over all emitted records without resetting at chunk boundaries.
 Empty exports have no chunks and END hash equal to the seed. Counts are decimal,
 callee/checksum hex. No dependence on host byte order or pointer serialization.
@@ -120,12 +121,13 @@ counter values or relabel DTLB accepted requests as unique misses.
 
 ## Coverage distinction
 
-Actual Linux fixture:41 records under one parent, the first leaf called twice
+Stage7 actual Linux fixture:41 records under one parent, the first leaf called twice
 with ID reuse; two-record explicit STOP/EXPORT; zero-record STOP/EXPORT; two-record
 exit with one open parent; new and old exec sessions, DTLB/event preemption and
 original process regressions. Current-source public Linux/OpenSBI build, reused
-hash-verified stage6 model. Actual acceptance is pending until native exit and
-all checkers pass; see STAGE7.md.
+hash-verified stage6 model. Actual acceptance completed with native exit0 and all
+checkers passing; see STAGE7.md. Stage8 rebuilt the model and separately accepted
+the Cache fixture, as recorded in STAGE8.md.
 
 Host-only checks: maximum262143-record chunk arithmetic and final bounds,
 zero/1/2/15/16/17/32/33/41 records in ABI1/ABI2, invalid capacity, missing/duplicate
@@ -161,3 +163,20 @@ sessions4/5/13 are semantic-incomplete but transport-complete. See STAGE7.md and
 evidence/stage7/summary.json for raw logs, checksums, counters and exact hashes.
 The host's maximum-capacity plan and corrupt-stream tests are not native full-pool
 or native I/O fault-injection coverage.
+
+## Stage8 fixed Cache profile compatibility
+
+A Cache image pairs kernel/firmware SSA_CACHE_PROFILE and keeps ABI2 layout/ROM.
+Counter3 is `dcache_a_transactions`,40bit,selector514; event rows use`cache`.
+XBEGIN explicitly says`profile=dcache_a_transactions`. Default DTLB uses its own
+name/selector4098/`dtlb`; absent-profile historical ABI2 meansDTLB, ABI1 meansbase.
+The reader rejects mismatched/unknown profiles, selectors, widths, duplicate event
+channels and event data injected into scalar rows. It never silently labels a
+Cache payload asDTLB. Checksums retain the same numeric fourth word.
+
+The native event is completed D-cache outbound TL A transactions (cached and
+uncached), occurrence intervals inclusive of children/kernel/private ROM, with
+S..R exclusion for normal mode. Late increments belong to their sampling interval;
+post-R resumed-task cache effects remain charged. See ABI.md and STAGE8.md for
+exact source/limits. Actual Cache41 rows/3chunks plus small/empty/open andexec
+passed in Linux; full source logs/results are in evidence/stage8/.

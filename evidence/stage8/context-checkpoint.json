@@ -1,0 +1,127 @@
+{
+  "scope": "one actual completed frozen Cache context session; remaining Linux cases pending",
+  "results": {
+    "format_version": 1,
+    "valid": true,
+    "errors": [],
+    "sessions": [
+      {
+        "header": {
+          "version": 1,
+          "session": 1,
+          "pid": 15,
+          "image": 1,
+          "abi": 2,
+          "total": 4,
+          "capacity": 262143,
+          "chunk": 16,
+          "counters": 4,
+          "reason": "stop",
+          "pool": 2281701376,
+          "next": 5,
+          "depth": 0,
+          "spill": 0,
+          "errors": 0,
+          "status": 0,
+          "legacy": 0,
+          "policy": "interval_inclusive_pause_rebase",
+          "profile": "dcache_a_transactions"
+        },
+        "counters": [
+          {
+            "session": 1,
+            "index": 0,
+            "name": "cycle",
+            "width": 64,
+            "selector": 0
+          },
+          {
+            "session": 1,
+            "index": 1,
+            "name": "instret",
+            "width": 64,
+            "selector": 0
+          },
+          {
+            "session": 1,
+            "index": 2,
+            "name": "time",
+            "width": 64,
+            "selector": 0
+          },
+          {
+            "session": 1,
+            "index": 3,
+            "name": "dcache_a_transactions",
+            "width": 40,
+            "selector": 514
+          }
+        ],
+        "records": [
+          {
+            "pid": 15,
+            "id": 1,
+            "callee": 66986,
+            "parent": 0,
+            "cycle": 1308,
+            "instret": 276,
+            "time": 13,
+            "session": 1,
+            "open": 0,
+            "cache": 13
+          },
+          {
+            "pid": 15,
+            "id": 2,
+            "callee": 66954,
+            "parent": 1,
+            "cycle": 250,
+            "instret": 58,
+            "time": 3,
+            "session": 1,
+            "open": 0,
+            "cache": 4
+          },
+          {
+            "pid": 15,
+            "id": 3,
+            "callee": 67006,
+            "parent": 0,
+            "cycle": 5668,
+            "instret": 778,
+            "time": 57,
+            "session": 1,
+            "open": 0,
+            "cache": 135
+          },
+          {
+            "pid": 15,
+            "id": 4,
+            "callee": 66954,
+            "parent": 3,
+            "cycle": 5127,
+            "instret": 664,
+            "time": 51,
+            "session": 1,
+            "open": 0,
+            "cache": 131
+          }
+        ],
+        "frames": [],
+        "chunks": 1,
+        "hash": 8006778187000317453,
+        "released": true,
+        "end": {
+          "session": 1,
+          "chunks": 1,
+          "emitted": 4,
+          "total": 4,
+          "hash": 8006778187000317453,
+          "status": 0,
+          "records_complete": 1
+        },
+        "complete": true
+      }
+    ]
+  }
+}

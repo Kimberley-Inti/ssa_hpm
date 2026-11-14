@@ -1,0 +1,14 @@
+{
+  "d-cache-block-size": 64,
+  "d-cache-sets": 64,
+  "d-cache-size": 16384,
+  "ways": 4,
+  "backend": "blocking DCache; generated RTL contains module DCache",
+  "nMSHRs": 0,
+  "hpm_counters": 1,
+  "hpm_width": 40,
+  "event_set": 2,
+  "event_bit": 1,
+  "selector": 514,
+  "dts_sha256": "f8d05b83f6fb5f4149966e7f61b3e041042151a92aa1e268f8df71cae2a18dc5"
+}

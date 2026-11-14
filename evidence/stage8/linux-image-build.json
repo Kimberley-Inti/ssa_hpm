@@ -1,0 +1,232 @@
+{
+  "passed": true,
+  "reason": "Before first Linux run: prefault distinct writable pages to prevent read-only BSS aliasing Linux shared zero page. All faults/initial writes outside monitored intervals. Reuse independently fetched/applied/built kernel caches; rebuild all7 ELF payloads, initramfs, kernel image and firmware payload.",
+  "commands": [
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-DCHAIN_EVENTS",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/cache-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/init"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-DCHAIN_EVENTS",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/exec-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/lifecycle"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-DNEXT_IMAGE",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/exec-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/next"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-DCACHE_END",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/export-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/regress"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/event-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/events"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-DEVENT_SESSION",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/exec-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/eventexec"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-DCACHE_PROFILE_TEST",
+        "-DEVENT_SESSION",
+        "-DNEXT_IMAGE",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-static",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "/home/lxf/chipyard/ssa/linux/exec-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage8/independent-linux/eventnext"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "make",
+        "ARCH=riscv",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage8/independent-linux/host-tools/compiler-bin/",
+        "LD=/tmp/ssa-hpm-stage8/independent-linux/host-tools/usr/bin/riscv64-linux-gnu-ld",
+        "KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE",
+        "KAFLAGS=-misa-spec=2.2",
+        "-j4",
+        "Image"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux/linux"
+    },
+    {
+      "argv": [
+        "make",
+        "PLATFORM=ssa_rocket",
+        "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+        "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+        "platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE",
+        "FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage8/independent-linux/linux/arch/riscv/boot/Image",
+        "FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage8/independent-linux/rocket.dtb",
+        "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+        "-j4"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux/opensbi"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "-O",
+        "binary",
+        "/tmp/ssa-hpm-stage8/independent-linux/boot-a.elf",
+        "/tmp/ssa-hpm-stage8/independent-linux/boot-a.bin"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/lxf/chipyard/ssa/elf_to_hex.py",
+        "/tmp/ssa-hpm-stage8/independent-linux/boot-a.bin",
+        "/tmp/ssa-hpm-stage8/independent-linux/boot-a.hex"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage8/independent-linux"
+    }
+  ],
+  "images": {
+    "boot-a.elf": "991b5ea21c581a9dcd20be0b4f2647e83e60d2d816a288c983ac9f3be6d19e9c",
+    "boot-a.hex": "c379013618ab5ca01321c9285dcdc69b53363ea32a0820586f80f7ae81c53452"
+  }
+}

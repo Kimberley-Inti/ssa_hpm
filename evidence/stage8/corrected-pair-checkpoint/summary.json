@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "scope": "Actual completed corrected Cache Linux pair; legacy/exec/41-export and full shutdown still pending",
+  "checks": {
+    "valid_complete_exports": true,
+    "pid16_counter0": true,
+    "pid16_counter1": true,
+    "pid16_counter2": true,
+    "pid16_counter3": true,
+    "pid17_counter0": true,
+    "pid17_counter1": true,
+    "pid17_counter2": true,
+    "pid17_counter3": true,
+    "timer_cut_two_open_frames": true,
+    "B_actual_cache_events": true
+  },
+  "A": {
+    "pid": 17,
+    "test": 9,
+    "role": 1,
+    "counter": 3,
+    "original": 233851,
+    "final": 244346,
+    "off": 10495,
+    "recorded": 193,
+    "raw": 10688,
+    "valid": 1,
+    "rebased": 1,
+    "session": 3
+  },
+  "B_common": 730,
+  "console_sha256": "dee97c5591d9c306a8538cc26359d79b20f0674a2251c2eabef9c32d1d78f6ef"
+}

@@ -69,6 +69,10 @@ void _start(void){
   long pid=fork_child();require(pid>=0);if(!pid)child(test);wait_child(pid,0);
   require(api(3,0,0,0)==0);out("SSA RESULT CASE PASS\n");
  }
- out("SSA_RESULT_EXPORT_SUITE_END\n");char *args[]={"/lifecycle",0};char *env[]={0};
+ out("SSA_RESULT_EXPORT_SUITE_END\n");
+#ifdef CACHE_END
+ C(142,0xfee1dead,672274793,0x4321fedc);for(;;)C(124,0,0,0);
+#endif
+ char *args[]={"/lifecycle",0};char *env[]={0};
  sc(221,(long)args[0],(long)args,(long)env,0,0,0);die(93);
 }

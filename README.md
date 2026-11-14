@@ -127,3 +127,11 @@ Stage7 accepted: [complete frozen result export](docs/STAGE7.md),
 exported41 records in3 chunks; the full boot passed25 export,70 event,37 exec
 and179 process checks and shut down with exit0. All24 sessions/87 records were
 validated and released; [final evidence](evidence/stage7/summary.json).
+
+Stage8 accepted: [native Cache profile](docs/STAGE8.md), fixed HPM3 selector
+0x202 counts completed outbound D-cache TileLink A transactions. Five new RTL
+cases and actual Linux context/timer/exec/full export passed (39/69/24 gates),
+with12 sessions/63 records and normal shutdown/exit0. D03's one-Cache-event gap
+is closed under the documented native interval semantics; default DTLB0x1002
+and ABI1/2 remain identifiable. [Evidence](evidence/stage8/summary.json).
+Scalar/stream/random classification remains next-round work.

@@ -1,0 +1,61 @@
+Missing event suite markers; execution incomplete
+{
+  "passed": false,
+  "checks": 6,
+  "failed": [
+    "native_exit_powerdown",
+    "all_exports_valid",
+    "all_pools_released",
+    "all_four_counters_identified",
+    "fixture_boundaries",
+    "four_target_sessions"
+  ]
+}
+{
+  "passed": false,
+  "scope": "one actual singlehart Rocket Linux Cache boot; directed timer/exec/export, not another complete historical stage4 run",
+  "checks": {
+    "real_cache_event_and_lifecycle": false,
+    "complete_export_fixture": false,
+    "twelve_owned_sessions": false,
+    "configured_profile_identified": false
+  },
+  "dependencies": [
+    {
+      "command": [
+        "python3",
+        "/home/lxf/chipyard/ssa/linux/grade-events.py",
+        "/tmp/ssa-hpm-stage8/linux-rtl/rocket-linux-events.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage8/linux-rtl/event-user-roles.json",
+        "--out-dir",
+        "/tmp/ssa-hpm-stage8/linux-rtl/event",
+        "--profile",
+        "cache",
+        "--no-baseline"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "python3",
+        "/home/lxf/chipyard/ssa/linux/grade-export.py",
+        "/tmp/ssa-hpm-stage8/linux-rtl/rocket-linux-events.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage8/linux-rtl/user-elfs.json",
+        "--out-dir",
+        "/tmp/ssa-hpm-stage8/linux-rtl/export",
+        "--fixture-role",
+        "regress",
+        "--no-regression"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "sessions": 0,
+  "records": 0
+}

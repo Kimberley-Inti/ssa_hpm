@@ -1,0 +1,38 @@
+{
+  "gcc": {
+    "exit_code": 0,
+    "version_lines": [
+      "riscv64-unknown-elf-gcc () 15.1.0",
+      "Copyright (C) 2025 Free Software Foundation, Inc.",
+      "This is free software; see the source for copying conditions.  There is NO"
+    ]
+  },
+  "verilator": {
+    "exit_code": 0,
+    "version_lines": [
+      "Verilator 4.226 2022-08-31 rev v4.226"
+    ]
+  },
+  "java": {
+    "exit_code": 0,
+    "version_lines": [
+      "openjdk 17.0.21.0.3 2026-10-24",
+      "OpenJDK Runtime Environment (build 17.0.21.0.3+1-1-22.04.1-Ubuntu)",
+      "OpenJDK 64-Bit Server VM (build 17.0.21.0.3+1-1-22.04.1-Ubuntu, mixed mode, sharing)"
+    ]
+  },
+  "spike": {
+    "exit_code": 0,
+    "version_lines": [
+      "Spike RISC-V ISA Simulator 1.1.1-dev",
+      "",
+      "usage: spike [host options] <target program> [target options]"
+    ]
+  },
+  "os": {
+    "exit_code": 0,
+    "version_lines": [
+      "Linux ubuntu22 6.8.0-107-generic #107~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Mar 18 23:40:43 UTC  x86_64 x86_64 x86_64 GNU/Linux"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+This emulator compiled with JTAG Remote Bitbang client. To enable, use +jtag_rbb_enable=1.
+Listening on port 41761
+SSA TRAP EVIDENCE 0000000000000002 0000000000000003 0000000000000002 0000000000000001 0000000000000000
+SSA PASS: read-only trap status CSR rejects writes and balances return
+[UART] UART0 is here (stdin/stdout).

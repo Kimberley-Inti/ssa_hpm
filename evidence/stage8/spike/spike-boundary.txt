@@ -1,0 +1,2 @@
+SSA PASS: 258 calls, 256 frames, overflow folds into top, full unwind
+SSA PASS: record exhaustion bounded, error recorded, parent restored

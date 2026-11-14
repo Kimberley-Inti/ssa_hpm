@@ -1,0 +1,13 @@
+make: Entering directory '/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/chipyard.TestHarness.SSAHPMEventRocketConfig'
+ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/opt/riscv/include -I/home/lxf/chipyard/tools/DRAMSim2 -I/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig    -D__STDC_FORMAT_MACROS -DTEST_HARNESS=VTestHarness -DVERILATOR -include /home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/chipyard.TestHarness.SSAHPMEventRocketConfig.plusArgs -include /home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/verilator.h -include /home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/chipyard.TestHarness.SSAHPMEventRocketConfig/VTestHarness.h  -DVL_THREADED -std=c++17 -Os -c -o ssa_progress_emulator.o /tmp/ssa-hpm-stage8/progress/ssa_progress_emulator.cc
+In file included from /usr/local/share/verilator/include/verilated.h:35,
+                 from /usr/local/share/verilator/include/verilated_vcd_c.h:24,
+                 from /home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/verilator.h:4,
+                 from <command-line>:
+/usr/local/share/verilator/include/verilatedos.h:291: warning: "__STDC_FORMAT_MACROS" redefined
+  291 | #define __STDC_FORMAT_MACROS
+      | 
+<command-line>: note: this is the location of the previous definition
+/usr/bin/g++ -B/usr/bin/    SimDRAM.o SimDTM.o SimJTAG.o SimSerial.o SimUART.o ssa_progress_emulator.o mm.o mm_dramsim2.o remote_bitbang.o testchip_tsi.o uart.o verilated.o verilated_dpi.o verilated_vpi.o verilated_threads.o VTestHarness__ALL.a   -L/opt/riscv/lib -Wl,-rpath,/opt/riscv/lib -L/home/lxf/chipyard/sims/verilator -L/home/lxf/chipyard/tools/DRAMSim2 -lfesvr -ldramsim  -pthread -lpthread -latomic   -o /tmp/ssa-hpm-stage8/progress/simulator-progress
+make: Leaving directory '/home/lxf/chipyard/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/chipyard.TestHarness.SSAHPMEventRocketConfig'
+/tmp/ssa-hpm-stage8/progress/simulator-progress

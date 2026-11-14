@@ -43,6 +43,10 @@ static __attribute__((noinline,noclone)) void old_parent(long success){
 static void child(long success){
  int prio=0;need(C(119,0,0,&prio)==0);need(C(146,1000,0,0)==0);
 #ifdef EVENT_SESSION
+ #ifdef CACHE_PROFILE_TEST
+ for(u64 i=0;i<128;i++)exec_pages[i*512]=i+1;
+ asm volatile("fence rw,rw":::"memory");
+#endif
  exec_touch(128);
 #endif
  need(api(1,success?5:7)==0);old_parent(success);
@@ -71,6 +75,10 @@ void _start(void){
 #else
 static __attribute__((noinline,noclone)) void common(void){
 #ifdef EVENT_SESSION
+ #ifdef CACHE_PROFILE_TEST
+ for(u64 i=0;i<128;i++)exec_pages[i*512]=i+1;
+ asm volatile("fence rw,rw":::"memory");
+#endif
  exec_touch(128);
 #endif
  work(100);}
@@ -78,6 +86,10 @@ static __attribute__((noinline,noclone)) void parent(void){common();asm volatile
 void _start(void){
  out("SSA EXEC IMAGE B ENTER\n");need(C(174,0,0,0)==1000);need(api(3,0)==0);
 #ifdef EVENT_SESSION
+ #ifdef CACHE_PROFILE_TEST
+ for(u64 i=0;i<128;i++)exec_pages[i*512]=i+1;
+ asm volatile("fence rw,rw":::"memory");
+#endif
  exec_touch(128);
 #endif
  need(api(1,6)==0);parent();need(api(2,0)==2);
