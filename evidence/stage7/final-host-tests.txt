@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": 36,
+  "failed": [],
+  "native": {
+    "passed": true,
+    "coverage": "actual completed41-record native prefix regraded; negatives are host mutations, not new hardware faults",
+    "prefix_sha256": "aee7eadb84891fe67a08a1fb29ceaa52af8efc8bcdc94aecf39030e4c0320282",
+    "checks": {
+      "native_first_export_valid": true,
+      "native_missing_chunk_detected": true,
+      "native_duplicate_chunk_detected": true,
+      "native_missing_END_detected": true
+    }
+  }
+}

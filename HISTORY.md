@@ -235,3 +235,49 @@ Chipyard 3a31d53b10babdf476473cc7d2d682e215dc7305 adds explicit ELF-identified A
 Stage6 native scheduling follow-up: Linux `49943b80f864a41e4ac13108a77f921e013d3570` corrects the fourth-delta scratch array after the initial run exposed an overrun. Both Linux commits are retained in `0004-linux-dtlb-event.patch`. Chipyard `d954827f` carries this corrected reproduction patch; maintenance `3cff382` maps and records the fix. The independent corrected tree is `4234609f62a91906b25a741f9897f17b327bcb57`; the original image build evidence is superseded by `linux-image-build.json` for final acceptance.
 
 Stage6 native acceptance completed: actual independent Linux image, clean exit0/power-down; 70 event gates,37 lifecycle gates and176 process gates (all173 historical gates plus three additional sample assertions) passed. All29 low-level tests (24 existing plus5 new) were actual new runs, and independent model rebuild repeated the5 new tests. Source/ROM ABI1 continuity remains verified; main/tags/earlier Draft PRs are unchanged.
+
+## Stage7 result export (from accepted stage6)
+
+Actual maintenance baseline `1c48e93b0055e92a565eb455a057c1e45618d81c`; PR5 remains Draft/Open against stage5. User's supplied SHA had one missing digit; local and remote branch agree on the full SHA above.
+
+Linux `49943b80f864a41e4ac13108a77f921e013d3570` → `b92b11252f5b9a5ce2a3c33298fa3b8bef93c836` removes the32-record export/completeness limit, snapshots on STOP, reads frozen current-task chunks of16, emits versioned metadata/checksums/status and releases only after terminal export. New op5 exports STOPPED state once without releasing; later exit/exec releases it. Both author/date/message and source diff are retained in linux patch0005.
+
+Chipyard `d954827faca21a1534ac89db748896f0c319c559` → `b4d90067` carries the Linux patch,41/2/0/open-frame fixture, host parser and fault tests, ABI and versioned build/run/check entry. Source full SHAs/tree hashes are in evidence/stage7/source-commits.json. Rocket `469bfac7de26bfbb03298787ad030898c6de24c9` and OpenSBI `34520a712309790d3e9a005194b763467b980fdb` are unchanged; no RTL rebuild is claimed.
+
+The project acceptance matrix (docs/ACCEPTANCE.md) distinguishes original core requirements, adopted single-hart Linux adaptations, deferred original data-flow objectives and optional extensions. Public-source independent kernel/firmware build and36 host checks passed at this checkpoint; native Linux validation remains running.
+
+Chipyard `a96ebf15` strengthens the host-only session-boundary oracle by rejecting injected foreign payloads;36 host checks pass. It does not change the already built/running image or the reused Rocket model.
+
+A new public Chipyard/Rocket fetch/application matched the final stage7 source manifest and both ROM banks. Its installed suite passed36 host tests; recompiling all7 userspace ELFs there reproduced exactly the hashes of the running independent image payloads. These are actual fresh checks; the native Linux execution remains pending.
+
+Chipyard `4687cdbe` adds optional --native-log replay and missing/duplicate/truncated mutation checks against the real completed41-record prefix. Host-only; running image/model unchanged. The independent installed validation script is refreshed after the public source reconstruction; its original compilation/source evidence remains distinct.
+
+Native stage7 checkpoint: actual41-record/3-chunk session completed and released its pool, exactIDs/ELF tree/checksums passed;36 synthetic host checks plus4 checks on actual captured-prefix/mutations passed. Remaining native cases and affected regressions are still running. Monitor exit143 is recorded separately and is not a native failure.
+
+Chipyard `28c03f08` fixes a checker-role mismatch for the chained original lifecycle fixture: use the actual `/lifecycle` ELF as the historical logical init role while keeping the new export fixture bound to `/init`. On archived real stage6 data the uncorrected role caused two ELF-tree failures; the corrected role passes70/37/176 unchanged gates. Actual /lifecycle payload exactly equals archived /init by hash/symbols. This is a historical-log oracle check, not a new native execution; the running image is unchanged. The independently installed host checker was refreshed and the complete source-file manifest reverified.
+
+Native four-case export checkpoint passed23 specialized gates:41/2/0/open sessions, IDs/ELF trees/checksums and lifecycle pool release. The full25-gate result remains pending only on native shutdown and delegated old-suite execution; checkpoint evidence retains its honest false overall status. The same native boot continues into original stage6/5/4 suites.
+
+Chipyard `b610880d` raises only the default host timeout for fresh --export runs to48h after the observed slow native run exceeded7h with suites remaining; explicit flags and legacy defaults remain intact. Current native process/image/model unchanged. Host supervision actions, if needed near its original12h deadline, are separately audited and actual child exit status still reaped by the same runner. No actual extension action at this checkpoint.
+
+Actual stage7 native lifecycle checkpoint:35 original lifecycle gates pass, with only overall shutdown/affected-stage4 gates pending. Success old/new SID5/6 underPID18 have images2/3 and leaf3318/6618; ENOENT session7 retains and closes its tree. The running boot continues into events/process fixtures. Checkpoint overall status remains false until the dependent gates complete.
+
+Stage7 final acceptance (same single native run, no restart): independently built
+public-source Linux/OpenSBI image exited0 with normal power-down after51379.89s.
+All25 export,70 event,37 exec and179 process checks passed; the latter retains
+all176 stage6 checks plus3 assertions for an additional real scheduler sample.
+36 synthetic host checks and4 real-prefix/host-mutation checks also pass. The
+independently installed checker replays the same raw log identically.24 sessions,
+87 records,25 chunks all transferred/released; first41-record END871b3b3ee92eb291.
+Actual corrected DTLB6=1131-1125 versus legacy1133; corrected instret long-short-40
+versus legacy202484. In-flight summaries remain explicitly historical.
+
+Only the waiting host runner was paused near its original12h deadline; native
+execution continued, kernel wait0 was captured, and runner resumed/reaped0. The
+monitor's143 is separate. No Rocket/OpenSBI source change or new low-level RTL/
+Spike execution. Source delivery remains Chipyard b610880dd4a0bcab4808398b62f290b13a613979,
+Linux b92b11252f5b9a5ce2a3c33298fa3b8bef93c836, Rocket469bfac7 and OpenSBI34520a7.
+Final evidence/requirements decision is in evidence/stage7/summary.json and
+docs/ACCEPTANCE.md. The final maintenance evidence commit continues the existing
+stage7-result-export history and updates Draft PR6 against stage6; main, tags and
+earlier PR branches remain unchanged.

@@ -1,0 +1,230 @@
+{
+  "passed": false,
+  "engine": "real single-hart Rocket/Verilator Linux",
+  "checks": {
+    "clean_shutdown": false,
+    "SSA EXEC IMAGE B ENTER": true,
+    "SSA EXEC IMAGE B PASS": true,
+    "SSA EXEC SUCCESS CHILD PASS": true,
+    "SSA EXEC ENOENT CHILD PASS": true,
+    "SSA EXEC FIXTURE PASS": true,
+    "three_exec_fixture_sessions": true,
+    "same_pid_new_session": true,
+    "pool_reuse": true,
+    "old_open_export": true,
+    "old_one_begin_and_export": true,
+    "old_clean_begin": true,
+    "old_tree_and_symbols": true,
+    "old_closed_leaf": true,
+    "open_abandoned_not_returned": true,
+    "exec_commit_end_once": true,
+    "new_one_begin_and_export": true,
+    "new_clean_begin": true,
+    "new_tree_and_symbols": true,
+    "new_closed_leaf": true,
+    "new_closed_exit": true,
+    "new_inclusive": true,
+    "failed_one_begin_and_export": true,
+    "failed_clean_begin": true,
+    "failed_tree_and_symbols": true,
+    "failed_closed_leaf": true,
+    "failed_closed_exit": true,
+    "failed_inclusive": true,
+    "actual_exec_epoch": true,
+    "fresh_leaf_counts_no_old_image_carry": true,
+    "old_exec_observed_open_frame": true,
+    "enoent_keeps_open_session": true,
+    "no_duplicate_exports_same_pid": true,
+    "freeze_release_then_new_enable": true,
+    "new_enters_unmonitored": true,
+    "regression_boundary": true,
+    "affected_stage4_regression": false
+  },
+  "sessions": [
+    {
+      "pid": 18,
+      "uid": 1000,
+      "role": 0,
+      "test": 5,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 0,
+      "depth": 1,
+      "next": 3,
+      "spill": 0,
+      "events": 1,
+      "session": 5
+    },
+    {
+      "pid": 18,
+      "uid": 1000,
+      "role": 0,
+      "test": 6,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 0,
+      "session": 6
+    },
+    {
+      "pid": 19,
+      "uid": 1000,
+      "role": 0,
+      "test": 7,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 3,
+      "spill": 0,
+      "events": 2,
+      "session": 7
+    }
+  ],
+  "session_boundaries": [
+    {
+      "pid": 18,
+      "session": 5,
+      "image": 2,
+      "reason": "exec",
+      "comm": "lifecycle",
+      "selector": 0,
+      "cutoff_cycle": 29482045,
+      "cutoff_instret": 17635812,
+      "cutoff_time": 294827
+    },
+    {
+      "pid": 18,
+      "session": 6,
+      "image": 3,
+      "reason": "exit",
+      "comm": "next",
+      "selector": 0,
+      "cutoff_cycle": 32230220,
+      "cutoff_instret": 19242670,
+      "cutoff_time": 322307
+    },
+    {
+      "pid": 19,
+      "session": 7,
+      "image": 2,
+      "reason": "exit",
+      "comm": "lifecycle",
+      "selector": 0,
+      "cutoff_cycle": 34709902,
+      "cutoff_instret": 20546997,
+      "cutoff_time": 347103
+    }
+  ],
+  "records": [
+    {
+      "pid": 18,
+      "id": 1,
+      "callee": 66082,
+      "parent": 0,
+      "cycle": 0,
+      "instret": 0,
+      "time": 0,
+      "session": 5,
+      "open": 1
+    },
+    {
+      "pid": 18,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 3496,
+      "instret": 3318,
+      "time": 35,
+      "session": 5,
+      "open": 0
+    },
+    {
+      "pid": 18,
+      "id": 1,
+      "callee": 66082,
+      "parent": 0,
+      "cycle": 7370,
+      "instret": 6717,
+      "time": 73,
+      "session": 6,
+      "open": 0
+    },
+    {
+      "pid": 18,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 6780,
+      "instret": 6618,
+      "time": 68,
+      "session": 6,
+      "open": 0
+    },
+    {
+      "pid": 19,
+      "id": 1,
+      "callee": 66082,
+      "parent": 0,
+      "cycle": 173326,
+      "instret": 117419,
+      "time": 1735,
+      "session": 7,
+      "open": 0
+    },
+    {
+      "pid": 19,
+      "id": 2,
+      "callee": 65812,
+      "parent": 1,
+      "cycle": 6992,
+      "instret": 6636,
+      "time": 70,
+      "session": 7,
+      "open": 0
+    }
+  ],
+  "open_frames": [
+    {
+      "pid": 18,
+      "session": 5,
+      "frame": 1,
+      "rid": 1,
+      "status": "abandoned",
+      "entry_cycle": 29322410,
+      "entry_instret": 17558769,
+      "entry_time": 293224
+    }
+  ],
+  "queries": [
+    {
+      "pid": 18,
+      "session": 5,
+      "image": 2,
+      "depth": 1,
+      "next": 3,
+      "selector": 2281701376
+    },
+    {
+      "pid": 19,
+      "session": 7,
+      "image": 2,
+      "depth": 1,
+      "next": 3,
+      "selector": 2281701376
+    },
+    {
+      "pid": 19,
+      "session": 7,
+      "image": 2,
+      "depth": 1,
+      "next": 3,
+      "selector": 2281701376
+    }
+  ],
+  "regression": "regression/summary.json",
+  "errno_scope": "ENOENT before exec_mmap commit; validated by source assertion and successful child wait"
+}

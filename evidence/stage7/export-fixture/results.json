@@ -1,0 +1,809 @@
+{
+  "format_version": 1,
+  "valid": true,
+  "errors": [],
+  "sessions": [
+    {
+      "header": {
+        "version": 1,
+        "session": 1,
+        "pid": 14,
+        "image": 1,
+        "abi": 2,
+        "total": 41,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 42,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 1,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 1,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 1,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 1,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 14,
+          "id": 1,
+          "callee": 67222,
+          "parent": 0,
+          "cycle": 22282,
+          "instret": 4733,
+          "time": 223,
+          "session": 1,
+          "open": 0,
+          "dtlb": 2
+        },
+        {
+          "pid": 14,
+          "id": 2,
+          "callee": 66822,
+          "parent": 1,
+          "cycle": 194,
+          "instret": 46,
+          "time": 2,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 3,
+          "callee": 66832,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 4,
+          "callee": 66842,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 5,
+          "callee": 66852,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 6,
+          "callee": 66862,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 7,
+          "callee": 66872,
+          "parent": 1,
+          "cycle": 113,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 8,
+          "callee": 66882,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 9,
+          "callee": 66892,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 10,
+          "callee": 66902,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 11,
+          "callee": 66912,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 12,
+          "callee": 66922,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 13,
+          "callee": 66932,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 14,
+          "callee": 66942,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 15,
+          "callee": 66952,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 16,
+          "callee": 66962,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 17,
+          "callee": 66972,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 18,
+          "callee": 66982,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 19,
+          "callee": 66992,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 20,
+          "callee": 67002,
+          "parent": 1,
+          "cycle": 113,
+          "instret": 23,
+          "time": 2,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 21,
+          "callee": 67012,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 22,
+          "callee": 67022,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 23,
+          "callee": 67032,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 24,
+          "callee": 67042,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 25,
+          "callee": 67052,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 26,
+          "callee": 67062,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 27,
+          "callee": 67072,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 28,
+          "callee": 67082,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 29,
+          "callee": 67092,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 30,
+          "callee": 67102,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 31,
+          "callee": 67112,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 32,
+          "callee": 67122,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 33,
+          "callee": 67132,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 34,
+          "callee": 67142,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 35,
+          "callee": 67152,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 36,
+          "callee": 67162,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 37,
+          "callee": 67172,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 38,
+          "callee": 67182,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 39,
+          "callee": 67192,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 40,
+          "callee": 67202,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 0,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        },
+        {
+          "pid": 14,
+          "id": 41,
+          "callee": 67212,
+          "parent": 1,
+          "cycle": 86,
+          "instret": 23,
+          "time": 1,
+          "session": 1,
+          "open": 0,
+          "dtlb": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 3,
+      "hash": 9735440160877621905,
+      "released": true,
+      "end": {
+        "session": 1,
+        "chunks": 3,
+        "emitted": 41,
+        "total": 41,
+        "hash": 9735440160877621905,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 2,
+        "pid": 15,
+        "image": 1,
+        "abi": 1,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "stop",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 2,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 2,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 2,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [
+        {
+          "pid": 15,
+          "id": 1,
+          "callee": 67270,
+          "parent": 0,
+          "cycle": 723,
+          "instret": 120,
+          "time": 7,
+          "session": 2,
+          "open": 0
+        },
+        {
+          "pid": 15,
+          "id": 2,
+          "callee": 66822,
+          "parent": 1,
+          "cycle": 100,
+          "instret": 21,
+          "time": 1,
+          "session": 2,
+          "open": 0
+        }
+      ],
+      "frames": [],
+      "chunks": 1,
+      "hash": 6808350630059487995,
+      "released": true,
+      "end": {
+        "session": 2,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 6808350630059487995,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 3,
+        "pid": 16,
+        "image": 1,
+        "abi": 1,
+        "total": 0,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 3,
+        "reason": "stop",
+        "pool": 2281701376,
+        "next": 1,
+        "depth": 0,
+        "spill": 0,
+        "errors": 0,
+        "status": 0,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 3,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 3,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 3,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        }
+      ],
+      "records": [],
+      "frames": [],
+      "chunks": 0,
+      "hash": 14695981039346656037,
+      "released": true,
+      "end": {
+        "session": 3,
+        "chunks": 0,
+        "emitted": 0,
+        "total": 0,
+        "hash": 14695981039346656037,
+        "status": 0,
+        "records_complete": 1
+      },
+      "complete": true
+    },
+    {
+      "header": {
+        "version": 1,
+        "session": 4,
+        "pid": 17,
+        "image": 1,
+        "abi": 2,
+        "total": 2,
+        "capacity": 262143,
+        "chunk": 16,
+        "counters": 4,
+        "reason": "exit",
+        "pool": 2281701376,
+        "next": 3,
+        "depth": 1,
+        "spill": 0,
+        "errors": 0,
+        "status": 1,
+        "legacy": 0,
+        "policy": "interval_inclusive_pause_rebase"
+      },
+      "counters": [
+        {
+          "session": 4,
+          "index": 0,
+          "name": "cycle",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 4,
+          "index": 1,
+          "name": "instret",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 4,
+          "index": 2,
+          "name": "time",
+          "width": 64,
+          "selector": 0
+        },
+        {
+          "session": 4,
+          "index": 3,
+          "name": "dtlb_accepted_ptw_requests",
+          "width": 40,
+          "selector": 4098
+        }
+      ],
+      "records": [
+        {
+          "pid": 17,
+          "id": 1,
+          "callee": 67288,
+          "parent": 0,
+          "cycle": 0,
+          "instret": 0,
+          "time": 0,
+          "session": 4,
+          "open": 1,
+          "dtlb": 0
+        },
+        {
+          "pid": 17,
+          "id": 2,
+          "callee": 66822,
+          "parent": 1,
+          "cycle": 108,
+          "instret": 23,
+          "time": 1,
+          "session": 4,
+          "open": 0,
+          "dtlb": 0
+        }
+      ],
+      "frames": [
+        {
+          "session": 4,
+          "frame": 1,
+          "rid": 1,
+          "status": "abandoned"
+        }
+      ],
+      "chunks": 1,
+      "hash": 9701258977773032188,
+      "released": true,
+      "end": {
+        "session": 4,
+        "chunks": 1,
+        "emitted": 2,
+        "total": 2,
+        "hash": 9701258977773032188,
+        "status": 1,
+        "records_complete": 1
+      },
+      "complete": false
+    }
+  ]
+}

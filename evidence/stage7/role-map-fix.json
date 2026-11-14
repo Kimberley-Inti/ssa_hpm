@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "before_failed_checks": [
+    "old_tree_and_symbols",
+    "failed_tree_and_symbols"
+  ],
+  "after_checks": 37,
+  "native_rerun": false,
+  "source": "historical accepted stage6 raw log, regraded with actual stage7 image ELF metadata",
+  "fix": "map real /lifecycle ELF to logical init role only for historical regression grader; new export fixture still uses actual /init metadata",
+  "actual_lifecycle_equals_accepted_init": true
+}

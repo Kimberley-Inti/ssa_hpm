@@ -1,0 +1,9 @@
+Missing event suite markers; execution incomplete
+{
+  "passed": false,
+  "checks": 25,
+  "failed": [
+    "native_exit_powerdown",
+    "stage6_event_lifecycle_process_regression"
+  ]
+}

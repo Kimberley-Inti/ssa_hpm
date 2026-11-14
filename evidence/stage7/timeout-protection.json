@@ -1,0 +1,24 @@
+{
+  "state": "runner_resumed",
+  "driver_pid": 301701,
+  "native_pid": 301709,
+  "policy": "near42000s suspend only runner; native continues; resume runner when child exits; actual model exit is reaped unchanged",
+  "events": [
+    {
+      "action": "STOP_runner_only",
+      "elapsed": 42039.43000000001,
+      "wall_epoch": 1794443345.531795
+    },
+    {
+      "action": "capture_native_kernel_exit_before_resume",
+      "wall_epoch": 1794461319.9976318,
+      "raw_kernel_wait_status": 0,
+      "native_exit_code": 0,
+      "proc_stat": "301709 (simulator-progr) Z 301701 301691 301691 0 -1 4227084 4159 0 0 0 5064035 47562 0 0 20 0 1 0 9800997 0 0 18446744073709551615 0 0 0 0 0 0 0 0 16418 1 0 0 17 3 0 0 0 0 0 0 0 0 0 0 0 0 0"
+    },
+    {
+      "action": "CONT_runner_to_reap_actual_exit",
+      "wall_epoch": 1794461319.9987376
+    }
+  ]
+}

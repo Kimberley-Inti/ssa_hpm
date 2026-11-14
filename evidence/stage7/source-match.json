@@ -1,0 +1,14 @@
+{
+  "linux": {
+    "tree": "ef83a163f08c58230c0c5f39ca16052228608ba8",
+    "source": "b92b11252f5b9a5ce2a3c33298fa3b8bef93c836"
+  },
+  "opensbi": {
+    "tree": "7b9ddfe46a8f677349bf5b88d37f01cab2c32be5",
+    "source": "34520a712309790d3e9a005194b763467b980fdb"
+  },
+  "model": {
+    "reused_stage6": true,
+    "sha256": "5d0ad7923007c12b67f18c613550d2476d7ef501d21849e90e8b9b7233450b52"
+  }
+}

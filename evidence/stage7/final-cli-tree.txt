@@ -1,0 +1,78 @@
+{
+  "valid": true,
+  "sessions": 24,
+  "records": 87,
+  "errors": []
+}
+session 1 reason exit complete True
+1 @10696 instret=4733 dtlb=2
+  2 @10506 instret=46 dtlb=0
+  3 @10510 instret=23 dtlb=0
+session 2 reason stop complete True
+1 @106c6 instret=120
+  2 @10506 instret=21
+session 3 reason stop complete True
+session 4 reason exit complete False
+1 @106d8 instret=0 dtlb=0 open=1
+  2 @10506 instret=23 dtlb=0
+session 5 reason exec complete False
+1 @10222 instret=0 open=1
+  2 @10114 instret=3318
+session 6 reason exit complete True
+1 @10222 instret=6717
+  2 @10114 instret=6618
+session 7 reason exit complete True
+1 @10222 instret=117419
+  2 @10114 instret=6636
+session 8 reason exit complete True
+1 @10580 instret=276 dtlb=3
+  2 @10560 instret=58 dtlb=2
+3 @10594 instret=778 dtlb=128
+session 9 reason exit complete True
+1 @102a6 instret=452600 dtlb=1070
+  2 @1014c instret=452487 dtlb=1069
+session 10 reason exit complete True
+1 @102a6 instret=278755 dtlb=8
+  2 @1014c instret=278642 dtlb=6
+session 11 reason exit complete True
+1 @102a6 instret=589252 dtlb=1078
+  2 @1014c instret=589139 dtlb=1077
+session 12 reason exit complete True
+1 @102a6 instret=3294453 dtlb=1135
+  2 @1014c instret=3294340 dtlb=1133
+session 13 reason exec complete False
+1 @1027a instret=0 dtlb=0 open=1
+  2 @1014c instret=3645 dtlb=64
+session 14 reason exit complete True
+1 @1027a instret=7378 dtlb=130
+  2 @1014c instret=7265 dtlb=128
+session 15 reason exit complete True
+1 @1027a instret=118039 dtlb=169
+  2 @1014c instret=11900 dtlb=134
+session 16 reason exit complete True
+1 @1024e instret=6722
+  2 @10114 instret=6623
+session 17 reason exit complete True
+1 @1024e instret=4216
+  2 @10114 instret=4117
+session 18 reason exit complete True
+1 @1024e instret=278702
+  2 @10114 instret=278603
+session 19 reason exit complete True
+1 @1024e instret=209334
+  2 @10114 instret=209235
+session 20 reason exit complete True
+1 @1024e instret=278662
+  2 @10114 instret=278563
+session 21 reason exit complete True
+1 @1024e instret=115438
+  2 @10114 instret=115339
+session 22 reason exit complete True
+1 @1024e instret=2283578
+  2 @10114 instret=2283479
+session 23 reason exit complete True
+1 @1024e instret=369213
+  2 @10114 instret=369114
+session 24 reason exit complete True
+1 @1024e instret=2486062
+  2 @10114 instret=2485963

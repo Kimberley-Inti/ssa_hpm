@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "method": "host-only exact subprocess.run timeout test; parent stopped while child finishes, then resumed to reap actual exit0",
+  "child_zombie_before_resume": true,
+  "parent_returncode": 0,
+  "stdout": "REAPED_EXIT0"
+}
