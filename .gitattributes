@@ -1,0 +1,2 @@
+# Preserve the canonical UART capture, including intentional CR/CRLF bytes.
+evidence/stage10/linux-rocket-linux-transparent.txt -text -whitespace

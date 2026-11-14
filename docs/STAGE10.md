@@ -194,3 +194,7 @@ public installed suites; see postcheck-entry.json/independent-postcheck-entry.js
 The frozen newc archive's nine ELF SHA256 values (and identical root4755 plain
 copy) were also verified inside Linux Image and the actual boot ELF; see
 elf-image-identity.json. No target ELF was modified to enable monitoring.
+
+The canonical raw UART capture intentionally retains CR/CRLF and console padding.
+Its exact path has Git `-text -whitespace` attributes to prevent newline conversion
+and preserve the recorded SHA; source/docs retain normal whitespace checking.
