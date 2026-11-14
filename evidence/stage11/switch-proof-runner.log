@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/lxf/chipyard/ssa/performance/linux-check.py", line 43, in <module>
+    (a.out/'switch-accounting.json').write_text(json.dumps({'owners':owners,'switches':switches,'samples':samples,'accounts':accounts,'two_distinct_task_pools':distinct_owners,'same_calls_in_separate_sessions':same_paths,'cache_profile_metadata':cache_metadata,'actual_timer_open2':actual_irq,'sample_chronology':ordering,'all_four_rebased':rebased,'independently_summed_pause_deltas':expected_off},indent=2)+'\n')
+                                                                                                                                                                ^^^^^^^^^^^^^^^
+NameError: name 'distinct_owners' is not defined

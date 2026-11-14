@@ -432,3 +432,59 @@ postcheck entry: original native/log receipt verification,50automatic/26manual/
 10capacity checks and the automatic/manual semantic negatives. It was executed
 against the same finished capture in both development and installed public suites;
 no frozen image/model/RTL source changed and no new native run was performed.
+
+## Stage11 — final candidate review and cost evaluation
+
+From stage10 `6ef19d6e85dfe55983794342620a026005a67d20`, stage11 preserves all
+prior source commits, branches and tags. Source mapping is recorded in
+`evidence/stage11/source-commits.json`. Linux adds opt-in compile-time cost probes
+and a forward declaration of required classification sidecars; Chipyard adds
+independent workload-boundary measurements and strengthens the host checker.
+The Rocket/OpenSBI source versions remain unchanged. Public baseline fetch,
+patches, new Scala/RTL/Verilator build and low-level regressions have passed;
+At that source checkpoint, Linux/performance acceptance was pending. Completion
+is recorded below; the earlier checkpoint did not claim an integration result. See `docs/STAGE11.md` and `docs/INTEGRATION.md`.
+
+Stage11 source development sequence (original commits retained in local source
+repositories, consolidated into this maintenance source checkpoint):
+
+| Repository | Original SHA | Work |
+|---|---|---|
+| Linux | bf5a1bc53f4131b9b7be9648f80b32d061cb0a09 | Optional target-counter cost probes |
+| Linux | 3e7c06efefeda043f100ab635b1729ce7a11afd8 | Declare expected classification sidecar |
+| Chipyard | 75de1249aac7fa9a0751d1b174c884ba4efbe0ef | Workload, runner and contract integration |
+| Chipyard | 3b0bf4ff1e0c8c8839bd0f323de7ba3ee07e177a | Complete CSR/measurement-integrity checks |
+| Chipyard | 096d24d15887025b9f08b29dd3403d0ac156a0eb | Matched manual/automatic Linux comparison |
+| Chipyard | bc07c7710c24f111e9c4f88ac199fb1794748ef5 | Normalize progress-interleaved performance rows |
+
+New maintenance scripts final.py/integrate.py, review reports and evidence are
+project delivery additions; no full upstream history is imported. Kernel patch
+mail headers retain the original source author/date/message. Later evidence
+completion will update the stage11 acceptance state without rewriting this
+source checkpoint or any preceding stage history.
+
+The final Linux cost checker also reconstructs timer A→B→A chronology and sums
+raw pause samples independently before comparing all four rebased frame fields.
+It requires closed context exports and declared complete classifier coverage in
+the benchmark (unlike the intentionally incomplete loader/capacity regression).
+This is a host-oracle addition and does not change the executing target image.
+
+Stage11 completion retains the source checkpoint history above. The production
+Linux run actually finished native0/powerdown with51automatic/26manual and
+10ELF/5automatic/3manual negatives. Both150-work performance matrices completed;
+only missing direct accounting proof was supplemented in another actual Linux
+capture. Original failed host receipts are retained and distinguished from the
+successful native simulations. See STAGE11/PERFORMANCE/EXPERIMENTS for scope.
+
+| Repository | Original SHA | Final addition |
+|---|---|---|
+| Chipyard |905ff526ba063892403cd33bc0373bf84dce0610| Strict Linux timer chronology and independently summed pause oracle |
+| Chipyard |d756a546e27d40100752a0ff7c73b796c77d4fde| Conditional two-record native companion, explicit composite coverage, exact counter identities and semantic negative checks |
+
+These source changes are delivered as standalone project fixtures/oracles and
+manifest updates, not duplicated in RTL patches. Kernel3e7c06efe, Rocketbb5b1c26
+and OpenSBI43f02ffb remain unchanged. Default full-performance loadable bytes are
+identical after the conditional test addition. Final maintenance evidence/report
+commit consolidates the already pushed stage11 checkpoints with these results;
+original author/message history remains reachable. Authorized integration uses
+merge commits, preserving all stage heads and v0.1.0 rather than squashing them.

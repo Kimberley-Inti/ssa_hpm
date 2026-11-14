@@ -58,3 +58,11 @@ individual upstream notices retained). A cache is accepted only after all regula
 source files match that pinned archive. Neither musl source tree nor binaries are
 redistributed here. The small ordinary executable/DSO fixtures are project MIT
 sources as marked. Build hashes and reuse boundaries are recorded in evidence.
+
+## Stage11 inputs
+
+Optional Linux cost probes and the classification-sidecar declaration retain
+Linux GPL-2.0-only licensing. New workload/measurement sources marked MIT are
+project fixtures. No upstream synthesis library, unextended RTL baseline or
+area result is distributed or implied. Rendered design pages remain local;
+only the project's source references and review decisions are recorded.

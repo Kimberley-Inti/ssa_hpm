@@ -134,3 +134,5 @@ linux/user-class-read.riscv: linux/user-probe.S test.ld
 linux/user-class-write.riscv: linux/user-probe.S test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_CSR -DCLASS_CSR -DPROBE_WRITE $< -o $@
 classification: linux/user-class-read.hex linux/user-class-write.hex
+
+linux-probes: linux/user-class-read.hex linux/user-class-write.hex

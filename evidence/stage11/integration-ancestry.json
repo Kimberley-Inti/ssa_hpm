@@ -1,0 +1,69 @@
+{
+  "linear_dependency_chain": true,
+  "all_heads_contained": true,
+  "rows": [
+    {
+      "pr": 1,
+      "previous_head": "0421e67203e0cfb63d96699f061ffa7d8d00fddf",
+      "head": "2d646a615b357e3e883289d91d0b903ac14baec4",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 2,
+      "previous_head": "2d646a615b357e3e883289d91d0b903ac14baec4",
+      "head": "418692f75b3895cbb084e26276ba7267b9f8efee",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 3,
+      "previous_head": "418692f75b3895cbb084e26276ba7267b9f8efee",
+      "head": "55104eb22d160d9bf9e1e7388866ba7482a2785a",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 4,
+      "previous_head": "55104eb22d160d9bf9e1e7388866ba7482a2785a",
+      "head": "3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 5,
+      "previous_head": "3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d",
+      "head": "1c48e93b0055e92a565eb455a057c1e45618d81c",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 6,
+      "previous_head": "1c48e93b0055e92a565eb455a057c1e45618d81c",
+      "head": "2c63845c4bd262594f6d5ed0e4fc12773957d833",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 7,
+      "previous_head": "2c63845c4bd262594f6d5ed0e4fc12773957d833",
+      "head": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 8,
+      "previous_head": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
+      "head": "24fa1cde07a7af6de77c136789867ce730c60f91",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    },
+    {
+      "pr": 9,
+      "previous_head": "24fa1cde07a7af6de77c136789867ce730c60f91",
+      "head": "6ef19d6e85dfe55983794342620a026005a67d20",
+      "previous_ancestor": true,
+      "candidate_contains_head": true
+    }
+  ]
+}

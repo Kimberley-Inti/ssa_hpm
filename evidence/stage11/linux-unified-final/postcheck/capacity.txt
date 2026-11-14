@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": {
+    "same_frozen_elf": true,
+    "all64_elf_linked_callees": true,
+    "exact_parent_ids": true,
+    "all_base_records_counted": true,
+    "parent_includes_all63_leaves": true,
+    "base_all_four_chunks_complete": true,
+    "all63_sidecar_rows_exact": true,
+    "overflow_explicit_not_silent": true,
+    "framed_input_partition": true,
+    "fifo48_evictions": true
+  }
+}

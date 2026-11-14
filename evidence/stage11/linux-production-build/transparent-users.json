@@ -1,0 +1,331 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+        "--strip-unneeded",
+        "/tmp/ssa-hpm-stage10/musl-1.2.5/lib/libc.so",
+        "/tmp/ssa-hpm-stage11/linux-candidate/ld-musl-riscv64.so.1"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-static",
+        "-Wl,-e,_start",
+        "/home/lxf/chipyard/ssa/linux/transparent/launcher.c",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/init"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-static",
+        "-Wl,-e,_start",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain-entry.S",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain.c",
+        "/home/lxf/chipyard/ssa/classification/workload.S",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/plain"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-static",
+        "-Wl,-e,_start",
+        "-DNEXT_TARGET",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain-entry.S",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain.c",
+        "/home/lxf/chipyard/ssa/classification/workload.S",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/plain-next"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-static",
+        "-Wl,-e,_start",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain-entry.S",
+        "/home/lxf/chipyard/ssa/linux/transparent/capacity.c",
+        "/home/lxf/chipyard/ssa/linux/transparent/capacity.S",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/plain-capacity"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64gc",
+        "-mabi=lp64d",
+        "-fPIC",
+        "-shared",
+        "-Wl,-soname,libplain.so",
+        "-Wl,-Bsymbolic",
+        "/home/lxf/chipyard/ssa/linux/transparent/shared.c",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/libplain.so"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64gc",
+        "-mabi=lp64d",
+        "-DDYNAMIC_TARGET",
+        "-Wl,-e,_start",
+        "-Wl,--dynamic-linker=/lib/ld-musl-riscv64.so.1",
+        "-Wl,-z,now",
+        "-Wl,-rpath,/lib",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain-entry.S",
+        "/home/lxf/chipyard/ssa/linux/transparent/plain.c",
+        "/home/lxf/chipyard/ssa/classification/workload.S",
+        "-L/tmp/ssa-hpm-stage11/linux-candidate",
+        "-lplain",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/plain-dynamic"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-static",
+        "-Wl,-e,_start",
+        "/home/lxf/chipyard/ssa/linux/classification-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/class-regress"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    },
+    {
+      "argv": [
+        "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+        "-B/tmp/ssa-hpm-stage11/linux-candidate/host-tools/compiler-bin/",
+        "-O1",
+        "-nostdlib",
+        "-nostartfiles",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-msmall-data-limit=0",
+        "-fno-optimize-sibling-calls",
+        "-Wl,--no-relax",
+        "-Wl,--build-id=none",
+        "-march=rv64imac_zicsr",
+        "-mabi=lp64",
+        "-static",
+        "-Wl,-e,_start",
+        "-DCLASS_NEXT",
+        "/home/lxf/chipyard/ssa/linux/classification-init.c",
+        "-o",
+        "/tmp/ssa-hpm-stage11/linux-candidate/classnext"
+      ],
+      "cwd": "/tmp/ssa-hpm-stage11/linux-candidate"
+    }
+  ],
+  "musl_version": "1.2.5",
+  "musl_source_sha256": "a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+  "musl_cache_reused": true,
+  "musl_sources_match_pinned_archive": true,
+  "musl_original_loader_sha256": "c69ea2b2f5266527af931350e7a8ba54be584c1d1065ce92d27cddd3c456ed34",
+  "inputs": {
+    "init": {
+      "sha256": "b591aefdddb458df2cddea8597b83a516103976a37a278efb30af2d1e9dbf968",
+      "ordinary_target": false,
+      "no_ssa_calls_checked": false,
+      "symbols": {},
+      "dynamic_interpreter": null
+    },
+    "plain": {
+      "sha256": "8536e88d8aa141e4b3c0d88877a095c4fb4f575dc7b44fd667826969e1c1b784",
+      "ordinary_target": true,
+      "no_ssa_calls_checked": true,
+      "symbols": {
+        "stream_parent": 65834,
+        "irregular_parent": 65862,
+        "scalar_parent": 65890,
+        "replace": 65918,
+        "fail_fork": 66000,
+        "terminate": 66448,
+        "hold": 66596,
+        "task_common": 66838,
+        "task_parent": 67238,
+        "class_access": 68328,
+        "class_common": 68322
+      },
+      "dynamic_interpreter": null
+    },
+    "plain-next": {
+      "sha256": "f36f27a8e8d98d3a324fe1cd5a2cc1cc35dd6494f114a82696924c2fc801ee49",
+      "ordinary_target": true,
+      "no_ssa_calls_checked": true,
+      "symbols": {
+        "stream_parent": 65834,
+        "class_access": 66034,
+        "class_common": 66028
+      },
+      "dynamic_interpreter": null
+    },
+    "plain-capacity": {
+      "sha256": "27d23369d38cf6468adefb5025d385d58e4b2601d6a863716fc927b281067775",
+      "ordinary_target": true,
+      "no_ssa_calls_checked": true,
+      "symbols": {
+        "capacity_parent": 65926
+      },
+      "dynamic_interpreter": null
+    },
+    "plain-dynamic": {
+      "sha256": "ef30ea1899ace35622b4b9368f91fcf2259de74e19b51c22307147aa8a28bc2d",
+      "ordinary_target": true,
+      "no_ssa_calls_checked": true,
+      "symbols": {
+        "shared_entry": 66416,
+        "dynamic_parent": 66458,
+        "class_access": 66860,
+        "class_common": 66854
+      },
+      "dynamic_interpreter": "/lib/ld-musl-riscv64.so.1"
+    },
+    "libplain.so": {
+      "sha256": "61118fd30c1db5c3d305745a373e8c0b8949170087b7ce6e9b8c6d317eeee21c",
+      "ordinary_target": true,
+      "no_ssa_calls_checked": true,
+      "symbols": {
+        "shared_entry": 612,
+        "shared_inner": 608
+      },
+      "dynamic_interpreter": null
+    },
+    "ld-musl-riscv64.so.1": {
+      "sha256": "fd8c5ae0146c23931edb8158a9776e5e55f6cd63d34705df06816d869aab0d6d",
+      "ordinary_target": false,
+      "no_ssa_calls_checked": false,
+      "symbols": {},
+      "dynamic_interpreter": null
+    },
+    "class-regress": {
+      "sha256": "8f08f91e81049ea8efae592ae79fcde1a0c056602f76f5840201507b5247b1d7",
+      "ordinary_target": false,
+      "no_ssa_calls_checked": false,
+      "symbols": {
+        "stream_parent": 67004,
+        "irregular_parent": 67032,
+        "scalar_parent": 67060,
+        "task_common": 67230,
+        "task_parent": 67630,
+        "class_access": 65830,
+        "class_common": 65824
+      },
+      "dynamic_interpreter": null
+    },
+    "classnext": {
+      "sha256": "ad0f11038c07fcc49dcf564d00a8a15f3525d757d908aacf5474e2a6ff7faa88",
+      "ordinary_target": false,
+      "no_ssa_calls_checked": false,
+      "symbols": {
+        "stream_parent": 66896,
+        "class_access": 65830,
+        "class_common": 65824
+      },
+      "dynamic_interpreter": null
+    }
+  }
+}

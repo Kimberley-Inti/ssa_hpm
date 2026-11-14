@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "coverage": "host-only semantic mutation of actual completed Linux capture; original log unchanged, no new faulty hardware run",
+  "source_log_sha256": "57cf7c3176f67f385d5a1e5c6b30a0aac0a09ac22b0adaaff11dd84d41407991",
+  "checks": {
+    "positive_actual_native_passed": true,
+    "wrong_owner_payload_still_valid_transport": true,
+    "wrong_owner_rejected_by_semantic_oracle": true
+  },
+  "original_role_leaf_vectors": {
+    "2": {
+      "total": 32,
+      "warmup": 4,
+      "scalar": 0,
+      "stream": 24,
+      "irregular": 4
+    },
+    "1": {
+      "total": 32,
+      "warmup": 4,
+      "scalar": 14,
+      "stream": 12,
+      "irregular": 2
+    }
+  },
+  "negative_failed_gates": [
+    "two_task_history_isolation"
+  ]
+}

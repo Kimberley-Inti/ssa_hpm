@@ -1,0 +1,306 @@
+{
+  "owners": {
+    "2": {
+      "pid": 20,
+      "uid": 1000,
+      "role": 2,
+      "test": 14,
+      "legacy": 0,
+      "pool": 2281701376,
+      "complete": 1,
+      "depth": 0,
+      "next": 4,
+      "spill": 0,
+      "events": 2,
+      "session": 7
+    },
+    "1": {
+      "pid": 21,
+      "uid": 1000,
+      "role": 1,
+      "test": 14,
+      "legacy": 0,
+      "pool": 2348810240,
+      "complete": 1,
+      "depth": 0,
+      "next": 4,
+      "spill": 0,
+      "events": 3,
+      "session": 8
+    }
+  },
+  "switches": [
+    {
+      "pid": 20,
+      "test": 14,
+      "role": 2,
+      "event": 0,
+      "to": 7,
+      "from": 21,
+      "depth": 0,
+      "rid": 0,
+      "state": 1,
+      "ivcsw": 1,
+      "cause": 8,
+      "csr_cause": 8,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "test": 14,
+      "role": 2,
+      "event": 1,
+      "to": 21,
+      "from": 21,
+      "depth": 2,
+      "rid": 2,
+      "state": 1,
+      "ivcsw": 1,
+      "cause": 8,
+      "csr_cause": 8,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 7
+    },
+    {
+      "pid": 21,
+      "test": 14,
+      "role": 1,
+      "event": 0,
+      "to": 13,
+      "from": 13,
+      "depth": 0,
+      "rid": 0,
+      "state": 0,
+      "ivcsw": 3,
+      "cause": 8,
+      "csr_cause": 9223372036854775813,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "test": 14,
+      "role": 1,
+      "event": 1,
+      "to": 20,
+      "from": 20,
+      "depth": 0,
+      "rid": 0,
+      "state": 0,
+      "ivcsw": 4,
+      "cause": 8,
+      "csr_cause": 8,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "test": 14,
+      "role": 1,
+      "event": 2,
+      "to": 20,
+      "from": 7,
+      "depth": 2,
+      "rid": 2,
+      "state": 0,
+      "ivcsw": 5,
+      "cause": 9223372036854775813,
+      "csr_cause": 9223372036854775813,
+      "resumed": 1,
+      "preempt": 0,
+      "session": 8
+    }
+  ],
+  "samples": [
+    {
+      "pid": 20,
+      "event": 0,
+      "counter": 0,
+      "S": 92596338,
+      "R": 94483418,
+      "delta": 1887080,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 0,
+      "counter": 1,
+      "S": 61094240,
+      "R": 61921027,
+      "delta": 826787,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 0,
+      "counter": 2,
+      "S": 925967,
+      "R": 944837,
+      "delta": 18870,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 0,
+      "counter": 3,
+      "S": 537866,
+      "R": 559611,
+      "delta": 21745,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 1,
+      "counter": 0,
+      "S": 94497621,
+      "R": 94634470,
+      "delta": 136849,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 1,
+      "counter": 1,
+      "S": 61925229,
+      "R": 62046949,
+      "delta": 121720,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 1,
+      "counter": 2,
+      "S": 944980,
+      "R": 946347,
+      "delta": 1367,
+      "session": 7
+    },
+    {
+      "pid": 20,
+      "event": 1,
+      "counter": 3,
+      "S": 559726,
+      "R": 559874,
+      "delta": 148,
+      "session": 7
+    },
+    {
+      "pid": 21,
+      "event": 0,
+      "counter": 0,
+      "S": 94365135,
+      "R": 94374262,
+      "delta": 9127,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 0,
+      "counter": 1,
+      "S": 61866134,
+      "R": 61869396,
+      "delta": 3262,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 0,
+      "counter": 2,
+      "S": 943655,
+      "R": 943746,
+      "delta": 91,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 0,
+      "counter": 3,
+      "S": 558486,
+      "R": 558542,
+      "delta": 56,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 1,
+      "counter": 0,
+      "S": 94481122,
+      "R": 94499556,
+      "delta": 18434,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 1,
+      "counter": 1,
+      "S": 61919665,
+      "R": 61926591,
+      "delta": 6926,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 1,
+      "counter": 2,
+      "S": 944815,
+      "R": 944998,
+      "delta": 183,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 1,
+      "counter": 3,
+      "S": 559597,
+      "R": 559734,
+      "delta": 137,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 2,
+      "counter": 0,
+      "S": 94632363,
+      "R": 98698280,
+      "delta": 4065917,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 2,
+      "counter": 1,
+      "S": 62045587,
+      "R": 65143815,
+      "delta": 3098228,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 2,
+      "counter": 2,
+      "S": 946327,
+      "R": 986986,
+      "delta": 40659,
+      "session": 8
+    },
+    {
+      "pid": 21,
+      "event": 2,
+      "counter": 3,
+      "S": 559864,
+      "R": 571187,
+      "delta": 11323,
+      "session": 8
+    }
+  ],
+  "accounts": [],
+  "actual_timer_open2": true,
+  "sample_chronology": true,
+  "all_four_rebased": false,
+  "independently_summed_pause_deltas": {}
+}

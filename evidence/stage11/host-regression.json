@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "name": "reference",
+      "command": [
+        "python3",
+        "ssa/classification/test_reference.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "export",
+      "command": [
+        "python3",
+        "ssa/linux/test_export_results.py",
+        "--out",
+        "/tmp/ssa-hpm-stage11/host-export.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "sidecar",
+      "command": [
+        "python3",
+        "ssa/linux/test_classification_results.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "class-native",
+      "command": [
+        "python3",
+        "ssa/linux/test_classification_native.py",
+        "--native-log",
+        "evidence/stage9/linux-rocket-linux-classification.txt",
+        "--execution",
+        "evidence/stage9/linux-execution.json",
+        "--out",
+        "/tmp/ssa-hpm-stage11/host-class-native.json"
+      ],
+      "exit_code": 0,
+      "coverage": "historical Linux capture semantic recheck, not a new simulation"
+    }
+  ],
+  "initial_cli_errors": [
+    {
+      "name": "export",
+      "command": [
+        "python3",
+        "ssa/linux/test_export_results.py",
+        "--out",
+        "/tmp/ssa-hpm-stage11/host-export.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "class-native",
+      "command": [
+        "python3",
+        "ssa/linux/test_classification_native.py",
+        "--native-log",
+        "evidence/stage9/linux-rocket-linux-classification.txt",
+        "--execution",
+        "evidence/stage9/linux-execution.json",
+        "--out",
+        "/tmp/ssa-hpm-stage11/host-class-native.json"
+      ],
+      "exit_code": 0,
+      "coverage": "historical Linux capture semantic recheck, not a new simulation"
+    }
+  ]
+}

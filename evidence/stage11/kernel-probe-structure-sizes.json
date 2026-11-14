@@ -1,0 +1,13 @@
+{
+  "coverage": "actual compiler sizeof declarations; not runtime allocator or synthesized hardware area",
+  "sizes_bytes": {
+    "instrumented": {
+      "ssa_probe_size_event": 176,
+      "ssa_probe_size_state": 4368
+    },
+    "default": {
+      "ssa_probe_size_event": 128,
+      "ssa_probe_size_state": 3768
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "checks": {
+    "native_exit0": true,
+    "normal_shutdown": true,
+    "suite_complete": true,
+    "no_guest_failure": true,
+    "complete_transport": true,
+    "seven_sessions": true,
+    "context_patterns": true,
+    "same_callee_different_parents": true,
+    "class_coverage_valid": true,
+    "all_pools_released": true,
+    "explicit_stop": true,
+    "zero_session": true,
+    "exec_open_observed": true,
+    "exec_old_closed_classification": true,
+    "exec_open_is_partial_not_fake_return": true,
+    "exec_new_clean_epoch": true,
+    "failed_exec_history_preserved": true,
+    "two_task_context_chains": true,
+    "two_task_history_isolation": true,
+    "actual_A_B_A_open_preemption": true,
+    "timer_switch_sample_chronology": true,
+    "unmonitored_handoff": true,
+    "all_pause_samples_modulo_correct": true,
+    "both_stacks_restored": true,
+    "same_virtual_callee_independent_epoch": true,
+    "existing_inclusive_counter_relationships": true
+  },
+  "errors": []
+}

@@ -1,0 +1,62 @@
+{
+  "scope": "Declared state bits in SSAMemoryClassifier only, not synthesis area or whole-extension state",
+  "bits": 57926,
+  "bytes_equivalent": 7240.75,
+  "components_bits": {
+    "epochs": 128,
+    "bases": 128,
+    "depths": 18,
+    "spills": 64,
+    "invalid": 2,
+    "overflows": 2,
+    "dropped": 128,
+    "unframed": 128,
+    "inputs": 128,
+    "evictions": 128,
+    "history_heads": 8,
+    "shadow_stack": 9216,
+    "classification_counts": 40960,
+    "history_valid": 32,
+    "history_pc": 2048,
+    "history_rid": 576,
+    "history_store": 32,
+    "history_size": 64,
+    "history_address": 2048,
+    "history_delta": 2048,
+    "history_mature": 32,
+    "busy": 1,
+    "clear_bank": 1,
+    "clear_index": 6
+  },
+  "physical_monitoring_pools": {
+    "count": 2,
+    "bytes_each": 37748736,
+    "total_bytes": 75497472
+  },
+  "synthesis_measured": false,
+  "no_extension_model_measured": false,
+  "microcode_constant_words": {
+    "ssa_rom_data": 104,
+    "ssa_event_rom_data": 118
+  },
+  "microcode_constant_bits": 7104,
+  "notes": "Classifier declaration count excludes separate CSR/core pipeline/control state. ROM constants and register declarations are not technology-mapped area. No synthesis result or matched no-extension model has been established.",
+  "integer_register_state": {
+    "logical_private_shadow_bits": 2048,
+    "current_declared_slots": 64,
+    "upstream_declared_slots": 31,
+    "width": 64,
+    "declared_memory_delta_bits": 2112,
+    "note": "Declared Mem sizes, including the new unused zero-address slot; not synthesized area."
+  },
+  "pool_layout_per_bank": {
+    "reserved_bytes": 37748736,
+    "record_slots": 262144,
+    "usable_record_ids": 262143,
+    "record_slot_bytes": 128,
+    "dictionary_bytes": 1048576,
+    "frame_bytes": 64,
+    "max_resident_frames": 256,
+    "metadata_bytes": 64
+  }
+}

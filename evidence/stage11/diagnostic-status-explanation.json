@@ -1,0 +1,70 @@
+{
+  "ps_finished_pilot": {
+    "command": [
+      "ps",
+      "-p",
+      "102933",
+      "-o",
+      "stat,etime"
+    ],
+    "exit_code": 1,
+    "output": "STAT     ELAPSED\n",
+    "meaning": "PID no longer exists; this is not a retrieved simulator native exit status"
+  },
+  "interleaving_before": {
+    "passed": false,
+    "coverage": "host-only synthetic measurement protocol fault injection",
+    "checks": {
+      "valid": true,
+      "missing": true,
+      "duplicate": true,
+      "wrong_checksum": true,
+      "no_end": true,
+      "no_calibration": true,
+      "no_init": true,
+      "progress_interleaving": false
+    }
+  },
+  "interleaving_after": {
+    "passed": true,
+    "coverage": "host-only synthetic measurement protocol fault injection",
+    "checks": {
+      "valid": true,
+      "missing": true,
+      "duplicate": true,
+      "wrong_checksum": true,
+      "no_end": true,
+      "no_calibration": true,
+      "no_init": true,
+      "progress_interleaving": true
+    }
+  },
+  "interpretation": "The historical combined version/readout command ended with ps on the finished pilot, returning1. The separate host interleaving reproduction intentionally returned1 before its repair. Neither establishes a failed native formal run. Other early cat-on-not-yet-created status files also returned1 and are not test receipts.",
+  "formal_monitor_after_linux_completion": {
+    "original_exec_session": 55176,
+    "observed_exit_code": 1,
+    "native_exit_codes": {
+      "bare": 0,
+      "production_linux": 0,
+      "performance_linux": 0
+    },
+    "reason": "Full performance checker required eight SSA_ACCOUNT rows, but legacy kernel diagnostic guard emits them only for exactly two records; this fixture allocated three. Work/phase/export/timer checks passed. A separate two-record native companion is required; this is not a native failure."
+  },
+  "review_inspection_commands": {
+    "meaning": "Exploratory summary-field lookup and guessed provenance.json path returned1; correct fields/file are manual-summary.export and progress/progress-build.json. Default-payload recompilation first lacked the build LD_LIBRARY_PATH (linker127), then succeeded with the recorded environment and byte equality."
+  },
+  "companion_runner": {
+    "native_exit_code": 0,
+    "original_runner_exit_code": 1,
+    "reason": "Host checker NameError from newly added metadata checks before variable initialization; corrected order and rechecked same complete capture. No native failure or rerun.",
+    "final_composite_postcheck_exit_code": 0,
+    "raw_account_tag_monitor_count": 7,
+    "normalized_account_rows": 8,
+    "note": "One tag was split by read-only progress output; canonical normalization restores it."
+  },
+  "accounting_duplicate_reproduction": {
+    "before_passed": false,
+    "after_passed": true,
+    "reason": "Eight rows alone did not prove all four distinct counters for each task. Enforce exact PID/counter set; negative suite rejects duplicate row, missing rows, wrong offset and wrong sample delta."
+  }
+}

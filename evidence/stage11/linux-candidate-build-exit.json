@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "command": [
+    "python3",
+    "/home/lxf/chipyard/ssa/linux/build-a.py",
+    "--work",
+    "/tmp/ssa-hpm-stage11/linux-candidate",
+    "--transparent",
+    "--musl-cache",
+    "/tmp/ssa-hpm-stage10/musl-1.2.5",
+    "--jobs",
+    "8"
+  ]
+}

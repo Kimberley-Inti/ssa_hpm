@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "coverage": "host-only synthetic measurement protocol fault injection",
+  "checks": {
+    "valid": true,
+    "missing": true,
+    "duplicate": true,
+    "wrong_checksum": true,
+    "no_end": true,
+    "no_calibration": true,
+    "no_init": true,
+    "progress_interleaving": false
+  }
+}

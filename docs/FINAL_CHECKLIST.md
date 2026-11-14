@@ -1,38 +1,74 @@
-# 最终交付前剩余清单
+# Bounded prototype final delivery checklist
 
-判定入口为 ACCEPTANCE.md，所有结论限于明确受测的单 hart/profile。
-第十阶段已通过实际Linux自动50项、原接口回归26项及独立ELF容量10项，原生/检查器退出均0并正常关机。证据见stage10/summary.json。
+Scope is ACCEPTANCE.md: one hart, trusted kernel/firmware, audited non-privileged
+single-thread LIFO targets and the tested musl continuation adaptation.
+Native/semantic requirements and12-step host evidence replay passed; audit/publication receipts
+are in evidence/stage11/summary.json and the release/integration receipt.
 
-## 仍需实现或补证据的功能
+## Required functionality and final review
 
-- 当前已声明的单hart/LIFO/受控非提权单线程profile，C05自动启动实现与验收已完成；
- 不把这一结论等价为任意Linux应用透明监测，原设计适配与边界见ACCEPTANCE.md。
-- 如扩大组合覆盖：新增自动DTLB/flags2-only构建场景及实际验收；本轮只实测自动flags0/4/6固定Cache，手工DTLB证据保持原范围。
-- 如果产品目标扩大到多线程、提权 ELF、共享 mm/vfork、复杂脚本和任意语言运行时，
- 必须先定义池/历史/栈及失败策略，再实现和实际验证；setid/thread现有明确拒绝，
- 共享mm/vfork、通用信号handler/非局部转移不在当前已审核目标范围。无法静态
- 识别任意非LIFO二进制，不宣称内核已经可靠识别这些运行时。
-- 现有受限 C01–C10/D01–D03 的覆盖与例外逐项保留，不将分类63行或16历史误称无界。
+- C01–C10/D01–D03 are accepted only with their documented adaptations and limits.
+  Ordinary selected static and musl dynamic targets require no SSA calls.
+- ABI1/2, selectors, 64/40-bit counters, wrap, private CSR/pool permissions,
+  ownership, pause/rebase, exec, stop, exit and release were reviewed and checked.
+- R01/R02 declare/check whole classification sidecars. Transport completion,
+  abandoned calls and classifier coverage remain distinct; legacy is undeclared.
+- R04 fixes progress interleaving. R05 closes a diagnostic coverage gap with a
+  separate real two-record companion and exact perPID/counter proof validation.
+  Initial host failures and their repaired checks remain in the evidence.
+- Public source fetch/patch application,111file hashes/ROM, actual new Scala/RTL/
+  Verilator build and three separately built public-source Linux payloads pass.
+  Dependency/musl caches and toolchains were reused and identified.
+- Fresh directed cases40(6Spike references/34RTL), WB oracle9, production Linux
+  51automatic/26manual plus10ELF/5automatic/3manual negatives pass.
+- Formal bare150work/30calibration and Linux150work/30calibration measurements,
+ 20composite performance checks and20direct companion checks pass. Companion
+  negative suite5cases passes. All four native captures exit0; all three Linux
+  payloads power down normally. Original failed host runners are not rewritten0.
+- Final host-only replay and complete-history/file audit must pass before merge;
+  their actual receipts govern this gate. Ordered patches and rights notices are
+  retained; images, upstream trees, backups, credentials and PDFs are excluded.
 
-## 整体审查（最终验收必做）
+## Performance evaluation completed
 
-- 冻结候选交付版本，审阅需求—源码—测试—原始日志映射和所有补充语义。
-- 审查跨阶段 ABI、所有权、CSR 权限、池生命周期及失败路径；清点已知限制。
-- 从公开基线独立重建候选版本；执行统一低层及 Linux 回归，核对全部结束/校验/
- 退出状态；区分新执行、缓存复用和旧日志复核。
-- 审查补丁顺序、可获取基线、许可证、秘密/二进制排除、文件清单和远端 Draft PR；
- 由维护者决定堆叠 PR 的合并顺序、main 更新及发布标签。
+Independent target boundaries, warmup1/repeats5, exact workloads/results,
+raw samples and min/median/max cover off/base/DTLB/Cache/classification in bare
+mode, and off/base/Cache/classification/matched manual-auto Cache+class in Linux.
+DTLB Linux remains historical; automatic DTLB is untested.
 
-## 性能开销评估（尚未完成）
+Initialization, regular work, depth0/depth2 switching, successful/failed exec
+and export/console costs are separately described. Non-atomic emulated time reads
+and timer outliers are explained without removing samples. Call-heavy overhead
+is substantial(42.58× bare base/off); no low-overhead claim or numeric performance
+SLO is invented. Model elapsed time is not target speed. Nominal state/pool/ROM
+sizes are recorded; no matched unextended model, synthesis area, fmax or power
+measurement was performed.
 
-- 固定配置比较未启用、基础HPM、DTLB、Cache、分类及自动生命周期的同一工作负载。
-- 报告周期/指令/运行时间、调用频度、嵌套深度、访存模式、初始化/切换/导出成本；
- 将固定36MiB池、分类逻辑状态和实际综合面积分别报告，不能互相替代。
-- 记录模型、镜像、工具链、预热、重复次数和变异范围。调试串口/Verilator墙钟时间
- 不等于硬件性能；目前没有可供宣称“低开销”的系统性基准。
+## Current adaptation limits, not hidden completed capabilities
 
-## 可选扩展
+- Single hart, at most2monitored pools,36MiB each; no perf sharing/migration.
+- At most12retained pause diagnostics/session; source-reviewed overflow stops
+  with partial state. More-than12-pause stress was not newly hardware-tested.
+- Full-tree domain is at most256frames; deeper folding has no sticky count after
+  unwind. Export completion does not prove arbitrary inputs respected that bound.
+- Classifier: integer retired load/store1/2/4/8B, virtualPC/address,2banks,
+ 63rows/16FIFO histories; eviction rewarms and dropped coverage is explicit.
+- Tested dynamic case is musl, including an abandoned loader continuation;
+  arbitrary non-LIFO/tail-call runtimes, custom signal unwinds, shared-mm/vfork,
+  multithreading and privileged exec are not accepted. Rejection and scope differ.
+- Auto DTLB/other untested profile combinations retain unaccepted status.
 
-多 hart/迁移、非局部展开、FP/vector/AMO 分类、更多 Cache/TLB 事件、perf 共享、
-全容量长时压力、通用 ELF/ASLR 符号化与调用树 UI、guest 文件或网络导出。
-它们须另立规范与验收，不从现有单 hart/LIFO 结果外推支持。
+## Optional follow-up or requirements if the product scope expands
+
+There is no remaining functionality task inside the declared tested prototype
+once the recorded packaging gates pass. Production/generalization work would
+need a new scope: bounded diagnostic streaming for long sessions, a call fast
+path/overhead optimization, configurable memory pools, multi-hart/task migration,
+non-local unwinding, full-capacity long stress, wider memory instruction coverage,
+more events, general symbolization and non-console export. Reliable synthesis or
+a matched no-extension implementation is needed for hardware-cost conclusions.
+
+After final acceptance, the user authorized dependency-order merge commits of
+only this repository's stage PRs, main tree equality verification and a new private
+release. Preserve original commits, stage branches and v0.1.0. Integration.md
+specifies the checks; actual GitHub read-back supplies the main SHA/tag/release.

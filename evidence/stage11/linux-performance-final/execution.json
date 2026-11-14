@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/tmp/ssa-hpm-stage11/progress/simulator-progress",
+    "+permissive",
+    "+loadmem=/tmp/ssa-hpm-stage11/performance-linux/boot-a.hex",
+    "+max-cycles=2500000000",
+    "+permissive-off",
+    "/tmp/ssa-hpm-stage11/performance-linux/boot-a.elf"
+  ],
+  "sha256": {
+    "/tmp/ssa-hpm-stage11/progress/simulator-progress": "eaa9f4e92c1e3708d69dec010f7133817dbb88391a3d3ce4fbd97bb1ceaf7b4f",
+    "/tmp/ssa-hpm-stage11/performance-linux/boot-a.elf": "dd793dfda59ad06aa0f485ec01ac792cc2b6cd36e6c082284fd6bd0809b3b469",
+    "/tmp/ssa-hpm-stage11/performance-linux/boot-a.hex": "1e4d545ef4fa9f0279c3b5eb5fd8d0abbd8a560166852a4c5793844a46faa68c"
+  },
+  "pid": 127462,
+  "native_exit_code": 0,
+  "seconds": 29816.737746074992,
+  "log_sha256": "ac4f1bf0d913b854281fe2ba0c9b37f6630bf16ae57ce87cc41483525672faa2"
+}

@@ -1,0 +1,7 @@
+{
+  "original": "/tmp/ssa-hpm-stage11/wb-memory.txt",
+  "original_sha256": "c6f49df6727d77edf5d728423081573356e09782d9000fde2a0f014fcd79d140",
+  "excerpt_sha256": "b945c97ab7ca0237f9dcd21c3e96694a200e308866493273b305ec6f39491c0d",
+  "native_exit_code": 0,
+  "filter": "Unchanged SSA_, native status and UART lines; excludes verbose instruction trace"
+}

@@ -161,4 +161,25 @@ load/store按虚拟地址及调用记录区分标量重复、固定步长、未�
 [证据](evidence/stage10/summary.json)和[最终剩余清单](docs/FINAL_CHECKLIST.md)。
 C05只在受测的单hart/单线程/非提权/已审核LIFO ELF范围关闭。源码与模型复用、
 公开基线独立构建和同日志独立复核分别标注；未声称新跑全部低层RTL或自动DTLB。
-整体候选审查与系统性性能开销评估仍待完成；main、标签与合并由维护者决定。
+第十阶段当时尚待整体候选审查与系统性性能评估；其收尾见下述第十一阶段。
+
+## 第十一阶段：最终候选验证与开销评估
+
+当前受限研究原型的功能矩阵、整体审查及目标侧开销测量已完成，最终包装门槛见
+[STAGE11](docs/STAGE11.md)和[验收汇总](evidence/stage11/summary.json)。
+新公开基线构建通过；40项低层用例、真实Linux51自动/26手工及独立负对照通过。
+裸机/Linux各150工作样本与单独两进程快照证明留存原始日志；调用密集基础监测
+实测约42.6倍周期，不能称为低开销实现。报告解释采样、中断、微码和串口成本。
+
+[性能报告](docs/PERFORMANCE.md)、[审查](docs/FINAL_REVIEW.md)、
+[支持边界与剩余范围](docs/FINAL_CHECKLIST.md)及[完整复现](REPRODUCE.md)。
+快速复核仅运行主机解析器，不启动新仿真：
+
+```sh
+python3 scripts/final.py check-evidence --out /tmp/ssa-final-evidence-check
+```
+
+单hart、受控非提权单线程LIFO及受测musl路径是验收域。12次pause诊断、2个36MiB池、
+256帧及分类63行/16历史的界限保持可见；多核、通用非局部展开和硬件面积/功耗
+不在本次验收内。最终整合保留阶段提交/分支和v0.1.0，新私有版本的实际main SHA、
+标签和发布结果由GitHub release及整合回读记录给出。

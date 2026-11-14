@@ -14,8 +14,8 @@ Chipyard 上游 gitlink 原本就指向上述可获取的 Rocket 基线。原本
 `23f5a64f6144cd3ffc7b25d490b48f5d019ee718`，因此不能把“checkout 该本地 SHA”
 作为外部复现步骤。此发布包从公开基线重放全部 SSA-HPM 补丁，消除了该依赖。
 
-依赖顺序：获取两个基线 → 应用 `patches/chipyard/0001`、`0002` → 按文件名依次
-依次应用当前分支的全部 12 个 Rocket 补丁 → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
+依赖顺序：获取两个基线 → 按文件名应用当前全部3个Chipyard补丁（0001–0003）→
+按文件名应用当前全部14个Rocket补丁（0001–0014） → 安装 `integration/ssa`。历史补丁**不应用**。Rocket 最终
 树必须与本分支 `provenance.json` 的 `rocket_chip.expected_tree` 完全相同（
 v0.1.0 对应 `986407bc6df8d2a67572250f1df9eb2c0edeacf9` 的历史树），
 同时核对核心 Scala、微码、构建文件及测试的 SHA-256。应用得到的新 commit SHA
@@ -52,7 +52,10 @@ python3 scripts/link_existing_dependencies.py /tmp/my-ssa-chipyard /home/lxf/chi
 依赖和工具链复用必须与“完整无缓存构建”区分。已有模块若被此脚本链接，不要再对
 这些符号链接运行网络初始化；两种依赖准备路径二选一。
 
-## 构建与回归
+## 基础构建与回归
+
+以下保留基础三计数器入口；完整最终候选矩阵请使用文末第十一阶段入口，
+其明确构建`SSAHPMEventRocketConfig`并覆盖扩展计数器和Linux。
 
 ```bash
 cd /tmp/my-ssa-chipyard
@@ -255,3 +258,47 @@ python3 ssa/linux/transparent/check-results.py --results /tmp/ssa-auto-results -
 It checks the completed native receipts and reruns all host oracles/negatives
 without starting a simulator. Preserve the work directory for the actual ELF
 capacity/address checks; committed-log-only replay needs no binaries/model.
+
+## Stage11 final candidate and performance protocol
+
+The complete entry below fetches public baselines, applies all project patches,
+checks the manifest/ROM, builds a fresh RTL model and runs directed checks. It
+builds production, full measurement and two-record accounting Linux payloads;
+reuses only explicitly supplied fixed tool/dependency and musl caches. Use a NEW
+output directory and preserve completed receipts instead of restarting long runs.
+
+```sh
+python3 scripts/final.py reproduce /tmp/ssa-final-reproduction \
+  --reuse-dependencies /home/lxf/chipyard \
+  --musl-cache /tmp/ssa-hpm-stage10/musl-1.2.5 --jobs 6
+```
+
+Linux console transport makes full runs long. The accounting companion runs
+first; the full measurement checker takes it as explicitly separate evidence.
+The old two-record diagnostic guard does not emit SSA_ACCOUNT for the original
+three-record performance fixture, so that capture alone cannot prove rebasing.
+To run only the missing companion in an installed workspace:
+
+```sh
+python3 ssa/linux/build-a.py --work /tmp/ssa-accounting-build --performance-switch \
+  --musl-cache /tmp/ssa-hpm-stage10/musl-1.2.5
+python3 ssa/performance/linux-run.py --work /tmp/ssa-accounting-build \
+  --simulator /tmp/ssa-progress/simulator-progress \
+  --out /tmp/ssa-accounting-results --switch-only
+python3 ssa/performance/linux-check.py --out /tmp/ssa-full-performance-results \
+  --accounting-witness /tmp/ssa-accounting-results
+```
+
+`/tmp/ssa-progress` comes from `ssa/linux/build-progress.py --workspace "$PWD"
+--config SSAHPMEventRocketConfig --out /tmp/ssa-progress`. It links a read-only
+progress harness against the newly built, unchanged RTL archive; it does not
+replace generated RTL. See docs/PERFORMANCE.md for independent target boundaries,
+non-atomic/emulated time reads, repetitions, raw variation and cost exclusions.
+The final host-only entry rehashes committed evidence and reruns its oracles;
+it performs no new build, ELF execution or hardware simulation:
+
+```sh
+python3 scripts/final.py check-evidence --out /tmp/ssa-final-evidence-replay
+```
+
+`--musl-cache`可省略，由构建入口获取固定版本源码并构建；跨机器仍需按前述说明准备固定系统依赖。缓存复用是本次实际执行路径，不等价于验证所有系统包的无缓存网络安装。

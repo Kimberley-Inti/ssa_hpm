@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "coverage": "Actual publicly fetched/patched kernel and SBI trees identical across production, full performance and two-record companion builds; measurement configs identical excluding initramfs input path",
+  "builds": {
+    "linux-candidate": {
+      "linux_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+      "opensbi_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+      "config_sha256": "7f3eebde6176413734c49fe02a05efcc0af86b29917d8770b762585b1c407062",
+      "images": {
+        "boot-a.elf": "fe6c6608264320e4739772da6e0c3a79193fd8c8040bbb4667fd92bbfa35e265",
+        "boot-a.bin": "2e4883e2e7a806a2b5ebcb345e66407b2cc6f4cb94d44f9dea1a1ec7fc1cd6a4",
+        "boot-a.hex": "1877031f7b1e2e86a271af3a8bf15e7656a52ed5e88dadea14536e280e2984b4"
+      }
+    },
+    "performance-linux": {
+      "linux_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+      "opensbi_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+      "config_sha256": "75ff79a65ad840e2ca9a2e0ca274026b60fdab0ab7943a646f603596a6d8cd25",
+      "images": {
+        "boot-a.elf": "dd793dfda59ad06aa0f485ec01ac792cc2b6cd36e6c082284fd6bd0809b3b469",
+        "boot-a.bin": "ed9a46b8b1b38b0952e664844301efd42603adbc2b15da3bfc5550df5a889312",
+        "boot-a.hex": "1e4d545ef4fa9f0279c3b5eb5fd8d0abbd8a560166852a4c5793844a46faa68c"
+      }
+    },
+    "switch-proof-build": {
+      "linux_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+      "opensbi_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+      "config_sha256": "c52193fbcb4cf30927175ca423bdeff0fdc83364a7ebcd1e4b968cd08b749132",
+      "images": {
+        "boot-a.elf": "86f6df0543a8d416c8dc59e022fa59533cfc98ef0e93cfd0f7bb4d3f1f3777ac",
+        "boot-a.bin": "293a8438c0b07a3a4ba76de3c3823ce85481a99b98102592f0e7a65143d1ff89",
+        "boot-a.hex": "6966c7fc1bb92151a22ea42e954db1f7add46910d662ccec4921ffe47e9eb902"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "loadable_binary_sha256": "d289df64efdc0a61e68881d41873b2af1161efe2694b36816dbf36847847c8bc",
+  "hex_identical": true,
+  "non_FILE_symbols_identical": true,
+  "elf_hashes": {
+    "/tmp/ssa-hpm-stage11/independent-perf-build/benchmark.riscv": "f6a914b2a5dedcd436a3f272283ddedb1fb5ac8e9ca7a07ebc4538e531f92b16",
+    "/tmp/ssa-hpm-stage11/performance-final-build/benchmark.riscv": "df6b2149cb897b124edf77bdf4c8a02b5af5bc4985fc198bfd03f87962421175"
+  },
+  "elf_difference": "GCC temporary assembler-object STT_FILE name in non-loadable ELF symbol/string table; loadable binary and non-FILE symbol rows identical"
+}

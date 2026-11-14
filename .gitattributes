@@ -3,3 +3,7 @@ evidence/stage10/linux-rocket-linux-transparent.txt -text -whitespace
 # Mail-patch context and readelf padding are verbatim source/tool records.
 integration/ssa/linux/0008-linux-transparent-launch.patch -text -whitespace
 evidence/stage10/*-elf.txt -text -whitespace
+integration/ssa/linux/0009-linux-cost-probes.patch -text -whitespace
+integration/ssa/linux/0010-linux-classification-contract.patch -text -whitespace
+evidence/stage11/**/*.txt -text -whitespace
+evidence/stage11/**/*.log -text -whitespace

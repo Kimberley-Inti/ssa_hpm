@@ -1,0 +1,10 @@
+{
+  "config": "SSAHPMEventRocketConfig",
+  "fresh_build_exit_code": 0,
+  "hashes": {
+    "/tmp/ssa-hpm-stage11/public/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig": "90f1610511889792fd9242bf5730a87a0fa3471902fb3be3deb03b929ebf15f0",
+    "/tmp/ssa-hpm-stage11/public/sims/verilator/generated-src/chipyard.TestHarness.SSAHPMEventRocketConfig/chipyard.TestHarness.SSAHPMEventRocketConfig/VTestHarness__ALL.a": "c2febac75c6d749ccf954738ab9c12c71c44fc8828a795889376b43531cc9ddc",
+    "/tmp/ssa-hpm-stage11/public/generators/rocket-chip/src/main/resources/ssa/microcode.S": "597eec1ec9966cfc73474e42003559d102a6f9463b576f2e3a5a4d3b107d24b2"
+  },
+  "rocket_tree": "0c41414a848beded9c96acc413a3d85eec00ef9b"
+}

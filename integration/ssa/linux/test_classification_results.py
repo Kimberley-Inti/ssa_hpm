@@ -39,6 +39,16 @@ def run():
     cases['after_release']=''.join(l for l in lines if l not in side)+''.join(side)
     cases['missing_base_context']=''.join(l for l in lines if not l.startswith(('SSA_XCHUNK','SSA_RECORD','SSA_EVENT_RECORD')))
     checks.update({name:not parse(broken)['valid'] for name,broken in cases.items()})
+    declared=sample(2).replace('SSA_XBEGIN ', 'SSA_XBEGIN classification=1 class_rule=1 class_rows=2 ',1)
+    checks['declared_sidecar_valid']=parse(declared)['valid']
+    checks['declared_zero_sidecar_valid']=parse(sample(0).replace('SSA_XBEGIN ', 'SSA_XBEGIN classification=1 class_rule=1 class_rows=0 ',1))['valid']
+    removed='\n'.join(l for l in declared.splitlines() if not l.startswith(('SSA_MBEGIN','SSA_MRECORD','SSA_MEND')))+'\n'
+    # Assert the specific declaration error, not merely the legacy global
+    # "no classification sessions" rejection.
+    checks['whole_declared_sidecar_missing']=any('declared classification sidecar missing' in e['error'] for e in parse(removed)['errors'])
+    checks['declared_disabled_unexpected_sidecar']=not parse(declared.replace('classification=1 class_rule=1 class_rows=2','classification=0 class_rule=0 class_rows=0'))['valid']
+    checks['declared_wrong_rows']=not parse(declared.replace('class_rows=2','class_rows=1'))['valid']
+    checks['declared_wrong_rule']=not parse(declared.replace('class_rule=1','class_rule=2'))['valid']
     return {'passed':all(checks.values()),'coverage':'host-only synthetic protocol mutations','checks':checks}
 if __name__=='__main__':
     q=run();print(json.dumps(q,indent=2));raise SystemExit(0 if q['passed'] else 1)

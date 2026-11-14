@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checks": {
+    "native_exit0": true,
+    "normal_powerdown": true,
+    "work_measurements": true,
+    "suite_complete": true,
+    "no_guest_failure": true,
+    "exports_valid": true,
+    "all_contexts_closed_complete": true,
+    "all_classification_coverage_complete": true,
+    "all_sidecar_contracts_declared": true,
+    "two_distinct_task_pools": true,
+    "same_calls_in_separate_sessions": true,
+    "cache_profile_metadata": true,
+    "actual_timer_open2": true,
+    "A_B_A_sample_chronology": true,
+    "pause_sample_arithmetic": true,
+    "all_four_pause_intervals_rebased": true,
+    "expected_session_count": true,
+    "all_pools_released": true,
+    "kernel_cost_phases": true,
+    "open_frame_switch_cost": true
+  },
+  "accounting_coverage": {
+    "primary_accounting_rows": 8,
+    "primary_direct_snapshot_proof": true,
+    "companion_used": false,
+    "companion": null,
+    "reason": "Legacy SSA_ACCOUNT output requires next==3; full benchmark creates three records. A separate two-record fixture supplies direct snapshot proof when needed."
+  },
+  "fixture": "two-record-switch-only"
+}

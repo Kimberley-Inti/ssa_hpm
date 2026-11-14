@@ -1,0 +1,50 @@
+{
+  "gcc": {
+    "command": [
+      "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+      "--version"
+    ],
+    "exit_code": 0,
+    "version": "riscv64-unknown-elf-gcc () 15.1.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+  },
+  "verilator": {
+    "command": [
+      "verilator",
+      "--version"
+    ],
+    "exit_code": 0,
+    "version": "Verilator 4.226 2022-08-31 rev v4.226"
+  },
+  "spike": {
+    "command": [
+      "spike",
+      "--help"
+    ],
+    "exit_code": 0,
+    "version": "Spike RISC-V ISA Simulator 1.1.1-dev\n\nusage: spike [host options] <target program> [target options]\nHost Options:"
+  },
+  "java": {
+    "command": [
+      "java",
+      "-version"
+    ],
+    "exit_code": 0,
+    "version": "openjdk version \"17.0.21.0.3\" 2026-10-24\nOpenJDK Runtime Environment (build 17.0.21.0.3+1-1-22.04.1-Ubuntu)\nOpenJDK 64-Bit Server VM (build 17.0.21.0.3+1-1-22.04.1-Ubuntu, mixed mode, sharing)"
+  },
+  "python": {
+    "command": [
+      "python3",
+      "--version"
+    ],
+    "exit_code": 0,
+    "version": "Python 3.12.12"
+  },
+  "gh": {
+    "command": [
+      "gh",
+      "--version"
+    ],
+    "exit_code": 0,
+    "version": "gh version 2.4.0+dfsg1 (2022-03-23 Ubuntu 2.4.0+dfsg1-2)\nhttps://github.com/cli/cli/releases/latest"
+  }
+}

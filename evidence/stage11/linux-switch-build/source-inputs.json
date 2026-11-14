@@ -1,0 +1,9 @@
+{
+  "coverage": "Sources for the actual --performance-switch compilation; command and macro in build-report.json",
+  "sha256": {
+    "/home/lxf/chipyard/ssa/performance/linux.c": "96de36a1e0a222547fe4de43cf958e641a1d4d7aacc094033537965d408259f2",
+    "/home/lxf/chipyard/ssa/performance/workload.h": "509d7219f604b8bb3e243a7df3588f3058ce25ad18a203b46fc3220db32f0464",
+    "/home/lxf/chipyard/ssa/linux/transparent/plain-entry.S": "9e440e25f542e7fc6754f36b8a6a7e915b9ef66e48fce1ad9c49e2c6a7f3afee",
+    "/home/lxf/chipyard/ssa/linux/build-a.py": "04723acc13d23c6895e7a8c3cb9eb035ca6e9e6ae93c6f15def11441d2cd8030"
+  }
+}

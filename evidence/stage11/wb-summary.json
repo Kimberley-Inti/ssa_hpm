@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "checks": {
+    "actual_wb_observations": true,
+    "actual_replay_seen": true,
+    "actual_exception_seen": true,
+    "replays_exceptions_never_observed": true,
+    "observe_implies_retire": true,
+    "unique_sampling_cycles": true,
+    "reference_matches_all_hardware_rows": true,
+    "global_input_partition": true,
+    "history_evictions_match": true
+  },
+  "candidates": 82,
+  "observations": 72,
+  "replays": 7,
+  "exceptions": 1,
+  "reference_rows": {
+    "1": [
+      4,
+      4,
+      0,
+      0,
+      0
+    ],
+    "2": [
+      32,
+      4,
+      14,
+      12,
+      2
+    ],
+    "3": [
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "4": [
+      16,
+      4,
+      0,
+      12,
+      0
+    ],
+    "5": [
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "6": [
+      16,
+      4,
+      0,
+      6,
+      6
+    ],
+    "7": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
