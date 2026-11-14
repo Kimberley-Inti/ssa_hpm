@@ -462,3 +462,9 @@ project delivery additions; no full upstream history is imported. Kernel patch
 mail headers retain the original source author/date/message. Later evidence
 completion will update the stage11 acceptance state without rewriting this
 source checkpoint or any preceding stage history.
+
+The final Linux cost checker also reconstructs timer A→B→A chronology and sums
+raw pause samples independently before comparing all four rebased frame fields.
+It requires closed context exports and declared complete classifier coverage in
+the benchmark (unlike the intentionally incomplete loader/capacity regression).
+This is a host-oracle addition and does not change the executing target image.

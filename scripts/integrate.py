@@ -43,9 +43,15 @@ for pr in plan:
   assert live['state']=='open'
   if live['base']['ref']!='main':api('repos/'+REPO+'/pulls/'+str(n),'PATCH',{'base':'main'})
   # Review the exact remaining diff after the previous merge, before mutation.
-  diff=api('repos/'+REPO+'/pulls/'+str(n)+'/files?per_page=100');receipt['merges'].append({'pr':n,'diff_files':[x['filename'] for x in diff]})
+  diff=[]
+  for page in range(1,31):
+   part=api('repos/'+REPO+'/pulls/'+str(n)+'/files?per_page=100&page='+str(page));diff.extend(part)
+   if len(part)<100:break
+  else:raise RuntimeError('PR diff exceeds review pagination limit')
+  receipt['merges'].append({'pr':n,'diff_files':[x['filename'] for x in diff]})
   if live['draft']:
-   api('graphql','POST',{'query':'mutation($id:ID!){markPullRequestReadyForReview(input:{pullRequestId:$id}){pullRequest{isDraft}}}','variables':{'id':live['node_id']}})
+   ready=api('graphql','POST',{'query':'mutation($id:ID!){markPullRequestReadyForReview(input:{pullRequestId:$id}){pullRequest{isDraft}}}','variables':{'id':live['node_id']}})
+   assert not ready.get('errors') and not ready['data']['markPullRequestReadyForReview']['pullRequest']['isDraft']
   for attempt in range(6):
    try:
     result=api('repos/'+REPO+'/pulls/'+str(n)+'/merge','PUT',{'sha':pr['head']['sha'],'merge_method':'merge','commit_title':'Merge SSA-HPM stage PR #'+str(n)})
