@@ -256,3 +256,37 @@ DTLB rows retain `dtlb=...`; Cache rows use `cache=...`. Checksums use the same
 numeric fourth word. Legacy v1 captures lacking profile mean ABI1/base or
 ABI2/DTLB; a Cache capture always requires explicit profile and matching metadata.
 The parser rejects mixed fields and selectors, preserving old ABI1/2 recognition.
+
+## Stage9 optional memory classification
+
+START flags bit2 opts into rule1 classification, independently of bit1 ABI2 and
+bit0 legacy-HPM control. Flags0..3 retain their meanings. The directed classification
+Linux image uses flags6 (Cache ABI2 plus classification); existing base/DTLB/Cache
+build entries remain available. Ordinary users never select an epoch, physical
+pool, another task or query RID through prctl.
+
+The S/M-only CSR interface is0x5c1 epoch (zero disables),0x5c3 six-bit index,
+0x5c2 write1 reset owned bank0/1 then poll bit1 until clear.0x5c4..0x5cb expose
+five exclusive64-bit classification counters plus session statistics. Index0 is
+status/depth/spill/unframed/currentRID/inputs/evictions/dropped. Index1..63 is
+input/warmup/scalar/stream/irregular/inputs/evictions/dropped. The trusted kernel
+resets only a freshly acquired physical pool, before U-mode; reads only its
+frozen bank, under short IRQ masks; keeps ownership through terminal export.
+
+Two epoch banks retain16FIFO history entries and256RID mirror frames each.
+Switch-out clears selection; resume restores epoch without discarding histories.
+STOP freezes; exec commitment/exit export before release; failed ENOENT preserves
+the old epoch; the replacement image explicitly STARTs a fresh zeroed epoch.
+Actual observations are WB-retired integer load/store virtual addresses,1/2/4/8B.
+Kernel/trap/private-ROM/other-task instructions are source-filtered. No HPM S..R
+subtraction is needed for these counters; existing HPM counters remain inclusive
+and keep their original pause rebasing rules.
+
+Rule1 keys(epoch,RID,PC,op,width), first2warmup; equal zero deltas scalar-repeat,
+equal nonzero aligned signed byte stride with magnitude<=4096 stream; else
+irregular/unrecognized, not mathematical randomness. Counts are exclusive per
+current record; parent-inclusive classification can be derived separately.
+Evictions restart evidence without dropping accumulated counts. RID>=64 or
+unsupported framed state cannot silently be merged into parent counts. The base
+export remains full capacity; the sidecar explicitly declares63usable rows.
+See the maintenance repository docs/CLASSIFICATION.md for full scope and examples.

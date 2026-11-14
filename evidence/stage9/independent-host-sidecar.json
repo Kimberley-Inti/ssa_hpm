@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "coverage": "host-only synthetic protocol mutations",
+  "checks": {
+    "valid_0": true,
+    "valid_1": true,
+    "valid_2": true,
+    "valid_41": true,
+    "valid_63": true,
+    "progress_interleaving": true,
+    "overflow_parseable_incomplete": true,
+    "unmarked_overflow_detected": true,
+    "missing_row": true,
+    "duplicate_row": true,
+    "truncation": true,
+    "checksum": true,
+    "wrong_rule": true,
+    "wrong_session": true,
+    "wrong_width": true,
+    "wrong_scope": true,
+    "missing_epoch": true,
+    "input_partition": true,
+    "wrong_depth": true
+  }
+}

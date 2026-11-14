@@ -1,0 +1,486 @@
+{
+  "linux_build": {
+    "passed": true,
+    "commands": [
+      {
+        "argv": [
+          "git",
+          "init",
+          "-b",
+          "stage4-linux"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "fetch",
+          "--depth=1",
+          "https://github.com/firesim/linux.git",
+          "5f5fd87b36e21ed59b759b69eebfa1c74955cb37"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "checkout",
+          "--detach",
+          "FETCH_HEAD"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "init",
+          "-b",
+          "stage4-linux"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "git",
+          "fetch",
+          "--depth=1",
+          "https://github.com/riscv/opensbi.git",
+          "a98258d0b537a295f517bbc8d813007336731fa9"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "git",
+          "checkout",
+          "--detach",
+          "FETCH_HEAD"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0001-stack-pointer-declaration.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0002-linux-task-pools.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0003-linux-exec-lifecycle.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0004-linux-dtlb-event.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0005-linux-result-export.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0006-linux-cache-profile.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0007-linux-memory-classification.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0001-opensbi-rocket-platform.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0002-opensbi-dtlb-profile.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "git",
+          "am",
+          "/home/lxf/chipyard/ssa/linux/0003-opensbi-cache-profile.patch"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "dpkg-deb",
+          "-x",
+          "/tmp/ssa-hpm-stage9/linux-independent/binutils.deb",
+          "/tmp/ssa-hpm-stage9/linux-independent/host-tools"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DCHAIN_EVENTS",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/classification-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/init"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DCHAIN_EVENTS",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/exec-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/lifecycle"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DNEXT_IMAGE",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/exec-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/next"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DCACHE_END",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/export-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/regress"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/event-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/events"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DEVENT_SESSION",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/exec-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/eventexec"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DEVENT_SESSION",
+          "-DNEXT_IMAGE",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/exec-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/eventnext"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+          "-DCLASS_NEXT",
+          "-DCACHE_PROFILE_TEST",
+          "-march=rv64imac_zicsr",
+          "-mabi=lp64",
+          "-O1",
+          "-nostdlib",
+          "-nostartfiles",
+          "-static",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-msmall-data-limit=0",
+          "-fno-optimize-sibling-calls",
+          "-Wl,--no-relax",
+          "-Wl,-e,_start",
+          "-Wl,--build-id=none",
+          "/home/lxf/chipyard/ssa/linux/classification-init.c",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/classnext"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "scripts/config",
+          "--enable",
+          "SSA_HPM",
+          "--disable",
+          "HZ_250",
+          "--enable",
+          "HZ_1000"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "make",
+          "ARCH=riscv",
+          "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+          "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage9/linux-independent/host-tools/compiler-bin/",
+          "LD=/tmp/ssa-hpm-stage9/linux-independent/host-tools/usr/bin/riscv64-linux-gnu-ld",
+          "olddefconfig"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "make",
+          "ARCH=riscv",
+          "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+          "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage9/linux-independent/host-tools/compiler-bin/",
+          "LD=/tmp/ssa-hpm-stage9/linux-independent/host-tools/usr/bin/riscv64-linux-gnu-ld",
+          "KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE",
+          "KAFLAGS=-misa-spec=2.2",
+          "-j6",
+          "Image"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+      },
+      {
+        "argv": [
+          "dtc",
+          "-I",
+          "dts",
+          "-O",
+          "dtb",
+          "-o",
+          "/tmp/ssa-hpm-stage9/linux-independent/rocket.dtb",
+          "/home/lxf/chipyard/ssa/linux/rocket.dts"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "make",
+          "PLATFORM=ssa_rocket",
+          "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+          "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+          "platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE",
+          "FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage9/linux-independent/linux/arch/riscv/boot/Image",
+          "FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage9/linux-independent/rocket.dtb",
+          "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+          "-j6"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+      },
+      {
+        "argv": [
+          "/opt/riscv/bin/riscv64-unknown-elf-objcopy",
+          "-O",
+          "binary",
+          "/tmp/ssa-hpm-stage9/linux-independent/boot-a.elf",
+          "/tmp/ssa-hpm-stage9/linux-independent/boot-a.bin"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      },
+      {
+        "argv": [
+          "python3",
+          "/home/lxf/chipyard/ssa/elf_to_hex.py",
+          "/tmp/ssa-hpm-stage9/linux-independent/boot-a.bin",
+          "/tmp/ssa-hpm-stage9/linux-independent/boot-a.hex"
+        ],
+        "cwd": "/tmp/ssa-hpm-stage9/linux-independent"
+      }
+    ],
+    "images": {
+      "boot-a.elf": "709350bf15aeee8efd6bad22a143b08147a8de1ae7fbd135e2e97aac14ddf059",
+      "boot-a.bin": "cbb3849ee319f3456974a8539edd6d547059f92d6507cc7bc64a0c04e9be771f",
+      "boot-a.hex": "a238f6563c0088367644cfe034f0ecb4ecf93d2de8c77da077cd15856d4cbf59"
+    }
+  },
+  "outer_build_terminal_status": 143,
+  "interpretation": "terminal wrapper reported143 after checked build report was completed; image hashes and kernel tree independently verified; not treated as Linux run status",
+  "model_build": "build-model-retry.log actual make exit0; Scala compilation, RTL generation and Verilator C++ model complete",
+  "subsequent_actual_build_exit_check": {
+    "passed": true,
+    "coverage": "actual repeat of pinned kernel Image and OpenSBI make targets; cached objects reused, frozen boot image not regenerated or overwritten",
+    "commands": [
+      {
+        "command": {
+          "argv": [
+            "make",
+            "ARCH=riscv",
+            "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+            "CC=/opt/riscv/bin/riscv64-unknown-elf-gcc -B/tmp/ssa-hpm-stage9/linux-independent/host-tools/compiler-bin/",
+            "LD=/tmp/ssa-hpm-stage9/linux-independent/host-tools/usr/bin/riscv64-linux-gnu-ld",
+            "KCFLAGS=-misa-spec=2.2 -DSSA_CACHE_PROFILE",
+            "KAFLAGS=-misa-spec=2.2",
+            "-j6",
+            "Image"
+          ],
+          "cwd": "/tmp/ssa-hpm-stage9/linux-independent/linux"
+        },
+        "exit_code": 0,
+        "seconds": 6.076484794999487
+      },
+      {
+        "command": {
+          "argv": [
+            "make",
+            "PLATFORM=ssa_rocket",
+            "CROSS_COMPILE=/opt/riscv/bin/riscv64-unknown-elf-",
+            "PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei",
+            "platform-cflags-y=-std=gnu11 -DSSA_CACHE_PROFILE",
+            "FW_PAYLOAD_PATH=/tmp/ssa-hpm-stage9/linux-independent/linux/arch/riscv/boot/Image",
+            "FW_PAYLOAD_FDT_PATH=/tmp/ssa-hpm-stage9/linux-independent/rocket.dtb",
+            "FW_PAYLOAD_FDT_ADDR=0x81e00000",
+            "-j6"
+          ],
+          "cwd": "/tmp/ssa-hpm-stage9/linux-independent/opensbi"
+        },
+        "exit_code": 0,
+        "seconds": 0.12077779199989891
+      }
+    ],
+    "frozen_image_hashes_unchanged": true
+  }
+}

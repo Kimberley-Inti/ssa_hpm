@@ -1,0 +1,72 @@
+[
+  {
+    "name": "sv39",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/sv39.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/sv39.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 1.4462900340004126
+  },
+  {
+    "name": "user-csr",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/user-csr.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/user-csr.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.471447093000279
+  },
+  {
+    "name": "user-write",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/user-write.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/user-write.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.6736729909998758
+  },
+  {
+    "name": "user-pool",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/user-pool.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/user-pool.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.676923904999967
+  },
+  {
+    "name": "supervisor-policy",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/supervisor-policy.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/supervisor-policy.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.520889194999654
+  }
+]

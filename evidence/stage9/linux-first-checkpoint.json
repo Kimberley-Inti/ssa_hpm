@@ -1,0 +1,261 @@
+{
+  "passed": true,
+  "coverage": "completed first STOP export on the still-running original native simulation; not final Linux acceptance",
+  "normalized_prefix_sha256": "c1389898f8e2affba3fda330b3ae1aa8468c25727ae99d8bee24d250d71f370e",
+  "export": {
+    "valid": true,
+    "errors": [],
+    "classification_sessions": [
+      {
+        "header": {
+          "version": 1,
+          "rule": 1,
+          "session": 1,
+          "total": 6,
+          "emitted": 6,
+          "width": 64,
+          "aggregation": "exclusive",
+          "scope": "retired_integer_virtual",
+          "history": 16,
+          "capacity": 63,
+          "status": 1,
+          "depth": 0,
+          "spill": 0,
+          "unframed": 0,
+          "inputs": 72,
+          "evictions": 0,
+          "dropped": 0
+        },
+        "records": [
+          {
+            "session": 1,
+            "id": 1,
+            "total": 4,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67060,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 2,
+            "total": 32,
+            "warmup": 4,
+            "scalar": 14,
+            "stream": 12,
+            "irregular": 2,
+            "parent": 1,
+            "callee": 65824,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 3,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67004,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 4,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 12,
+            "irregular": 0,
+            "parent": 3,
+            "callee": 65824,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 5,
+            "total": 2,
+            "warmup": 2,
+            "scalar": 0,
+            "stream": 0,
+            "irregular": 0,
+            "parent": 0,
+            "callee": 67032,
+            "open": 0
+          },
+          {
+            "session": 1,
+            "id": 6,
+            "total": 16,
+            "warmup": 4,
+            "scalar": 0,
+            "stream": 6,
+            "irregular": 6,
+            "parent": 5,
+            "callee": 65824,
+            "open": 0
+          }
+        ],
+        "hash": 12822945750356303074,
+        "end": {
+          "session": 1,
+          "emitted": 6,
+          "hash": 12822945750356303074
+        },
+        "complete": true
+      }
+    ],
+    "context_export": {
+      "format_version": 1,
+      "valid": true,
+      "errors": [],
+      "sessions": [
+        {
+          "header": {
+            "version": 1,
+            "session": 1,
+            "pid": 14,
+            "image": 1,
+            "abi": 2,
+            "total": 6,
+            "capacity": 262143,
+            "chunk": 16,
+            "counters": 4,
+            "reason": "stop",
+            "pool": 2281701376,
+            "next": 7,
+            "depth": 0,
+            "spill": 0,
+            "errors": 0,
+            "status": 0,
+            "legacy": 0,
+            "policy": "interval_inclusive_pause_rebase",
+            "profile": "dcache_a_transactions"
+          },
+          "counters": [
+            {
+              "session": 1,
+              "index": 0,
+              "name": "cycle",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 1,
+              "index": 1,
+              "name": "instret",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 1,
+              "index": 2,
+              "name": "time",
+              "width": 64,
+              "selector": 0
+            },
+            {
+              "session": 1,
+              "index": 3,
+              "name": "dcache_a_transactions",
+              "width": 40,
+              "selector": 514
+            }
+          ],
+          "records": [
+            {
+              "pid": 14,
+              "id": 1,
+              "callee": 67060,
+              "parent": 0,
+              "cycle": 1484,
+              "instret": 342,
+              "time": 14,
+              "session": 1,
+              "open": 0,
+              "cache": 14
+            },
+            {
+              "pid": 14,
+              "id": 2,
+              "callee": 65824,
+              "parent": 1,
+              "cycle": 417,
+              "instret": 120,
+              "time": 4,
+              "session": 1,
+              "open": 0,
+              "cache": 5
+            },
+            {
+              "pid": 14,
+              "id": 3,
+              "callee": 67004,
+              "parent": 0,
+              "cycle": 787,
+              "instret": 176,
+              "time": 8,
+              "session": 1,
+              "open": 0,
+              "cache": 8
+            },
+            {
+              "pid": 14,
+              "id": 4,
+              "callee": 65824,
+              "parent": 3,
+              "cycle": 202,
+              "instret": 60,
+              "time": 2,
+              "session": 1,
+              "open": 0,
+              "cache": 3
+            },
+            {
+              "pid": 14,
+              "id": 5,
+              "callee": 67032,
+              "parent": 0,
+              "cycle": 761,
+              "instret": 176,
+              "time": 8,
+              "session": 1,
+              "open": 0,
+              "cache": 8
+            },
+            {
+              "pid": 14,
+              "id": 6,
+              "callee": 65824,
+              "parent": 5,
+              "cycle": 231,
+              "instret": 60,
+              "time": 3,
+              "session": 1,
+              "open": 0,
+              "cache": 4
+            }
+          ],
+          "frames": [],
+          "chunks": 1,
+          "hash": 8549190724259394054,
+          "released": false,
+          "end": {
+            "session": 1,
+            "chunks": 1,
+            "emitted": 6,
+            "total": 6,
+            "hash": 8549190724259394054,
+            "status": 0,
+            "records_complete": 1
+          },
+          "complete": true
+        }
+      ]
+    }
+  }
+}

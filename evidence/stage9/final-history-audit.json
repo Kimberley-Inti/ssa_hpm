@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "commits": 54,
+  "independent_roots": [
+    "b4be26b28b237996713b47f75cb9619cdc242d3b"
+  ],
+  "unique_text_blobs": 827,
+  "excluded": "upstream trees/history, gitlinks, binaries, bundles, PDFs, credential patterns",
+  "scanned_ref": "13360e5c03101734b9f196a1cb0d81ebae1c33d3",
+  "scanned_commit": "13360e5c03101734b9f196a1cb0d81ebae1c33d3"
+}

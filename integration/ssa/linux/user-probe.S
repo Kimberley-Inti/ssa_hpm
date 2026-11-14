@@ -122,11 +122,16 @@ finish:
 2: j 2b
 .balign 4096
 user_entry:
+#ifdef CLASS_CSR
+#define TARGET_CSR 0x5c1
+#else
+#define TARGET_CSR 0x800
+#endif
 #ifdef PROBE_CSR
 #ifdef PROBE_WRITE
- csrw 0x800,zero
+ csrw TARGET_CSR,zero
 #else
- csrr t0,0x800
+ csrr t0,TARGET_CSR
 #endif
  li a0,42
  ecall

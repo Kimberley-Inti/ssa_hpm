@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/tmp/ssa-hpm-stage9/wb-trace-model/simulator-progress",
+    "+permissive",
+    "+loadmem=ssa/classification-fault.hex",
+    "+max-cycles=5000000",
+    "+permissive-off",
+    "ssa/classification-fault.riscv"
+  ],
+  "exit_code": 0,
+  "seconds": 14.020988499999476
+}

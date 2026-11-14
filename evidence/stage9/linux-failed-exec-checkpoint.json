@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "coverage": "completed failedexec frozen export on still-running original native log; no final native status claim",
+  "session": 4,
+  "expected_leaf": [
+    32,
+    4,
+    0,
+    12,
+    16
+  ],
+  "actual_leaf": [
+    32,
+    4,
+    0,
+    12,
+    16
+  ],
+  "metadata": {
+    "version": 1,
+    "rule": 1,
+    "session": 4,
+    "total": 2,
+    "emitted": 2,
+    "width": 64,
+    "aggregation": "exclusive",
+    "scope": "retired_integer_virtual",
+    "history": 16,
+    "capacity": 63,
+    "status": 1,
+    "depth": 0,
+    "spill": 0,
+    "unframed": 0,
+    "inputs": 39,
+    "evictions": 0,
+    "dropped": 0
+  }
+}

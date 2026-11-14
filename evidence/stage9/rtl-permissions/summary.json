@@ -1,0 +1,28 @@
+[
+  {
+    "name": "user-class-read",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/user-class-read.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/user-class-read.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "user-class-write",
+    "command": [
+      "sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+      "+permissive",
+      "+loadmem=ssa/linux/user-class-write.hex",
+      "+max-cycles=2000000",
+      "+permissive-off",
+      "ssa/linux/user-class-write.riscv"
+    ],
+    "exit_code": 0,
+    "passed": true
+  }
+]

@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "classification": "rule1 retired integer load/store virtual address, exclusive context counts,2epoch banks/16histories/63rows",
+  "linux": {
+    "passed": true,
+    "native_exit_code": 0,
+    "checker_exit_code": 0,
+    "normal_shutdown": true,
+    "seconds": 9687.358718902,
+    "sessions": 7,
+    "records": 20,
+    "checks": {
+      "native_exit0": true,
+      "normal_shutdown": true,
+      "suite_complete": true,
+      "no_guest_failure": true,
+      "complete_transport": true,
+      "seven_sessions": true,
+      "context_patterns": true,
+      "same_callee_different_parents": true,
+      "class_coverage_valid": true,
+      "all_pools_released": true,
+      "explicit_stop": true,
+      "zero_session": true,
+      "exec_open_observed": true,
+      "exec_old_closed_classification": true,
+      "exec_open_is_partial_not_fake_return": true,
+      "exec_new_clean_epoch": true,
+      "failed_exec_history_preserved": true,
+      "two_task_context_chains": true,
+      "two_task_history_isolation": true,
+      "actual_A_B_A_open_preemption": true,
+      "timer_switch_sample_chronology": true,
+      "unmonitored_handoff": true,
+      "all_pause_samples_modulo_correct": true,
+      "both_stacks_restored": true,
+      "same_virtual_callee_independent_epoch": true,
+      "existing_inclusive_counter_relationships": true
+    },
+    "source_log_sha256": "f9ab322b3560fc67e717415755c561e60c29c1e02378d1ebb09ae52a552a28f1",
+    "coverage": "one actual native run of freshly publicly reconstructed Linux/OpenSBI image on verified new Rocket model; no separate second Linux execution"
+  },
+  "rtl": {
+    "actual_classification_cases": 4,
+    "permission_cases": 2,
+    "wb_candidates": 82,
+    "wb_observed": 72,
+    "wb_replays_excluded": 7,
+    "wb_exception_excluded": 1,
+    "reference_checked": true,
+    "semantic_negatives": "category/context mutations in all4 RTL fixtures; final Linux A/B leaf vectors swapped and checksums repaired, transport remains valid but attribution rejected"
+  },
+  "regressions": {
+    "spike_reference": 6,
+    "rocket_rtl": 28,
+    "all34_passed": true,
+    "total_existing_cases": 34,
+    "golden_common_instret": [
+      14452,
+      7226
+    ],
+    "host_rule_examples": 14,
+    "host_classification_protocol": 21,
+    "host_export": 48,
+    "historical_native41_mutations": 4,
+    "scope": "all34 existing cases new execution (prior29 plus5Cache); historical stage8 Linux41record evidence freshly host-regraded, not new stage9 hardware41"
+  },
+  "independent": {
+    "public_apply": true,
+    "exact_manifest_files": 83,
+    "rebuilt_bare_images_and_actual_rtl_cases": 4,
+    "linux_and_sbi_public_source_build": true,
+    "kernel_tree_matches_development": true,
+    "model": "new Scala/RTL/Verilator build once, verified model archive reused in independent RTL and actual Linux; no second model build",
+    "host_followups": "copied final host-only revisions, rehash and host regrade separately reported"
+  },
+  "sources": {
+    "chipyard": {
+      "head": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+      "tree": "9ad485ae45c6d749bd5d9f9cd1ea97b95290440a",
+      "branch": "stage9-memory-classification",
+      "image_fixture_commit": "845de089885afe175d941d8e6a2211ea0829d629",
+      "host_only_followups": [
+        "8be38abe85e787ff135ea14fd0513ae6b51a11c6",
+        "dbaaa7ca454445be679de9206baa80c08a6f2561",
+        "6b0c03dbf8dc941c636dba90b039d204e22da10f",
+        "a985d871ad8e133137f4e75f73fa1ca4baf853cc",
+        "da313dd3015b8c2c5b4b3a8341936792b1002a42",
+        "6abb37ea5316bb2cad9b8280b2485cf631d482c8"
+      ]
+    },
+    "rocket": {
+      "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+      "branch": "stage9-memory-classification"
+    },
+    "linux": {
+      "head": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
+      "tree": "5a3847a07da4caaf415b72d9d824edbac63d26f3",
+      "branch": "stage9-memory-classification"
+    },
+    "opensbi": {
+      "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+      "branch": "stage9-memory-classification"
+    }
+  },
+  "limitations": [
+    "single hart,2owned epochs,63classification rows,16FIFO histories per bank",
+    "retired scalar integer reads/writes1/2/4/8B; no FP/vector/AMO/PTW classification",
+    "irregular means no matching bounded fixed stride, not mathematical randomness",
+    "64bit classifier wrap transport/arithmetic host-tested; no2^64 hardware workload",
+    "no multi-hart migration/nonlocal unwind/transparent loader or broad exec claims"
+  ]
+}

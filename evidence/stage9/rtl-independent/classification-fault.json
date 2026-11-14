@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "checks": {
+    "observed": true,
+    "record_count": true,
+    "trace_matches_rows": true,
+    "drops_marked": true,
+    "stack_restored": true,
+    "input_partition": true,
+    "workload_contexts": true,
+    "reference_all_observations": true,
+    "fault_excluded": true
+  },
+  "observations": 72,
+  "errors": [],
+  "contexts": {
+    "2": [
+      "warmup",
+      "warmup",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar",
+      "scalar"
+    ],
+    "4": [
+      "warmup",
+      "warmup",
+      "stream",
+      "stream",
+      "stream",
+      "stream",
+      "stream",
+      "stream"
+    ],
+    "6": [
+      "warmup",
+      "warmup",
+      "irregular",
+      "irregular",
+      "irregular",
+      "irregular",
+      "irregular",
+      "irregular"
+    ]
+  },
+  "rows": {
+    "0": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      72,
+      0,
+      0
+    ],
+    "1": [
+      4,
+      4,
+      0,
+      0,
+      0,
+      72,
+      0,
+      0
+    ],
+    "2": [
+      32,
+      4,
+      14,
+      12,
+      2,
+      72,
+      0,
+      0
+    ],
+    "3": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      72,
+      0,
+      0
+    ],
+    "4": [
+      16,
+      4,
+      0,
+      12,
+      0,
+      72,
+      0,
+      0
+    ],
+    "5": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      72,
+      0,
+      0
+    ],
+    "6": [
+      16,
+      4,
+      0,
+      6,
+      6,
+      72,
+      0,
+      0
+    ],
+    "7": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      72,
+      0,
+      0
+    ]
+  },
+  "command": [
+    "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig",
+    "+permissive",
+    "+verbose",
+    "+loadmem=/tmp/ssa-hpm-stage9/public-independent/ssa/classification-fault.hex",
+    "+max-cycles=5000000",
+    "+permissive-off",
+    "/tmp/ssa-hpm-stage9/public-independent/ssa/classification-fault.riscv"
+  ],
+  "exit_code": 0,
+  "seconds": 15.690565285000048,
+  "sha256": {
+    "/tmp/ssa-hpm-stage9/public-independent/ssa/classification-fault.riscv": "1d88cb80af194fefb4e79d6618f03161449ac1e1af678567e536d1782448635c",
+    "/tmp/ssa-hpm-stage9/rtl-independent/classification-fault.txt": "ce4aa7e21949e6ca5584979530d2ba689ffce7d60f63f5f78fa3b007db96c17e",
+    "/home/lxf/chipyard/sims/verilator/simulator-chipyard-SSAHPMEventRocketConfig": "639699b919b10858d647903f342c055e780ac8cf7890db44730b700f411426db"
+  },
+  "negative_category_detected": true,
+  "negative_context_detected": true
+}

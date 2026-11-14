@@ -111,3 +111,26 @@ cache-events: cache.hex cache-selector-negative.hex cache-context-negative.hex c
 cache-abi.riscv: start.S test.c abi.S test.ld
 	$(CC) $(CFLAGS) $(LDFLAGS) -DABI -DEVENT_ABI -DCACHE_EVENT start.S test.c abi.S -o $@
 cache-events: cache-abi.hex
+
+classification.riscv: event_start.S classification/bare.c classification/workload.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) event_start.S classification/bare.c classification/workload.S -o $@
+.PHONY: classification
+classification: classification.hex
+
+classification-fault.riscv: classification/trap-start.S classification/bare.c classification/workload.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCLASS_FAULT classification/trap-start.S classification/bare.c classification/workload.S -o $@
+classification: classification-fault.hex
+
+classification-capacity.riscv: event_start.S classification/bare.c classification/workload.S classification/capacity.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCLASS_CAPACITY event_start.S classification/bare.c classification/workload.S classification/capacity.S -o $@
+classification: classification-capacity.hex
+
+classification-patterns.riscv: event_start.S classification/bare.c classification/workload.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DCLASS_PATTERNS event_start.S classification/bare.c classification/workload.S -o $@
+classification: classification-patterns.hex
+
+linux/user-class-read.riscv: linux/user-probe.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_CSR -DCLASS_CSR $< -o $@
+linux/user-class-write.riscv: linux/user-probe.S test.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) -DPROBE_CSR -DCLASS_CSR -DPROBE_WRITE $< -o $@
+classification: linux/user-class-read.hex linux/user-class-write.hex

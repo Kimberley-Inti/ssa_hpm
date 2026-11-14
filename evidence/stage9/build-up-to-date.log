@@ -1,0 +1,5 @@
+  CALL    scripts/atomic/check-atomics.sh
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  Kernel: arch/riscv/boot/Image is ready
+make: Nothing to be done for 'all'.
