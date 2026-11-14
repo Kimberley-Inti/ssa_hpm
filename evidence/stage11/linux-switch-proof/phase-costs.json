@@ -1,0 +1,312 @@
+{
+  "raw": [
+    {
+      "phase": "exec_ready",
+      "pid": 14,
+      "session": 1,
+      "cycle": 1316977,
+      "instret": 461370,
+      "time": 13167,
+      "detail": 0
+    },
+    {
+      "phase": "exec_ready",
+      "pid": 15,
+      "session": 2,
+      "cycle": 1329307,
+      "instret": 466334,
+      "time": 13292,
+      "detail": 0
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 14,
+      "session": 1,
+      "cycle": 805319,
+      "instret": 139962,
+      "time": 8051,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 14,
+      "session": 1,
+      "cycle": 1659,
+      "instret": 928,
+      "time": 16,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 14,
+      "session": 1,
+      "cycle": 13552,
+      "instret": 5836,
+      "time": 137,
+      "detail": 2
+    },
+    {
+      "phase": "export",
+      "pid": 14,
+      "session": 1,
+      "cycle": 3520792,
+      "instret": 2775466,
+      "time": 35208,
+      "detail": 2
+    },
+    {
+      "phase": "pause",
+      "pid": 14,
+      "session": 1,
+      "cycle": 1832,
+      "instret": 920,
+      "time": 16,
+      "detail": 0
+    },
+    {
+      "phase": "resume",
+      "pid": 14,
+      "session": 1,
+      "cycle": 1849,
+      "instret": 1013,
+      "time": 18,
+      "detail": 0
+    },
+    {
+      "phase": "pause",
+      "pid": 14,
+      "session": 1,
+      "cycle": 1770,
+      "instret": 990,
+      "time": 17,
+      "detail": 2
+    },
+    {
+      "phase": "resume",
+      "pid": 14,
+      "session": 1,
+      "cycle": 2063,
+      "instret": 1228,
+      "time": 20,
+      "detail": 2
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 15,
+      "session": 2,
+      "cycle": 804579,
+      "instret": 139962,
+      "time": 8044,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 15,
+      "session": 2,
+      "cycle": 1783,
+      "instret": 928,
+      "time": 17,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 15,
+      "session": 2,
+      "cycle": 5434,
+      "instret": 1592,
+      "time": 56,
+      "detail": 2
+    },
+    {
+      "phase": "export",
+      "pid": 15,
+      "session": 2,
+      "cycle": 4090740,
+      "instret": 3204668,
+      "time": 40906,
+      "detail": 2
+    },
+    {
+      "phase": "pause",
+      "pid": 15,
+      "session": 2,
+      "cycle": 1823,
+      "instret": 920,
+      "time": 17,
+      "detail": 0
+    },
+    {
+      "phase": "resume",
+      "pid": 15,
+      "session": 2,
+      "cycle": 1702,
+      "instret": 1013,
+      "time": 17,
+      "detail": 0
+    },
+    {
+      "phase": "pause",
+      "pid": 15,
+      "session": 2,
+      "cycle": 2001,
+      "instret": 920,
+      "time": 17,
+      "detail": 0
+    },
+    {
+      "phase": "resume",
+      "pid": 15,
+      "session": 2,
+      "cycle": 1560,
+      "instret": 1013,
+      "time": 16,
+      "detail": 0
+    },
+    {
+      "phase": "pause",
+      "pid": 15,
+      "session": 2,
+      "cycle": 1845,
+      "instret": 990,
+      "time": 17,
+      "detail": 2
+    },
+    {
+      "phase": "resume",
+      "pid": 15,
+      "session": 2,
+      "cycle": 2490,
+      "instret": 1228,
+      "time": 25,
+      "detail": 2
+    }
+  ],
+  "statistics": {
+    "dictionary_init": {
+      "n": 2,
+      "cycle": {
+        "min": 804579,
+        "median": 804949.0,
+        "max": 805319
+      },
+      "instret": {
+        "min": 139962,
+        "median": 139962.0,
+        "max": 139962
+      },
+      "time": {
+        "min": 8044,
+        "median": 8047.5,
+        "max": 8051
+      }
+    },
+    "exec_ready": {
+      "n": 2,
+      "cycle": {
+        "min": 1316977,
+        "median": 1323142.0,
+        "max": 1329307
+      },
+      "instret": {
+        "min": 461370,
+        "median": 463852.0,
+        "max": 466334
+      },
+      "time": {
+        "min": 13167,
+        "median": 13229.5,
+        "max": 13292
+      }
+    },
+    "export": {
+      "n": 2,
+      "cycle": {
+        "min": 3520792,
+        "median": 3805766.0,
+        "max": 4090740
+      },
+      "instret": {
+        "min": 2775466,
+        "median": 2990067.0,
+        "max": 3204668
+      },
+      "time": {
+        "min": 35208,
+        "median": 38057.0,
+        "max": 40906
+      }
+    },
+    "freeze": {
+      "n": 2,
+      "cycle": {
+        "min": 1659,
+        "median": 1721.0,
+        "max": 1783
+      },
+      "instret": {
+        "min": 928,
+        "median": 928.0,
+        "max": 928
+      },
+      "time": {
+        "min": 16,
+        "median": 16.5,
+        "max": 17
+      }
+    },
+    "pause": {
+      "n": 5,
+      "cycle": {
+        "min": 1770,
+        "median": 1832,
+        "max": 2001
+      },
+      "instret": {
+        "min": 920,
+        "median": 920,
+        "max": 990
+      },
+      "time": {
+        "min": 16,
+        "median": 17,
+        "max": 17
+      }
+    },
+    "record_copy": {
+      "n": 2,
+      "cycle": {
+        "min": 5434,
+        "median": 9493.0,
+        "max": 13552
+      },
+      "instret": {
+        "min": 1592,
+        "median": 3714.0,
+        "max": 5836
+      },
+      "time": {
+        "min": 56,
+        "median": 96.5,
+        "max": 137
+      }
+    },
+    "resume": {
+      "n": 5,
+      "cycle": {
+        "min": 1560,
+        "median": 1849,
+        "max": 2490
+      },
+      "instret": {
+        "min": 1013,
+        "median": 1013,
+        "max": 1228
+      },
+      "time": {
+        "min": 16,
+        "median": 18,
+        "max": 25
+      }
+    }
+  }
+}

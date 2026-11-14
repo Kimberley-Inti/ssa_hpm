@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "coverage": "host-only replay/mutations of one completed native run",
+  "original_native_log_sha256": "8bdfb8155a1e7848a06510364358aa11902ce1666253e3fcd55da05fd34d6c6d",
+  "checks": [
+    {
+      "name": "automatic",
+      "command": [
+        "/home/lxf/miniforge3/bin/python3",
+        "/home/lxf/chipyard/ssa/linux/transparent/grade.py",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/rocket-linux-transparent.txt",
+        "--exit-code",
+        "0",
+        "--users",
+        "/tmp/ssa-hpm-stage11/linux-candidate/transparent-users.json",
+        "--out",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/postcheck/automatic.json"
+      ],
+      "exit_code": 0,
+      "checks": 51
+    },
+    {
+      "name": "manual",
+      "command": [
+        "/home/lxf/miniforge3/bin/python3",
+        "/home/lxf/chipyard/ssa/linux/grade-classification.py",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/manual-regression.txt",
+        "--exit-code",
+        "0",
+        "--out",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/postcheck/manual.json"
+      ],
+      "exit_code": 0,
+      "checks": 26
+    },
+    {
+      "name": "capacity",
+      "command": [
+        "/home/lxf/miniforge3/bin/python3",
+        "/home/lxf/chipyard/ssa/linux/transparent/check-capacity-elf.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/rocket-linux-transparent.txt",
+        "--work",
+        "/tmp/ssa-hpm-stage11/linux-candidate",
+        "--out",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/postcheck/capacity.json"
+      ],
+      "exit_code": 0,
+      "checks": 10
+    },
+    {
+      "name": "automatic-negatives",
+      "command": [
+        "/home/lxf/miniforge3/bin/python3",
+        "/home/lxf/chipyard/ssa/linux/transparent/negative.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/rocket-linux-transparent.txt",
+        "--execution",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/execution.json",
+        "--users",
+        "/tmp/ssa-hpm-stage11/linux-candidate/transparent-users.json",
+        "--out",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/postcheck/automatic-negatives.json"
+      ],
+      "exit_code": 0,
+      "checks": 5
+    },
+    {
+      "name": "manual-negative",
+      "command": [
+        "/home/lxf/miniforge3/bin/python3",
+        "/home/lxf/chipyard/ssa/linux/test_classification_native.py",
+        "--native-log",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/manual-regression.txt",
+        "--execution",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/postcheck/manual-execution.json",
+        "--out",
+        "/tmp/ssa-hpm-stage11/linux-unified-final/postcheck/manual-negative.json"
+      ],
+      "exit_code": 0,
+      "checks": 3
+    }
+  ]
+}

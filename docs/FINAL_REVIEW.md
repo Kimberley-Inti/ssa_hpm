@@ -9,7 +9,7 @@ not definitions claimed to have appeared in the original design.
 | Review area | Source and checks | Finding / disposition |
 |---|---|---|
 | Context hierarchy and ROM | RocketCore, canonical microcode; exact ROM generation, nested/context/reuse/collision/capacity/register tests | Existing implementation retained; fresh RTL regression passed |
-| Counter ABI and profiles | CSR.scala, events.c, ABI.md, kernel samples; ABI1/2, selector negatives, 40-bit event wrap and register transparency | 64-bit cycle/instret/time; 40-bit ABI2 event. Cache completed D-cache A transactions and DTLB accepted PTW requests remain distinct. No request-owner precision claim |
+| Counter ABI and profiles | CSR.scala, events.c, ABI.md, kernel samples; ABI1/2, selector negatives, 40-bit event wrap and register transparency | 64-bit cycle/instret/time; 40-bit ABI2 event. Cache completed outbound TileLink-A request messages (the final accepted A beat, not D-response completion) and DTLB accepted PTW requests remain distinct. No request-owner precision claim |
 | Privilege and retirement | user CSR read/write/pool probes, supervisor policy; independent pre-clock WB/replay/exception oracle | All seven permission probes and WB oracle passed on the newly built model; kernel/ROM accesses excluded from user classifier |
 | Ownership/lifecycle | kernel/ssa_hpm.c, fork/ELF hooks; frozen export owns descriptor and pool through terminal/release | Single-hart IRQ exclusion protects selector and pool allocation. Export can reschedule with STOPPED descriptor. exec commits retire the old pool before new setup; failed precommit exec retains it |
 | Launch policy | privileged ARM_EXEC, no_new_privs, ordinary ELF fixture | Explicitly selected audited paths; fork clears policy; threads/setid rejected; full pools fail open with status. Arbitrary ELF non-LIFO behavior is not automatically detected |
@@ -24,9 +24,9 @@ unwind, vector/FP/AMO classification or automatic DTLB is accepted. The classifi
 is bounded to two banks, 63 context rows, 16 FIFO histories per bank and256 shadow
 frames. Eviction restarts warmup; irregular means no recognized supported pattern.
 
-Review findings do not themselves certify the remaining Linux/performance runs.
-Their final receipts and gate status are recorded in STAGE11 and the final
-validation summary only after actual completion.
+Review findings are distinct from execution evidence. The Linux/performance
+runs have now completed; STAGE11 and the final summary record their receipts
+and separately identify companion versus primary and host-only replay.
 
 R04: host progress lines can interrupt a target performance row. A synthetic
 middle-of-hex-field reproduction failed before normalization and passes after
@@ -41,3 +41,20 @@ is no sticky count of folded activations. Export completeness is about all
 allocated records, not proof that an arbitrary input respected the supported
 call-depth domain. Full-tree claims require audited inputs within256frames;
 no generic unbounded call-tree coverage is inferred from a complete transport.
+
+R05: the full performance fixture creates three records (outer, inner, memory
+body), but the inherited SSA_ACCOUNT diagnostic is emitted only for next==3,
+i.e. two records. Consequently its first final host check returned1 for absent
+direct snapshot proof, while native0, powerdown,150work samples, all exports,
+actual timer/open2 switches and phase costs passed. Keep that failed receipt.
+A conditional two-record switch-only companion inlines the same real memory
+patterns, uses the identical kernel/firmware trees and RTL executable, and must
+supply original/final/off plus S/R proof and negative semantic mutations. The
+full default target's loadable bytes were actually recompiled and match exactly.
+No producer/kernel change or rerun of the successful long workload is implied;
+primary and companion coverage are explicitly separate in the final checker.
+
+R06: manual reproduction prose had drifted to2Chipyard/12Rocket patches. The
+actual helper and clean public builds apply3Chipyard/14Rocket patches in order.
+The prose now matches the tested chain, including HPM config and classification;
+the earlier basic-only entry is labeled separately from the final matrix.

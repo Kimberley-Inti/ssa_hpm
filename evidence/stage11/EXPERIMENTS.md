@@ -35,3 +35,34 @@ candidate. The source SHA map and explicitly referenced final receipts govern.
 No images, upstream trees, generated RTL, binaries or PDFs are published.
 Full local verbose logs remain in /tmp; their hashes and project trace excerpts
 make the scope of the committed evidence explicit.
+
+## Final completion and repaired postprocessing
+
+The current production run completed native0/powerdown and all original and
+postcheck oracles passed. Its complete capture is linux-unified-final/.
+The current full measurement run also completed native0/powerdown; published
+linux-performance-final/ is copied from LOCAL linux-performance-complete/, not
+from the old superseded LOCAL linux-performance-final/ trial.
+
+Full150work/phase measurements and all8exports passed. Its original final
+snapshot check failed because the kernel prints SSA_ACCOUNT only for exactly
+2records and this fixture creates3. summary-before-companion.json and original
+runner output retain that coverage failure. Only the missing proof was rerun:
+linux-switch-proof/ is another actual native capture,2tasks/2records each,
+native0/powerdown,8snapshot rows and20checks pass. Its first runner exited1 for
+a host NameError, corrected without rerunning the native image. The final
+composite postcheck returned0 and explicitly identifies the companion coverage.
+No original host runner status is rewritten0.
+
+accounting-negative-before.json records a deliberate duplicate-counter
+reproduction exposing a host oracle hole; final requires the exactPID/counter
+set. accounting-negative-final.json records all5cases passing: good accepted,
+wrong sample/offset, missing rows and duplicate counter rejected. This is host
+mutation, not5simulations. Progress split one SSA_ACCOUNT tag; raw substring
+count7 becomes8after the canonical normalizer.
+
+Raw frame original/final reads and independent S/R deltas prove correction.
+The emitted raw=recorded+(final-original) column is a reconstructed counterfactual,
+not a separate old-protocol native run. Linux work data has no unexplained
+instruction residual: body+sampling+ROM plus0/1/2steps of4025matches all150rows;
+this supports the timer explanation without claiming a full IRQ instruction trace.

@@ -510,7 +510,7 @@
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
-    "ssa/linux/build-a.py": "e6e802fbb6869ec59d89292066b10a5a3a0e9d905a5e4f2352175887f2e4f69b",
+    "ssa/linux/build-a.py": "04723acc13d23c6895e7a8c3cb9eb035ca6e9e6ae93c6f15def11441d2cd8030",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "38b8e091d5188090402fc43c93cc5906dc66dc0e24c5a5a16d3177f501387f24",
@@ -585,12 +585,13 @@
     "ssa/performance/bench.c": "ad3793550d76b800f34ac20dc909a2b70277650375e82674038a29936e10305c",
     "ssa/performance/build.sh": "28d09f84460aefe5fc452703d2f60dcfca9f78a94f8d73f23fb4f8ba7de43fb4",
     "ssa/performance/check.py": "24c4f3cfdc5dcc3dc94f2a514112f48dd0502b2d3e2539f4111815bf99506b5f",
-    "ssa/performance/linux-check.py": "fb92819c14564a9779df00027d417b33bf3f849dc4dcfb02ce30ef1f8f8beb1c",
-    "ssa/performance/linux-run.py": "6d943459efbea4443e1a1559d6156bff2cc338a232544f4f54a90eafa296625a",
-    "ssa/performance/linux.c": "4f58956362d75daffd4c83240bcedc3dd4a8b0524be78679d4c5d2587b7d9681",
+    "ssa/performance/linux-check.py": "a503186652051fad01ae1f3b002d5f4b4ab7dfb62eaa8d9ae0c487d7ba5a4f23",
+    "ssa/performance/linux-run.py": "f695ca673daa5b44756b75fa819d81497cd4b0262cd0d17633645e62757832ad",
+    "ssa/performance/linux.c": "96de36a1e0a222547fe4de43cf958e641a1d4d7aacc094033537965d408259f2",
     "ssa/performance/run.py": "69fc4b9916d2e6d02361dabdce529e323d0d4de374ad414bacd0ecacb76d5790",
     "ssa/performance/workload.h": "509d7219f604b8bb3e243a7df3588f3058ce25ad18a203b46fc3220db32f0464",
-    "ssa/performance/test_check.py": "a7357959c3068a221eb9db855eeae30e0b5d97c1bc508f8fa4abc93af2af157c"
+    "ssa/performance/test_check.py": "a7357959c3068a221eb9db855eeae30e0b5d97c1bc508f8fa4abc93af2af157c",
+    "ssa/performance/test_linux_accounting.py": "f5901dc95e73ae3d635ba77cfd80a646a0270bd384324027a4a49023291abd2d"
   },
   "development_stage": 11,
   "stage3": {
@@ -700,12 +701,12 @@
   "stage11": {
     "baseline_maintenance": "6ef19d6e85dfe55983794342620a026005a67d20",
     "source_commits": {
-      "chipyard": "905ff526ba063892403cd33bc0373bf84dce0610",
+      "chipyard": "d756a546e27d40100752a0ff7c73b796c77d4fde",
       "rocket_chip": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
       "linux": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
       "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
     },
-    "status": "validation_in_progress",
+    "status": "accepted_bounded_research_profile",
     "new_rtl_build": true,
     "rocket_rtl_unchanged": true,
     "linux_changes": [
@@ -721,6 +722,7 @@
       "classification",
       "manual-cache-classification",
       "automatic-cache-classification"
-    ]
+    ],
+    "final_accounting_companion": "two-record switch-only; same kernel/SBI/RTL; original full payload unchanged"
   }
 }

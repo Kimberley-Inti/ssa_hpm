@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "coverage": "Host closed-form result check of all 300 completed work rows; Linux terminal/native acceptance is separately required",
+  "expected": [
+    13264005122147005569,
+    13862957897887627009,
+    34,
+    142583809,
+    142583809
+  ],
+  "reasoning": [
+    "LCG closed-form mod2^64 for128updates",
+    "3*x+1 closed-form for128leafcalls",
+    "16increments before recursion plus17 on returns, initial1",
+    "arithmetic-series sum of4096 words17*j+3 plus initial1",
+    "109=1mod4 and37odd give full period4096, same permutation sum"
+  ],
+  "checks": {
+    "bare": {
+      "rows": 150,
+      "all_match": true,
+      "canonical_mode_work_rep_checksum_sha256": "4cae185d1d1540dea0f28b89079db2321d4c1fdb8164bca09a780ad51415d7c1"
+    },
+    "linux": {
+      "rows": 150,
+      "all_match": true,
+      "canonical_mode_work_rep_checksum_sha256": "74643c58c1908430263f52c080a5012668f2fcbde55b349e7530c75fd61ab96b"
+    }
+  }
+}

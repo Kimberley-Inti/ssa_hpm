@@ -18,14 +18,22 @@ INL long spawn_target(const char*arg,int autom){
 INL void finish(void){C(142,0xfee1dead,672274793,0x4321fedc);for(;;)C(124,0,0,0);}
 __attribute__((noinline)) static void dual_inner(int role){
  if(role==2){long ts[2]={0,1000000};need(C(101,ts,0,0)==0);}else work(4000);
- sink=bench_work(role==1?3:4);asm volatile("":::"memory");
+#ifdef SSA_PERF_SWITCH_ONLY
+ // Keep exactly outer/inner records so the existing snapshot witness is emitted.
+ U x=1;unsigned j=0;for(unsigned i=0;i<4096;i++){j=role==1?i:((j*109+37)&4095);x+=data[j];}sink=x;
+#else
+ sink=bench_work(role==1?3:4);
+#endif
+ asm volatile("":::"memory");
 }
 __attribute__((noinline)) static void dual_outer(int role){dual_inner(role);asm volatile("":::"memory");}
 void plain_main(U*sp){
  const char *arg=sp[0]>1?(const char*)sp[2]:"init";
  if(C(172,0,0,0)==1){
   priority(1,2);out("SSA_PERF_LINUX_START\n");
+#ifndef SSA_PERF_SWITCH_ONLY
   waitp(spawn_target("0",0));waitp(spawn_target("1",0));waitp(spawn_target("3",0));waitp(spawn_target("4",0));waitp(spawn_target("6",0));waitp(spawn_target("5",1));
+#endif
   int fd[2];need(C(59,fd,0,0)==0);need(fd[0]==3 && fd[1]==4);
   long b=spawn_target("B",1),a=spawn_target("A",1);waitp(b);waitp(a);C(57,3,0,0);C(57,4,0,0);
   out("SSA_PERF_LINUX_DONE\n");finish();

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "/home/lxf/chipyard/ssa/performance/linux-run.py",
+    "--work",
+    "/tmp/ssa-hpm-stage11/switch-proof-build",
+    "--simulator",
+    "/tmp/ssa-hpm-stage11/progress/simulator-progress",
+    "--out",
+    "/tmp/ssa-hpm-stage11/switch-proof",
+    "--switch-only"
+  ],
+  "exit_code": 1,
+  "seconds": 6525.889364996998
+}

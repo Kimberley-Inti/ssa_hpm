@@ -1,0 +1,433 @@
+SSA_CLASSIFICATION_SUITE_START
+
+SSA_BEGIN pid=27 session=11 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+
+SSA_EVENT_BEGIN pid=27 session=11 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_SESSION pid=27 session=11 image=2 reason=stop comm=class-regress selector=0 cutoff_cycle=78006221 cutoff_instret=48956928 cutoff_time=780068
+
+SSA_EXPORT pid=27 uid=1000 role=0 test=8 legacy=0 pool=2281701376 complete=1 depth=0 next=7 spill=0 events=0 session=11
+
+SSA_XBEGIN version=1 session=11 pid=27 image=2 abi=2 total=6 capacity=262143 chunk=16 counters=4 reason=stop pool=2281701376 next=7 depth=0 spill=0 errors=0 status=0 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=6
+
+SSA_XCOUNTER session=11 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=11 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=11 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=11 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_XCHUNK session=11 seq=0 first=1 count=6
+
+SSA_RECORD pid=27 id=1 callee=00000000000105f4 parent=0 cycle=1455 instret=342 time=15 session=11 open=0
+
+SSA_EVENT_RECORD pid=27 session=11 id=1 parent=0 callee=00000000000105f4 cache=14 open=0
+
+SSA_RECORD pid=27 id=2 callee=0000000000010120 parent=1 cycle=387 instret=120 time=5 session=11 open=0
+
+SSA_EVENT_RECORD pid=27 session=11 id=2 parent=1 callee=0000000000010120 cache=5 open=0
+
+SSA_RECORD pid=27 id=3 callee=00000000000105bc parent=0 cycle=764 instret=176 time=8 session=11 open=0
+
+SSA_EVENT_RECORD pid=27 session=11 id=3 parent=0 callee=00000000000105bc cache=7 open=0
+
+SSA_RECORD pid=27 id=4 callee=0000000000010120 parent=3 cycle=212 instret=60 time=2 session=11 open=0
+
+SSA_EVENT_RECORD pid=27 session=11 id=4 parent=3 callee=0000000000010120 cache=3 open=0
+
+SSA_RECORD pid=27 id=5 callee=00000000000105d8 parent=0 cycle=770 instret=176 time=7 session=11 open=0
+
+SSA_EVENT_RECORD pid=27 session=11 id=5 parent=0 callee=00000000000105d8 cache=8 open=0
+
+SSA_RECORD pid=27 id=6 callee=0000000000010120 parent=5 cycle=240 instret=60 time=2 session=11 open=0
+
+SSA_EVENT_RECORD pid=27 session=11 id=6 parent=5 callee=0000000000010120 cache=4 open=0
+
+SSA_XCHUNK_END session=11 seq=0 count=6 hash=6b9298df1ea340a3
+
+SSA_MBEGIN version=1 rule=1 session=11 total=6 emitted=6 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=0 spill=0 unframed=0 inputs=72 evictions=0 dropped=0
+
+SSA_MRECORD session=11 id=1 total=4 warmup=4 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=11 id=2 total=32 warmup=4 scalar=14 stream=12 irregular=2
+
+SSA_MRECORD session=11 id=3 total=2 warmup=2 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=11 id=4 total=16 warmup=4 scalar=0 stream=12 irregular=0
+
+SSA_MRECORD session=11 id=5 total=2 warmup=2 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=11 id=6 total=16 warmup=4 scalar=0 stream=6 irregular=6
+
+SSA_MEND session=11 emitted=6 hash=b1f4413898179ce2
+
+SSA_XEND session=11 chunks=1 emitted=6 total=6 hash=6b9298df1ea340a3 status=0 records_complete=1
+
+SSA_EVENT_SESSION pid=27 session=11 reason=stop cutoff=471602 policy=1
+
+SSA_XRELEASE session=11 pid=27 pool=2281701376 reason=exit
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_CLASSIFICATION_LIFECYCLE_CASE
+
+SSA_BEGIN pid=28 session=12 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+
+SSA_EVENT_BEGIN pid=28 session=12 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_SESSION pid=28 session=12 image=2 reason=exec comm=class-regress selector=0 cutoff_cycle=82106359 cutoff_instret=51542997 cutoff_time=821077
+
+SSA_EXPORT pid=28 uid=1000 role=0 test=8 legacy=0 pool=2281701376 complete=0 depth=1 next=5 spill=0 events=0 session=12
+
+SSA_XBEGIN version=1 session=12 pid=28 image=2 abi=2 total=4 capacity=262143 chunk=16 counters=4 reason=exec pool=2281701376 next=5 depth=1 spill=0 errors=0 status=1 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=4
+
+SSA_XCOUNTER session=12 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=12 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=12 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=12 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_XCHUNK session=12 seq=0 first=1 count=4
+
+SSA_RECORD pid=28 id=1 callee=00000000000105f4 parent=0 cycle=959 instret=176 time=9 session=12 open=0
+
+SSA_EVENT_RECORD pid=28 session=12 id=1 parent=0 callee=00000000000105f4 cache=11 open=0
+
+SSA_RECORD pid=28 id=2 callee=0000000000010120 parent=1 cycle=282 instret=60 time=2 session=12 open=0
+
+SSA_EVENT_RECORD pid=28 session=12 id=2 parent=1 callee=0000000000010120 cache=4 open=0
+
+SSA_RECORD pid=28 id=3 callee=0000000000010610 parent=0 cycle=0 instret=0 time=0 session=12 open=1
+
+SSA_EVENT_RECORD pid=28 session=12 id=3 parent=0 callee=0000000000010610 cache=0 open=1
+
+SSA_RECORD pid=28 id=4 callee=0000000000010120 parent=3 cycle=294 instret=60 time=3 session=12 open=0
+
+SSA_EVENT_RECORD pid=28 session=12 id=4 parent=3 callee=0000000000010120 cache=6 open=0
+
+SSA_XCHUNK_END session=12 seq=0 count=4 hash=b7e5e2db31a91464
+
+SSA_MBEGIN version=1 rule=1 session=12 total=4 emitted=4 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=1 spill=0 unframed=0 inputs=39 evictions=0 dropped=0
+
+SSA_MRECORD session=12 id=1 total=2 warmup=2 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=12 id=2 total=16 warmup=4 scalar=6 stream=6 irregular=0
+
+SSA_MRECORD session=12 id=3 total=5 warmup=5 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=12 id=4 total=16 warmup=4 scalar=0 stream=6 irregular=6
+
+SSA_MEND session=12 emitted=4 hash=17115669f5830dcf
+
+SSA_XFRAME session=12 frame=1 rid=3 status=abandoned
+
+SSA_XEND session=12 chunks=1 emitted=4 total=4 hash=b7e5e2db31a91464 status=1 records_complete=1
+
+SSA_EVENT_SESSION pid=28 session=12 reason=exec cutoff=497651 policy=1
+
+SSA_OPEN pid=28 session=12 frame=1 rid=3 status=abandoned entry_cycle=82025202 entry_instret=51519836 entry_time=820252
+
+SSA_EVENT_OPEN pid=28 session=12 frame=1 rid=3 entry=496806
+
+SSA_EXEC_END pid=28 session=12 complete=0 selector=0
+
+SSA_XRELEASE session=12 pid=28 pool=2281701376 reason=exec
+
+SSA_UNMONITORED pid=28 selector=0
+
+SSA_BEGIN pid=28 session=13 image=3 pool=2281701376 depth=0 next=1 selector=2281701376
+
+SSA_EVENT_BEGIN pid=28 session=13 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_SESSION pid=28 session=13 image=3 reason=exit comm=classnext selector=0 cutoff_cycle=85759009 cutoff_instret=53870219 cutoff_time=857594
+
+SSA_EXPORT pid=28 uid=1000 role=0 test=8 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=0 session=13
+
+SSA_XBEGIN version=1 session=13 pid=28 image=3 abi=2 total=2 capacity=262143 chunk=16 counters=4 reason=exit pool=2281701376 next=3 depth=0 spill=0 errors=0 status=0 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=2
+
+SSA_XCOUNTER session=13 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=13 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=13 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=13 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_XCHUNK session=13 seq=0 first=1 count=2
+
+SSA_RECORD pid=28 id=1 callee=0000000000010550 parent=0 cycle=950 instret=176 time=9 session=13 open=0
+
+SSA_EVENT_RECORD pid=28 session=13 id=1 parent=0 callee=0000000000010550 cache=11 open=0
+
+SSA_RECORD pid=28 id=2 callee=0000000000010120 parent=1 cycle=295 instret=60 time=3 session=13 open=0
+
+SSA_EVENT_RECORD pid=28 session=13 id=2 parent=1 callee=0000000000010120 cache=4 open=0
+
+SSA_XCHUNK_END session=13 seq=0 count=2 hash=c91f8c9173db4a0f
+
+SSA_MBEGIN version=1 rule=1 session=13 total=2 emitted=2 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=0 spill=0 unframed=0 inputs=18 evictions=0 dropped=0
+
+SSA_MRECORD session=13 id=1 total=2 warmup=2 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=13 id=2 total=16 warmup=4 scalar=0 stream=12 irregular=0
+
+SSA_MEND session=13 emitted=2 hash=fd4d2d025d979e02
+
+SSA_XEND session=13 chunks=1 emitted=2 total=2 hash=c91f8c9173db4a0f status=0 records_complete=1
+
+SSA_EVENT_SESSION pid=28 session=13 reason=exit cutoff=520953 policy=1
+
+SSA_EXIT pid=28 complete=1 selector=0 session=13
+
+SSA_XRELEASE session=13 pid=28 pool=2281701376 reason=exit
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_CLASSIFICATION_LIFECYCLE_CASE
+
+SSA_BEGIN pid=29 session=14 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+
+SSA_EVENT_BEGIN pid=29 session=14 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_SESSION pid=29 session=14 image=2 reason=exit comm=class-regress selector=0 cutoff_cycle=88851072 cutoff_instret=55697538 cutoff_time=888519
+
+SSA_EXPORT pid=29 uid=1000 role=0 test=8 legacy=0 pool=2281701376 complete=1 depth=0 next=3 spill=0 events=0 session=14
+
+SSA_XBEGIN version=1 session=14 pid=29 image=2 abi=2 total=2 capacity=262143 chunk=16 counters=4 reason=exit pool=2281701376 next=3 depth=0 spill=0 errors=0 status=0 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=2
+
+SSA_XCOUNTER session=14 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=14 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=14 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=14 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_XCHUNK session=14 seq=0 first=1 count=2
+
+SSA_RECORD pid=29 id=1 callee=0000000000010610 parent=0 cycle=24919 instret=7587 time=250 session=14 open=0
+
+SSA_EVENT_RECORD pid=29 session=14 id=1 parent=0 callee=0000000000010610 cache=158 open=0
+
+SSA_RECORD pid=29 id=2 callee=0000000000010120 parent=1 cycle=569 instret=120 time=5 session=14 open=0
+
+SSA_EVENT_RECORD pid=29 session=14 id=2 parent=1 callee=0000000000010120 cache=10 open=0
+
+SSA_XCHUNK_END session=14 seq=0 count=2 hash=def35b13f257cfad
+
+SSA_MBEGIN version=1 rule=1 session=14 total=2 emitted=2 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=0 spill=0 unframed=0 inputs=39 evictions=0 dropped=0
+
+SSA_MRECORD session=14 id=1 total=7 warmup=7 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=14 id=2 total=32 warmup=4 scalar=0 stream=12 irregular=16
+
+SSA_MEND session=14 emitted=2 hash=0692151ba6fdedac
+
+SSA_XEND session=14 chunks=1 emitted=2 total=2 hash=def35b13f257cfad status=0 records_complete=1
+
+SSA_EVENT_SESSION pid=29 session=14 reason=exit cutoff=544279 policy=1
+
+SSA_EXIT pid=29 complete=1 selector=0 session=14
+
+SSA_XRELEASE session=14 pid=29 pool=2281701376 reason=exit
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_CLASSIFICATION_LIFECYCLE_CASE
+
+SSA_BEGIN pid=30 session=15 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+
+SSA_EVENT_BEGIN pid=30 session=15 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_SESSION pid=30 session=15 image=2 reason=stop comm=class-regress selector=0 cutoff_cycle=91928325 cutoff_instret=57526992 cutoff_time=919288
+
+SSA_EXPORT pid=30 uid=1000 role=0 test=8 legacy=0 pool=2281701376 complete=1 depth=0 next=1 spill=0 events=0 session=15
+
+SSA_XBEGIN version=1 session=15 pid=30 image=2 abi=2 total=0 capacity=262143 chunk=16 counters=4 reason=stop pool=2281701376 next=1 depth=0 spill=0 errors=0 status=0 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=0
+
+SSA_XCOUNTER session=15 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=15 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=15 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=15 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_MBEGIN version=1 rule=1 session=15 total=0 emitted=0 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=0 spill=0 unframed=0 inputs=0 evictions=0 dropped=0
+
+SSA_MEND session=15 emitted=0 hash=cbf29ce484222325
+
+SSA_XEND session=15 chunks=0 emitted=0 total=0 hash=cbf29ce484222325 status=0 records_complete=1
+
+SSA_EVENT_SESSION pid=30 session=15 reason=stop cutoff=567870 policy=1
+
+SSA_XRELEASE session=15 pid=30 pool=2281701376 reason=exit
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_CLASSIFICATION_LIFECYCLE_CASE
+
+SSA_BEGIN pid=31 session=16 image=2 pool=2281701376 depth=0 next=1 selector=2281701376
+
+SSA_EVENT_BEGIN pid=31 session=16 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_BEGIN pid=32 session=17 image=2 pool=2348810240 depth=0 next=1 selector=2348810240
+
+SSA_EVENT_BEGIN pid=32 session=17 abi=2 selector=514 width=40 depth=0 next=1 profile=dcache_a_transactions
+
+SSA_SESSION pid=31 session=16 image=2 reason=exit comm=class-regress selector=0 cutoff_cycle=95744786 cutoff_instret=59339579 cutoff_time=957452
+
+SSA_EXPORT pid=31 uid=1000 role=2 test=9 legacy=0 pool=2281701376 complete=1 depth=0 next=4 spill=0 events=2 session=16
+
+SSA_SWITCH pid=31 test=9 role=2 event=0 to=7 from=32 depth=0 rid=0 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=16
+
+SSA_SAMPLE pid=31 event=0 counter=0 S=0000000005a1a8bf R=0000000005b2cbc1 delta=0000000000112302 session=16
+
+SSA_SAMPLE pid=31 event=0 counter=1 S=0000000003828caf R=000000000387b863 delta=0000000000052bb4 session=16
+
+SSA_SAMPLE pid=31 event=0 counter=2 S=00000000000e6aab R=00000000000e9688 delta=0000000000002bdd session=16
+
+SSA_SAMPLE pid=31 event=0 counter=3 S=0000000000090755 R=0000000000094dc8 delta=0000000000004673 session=16
+
+SSA_SWITCH pid=31 test=9 role=2 event=1 to=32 from=32 depth=2 rid=2 state=1 ivcsw=1 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=16
+
+SSA_SAMPLE pid=31 event=1 counter=0 S=0000000005b2fe25 R=0000000005b4e043 delta=000000000001e21e session=16
+
+SSA_SAMPLE pid=31 event=1 counter=1 S=000000000387c5c7 R=0000000003896db7 delta=000000000001a7f0 session=16
+
+SSA_SAMPLE pid=31 event=1 counter=2 S=00000000000e970a R=00000000000e9bdb delta=00000000000004d1 session=16
+
+SSA_SAMPLE pid=31 event=1 counter=3 S=0000000000094e35 R=0000000000094eba delta=0000000000000085 session=16
+
+SSA_XBEGIN version=1 session=16 pid=31 image=2 abi=2 total=3 capacity=262143 chunk=16 counters=4 reason=exit pool=2281701376 next=4 depth=0 spill=0 errors=0 status=0 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=3
+
+SSA_XCOUNTER session=16 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=16 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=16 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=16 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_XCHUNK session=16 seq=0 first=1 count=3
+
+SSA_RECORD pid=31 id=1 callee=000000000001082e parent=0 cycle=11228 instret=3292 time=114 session=16 open=0
+
+SSA_EVENT_RECORD pid=31 session=16 id=1 parent=0 callee=000000000001082e cache=93 open=0
+
+SSA_RECORD pid=31 id=2 callee=000000000001069e parent=1 cycle=10587 instret=3179 time=107 session=16 open=0
+
+SSA_EVENT_RECORD pid=31 session=16 id=2 parent=1 callee=000000000001069e cache=86 open=0
+
+SSA_RECORD pid=31 id=3 callee=0000000000010120 parent=2 cycle=541 instret=120 time=6 session=16 open=0
+
+SSA_EVENT_RECORD pid=31 session=16 id=3 parent=2 callee=0000000000010120 cache=8 open=0
+
+SSA_XCHUNK_END session=16 seq=0 count=3 hash=d0b3f2d4b2e9c6a7
+
+SSA_MBEGIN version=1 rule=1 session=16 total=3 emitted=3 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=0 spill=0 unframed=2 inputs=42 evictions=0 dropped=0
+
+SSA_MRECORD session=16 id=1 total=2 warmup=2 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=16 id=2 total=6 warmup=6 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=16 id=3 total=32 warmup=4 scalar=0 stream=24 irregular=4
+
+SSA_MEND session=16 emitted=3 hash=0efa5bd2995cc315
+
+SSA_XEND session=16 chunks=1 emitted=3 total=3 hash=d0b3f2d4b2e9c6a7 status=0 records_complete=1
+
+SSA_EVENT_SESSION pid=31 session=16 reason=exit cutoff=610032 policy=1
+
+SSA_EXIT pid=31 complete=1 selector=0 session=16
+
+SSA_XRELEASE session=16 pid=31 pool=2281701376 reason=exit
+
+SSA_SESSION pid=32 session=17 image=2 reason=exit comm=class-regress selector=0 cutoff_cycle=99177794 cutoff_instret=62023695 cutoff_time=991782
+
+SSA_EXPORT pid=32 uid=1000 role=1 test=9 legacy=0 pool=2348810240 complete=1 depth=0 next=4 spill=0 events=3 session=17
+
+SSA_SWITCH pid=32 test=9 role=1 event=0 to=7 from=7 depth=0 rid=0 state=0 ivcsw=2 cause=0000000000000008 csr_cause=8000000000000005 resumed=1 preempt=0 session=17
+
+SSA_SAMPLE pid=32 event=0 counter=0 S=0000000005b27ad9 R=0000000005b292df delta=0000000000001806 session=17
+
+SSA_SAMPLE pid=32 event=0 counter=1 S=000000000387a3b7 R=000000000387aaa4 delta=00000000000006ed session=17
+
+SSA_SAMPLE pid=32 event=0 counter=2 S=00000000000e95ba R=00000000000e95f8 delta=000000000000003e session=17
+
+SSA_SAMPLE pid=32 event=0 counter=3 S=0000000000094d1c R=0000000000094d50 delta=0000000000000034 session=17
+
+SSA_SWITCH pid=32 test=9 role=1 event=1 to=31 from=31 depth=0 rid=0 state=0 ivcsw=3 cause=0000000000000008 csr_cause=0000000000000008 resumed=1 preempt=0 session=17
+
+SSA_SAMPLE pid=32 event=1 counter=0 S=0000000005b2c605 R=0000000005b301d0 delta=0000000000003bcb session=17
+
+SSA_SAMPLE pid=32 event=1 counter=1 S=000000000387b694 R=000000000387c796 delta=0000000000001102 session=17
+
+SSA_SAMPLE pid=32 event=1 counter=2 S=00000000000e967d R=00000000000e9712 delta=0000000000000095 session=17
+
+SSA_SAMPLE pid=32 event=1 counter=3 S=0000000000094dbd R=0000000000094e39 delta=000000000000007c session=17
+
+SSA_SWITCH pid=32 test=9 role=1 event=2 to=31 from=7 depth=2 rid=2 state=0 ivcsw=4 cause=8000000000000005 csr_cause=8000000000000005 resumed=1 preempt=0 session=17
+
+SSA_SAMPLE pid=32 event=2 counter=0 S=0000000005b4dc5a R=0000000005e67313 delta=00000000003196b9 session=17
+
+SSA_SAMPLE pid=32 event=2 counter=1 S=0000000003896be8 R=0000000003afb610 delta=0000000000264a28 session=17
+
+SSA_SAMPLE pid=32 event=2 counter=2 S=00000000000e9bd3 R=00000000000f1ac5 delta=0000000000007ef2 session=17
+
+SSA_SAMPLE pid=32 event=2 counter=3 S=0000000000094eb5 R=0000000000096afd delta=0000000000001c48 session=17
+
+SSA_XBEGIN version=1 session=17 pid=32 image=2 abi=2 total=3 capacity=262143 chunk=16 counters=4 reason=exit pool=2348810240 next=4 depth=0 spill=0 errors=0 status=0 legacy=0 policy=interval_inclusive_pause_rebase profile=dcache_a_transactions classification=1 class_rule=1 class_rows=3
+
+SSA_XCOUNTER session=17 index=0 name=cycle width=64 selector=0
+
+SSA_XCOUNTER session=17 index=1 name=instret width=64 selector=0
+
+SSA_XCOUNTER session=17 index=2 name=time width=64 selector=0
+
+SSA_XCOUNTER session=17 index=3 name=dcache_a_transactions width=40 selector=514
+
+SSA_XCHUNK session=17 seq=0 first=1 count=3
+
+SSA_RECORD pid=32 id=1 callee=000000000001082e parent=0 cycle=307531 instret=283262 time=3076 session=17 open=0
+
+SSA_EVENT_RECORD pid=32 session=17 id=1 parent=0 callee=000000000001082e cache=230 open=0
+
+SSA_RECORD pid=32 id=2 callee=000000000001069e parent=1 cycle=306832 instret=283149 time=3069 session=17 open=0
+
+SSA_EVENT_RECORD pid=32 session=17 id=2 parent=1 callee=000000000001069e cache=220 open=0
+
+SSA_RECORD pid=32 id=3 callee=0000000000010120 parent=2 cycle=571 instret=120 time=5 session=17 open=0
+
+SSA_EVENT_RECORD pid=32 session=17 id=3 parent=2 callee=0000000000010120 cache=9 open=0
+
+SSA_XCHUNK_END session=17 seq=0 count=3 hash=e152aa8131dc39d4
+
+SSA_MBEGIN version=1 rule=1 session=17 total=3 emitted=3 width=64 aggregation=exclusive scope=retired_integer_virtual history=16 capacity=63 status=1 depth=0 spill=0 unframed=2 inputs=40 evictions=0 dropped=0
+
+SSA_MRECORD session=17 id=1 total=2 warmup=2 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=17 id=2 total=4 warmup=4 scalar=0 stream=0 irregular=0
+
+SSA_MRECORD session=17 id=3 total=32 warmup=4 scalar=14 stream=12 irregular=2
+
+SSA_MEND session=17 emitted=3 hash=2cbd9c817bd06e9d
+
+SSA_XEND session=17 chunks=1 emitted=3 total=3 hash=e152aa8131dc39d4 status=0 records_complete=1
+
+SSA_EVENT_SESSION pid=32 session=17 reason=exit cutoff=617354 policy=1
+
+SSA_EXIT pid=32 complete=1 selector=0 session=17
+
+SSA_XRELEASE session=17 pid=32 pool=2348810240 reason=exit
+
+SSA_UNMONITORED pid=1 selector=0
+
+SSA_CLASSIFICATION_SUITE_END
+
+reboot: Power down
+
+[UART] UART0 is here (stdin/stdout).

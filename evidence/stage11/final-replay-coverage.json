@@ -1,0 +1,5 @@
+{
+  "coverage": "host-only replay of committed evidence; no new hardware, ELF execution or build",
+  "hashed_committed_artifacts": 155,
+  "recorded_elf_linked_oracles": "hash-verified receipts, original ELF binaries intentionally excluded"
+}

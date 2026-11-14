@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "coverage": "host-only semantic mutations of the same actual native log; no faulty-kernel or second RTL execution",
+  "source_log_sha256": "8bdfb8155a1e7848a06510364358aa11902ce1666253e3fcd55da05fd34d6c6d",
+  "checks": {
+    "missing_auto_hook_detected": true,
+    "wrong_target_identity_detected": true,
+    "rechecksummed_wrong_classification_owner_detected": true,
+    "missing_terminal_detected": true,
+    "whole_sidecar_missing_detected": true
+  },
+  "details": {
+    "missing_auto_hook_detected": {
+      "valid_transport": true,
+      "failed_gates": [
+        "ten_auto_sessions_exact"
+      ]
+    },
+    "wrong_target_identity_detected": {
+      "valid_transport": true,
+      "failed_gates": [
+        "auto_enabled_links_to_owned_session",
+        "disabled_identical_target_unmonitored"
+      ]
+    },
+    "rechecksummed_wrong_classification_owner_detected": {
+      "valid_transport": true,
+      "failed_gates": [
+        "dual_history_isolation"
+      ]
+    },
+    "missing_terminal_detected": {
+      "valid_transport": false,
+      "failed_gates": [
+        "complete_exports"
+      ]
+    },
+    "whole_sidecar_missing_detected": {
+      "valid_transport": false,
+      "failed_gates": [
+        "complete_exports"
+      ]
+    }
+  }
+}

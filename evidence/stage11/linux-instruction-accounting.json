@@ -1,0 +1,1362 @@
+{
+  "passed": true,
+  "coverage": "Host arithmetic explanation of all150actual Linux work rows, not a second execution or a full instruction-trace attribution",
+  "basis": "Bare body instruction counts + Linux sampling414 + root80/nonroot83 or ABI2root93/nonroot96; no extra collision hop at Linux function addresses. Every remaining instruction is an integer0/1/2 multiple of4025, consistent with periodic timer handling; raw timer CSR markers are retained. Irregular-loop minima already include one step.",
+  "step_histogram": {
+    "0": 87,
+    "1": 57,
+    "2": 6
+  },
+  "rows": [
+    {
+      "mode": 0,
+      "workload": 0,
+      "rep": 0,
+      "observed": 946,
+      "body_plus_sampling_and_monitor": 946,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 0,
+      "rep": 1,
+      "observed": 946,
+      "body_plus_sampling_and_monitor": 946,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 0,
+      "rep": 2,
+      "observed": 946,
+      "body_plus_sampling_and_monitor": 946,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 0,
+      "rep": 3,
+      "observed": 946,
+      "body_plus_sampling_and_monitor": 946,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 0,
+      "rep": 4,
+      "observed": 946,
+      "body_plus_sampling_and_monitor": 946,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 1,
+      "rep": 0,
+      "observed": 1462,
+      "body_plus_sampling_and_monitor": 1462,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 1,
+      "rep": 1,
+      "observed": 1462,
+      "body_plus_sampling_and_monitor": 1462,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 1,
+      "rep": 2,
+      "observed": 1462,
+      "body_plus_sampling_and_monitor": 1462,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 1,
+      "rep": 3,
+      "observed": 1462,
+      "body_plus_sampling_and_monitor": 1462,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 1,
+      "rep": 4,
+      "observed": 1462,
+      "body_plus_sampling_and_monitor": 1462,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 2,
+      "rep": 0,
+      "observed": 621,
+      "body_plus_sampling_and_monitor": 621,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 2,
+      "rep": 1,
+      "observed": 621,
+      "body_plus_sampling_and_monitor": 621,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 2,
+      "rep": 2,
+      "observed": 621,
+      "body_plus_sampling_and_monitor": 621,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 2,
+      "rep": 3,
+      "observed": 621,
+      "body_plus_sampling_and_monitor": 621,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 2,
+      "rep": 4,
+      "observed": 621,
+      "body_plus_sampling_and_monitor": 621,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 3,
+      "rep": 0,
+      "observed": 41406,
+      "body_plus_sampling_and_monitor": 41406,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 3,
+      "rep": 1,
+      "observed": 41406,
+      "body_plus_sampling_and_monitor": 41406,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 0,
+      "workload": 3,
+      "rep": 2,
+      "observed": 45431,
+      "body_plus_sampling_and_monitor": 41406,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 0,
+      "workload": 3,
+      "rep": 3,
+      "observed": 45431,
+      "body_plus_sampling_and_monitor": 41406,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 0,
+      "workload": 3,
+      "rep": 4,
+      "observed": 45431,
+      "body_plus_sampling_and_monitor": 41406,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 0,
+      "workload": 4,
+      "rep": 0,
+      "observed": 49527,
+      "body_plus_sampling_and_monitor": 45502,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 0,
+      "workload": 4,
+      "rep": 1,
+      "observed": 49527,
+      "body_plus_sampling_and_monitor": 45502,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 0,
+      "workload": 4,
+      "rep": 2,
+      "observed": 49527,
+      "body_plus_sampling_and_monitor": 45502,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 0,
+      "workload": 4,
+      "rep": 3,
+      "observed": 53552,
+      "body_plus_sampling_and_monitor": 45502,
+      "residual": 8050,
+      "4025_instruction_steps": 2
+    },
+    {
+      "mode": 0,
+      "workload": 4,
+      "rep": 4,
+      "observed": 49527,
+      "body_plus_sampling_and_monitor": 45502,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 0,
+      "rep": 0,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 0,
+      "rep": 1,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 0,
+      "rep": 2,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 0,
+      "rep": 3,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 0,
+      "rep": 4,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 1,
+      "rep": 0,
+      "observed": 16191,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 1,
+      "rep": 1,
+      "observed": 16191,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 1,
+      "rep": 2,
+      "observed": 12166,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 1,
+      "rep": 3,
+      "observed": 12166,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 1,
+      "rep": 4,
+      "observed": 12166,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 2,
+      "rep": 0,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 2,
+      "rep": 1,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 2,
+      "rep": 2,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 2,
+      "rep": 3,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 2,
+      "rep": 4,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 3,
+      "rep": 0,
+      "observed": 45511,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 3,
+      "rep": 1,
+      "observed": 45511,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 3,
+      "rep": 2,
+      "observed": 45511,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 3,
+      "rep": 3,
+      "observed": 41486,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 3,
+      "rep": 4,
+      "observed": 41486,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 1,
+      "workload": 4,
+      "rep": 0,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 4,
+      "rep": 1,
+      "observed": 53632,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 8050,
+      "4025_instruction_steps": 2
+    },
+    {
+      "mode": 1,
+      "workload": 4,
+      "rep": 2,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 4,
+      "rep": 3,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 1,
+      "workload": 4,
+      "rep": 4,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 0,
+      "rep": 0,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 0,
+      "rep": 1,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 0,
+      "rep": 2,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 0,
+      "rep": 3,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 0,
+      "rep": 4,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 1,
+      "rep": 0,
+      "observed": 13843,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 1,
+      "rep": 1,
+      "observed": 13843,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 1,
+      "rep": 2,
+      "observed": 13843,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 1,
+      "rep": 3,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 1,
+      "rep": 4,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 2,
+      "rep": 0,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 2,
+      "rep": 1,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 2,
+      "rep": 2,
+      "observed": 6371,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 2,
+      "rep": 3,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 2,
+      "rep": 4,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 3,
+      "rep": 0,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 3,
+      "rep": 1,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 3,
+      "rep": 2,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 3,
+      "rep": 3,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 3,
+      "rep": 4,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 3,
+      "workload": 4,
+      "rep": 0,
+      "observed": 53645,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 8050,
+      "4025_instruction_steps": 2
+    },
+    {
+      "mode": 3,
+      "workload": 4,
+      "rep": 1,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 4,
+      "rep": 2,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 4,
+      "rep": 3,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 3,
+      "workload": 4,
+      "rep": 4,
+      "observed": 53645,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 8050,
+      "4025_instruction_steps": 2
+    },
+    {
+      "mode": 4,
+      "workload": 0,
+      "rep": 0,
+      "observed": 5051,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 0,
+      "rep": 1,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 0,
+      "rep": 2,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 0,
+      "rep": 3,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 0,
+      "rep": 4,
+      "observed": 1026,
+      "body_plus_sampling_and_monitor": 1026,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 1,
+      "rep": 0,
+      "observed": 12166,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 1,
+      "rep": 1,
+      "observed": 12166,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 1,
+      "rep": 2,
+      "observed": 12166,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 1,
+      "rep": 3,
+      "observed": 16191,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 1,
+      "rep": 4,
+      "observed": 16191,
+      "body_plus_sampling_and_monitor": 12166,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 2,
+      "rep": 0,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 2,
+      "rep": 1,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 2,
+      "rep": 2,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 2,
+      "rep": 3,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 2,
+      "rep": 4,
+      "observed": 2112,
+      "body_plus_sampling_and_monitor": 2112,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 3,
+      "rep": 0,
+      "observed": 45511,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 3,
+      "rep": 1,
+      "observed": 41486,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 3,
+      "rep": 2,
+      "observed": 41486,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 4,
+      "workload": 3,
+      "rep": 3,
+      "observed": 45511,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 3,
+      "rep": 4,
+      "observed": 45511,
+      "body_plus_sampling_and_monitor": 41486,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 4,
+      "rep": 0,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 4,
+      "rep": 1,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 4,
+      "rep": 2,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 4,
+      "workload": 4,
+      "rep": 3,
+      "observed": 53632,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 8050,
+      "4025_instruction_steps": 2
+    },
+    {
+      "mode": 4,
+      "workload": 4,
+      "rep": 4,
+      "observed": 49607,
+      "body_plus_sampling_and_monitor": 45582,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 0,
+      "rep": 0,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 0,
+      "rep": 1,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 0,
+      "rep": 2,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 0,
+      "rep": 3,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 0,
+      "rep": 4,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 1,
+      "rep": 0,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 1,
+      "rep": 1,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 1,
+      "rep": 2,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 1,
+      "rep": 3,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 1,
+      "rep": 4,
+      "observed": 13843,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 2,
+      "rep": 0,
+      "observed": 6371,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 2,
+      "rep": 1,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 2,
+      "rep": 2,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 2,
+      "rep": 3,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 2,
+      "rep": 4,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 3,
+      "rep": 0,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 3,
+      "rep": 1,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 3,
+      "rep": 2,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 3,
+      "rep": 3,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 6,
+      "workload": 3,
+      "rep": 4,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 4,
+      "rep": 0,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 4,
+      "rep": 1,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 4,
+      "rep": 2,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 4,
+      "rep": 3,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 6,
+      "workload": 4,
+      "rep": 4,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 0,
+      "rep": 0,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 0,
+      "rep": 1,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 0,
+      "rep": 2,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 0,
+      "rep": 3,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 0,
+      "rep": 4,
+      "observed": 1039,
+      "body_plus_sampling_and_monitor": 1039,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 1,
+      "rep": 0,
+      "observed": 13843,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 1,
+      "rep": 1,
+      "observed": 13843,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 1,
+      "rep": 2,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 1,
+      "rep": 3,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 1,
+      "rep": 4,
+      "observed": 17868,
+      "body_plus_sampling_and_monitor": 13843,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 2,
+      "rep": 0,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 2,
+      "rep": 1,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 2,
+      "rep": 2,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 2,
+      "rep": 3,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 2,
+      "rep": 4,
+      "observed": 2346,
+      "body_plus_sampling_and_monitor": 2346,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 3,
+      "rep": 0,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 3,
+      "rep": 1,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 3,
+      "rep": 2,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 3,
+      "rep": 3,
+      "observed": 45524,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 3,
+      "rep": 4,
+      "observed": 41499,
+      "body_plus_sampling_and_monitor": 41499,
+      "residual": 0,
+      "4025_instruction_steps": 0
+    },
+    {
+      "mode": 5,
+      "workload": 4,
+      "rep": 0,
+      "observed": 53645,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 8050,
+      "4025_instruction_steps": 2
+    },
+    {
+      "mode": 5,
+      "workload": 4,
+      "rep": 1,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 4,
+      "rep": 2,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 4,
+      "rep": 3,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    },
+    {
+      "mode": 5,
+      "workload": 4,
+      "rep": 4,
+      "observed": 49620,
+      "body_plus_sampling_and_monitor": 45595,
+      "residual": 4025,
+      "4025_instruction_steps": 1
+    }
+  ]
+}

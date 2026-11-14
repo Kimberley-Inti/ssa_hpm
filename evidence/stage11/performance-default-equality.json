@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "coverage": "Actual recompilation of default full performance target after adding conditional switch-only fixture; all loadable bytes identical; completed 150 work samples reused",
+  "command": [
+    "/opt/riscv/bin/riscv64-unknown-elf-gcc",
+    "-B/tmp/ssa-hpm-stage11/performance-linux/host-tools/compiler-bin/",
+    "-march=rv64imac_zicsr",
+    "-mabi=lp64",
+    "-O1",
+    "-nostdlib",
+    "-nostartfiles",
+    "-static",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-fno-stack-protector",
+    "-msmall-data-limit=0",
+    "-fno-optimize-sibling-calls",
+    "-Wl,--no-relax",
+    "-Wl,-e,_start",
+    "/home/lxf/chipyard/ssa/linux/transparent/plain-entry.S",
+    "/home/lxf/chipyard/ssa/performance/linux.c",
+    "-o",
+    "/tmp/ssa-hpm-stage11/performance-default-after-switch.riscv"
+  ],
+  "LD_LIBRARY_PATH": "/tmp/ssa-hpm-stage11/performance-linux/host-tools/usr/lib/x86_64-linux-gnu",
+  "binary_sha256": "22d04c1d6cdece6dec6b620cc5ea3f2131cd242cb63207d4b9d8da475e6916ac",
+  "unchanged_kernel_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7"
+}

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fixed-version baseline boot image. All downloaded/build outputs stay outside Git."""
 import argparse,hashlib,json,os,pathlib,shutil,subprocess,urllib.request
-p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--classification',action='store_true');p.add_argument('--transparent',action='store_true');p.add_argument('--performance',action='store_true');p.add_argument('--musl-cache',type=pathlib.Path);p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--work',type=pathlib.Path,required=True);p.add_argument('--cross',default='/opt/riscv/bin/riscv64-unknown-elf-');p.add_argument('--jobs',default='8');p.add_argument('--export',dest='export_test',action='store_true');p.add_argument('--event',action='store_true');p.add_argument('--cache',action='store_true');p.add_argument('--classification',action='store_true');p.add_argument('--transparent',action='store_true');p.add_argument('--performance',action='store_true');p.add_argument('--performance-switch',action='store_true');p.add_argument('--musl-cache',type=pathlib.Path);p.add_argument('--process',action='store_true');p.add_argument('--exec',dest='exec_test',action='store_true');p.add_argument('--reference',action='store_true');a=p.parse_args()
+if a.performance_switch:a.performance=True
 if a.performance:a.transparent=True
 if a.transparent:a.classification=True
 if a.classification:a.cache=True
@@ -45,7 +46,7 @@ if a.transparent:
  run(cmd);listing=w/'initramfs.list'
  if a.performance:
   shutil.copyfile(w/'init',w/'transparent-init')
-  run([a.cross+'gcc','-B'+str(b)+'/', '-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start',src/'transparent/plain-entry.S',src.parent/'performance/linux.c','-o',w/'perf-target'])
+  run([a.cross+'gcc','-B'+str(b)+'/', *(['-DSSA_PERF_SWITCH_ONLY'] if a.performance_switch else []),'-march=rv64imac_zicsr','-mabi=lp64','-O1','-nostdlib','-nostartfiles','-static','-ffreestanding','-fno-builtin','-fno-stack-protector','-msmall-data-limit=0','-fno-optimize-sibling-calls','-Wl,--no-relax','-Wl,-e,_start',src/'transparent/plain-entry.S',src.parent/'performance/linux.c','-o',w/'perf-target'])
   shutil.copyfile(w/'perf-target',w/'init')
   listing.write_text(listing.read_text()+f'file /perf-target {w}/perf-target 0755 0 0\n')
   (w/'performance-users.json').write_text(json.dumps({name:hashlib.sha256((w/name).read_bytes()).hexdigest() for name in ['init','perf-target']},indent=2)+'\n')
@@ -78,4 +79,4 @@ run(km+['olddefconfig'],linux);run(km+['KCFLAGS=-misa-spec=2.2'+(' -DSSA_CACHE_P
 run(['dtc','-I','dts','-O','dtb','-o',w/'rocket.dtb',src/'rocket.dts'])
 run(['make','PLATFORM=ssa_rocket','CROSS_COMPILE='+a.cross,'PLATFORM_RISCV_ISA=rv64imafdc_zicsr_zifencei','platform-cflags-y=-std=gnu11'+(' -DSSA_CACHE_PROFILE' if a.cache else ''),'FW_PAYLOAD_PATH='+str(linux/'arch/riscv/boot/Image'),'FW_PAYLOAD_FDT_PATH='+str(w/'rocket.dtb'),'FW_PAYLOAD_FDT_ADDR=0x81e00000','-j'+a.jobs],sbi)
 shutil.copyfile(sbi/'build/platform/ssa_rocket/firmware/fw_payload.elf',w/'boot-a.elf');run([a.cross+'objcopy','-O','binary',w/'boot-a.elf',w/'boot-a.bin']);run(['python3',src.parent/'elf_to_hex.py',w/'boot-a.bin',w/'boot-a.hex'])
-(w/'build-report.json').write_text(json.dumps(dict(passed=True,performance=bool(a.performance),linux_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=linux,text=True).strip(),opensbi_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=sbi,text=True).strip(),config_sha256=hashlib.sha256((linux/'.config').read_bytes()).hexdigest(),commands=commands,images={f:hashlib.sha256((w/f).read_bytes()).hexdigest() for f in ['boot-a.elf','boot-a.bin','boot-a.hex']}),indent=2)+'\n')
+(w/'build-report.json').write_text(json.dumps(dict(passed=True,performance=bool(a.performance),performance_switch=bool(a.performance_switch),linux_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=linux,text=True).strip(),opensbi_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=sbi,text=True).strip(),config_sha256=hashlib.sha256((linux/'.config').read_bytes()).hexdigest(),commands=commands,images={f:hashlib.sha256((w/f).read_bytes()).hexdigest() for f in ['boot-a.elf','boot-a.bin','boot-a.hex']}),indent=2)+'\n')

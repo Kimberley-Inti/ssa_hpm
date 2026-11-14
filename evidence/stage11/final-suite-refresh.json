@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "coverage": "test-only refresh after public clean patch application; unchanged hardware tree/model",
+  "coverage": "Final standalone fixture/oracle refresh after clean public patch apply; hardware/ROM unchanged; no additional RTL build claimed",
   "exact_files": {
     "generators/rocket-chip/src/main/scala/rocket/RocketCore.scala": true,
     "generators/rocket-chip/src/main/scala/rocket/CSR.scala": true,
@@ -111,7 +111,12 @@
     "ssa/performance/linux.c": true,
     "ssa/performance/run.py": true,
     "ssa/performance/workload.h": true,
-    "ssa/performance/test_check.py": true
+    "ssa/performance/test_check.py": true,
+    "ssa/performance/test_linux_accounting.py": true
   },
-  "source_chipyard": "3b0bf4ff1e0c8c8839bd0f323de7ba3ee07e177a"
+  "source_chipyard": "d756a546e27d40100752a0ff7c73b796c77d4fde",
+  "rom_check": {
+    "exit_code": 0,
+    "output": "SCCodeTable instruction counts, ABI1/ABI2: [104, 118]\n"
+  }
 }

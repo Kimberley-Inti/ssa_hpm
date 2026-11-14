@@ -1,11 +1,11 @@
 {
   "baseline_maintenance": "6ef19d6e85dfe55983794342620a026005a67d20",
   "candidate": {
-    "chipyard": "905ff526ba063892403cd33bc0373bf84dce0610",
+    "chipyard": "d756a546e27d40100752a0ff7c73b796c77d4fde",
     "rocket_chip": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
     "linux": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
     "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
   },
   "config": "SSAHPMEventRocketConfig",
-  "status": "frozen source; validation in progress"
+  "status": "Final source accepted with completed native matrix and host-only replay"
 }

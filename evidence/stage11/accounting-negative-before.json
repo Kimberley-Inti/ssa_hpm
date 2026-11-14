@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "coverage": "host-only mutations of one completed native switch capture",
+  "checks": {
+    "duplicate_counter_account": false,
+    "valid": true,
+    "wrong_pause_delta": true,
+    "wrong_snapshot_offset": true,
+    "missing_accounts": true
+  },
+  "details": {
+    "duplicate_counter_account": {
+      "checker_exit_code": 0,
+      "failed_checks": []
+    },
+    "valid": {
+      "checker_exit_code": 0,
+      "failed_checks": []
+    },
+    "wrong_pause_delta": {
+      "checker_exit_code": 1,
+      "failed_checks": [
+        "pause_sample_arithmetic"
+      ]
+    },
+    "wrong_snapshot_offset": {
+      "checker_exit_code": 1,
+      "failed_checks": [
+        "all_four_pause_intervals_rebased"
+      ]
+    },
+    "missing_accounts": {
+      "checker_exit_code": 1,
+      "failed_checks": [
+        "all_four_pause_intervals_rebased"
+      ]
+    }
+  }
+}

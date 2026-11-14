@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "checks": {
+    "native_exit0": true,
+    "normal_powerdown": true,
+    "work_measurements": true,
+    "suite_complete": true,
+    "no_guest_failure": true,
+    "exports_valid": true,
+    "all_contexts_closed_complete": true,
+    "all_classification_coverage_complete": true,
+    "all_sidecar_contracts_declared": true,
+    "actual_timer_open2": true,
+    "A_B_A_sample_chronology": true,
+    "all_four_pause_intervals_rebased": false,
+    "eight_sessions": true,
+    "all_pools_released": true,
+    "kernel_cost_phases": true,
+    "open_frame_switch_cost": true
+  }
+}

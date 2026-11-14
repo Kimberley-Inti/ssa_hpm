@@ -1,0 +1,6 @@
+automatic PASS
+manual PASS
+capacity PASS
+automatic-negatives PASS
+manual-negative PASS
+PASS: all postchecks; no new native execution

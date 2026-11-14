@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "scope": "Accepted final native/semantic/source matrix and host-only evidence replay for the bounded single-hart trusted-kernel research prototype; full-history audit is enforced before push/integration",
+  "checks": {
+    "new_model_build": true,
+    "production_build": true,
+    "public_clean_apply": true,
+    "final111_source_rom": true,
+    "linux_source_firmware_equality": true,
+    "bare_independent_compilation": true,
+    "unchanged_full_performance_payload": true,
+    "lowlevel_matrix": true,
+    "wb_retirement_oracle": true,
+    "host_export_protocol": true,
+    "host_class_contract": true,
+    "host_measurement_protocol": true,
+    "work_results_closed_form": true,
+    "linux_instruction_accounting": true,
+    "accounting_semantic_negatives": true,
+    "bare_native0_log_identity": true,
+    "bare_terminal": true,
+    "bare_final_oracle": true,
+    "production_native0_log_identity": true,
+    "production_terminal": true,
+    "production_final_oracle": true,
+    "linux_cost_native0_log_identity": true,
+    "linux_cost_terminal": true,
+    "linux_cost_final_oracle": true,
+    "switch_native0_log_identity": true,
+    "switch_terminal": true,
+    "switch_final_oracle": true,
+    "production_runner_original_all0": true,
+    "production_postcheck_all0": true,
+    "composite_postcheck_exit0": true,
+    "all111_file_hashes": true,
+    "distinct_lowlevel_counts": true,
+    "snapshot_8_unique_rows": true,
+    "host_evidence_replay": true,
+    "documented_patch_chain_3_plus14": true
+  },
+  "source_commits": {
+    "chipyard": "d756a546e27d40100752a0ff7c73b796c77d4fde",
+    "rocket_chip": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "linux": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
+    "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
+  },
+  "config": "SSAHPMEventRocketConfig",
+  "new_execution": {
+    "lowlevel_distinct": 40,
+    "spike_reference": 6,
+    "rocket_rtl": 34,
+    "wb_checks": 9,
+    "production_linux": {
+      "native_exit_code": 0,
+      "automatic": 51,
+      "manual": 26,
+      "capacity": 10,
+      "auto_negatives": 5,
+      "manual_negatives": 3,
+      "sessions": 17,
+      "records": 215
+    },
+    "bare_performance": {
+      "native_exit_code": 0,
+      "work_rows": 150,
+      "calibration_rows": 30,
+      "modes": 6,
+      "repetitions": 5,
+      "warmup": 1
+    },
+    "linux_performance": {
+      "native_exit_code": 0,
+      "work_rows": 150,
+      "calibration_rows": 30,
+      "sessions": 8,
+      "records": 102,
+      "final_composite_checks": 20,
+      "direct_accounting_rows_in_primary": 0
+    },
+    "linux_companion": {
+      "native_exit_code": 0,
+      "sessions": 2,
+      "records": 4,
+      "snapshot_accounts": 8,
+      "checks": 20,
+      "semantic_mutation_cases": 5
+    }
+  },
+  "evidence_reuse": "Historical Linux DTLB/old-protocol acceptance retained, not relabeled as fresh. Host replay and mutations of captures are not additional native runs. Fixed dependency/musl/tool caches reused; new model and three Linux payloads actually built. Default full target loadable bytes unchanged after conditional fixture addition.",
+  "original_host_failures": "Full measurement missing diagnostic coverage; companion first checker NameError; duplicate-counter host reproduction. All preserved, repaired checks actually run; native0 in every completed formal capture.",
+  "limits": [
+    "single hart and trusted audited nonprivileged single-thread LIFO targets",
+    "2 physical pools of36MiB",
+    "12retained pause diagnostics; overflow source-reviewed but not newly stress-tested beyond bound",
+    "256frame full-tree domain; no sticky deeper-fold count after unwind",
+    "2classifier banks/63rows/16histories; retired scalar integer accesses only",
+    "tested musl loader continuation remains abandoned; no arbitrary runtime/nonlocal/thread/vfork support",
+    "automatic DTLB and other untested combinations not accepted",
+    "no synthesis/area/power/physicalfmax or matched no-extension measurement",
+    "call-heavy overhead high; no low-overhead claim"
+  ],
+  "host_replay": {
+    "passed": true,
+    "steps": 12,
+    "new_native_runs": 0
+  },
+  "review_repairs": [
+    "R01 missing-sidecar semantic guard",
+    "R02 producer sidecar contract",
+    "R03 explicit diagnostic/depth support bounds",
+    "R04 progress normalization",
+    "R05 companion snapshot proof and strict unique-counter oracle; host initialization fix",
+    "R06 manual patch-chain documentation"
+  ]
+}

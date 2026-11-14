@@ -1,0 +1,21 @@
+{
+  "coverage": "Complete build logs; model native build exit0 in model-build-exit.json; each Linux checked build has passed build-report.json and final source/image identities",
+  "logs": {
+    "build-model.log": {
+      "bytes": 484666,
+      "sha256": "aa45be8d87bfc419ad8723567564d96206adb2b03bbab692cf1fbf76b576f684"
+    },
+    "linux-candidate-build.log": {
+      "bytes": 56284,
+      "sha256": "3e0df5a7f089b6ed46234834153e443a7bbc0343d410d3d8e0e4ce37548e600b"
+    },
+    "performance-linux-build.log": {
+      "bytes": 56638,
+      "sha256": "d4939b98f6fc52a278011b872cc8c7e82ed6e5c8d6cf2e0e13e95352919fa207"
+    },
+    "progress-build.log": {
+      "bytes": 2599,
+      "sha256": "ab71c78504620fe7668bb23b511bca3fd966997b74a29779baad83463a30ccf4"
+    }
+  }
+}

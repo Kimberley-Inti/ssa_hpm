@@ -1,0 +1,609 @@
+{
+  "raw": [
+    {
+      "phase": "exec_failed",
+      "pid": 15,
+      "session": 1,
+      "cycle": 12612,
+      "instret": 3238,
+      "time": 128,
+      "detail": 18446744073709551614
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 15,
+      "session": 1,
+      "cycle": 806300,
+      "instret": 139950,
+      "time": 8067,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 15,
+      "session": 1,
+      "cycle": 940,
+      "instret": 495,
+      "time": 9,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 15,
+      "session": 1,
+      "cycle": 13365,
+      "instret": 3739,
+      "time": 139,
+      "detail": 19
+    },
+    {
+      "phase": "export",
+      "pid": 15,
+      "session": 1,
+      "cycle": 2824481,
+      "instret": 2213213,
+      "time": 28245,
+      "detail": 19
+    },
+    {
+      "phase": "exec_failed",
+      "pid": 16,
+      "session": 2,
+      "cycle": 16057,
+      "instret": 4050,
+      "time": 165,
+      "detail": 18446744073709551614
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 16,
+      "session": 2,
+      "cycle": 797688,
+      "instret": 139949,
+      "time": 7980,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 16,
+      "session": 2,
+      "cycle": 928,
+      "instret": 495,
+      "time": 9,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 16,
+      "session": 2,
+      "cycle": 20119,
+      "instret": 7743,
+      "time": 209,
+      "detail": 19
+    },
+    {
+      "phase": "export",
+      "pid": 16,
+      "session": 2,
+      "cycle": 4556640,
+      "instret": 3572606,
+      "time": 45567,
+      "detail": 19
+    },
+    {
+      "phase": "exec_failed",
+      "pid": 17,
+      "session": 3,
+      "cycle": 12548,
+      "instret": 3238,
+      "time": 130,
+      "detail": 18446744073709551614
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 17,
+      "session": 3,
+      "cycle": 797057,
+      "instret": 139963,
+      "time": 7974,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 17,
+      "session": 3,
+      "cycle": 902,
+      "instret": 495,
+      "time": 9,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 17,
+      "session": 3,
+      "cycle": 13194,
+      "instret": 3711,
+      "time": 136,
+      "detail": 19
+    },
+    {
+      "phase": "export",
+      "pid": 17,
+      "session": 3,
+      "cycle": 4409461,
+      "instret": 3468305,
+      "time": 44096,
+      "detail": 19
+    },
+    {
+      "phase": "exec_failed",
+      "pid": 18,
+      "session": 4,
+      "cycle": 12737,
+      "instret": 3238,
+      "time": 129,
+      "detail": 18446744073709551614
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 18,
+      "session": 4,
+      "cycle": 797176,
+      "instret": 139962,
+      "time": 7976,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 18,
+      "session": 4,
+      "cycle": 966,
+      "instret": 495,
+      "time": 9,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 18,
+      "session": 4,
+      "cycle": 13574,
+      "instret": 3711,
+      "time": 139,
+      "detail": 19
+    },
+    {
+      "phase": "export",
+      "pid": 18,
+      "session": 4,
+      "cycle": 6141064,
+      "instret": 4820572,
+      "time": 61410,
+      "detail": 19
+    },
+    {
+      "phase": "exec_ready",
+      "pid": 19,
+      "session": 5,
+      "cycle": 1303345,
+      "instret": 458654,
+      "time": 13032,
+      "detail": 0
+    },
+    {
+      "phase": "exec_failed",
+      "pid": 19,
+      "session": 5,
+      "cycle": 12409,
+      "instret": 3241,
+      "time": 128,
+      "detail": 18446744073709551614
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 19,
+      "session": 5,
+      "cycle": 798385,
+      "instret": 139962,
+      "time": 7982,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 19,
+      "session": 5,
+      "cycle": 2793,
+      "instret": 928,
+      "time": 19,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 19,
+      "session": 5,
+      "cycle": 13732,
+      "instret": 3711,
+      "time": 141,
+      "detail": 19
+    },
+    {
+      "phase": "export",
+      "pid": 19,
+      "session": 5,
+      "cycle": 6186274,
+      "instret": 4855151,
+      "time": 61855,
+      "detail": 19
+    },
+    {
+      "phase": "exec_ready",
+      "pid": 19,
+      "session": 6,
+      "cycle": 7885625,
+      "instret": 5623177,
+      "time": 78855,
+      "detail": 0
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 19,
+      "session": 6,
+      "cycle": 795611,
+      "instret": 139962,
+      "time": 7962,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 19,
+      "session": 6,
+      "cycle": 1607,
+      "instret": 928,
+      "time": 16,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 19,
+      "session": 6,
+      "cycle": 5629,
+      "instret": 1557,
+      "time": 59,
+      "detail": 1
+    },
+    {
+      "phase": "export",
+      "pid": 19,
+      "session": 6,
+      "cycle": 1511496,
+      "instret": 1186215,
+      "time": 15115,
+      "detail": 1
+    },
+    {
+      "phase": "exec_ready",
+      "pid": 20,
+      "session": 7,
+      "cycle": 1317785,
+      "instret": 463991,
+      "time": 13174,
+      "detail": 0
+    },
+    {
+      "phase": "exec_ready",
+      "pid": 21,
+      "session": 8,
+      "cycle": 1326889,
+      "instret": 464714,
+      "time": 13268,
+      "detail": 0
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 20,
+      "session": 7,
+      "cycle": 796370,
+      "instret": 139962,
+      "time": 7964,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 20,
+      "session": 7,
+      "cycle": 1746,
+      "instret": 928,
+      "time": 16,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 20,
+      "session": 7,
+      "cycle": 14332,
+      "instret": 5843,
+      "time": 145,
+      "detail": 3
+    },
+    {
+      "phase": "export",
+      "pid": 20,
+      "session": 7,
+      "cycle": 3121032,
+      "instret": 2447746,
+      "time": 31210,
+      "detail": 3
+    },
+    {
+      "phase": "pause",
+      "pid": 20,
+      "session": 7,
+      "cycle": 2007,
+      "instret": 920,
+      "time": 18,
+      "detail": 0
+    },
+    {
+      "phase": "resume",
+      "pid": 20,
+      "session": 7,
+      "cycle": 1748,
+      "instret": 1013,
+      "time": 18,
+      "detail": 0
+    },
+    {
+      "phase": "pause",
+      "pid": 20,
+      "session": 7,
+      "cycle": 1886,
+      "instret": 990,
+      "time": 18,
+      "detail": 2
+    },
+    {
+      "phase": "resume",
+      "pid": 20,
+      "session": 7,
+      "cycle": 2261,
+      "instret": 1228,
+      "time": 23,
+      "detail": 2
+    },
+    {
+      "phase": "dictionary_init",
+      "pid": 21,
+      "session": 8,
+      "cycle": 804833,
+      "instret": 139962,
+      "time": 8046,
+      "detail": 1048576
+    },
+    {
+      "phase": "freeze",
+      "pid": 21,
+      "session": 8,
+      "cycle": 1640,
+      "instret": 928,
+      "time": 17,
+      "detail": 0
+    },
+    {
+      "phase": "record_copy",
+      "pid": 21,
+      "session": 8,
+      "cycle": 5555,
+      "instret": 1627,
+      "time": 58,
+      "detail": 3
+    },
+    {
+      "phase": "export",
+      "pid": 21,
+      "session": 8,
+      "cycle": 3671011,
+      "instret": 2872998,
+      "time": 36710,
+      "detail": 3
+    },
+    {
+      "phase": "pause",
+      "pid": 21,
+      "session": 8,
+      "cycle": 2114,
+      "instret": 920,
+      "time": 17,
+      "detail": 0
+    },
+    {
+      "phase": "resume",
+      "pid": 21,
+      "session": 8,
+      "cycle": 1864,
+      "instret": 1013,
+      "time": 19,
+      "detail": 0
+    },
+    {
+      "phase": "pause",
+      "pid": 21,
+      "session": 8,
+      "cycle": 2021,
+      "instret": 920,
+      "time": 18,
+      "detail": 0
+    },
+    {
+      "phase": "resume",
+      "pid": 21,
+      "session": 8,
+      "cycle": 1494,
+      "instret": 1013,
+      "time": 15,
+      "detail": 0
+    },
+    {
+      "phase": "pause",
+      "pid": 21,
+      "session": 8,
+      "cycle": 1733,
+      "instret": 990,
+      "time": 17,
+      "detail": 2
+    },
+    {
+      "phase": "resume",
+      "pid": 21,
+      "session": 8,
+      "cycle": 2518,
+      "instret": 1228,
+      "time": 24,
+      "detail": 2
+    }
+  ],
+  "statistics": {
+    "dictionary_init": {
+      "n": 8,
+      "cycle": {
+        "min": 795611,
+        "median": 797432.0,
+        "max": 806300
+      },
+      "instret": {
+        "min": 139949,
+        "median": 139962.0,
+        "max": 139963
+      },
+      "time": {
+        "min": 7962,
+        "median": 7978.0,
+        "max": 8067
+      }
+    },
+    "exec_failed": {
+      "n": 5,
+      "cycle": {
+        "min": 12409,
+        "median": 12612,
+        "max": 16057
+      },
+      "instret": {
+        "min": 3238,
+        "median": 3238,
+        "max": 4050
+      },
+      "time": {
+        "min": 128,
+        "median": 129,
+        "max": 165
+      }
+    },
+    "exec_ready": {
+      "n": 4,
+      "cycle": {
+        "min": 1303345,
+        "median": 1322337.0,
+        "max": 7885625
+      },
+      "instret": {
+        "min": 458654,
+        "median": 464352.5,
+        "max": 5623177
+      },
+      "time": {
+        "min": 13032,
+        "median": 13221.0,
+        "max": 78855
+      }
+    },
+    "export": {
+      "n": 8,
+      "cycle": {
+        "min": 1511496,
+        "median": 4040236.0,
+        "max": 6186274
+      },
+      "instret": {
+        "min": 1186215,
+        "median": 3170651.5,
+        "max": 4855151
+      },
+      "time": {
+        "min": 15115,
+        "median": 40403.0,
+        "max": 61855
+      }
+    },
+    "freeze": {
+      "n": 8,
+      "cycle": {
+        "min": 902,
+        "median": 1286.5,
+        "max": 2793
+      },
+      "instret": {
+        "min": 495,
+        "median": 711.5,
+        "max": 928
+      },
+      "time": {
+        "min": 9,
+        "median": 12.5,
+        "max": 19
+      }
+    },
+    "pause": {
+      "n": 5,
+      "cycle": {
+        "min": 1733,
+        "median": 2007,
+        "max": 2114
+      },
+      "instret": {
+        "min": 920,
+        "median": 920,
+        "max": 990
+      },
+      "time": {
+        "min": 17,
+        "median": 18,
+        "max": 18
+      }
+    },
+    "record_copy": {
+      "n": 8,
+      "cycle": {
+        "min": 5555,
+        "median": 13469.5,
+        "max": 20119
+      },
+      "instret": {
+        "min": 1557,
+        "median": 3711.0,
+        "max": 7743
+      },
+      "time": {
+        "min": 58,
+        "median": 139.0,
+        "max": 209
+      }
+    },
+    "resume": {
+      "n": 5,
+      "cycle": {
+        "min": 1494,
+        "median": 1864,
+        "max": 2518
+      },
+      "instret": {
+        "min": 1013,
+        "median": 1013,
+        "max": 1228
+      },
+      "time": {
+        "min": 15,
+        "median": 19,
+        "max": 24
+      }
+    }
+  }
+}

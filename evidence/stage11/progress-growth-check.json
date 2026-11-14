@@ -1,0 +1,27 @@
+{
+  "interval_seconds": 20,
+  "logs": {
+    "/tmp/ssa-hpm-stage11/linux-unified-final/rocket-linux-transparent.txt": {
+      "before": {
+        "size": 133994,
+        "mtime": 1794669225.691771
+      },
+      "after": {
+        "size": 134237,
+        "mtime": 1794669245.7367058
+      },
+      "bytes_added": 243
+    },
+    "/tmp/ssa-hpm-stage11/linux-performance-complete/rocket-linux-performance.txt": {
+      "before": {
+        "size": 121873,
+        "mtime": 1794669225.6677701
+      },
+      "after": {
+        "size": 122117,
+        "mtime": 1794669245.5596972
+      },
+      "bytes_added": 244
+    }
+  }
+}
