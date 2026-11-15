@@ -443,7 +443,7 @@
         "evidence/acceptance/spike-summary.json",
         "evidence/acceptance/summary.json",
         "evidence/acceptance/versions.txt",
-        "docs/accepted-delivery.md"
+        "docs/CALLING_CONTEXTS.md"
       ],
       "release_commit": "429b78c19191d4973042ac554ae3c71383ad5ff5",
       "original_branch": "ssa-hpm-completion-20261108",
@@ -509,7 +509,7 @@
     "ssa/linux/init.c": "d4550554da8e03307714eb42a85d6cfc15d517caf0e14898474e80b044dc548d",
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
-    "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
+    "ssa/linux/README.md": "09589beed119e9270390777201607ab6d7490911f29ba2a75ff82ec4c73b1806",
     "ssa/linux/build-a.py": "04723acc13d23c6895e7a8c3cb9eb035ca6e9e6ae93c6f15def11441d2cd8030",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
@@ -522,7 +522,7 @@
     "ssa/linux/process-init.c": "1d677ee09a0c2bfcf9210d50f12be099265c8f585ff851d7419907fd075d8554",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
-    "ssa/linux/ABI.md": "b34cc07cef51a8a1a350b229b04fec4ced09339579238c86d5f489bc20e234f2",
+    "ssa/linux/ABI.md": "0f7ff94a5a767d85a759479a6ae178a41cb701f4097c95efefc28029b4416ce3",
     "ssa/linux/exec-init.c": "ca7a5fcc61b089359b384ee50e0e5d3e83e11ae62e597b74afefab83b3f1235a",
     "ssa/linux/grade-exec.py": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
     "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
@@ -565,7 +565,7 @@
     "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3",
     "ssa/linux/test_classification_native.py": "f26625bec059f1718be8397cadf11a229b0228f578f48997e3f4deb61b15074c",
     "ssa/linux/0008-linux-transparent-launch.patch": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2",
-    "ssa/linux/transparent/POLICY.md": "e8b1b521656bfb549cac07bd46096e37b9aedcdd04bdd4669b9286b7d970701b",
+    "ssa/linux/transparent/POLICY.md": "0e3f50ab035990c4d596eb997dc8dbe18cd4b873104133a9bd8dcf4d767e76c4",
     "ssa/linux/transparent/build-users.py": "927c6f02fc97d2a17e07c4b913280503aef4635ccb76d9c174abea475f13921f",
     "ssa/linux/transparent/capacity.S": "34c216dcce20583471f0aeb0dfccb7947d4d471c8a6cb6d0afee480d3e4bcbd1",
     "ssa/linux/transparent/capacity.c": "b06094326b913c18008aac9ee67aa83e6348926c115414b7ad224aeef9e4b769",
@@ -724,5 +724,15 @@
       "automatic-cache-classification"
     ],
     "final_accounting_companion": "two-record switch-only; same kernel/SBI/RTL; original full payload unchanged"
+  },
+  "presentation_update": {
+    "implementation_tag": "v0.2.0",
+    "implementation_commit": "2adbfa5de81f341bd575e8498b370c5a12a02785",
+    "changed_installed_files": [
+      "ssa/linux/README.md",
+      "ssa/linux/ABI.md",
+      "ssa/linux/transparent/POLICY.md"
+    ],
+    "purpose": "English functional documentation; implementation files and original evidence remain unchanged"
   }
 }

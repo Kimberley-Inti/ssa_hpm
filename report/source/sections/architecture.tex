@@ -1,0 +1,31 @@
+\section{System Architecture and Implementation}
+\label{sec:architecture}
+\subsection{Hardware and Software Boundaries}
+Figure~\ref{fig:architecture} shows the end-to-end path. The Rocket pipeline recognizes supported calls and returns and executes the corresponding private helpers. The helpers maintain context structures in a selected pool and read counter snapshots. Native event signals feed the ordinary HPM machinery. A separate retirement observer updates bounded per-session memory-pattern state. The Linux layer selects a pool, preserves and restores open-frame accounting, and freezes results before export. Host tools validate the stream and build software context trees.
+
+\begin{figure*}[t]
+\centering\input{figures/architecture}
+\caption{Implemented data and control paths. Calling-context helpers update physical-pool structures; the classifier maintains its own bounded banks. Linux controls ownership and lifetime, and offline reconstruction consumes frozen versioned results.}
+\label{fig:architecture}
+\end{figure*}
+
+The source delivery is an independent repository of patches and project files. It reconstructs public Chipyard, Rocket, Linux and OpenSBI baselines rather than depending on a development VM's private Git objects. The configured hardware is \code{SSAHPMEventRocketConfig}, with one Rocket hart and a 40-bit event counter. Generated L1 instruction and data caches are each 16\,KiB, with 64 sets, four ways and 64-byte lines. A CLINT supplies the timebase. The Linux and firmware versions are 5.7-rc 3 and 0.8 respectively~\citep{linux,opensbi}.
+
+\subsection{Call Detection and Helper Execution}
+The supported calling convention uses \code{x1} or \code{x5} as link registers and matching return forms. Architectural instruction decoding, including decompressed instructions, identifies the relevant \code{JAL}/\code{JALR} behavior. A normal jump remains a jump. Calls and returns under the monitoring policy invoke private helper sequences, with the original architectural operation completed coherently around them.
+
+The helpers use a private integer-register bank. This protects application-visible registers while scratch values hold dictionary addresses, record IDs and counter deltas. ROM execution is serialized with architectural retirement and memory operations. Directed register-transparency tests exercise ordinary argument/saved registers, alternate-link calls and jumps; workload results provide an additional functional cross-check.
+
+The original SCCodeTable proposal stores a few helper routines for hashing, lookup, creation and accounting. The prototype realizes this as generated constant microcode ROMs from one canonical assembly source. The basic and event variants contain 104 and 118 words respectively, or 888 bytes combined. A generation/check step detects divergence between the assembly and Scala ROM representation. Writable runtime SRAM loading is a potential extension of this storage mechanism.
+
+\subsection{Context Structures}
+SCStack contains open activations. A64-byte frame carries the record ID and entry snapshots, with the event snapshot present for ABI2. Its supported full-tree depth is 256. A return reads the current frame, adds counter deltas to the associated record and restores the parent. Repeated activation of an already known context therefore adds to one record rather than allocating a new path each time.
+
+SCDict maps $(p,a)$, where $p$ is the parent record ID and $a$ is the callee's full virtual target address. The implemented hash uses shifted address bits XORed with the parent, selecting one of 262,144 buckets. A1\,MiB bucket table contains 32-bit links to record chains. Chain comparison checks the full key, retaining separate paths when hashes collide. Context IDs are allocated monotonically; ID0 is reserved. Capacity checks protect record-space boundaries.
+
+HPERecords have 128-byte slots. The first two 64-bit fields are callee and parent, followed by cycle, instret and time counts at offsets 16,24 and 32. ABI2 uses record offset 40 for the fourth event. Other fields support chain links and reserved space. There are 262,144 slots per pool, giving 262,143 usable IDs. Two fixed 36\,MiB pools reserve 72\,MiB in total. Releasing a session makes its slot available for reuse; the physical carve-outs remain reserved.
+
+\subsection{Identity and Trap State}
+A context path is local to a monitoring session. Same-address functions in two processes or two exec images are separated by pool/session ownership, even when their numerical record IDs coincide. Raw virtual addresses identify code within that image; ELF-linked fixture checks provide names where available. The general result format retains addresses and image identity independently of optional symbolization.
+
+Architectural trap state belongs to the hart. Handler calls are suppressed from the application tree, and notification resumes at the appropriate architectural return. Privilege and overflow checks keep private helper state coherent. Application context filtering and counter source filtering are distinct: a handler can be absent from the tree while its work still contributes to a surrounding inclusive interval. Linux scheduling adds the explicit pause exclusion described next.

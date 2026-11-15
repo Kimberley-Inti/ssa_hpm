@@ -1,0 +1,34 @@
+\section{Retired Memory-Access Classification}
+\label{sec:classification}
+\subsection{Observation and State}
+The design brief lists scalar, streaming and random accesses but leaves their executable decision rule open. Rule 1 defines a bounded local address-pattern classifier. It observes valid architectural integer load/store instructions of widths 1,2,4 or 8 bytes at Rocket writeback. The effective address and instruction PC are virtual. Validity excludes replay, exceptions and cancellation; private helper code and kernel instructions under the Linux user-only policy are excluded. FP, vector, atomic/LRSC and page-table-walker operations have separate semantics outside this observer.
+
+Each history key contains session epoch, HPERecord ID, PC, load/store kind and access width. Two hardware banks correspond to the two owned pools. Each bank has 16 fully associative history entries with FIFO replacement, a 256-depth record-ID stack mirror and 63 usable counter rows. Record 0 represents access outside a framed activation and is reported separately. Five 64-bit counters per row record input, warmup, scalar, stream and irregular totals.
+
+The key separates interleaved instructions, access widths and calling paths. A repeated call to the same context can continue its history. Replacement discards only the evicted local pattern state; its next observation starts warmup again and the eviction count is exported. Record-row overflow produces an explicit dropped/coverage diagnostic, rather than assigning an out-of-range row to its parent.
+
+\subsection{Rule 1 Decision}
+For one key, the first two observations are warmup. Subsequent accesses compare the new virtual-address delta with the previous delta, using 64-bit address arithmetic. Equal zero deltas produce scalar-repeat. Equal nonzero signed deltas produce stream-fixed-stride when magnitude is at most 4,096 bytes and divisible by the access width. All remaining observations are irregular/unrecognized. Every accepted input receives exactly one of these categories.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{ll}\toprule
+Virtual-address sequence & Rule 1 outputs\\\midrule
+$0,0,0,0$ & W,W,S,S\\
+$0,8,16,24$ & W,W,T,T\\
+$32,24,16,8$ & W,W,T,T\\
+$0,32,8,80,0$ & W,W,I,I,I\\
+$0,0,0,8,16,24$ & W,W,S,I,T,T\\\bottomrule
+\end{tabular}
+\caption{Examples for one 8-byte-access key. W is warmup, S scalar-repeat, T stream and I irregular/unrecognized. Separate PCs have separate histories.}
+\label{tab:patterns}
+\end{table}
+
+Table~\ref{tab:patterns} illustrates first access and a mode transition. Alternating two independent PCs preserves each pattern, while alternating unrelated addresses at a single key can remain irregular. The category describes a recognized local address relationship. Statistical randomness or a dominant whole-program pattern would require a different classifier and validation criterion.
+
+\subsection{Context and Lifecycle Semantics}
+Classification counters are exclusive to the current record. An inclusive view can be reconstructed by summing a record's descendants, whereas HPM records already include child intervals. Both representations are exported with their aggregation semantics. This distinction avoids treating a parent's own memory operations as equivalent to all work beneath it.
+
+A disabled selection observes no task accesses. Task switches restore the appropriate bank/history and record stack; no HPM-style pause subtraction is needed for these source-filtered per-context counts. A new exec session resets its epoch after the previous export/release, and a returning pre-commit failure keeps the old history. The Linux test checks open-frame switching, same-address functions in independent tasks, exec separation and complete sidecar export.
+
+An independent Python implementation supplies the address-rule oracle. RTL-directed patterns cover fixed addresses, positive/negative strides, irregular sequences, mode changes, interleaved streams, parent-sensitive contexts, repetition and replacement/capacity. A read-only pre-clock writeback observer reconstructs actual accepted memory observations independently of the classifier's result. Its capture contains 82 candidates,72 accepted accesses,7 replay candidates and 1 exception. Reference comparison and semantic negative controls check category totals and context ownership against these real sequences.

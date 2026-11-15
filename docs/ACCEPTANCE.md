@@ -1,149 +1,87 @@
-# SSA-HPM 项目验收清单
+# Requirements and acceptance
 
-本清单是项目完成度的判定入口。证据范围严格限定为实际运行的配置和调用约定；“某阶段通过”不等于全部设想都已实现。页码为本地原始设计 PDF 的物理页码（共14页），HPM 参考共13页。第七阶段重新渲染查看中文、表格和手写修订；原始 PDF 不随项目发布。
+This matrix defines the completed research implementation. Page numbers refer
+to the physical pages of the supplied14-page design brief and 13-page HPM overview.
+The original PDFs remain local; source and evidence links identify the published
+implementation and executable design supplements.
 
-## 需求类别与判定层次
+## Design basis
 
-- **原始核心要求**：原文第一阶段明确的层次调用上下文与 cycle/time/instret，以及上下文和性能数据的保存、离线还原。导出格式、OS细节在原文中留为 TODO，由当前受测适配具体化。
-- **已采用的适配**：36MiB 固定物理池、64B 栈帧、显式启停、单 hart、可信内核、采样区间扣除、开放帧标记、版本化串口转主机文件。这些不是原文已经定义的 OS ABI，也不能冒充通用 Linux 产品。
-- **原文后续数据流目标**：第12页明确列出标量/流式/随机分类及 Cache/TLB 事件，但明确第一阶段仅做三个基本计数器。它们是完整数据流愿景的后续需求；未实现的部分不能因当前单事件通过而标为完成。
-- **可选扩展**：多核迁移、所有厂商事件、非局部展开、自动符号化UI等，原文没有给出相应协议和验收标准，当前单 hart/LIFO profile 不以它们为完成前置条件。
+The brief describes calling contexts, SCStack, SCDict, HPERecords and three basic
+counters, then lists memory patterns and Cache/TLB events as dataflow objectives.
+Its loader, OS lifecycle and offline-format details are open design points.
+The implementation specifies those points through trusted physical pools,
+private ROM helpers, Linux-owned sessions, interval rebasing, Rule1 and chunked
+export. The original SCCodeTable is a helper-code-storage concept; the prototype
+implements those helpers in generated ROM instead of writable on-chip SRAM.
 
-## 需求—实现—证据映射
+## Requirements, implementation and evidence
 
-| ID / 类别 | 来源 | 要求或边界 | 实现与实际证据 | 当前判定 |
-| --- | --- | --- | --- | --- |
-| C01 核心 | 设计p1、p4 | 动态调用栈构成层次上下文，同一被调函数在不同父路径下不同 | Rocket JAL/JALR通知、microcode；stage1 summary、stage6/golden-contexts.json：6记录、14452/7226 | 已验收，限支持的调用ABI |
-| C02 核心 | 设计p8–9 | SCStack维护调用/返回，默认256层 | 64B帧（手写修订）保存record和快照；stage1 boundary实际258层展开、stage2 trap/IRQ | 已验收；溢出帧按既定spill规则，不是任意展开 |
-| C03 核心 | 设计p9–11 | SCDict键为(parent,callee)，链式碰撞、记录只增不删、0保留 | 完整PC、256K桶、ID链；stage1碰撞/复用/容量保护RTL；stage6同父非零重复事件 | 已验收 |
-| C04 核心 | 设计p11–12，HPM p3 | HPERecords包含cycle/time/instret | 128B记录，64位三计数；time取CLINT及同源SBI time；stage1/4/6原始日志 | 已验收；父计数包含子调用和区间内开销 |
-| C05 核心与受控适配 | 设计p8、p11–13；stage10策略 | 无逐函数插桩；由可信启动策略让普通ELF无需SSA启停调用 | ARM_EXEC权限/NNP→ELF就绪启用，fork清策略，成功/失败exec、SIGTERM、真实抢占及完整导出；普通ELF哈希/反汇编；stage10实际50自动+26回归+10ELF容量检查 | 已验收受控单hart/单线程/非提权静态与musl PT_INTERP/DSO范围；加载器延续帧显式abandoned；任意线程/提权/非局部/信号handler运行时不外推支持，见STAGE10与FINAL_CHECKLIST |
-| C06 适配 | 设计p6进程背景、p12–13；stage2语义 | trap不生成应用调用上下文、返回恢复 | trap depth/overflow、U-only通知、IRQ屏蔽私有ROM；stage2实际陷阱与中断、stage4实际Linux | 已验收；不声称过滤trap事件计数 |
-| C07 适配 | 设计p11–13生命周期未细化；stage3/4 ABI | 单hart任务独占池，开放帧跨抢占恢复，排除采样暂停区间 | task descriptor、S/R、所有开放帧平移；stage4/5/6真实A→B→A，stage6校正7与负对照1130 | 已验收；不是硬件缓存分区 |
-| C08 适配 | 设计p13–14 TODO；stage5规则 | exec旧/新会话区分、失败返回旧会话、退出导出 | post-exec_mmap hook、session/self_exec_id、ENOENT；stage5 37检查、stage6 ABI2旧64/新128/失败128 | 已验收，限pre-commit ENOENT/非多线程/非setuid |
-| C09 核心 | 设计p13 §4/p14 §4.1–4.2 TODO | 将性能数据与上下文存入文件并离线重建 | stage7冻结会话→16记录批次→主机JSON；parent/callee与开放帧RID足以还原树，无须转储哈希桶 | 已验收：真实Rocket/Linux退出0，25项导出检查；见evidence/stage7/summary.json |
-| C10 核心导出边界 | 设计p10–11记录空间；stage7用户要求 | 全部已分配记录，而非32条截断 | 最多262143有效ID；逐批映射/拷贝2KiB；实际41条/3块、零/少量/开放帧；最大容量算术与故障注入单列 | 已验收：真实41条/3块、2条、0条及开放帧；不声称真实串口跑满262143条 |
-| D01 后续数据流目标与适配 | 设计p12，HPM p4–5 | 可编程事件随软件上下文记录 | stage6现有DTLB accepted PTW requests，selector0x1002、40位；实际源→HPM→上下文→Linux导出 | 一种TLB事件已验收；按增量发生区间，非请求发起者标签 |
-| D02 原文后续目标与规则1适配 | 设计p12 §3.1(2)；[CLASSIFICATION.md](CLASSIFICATION.md)补充未定义细节 | 标量/流式/未识别规律访存分类 | 退休整数load/store虚拟地址，epoch/RID/PC/op/width键，16项FIFO历史、2次预热、固定零/非零步长与未识别规律；63行独占计数。4项RTL、独立4项、82WB候选/72观察/7重放/1异常参考核对、真实Linux7会话20记录/26检查及校验合法的错归属负对照 | 已按规则1受限profile验收；单hart/2epoch/整数1–8B，不宣称数学随机、全指令或无界容量；证据evidence/stage9/summary.json |
-| D03 原文后续目标与明确适配 | 设计p12 Cache miss/TLB miss；stage8原生事件定义 | Cache与TLB访问行为扩展，至少一种真实Cache事件 | stage6 DTLB与stage8原生D$ miss条目0x202：实际完成的D-cache TL A事务，40位；5项RTL及真实Linux39/69/24检查、41条分批导出，见stage8 summary | 一种Cache事件缺口已关闭；按声明的原生事务区间口径，非退休load唯一miss；全部Cache/TLB种类仍可选 |
-| X01 可选 | 原文未给多hart协议；stage2–6显式排除 | 多核隔离、任务迁移、计数epoch | 内核拒绝SMP；只验证单hart | 未实现/未验证；不属于当前受测profile |
-| X02 可选/需规范 | 设计p4/p6的LIFO调用返回；没有非局部展开协议 | longjmp/C++异常/协程/信号非局部跳转 | 不自动重建栈；普通trap返回不同于软件栈展开 | 未验收；若支持这些程序，必须先定义恢复或可靠失败状态 |
-| X03 可选产品化 | 设计p13–14离线分析TODO | 符号化、可视化、压缩/二进制流、guest文件/网络服务 | 树ID和计数的主机JSON校验是本轮基础；已有裸机analyze.py可用ELF命名 | 通用GUI、guest磁盘API非本轮要求 |
+| ID | Source | Implemented behavior | Evidence / accepted domain |
+|---|---|---|---|
+| C01 |Design p1,p4| Hierarchical calling contexts; same callee distinguished by parent | [Calling contexts](CALLING_CONTEXTS.md);6 records and14452/7226 golden instret |
+| C02 |Design p8–9| SCStack call/return management and 256-frame default | [Boundary RTL](../evidence/stage11/regression-base/rtl-boundary.txt);258calls exercise the defined folding boundary |
+| C03 |Design p9–11| Parent/callee dictionary, chained collisions, monotonic IDs with 0reserved | Context/reuse/collision/exhaustion RTL in [low-level matrix](../evidence/stage11/lowlevel-summary.json) |
+| C04 |Design p11–12; HPM p3| cycle/instret/time in128-byte records |64-bit inclusive intervals; [ABI](../integration/ssa/linux/ABI.md) and actual captures |
+| C05 |Design p8,p11–13; launch-policy supplement| Ordinary selected ELF runs without per-function instrumentation or SSA lifecycle calls | [Automatic launch](AUTOMATIC_LAUNCH.md); final51automatic/26manual checks plus ELF/negative checks; static and tested musl paths |
+| C06 |Design p6,p12–13; trap adaptation| Handler calls excluded from application context construction; return restores notification | [Trap isolation](TRAP_ISOLATION.md); fresh trap/IRQ/permission RTL and real Linux |
+| C07 |Design p11–13 lifecycle adaptation| Per-task pools and open-frame recovery; sampled pause exclusion | [Process accounting](LINUX_PROCESS_ACCOUNTING.md); real timer-driven A→B→A and 8direct four-counter snapshot rows |
+| C08 |Design p13–14 open lifecycle details| Successful exec separates old/new sessions; failed pre-commit exec preserves old state; exit exports | [Exec lifecycle](EXEC_LIFECYCLE.md); production and dedicated lifecycle captures |
+| C09 |Design p13§4,p14§4.1–4.2 open offline details| Performance/context stream to host file and reconstructed JSON tree | [Export specification](EXPORT.md); versioned records, parent/callee IDs and explicit incomplete states |
+| C10 |Design p10–11 capacity; full-result export requirement| All allocated records with bounded16-record processing | Actual41records/3chunks,0/2records,64/4and105/7; targeted host capacity/fault tests |
+| D01 |Design p12; HPM p4–5| One existing programmable TLB event linked to contexts | [DTLB accepted PTW requests](DTLB_EVENT_ATTRIBUTION.md), selector0x1002,40-bit modular intervals |
+| D02 |Design p12§3.1(2); Rule1 supplement| Scalar-repeat/fixed-stride/irregular classification of retired integer accesses | [Rule1](CLASSIFICATION.md), four RTL fixtures, independent WB/reference oracle, Linux lifecycle/ownership/coverage checks |
+| D03 |Design p12 Cache/TLB objective; native-event adaptation| One real Cache event and the TLB profile | [Completed D-cache A request messages](CACHE_EVENT_ATTRIBUTION.md), selector0x202,40 bits; source/global/context RTL and Linux export |
 
-## 不可混淆的计数语义
+## Final candidate evidence
 
-cycle/instret/time顺序沿用内存ABI（原文列举顺序不是内存布局）；三者64位。ABI2第四字段在record+40/frame+32，为DTLB accepted PTW requests，40位模运算。DTLB源无U/S/trap过滤，已注册增量可能跨调用/返回边界；按实际采样区间归属。父记录包含子调用。调度仅扣除S到R，不扣除S之前、R之后的kernel/restore工作及本任务恢复产生的TLB事件。开放帧不伪造成正常返回，不补未完成激活的部分计数。counteren是访问控制，不是源事件过滤（HPM p5）。
+The accepted implementation is v0.2.0 at2adbfa5de81f341bd575e8498b370c5a12a02785.
+[Validation](VALIDATION.md) and [summary](../evidence/stage11/summary.json) record:
 
-## 第七阶段的完成门槛
+- Public-baseline application,111source/ROM hashes, actual Scala/RTL/Verilator
+  build, and three public-source Linux/SBI payload builds.
+-6Spike reference/34Rocket RTL cases plus9WB checks. Spike supplies applicable
+  reference behavior; Rocket executes the SSA implementation.
+- Real Linux native0/powerdown:51automatic/26manual,10ELF-capacity,5automatic
+  and 3classification semantic-negative checks;17sessions/215records released.
+- Bare/Linux150work+30calibration samples each, warmup1/repeats5. All 300results
+  agree with independent closed-form arithmetic.
+- Separate two-record real Linux companion:2sessions/4records,8snapshot-account
+  rows,20checks and 5host mutation cases. The full performance capture uses this
+  explicit companion because its three-record fixture lacks the inherited
+  two-record-only diagnostic. Original host failures are retained.
+-12-step host-only evidence replay and complete reachable-history audits.
 
-1. 保留第六阶段分支/PR/源码，固定实际完整SHA（用户文字中的维护SHA少了一位，实际为`1c48e93b0055e92a565eb455a057c1e45618d81c`）。
-2. 新Rocket/Linux镜像实际导出41条已分配记录，ID/父/地址/四计数元数据可核验；同样接受2条、0条和带开放帧的不完整会话。
-3. 冻结和池所有权持续到结束标记；STOP显式导出不重复，exec/exit先导出再释放；主机验证池复用顺序。
-4. 解析器检测缺块、重复、截断、校验值、越界、跨会话混用；真实逻辑状态不完整与传输损坏分开表示。
-5. 受影响stage6事件、stage5生命周期、stage4抢占回归在本轮真实Linux执行；不重复未修改的Rocket RTL构建。最大容量与错误注入明确标为主机覆盖。
-6. 当前补丁在独立检出可应用，工具链/模型/镜像/日志哈希、命令、退出码和原始日志均记录；远端Draft PR回读核验。
+## Counting and completeness
 
-## 后续“必做”与可选扩展
+ABI1 has 64-bit cycle/instret/time. ABI2 adds one 40-bit event counter at record+40.
+Counters are inclusive; class rows are exclusive. Scheduling subtracts only each
+counter's sampled S..R interval. Handler/restore work outside that interval and
+post-resume Cache/TLB effects belong to the active task. Delayed native events
+are attributed by the interval containing the increment. Counter permissions
+and source-event filtering are separate mechanisms.
 
-- **要宣称完整原始数据流愿景完成**：D03的一种真实Cache事件已按stage8声明口径完成；第九阶段已独立实现并验收D02规则1，提供退休访存参考序列、上下文、Linux生命周期和错归属负对照；并非以Cache/TLB计数替代分类。该完成结论限定于各行明确记录的适配范围。
-- **受控Linux透明启用**：stage10已补齐可信启动/exec启用及静态、musl动态边界的实际测试；通用任意Linux程序仍超出当前LIFO/单线程/非提权/已审核ELF范围，不能从C05受限验收外推。
-- **当前单hart受限profile**：C01–C10/D01与上述门槛已按stage7实际覆盖收尾，统一证据为evidence/stage7/summary.json；完整传输24会话/87记录，25/70/37/179项本轮真实Linux检查通过。未修改的低层RTL/Spike采用已核验历史证据，不伪称重跑。
-- **可选扩展**：多hart/迁移、所有厂商Cache/TLB事件、非局部展开、perf共享、多线程/setuid/复杂exec、最大容量长时串口压力、GUI/guest文件服务。它们未在原文给出当前profile的可执行要求，不擅自提升为本轮阻塞。
+Export independently represents transport integrity, unfinished activations and
+classification coverage. Closed records remain settled; open frames are marked
+abandoned. A complete record stream can accompany an incomplete call or a
+classifier capacity diagnostic. New headers declare required classifier sidecars;
+older captures remain explicitly legacy_undeclared.
 
-相关来源与证据入口：[第一阶段](accepted-delivery.md)、[stage2](STAGE2.md)、[stage3](STAGE3.md)、[stage4](STAGE4.md)、[stage5](STAGE5.md)、[stage6](STAGE6.md)、[历史](../HISTORY.md)、[ABI](../integration/ssa/linux/ABI.md)。
+## Supported completion boundary and future scope
 
-第七阶段验收补充：41条实际记录解除原32条上限，3块及END校验/树匹配通过；
-最大262143条边界、缺块/重复/截断和校验错误是主机逻辑覆盖，未跑满容量串口。
-同一次真实Linux执行包含STOP/零记录/开放帧/两种ABI的exec及池释放、DTLB暂停
-扣除与旧协议负对照。在第七阶段当时，原设计数据流愿景的D02/D03及通用透明Linux的C05限制仍保留。
-第八阶段已完成D03的一种真实Cache事件（源码、RTL与真实Linux证据见STAGE8.md及evidence/stage8/summary.json）；下一轮仅推进D02分类规范和实现。
+The completed domain is one hart, trusted kernel/firmware and audited
+non-privileged single-thread LIFO static/tested-musl programs. Two 36 MiB pools,
+12retained pause diagnostics/session,256-frame full trees and classifier
+2banks/63rows/16FIFO histories are explicit limits. Diagnostics overflow stops
+with partial status; its beyond12-pause path was source-reviewed rather than newly
+hardware stress-tested. Deeper call folding has no sticky post-unwind count.
 
-第八阶段收尾：新模型实际重跑29项既有低层测试（23RTL/6Spike参考），5项Cache
-RTL通过；独立安装的新测试镜像复跑5项Cache检查时明确复用已核验新模型。
-实际Linux为一轮通过的修正镜像完整执行，另保留一次用户态前中止的准备启动；
-不能仅以该模拟器的退出0判断通过。最终正常关机、退出码和全部检查已满足。
-Cache按增量采样区间而非请求发起者归因，包含PTW/内核/微码/非缓存事务；
-真实父子关系、开放帧恢复、暂停扣除、旧协议负对照及exec/完整导出均通过。
-当前单hart显式启用profile的D03收尾不代表严格退休load miss计数或全事件集合完成。
-
-
-## 第九阶段收尾与剩余范围
-
-D02的规范、真实退休访存观察、上下文归因与Linux导出闭环已通过；实际一轮
-Linux原生/检查器均0，正常关机，7会话20记录26检查。分类计数独占、源端过滤
-内核/微码/暂停任务，历史随epoch保留；既有HPM包含子调用及区间内开销，保留
-S..R扣除。4RTL及独立重放、2新CSR权限探针、34既有低层检查（原29项加5项Cache）均通过；14参考、
-21侧表协议、48导出主机检查和历史41记录4故障注入明确单列。64位回绕仅做
-主机算术/传输检查；未实际运行2^64次访问。模型与独立执行复用范围见STAGE9。
-
-- 当前受测单hart显式启用profile内，C01–C10/D01–D03没有遗留D02实现缺口。
-- 第九阶段当时C05尚缺自动loader/exec启用与动态边界；第十阶段已按下述受控范围验收。
- 固定物理池仍是对原始虚拟栈/loader方案的明确适配。
-- 当前分类支持整数退休load/store1/2/4/8B、2会话/63行/16历史；淘汰重新预热、
- 容量外访问显式dropped，非规则不代表数学随机。FP/vector/AMO/PTW不在观察范围。
-- 多核/迁移、非局部展开、全Cache/TLB集合、复杂exec/多线程/setuid、通用GUI
- 仍是后续可选或需另立协议的扩展，不能从本轮结果外推为已支持。
-
-
-## 第十阶段 C05 收尾与最终交付范围
-
-[STAGE10](STAGE10.md)及[evidence/stage10/summary.json](../evidence/stage10/summary.json)
-记录原Rocket/Verilator Linux运行自然退出0、正常关机、自动50/50和旧Linux26/26检查。
-另10项ELF容量检查、4项自动主机变异及手工接口的重校验错归属负对照通过。
-17会话/215已分配基础记录全部完成传输和释放；4个预期开放帧标abandoned。
-动态程序的加载器/应用/DSO同会话，105记录/7批次，加载器延续RID10保留不完整状态。
-64基础记录/4批次与ELF逐项匹配；分类63行、1次dropped、48FIFO淘汰及覆盖不完整均可解析。
-
-可信init仅对固定已审核目标配置CAP_SYS_ADMIN+no_new_privs策略，随后降uid/gid1000。
-目标没有SSA启停/导出接口；相同ELF未选择时无会话。fork清策略；setid和线程创建明确拒绝；
-池满fail-open并报告pool_exhausted，成功/失败exec和SIGTERM退出按既定边界处理。
-本轮自动镜像实测flags0/4/6、固定Cache profile；DTLB手工入口/34项低层证据按未改源码和
-模型哈希复用，未伪称新跑自动DTLB或重新生成RTL。原golden14452/7226仍逐行复核一致。
-
-当前受测适配范围内，C05原有“不改目标程序启用”的缺口已关闭。普通默认信号终止不同于
-自定义信号handler/非局部展开；后者无通用自动检测/恢复协议，不在已审核目标范围。
-全面项目完成还需候选版本整体审查、统一最终矩阵和性能开销量化，详见
-[FINAL_CHECKLIST](FINAL_CHECKLIST.md)。多hart/迁移、全事件、宽指令分类、通用符号化等仍属可选扩展。
-
-## 第十一阶段候选审查（统一验收进行中）
-
-审查与修复见[FINAL_REVIEW](FINAL_REVIEW.md)。新导出头显式声明是否需要分类侧表、
-规则和行数；完整丢失侧表现在可被组合解析器发现。旧数据标记`legacy_undeclared`，
-不假称旧格式能够独立检测整份可选侧表丢失。基础传输完成、开放调用未完成、分类
-覆盖不足仍分别表示；ABI1/ABI2、四计数器含义、位宽和区间扣除规则不变。
-
-补充明确当前软件诊断边界：每会话最多保留12次pause事件；再发生切出会停用监测，
-保留部分记录并以bad-state/不完整状态导出。此容量上界本轮先做源码审查，不声称
-完成无限时长进程验收或新的超过12次切换硬件压力测试。当前受测用例在此界内。
-调用识别限JAL/JALR链接寄存器x1/x5及匹配的rd0返回；测试采用禁止sibling-call
-优化的构建约定。不声明任意尾调用、协程或非局部控制流的完整函数树。
-
-第十一阶段只有在独立候选构建、实际Linux统一回归与独立目标侧开销测量均通过后，
-才完成FINAL_CHECKLIST的最终验收并执行依赖顺序合并和私有版本发布。
-
-## 第十一阶段受限研究原型最终矩阵
-
-[STAGE11](STAGE11.md)、[最终审查](FINAL_REVIEW.md)、[性能报告](PERFORMANCE.md)
-和[evidence/stage11/summary.json](../evidence/stage11/summary.json)索引最终证据。
-公开基线独立应用、111文件/ROM、新Scala/RTL/Verilator构建通过；三个Linux/SBI
-构建源码树一致。新执行6Spike参考/34RTL及独立WB检查，不将Spike当作SSA扩展模型。
-真实Linux统一回归原生0并正常关机：51自动/26手工、10ELF容量、5自动负对照、
-3分类负对照通过；17会话215记录全部传输并释放，预期不完整调用/覆盖状态保留。
-
-裸机与Linux分别150个独立目标边界工作样本，各30校准，warmup1/repeats5；
-初始化、调度、exec和导出成本单列。原完整Linux性能用例产生3记录，因此旧的
-恰好2记录SSA_ACCOUNT诊断未输出；保留其原检查器1及原生0。仅补跑2记录真实
-Linux伴随用例，原生0/正常关机、2会话4记录8快照证明；20项检查及5项主机语义
-变异通过。完整性能日志与伴随证据的20项联合检查通过，明确分别覆盖，未伪造
-原日志中的快照行。检查器变量初始化错误也仅重跑同日志后处理，未重跑有效仿真。
-
-全部300工作结果符合独立闭式算术；150Linux指令样本可由程序、采样、监测ROM及
-0/1/2个4025指令增量解释。调用密集负载基础监测周期达关闭时42.58倍；这不支持
-“低开销”结论。未测无扩展硬件、综合面积、功耗或物理频率。性能评估完成与低开销
-目标达成是不同结论，本研究范围未设数值性能门槛。
-
-最终主机证据重放和全历史审计通过后，当前明确适配的单hart/受控LIFO/有限会话
-研究原型达到最终验收条件；不扩展为任意Linux应用或无限容量的原设计通用实现。
-每会话12次pause诊断、256帧范围、2bank/63行/16历史、musl延续帧及未测试组合
-继续保留限制。当前范围无新增实现必做缺项；扩大范围需要另立规范和实际验收。
-合并与私有发布按明确授权、保留提交与既有标签的顺序执行，以实际远端核验为准。
+Automatic DTLB combinations, multiple harts/migration, shared-mm/vfork, arbitrary
+non-local/runtime/handler unwinds, FP/vector/AMO classification and full-capacity
+long serial stress require separate scope and tests. [Performance](PERFORMANCE.md)
+records high call-heavy cost; this acceptance has a functional research scope
+and no invented numerical performance threshold. Area/power/fmax and a matched
+unextended hardware baseline remain future measurements. The
+[completion checklist](FINAL_CHECKLIST.md) distinguishes these extensions from
+completed obligations. [Historical names and paths](HISTORY_MAP.json) remain
+traceable under the unchanged release tags.

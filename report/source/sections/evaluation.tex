@@ -1,0 +1,37 @@
+\section{Experimental Setup and Correctness Validation}
+\label{sec:evaluation}
+\subsection{Pinned Construction and Provenance}
+Validation runs in an Ubuntu 22.04 VM using RISC-V GCC 15.1.0, Verilator 4.226, Spike 1.1.1-dev, Java 17 and Python 3.12.12. Fixed public source revisions are fetched before project patches are applied. Existing matching Chipyard dependency and musl 1.2.5 caches are reused after verification; target fixtures, the final RTL model, kernels and firmware are actually built. The full reproduction entry is scripts/final.py reproduce; scripts/final.py check-evidence replays saved evidence without target execution. REPRODUCE.md lists prerequisites and exact commands. The report data is extracted from committed evidence~\citep{ssahpm}.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lll}\toprule
+Component & Public reconstruction baseline & Accepted development source\\\midrule
+Chipyard &\scriptsize\texttt{2d03d10837fc1a7569d10ae2c91c8132c7fee77d}&\scriptsize\texttt{d756a546e27d40100752a0ff7c73b796c77d4fde}\\
+Rocket Chip &\scriptsize\texttt{44b0b8249279d25bd75ea693b725d9ff1b96e2ab}&\scriptsize\texttt{bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2}\\
+Linux &\scriptsize\texttt{5f5fd87b36e21ed59b759b69eebfa1c74955cb37}&\scriptsize\texttt{3e7c06efefeda043f100ab635b1729ce7a11afd8}\\
+OpenSBI &\scriptsize\texttt{a98258d0b537a295f517bbc8d813007336731fa9}&\scriptsize\texttt{43f02ffb329d9c86b2ff2138dc450b2060778ffe}\\\bottomrule
+\end{tabular}
+\caption{Source identity. Reconstruction applies three Chipyard and fourteen Rocket patches in order, then installs standalone project files and selected Linux/firmware patches. Trees/hashes establish equivalence even when reconstructed committer metadata changes commit IDs.}
+\label{tab:sources}
+\end{table*}
+
+A new workspace compiles Scala, generates RTL and builds the event-configured Verilator model. A separate progress harness links against its unchanged model archive and reads PC/CSR state; it does not modify RTL state. The final public-suite check verifies 111 source/document files and generated ROM consistency. Source/report presentation changes preserve the release implementation and raw evidence, with a historical reference map for renamed navigation.
+
+Production, full-performance and direct-companion Linux payloads are built from matching kernel and OpenSBI source trees. The two measurement configurations match except their initramfs input path. A default-payload recompilation confirms that adding the conditional companion leaves the full benchmark's loadable bytes identical. An independent bare payload build likewise matches loadable bytes and non-FILE symbols; a temporary assembler-object name explains its differing non-loadable ELF metadata.
+
+Every run stores its command, model/image hashes, native exit code, raw console output and checker result. Linux acceptance additionally requires normal powerdown and complete lifecycle/stream markers. Host replays, resealed mutations, reused dependency caches and earlier superseded trials have explicit labels. This avoids counting one saved capture as several hardware executions.
+
+\subsection{Directed Hardware and Reference Matrix}
+The final directed matrix contains 40 distinct cases: six Spike references and 34 Rocket RTL tests. Spike covers applicable instruction/ABI/reference behavior and has no SSA extension. The RTL cases exercise the actual implementation: nested calls, different parent paths, repeated-context reuse, return restoration, dictionary collisions, capacity guards, register transparency, trap/IRQ behavior, both event profiles, width/wrap handling and classification. Seven translation/permission probes are included in that count. Expected native-failure negative controls retain their actual status, including 42 where required.
+
+An independent writeback oracle adds nine checks for real retired memory observations. It observes 82 candidates, accepts 72 and identifies seven replay candidates and one exception. Its reference comparison verifies that rejected/faulting operations do not become duplicate classified accesses. Category or context mutations supply further semantic negatives.
+
+\subsection{Linux Matrix and Result Integrity}
+The production Rocket/Linux boot naturally exits 0 and powers down normally. Its automatic-launch checker passes 51 checks and the manual compatibility checker passes 26. The same capture contains 17 sessions and 215 records, with every pool released. Independent postchecks add ten ELF-linked capacity checks, five automatic semantic negatives and three classification negatives. The static/dynamic ELF identities and their lack of SSA lifecycle calls are retained.
+
+The production matrix covers selected and unselected programs, successful/failed exec, normal/default-signal exit, fork policy, unsupported thread/setid rejection, pool exhaustion, timer switching, history ownership, chunked export and visible partial states. A dynamic 105-record result includes an explicitly abandoned loader continuation. A 64-record result retains all HPM records while showing 63 classification rows, one dropped access and observable FIFO eviction.
+
+Full Linux performance contributes 150 work samples and eight closed/released sessions containing 102 records. It observes actual timer/open-frame switching, but its three-record task has no inherited two-record-only snapshot diagnostic. The direct companion supplies the missing proof in another actual Linux run: two tasks, two sessions, four records and eight snapshot-account rows, with 20 checks passing. The composite checker keeps these coverage sources separate.
+
+Review exposed and repaired two host issues in the new accounting oracle: variable initialization order and accepting eight rows without verifying the exact PID/counter identity set. The final negative suite has five host cases: one valid capture and four mutations for wrong delta, wrong offset, missing rows and duplicated counter coverage. All behave as expected after repair. Original failed postprocessing receipts remain available; successful native execution is reused. The complete evidence entry performs 12 host-only replay steps, including hash checks, result arithmetic and semantic oracles.

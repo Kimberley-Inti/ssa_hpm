@@ -1,0 +1,43 @@
+\section{Calling Contexts and Event Accounting}
+\label{sec:accounting}
+\subsection{Inclusive Counter Intervals}
+RISC-V exposes basic cycle, time and instruction-retirement counters and programmable HPM facilities with privilege-controlled access~\citep{riscvpriv,riscvunpriv}. The implemented basic snapshots are 64 bits. For counter $C$ of width $w$, an activation with entry $b$ and exit $e$ contributes
+\begin{equation}
+ d_C=(C(e)-C(b))\bmod 2^w.
+\label{eq:interval}
+\end{equation}
+The corresponding record accumulates these deltas across repeated activations. A parent remains open during its child calls, so its interval includes descendants and helper/handler work occurring between its own sample points. Counter ordering and helper boundaries determine which setup/return work lies inside an interval.
+
+The basic time field uses CLINT time. Architectural Linux \code{rdtime} reads are supplied by OpenSBI on this Rocket configuration, while the private measurement path can access the platform timer. Counter-access permissions control who may read a CSR; they do not themselves remove privileged events from the global source.
+
+\subsection{Native Event Profiles}
+ABI2 adds one 40-bit HPM snapshot and result. A firmware image fixes its meaning. The DTLB profile uses selector \code{0x1002}. Rocket's \code{io.dmem.perf.tlbMiss} is connected in DCache to \code{io.ptw.req.fire()}, so this profile counts accepted page-table-walker request handshakes. Walk completion and eventual instruction retirement are downstream observations.
+
+The Cache profile uses selector \code{0x202}. DCache assigns \code{io.cpu.perf.acquire} from \code{edge.done(tl\_out\_a)}: the final accepted beat completes an outbound TileLink-A request message. This measures traffic through the D-cache A port, including qualifying PTW and uncached requests. Response/refill completion is a different point in the transaction. The actual signal and EventSet path, rather than a shorthand event label, define the profile~\citep{rocketimpl}.
+
+Both profiles attribute increments by sampled execution interval. An in-flight request can complete its A message after a call or return boundary; the context open when that increment is sampled receives it. This provides a reproducible interval metric using the existing global counter. Precise request-origin attribution would additionally require carrying a context tag with the request. The exported profile, width and selector make the implemented rule explicit.
+
+Arithmetic uses the hardware width. For a 40-bit counter moving from $2^{40}-2$ to 3, the modular delta is 5. Directed RTL fixtures exercise wrap and verify that unrelated architectural registers remain unchanged. Firmware and kernel profile definitions agree on selector and width before a Linux session is enabled.
+
+\subsection{Excluding a Scheduling Pause}
+A task can be switched out with several frames open. Let $S_j$ and $R_j$ be the outgoing and incoming samples for a pause, and let
+\begin{equation}
+ q_{C,j}=(C(R_j)-C(S_j))\bmod 2^w.
+\end{equation}
+Software adds $q_{C,j}$ to every open frame's entry snapshot. Its eventual completed interval becomes
+\begin{equation}
+ d_C=\left(C(e)-C(b)-\sum_j q_{C,j}\right)\bmod 2^w.
+\label{eq:rebase}
+\end{equation}
+The stack, dictionary and current context remain in the task's pool; global counter registers keep running. Unmonitored tasks run with selection 0. Samples are ordered counter reads, so each counter uses its own measured pair. Work before $S_j$ and after $R_j$, including sampling/restore instructions outside those points, remains in the task's interval.
+
+\begin{figure*}[t]
+\centering\input{figures/scheduling}
+\caption{Schematic ordering for the real timer-wakeup test, with $S_B<S_A<R_B<R_A$. A has two open frames at its timer-driven switch-out. Gray segments denote kernel/unmonitored handoff work. Distances are illustrative rather than proportional to measured cycles.}
+\label{fig:scheduling}
+\end{figure*}
+
+Cache pollution illustrates the difference between exclusion and isolation of microarchitectural state. B's increments during A's sampled pause are subtracted from A. After A resumes, its own accesses can encounter cache lines displaced by B; their new events belong to A's active interval. The protocol provides record/history ownership and interval accounting while retaining a shared cache/TLB hierarchy.
+
+\subsection{Observable Context Relationships}
+The canonical fixture calls \code{parent\_a} and \code{parent\_b}, both of which call \code{common}. It also creates two intentionally colliding functions. The six records consist of two parent records, two parent-specific common records and two collision records. On repeated paths the common counts are 14,452 and 7,226 retired instructions. Their relationship, distinct parent IDs, restored parent depth and collision-chain links are checked against the raw RTL output, rather than inferred from a success label alone.

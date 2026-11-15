@@ -1,0 +1,14 @@
+\begin{table*}[t]\centering\small
+\begin{tabular}{lrrrrrr}\toprule
+Kernel observation & $n$ & Cycle min & Median & Max & Instret med. & Time med.\\\midrule
+dictionary\_init & 8 & 795,611 & 797,432 & 806,300 & 139,962 & 7,978\\
+freeze & 8 & 902 & 1,286.5 & 2,793 & 711.5 & 12.5\\
+record\_copy & 8 & 5,555 & 13,469.5 & 20,119 & 3,711 & 139\\
+export & 8 & 1,511,496 & 4,040,236 & 6,186,274 & 3,170,651.5 & 40,403\\
+pause & 5 & 1,733 & 2,007 & 2,114 & 920 & 18\\
+resume & 5 & 1,494 & 1,864 & 2,518 & 1,013 & 19\\
+exec\_failed & 5 & 12,409 & 12,612 & 16,057 & 3,238 & 129\\
+exec\_ready & 4 & 1,303,345 & 1,322,337 & 7,885,625 & 464,352.5 & 13,221\\
+\bottomrule\end{tabular}
+\caption{Instrumented Linux phase observations from the full performance capture. Time is in CLINT ticks. Phases have different boundaries and session sizes; freeze/copy are subsets of export.}\label{tab:costs}
+\end{table*}

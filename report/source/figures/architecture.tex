@@ -1,0 +1,14 @@
+\begin{tikzpicture}[font=\small,box/.style={draw,rounded corners=2pt,align=center,minimum height=11mm,fill=blue!4},arr/.style={-{Stealth[length=2mm]},semithick}]
+\node[box,minimum width=49mm] (app) at (0,0) {Audited Linux ELF\\ordinary calls and accesses};
+\node[box,minimum width=49mm] (os) at (6,0) {Trusted kernel / OpenSBI\\session, switch, exec, exit};
+\node[box,minimum width=109mm] (core) at (3,-1.65) {Rocket pipeline and private helper ROMs\\call/return detection, native HPM events, retirement observer};
+\node[box,minimum width=49mm] (mem) at (0,-3.3) {SCStack / SCDict / HPERecords\\two physical monitoring pools};
+\node[box,minimum width=49mm] (class) at (6,-3.3) {Retired integer-access classifier\\two banks of bounded history};
+\node[box,minimum width=109mm] (host) at (3,-4.95) {Frozen chunked export $\longrightarrow$ checked host JSON\\session identities, context trees and completeness};
+\draw[arr] (app.south)--(core.north -| app);
+\draw[arr] (os.south)--(core.north -| os);
+\draw[arr] (core.south -| mem)--(mem.north);
+\draw[arr] (core.south -| class)--(class.north);
+\draw[arr] (mem.south)--(host.north -| mem);
+\draw[arr] (class.south)--(host.north -| class);
+\end{tikzpicture}

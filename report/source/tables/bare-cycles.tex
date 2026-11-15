@@ -1,0 +1,11 @@
+\begin{table*}[t]\centering\small
+\begin{tabular}{lrrrrrr}\toprule
+Workload & Off & Base & DTLB & Cache & Class. & Cache+class.\\\midrule
+Compute & 1,697 & 2,025 & 2,080 & 2,092 & 2,028 & 2,087\\
+Calls128 & 1,088 & 46,328 & 53,038 & 53,036 & 46,328 & 53,036\\
+Depth16 & 282 & 6,620 & 7,547 & 7,544 & 6,593 & 7,545\\
+Stream32K & 52,224 & 52,641 & 52,767 & 52,683 & 52,649 & 52,866\\
+Irregular32K & 103,375 & 103,784 & 103,951 & 103,664 & 103,768 & 103,874\\
+\bottomrule\end{tabular}
+\caption{Bare-metal cycle medians on the same extended model. Each cell has five measured repetitions after one warmup. DTLB mode here exercises ABI2 snapshot cost on physical-address accesses.}\label{tab:barecycles}
+\end{table*}

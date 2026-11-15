@@ -115,7 +115,7 @@ interval. This is the explicitly measured sampling-boundary policy. No separate
 measurement claims an exact split of those kernel handoff costs.
 
 
-## Exec sessions (stage5)
+## Exec sessions (exec lifecycle)
 
 Every START has a unique increasing session ID and captures Linux self_exec_id.
 The latter changes on successful image replacement; PID alone is not an export
@@ -123,7 +123,7 @@ identity. The post-exec_mmap hook in flush_old_exec runs after the old address
 space cannot return, before the new image enters userspace. It samples cutoff
 counters, clears the selector and freezes the descriptor, emits SSA_SESSION and
 bounded SSA_EXPORT/SSA_RECORD data, then SSA_OPEN for any abandoned frames and
-SSA_EXEC_END. Stage7 additionally emits versioned chunk framing and explicit
+SSA_EXEC_END. result export additionally emits versioned chunk framing and explicit
 release. Only freeze/release transitions mask IRQs; mapping/output run with IRQs
 enabled and the descriptor remains STOPPED and owned until terminal export. Export
 is once per session; later new-image exit cannot export the old descriptor.
@@ -138,13 +138,13 @@ The new image starts with no descriptor/selector and opts in explicitly.
 ENOENT during pathname lookup is the covered failed-return path. It occurs before
 exec_mmap and changes neither descriptor nor frame/session identity. Failures
 after the commit point can kill the task and are not claimed to return safely.
-Counter rebasing and stage4 S/R boundaries are unchanged; cutoff values are
+Counter rebasing and Linux process accounting S/R boundaries are unchanged; cutoff values are
 diagnostics, not partial open-frame totals. Multithreaded/setuid exec, signal
-handler exec and full-capacity runtime stress remain unverified. Stage7 removes
+handler exec and full-capacity runtime stress remain unverified. result export removes
 the32-record limit; actual41-record acceptance and host capacity boundaries are
 reported separately.
 
-## Optional DTLB request profile (stage6, ABI2)
+## Optional DTLB request profile (DTLB attribution, ABI2)
 
 Use SSAHPMEventRocketConfig (one hart, one standard HPM counter). Firmware selects
 mhpmevent3=0x1002, initializes mhpmcounter3 once, clears mcountinhibit bit3, leaves
@@ -194,7 +194,7 @@ accepted during ROM execution would still follow interval attribution. Parent
 counts include child calls and monitor/trap/kernel work inside their windows.
 While paused, every open fourth snapshot is increased by its sampled R-S modulo
 2^40, excluding events within that interval from other tasks and their kernel
-work. Pre-S and post-R handoff/restore costs remain charged by the stage4 policy.
+work. Pre-S and post-R handoff/restore costs remain charged by the Linux process accounting policy.
 Stopping selection does not freeze/reset the hart's global HPM counter.
 
 Fork clears ownership as before. Pause clears selection and bit1; resume restores
@@ -204,7 +204,7 @@ ABI2 session once, marks open frames abandoned without partial totals, releases
 its slot and detaches it. The replacement starts unmonitored, then explicitly
 STARTs a fresh session. Pre-commit ENOENT retains all four snapshots/session/tree.
 
-## Versioned complete results (stage7)
+## Versioned complete results (result export)
 
 STOP now preserves its cutoff snapshot. op5 exports a STOPPED current-task session
 once and retains its descriptor/pool until exec or exit; repeated op5 returns
@@ -224,7 +224,7 @@ This does not change inclusive counting, paused interval exclusion or40-bit DTLB
 occurrence-interval semantics. Allocation exhaustion is status4, not silent loss;
 full-capacity execution is distinct from the host-tested capacity arithmetic.
 
-## Fixed Cache profile (stage8, ABI2)
+## Fixed Cache profile (Cache attribution, ABI2)
 
 A `build-a.py --cache` image compiles BOTH kernel and OpenSBI with
 `SSA_CACHE_PROFILE`. Firmware fixes HPM3 selector0x202 (EventSet2 bit1).
@@ -257,7 +257,7 @@ numeric fourth word. Legacy v1 captures lacking profile mean ABI1/base or
 ABI2/DTLB; a Cache capture always requires explicit profile and matching metadata.
 The parser rejects mixed fields and selectors, preserving old ABI1/2 recognition.
 
-## Stage9 optional memory classification
+## memory classification optional memory classification
 
 START flags bit2 opts into rule1 classification, independently of bit1 ABI2 and
 bit0 legacy-HPM control. Flags0..3 retain their meanings. The directed classification
@@ -292,7 +292,7 @@ export remains full capacity; the sidecar explicitly declares63usable rows.
 See the maintenance repository docs/CLASSIFICATION.md for full scope and examples.
 
 
-## Controlled automatic ELF launch (stage10)
+## Controlled automatic ELF launch (automatic launch)
 
 The existing START/STOP/EXPORT operations remain compatible. The optional trusted
 policy uses two new operations on the current task:
@@ -316,7 +316,7 @@ loader/application/DSO calls in one epoch with raw callee addresses and explicit
 entry/app/interp metadata. Loader continuation frames may remain open. This is
 not a promise of universal unwinding, arbitrary setuid/thread runtimes or a stable
 upstream ABI. [Transparent policy](transparent/POLICY.md) specifies lifecycle,
-authority, profile/capacity and accounting boundaries. Only the actual stage10
+authority, profile/capacity and accounting boundaries. Only the actual automatic launch
 Linux evidence establishes which fixture forms have passed.
 
 ## Final-candidate export contract and optional cost probes

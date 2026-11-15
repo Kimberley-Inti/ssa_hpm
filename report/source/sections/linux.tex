@@ -1,0 +1,32 @@
+\section{Linux Integration and Lifecycle}
+\label{sec:linux}
+\subsection{Session Ownership and Interfaces}
+The experimental kernel interface is enabled for the single-hart MMU configuration. A task descriptor owns its pool, session/image identity, excluded-interval state, open frames and switch diagnostics. Local interrupt exclusion protects selection and state transitions. Hart counters and trap notification state remain hardware resources. The user interface accepts operations on the current task, without a user-supplied PID or physical pool address.
+
+The principal operations are START, STOP, EXPORT and ARM\_EXEC. START initializes an available pool and selects its ABI/profile state. STOP requires zero open/spilled frames, samples the cutoff and disables selection. EXPORT accepts a stopped session and emits its frozen records. Diagnostic operations expose selected state for tests. The trusted automatic-exec operation arms policy for a selected future image. The implementation preserves ABI1's three counters and ABI2's event field.
+
+Scheduler hooks implement Equation~\ref{eq:rebase}. Switch-out records task state, peer IDs, frame depth/RID and trap causes, samples the counters and clears selection. Switch-in samples again, corrects every open snapshot and reselects that task's pool and classification epoch. An absent descriptor leaves monitoring disabled. Frozen or stopped descriptors are not resumed by scheduling.
+
+\subsection{Successful and Failed Exec}
+An image replacement has a commit point beyond which execution will not return to the old image~\citep{linuxexec}. Monitoring retirement is tied to this boundary rather than to the initial exec request. The old session is frozen, its closed records are retained, and its remaining open activations are exported with abandoned status. The slot stays owned through terminal output. Descriptor release and slot reuse follow that export.
+
+The new image receives a clean dictionary/stack/session and a reset classification epoch when monitoring is enabled. Manual operation leaves enablement to the new image; the armed launch policy enables it when the replacement ELF is ready. Session ID plus the kernel's image generation distinguishes results under the same PID and prevents old snapshots from entering the new session.
+
+A repeatable pre-commit failure uses a missing executable and returns ENOENT. The old program then continues within its original open frame and ultimately returns normally. Its descriptor, context tree and history remain intact; there is no premature export or pool release. The validation records this returning failure separately from successful image replacement.
+
+\subsection{Stop, Exit and Pool Reuse}
+Normal exit and default signal termination freeze active sessions, export them and release the descriptor/slot. Explicit STOP can retain a frozen result until EXPORT, with repeated export rejected. An already exported result is not emitted again at exit. Open frames at an exit or exec commitment identify unfinished activations; closed records retain their completed counts without fabricating a normal return for the open portion.
+
+During export the task stays STOPPED and the selected pool is disabled. Interrupts and scheduling can resume another task on its own pool while chunks are printed. The exporting pool remains busy until its terminal record and release step, preventing a new session from resetting the data mid-transfer. With both slots busy, a selected third task receives an observable enable failure and continues according to the documented fail-open test policy.
+
+\subsection{Controlled Automatic Launch}
+A trusted launcher configures an exec policy while it has CAP\_SYS\_ADMIN and sets \code{no\_new\_privs}. It then drops uid/gid for the audited target. The target's source and ELF contain ordinary code without monitoring lifecycle calls. A successful ELF-ready hook establishes the session before user execution. Tests retain target hashes and disassembly checks, including static executables, a musl PT\_INTERP image and a shared library~\citep{musl}.
+
+Fork clears the child's descriptor and launch policy, so a child obtains a separate session only through a new eligible policy/START operation. The fixtures reject unsupported thread/setid paths and verify that unselected executables remain unmonitored. Automatic-exec inheritance is explicit; failed pre-commit replacement preserves the old image/session. The tested dynamic loader and application share a session. One audited musl continuation leaves a loader frame abandoned, which remains visible in the exported lifecycle state.
+
+\subsection{Real Preemption and Direct Proof}
+The two-task fixture uses a timer wakeup: B sleeps while A executes with two open frames, then a higher-priority B becomes runnable. Saved interrupt cause 5, runnable A state, increased involuntary-switch count and peer identities establish the switch. Ordered raw samples show $S_B<S_A<R_B<R_A$ as in Figure~\ref{fig:scheduling}. A continues its original call after resuming and both tasks return with independent records.
+
+A separate two-record companion reads actual original/final frame snapshots for all four counters. It is needed because the inherited diagnostic prints SSA\_ACCOUNT only when exactly two context records exist, whereas the full performance task also calls a third memory-body function. The companion uses matching kernel/firmware trees, measurement configuration and the same RTL executable, while retaining the real streamed/irregular memory work. The default full benchmark's loadable bytes were independently recompiled and confirmed unchanged after adding this conditional fixture.
+
+For A, the excluded amounts are 4,463,467 cycles,3,429,517 instructions,44,635 time ticks and 12,115 Cache events. B excludes 132,475 cycles,117,572 instructions,1,325 ticks and 147 events. These values equal final-minus-original frame snapshots and independently summed S/R deltas modulo width. The emitted raw column is a reconstructed uncorrected estimate, so the direct proof rests on frame memory and independent samples. Host mutations reject missing/duplicate counter rows and incorrect sample/offset values.

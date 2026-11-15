@@ -1,4 +1,4 @@
-# Memory classification rule 1 — stage9 design supplement
+# Memory classification rule 1 — memory classification design supplement
 
 Design PDF physical page12 §3.1(2) names scalar/stream/random, but defines no
 algorithm. The following is an explicit project choice, not a quotation from it.
@@ -38,7 +38,7 @@ history discontinuity. A mode switch is classified per access, not a dominant
 label for the whole session.
 
 Bounded hardware: two session banks, matching the two trusted physical
-Linux pools; each has16 histories, a256-depth record-ID stack mirror, and64
+Linux pools; each has 16 histories, a256-depth record-ID stack mirror, and 64
 counter rows (RID1..63 usable). Five64-bit exclusive counters per row: input,
 warmup,scalar,stream,irregular. RID overflow, stack spill/mismatch and counter
 wrap are observable incomplete states, never silent attribution to the parent.
@@ -56,17 +56,17 @@ DTLB/Cache profiles and their sampling semantics remain unchanged.
 Acceptance requires independent reference-vs-real-retired-trace comparison,
 context/eviction/replay/fault boundaries and negative mutations, followed by
 actual Rocket/Verilator Linux switching, exec, stop and complete export.
-These gates passed in stage9:4RTL fixtures, independent replay, direct WB
+These gates passed in memory classification:4RTL fixtures, independent replay, direct WB
 reference comparison, and one actual Linux run with26gates/7sessions/20records.
-D02 is accepted for this bounded definition; see STAGE9.md and its evidence.
+D02 is accepted for this bounded definition; see MEMORY_CLASSIFICATION_VALIDATION.md and its evidence.
 Resources below are declared logical state, not physical synthesis/placed area.
 
 ## CSR and transport layout (implementation)
 
-S/M-mode only:0x5c1 is64-bit selected epoch (zero disables);0x5c3 is6-bit
-query RID or reset-bank index. Write1 to0x5c2 resets bank0/1 selected by0x5c3,
+S/M-mode only:0x5c1 is 64-bit selected epoch (zero disables);0x5c3 is 6-bit
+query RID or reset-bank index. Write1 to 0x5c2 resets bank0/1 selected by0x5c3,
 binding the current nonzero physical SCBaseReg and epoch. Reset clears64 counter
-rows in64cycles; poll0x5c2 bit1 until clear, then select RID0 for status. Reset is
+rows in64 cycles; poll0x5c2 bit1 until clear, then select RID0 for status. Reset is
 trusted-only and may occur only after the previous bank's export/release.
 0x5c4..0x5cb return eight64-bit fields. RID1..63: total,warmup,scalar,stream,
 irregular,session-inputs,session-evictions,session-dropped. RID0: status,depth,
@@ -96,12 +96,12 @@ must validate both. An open activation retains observed exclusive classification
 counts and is marked by the existing frame/open metadata; it is not claimed to
 have normally returned. Existing HPM closed-activation counts are not fabricated.
 
-Logical state (not placed area): counter memory40960bits, mirror stack9216bits,
-history6880bits, epoch/base/control/statistics870bits =57926bits, plus70 CSR bits. Two extra64-bit shadow-register read ports are combinational.
+Logical state (not placed area): counter memory40960 bits, mirror stack9216 bits,
+history6880 bits, epoch/base/control/statistics870bits =57926 bits, plus70 CSR bits. Two extra64-bit shadow-register read ports are combinational.
 A16-way associative lookup over the selected bank and asynchronous row reads are combinational;
-reset takes64cycles outside monitored user execution. At most one retired scalar
-access is observed each cycle. The64-row sidecar is an explicit capacity limit,
-separate from262143 base context records; records beyond63 remain in the full
+reset takes64 cycles outside monitored user execution. At most one retired scalar
+access is observed each cycle. The 64-row sidecar is an explicit capacity limit,
+separate from 262143 base context records; records beyond63 remain in the full
 base export but classification marks dropped/unsupported coverage. History
 eviction resets evidence, not accumulated counters. No counters are silently
 merged into a different context to hide capacity exhaustion.

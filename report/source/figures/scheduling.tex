@@ -1,0 +1,18 @@
+\begin{tikzpicture}[font=\small,x=1cm,y=1cm,arr/.style={-{Stealth[length=1.7mm]},semithick}]
+\draw[arr] (0,0)--(12.4,0) node[right]{time};
+\draw[line width=4pt,orange!75!black] (.4,0)--(3.2,0);
+\draw[line width=4pt,blue!60] (3.2,0)--(4.4,0);
+\draw[line width=4pt,gray!65] (4.4,0)--(4.8,0);
+\draw[line width=4pt,orange!75!black] (4.8,0)--(8.6,0);
+\draw[line width=4pt,gray!65] (8.6,0)--(9.3,0);
+\draw[line width=4pt,blue!60] (9.3,0)--(12,0);
+\node[align=center] at (1.7,.65) {B opens frames\\and sleeps};
+\node[align=center] at (3.8,1.0) {A runs\\depth2};
+\node at (6.5,.65) {B executes and exports};
+\node[align=center] at (10.8,.65) {A restores\\and returns};
+\foreach \x/\s in {3.2/S_B,4.4/S_A,4.8/R_B,9.3/R_A}{\draw (\x,-.15)--(\x,.15);\node[below] at (\x,-.2) {$\s$};}
+\draw[<->] (4.4,-1.0)--node[below]{A snapshot correction: $C(R_A)-C(S_A)$}(9.3,-1.0);
+\draw[<->] (3.2,-1.7)--node[below]{B pause while A executes}(4.8,-1.7);
+\node[align=center,gray!70!black] at (8.95,1.4) {unmonitored\\interval};
+\draw[gray!70!black] (8.95,1.0)--(8.95,.18);
+\end{tikzpicture}

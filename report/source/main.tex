@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs,tabularx}
+\usepackage{algorithm,algpseudocode}
+\usepackage{hyperref}
+\usepackage[preprint]{acl}
+\usepackage{times,latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,inconsolata,graphicx,tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\pgfplotsset{compat=1.18}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\project}{SSA-HPM}
+\title{Software-Semantic-Aware Hardware Performance Monitoring}
+\author{Liu Qinruo}
+\hypersetup{pdftitle={Software-Semantic-Aware Hardware Performance Monitoring},pdfauthor={Liu Qinruo},pdfsubject={Calling-context attribution and Linux lifecycle on a single-hart RISC-V Rocket prototype},pdfkeywords={RISC-V, Rocket, hardware performance monitoring, calling context, Linux, memory classification}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Hardware counters summarize execution but provide limited information about the software path responsible for an event. SSA-HPM combines hardware-assisted hierarchical calling-context tracking with context-associated counters, Linux session management and offline reconstruction on a RISC-V Rocket core. Supported calls and returns invoke private microcode that maintains a context stack, dictionary and records. Inclusive cycle, time and retired-instruction intervals are supplemented by one native DTLB or D-cache event profile. A bounded retirement observer classifies integer memory accesses using per-session virtual-address histories. Trusted Linux hooks preserve open frames across scheduling, separate exec images and export frozen sessions in checked chunks; a controlled launch policy enables audited ordinary ELF targets automatically. Public-baseline reconstruction, 34 directed RTL cases, six Spike reference cases and actual Rocket/Verilator Linux runs establish the supported behavior. Independent performance experiments provide 150 bare-metal and 150 Linux work samples, with all results matching closed-form arithmetic. In the call-heavy bare workload, basic monitoring increases the median from 1,088 to 46,328 cycles, or 42.58 times the disabled runtime; long memory loops amortize the cost to approximately 0.80\% and 0.40\% increases. The implementation and evidence form a reproducible single-hart research baseline with explicit lifecycle, capacity and measurement semantics.
+\end{abstract}
+\input{sections/introduction}
+\input{sections/architecture}
+\input{sections/accounting}
+\input{sections/linux}
+\input{sections/classification}
+\input{sections/export}
+\input{sections/evaluation}
+\input{sections/performance}
+\input{sections/scope}
+\input{sections/conclusion}
+\bibliographystyle{acl_natbib}
+\bibliography{references}
+
+\end{document}

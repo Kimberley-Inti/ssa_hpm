@@ -1,68 +1,22 @@
-# 来源、版权和许可
+# Sources, copyright and licensing
 
-本发布仓库不包含上游完整源码树或上游 Git ancestry。统一 diff/format-patch 中的
-上下文和删除行仍来自原源码，并不因以补丁交付而改变其原有版权和许可。
+This repository distributes project patches, original fixtures, documentation and validation evidence. It does not import upstream Git ancestry or complete upstream source trees. Patch context and removed lines retain their original copyright and license conditions. Original patch authors, dates and commit messages are preserved in [HISTORY.md](HISTORY.md).
 
-| 材料 | 来源 / 适用说明 |
+| Material | Source and applicable license |
 | --- | --- |
-| Rocket Scala 及其补丁上下文 | chipsalliance/rocket-chip，基线 `44b0b8249279d25bd75ea693b725d9ff1b96e2ab`；源文件头指向 Berkeley 和 SiFive 许可证 |
-| Chipyard 构建文件及补丁上下文 | ucb-bar/chipyard，基线 `2d03d10837fc1a7569d10ae2c91c8132c7fee77d`；仓库 BSD-3-Clause 与 SiFive 许可 |
-| Constellation 依赖 | 仅记录仓库 URL / gitlink SHA，不在此仓库复制其源码 |
-| 历史 SSA 测试补丁 | 原 Kimberley-Inti/SSA-HPM 项目提交中的新增测试；原始 commit/作者字段见 HISTORY.md |
-| 微码、测试、验收/分析/安装脚本 | SSA-HPM 项目新增文件；验收阶段由项目维护者与编码助手协作形成，来源与后续发布新增文件分别记录 |
-| 验收结果 | 原验收提交中的文本、JSON 与源/产物哈希；不包含被哈希的编译产物 |
+| Rocket Chip Scala and patch context | chipsalliance/rocket-chip, baseline `44b0b8249279d25bd75ea693b725d9ff1b96e2ab`; Berkeley and SiFive file notices, retained in `LICENSES/` |
+| Chipyard build/configuration context | ucb-bar/chipyard, baseline `2d03d10837fc1a7569d10ae2c91c8132c7fee77d`; BSD-3-Clause and applicable SiFive notices |
+| Constellation dependency | Only its URL and fixed revision are recorded; source is fetched independently |
+| Linux patches | firesim/linux `5f5fd87b36e21ed59b759b69eebfa1c74955cb37` (5.7-rc3), GPL-2.0; original file notices apply |
+| OpenSBI platform patches | riscv/opensbi `a98258d0b537a295f517bbc8d813007336731fa9` (0.8), BSD-2-Clause; utility files retain their own notices |
+| Project fixtures and tools | Applicable per-file SPDX identifiers and original notices; provenance is recorded in the manifests and history |
+| Evidence | Original text/JSON outputs and artifact hashes, without the corresponding large compiled images |
+| English report | Written for this project by Liu Qinruo; template style sources retain the notices described in [report/README.md](report/README.md) |
 
-上游许可全文分别保存在 `LICENSES/`，保留其原有版权、条件和免责声明；Rocket
-SiFive 文件包含 Apache-2.0 文本。本仓库没有为全部项目原创材料另行选择统一的
-开源许可证；普通私有仓库用于项目归档与协作。后续公开或统一授权由维护者决定，
-不会以此说明替换上游许可。
+No single additional license is imposed on all project-original materials by this publication. Public visibility permits inspection under the hosting platform's terms; redistribution and modification rights follow the applicable file licenses and copyright holders' grants. Existing MIT, GPL and upstream notices remain intact. Publication does not replace them.
 
-来源审计中特别发现：原验收工作树的 `ssa/env.sh` 被 `env.sh` 忽略规则排除，实际
-不在 `375068b6` 提交中。本次显式收录该复现辅助文件，并将其作为发布整理新增
-材料记录；其他被安装的测试脚本按原提交字节保留。canonical 微码只存在于 Rocket
-补丁里，不另复制一份容易失配的源码。
+The Linux builder fetches pinned source and a pinned Ubuntu Linux-target binutils package. Toolchain binaries, package archives and built images are not redistributed. For the dynamic fixtures it builds unmodified musl 1.2.5 from https://musl.libc.org/releases/musl-1.2.5.tar.gz (SHA-256 `a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4`). musl uses the MIT license with individual upstream notices retained. Its source tree and binaries are fetched/built locally rather than included here.
 
-排除材料：两份本地设计 PDF（仅核对，不分发）；`ssa/handoff/` 的原始/交付 bundle、
-归档与备份；整个 Chipyard/Rocket 源树、第三方子模块源码、二进制和生成 RTL；
-凭据与账号配置；未纳入当前统一 ABI 的工作树原型（如未跟踪的 ssa_firmware、旧
-微码汇编和旧 C 测试）。这些原文件保留在原开发目录/本地备份中，未被删除或改写。
-历史提交中已纳入版本控制的旧测试只以 `patches/history/` 保存一次。
+The original acceptance checkout ignored `ssa/env.sh`; this reproduction helper was explicitly added during packaging. Canonical microcode remains in the Rocket patches rather than a second independently maintained copy. Cost probes preserve Linux GPL-2.0-only notices; workload fixtures retain their marked project licenses.
 
-## Stage4 Linux/firmware inputs
-
-Linux: https://github.com/firesim/linux.git at
-5f5fd87b36e21ed59b759b69eebfa1c74955cb37 (5.7-rc3), GPL-2.0;
-license text in LICENSES/Linux-GPL-2.0.txt. The small stack-pointer declaration
-fix is supplied as a patch. Full Linux source and built images are not included.
-
-OpenSBI: https://github.com/riscv/opensbi.git at
-a98258d0b537a295f517bbc8d813007336731fa9 (0.8), BSD-2-Clause main license,
-with upstream utility files retaining their own notices (including BSD-3-Clause
-HTIF code). This package adds a project platform through a patch and fetches
-upstream source at build time. Main license in LICENSES/OpenSBI-BSD-2-Clause.txt.
-
-The local bootstrap extracts Ubuntu's Linux-target binutils package, SHA-256
-pinned in build-a.py. No toolchain binary or deb is distributed in this repo.
-
-Stage5 adds an incremental Linux GPL-2.0-only exec/session patch, an original
-freestanding exec fixture (MIT SPDX as marked), and project build/check scripts.
-No new upstream source tree or binary dependency is redistributed.
-
-
-## Stage10 dynamic loader dependency
-
-The builder fetches musl1.2.5 from https://musl.libc.org/releases/musl-1.2.5.tar.gz,
-SHA256 a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4.
-It builds the unmodified standard RV64 shared libc/loader (MIT, Rich Felker et al.;
-individual upstream notices retained). A cache is accepted only after all regular
-source files match that pinned archive. Neither musl source tree nor binaries are
-redistributed here. The small ordinary executable/DSO fixtures are project MIT
-sources as marked. Build hashes and reuse boundaries are recorded in evidence.
-
-## Stage11 inputs
-
-Optional Linux cost probes and the classification-sidecar declaration retain
-Linux GPL-2.0-only licensing. New workload/measurement sources marked MIT are
-project fixtures. No upstream synthesis library, unextended RTL baseline or
-area result is distributed or implied. Rendered design pages remain local;
-only the project's source references and review decisions are recorded.
+Excluded materials include the two original design PDFs, the supplied report template's prior prose, student information, screenshots and slides, backup bundles, complete upstream trees, generated RTL, firmware/kernel images, credentials and account configuration. Historical commit author identities are retained as development provenance. The English report reuses only the template's independently sourced ACL style and bibliography style; its prose, diagrams, tables and data are project-specific.
