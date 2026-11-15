@@ -3,7 +3,7 @@
 import hashlib,json,pathlib,re,subprocess,zipfile,urllib.parse
 r=pathlib.Path(__file__).resolve().parents[1]
 def git(*a):return subprocess.check_output(['git','-C',str(r),*a])
-files=[r/x for x in ('README.md','HISTORY.md','REPRODUCE.md','THIRD_PARTY.md')]+list((r/'docs').glob('*.md'))+list((r/'integration').rglob('*.md'))+list((r/'report').rglob('*.md'))
+files=[r/x for x in ('README.md','HISTORY.md','REPRODUCE.md','THIRD_PARTY.md')]+list((r/'docs').glob('*.md'))+list((r/'integration').rglob('*.md'))+list((r/'report').rglob('*.md'))+list((r/'src').rglob('*.md'))
 checked=0;errors=[]
 for p in files:
  s=p.read_text()
@@ -27,7 +27,11 @@ assert git('rev-parse','v0.2.0^{}').decode().strip()=='2adbfa5de81f341bd575e8498
 assert git('rev-parse','v0.1.0^{}').decode().strip()=='0421e67203e0cfb63d96699f061ffa7d8d00fddf'
 # No patch byte or implementation source changes relative to the accepted release.
 changes=git('diff','v0.2.0','--','patches').decode();assert not changes,'implementation patches changed'
-for line in git('diff','--name-only','v0.2.0','--','integration').decode().splitlines():assert pathlib.Path(line).suffix=='.md',line
+for line in git('diff','--name-only','v0.2.0','--','integration').decode().splitlines():
+ if pathlib.Path(line).suffix!='.md':
+  assert line=='integration/ssa/linux/build-a.py',line
+  original=git('show','v0.2.0:'+line).decode().replace("'stage4-linux'","'linux-reconstruction'")
+  assert (r/line).read_text()==original,'builder changes beyond branch naming'
 print(json.dumps({'passed':True,'local_document_links':checked,'packaged_source_files':len(source),'release_tags_preserved':True,'implementation_patches_unchanged':True},indent=2))
 
 manifest=json.loads((r/'provenance.json').read_text())
@@ -42,3 +46,11 @@ for entry in (r/'evidence').rglob('*manifest.json'):
    if target.exists():assert hashlib.sha256(target.read_bytes()).hexdigest()==expected,(str(entry),path)
    elif path.startswith(('evidence/','integration/','docs/','patches/')):raise AssertionError((str(entry),'missing',path))
 print('PASS installed-source and evidence manifests')
+
+source_manifest=json.loads((r/'src/manifest.json').read_text())
+for path,entry in source_manifest['files'].items():assert hashlib.sha256((r/path).read_bytes()).hexdigest()==entry['sha256'],path
+for component in source_manifest['components'].values():
+ for path,expected in component['patches'].items():assert hashlib.sha256((r/path).read_bytes()).hexdigest()==expected,path
+measurement=json.loads((r/'report/source/data/measurements.json').read_text())
+for path,expected in measurement['provenance']['input_sha256'].items():assert hashlib.sha256((r/path).read_bytes()).hexdigest()==expected,path
+print('PASS source-browser hashes and report measurement inputs')

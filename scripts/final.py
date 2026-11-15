@@ -42,7 +42,7 @@ if a.action=='reproduce':
  if failed:raise SystemExit('Native/checker failure: inspect receipts and logs; successful other runs were preserved')
  command('linux-postcheck',['python3',w/'ssa/linux/transparent/check-results.py','--results',a.out/'linux-results','--work',a.out/'linux-build'])
 else:
- evidence=ROOT/'evidence/stage11';gate=json.loads((evidence/'summary.json').read_text());assert gate['passed'],'candidate not accepted'
+ evidence=ROOT/'evidence/final-validation';gate=json.loads((evidence/'summary.json').read_text());assert gate['passed'],'candidate not accepted'
  manifest=json.loads((evidence/'artifact-manifest.json').read_text());verified=0
  for name,h in manifest['files'].items():
   file=ROOT/name;assert hashlib.sha256(file.read_bytes()).hexdigest()==h,name;verified+=1

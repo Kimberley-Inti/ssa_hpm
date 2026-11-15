@@ -27,7 +27,7 @@
     "open_not_fabricated_return": true,
     "stage6_event_lifecycle_process_regression": true
   },
-  "source_log": "/home/lxf/ssa_hpm/evidence/stage7/linux/rocket-linux-events.txt",
+  "source_log": "/home/lxf/ssa_hpm/evidence/result-export/linux/rocket-linux-events.txt",
   "results": "results.json",
   "sessions": 24,
   "target_sessions": {

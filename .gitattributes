@@ -1,14 +1,16 @@
 # Preserve the canonical UART capture, including intentional CR/CRLF bytes.
-evidence/stage10/linux-rocket-linux-transparent.txt -text -whitespace
+evidence/automatic-launch/linux-rocket-linux-transparent.txt -text -whitespace
 # Mail-patch context and readelf padding are verbatim source/tool records.
 integration/ssa/linux/0008-linux-transparent-launch.patch -text -whitespace
-evidence/stage10/*-elf.txt -text -whitespace
+evidence/automatic-launch/*-elf.txt -text -whitespace
 integration/ssa/linux/0009-linux-cost-probes.patch -text -whitespace
 integration/ssa/linux/0010-linux-classification-contract.patch -text -whitespace
-evidence/stage11/**/*.txt -text -whitespace
-evidence/stage11/**/*.log -text -whitespace
+evidence/final-validation/**/*.txt -text -whitespace
+evidence/final-validation/**/*.log -text -whitespace
 
 # Preserve upstream legal/style bytes, including their original whitespace.
 report/source/acl.sty -whitespace
 report/source/acl_natbib.bst -whitespace
 report/source/third_party/*.txt -whitespace
+# Generated browsing files preserve upstream/accepted source whitespace verbatim.
+src/** -whitespace

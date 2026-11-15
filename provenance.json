@@ -427,22 +427,22 @@
         "integration/ssa/test.c",
         "integration/ssa/test.ld",
         "integration/ssa/verify.py",
-        "evidence/acceptance/build.txt",
-        "evidence/acceptance/built-source.sha256",
-        "evidence/acceptance/contexts.json",
-        "evidence/acceptance/failures.txt",
-        "evidence/acceptance/revisions.json",
-        "evidence/acceptance/rtl-abi.txt",
-        "evidence/acceptance/rtl-boundary.txt",
-        "evidence/acceptance/rtl-context.txt",
-        "evidence/acceptance/rtl-disabled-reference.txt",
-        "evidence/acceptance/rtl-late.txt",
-        "evidence/acceptance/spike-abi.txt",
-        "evidence/acceptance/spike-boundary.txt",
-        "evidence/acceptance/spike-context.txt",
-        "evidence/acceptance/spike-summary.json",
-        "evidence/acceptance/summary.json",
-        "evidence/acceptance/versions.txt",
+        "evidence/calling-contexts/build.txt",
+        "evidence/calling-contexts/built-source.sha256",
+        "evidence/calling-contexts/contexts.json",
+        "evidence/calling-contexts/failures.txt",
+        "evidence/calling-contexts/revisions.json",
+        "evidence/calling-contexts/rtl-abi.txt",
+        "evidence/calling-contexts/rtl-boundary.txt",
+        "evidence/calling-contexts/rtl-context.txt",
+        "evidence/calling-contexts/rtl-disabled-reference.txt",
+        "evidence/calling-contexts/rtl-late.txt",
+        "evidence/calling-contexts/spike-abi.txt",
+        "evidence/calling-contexts/spike-boundary.txt",
+        "evidence/calling-contexts/spike-context.txt",
+        "evidence/calling-contexts/spike-summary.json",
+        "evidence/calling-contexts/summary.json",
+        "evidence/calling-contexts/versions.txt",
         "docs/CALLING_CONTEXTS.md"
       ],
       "release_commit": "429b78c19191d4973042ac554ae3c71383ad5ff5",
@@ -510,7 +510,7 @@
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "09589beed119e9270390777201607ab6d7490911f29ba2a75ff82ec4c73b1806",
-    "ssa/linux/build-a.py": "04723acc13d23c6895e7a8c3cb9eb035ca6e9e6ae93c6f15def11441d2cd8030",
+    "ssa/linux/build-a.py": "c0a5a73b377b0321bdea4879707496b228075da10fe905b93d8e1f412ed045ad",
     "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "38b8e091d5188090402fc43c93cc5906dc66dc0e24c5a5a16d3177f501387f24",
@@ -565,7 +565,7 @@
     "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3",
     "ssa/linux/test_classification_native.py": "f26625bec059f1718be8397cadf11a229b0228f578f48997e3f4deb61b15074c",
     "ssa/linux/0008-linux-transparent-launch.patch": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2",
-    "ssa/linux/transparent/POLICY.md": "0e3f50ab035990c4d596eb997dc8dbe18cd4b873104133a9bd8dcf4d767e76c4",
+    "ssa/linux/transparent/POLICY.md": "c23a393d640cc4bb68d2a0123cb8691cbdac75966b24f2b9575e0eaeed2a45c4",
     "ssa/linux/transparent/build-users.py": "927c6f02fc97d2a17e07c4b913280503aef4635ccb76d9c174abea475f13921f",
     "ssa/linux/transparent/capacity.S": "34c216dcce20583471f0aeb0dfccb7947d4d471c8a6cb6d0afee480d3e4bcbd1",
     "ssa/linux/transparent/capacity.c": "b06094326b913c18008aac9ee67aa83e6348926c115414b7ad224aeef9e4b769",
@@ -593,8 +593,9 @@
     "ssa/performance/test_check.py": "a7357959c3068a221eb9db855eeae30e0b5d97c1bc508f8fa4abc93af2af157c",
     "ssa/performance/test_linux_accounting.py": "f5901dc95e73ae3d635ba77cfd80a646a0270bd384324027a4a49023291abd2d"
   },
-  "development_stage": 11,
-  "stage3": {
+  "maintenance_scope": "Current source/patch inventory; historical branch names identify original development. Final technical evidence is in evidence/stage11.",
+  "development_phase": "final-validation",
+  "task-accounting": {
     "base_release": "2d646a615b357e3e883289d91d0b903ac14baec4",
     "implementation": "integration/ssa/process.h",
     "rocket_source_changed": false,
@@ -602,7 +603,7 @@
     "delivery": "standalone integration files; no duplicate source patch",
     "scope": "single-hart M-mode scheduler protocol; not Linux"
   },
-  "stage4": {
+  "linux-process-accounting": {
     "baseline": "418692f75b3895cbb084e26276ba7267b9f8efee",
     "linux": {
       "url": "https://github.com/firesim/linux.git",
@@ -620,9 +621,9 @@
     "linux_monitoring_delivery": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
     "linux_monitoring_tree": "ef9c3b6d2e2891853aa576d211f715a8ea718ddb"
   },
-  "stage5": {
+  "exec-lifecycle": {
     "baseline": "55104eb22d160d9bf9e1e7388866ba7482a2785a",
-    "branch": "stage5-linux-exec-lifecycle",
+    "branch": "exec-lifecycle",
     "linux_base": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
     "linux_delivery": "f327da924b3515e2d4c33bc1a8eb1e0c38807d66",
     "linux_tree": "09b9c784b0e679ed78ee1d9df1014f1e27144d4d",
@@ -632,9 +633,9 @@
     "chipyard_base": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
     "rocket_base": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
     "opensbi_base": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
-    "evidence": "evidence/stage5/summary.json"
+    "evidence": "evidence/exec-lifecycle/summary.json"
   },
-  "stage6": {
+  "dtlb-attribution": {
     "baseline": "3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d",
     "event": "DCache accepted PTW requests",
     "selector": 4098,
@@ -642,11 +643,11 @@
     "config": "SSAHPMEventRocketConfig",
     "semantics": "actual increment interval, inclusive, every-open-frame R-S excluded modulo40",
     "status": "passed: actual Rocket Linux70 event/37 lifecycle/176 process checks; all173 historical process gates retained;24 existing lowlevel plus5 new RTL tests; independent RTL rebuild and clean final public patch application",
-    "native_evidence": "evidence/stage6/linux/summary.json"
+    "native_evidence": "evidence/dtlb-attribution/linux/summary.json"
   },
-  "stage7": {
+  "result-export": {
     "baseline": "1c48e93b0055e92a565eb455a057c1e45618d81c",
-    "branch": "stage7-result-export",
+    "branch": "result-export",
     "status": "accepted: actual independent Rocket/Linux boot exit0,25export/70event/37exec/179process gates plus36+4host checks",
     "linux_base": "49943b80f864a41e4ac13108a77f921e013d3570",
     "linux_delivery": "b92b11252f5b9a5ce2a3c33298fa3b8bef93c836",
@@ -658,25 +659,25 @@
     "capacity": 262143,
     "chunk_records": 16,
     "required_checklist": "docs/ACCEPTANCE.md",
-    "evidence": "evidence/stage7/summary.json",
-    "source_commits": "evidence/stage7/source-commits.json",
+    "evidence": "evidence/result-export/summary.json",
+    "source_commits": "evidence/result-export/source-commits.json",
     "native_runs": 1
   },
-  "stage8": {
+  "cache-attribution": {
     "baseline": "2c63845c4bd262594f6d5ed0e4fc12773957d833",
-    "branch": "stage8-cache-event-attribution",
+    "branch": "cache-event-attribution",
     "status": "accepted:5 Cache RTL+29 prior lowlevel, actual Linux39/69/24 gates,48+4host checks, normal shutdown/native0",
     "profile": "dcache_a_transactions",
     "selector": 514,
     "width": 40,
     "abi": 2,
-    "source_commits": "evidence/stage8/source-commits.json",
-    "evidence": "evidence/stage8/summary.json",
+    "source_commits": "evidence/cache-attribution/source-commits.json",
+    "evidence": "evidence/cache-attribution/summary.json",
     "accepted_full_linux_runs": 1,
     "superseded_early_boots": 1,
     "D03_closed": true
   },
-  "stage9": {
+  "memory-classification": {
     "status": "accepted bounded rule1 on actual RTL and single-hart Linux; native0, normalshutdown,26checks",
     "base": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
     "public_reconstruction": "same pinned public bases plus0014 Rocket patch and installed standalone suite",
@@ -686,19 +687,19 @@
       "linux": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
       "opensbi": "43f02ffb329d9c86b2ff2138dc450b2060778ffe"
     },
-    "evidence": "evidence/stage9/summary.json"
+    "evidence": "evidence/memory-classification/summary.json"
   },
-  "stage10": {
+  "automatic-launch": {
     "status": "accepted controlled ELF scope:actual native0+powerdown,50automatic/26manual/10capacity gates,17sessions215records; original model reused",
     "base": "24fa1cde07a7af6de77c136789867ce730c60f91",
     "kernel_commit": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
     "policy": "controlled CAP_SYS_ADMIN+no_new_privs single-thread ELF exec; fork does not inherit",
-    "evidence": "evidence/stage10/summary.json",
-    "source_commits": "evidence/stage10/source-commits.json",
+    "evidence": "evidence/automatic-launch/summary.json",
+    "source_commits": "evidence/automatic-launch/source-commits.json",
     "C05_scope": "single-hart/single-thread/nonprivileged audited static ELF and musl PT_INTERP/DSO; no universal runtime/unwind claim",
     "independent": "public patch/source/build verification plus same-capture installed oracle equality; no second model/native build"
   },
-  "stage11": {
+  "final-validation": {
     "baseline_maintenance": "6ef19d6e85dfe55983794342620a026005a67d20",
     "source_commits": {
       "chipyard": "d756a546e27d40100752a0ff7c73b796c77d4fde",
@@ -724,5 +725,6 @@
     ],
     "final_accounting_companion": "two-record switch-only; same kernel/SBI/RTL; original full payload unchanged"
   },
-  "maintenance_scope": "Current source/patch inventory; historical branch names identify original development. Final technical evidence is in evidence/stage11."
+  "evidence_path_map": "docs/EVIDENCE_PATHS.json",
+  "source_browser": "src/manifest.json"
 }

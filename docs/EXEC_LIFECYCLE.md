@@ -15,7 +15,7 @@ termination freeze/export the current session and release its resources.
 The production Linux capture checks successful/failed exec, new-image exit,
 open-frame markers, one-time export, policy inheritance and pool reuse. See
 [automatic launch](AUTOMATIC_LAUNCH.md), [format](EXPORT.md),
-[production summary](../evidence/stage11/linux-unified-final/summary.json), and
-[manual lifecycle summary](../evidence/stage11/linux-unified-final/manual-summary.json).
+[production summary](../evidence/final-validation/linux-unified-final/summary.json), and
+[manual lifecycle summary](../evidence/final-validation/linux-unified-final/manual-summary.json).
 The original dedicated lifecycle evidence remains in
-[its immutable capture bundle](../evidence/stage5/summary.json).
+[its immutable capture bundle](../evidence/exec-lifecycle/summary.json).

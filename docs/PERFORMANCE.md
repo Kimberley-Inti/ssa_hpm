@@ -1,6 +1,6 @@
 # Performance evaluation of the single-hart research prototype
 
-Status: bare, Linux workload/phase and separate direct snapshot-proof checks passed. Final packaging/integration gates are recorded in stage11/summary.json.
+Status: bare, Linux workload/phase and separate direct snapshot-proof checks passed. Final packaging/integration gates are recorded in final-validation/summary.json.
 
 ## Measurement conditions
 
@@ -12,7 +12,7 @@ Bare modes execute in M-mode. DTLB mode measures the ABI2 snapshot path on physi
 
 ## Accepted bare workload data
 
-Native exit 0;150 work rows,30 calibration rows and 6 setup rows; all workload checksums agree. Wall time6532.51s describes experiment duration only. Raw data and exact min/median/max for all three counters are in `evidence/stage11/performance-final/summary.json`.
+Native exit 0;150 work rows,30 calibration rows and 6 setup rows; all workload checksums agree. Wall time6532.51s describes experiment duration only. Raw data and exact min/median/max for all three counters are in `evidence/final-validation/performance-final/summary.json`.
 
 Cycle medians:
 

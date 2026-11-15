@@ -41,7 +41,7 @@ not claimed. Unselected programs follow normal Linux loader behavior.
    snapshots; emit closed records and explicit abandoned open frames; finish
    checksummed chunks and release ownership. An open activation adds no invented
    partial HPM count. Exclusive classifier observations already made remain
-   available as partial data. This is unchanged stage5/7 behavior.
+   available as partial data. This is the established exec/export behavior.
 2. Load mappings/credentials/stack and prepare start_thread. At the final ELF
    readiness hook, before any new U instruction, allocate/reset a fresh owned
    pool, dictionary, stack, snapshots and classifier epoch using the saved flags.

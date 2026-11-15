@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "directories": {
+    "evidence/acceptance": "evidence/calling-contexts",
+    "evidence/stage2": "evidence/trap-isolation",
+    "evidence/stage3": "evidence/task-accounting",
+    "evidence/stage4": "evidence/linux-process-accounting",
+    "evidence/stage5": "evidence/exec-lifecycle",
+    "evidence/stage6": "evidence/dtlb-attribution",
+    "evidence/stage7": "evidence/result-export",
+    "evidence/stage8": "evidence/cache-attribution",
+    "evidence/stage9": "evidence/memory-classification",
+    "evidence/stage10": "evidence/automatic-launch",
+    "evidence/stage11": "evidence/final-validation"
+  },
+  "policy": "Current references use functional names. Original raw log bytes, historical command paths, patch subjects and schema identifiers are preserved. Release tags retain their original tree layouts."
+}

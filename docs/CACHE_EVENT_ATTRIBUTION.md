@@ -13,11 +13,11 @@ remain live in kernel/private code, and software removes actual S..R pause delta
 After resume, misses caused by shared-cache pollution belong to the resumed task's
 active interval. Firmware fixes one event profile for a Linux image.
 
-[Five final RTL cases](../evidence/stage11/regression-cache/summary.json) check
+[Five final RTL cases](../evidence/final-validation/regression-cache/summary.json) check
 source/global/context relationships, wrong selector/context negative controls,
 wrap and register transparency. The production and full-performance Linux images
 export Cache metadata and real records; the direct
-[two-task companion](../evidence/stage11/linux-switch-proof/summary.json) verifies
+[two-task companion](../evidence/final-validation/linux-switch-proof/summary.json) verifies
 nonzero Cache pause subtraction for both tasks. The dedicated controlled-workset
-[Linux capture bundle](../evidence/stage8/summary.json) is preserved separately.
+[Linux capture bundle](../evidence/cache-attribution/summary.json) is preserved separately.
 Use [the protocol](EXPORT.md) to distinguish Cache and DTLB records.

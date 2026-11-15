@@ -14,7 +14,7 @@ name, width and profile identity.
 
 The final new RTL matrix checks real event production/global increments/context
 association, selector and context negative controls, wrap and register transparency.
-[DTLB results](../evidence/stage11/regression-events/summary.json) identify actual
-executions. [Dedicated Linux evidence](../evidence/stage6/summary.json) retains
+[DTLB results](../evidence/final-validation/regression-events/summary.json) identify actual
+executions. [Dedicated Linux evidence](../evidence/dtlb-attribution/summary.json) retains
 its accepted source/image/capture provenance; it is historical evidence, not a
 new automatic-DTLB run. [Validation](VALIDATION.md) states that combination boundary.

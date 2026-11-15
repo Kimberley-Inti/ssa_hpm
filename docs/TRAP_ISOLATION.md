@@ -14,7 +14,7 @@ memory. Counter-enable CSRs govern read permission rather than event generation.
 
 The final matrix executes trap, nested-handler, IRQ, read-only/status, overflow
 and register-transparency cases, plus seven privilege/translation probes.
-[Low-level results](../evidence/stage11/lowlevel-summary.json) and
-[trap captures](../evidence/stage11/regression-base/summary.json) give commands,
+[Low-level results](../evidence/final-validation/lowlevel-summary.json) and
+[trap captures](../evidence/final-validation/regression-base/summary.json) give commands,
 actual exit statuses and expected failures. These cases test architectural trap
 return; software non-local unwinding is a separate extension.

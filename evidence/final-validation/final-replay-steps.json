@@ -4,11 +4,11 @@
     "command": [
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/linux/transparent/grade.py",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-unified-final/rocket-linux-transparent.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-unified-final/rocket-linux-transparent.txt",
       "--exit-code",
       "0",
       "--users",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-users.json",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-users.json",
       "--out",
       "/tmp/ssa-hpm-stage11/quick-final-first/auto.json"
     ],
@@ -21,7 +21,7 @@
     "command": [
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/linux/grade-classification.py",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-unified-final/manual-regression.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-unified-final/manual-regression.txt",
       "--exit-code",
       "0",
       "--out",
@@ -37,11 +37,11 @@
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/linux/transparent/negative.py",
       "--native-log",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-unified-final/rocket-linux-transparent.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-unified-final/rocket-linux-transparent.txt",
       "--execution",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-unified-final/execution.json",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-unified-final/execution.json",
       "--users",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-users.json",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-users.json",
       "--out",
       "/tmp/ssa-hpm-stage11/quick-final-first/auto-negatives.json"
     ],
@@ -96,7 +96,7 @@
     "command": [
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/performance/check.py",
-      "/home/lxf/ssa_hpm/evidence/stage11/performance-final/rtl-performance.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/performance-final/rtl-performance.txt",
       "--exit-code",
       "0",
       "--repeats",
@@ -113,7 +113,7 @@
     "command": [
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/performance/check.py",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-performance-final/rocket-linux-performance.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-performance-final/rocket-linux-performance.txt",
       "--linux",
       "--exit-code",
       "0",
@@ -146,9 +146,9 @@
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/performance/test_linux_accounting.py",
       "--log",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-switch-proof/rocket-linux-performance.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-switch-proof/rocket-linux-performance.txt",
       "--execution",
-      "/home/lxf/ssa_hpm/evidence/stage11/linux-switch-proof/execution.json",
+      "/home/lxf/ssa_hpm/evidence/final-validation/linux-switch-proof/execution.json",
       "--out",
       "/tmp/ssa-hpm-stage11/quick-final-first/accounting-negatives.json"
     ],
@@ -161,7 +161,7 @@
     "command": [
       "python3",
       "/home/lxf/ssa_hpm/integration/ssa/classification/check_wb.py",
-      "/home/lxf/ssa_hpm/evidence/stage11/wb-memory-excerpt.txt",
+      "/home/lxf/ssa_hpm/evidence/final-validation/wb-memory-excerpt.txt",
       "--out",
       "/tmp/ssa-hpm-stage11/quick-final-first/wb.json"
     ],

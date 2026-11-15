@@ -77,7 +77,7 @@
       "--users",
       "/tmp/ssa-hpm-stage10/uncompressed-linux/transparent-users.json",
       "--out",
-      "/home/lxf/ssa_hpm/evidence/stage10/automatic-negatives.json"
+      "/home/lxf/ssa_hpm/evidence/automatic-launch/automatic-negatives.json"
     ],
     [
       "python3",
@@ -87,7 +87,7 @@
       "--work",
       "/tmp/ssa-hpm-stage10/uncompressed-linux",
       "--out",
-      "/home/lxf/ssa_hpm/evidence/stage10/capacity-elf-final.json"
+      "/home/lxf/ssa_hpm/evidence/automatic-launch/capacity-elf-final.json"
     ],
     [
       "python3",
@@ -95,9 +95,9 @@
       "--native-log",
       "/tmp/ssa-hpm-stage10/linux-uncompressed/manual-regression.txt",
       "--execution",
-      "/home/lxf/ssa_hpm/evidence/stage10/manual-suffix-execution.json",
+      "/home/lxf/ssa_hpm/evidence/automatic-launch/manual-suffix-execution.json",
       "--out",
-      "/home/lxf/ssa_hpm/evidence/stage10/manual-semantic-negative.json"
+      "/home/lxf/ssa_hpm/evidence/automatic-launch/manual-semantic-negative.json"
     ]
   ],
   "limitations": [

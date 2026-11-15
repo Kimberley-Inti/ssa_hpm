@@ -33,9 +33,9 @@
         "python3",
         "ssa/linux/test_classification_native.py",
         "--native-log",
-        "evidence/stage9/linux-rocket-linux-classification.txt",
+        "evidence/memory-classification/linux-rocket-linux-classification.txt",
         "--execution",
-        "evidence/stage9/linux-execution.json",
+        "evidence/memory-classification/linux-execution.json",
         "--out",
         "/tmp/ssa-hpm-stage11/host-class-native.json"
       ],
@@ -60,9 +60,9 @@
         "python3",
         "ssa/linux/test_classification_native.py",
         "--native-log",
-        "evidence/stage9/linux-rocket-linux-classification.txt",
+        "evidence/memory-classification/linux-rocket-linux-classification.txt",
         "--execution",
-        "evidence/stage9/linux-execution.json",
+        "evidence/memory-classification/linux-execution.json",
         "--out",
         "/tmp/ssa-hpm-stage11/host-class-native.json"
       ],

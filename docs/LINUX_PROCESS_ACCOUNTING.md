@@ -26,9 +26,9 @@ The complete performance fixture creates three records and uses a separately
 identified two-record companion because the inherited diagnostic guard emits
 SSA_ACCOUNT only for exactly two records.
 
-[Direct raw capture](../evidence/stage11/linux-switch-proof/rocket-linux-performance.txt),
-[20-check summary](../evidence/stage11/linux-switch-proof/summary.json) and
-[snapshot accounting](../evidence/stage11/linux-switch-proof/switch-accounting.json)
+[Direct raw capture](../evidence/final-validation/linux-switch-proof/rocket-linux-performance.txt),
+[20-check summary](../evidence/final-validation/linux-switch-proof/summary.json) and
+[snapshot accounting](../evidence/final-validation/linux-switch-proof/switch-accounting.json)
 record native0 and normal powerdown. [Unified validation](VALIDATION.md) identifies
 other captures and host-only replay. Current diagnostics retain12pauses/session;
 source-reviewed overflow stops monitoring with incomplete status.

@@ -13,9 +13,9 @@ The production capture additionally exports64 records in4chunks and a dynamic
 observable dropped access; base transport completion and classification coverage
 are separate states.
 
-[Production results](../evidence/stage11/linux-unified-final/summary.json),
-[ELF-linked capacity checks](../evidence/stage11/linux-unified-final/postcheck/capacity.json)
-and [export protocol checks](../evidence/stage11/host-export-final.json) retain
+[Production results](../evidence/final-validation/linux-unified-final/summary.json),
+[ELF-linked capacity checks](../evidence/final-validation/linux-unified-final/postcheck/capacity.json)
+and [export protocol checks](../evidence/final-validation/host-export-final.json) retain
 original observations and host-only malformed-stream tests. Those tests reject
 missing/duplicate chunks, truncation, invalid ranges/checksums and missing declared
 classification sidecars. Full262143-record UART stress remains an optional long run;

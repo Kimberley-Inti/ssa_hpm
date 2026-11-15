@@ -160,7 +160,7 @@ Actual single-hart Rocket/Linux exported41 records in3 chunks plus small/zero/op
 sessions, then completed all affected event/exec/process suites. Across the single
 boot24 sessions/87 records/25 chunks passed and all pools were released. Open
 sessions4/5/13 are semantic-incomplete but transport-complete. See RESULT_EXPORT_VALIDATION.md and
-evidence/stage7/summary.json for raw logs, checksums, counters and exact hashes.
+evidence/result-export/summary.json for raw logs, checksums, counters and exact hashes.
 The host's maximum-capacity plan and corrupt-stream tests are not native full-pool
 or native I/O fault-injection coverage.
 
@@ -179,7 +179,7 @@ uncached), occurrence intervals inclusive of children/kernel/private ROM, with
 S..R exclusion for normal mode. Late increments belong to their sampling interval;
 post-R resumed-task cache effects remain charged. See ABI.md and CACHE_EVENT_ATTRIBUTION.md for
 exact source/limits. Actual Cache41 rows/3chunks plus small/empty/open andexec
-passed in Linux; full source logs/results are in evidence/stage8/.
+passed in Linux; full source logs/results are in evidence/cache-attribution/.
 
 ## Optional memory classification sidecar (rule1)
 
