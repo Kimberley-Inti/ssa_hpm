@@ -1,15 +1,11 @@
-# 开发历史与发布提交映射
+<!-- Historical branch names, authors and commit messages below are retained as provenance. -->
+# Development history and provenance
 
-原开发仓库和分支不重写、不删除。本仓库是普通独立 Git 仓库；以下仅导入项目补丁、
-测试和验证资料，原始 SHA 是来源标识，不作为新仓库的 Git parent。原作者、作者日期和
-提交说明按 Git 记录保留；导入提交的 committer/date 属于本次整理。跨仓库同时间的排列
-只用于整理，不推断原操作的绝对先后。
+Original development commits remain preserved. This standalone repository imports project patches, tests and evidence rather than upstream Git ancestry. Original SHAs identify sources; original authors, author dates and commit subjects remain unchanged. Import committer dates identify packaging work. Ordering across repositories does not establish an absolute order of development actions.
 
-## 原仓库核验
+## Original repository verification
 
-- 登录已恢复为 `Kimberley-Inti`（ID `185574409`）。`SSA-HPM` 是私有旧开发仓库；
-  之前的 Repository not found 来自错误账号/不可见，而不是仓库 URL 错误。
-  Rocket 403 来自 `jeffli999` 没有写权限；凭据库的 Kimberley 旧项还返回 401。
+- Authenticated access to the owner’s original development repositories was restored during initial packaging. Historical authentication diagnostics remain in the immutable development record; credentials are not distributed.
 - 仅在相关仓库增加 `github-authenticated` 远端和 gh helper 覆盖，原 origin/my-fork 保留。
 - 旧 Chipyard `main` 仍是 `4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1`；
   Rocket `SSA-HPM` 仍是 `1f200edb0eb0832a72d04d8d4f36b912e0e447dd`，未被改写。
@@ -27,7 +23,7 @@
   env.sh 并保护缺失旧 C 原型的默认构建，未移动已验收分支。先合 Rocket，再合 Chipyard。
 - 原工作树、原分支、初始未跟踪文件及 `ssa/handoff/` 均保留；不上传这些 bundle。
 
-## 原始记录 → 新提交
+## Original records and imported commits
 
 所有完整 SHA、作者、日期、改动路径和具体产物亦见 `provenance.json`。
 
@@ -52,7 +48,7 @@
 | rocket-chip / ssa-hpm-completion-20261108 | `986407bc6df8d2a67572250f1df9eb2c0edeacf9` | 2026-11-09T06:18:46+08:00 | Fix SSA-HPM microcode retirement, context dictionary and counter attribution | `bc2b064fd2be342d51774e4c83c895457cf197b6`；`patches/rocket-chip/0008-986407bc6.patch` |
 | chipyard / ssa-hpm-completion-20261108 | `375068b6180fa968f86f07fc4b2e1ec104f632ee` | 2026-11-09T06:19:08+08:00 | Add reproducible SSA-HPM Spike and Rocket RTL validation | `429b78c19191d4973042ac554ae3c71383ad5ff5`；`patches/chipyard/0002-fesvr-verilator-build.patch`, `integration/ssa/.gitignore` 等 |
 
-## 整理范围与后续维护
+## Packaging and maintenance
 
 - Rocket 的 8 次实现修改逐个保留为补丁及对应导入提交，包含原始未提交差异的恢复提交 `539c3b10f`。
 - Chipyard 中纯 gitlink 更新与 URL 调整不重复制造代码副本，其与 Rocket 原始提交的对应关系保留在上述记录中。
@@ -71,7 +67,7 @@
 这两次整理保留当前作者日期，没有改写前面 13 个按原作者日期导入的提交；版本由 v0.1.0 标记。
 
 
-## stage2-trap-isolation (development, no new tag)
+## Trap isolation
 
 Based on unchanged v0.1.0 `0421e67203e0cfb63d96699f061ffa7d8d00fddf`.
 The publication environment fix `58a7acde9598b4e08d11e5b5f3da0e146e138078`
@@ -84,7 +80,7 @@ was replayed on the Chipyard development branch as
 | Chipyard | `339d349d35e308f2912c5db55c42c6e4adcb18ba` | `fa0ccc7be59a624acc1dcd80af211919be17cd56` | Updated standalone `integration/ssa` test files; no duplicate test patch |
 
 This stage implements normal architectural trap isolation, nested resume, a
-read-only state CSR and fail-closed overflow. `docs/STAGE2.md` records design
+read-only state CSR and fail-closed overflow. `docs/TRAP_ISOLATION.md` records design
 review, the old-RTL failure, unchanged counting semantics and validation scope.
 First-stage main/tag and the two existing Draft PR branches are not moved.
 
@@ -95,7 +91,7 @@ Verilator 的 16 项实际结果。原始验收证据与本次 baseline/developm
 证据分开保存；全部实现位于本轮独立分支，v0.1.0 和 main 保持不变。
 
 
-## stage3-process-isolation
+## Process accounting
 
 从 stage2 独立维护仓库提交 `2d646a615b357e3e883289d91d0b903ac14baec4` 新建分支。
 已回读 GitHub stage2 分支与 Draft PR #1，二者 head 一致；未移动 main、v0.1.0 或旧 PR。
@@ -108,12 +104,12 @@ Verilator 的 16 项实际结果。原始验收证据与本次 baseline/developm
 本轮原创提交未重写先前开发历史。首次实现提交和后续独立重建证据提交形成两个
 有意义的维护仓库提交；其 SHA 可由本分支 git log 核验。源码提交说明为
 “Add single-hart monitoring pool lifecycle and off-CPU attribution regression”。
-Chipyard ssa/README.md 的本轮说明在维护仓库整理为 docs/STAGE3.md；运行源文件
+Chipyard ssa/README.md 的本轮说明在维护仓库整理为 docs/PROCESS_ACCOUNTING.md；运行源文件
 和 Makefile 一致，历史 integration/ssa/README.md 不替代当前阶段说明。
 
 本轮接口与测试整理提交：`aad36f0ecad6fce9fbd661760c9505bc1e653e6d`，对应 Chipyard `503d5ccdb6634a05f46181ecd23648cfbb4e61b8`。后续验证提交仅补充实际重建证据和文档。
 
-## Stage4 Linux bootstrap (work in progress)
+## Linux boot and process accounting
 
 Branch starts at stage3 418692f75b3895cbb084e26276ba7267b9f8efee.
 
@@ -171,7 +167,7 @@ legacy is1545490/1753452 (delta207962). All16+3+5 existing/new low-level checks
 remain passed, including the expected-exit42 legacy control. No new tag, main
 update, PR merge or public repository visibility change is part of this delivery.
 
-## Stage5 Linux exec lifecycle
+## Exec lifecycle
 
 Development starts from maintenance55104eb22d160d9bf9e1e7388866ba7482a2785a
 (stage4 Draft PR#3, unchanged), not from main or an unmerged upstream PR.
@@ -204,7 +200,7 @@ Stage5 native acceptance:37 lifecycle gates and173 affected stage4 Linux checks 
 
 Final Chipyard source delivery `c8be3fd4d10a758ea378f2b8f349eff6e2dc9de9` includes the test/checker changes and the atomic-release-order ABI clarification; Linux remains `f327da924b3515e2d4c33bc1a8eb1e0c38807d66`. Native model and firmware sources are unchanged. Current instret corrected/legacy long-minus-short is4205/211029, with raw214873 minus excluded210668 =4205. Historical stage4 remains20/207962 under its original image.
 
-## Stage6 DTLB request interval attribution
+## DTLB interval attribution
 
 Maintenance starts at3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d, stage5 Draft PR#4.
 It retains main, v0.1.0 and every earlier Draft PR.
@@ -236,7 +232,7 @@ Stage6 native scheduling follow-up: Linux `49943b80f864a41e4ac13108a77f921e013d3
 
 Stage6 native acceptance completed: actual independent Linux image, clean exit0/power-down; 70 event gates,37 lifecycle gates and176 process gates (all173 historical gates plus three additional sample assertions) passed. All29 low-level tests (24 existing plus5 new) were actual new runs, and independent model rebuild repeated the5 new tests. Source/ROM ABI1 continuity remains verified; main/tags/earlier Draft PRs are unchanged.
 
-## Stage7 result export (from accepted stage6)
+## Result export
 
 Actual maintenance baseline `1c48e93b0055e92a565eb455a057c1e45618d81c`; PR5 remains Draft/Open against stage5. User's supplied SHA had one missing digit; local and remote branch agree on the full SHA above.
 
@@ -282,7 +278,7 @@ docs/ACCEPTANCE.md. The final maintenance evidence commit continues the existing
 stage7-result-export history and updates Draft PR6 against stage6; main, tags and
 earlier PR branches remain unchanged.
 
-## Stage8 fixed Cache profile (from accepted stage7)
+## Cache-event attribution
 
 Maintenance starts at2c63845c4bd262594f6d5ed0e4fc12773957d833; PR6 is retained
 Draft/Open. Linux275125fab adds fixed-profile export metadata without altering
@@ -334,7 +330,7 @@ is next; generic transparent loader/multicore/unwind and other extended goals
 remain scoped in ACCEPTANCE.md. Main/tags/earlier PRs are unchanged.
 
 
-## Stage9 memory classification — implementation mapping and accepted scope
+## Memory classification
 
 The stage8 head cdcf64fd5a9e2321b43fd68070b3ee45d12b42de and Draft PR7 are retained.
 New work is on stage9-memory-classification; no main/tag/merge changes.
@@ -372,7 +368,7 @@ metadata accounting (139inputs=130classified+9dropped,54evictions) to the unchan
 actual RTL logs. Kernel/RTL/image sources are unchanged by the host followups.
 
 
-## Stage10 controlled transparent launch (implementation checkpoint)
+## Automatic launch
 
 | Original repository / stage9 base | New source commit | Meaning / standalone mapping |
 | --- | --- | --- |
@@ -433,7 +429,7 @@ postcheck entry: original native/log receipt verification,50automatic/26manual/
 against the same finished capture in both development and installed public suites;
 no frozen image/model/RTL source changed and no new native run was performed.
 
-## Stage11 — final candidate review and cost evaluation
+## Final validation and cost evaluation
 
 From stage10 `6ef19d6e85dfe55983794342620a026005a67d20`, stage11 preserves all
 prior source commits, branches and tags. Source mapping is recorded in
@@ -443,7 +439,7 @@ independent workload-boundary measurements and strengthens the host checker.
 The Rocket/OpenSBI source versions remain unchanged. Public baseline fetch,
 patches, new Scala/RTL/Verilator build and low-level regressions have passed;
 At that source checkpoint, Linux/performance acceptance was pending. Completion
-is recorded below; the earlier checkpoint did not claim an integration result. See `docs/STAGE11.md` and `docs/INTEGRATION.md`.
+is recorded below; the earlier checkpoint did not claim an integration result. See `docs/VALIDATION.md` and `docs/INTEGRATION.md`.
 
 Stage11 source development sequence (original commits retained in local source
 repositories, consolidated into this maintenance source checkpoint):
@@ -488,3 +484,9 @@ identical after the conditional test addition. Final maintenance evidence/report
 commit consolidates the already pushed stage11 checkpoints with these results;
 original author/message history remains reachable. Authorized integration uses
 merge commits, preserving all stage heads and v0.1.0 rather than squashing them.
+
+## Functional naming and public presentation
+
+The [reference map](docs/HISTORY_MAP.json) records every branch/document rename with its original commit target. All historical names in this file identify their original records. The accepted v0.2.0 tags and raw evidence are unchanged; current navigation and the English report are a documentary follow-up.
+
+The public-presentation commit adds the English report and functional navigation, preserves v0.2.0 implementation bytes, replays the accepted host oracles, and validates a fresh public-baseline patch application. No simulator rerun or history rewrite is attributed to this documentation update. Detailed receipts are in `evidence/publication/`.

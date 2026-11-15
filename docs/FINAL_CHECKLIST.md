@@ -2,7 +2,7 @@
 
 Scope is ACCEPTANCE.md: one hart, trusted kernel/firmware, audited non-privileged
 single-thread LIFO targets and the tested musl continuation adaptation.
-Native/semantic requirements and12-step host evidence replay passed; audit/publication receipts
+Native/semantic requirements and 12-step host evidence replay passed; audit/publication receipts
 are in evidence/stage11/summary.json and the release/integration receipt.
 
 ## Required functionality and final review
@@ -22,12 +22,12 @@ are in evidence/stage11/summary.json and the release/integration receipt.
 - Fresh directed cases40(6Spike references/34RTL), WB oracle9, production Linux
   51automatic/26manual plus10ELF/5automatic/3manual negatives pass.
 - Formal bare150work/30calibration and Linux150work/30calibration measurements,
- 20composite performance checks and20direct companion checks pass. Companion
-  negative suite5cases passes. All four native captures exit0; all three Linux
+ 20composite performance checks and 20direct companion checks pass. Companion
+  negative suite5cases passes. All four native captures exit 0; all three Linux
   payloads power down normally. Original failed host runners are not rewritten0.
 - Final host-only replay and complete-history/file audit must pass before merge;
   their actual receipts govern this gate. Ordered patches and rights notices are
-  retained; images, upstream trees, backups, credentials and PDFs are excluded.
+  retained; images, upstream trees, backups, credentials and original design PDFs are excluded; the authored English report is a checked publication artifact.
 
 ## Performance evaluation completed
 
@@ -46,9 +46,9 @@ measurement was performed.
 
 ## Current adaptation limits, not hidden completed capabilities
 
-- Single hart, at most2monitored pools,36MiB each; no perf sharing/migration.
+- Single hart, at most2monitored pools,36 MiB each; no perf sharing/migration.
 - At most12retained pause diagnostics/session; source-reviewed overflow stops
-  with partial state. More-than12-pause stress was not newly hardware-tested.
+  with partial state. More-than 12-pause stress was not newly hardware-tested.
 - Full-tree domain is at most256frames; deeper folding has no sticky count after
   unwind. Export completion does not prove arbitrary inputs respected that bound.
 - Classifier: integer retired load/store1/2/4/8B, virtualPC/address,2banks,

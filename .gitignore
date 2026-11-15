@@ -9,3 +9,6 @@ build/
 *.pdf
 .env
 .env.*
+
+# Curated authored publication artifact; original design PDFs remain excluded.
+!/report/SSA-HPM-report.pdf

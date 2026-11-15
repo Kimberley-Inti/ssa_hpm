@@ -1,0 +1,11 @@
+\begin{table*}[t]\centering\small
+\begin{tabular}{lrrrrrr}\toprule
+Workload & Off & Base & Cache & Class. & Manual C+C & Auto C+C\\\midrule
+Compute & 2,379 & 2,728 & 2,820 & 2,695 & 2,841 & 2,767\\
+Calls128 & 1,970 & 47,082 & 54,000 & 47,257 & 60,547 & 60,287\\
+Depth16 & 1,099 & 7,464 & 8,761 & 7,605 & 8,783 & 8,595\\
+Stream32K & 62,209 & 62,108 & 55,206 & 62,541 & 62,004 & 62,750\\
+Irregular32K & 112,655 & 113,099 & 113,138 & 112,270 & 112,778 & 112,580\\
+\bottomrule\end{tabular}
+\caption{Linux cycle medians. C+C denotes Cache plus classification. Manual and automatic C+C use matched profiles; interrupt and cache phase contribute to variation.}\label{tab:linuxcycles}
+\end{table*}

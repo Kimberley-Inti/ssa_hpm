@@ -7,3 +7,8 @@ integration/ssa/linux/0009-linux-cost-probes.patch -text -whitespace
 integration/ssa/linux/0010-linux-classification-contract.patch -text -whitespace
 evidence/stage11/**/*.txt -text -whitespace
 evidence/stage11/**/*.log -text -whitespace
+
+# Preserve upstream legal/style bytes, including their original whitespace.
+report/source/acl.sty -whitespace
+report/source/acl_natbib.bst -whitespace
+report/source/third_party/*.txt -whitespace

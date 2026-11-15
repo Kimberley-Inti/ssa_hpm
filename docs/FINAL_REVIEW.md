@@ -21,11 +21,11 @@ not definitions claimed to have appeared in the original design.
 
 No expansion to multi-hart, shared-mm/vfork, arbitrary signal handlers/non-local
 unwind, vector/FP/AMO classification or automatic DTLB is accepted. The classifier
-is bounded to two banks, 63 context rows, 16 FIFO histories per bank and256 shadow
+is bounded to two banks, 63 context rows, 16 FIFO histories per bank and 256 shadow
 frames. Eviction restarts warmup; irregular means no recognized supported pattern.
 
 Review findings are distinct from execution evidence. The Linux/performance
-runs have now completed; STAGE11 and the final summary record their receipts
+runs have now completed; final validation and the final summary record their receipts
 and separately identify companion versus primary and host-only replay.
 
 R04: host progress lines can interrupt a target performance row. A synthetic
@@ -35,7 +35,7 @@ This repairs host acquisition interpretation; it does not change target code.
 The final performance oracle also rejects missing/duplicate samples, checksum
 mismatch, missing calibration/setup and absent terminal markers.
 
-The depth256 boundary deliberately folds deeper calls into the deepest retained
+The depth 256 boundary deliberately folds deeper calls into the deepest retained
 context, as the existing258-call RTL test demonstrates. After full unwind there
 is no sticky count of folded activations. Export completeness is about all
 allocated records, not proof that an arbitrary input respected the supported
@@ -45,7 +45,7 @@ no generic unbounded call-tree coverage is inferred from a complete transport.
 R05: the full performance fixture creates three records (outer, inner, memory
 body), but the inherited SSA_ACCOUNT diagnostic is emitted only for next==3,
 i.e. two records. Consequently its first final host check returned1 for absent
-direct snapshot proof, while native0, powerdown,150work samples, all exports,
+direct snapshot proof, while native0, powerdown,150 work samples, all exports,
 actual timer/open2 switches and phase costs passed. Keep that failed receipt.
 A conditional two-record switch-only companion inlines the same real memory
 patterns, uses the identical kernel/firmware trees and RTL executable, and must

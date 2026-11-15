@@ -1,7 +1,7 @@
-# Result export v1 (stage7–8)
+# Result export v1 (result export–8)
 
 This is a bounded kernel-to-host stream for the existing single-hart prototype,
-not an upstream Linux syscall ABI, guest filesystem service or raw36MiB dump.
+not an upstream Linux syscall ABI, guest filesystem service or raw36 MiB dump.
 The semantic content is every allocated HPERecord, active counter definitions,
 parent/callee identity and abandoned-frame identities. SCDict hash buckets and
 unused record slots are implementation details and are not needed to rebuild a
@@ -10,9 +10,9 @@ tree. Physical slots and calling ABI are unchanged. See ACCEPTANCE.md for scope.
 ## Freeze, ownership and interfaces
 
 START flags0/1 remain ABI1 three-counter normal/legacy;2/3 remain ABI2 four-counter
-normal/legacy. In the default DTLB image record+40 is40-bit accepted PTW requests, selector4098. The
+normal/legacy. In the default DTLB image record+40 is 40-bit accepted PTW requests, selector4098. The
 other three fields remain cycle,instret,time,64-bit. No new Rocket ROM, firmware,
-selector or counting rule was introduced by stage7; stage8 selects an alternative
+selector or counting rule was introduced by result export; Cache attribution selects an alternative
 fixed native event as described below. The memory ABI and stream version are
 separate version spaces: v1 can describe either ABI1 or ABI2.
 
@@ -37,9 +37,9 @@ before. Cutoff diagnostics reuse the STOP boundary instead of resampling at exit
 
 IRQs are restored before allocation/mapping or UART output. Each chunk maps and
 copies at most16*128=2048 bytes, unmaps, emits bounded rows and calls cond_resched.
-The temporary record buffer is2KiB; a fixed256-entry frame-ID snapshot belongs
+The temporary record buffer is 2 KiB; a fixed256-entry frame-ID snapshot belongs
 to the descriptor. Runtime and output are linear in allocated records; no memory
-buffer or mapping scales with total capacity. Existing8KiB record mapping is
+buffer or mapping scales with total capacity. Existing8 KiB record mapping is
 retained only for the original small-record accounting proof.
 
 The descriptor stays attached and its slot busy through the terminal stream.
@@ -83,7 +83,7 @@ callee/checksum hex. No dependence on host byte order or pointer serialization.
 `total=next-1`, valid next1..262144; slot0 is reserved. Last valid ID262143.
 Status bitmask:1open frames,2spill,4allocation errors/exhaustion,8monitor state
 invalid,16metadata invalid,32IO/buffer/mapping failure. Header is the freeze-time
-status; END may add32. `records_complete=1` means all allocated records were
+status; END may add 32. `records_complete=1` means all allocated records were
 transferred; semantic `complete` additionally requires status0. An open session
 can therefore have complete transport and incomplete activations. Invalid next
 is reported with status16 and no unbounded memory walk. Capacity exhaustion
@@ -116,18 +116,18 @@ Historical pre-v1 logs are still read by grade-process.py/grade-exec.py/
 grade-events.py and the bare-metal analyze.py. The new parser rejects missing
 versioned framing rather than inventing hashes for old captures. Existing ABI1
 and ABI2 consumers retain their scalar/event rows, and their actual regressions
-are rerun in stage7. Format v1 adds framing; it does not reinterpret historical
+are rerun in result export. Format v1 adds framing; it does not reinterpret historical
 counter values or relabel DTLB accepted requests as unique misses.
 
 ## Coverage distinction
 
-Stage7 actual Linux fixture:41 records under one parent, the first leaf called twice
+result export actual Linux fixture:41 records under one parent, the first leaf called twice
 with ID reuse; two-record explicit STOP/EXPORT; zero-record STOP/EXPORT; two-record
 exit with one open parent; new and old exec sessions, DTLB/event preemption and
 original process regressions. Current-source public Linux/OpenSBI build, reused
-hash-verified stage6 model. Actual acceptance completed with native exit0 and all
-checkers passing; see STAGE7.md. Stage8 rebuilt the model and separately accepted
-the Cache fixture, as recorded in STAGE8.md.
+hash-verified DTLB attribution model. Actual acceptance completed with native exit 0 and all
+checkers passing; see RESULT_EXPORT_VALIDATION.md. Cache attribution rebuilt the model and separately accepted
+the Cache fixture, as recorded in CACHE_EVENT_ATTRIBUTION.md.
 
 Host-only checks: maximum262143-record chunk arithmetic and final bounds,
 zero/1/2/15/16/17/32/33/41 records in ABI1/ABI2, invalid capacity, missing/duplicate
@@ -159,12 +159,12 @@ while missing END in a finished capture is a genuine validation error.
 Actual single-hart Rocket/Linux exported41 records in3 chunks plus small/zero/open
 sessions, then completed all affected event/exec/process suites. Across the single
 boot24 sessions/87 records/25 chunks passed and all pools were released. Open
-sessions4/5/13 are semantic-incomplete but transport-complete. See STAGE7.md and
+sessions4/5/13 are semantic-incomplete but transport-complete. See RESULT_EXPORT_VALIDATION.md and
 evidence/stage7/summary.json for raw logs, checksums, counters and exact hashes.
 The host's maximum-capacity plan and corrupt-stream tests are not native full-pool
 or native I/O fault-injection coverage.
 
-## Stage8 fixed Cache profile compatibility
+## Cache attribution fixed Cache profile compatibility
 
 A Cache image pairs kernel/firmware SSA_CACHE_PROFILE and keeps ABI2 layout/ROM.
 Counter3 is `dcache_a_transactions`,40bit,selector514; event rows use`cache`.
@@ -177,13 +177,13 @@ Cache payload asDTLB. Checksums retain the same numeric fourth word.
 The native event is completed D-cache outbound TL A transactions (cached and
 uncached), occurrence intervals inclusive of children/kernel/private ROM, with
 S..R exclusion for normal mode. Late increments belong to their sampling interval;
-post-R resumed-task cache effects remain charged. See ABI.md and STAGE8.md for
+post-R resumed-task cache effects remain charged. See ABI.md and CACHE_EVENT_ATTRIBUTION.md for
 exact source/limits. Actual Cache41 rows/3chunks plus small/empty/open andexec
 passed in Linux; full source logs/results are in evidence/stage8/.
 
 ## Optional memory classification sidecar (rule1)
 
-Stage9 START bit2 appends SSA_MBEGIN/MRECORD/MEND before the base stream's XEND.
+memory classification START bit2 appends SSA_MBEGIN/MRECORD/MEND before the base stream's XEND.
 It does not change stream v1 counter payloads, ABI1/2 offsets, profile selectors
 or their inclusive interval semantics. Old readers can still consume those
 counters; classification-aware readers must validate both channels.

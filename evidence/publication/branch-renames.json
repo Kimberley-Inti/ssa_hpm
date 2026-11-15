@@ -1,0 +1,439 @@
+{
+  "passed": true,
+  "completed": [
+    {
+      "repository": "maintenance",
+      "old": "stage10-baseline-backup",
+      "new": "memory-classification-baseline-backup",
+      "sha": "24fa1cde07a7af6de77c136789867ce730c60f91",
+      "remote_rename": false
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage10-transparent-launch",
+      "new": "automatic-launch",
+      "sha": "6ef19d6e85dfe55983794342620a026005a67d20",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage11-baseline-backup",
+      "new": "automatic-launch-baseline-backup",
+      "sha": "6ef19d6e85dfe55983794342620a026005a67d20",
+      "remote_rename": false
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage11-final-validation",
+      "new": "final-validation",
+      "sha": "9c1fdfb0e147c27f7aca58f306e91f532c3fb609",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage2-trap-isolation",
+      "new": "trap-isolation",
+      "sha": "2d646a615b357e3e883289d91d0b903ac14baec4",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage3-process-isolation",
+      "new": "process-accounting",
+      "sha": "418692f75b3895cbb084e26276ba7267b9f8efee",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage4-linux-process-isolation",
+      "new": "linux-process-accounting",
+      "sha": "55104eb22d160d9bf9e1e7388866ba7482a2785a",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage5-linux-exec-lifecycle",
+      "new": "exec-lifecycle",
+      "sha": "3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage6-hpm-event-attribution",
+      "new": "dtlb-event-attribution",
+      "sha": "1c48e93b0055e92a565eb455a057c1e45618d81c",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage7-result-export",
+      "new": "result-export",
+      "sha": "2c63845c4bd262594f6d5ed0e4fc12773957d833",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage8-baseline-backup",
+      "new": "result-export-baseline-backup",
+      "sha": "2c63845c4bd262594f6d5ed0e4fc12773957d833",
+      "remote_rename": false
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage8-cache-event-attribution",
+      "new": "cache-event-attribution",
+      "sha": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
+      "remote_rename": true
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage9-baseline-backup",
+      "new": "cache-event-attribution-baseline-backup",
+      "sha": "cdcf64fd5a9e2321b43fd68070b3ee45d12b42de",
+      "remote_rename": false
+    },
+    {
+      "repository": "maintenance",
+      "old": "stage9-memory-classification",
+      "new": "memory-classification",
+      "sha": "24fa1cde07a7af6de77c136789867ce730c60f91",
+      "remote_rename": true
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage10-baseline-backup",
+      "new": "memory-classification-baseline-backup",
+      "sha": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage10-transparent-launch",
+      "new": "automatic-launch",
+      "sha": "f05e1a0dfa274f5505c80445cdc0d0205af54d86",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage11-baseline-backup",
+      "new": "automatic-launch-baseline-backup",
+      "sha": "f05e1a0dfa274f5505c80445cdc0d0205af54d86",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage11-final-validation",
+      "new": "final-validation",
+      "sha": "d756a546e27d40100752a0ff7c73b796c77d4fde",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage2-trap-isolation",
+      "new": "trap-isolation",
+      "sha": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage3-process-isolation",
+      "new": "process-accounting",
+      "sha": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage4-linux-process-isolation",
+      "new": "linux-process-accounting",
+      "sha": "68611650d79c7635a7f1b28935c758f2f12fa3b8",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage5-linux-exec-lifecycle",
+      "new": "exec-lifecycle",
+      "sha": "c8be3fd4d10a758ea378f2b8f349eff6e2dc9de9",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage6-hpm-event-attribution",
+      "new": "dtlb-event-attribution",
+      "sha": "d954827faca21a1534ac89db748896f0c319c559",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage7-result-export",
+      "new": "result-export",
+      "sha": "b610880dd4a0bcab4808398b62f290b13a613979",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage8-baseline-backup",
+      "new": "result-export-baseline-backup",
+      "sha": "b610880dd4a0bcab4808398b62f290b13a613979",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage8-cache-event-attribution",
+      "new": "cache-event-attribution",
+      "sha": "897f5d3043aeab785ef4700bc0c4b6f45c25cbc9",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage9-baseline-backup",
+      "new": "cache-event-attribution-baseline-backup",
+      "sha": "897f5d3043aeab785ef4700bc0c4b6f45c25cbc9",
+      "remote_rename": false
+    },
+    {
+      "repository": "chipyard",
+      "old": "stage9-memory-classification",
+      "new": "memory-classification",
+      "sha": "6abb37ea5316bb2cad9b8280b2485cf631d482c8",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage10-baseline-backup",
+      "new": "memory-classification-baseline-backup",
+      "sha": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage10-transparent-launch",
+      "new": "automatic-launch",
+      "sha": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage11-baseline-backup",
+      "new": "automatic-launch-baseline-backup",
+      "sha": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage11-final-validation",
+      "new": "final-validation",
+      "sha": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage2-trap-isolation",
+      "new": "trap-isolation",
+      "sha": "3f4ab938660454b101c67f6929bfebae5be1a138",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage3-process-isolation",
+      "new": "process-accounting",
+      "sha": "3f4ab938660454b101c67f6929bfebae5be1a138",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage4-linux-process-isolation",
+      "new": "linux-process-accounting",
+      "sha": "1c78413459344d7ca1d2b3cdedbdc4a16133dee9",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage6-hpm-event-attribution",
+      "new": "dtlb-event-attribution",
+      "sha": "469bfac7de26bfbb03298787ad030898c6de24c9",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage8-baseline-backup",
+      "new": "result-export-baseline-backup",
+      "sha": "469bfac7de26bfbb03298787ad030898c6de24c9",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage8-cache-event-attribution",
+      "new": "cache-event-attribution",
+      "sha": "bccfc47a4aecbef59aa4d4c73f15159b78ab123c",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage9-baseline-backup",
+      "new": "cache-event-attribution-baseline-backup",
+      "sha": "bccfc47a4aecbef59aa4d4c73f15159b78ab123c",
+      "remote_rename": false
+    },
+    {
+      "repository": "rocket-chip",
+      "old": "stage9-memory-classification",
+      "new": "memory-classification",
+      "sha": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage10-baseline-backup",
+      "new": "memory-classification-baseline-backup",
+      "sha": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage10-transparent-launch",
+      "new": "automatic-launch",
+      "sha": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage11-baseline-backup",
+      "new": "automatic-launch-baseline-backup",
+      "sha": "8b865bfe4c40332446227e2fbf6b442ab0bc651a",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage11-final-validation",
+      "new": "final-validation",
+      "sha": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage4-linux-process-isolation",
+      "new": "linux-process-accounting",
+      "sha": "0d6ec76e6f44802adab36e84c8ffd7b65187d91f",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage5-linux-exec-lifecycle",
+      "new": "exec-lifecycle",
+      "sha": "f327da924b3515e2d4c33bc1a8eb1e0c38807d66",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage6-hpm-event-attribution",
+      "new": "dtlb-event-attribution",
+      "sha": "49943b80f864a41e4ac13108a77f921e013d3570",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage7-result-export",
+      "new": "result-export",
+      "sha": "b92b11252f5b9a5ce2a3c33298fa3b8bef93c836",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage8-baseline-backup",
+      "new": "result-export-baseline-backup",
+      "sha": "b92b11252f5b9a5ce2a3c33298fa3b8bef93c836",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage8-cache-event-attribution",
+      "new": "cache-event-attribution",
+      "sha": "275125fabacde9e83f4bff6863bf25012537e0ed",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage9-baseline-backup",
+      "new": "cache-event-attribution-baseline-backup",
+      "sha": "275125fabacde9e83f4bff6863bf25012537e0ed",
+      "remote_rename": false
+    },
+    {
+      "repository": "linux",
+      "old": "stage9-memory-classification",
+      "new": "memory-classification",
+      "sha": "e341319bc75a2c2c1443d4b8654c9270f922aaf8",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage10-baseline-backup",
+      "new": "memory-classification-baseline-backup",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage10-transparent-launch",
+      "new": "automatic-launch",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage11-baseline-backup",
+      "new": "automatic-launch-baseline-backup",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage11-final-validation",
+      "new": "final-validation",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage4-linux-process-isolation",
+      "new": "linux-process-accounting",
+      "sha": "b778927a507e4ebcc43a8ecb8d495562ef48efb3",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage6-hpm-event-attribution",
+      "new": "dtlb-event-attribution",
+      "sha": "34520a712309790d3e9a005194b763467b980fdb",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage8-baseline-backup",
+      "new": "result-export-baseline-backup",
+      "sha": "34520a712309790d3e9a005194b763467b980fdb",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage8-cache-event-attribution",
+      "new": "cache-event-attribution",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage9-baseline-backup",
+      "new": "cache-event-attribution-baseline-backup",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    },
+    {
+      "repository": "opensbi",
+      "old": "stage9-memory-classification",
+      "new": "memory-classification",
+      "sha": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "remote_rename": false
+    }
+  ]
+}

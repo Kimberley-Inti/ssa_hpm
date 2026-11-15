@@ -1,4 +1,4 @@
-# Controlled transparent launch (stage10)
+# Controlled transparent launch (automatic launch)
 
 This is a single-hart, single-thread, non-privilege-gaining ELF profile, not a
 global process monitor. An ordinary target need not include SSA headers, link a

@@ -1,0 +1,20 @@
+\section{Result Export and Offline Reconstruction}
+\label{sec:export}
+\subsection{Frozen, Bounded Transfer}
+The export stream carries the semantic records needed to reconstruct calling contexts. Unused pool slots and dictionary buckets remain internal implementation state. A frozen descriptor retains ownership while the kernel maps and copies at most 16 records, or 2,048 bytes, at a time. Each chunk is emitted and unmapped before continuing; scheduling can proceed between chunks without enabling the exporting session again.
+
+A version 1 session header identifies session, PID, image generation, pool, ABI, allocated record total, capacity, chunk size, active counters, event profile and accounting policy. Counter descriptors name each quantity, width and selector. Chunk headers carry sequence, first ID and count. Each record contains ID, parent, callee, counters and open-activation count. Per-chunk and whole-session word checksums detect missing or changed transfer content, and the terminal header reports emitted/expected counts and integrity state.
+
+The checksum folds 64-bit words using $h\leftarrow(h\mathbin{\mathrm{xor}}x)\times 1099511628211$ modulo $2^{64}$ from an agreed initial value. It is a corruption check within a trusted capture path. Semantic oracles additionally verify expected relationships even when a negative test repairs the checksum after changing ownership. Internal chunk reads validate the current task/descriptor, session, frozen/busy state and record bounds, with a maximum count of 16.
+
+\subsection{Independent Completeness Dimensions}
+Transport completion, call completion and classification coverage are represented independently. A complete record stream can include an abandoned frame from exec or exit. Closed records stay settled; unfinished activations retain their identities and entry snapshots rather than acquiring fabricated return counts. A separate coverage state identifies dropped classification rows, overflow, history replacement and unframed observations.
+
+Classification sidecars have their own rule version, observation scope, aggregation mode, bounded-state metadata, rows and terminal checksum. The current base header declares whether the sidecar is required and its expected row count. This repairs a gap where losing a whole optional sidecar could evade transport-only checks or cause a semantic lookup error. Historical captures without the declaration remain explicitly identified as legacy data.
+
+The pool stays owned until terminal output and release. Explicit stop/export is one-time; exec and exit follow their distinct lifecycle paths before freeing the descriptor. Source filtering and selector state keep hardware updates away from frozen data. These ownership rules make a stable bounded transfer possible without copying an entire 36\,MiB pool or running a huge UART dump.
+
+\subsection{Host Reconstruction and Tests}
+Python tools parse the stream into session-local records and resolve parent links into calling-context trees. They check metadata, widths, sequence/order, duplicate or missing IDs, declared totals, checksums, dangling parents and session boundaries. The output preserves counter definitions and completeness states. Fixture-specific symbol information can name addresses; raw address identity remains available for general offline analysis.
+
+Actual Rocket/Linux export includes a 41-record session in three chunks, two-record and zero-record sessions, explicit stop, abandoned frames and exec reuse. The production validation also exports 64 records in four chunks and a 105-record dynamic session in seven chunks. In the 64-record case, base records are all transferred while classifier capacity stops at 63 rows and reports the dropped access. Host protocol tests cover missing chunks, duplicates, truncation, bad checksums/ranges and absent declared sidecars. Maximum-capacity arithmetic and full serial enumeration are recorded as different coverage levels.

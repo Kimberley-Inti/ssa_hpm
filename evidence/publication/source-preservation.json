@@ -1,0 +1,18 @@
+{
+  "chipyard": {
+    "head": "d756a546e27d40100752a0ff7c73b796c77d4fde",
+    "original_worktree_status_preserved": true
+  },
+  "rocket-chip": {
+    "head": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+    "original_worktree_status_preserved": true
+  },
+  "linux": {
+    "head": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
+    "original_worktree_status_preserved": true
+  },
+  "opensbi": {
+    "head": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+    "original_worktree_status_preserved": true
+  }
+}

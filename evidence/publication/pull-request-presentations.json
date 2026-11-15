@@ -1,0 +1,72 @@
+[
+  {
+    "number": 1,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/1",
+    "title": "Trap isolation for hierarchical calling contexts",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:38:32Z"
+  },
+  {
+    "number": 2,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/2",
+    "title": "Process accounting with independent monitoring pools",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:38:44Z"
+  },
+  {
+    "number": 3,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/3",
+    "title": "Linux process accounting and preemption isolation",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:38:57Z"
+  },
+  {
+    "number": 4,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/4",
+    "title": "Linux exec lifecycle and image-separated sessions",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:39:10Z"
+  },
+  {
+    "number": 5,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/5",
+    "title": "DTLB accepted-request attribution to calling contexts",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:39:25Z"
+  },
+  {
+    "number": 6,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/6",
+    "title": "Complete result export in checked bounded chunks",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:39:39Z"
+  },
+  {
+    "number": 7,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/7",
+    "title": "Native Cache-event attribution and Linux export",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:39:54Z"
+  },
+  {
+    "number": 8,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/8",
+    "title": "Retired memory-access classification and context attribution",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:40:09Z"
+  },
+  {
+    "number": 9,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/9",
+    "title": "Controlled automatic ELF launch and monitoring lifecycle",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:40:23Z"
+  },
+  {
+    "number": 10,
+    "html_url": "https://github.com/Kimberley-Inti/ssa_hpm/pull/10",
+    "title": "Unified validation and monitoring-overhead evaluation",
+    "state": "closed",
+    "merged_at": "2026-11-14T23:40:38Z"
+  }
+]

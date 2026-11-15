@@ -1,35 +1,29 @@
-# Candidate integration and release procedure
+# Maintenance and release provenance
 
-Integration is gated by the final stage11 validation summary. Until that gate
-passes, main, existing tags and the nine earlier draft PRs stay unchanged.
+The accepted implementation is preserved by v0.2.0 at
+2adbfa5de81f341bd575e8498b370c5a12a02785. Its candidate was
+9c1fdfb0e147c27f7aca58f306e91f532c3fb609; the integrated complete tree is identical.
+Ten project PRs were merged in dependency order with merge commits. Original
+commits and both release tags remain reachable. The
+[release](https://github.com/Kimberley-Inti/ssa_hpm/releases/tag/v0.2.0) attaches
+integration, history-audit and GitHub read-back receipts.
 
-The dependency order is PR#1 (stage2), #2 (stage3), #3 (stage4), #4 (stage5),
-#5 (stage6), #6 (stage7), #7 (stage8), #8 (stage9), #9 (stage10), then stage11.
-All are in Kimberley-Inti/ssa_hpm. External Chipyard/Rocket forks are not merged.
-Stage11 initially targets stage10 so that review shows only the final review,
-benchmark, evidence and documentation additions.
+Current functional branch aliases retain those exact historical head commits;
+[HISTORY_MAP.json](HISTORY_MAP.json) records the old/new names and document paths.
+Closed PR URLs and release tags are stable. Original branch labels in raw receipts
+and commit messages identify their historical execution and are intentionally
+retained. Original documentation can be opened at the v0.2.0 tag with its old path.
 
-After acceptance, for each PR in order:
+The public-presentation follow-up edits README/navigation/report and project
+metadata. It does not change the validated Rocket/Linux implementation. It is
+reviewed as a separate commit on public-presentation and integrated into main
+without squashing or retagging v0.2.0. Current full reproduction fetches public
+Chipyard/Rocket/Linux/OpenSBI baselines and applies ordered patches; it relies on
+recorded source trees and manifests rather than locally generated commit IDs.
 
-1. Re-read its head SHA, ownership, open state and diff. Its predecessor must
-   already be merged; retarget this PR to main and check the remaining diff.
-2. Remove draft status and use a merge commit, preserving original commits.
-   Do not squash, rebase, force-push, delete stage branches or rewrite tags.
-3. Re-read the merge result and main ancestry before proceeding.
-
-Finally compare main's complete tree with the accepted stage11 tree and repeat
-public patch/manifest/ROM verification. An identical tree does not require
-another hardware simulation. A changed implementation requires affected tests.
-Only then create an unused version tag and GitHub release in the private repo.
-The release contains source patches, tests, small textual evidence and pinned
-reproduction instructions, not full upstream trees, images or design PDFs.
-Record the tag, main SHA/tree, release URL, visibility and remote read-back.
-
-Source branches are references to tested source commits, not dependencies on
-those commits being remotely fetchable. Reproduction fetches the pinned public
-Chipyard/Rocket/Linux/OpenSBI baselines and applies the ordered project patches.
-The development gitlink matches the recorded Rocket source commit. Distributed
-Chipyard patches intentionally retain the fetchable public Rocket gitlink, while
-the nested checkout receives the Rocket patches. Verify its expected tree/ROM
-instead of expecting the reconstructed commit SHA to match a local development
-SHA. No submodule operation may restore/overwrite that patched nested checkout.
+Historical one-time publication/integration scripts are retired at their current
+entry points. Their exact original implementations remain in v0.2.0 history.
+Use the reproduction and evidence-verification entry points for current checks.
+The development Rocket fork remains a separate original-history archive; see
+[its assessment](ROCKET_CHIP_ARCHIVE.md). Remote repository deletion requires a
+separate explicit decision and is not part of presentation cleanup.

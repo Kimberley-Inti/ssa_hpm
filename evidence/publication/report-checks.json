@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "pages": 13,
+  "author": "Liu Qinruo",
+  "title": "Software-Semantic-Aware Hardware Performance Monitoring",
+  "paper": "A4",
+  "typography": "ACL 11pt two-column preprint; embedded Times-family fonts",
+  "visual_review": "All 13 pages rendered and inspected; architecture labels repaired; no extra sparse final page",
+  "latex_overflow_or_missing_glyphs": false,
+  "undefined_references": false,
+  "independent_zip_compile_exit": 0,
+  "independent_zip_pdf_text_matches": true,
+  "measurement_inputs_verified": 7,
+  "source_files": 26,
+  "supplied_template_sha256": "5f7bf789e2741619e27c2b44e224327b8ec10e28419b4ec3509bd8f603ea7b90",
+  "style_provenance": {
+    "acl.sty": {
+      "template_sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+      "current_official_sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+      "matches_current_official": true
+    },
+    "acl_natbib.bst": {
+      "template_sha256": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e",
+      "current_official_sha256": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e",
+      "matches_current_official": true
+    }
+  },
+  "artifacts": {
+    "report/SSA-HPM-report.pdf": {
+      "sha256": "6bf87b168bab1c357a1bfd17a72e285aeb16d402cbf253719f0e1b42ee67d50e",
+      "bytes": 105846
+    },
+    "report/SSA-HPM-overleaf.zip": {
+      "sha256": "c52066c3ec3417279cb5f0d10c78d719450eab8e8e89ee0f4fb42cee945cb70b",
+      "bytes": 84939
+    }
+  }
+}

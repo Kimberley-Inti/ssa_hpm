@@ -23,8 +23,8 @@ python3 ssa/linux/verify-a.py \
   --out-dir /tmp/my-ssa-linux-a/results
 ```
 
-The Rocket source must include the stage4 Sv39 PC-width fix. The identical
-sv39.S binary exits 42 on stage3 RTL and zero after the fix (and on Spike):
+The Rocket source must include the Linux process accounting Sv39 PC-width fix. The identical
+sv39.S binary exits 42 on controlled process accounting RTL and zero after the fix (and on Spike):
 
 ```bash
 make -C ssa linux/sv39.hex
@@ -45,7 +45,7 @@ A passes only with the user PID-1 success marker, kernel power-down and an exit
 status of zero from the actual Rocket/Verilator command. A Spike boot is a
 separate image/ISA diagnostic and cannot satisfy A. The expected marker alone
 never identifies the simulator; the command and simulator hash are recorded.
-Full Linux/HPM acceptance remains tracked separately in the stage4 report.
+Full Linux/HPM acceptance remains tracked separately in the Linux process accounting report.
 
 For long-run diagnostics, build-progress.py links a separate host harness
 against the existing generated RTL model and prints read-only PC/CSR state.
@@ -59,7 +59,7 @@ python3 ssa/linux/build-progress.py --workspace "$PWD" --out /tmp/my-ssa-progres
 Artifacts (sources, images, deb packages, compiled objects) remain in the work
 or temporary build directory. They must not be committed to ssa_hpm.
 
-## Linux monitoring prototype (stage4, acceptance pending execution)
+## Linux monitoring prototype (Linux process accounting, acceptance pending execution)
 
 `python3 ssa/linux/build-a.py --process --work /tmp/ssa-linux-process-rebuild`
 reconstructs the pinned Linux source and kernel task-pool patch in a new directory.
@@ -89,7 +89,7 @@ Supervisor CSR0x5c0 bit0 selects user-only call notifications. It does not filte
 hardware counters. SCBaseReg0x800 remains the physical exclusive upper pool bound
 and is now denied in U-mode. Trusted ROM memory operations use effective M-mode
 translation/PMP semantics; other user memory accesses retain normal Sv39/PMP.
-Default CSR0x5c0=0 retains the stage3 trap-depth notification policy.
+Default CSR0x5c0=0 retains the controlled process accounting trap-depth notification policy.
 
 The kernel owns two fixed physical regions outside the 32MiB Linux RAM allocator.
 It maps only metadata/dictionary/stack and a bounded record export window, never

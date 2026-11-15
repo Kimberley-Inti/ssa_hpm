@@ -1,0 +1,58 @@
+\section{Performance Evaluation}
+\label{sec:performance}
+\subsection{Protocol and Measurement Boundaries}
+The experiment compares monitoring disabled, basic context accounting, DTLB, Cache, classification and matched Cache-plus-classification modes on the same extended model. Bare-metal runs use six modes. Linux uses off, basic, Cache, classification, manual Cache-plus-classification and automatic Cache-plus-classification. Automatic DTLB is outside this measured Linux matrix.
+
+Five bodies represent different costs:128 arithmetic updates;128 leaf calls; depth 16 recursion; a 32\,KiB sequential read; and a 32\,KiB full-period irregular permutation. Data words are initialized as $17j+3$ and remain read-only during measured bodies. Each workload/mode has one unmeasured warmup and five measured repetitions, giving 150 work samples in each environment. There are 30 empty calibration samples in each experiment and six bare setup observations. Closed-form arithmetic independently verifies all 300 work results.
+
+Ordered cycle/instret/time reads bracket the call and completed return, with console output outside the work interval. Empty samples are retained rather than blindly subtracted. Bare time uses direct CLINT MMIO; Linux \code{rdtime} takes the OpenSBI emulation path. The three reads are non-atomic: the cycle/instruction interval includes the first time-read emulation and excludes the second, while the time interval has slightly shifted endpoints. Those measurement costs remain consistent across modes.
+
+Linux cost probes are optional at compile time and are disabled in the production regression image. They measure dictionary/metadata/selector initialization, freeze, bounded record copying, full export, switch hooks and exec windows. Pause/resume observations are deferred until frozen export, avoiding scheduler-path printing. Instrumented descriptors are 4,368 bytes versus 3,768 bytes by default; event diagnostics are 176 versus 128 bytes. These figures describe the instrumented build, with probe/cache/allocation effects retained.
+
+\subsection{Bare-Metal Runtime and Instruction Cost}
+\input{tables/bare-cycles}
+\input{tables/bare-instructions}
+Table~\ref{tab:barecycles} reports target cycle medians, and Table~\ref{tab:bareinst} exposes the retired-instruction work. All measured bodies return the same results across modes. The 128-call basic case costs 46,328/1,088=42.58 times the disabled median, an increase of 4,158.1\%. Depth 16 costs 6,620/282=23.48 times, or a 2,247.5\% increase. Long memory loops amortize one root activation: basic medians increase 0.80\% for the stream and 0.40\% for the irregular permutation.
+
+\begin{figure*}[t]
+\centering\input{figures/overhead}
+\caption{Bare-metal cycle ratios relative to each workload's disabled median on a logarithmic axis. Bars show medians and whiskers show the observed minimum/maximum of five repetitions, not a confidence interval. Memory workloads amortize monitoring work, while frequent calls expose the serialized helper path.}
+\label{fig:overhead}
+\end{figure*}
+
+The large call cost follows the implementation. An existing root activation adds 80 retired instructions, each non-root activation adds 83, and ABI2 adds 13 per activation. Thus the call case adds $80+128\times 83=10,704$, matching $11,752-1,048$. ABI2 adds $93+128\times 96=12,381$, matching $13,429-1,048$. These are executed helper instructions and metadata memory operations, not an inferred area or timing penalty from the classifier.
+
+Dictionary collision state also explains a small deterministic shift. In the bare binary, the deep function at \code{0x8000005a} under parent 16 hashes to the same bucket as the root body at \code{0x8000007a}. One additional chain hop adds seven instructions after those recursive contexts exist. Basic depth therefore adds $87+17\times 83=1,498$, matching $1,705-207$; ABI2 adds $100+17\times 96=1,732$. Subsequent stream/irregular root lookups exhibit the same extra hop.
+
+Basic cycle ranges are 2,025--2,059 for compute,46,325--46,395 for calls,6,585--6,666 for depth,52,516--53,054 for stream and 103,426--104,331 for irregular work. Disabled ranges are 1,693--1,724,1,074--1,097,242--289,52,048--52,582 and 103,007--103,995 respectively. Classification has the corresponding base/event instruction counts here, while small cycle differences vary with cache/phase. Physical timing and area require separate hardware evaluation.
+
+\subsection{Linux Measurements and Outlier Accounting}
+\input{tables/linux-cycles}
+Table~\ref{tab:linuxcycles} compares the same full target ELF/body across Linux modes. Each mode is a separately launched process. Output between repeats and OS interrupts influence phase; the fixed-address bare experiment provides the cleaner controlled call-cost comparison. Matched manual/automatic Cache-plus-classification medians differ by approximately$-2.6\%$to$+1.2\%$, within the observed phase/interrupt variation.
+
+Linux empty samples normally retire 422 instructions, compared with seven in the bare calibration. Non-interrupted body observations reconcile with 414 sampling instructions beyond the bare body, reflecting the ordered emulated time read and surrounding compiler sequence. The one-instruction difference between empty/body sequences is retained. Periodic timer handling creates discrete additional instruction groups, visible in both workload and calibration samples.
+
+For all 150 Linux work samples, the arithmetic relation is
+\begin{equation}
+ I_{\mathrm{obs}}=I_{\mathrm{body}}+414+I_{\mathrm{monitor}}+4,025k,
+\end{equation}
+where the monitor uses root 80/non-root 83 or event root 93/non-root 96, and $k$ is 0,1 or 2. The histogram contains 87 zero-step,57 one-step and six two-step observations. The Linux function addresses avoid the bare extra collision hop. For example, classification compute moves from 1,026 to 5,051 instructions when one timer-sized group occurs; off stream moves from 41,406 to 45,431. Irregular minima already contain one such group. This reconciles the observed instructions and supports the timer explanation; a full per-instruction IRQ trace was not collected.
+
+Time measurements are CLINT ticks from the declared 1\,MHz source, with quantization visible in short intervals. The software device tree's nominal frequency is not a measured physical maximum frequency. Runner elapsed values describe the VM experiment duration; hardware conclusions use target counter deltas. The bare and full Linux formal runs report approximately 6,533 and 29,817 seconds of runner elapsed time respectively.
+
+\subsection{Initialization and Lifecycle Costs}
+\input{tables/kernel-costs}
+Bare setup clears 1\,MiB of dictionary even in the disabled control to standardize preparation, costing 1,636,972--1,638,419 cycles across six single setup observations. This disabled setup is an experimental cache-state procedure. It is separate from normal unmonitored application startup. The bare empty samples span 12--28 cycles.
+
+Table~\ref{tab:costs} reports kernel probe boundaries in the full Linux capture. Dictionary initialization excludes \code{kzalloc} and precedes BEGIN formatting. Manual user START includes syscall/setup diagnostics and is 929,211 cycles for basic mode,1,011,850 for Cache,931,610 for classification and 1,011,463 for Cache-plus-classification. Automatic user INIT is an already-enabled entry calibration; actual automatic setup is represented by kernel probes. Three launcher ARM observations cost 67,326--77,405 cycles including \code{no\_new\_privs} and diagnostics.
+
+Two depth 2 pauses cost 1,733--1,886 cycles, median 1,809.5, and 990 instructions each. The two corresponding resumes cost 2,261--2,518 cycles, median 2,389.5, and 1,228 instructions. Three depth 0 pause/resume observations have medians 2,021/1,748 cycles and 920/1,013 instructions. These are hook decompositions on the instrumented kernel rather than a whole-scheduler latency curve.
+
+Record copying and freeze are subsets of export. Kernel export includes formatting, bookkeeping and HTIF/SBI-console transfer, ending before its own cost diagnostics and release. The 1.51M--6.19 Mcycle range includes different record/sidecar/session sizes. Manual user EXPORT includes subsequent probe output and costs 3,158,214--6,468,770 cycles for 19 records. These boundaries describe software transfer cost, with no UART baud-rate or pure-wire estimate.
+
+Successful-exec observations combine different cases. Three initial automatic replacements cost about 1.30M--1.33 Mcycles; the 7.89 Mcase also includes old 19-record export and new-session setup. Kernel failed-exec observations number five because the unmonitored control does not arm that probe; six user-boundary failure observations cover every mode. User failure costs include diagnostic output. The raw records preserve these distinctions instead of presenting a mixed average as a general exec overhead.
+
+\subsection{Resource Footprint and Interpretation}
+The two fixed pools reserve 72\,MiB. Declared classifier state totals 57,926 bits, approximately 7.07\,KiB, including unused declared rows, bank metadata, histories and shadow frame IDs. The integer register memory declaration grows from 31 to 64 slots at 64 bits, a nominal 2,112-bit difference; the private logical shadow bank has 32 slots including its unused zero slot. The two constant ROM variants total 888 bytes. These are declaration counts rather than mapped cell area.
+
+The measurements establish substantial runtime cost for frequent call/return monitoring and much smaller relative cost when long bodies amortize one activation. They also establish reproducible ownership and interval semantics. A matched unextended design or constrained synthesis would be needed to evaluate whole-extension area, power and physical-frequency effects. Optimizing the serialized helper path and dictionary accesses is a clear next performance investigation.

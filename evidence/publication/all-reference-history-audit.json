@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "commits": 76,
+  "independent_roots": [
+    "b4be26b28b237996713b47f75cb9619cdc242d3b"
+  ],
+  "unique_text_blobs": 1209,
+  "curated_report_binaries": [
+    {
+      "path": "report/SSA-HPM-overleaf.zip",
+      "sha256": "c52066c3ec3417279cb5f0d10c78d719450eab8e8e89ee0f4fb42cee945cb70b"
+    },
+    {
+      "path": "report/SSA-HPM-report.pdf",
+      "sha256": "6bf87b168bab1c357a1bfd17a72e285aeb16d402cbf253719f0e1b42ee67d50e"
+    }
+  ],
+  "scanned_ref": "all refs and tags",
+  "excluded": "upstream trees/history, gitlinks, binaries except inspected authored report, bundles, design PDFs, credentials"
+}
