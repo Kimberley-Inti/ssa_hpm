@@ -7,9 +7,13 @@ COMPONENTS={
  'linux':dict(url='https://github.com/firesim/linux.git',base='5f5fd87b36e21ed59b759b69eebfa1c74955cb37',tree='c937114e57032e8f896bc853d1d63ff16e9bf8a7',files=['kernel/ssa_hpm.c','include/linux/ssa_hpm.h','COPYING','LICENSES/preferred/GPL-2.0','LICENSES/exceptions/Linux-syscall-note']),
  'opensbi':dict(url='https://github.com/riscv/opensbi.git',base='a98258d0b537a295f517bbc8d813007336731fa9',tree='c8e81125ce6b92976ccfff630c49a61d9d887e91',files=['platform/ssa_rocket/platform.c','platform/ssa_rocket/config.mk','platform/ssa_rocket/objects.mk','COPYING.BSD'])}
 def patches(name):
- if name=='rocket-chip':return sorted((ROOT/'patches/rocket-chip').glob('*.patch'))
- d=ROOT/'integration/ssa/linux'
- return sorted(p for p in d.glob('*.patch') if ('opensbi' in p.name)==(name=='opensbi'))
+ series=json.loads((ROOT/'integration/ssa/patch-series.json').read_text())['components'][name]
+ paths=[]
+ for entry in series['patches']:
+  path=ROOT/series['directory']/entry['file']
+  assert hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256'],str(path)
+  paths.append(path)
+ return paths
 def digest(b):return hashlib.sha256(b).hexdigest()
 def run(args,cwd=None):return subprocess.check_output(list(map(str,args)),cwd=cwd,stderr=subprocess.STDOUT)
 def reconstruct(name,d):

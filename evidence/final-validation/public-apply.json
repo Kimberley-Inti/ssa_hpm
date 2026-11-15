@@ -28,45 +28,45 @@
     "ssa/processes.c": "28eb4732d235956d8a76961789fb58d54fd04770a7d0a38868546af8381610f5",
     "ssa/verify_process.py": "da9effc576d1bccda6eb23cb0f53418827e5fb282d085a1c9363d7fec3eaeadd",
     "ssa/process.h": "264ac1afd3e5de0bc5a3069357a5dfaab58b2ace7e76a7a7e3cbae53c0dc9cef",
-    "ssa/linux/0001-stack-pointer-declaration.patch": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511",
+    "ssa/linux/stack-pointer-declaration.patch": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511",
     "ssa/linux/init.c": "d4550554da8e03307714eb42a85d6cfc15d517caf0e14898474e80b044dc548d",
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "d5839f2d14470a3264ad73fb318089e68f9ceaa38b11f5b8c0d45fadaa1bf7b7",
     "ssa/linux/build-a.py": "8b86b0036ee270b403ee2f4ee4e5bf3c98ac6623cfca39c072665f660094fe39",
-    "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
+    "ssa/linux/opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "38b8e091d5188090402fc43c93cc5906dc66dc0e24c5a5a16d3177f501387f24",
     "ssa/linux/kernel-a.config": "2c4aed8c9c01a5e48c45688a9b699b0c7e6143a83a5a4922a25b0cd0b5d1028d",
     "ssa/linux/verify-probes.py": "016311615e802eac699572dc32e9114fd3b52259b742974da9ad41a38dc1fb13",
     "ssa/linux/run-process.py": "868b4bafbb459db7111da7934571ebcf9d37c1a6459e4500e2c109a2ed5afd68",
     "ssa/linux/user-probe.S": "5f0de31511517f066e787059a2e8047d707096804e575c486ae3464fcc098542",
-    "ssa/linux/0002-linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
+    "ssa/linux/linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
     "ssa/linux/process-init.c": "1d677ee09a0c2bfcf9210d50f12be099265c8f585ff851d7419907fd075d8554",
     "ssa/linux/grade-process.py": "9ab0fe494d4010d05752e2faa5815ef2ba2ba8cf078c604a3858949a783e5933",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878",
     "ssa/linux/ABI.md": "8345b817f7c1b71678e922acedbc01d4b5e6adaccc13a99a18c4c0b94dec04a3",
     "ssa/linux/exec-init.c": "ca7a5fcc61b089359b384ee50e0e5d3e83e11ae62e597b74afefab83b3f1235a",
     "ssa/linux/grade-exec.py": "874bee5e85340259e9903a53d172d75cfd82f3af2ee6045d0dd8a59730dce457",
-    "ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
+    "ssa/linux/linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
     "ssa/linux/run-exec.py": "906f8200f4330e9f2a9588b31e6b1786579865cd972761fd223b535e0e5b9d68",
     "ssa/event_start.S": "ec2a04596c6f3492920bb39332729966c9129d9960ca15207f1d22547b31f2e3",
     "ssa/events.c": "21ab8c619828e4111011f4d961547cb50b0cf73f9c9d47a054c067fc89f1b67a",
-    "ssa/linux/0002-opensbi-dtlb-profile.patch": "7b8941e8a77dd59d39ddc3f3eb025279246767ec3b63927fa0cc22a3231cf8f3",
-    "ssa/linux/0004-linux-dtlb-event.patch": "5a3977fa4193ddbc59f160cb7706c37e744fc9efc331753d68c1affe9aba6ff4",
+    "ssa/linux/opensbi-dtlb-profile.patch": "7b8941e8a77dd59d39ddc3f3eb025279246767ec3b63927fa0cc22a3231cf8f3",
+    "ssa/linux/linux-dtlb-event.patch": "5a3977fa4193ddbc59f160cb7706c37e744fc9efc331753d68c1affe9aba6ff4",
     "ssa/linux/event-init.c": "43359829ff9c1f183ecd829cafd9302c8d57847eabe09649e630a5e4ff0e7711",
     "ssa/linux/grade-events.py": "80f3de0c2852ef07a611d858783101c61c5ff7d2e433b5fd464b87bc9bfd95c1",
     "ssa/verify_events.py": "aa1feb924f3bf229728f897e9c4c65c4872a34a4a6e6d13a9a02aa72fe9367ee",
     "generators/chipyard/src/main/scala/config/RocketConfigs.scala": "f63a145ff0c461b0c0425f21b156791947e82e1999c1145f461f94317c948760",
     "generators/chipyard/src/main/scala/config/fragments/TileFragments.scala": "7ea2b4906a9803ad7192743ddb14708dceb98f24202211567cdf9cc9b6b76cd4",
-    "ssa/linux/0005-linux-result-export.patch": "cd5cd9e580f097933e0f93cfd83304c87c3081544fec31471f59dfc5aeee81ff",
+    "ssa/linux/linux-result-export.patch": "cd5cd9e580f097933e0f93cfd83304c87c3081544fec31471f59dfc5aeee81ff",
     "ssa/linux/export-init.c": "111ffec1ebd715bf3ad99396f1c68711b2f7064261ce798aea2be07565f94053",
     "ssa/linux/export_results.py": "951d74661b44cfbed357dedeb879bebabb460f81a0be7b4ed45d0c8034602ad6",
     "ssa/linux/grade-export.py": "c05dfa726cb9dac118bdce1117d4b81c51ed059c7399690d943e9eb627c0ad53",
     "ssa/linux/test_export_results.py": "bbda4053d06e1dabfe47deca45cb1fdaa2b2b819be3bd46952715f1a944e460c",
     "ssa/verify_cache.py": "2b0c9e9ddc2907d096e0cc3130d84979b87d8bc951326a92fa51113bed902518",
-    "ssa/linux/0006-linux-cache-profile.patch": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526",
-    "ssa/linux/0003-opensbi-cache-profile.patch": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9",
+    "ssa/linux/linux-cache-profile.patch": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526",
+    "ssa/linux/opensbi-cache-profile.patch": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9",
     "ssa/linux/cache-init.c": "7eb2e0f90b463b74242bf4e0fcaf17040ce4bc03552682157aca88fb5a3f526d",
     "ssa/linux/grade-cache.py": "32f3e49b66f55c2c5b0e1faca88024bdb34388599147905949ab7e38539d6065",
     "ssa/classification/capacity.S": "f235163c9b00bca97e5b7937f59a2cef5fc07b69ade8df7d71a6262ea06f971b",
@@ -82,12 +82,12 @@
     "ssa/linux/run-classification.py": "6b03e1f51b17de30ba2473826cda96719898665eb55f4bce660ba178f6a21c89",
     "ssa/linux/classification-init.c": "700a5a8ca3f3589145802112f45926736dc675c40aa669ba93d15419045978b3",
     "ssa/linux/test_classification_results.py": "df9dee4fdbbd90e73d58d435a3985a7a8f6533778fe94d71c59a8e275e3a4ea3",
-    "ssa/linux/0007-linux-memory-classification.patch": "28c5ad48c0fbce21f59160c4d5a6a98e3ae991af2f8562f72e8ce183693acced",
+    "ssa/linux/linux-memory-classification.patch": "28c5ad48c0fbce21f59160c4d5a6a98e3ae991af2f8562f72e8ce183693acced",
     "generators/rocket-chip/src/main/scala/rocket/SSAMemoryClassifier.scala": "c05ddac21192eee261a1495792cf15936922957cf1a83ebc0653d5cce019e71c",
     "ssa/classification/check_wb.py": "6e717c99dad3f3cf37109068058b557993a042e72019b8da53e29203a0d31b27",
     "ssa/classification/build-trace.py": "49188b91d1833dba73356a4c92ece701bb35fe11454bd93fb03bf923d09fffb3",
     "ssa/linux/test_classification_native.py": "f26625bec059f1718be8397cadf11a229b0228f578f48997e3f4deb61b15074c",
-    "ssa/linux/0008-linux-transparent-launch.patch": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2",
+    "ssa/linux/linux-transparent-launch.patch": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2",
     "ssa/linux/transparent/POLICY.md": "e8b1b521656bfb549cac07bd46096e37b9aedcdd04bdd4669b9286b7d970701b",
     "ssa/linux/transparent/build-users.py": "927c6f02fc97d2a17e07c4b913280503aef4635ccb76d9c174abea475f13921f",
     "ssa/linux/transparent/capacity.S": "34c216dcce20583471f0aeb0dfccb7947d4d471c8a6cb6d0afee480d3e4bcbd1",
@@ -203,7 +203,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0001-constellation-dependency.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/constellation-dependency.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public"
     },
@@ -212,7 +212,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0002-fesvr-verilator-build.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/fesvr-verilator-build.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public"
     },
@@ -221,7 +221,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0003-dtlb-hpm-config.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/dtlb-hpm-config.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public"
     },
@@ -230,7 +230,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0001-9c6d44169.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/hpm-context-tracking.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -239,7 +239,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0002-1543ea544.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-mode-routing.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -248,7 +248,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0003-1f200edb0.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-signal-placement.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -257,7 +257,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0004-d047a8548.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/forced-monitor-exit.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -266,7 +266,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0005-07a9c3fa8.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/normal-monitor-exit.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -275,7 +275,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0006-23f5a64f6.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/monitor-exit-finalization.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -284,7 +284,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0007-539c3b10f.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/inherited-context-implementation.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -293,7 +293,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0008-986407bc6.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/context-retirement-attribution.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -302,7 +302,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0009-trap-context-isolation.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-context-isolation.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -311,7 +311,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0010-sv39-pc-width.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/sv39-pc-width.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -320,7 +320,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0011-linux-user-pool-privileges.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/linux-user-pool-privileges.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -329,7 +329,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0012-dtlb-request-attribution.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/dtlb-request-attribution.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -338,7 +338,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0013-cache-event-trace.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/cache-event-trace.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },
@@ -347,7 +347,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0014-memory-classification.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/memory-classification.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/public/generators/rocket-chip"
     },

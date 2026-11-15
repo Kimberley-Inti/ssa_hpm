@@ -21,19 +21,18 @@ def checkout(name,url,sha):
  d.mkdir();run(['git','init','-b','linux-reconstruction'],d);run(['git','fetch','--depth=1',url,sha],d);run(['git','checkout','--detach','FETCH_HEAD'],d);return d
 linux=checkout('linux','https://github.com/firesim/linux.git','5f5fd87b36e21ed59b759b69eebfa1c74955cb37')
 sbi=checkout('opensbi','https://github.com/riscv/opensbi.git','a98258d0b537a295f517bbc8d813007336731fa9')
-run(['git','am',src/'0001-stack-pointer-declaration.patch'],linux)
-if a.process and not a.reference:run(['git','am',src/'0002-linux-task-pools.patch'],linux)
-if a.exec_test and not a.reference:run(['git','am',src/'0003-linux-exec-lifecycle.patch'],linux)
-if a.event and not a.reference:run(['git','am',src/'0004-linux-dtlb-event.patch'],linux)
-if a.export_test and not a.reference:run(['git','am',src/'0005-linux-result-export.patch'],linux)
-if a.export_test and not a.reference:run(['git','am',src/'0006-linux-cache-profile.patch'],linux)
-if a.classification and not a.reference:run(['git','am',src/'0007-linux-memory-classification.patch'],linux)
-if a.transparent and not a.reference:run(['git','am',src/'0008-linux-transparent-launch.patch'],linux)
-if a.transparent and not a.reference:run(['git','am',src/'0009-linux-cost-probes.patch'],linux)
-if a.classification and not a.reference:run(['git','am',src/'0010-linux-classification-contract.patch'],linux)
-run(['git','am',src/'0001-opensbi-rocket-platform.patch'],sbi)
-if a.event and not a.reference:run(['git','am',src/'0002-opensbi-dtlb-profile.patch'],sbi)
-if a.event and not a.reference:run(['git','am',src/'0003-opensbi-cache-profile.patch'],sbi)
+series=json.loads((src.parent/'patch-series.json').read_text())['components']
+conditions={'always':True,'process':a.process and not a.reference,'exec':a.exec_test and not a.reference,
+            'event':a.event and not a.reference,'export':a.export_test and not a.reference,
+            'classification':a.classification and not a.reference,'transparent':a.transparent and not a.reference}
+def apply_series(component,repo):
+ for entry in series[component]['patches']:
+  if conditions[entry['condition']]:
+   patch=src/entry['file']
+   assert hashlib.sha256(patch.read_bytes()).hexdigest()==entry['sha256'],str(patch)
+   run(['git','am',patch],repo)
+apply_series('linux',linux)
+apply_series('opensbi',sbi)
 url='https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils-riscv64-linux-gnu_2.38-4ubuntu2.12_amd64.deb'
 deb=w/'binutils.deb';urllib.request.urlretrieve(url,deb)
 assert hashlib.sha256(deb.read_bytes()).hexdigest()=='b20f8bdabeff0a43fba1efdc8b1c1d359d93e8a135d11041fd90ed945c23e866'

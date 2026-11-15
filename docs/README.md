@@ -27,3 +27,5 @@ remain unchanged; the path map preserves their historical locations.
 [Evidence organization and verification](EVIDENCE.md).
 
 [Core implementation browser](../src/README.md) · [Historical evidence path map](EVIDENCE_PATHS.json).
+
+[Patch application order and filename map](PATCH_ORDER.md).

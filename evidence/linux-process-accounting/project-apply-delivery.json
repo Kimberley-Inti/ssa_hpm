@@ -28,20 +28,20 @@
     "ssa/processes.c": "28eb4732d235956d8a76961789fb58d54fd04770a7d0a38868546af8381610f5",
     "ssa/verify_process.py": "b289740a117c809adb1271448735a7e4174be485a2afb02d651075bb596d437a",
     "ssa/process.h": "264ac1afd3e5de0bc5a3069357a5dfaab58b2ace7e76a7a7e3cbae53c0dc9cef",
-    "ssa/linux/0001-stack-pointer-declaration.patch": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511",
+    "ssa/linux/stack-pointer-declaration.patch": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511",
     "ssa/linux/init.c": "d4550554da8e03307714eb42a85d6cfc15d517caf0e14898474e80b044dc548d",
     "ssa/linux/verify-a.py": "1610ff63cd4bc1f5a9a6a57ca00fdf83dc367e4c24d3e1cd2a315b1dbdc47768",
     "ssa/linux/sv39.S": "5ae63796ad06c61c6f07d35575d8d1ab6605d61a50b7612689250922cf6bbe73",
     "ssa/linux/README.md": "a850ad8728a5b6104fe6e69ab11489e8d97722ef98f2f568075aa487f467a7c7",
     "ssa/linux/build-a.py": "4099699ab34d17fc5a12d515cb8050de16d9cd3f00b35ef7f4e5de3fab23aefb",
-    "ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
+    "ssa/linux/opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
     "ssa/linux/rocket.dts": "ba0a858e97fd9ad6ec3fdecbdd1229918b1be9bac12a58e88bd165a3d33146f8",
     "ssa/linux/build-progress.py": "5a71ff0d2e7825f6b314b4572c150bc4f2c1a640e30fd2a1157f66ffcb6395ce",
     "ssa/linux/kernel-a.config": "2c4aed8c9c01a5e48c45688a9b699b0c7e6143a83a5a4922a25b0cd0b5d1028d",
     "ssa/linux/verify-probes.py": "17f61d4f183d94a96f94133f67bf93e12699aaa217cff9bd62d9a6307faa7447",
     "ssa/linux/run-process.py": "b88649a4a139c02b4b29c7d5be38e8ffa33963c0000612ba9713ce64199609e9",
     "ssa/linux/user-probe.S": "a0b658bf48786a69eb479d789d0999894c3fb4b5f59fe1edb7f97938d54c706f",
-    "ssa/linux/0002-linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
+    "ssa/linux/linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
     "ssa/linux/process-init.c": "7b96afc243bc15bcad3b03738341332bcf743f4acd97ea671fd2642e51df97ec",
     "ssa/linux/grade-process.py": "03f695c68488af078656932e0a7f32d85209527093d8bef55ff17446cfb17f5b",
     "ssa/linux/rebuild-init.py": "dedac856e0173e444bd8cec319ea28276058025907e842069493fbb0ce683878"
@@ -146,7 +146,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0001-constellation-dependency.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/constellation-dependency.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery"
     },
@@ -155,7 +155,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0002-fesvr-verilator-build.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/fesvr-verilator-build.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery"
     },
@@ -164,7 +164,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0001-9c6d44169.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/hpm-context-tracking.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -173,7 +173,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0002-1543ea544.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-mode-routing.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -182,7 +182,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0003-1f200edb0.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-signal-placement.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -191,7 +191,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0004-d047a8548.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/forced-monitor-exit.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -200,7 +200,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0005-07a9c3fa8.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/normal-monitor-exit.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -209,7 +209,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0006-23f5a64f6.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/monitor-exit-finalization.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -218,7 +218,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0007-539c3b10f.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/inherited-context-implementation.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -227,7 +227,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0008-986407bc6.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/context-retirement-attribution.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -236,7 +236,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0009-trap-context-isolation.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-context-isolation.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -245,7 +245,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0010-sv39-pc-width.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/sv39-pc-width.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },
@@ -254,7 +254,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0011-linux-user-pool-privileges.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/linux-user-pool-privileges.patch"
       ],
       "cwd": "/tmp/ssa-stage4-apply-delivery/generators/rocket-chip"
     },

@@ -197,3 +197,5 @@ and compact textual evidence. Upstream source trees are fetched during rebuild.
 [Source and license notices](THIRD_PARTY.md) identify Rocket Chip, Chipyard,
 Linux, OpenSBI, musl and the report template. Explicit SPDX licenses apply to
 marked files; other original materials retain their authors' rights.
+
+Patch order is defined by the [explicit series](docs/PATCH_ORDER.md), not by filename sorting.

@@ -47,7 +47,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-03-05T22:41:45+08:00",
       "subject": "Update HPM logic in RocketCore",
-      "patch": "patches/rocket-chip/0001-9c6d44169.patch",
+      "patch": "patches/rocket-chip/hpm-context-tracking.patch",
       "patch_id": "3102a444c7446f162f19e91a600ca9aa59dcc872",
       "local_object_available": true
     },
@@ -56,7 +56,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-03-22T21:26:42+08:00",
       "subject": "ssa_trap_mode connection logic",
-      "patch": "patches/rocket-chip/0002-1543ea544.patch",
+      "patch": "patches/rocket-chip/trap-mode-routing.patch",
       "patch_id": "66ae9c2704749480dd061c1e49a45faf62592fc9",
       "local_object_available": true
     },
@@ -65,7 +65,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-03-28T08:01:21+08:00",
       "subject": "modified code sequence",
-      "patch": "patches/rocket-chip/0003-1f200edb0.patch",
+      "patch": "patches/rocket-chip/trap-signal-placement.patch",
       "patch_id": "52ebc4ef10ae64c4ca3b59298c1ec17ff9e2a7f9",
       "local_object_available": true
     },
@@ -74,7 +74,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-04-01T15:35:41+08:00",
       "subject": "forced exit",
-      "patch": "patches/rocket-chip/0004-d047a8548.patch",
+      "patch": "patches/rocket-chip/forced-monitor-exit.patch",
       "patch_id": "42cf3e5ca02152dc788ddfd53c1482dcfbcf7669",
       "local_object_available": true
     },
@@ -83,7 +83,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-04-12T08:02:41+08:00",
       "subject": "normal exit",
-      "patch": "patches/rocket-chip/0005-07a9c3fa8.patch",
+      "patch": "patches/rocket-chip/normal-monitor-exit.patch",
       "patch_id": "9b9365edfd822197055f90c18f8a955b7f447e1b",
       "local_object_available": true
     },
@@ -92,7 +92,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-04-12T14:46:46+08:00",
       "subject": "normal exit",
-      "patch": "patches/rocket-chip/0006-23f5a64f6.patch",
+      "patch": "patches/rocket-chip/monitor-exit-finalization.patch",
       "patch_id": "9bf51c9b6684345e897233e4bc07ea1f479be641",
       "local_object_available": true
     },
@@ -101,7 +101,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-11-08T23:03:16+08:00",
       "subject": "Preserve inherited uncommitted SSA-HPM implementation",
-      "patch": "patches/rocket-chip/0007-539c3b10f.patch",
+      "patch": "patches/rocket-chip/inherited-context-implementation.patch",
       "patch_id": "7ef6731297b3418595b152f232b0dad64355fdab",
       "local_object_available": true
     },
@@ -110,7 +110,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-11-09T06:18:46+08:00",
       "subject": "Fix SSA-HPM microcode retirement, context dictionary and counter attribution",
-      "patch": "patches/rocket-chip/0008-986407bc6.patch",
+      "patch": "patches/rocket-chip/context-retirement-attribution.patch",
       "patch_id": "e709b38eb884b990d9e8213e67ec3c7e0b52c70e",
       "local_object_available": true
     },
@@ -119,7 +119,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-11-09T09:05:25+08:00",
       "subject": "Suspend SSA application contexts across nested architectural traps",
-      "patch": "patches/rocket-chip/0009-trap-context-isolation.patch",
+      "patch": "patches/rocket-chip/trap-context-isolation.patch",
       "patch_id": "00e00e8ece7ad2395e2616661b83b159db3d9935",
       "local_object_available": true
     },
@@ -128,7 +128,7 @@
       "author": "Kimberley-Inti",
       "date": "2026-11-09T15:55:54+08:00",
       "subject": "Preserve compressed virtual PC width across SSA ROM muxes for Sv39",
-      "patch": "patches/rocket-chip/0010-sv39-pc-width.patch",
+      "patch": "patches/rocket-chip/sv39-pc-width.patch",
       "patch_id": "4fb48a8b6a861cc29d6078a2a6ff9e1ecd067616",
       "local_object_available": true
     }
