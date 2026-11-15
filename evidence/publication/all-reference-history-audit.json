@@ -1,10 +1,10 @@
 {
   "passed": true,
-  "commits": 76,
+  "commits": 78,
   "independent_roots": [
     "b4be26b28b237996713b47f75cb9619cdc242d3b"
   ],
-  "unique_text_blobs": 1209,
+  "unique_text_blobs": 1211,
   "curated_report_binaries": [
     {
       "path": "report/SSA-HPM-overleaf.zip",
@@ -16,5 +16,7 @@
     }
   ],
   "scanned_ref": "all refs and tags",
-  "excluded": "upstream trees/history, gitlinks, binaries except inspected authored report, bundles, design PDFs, credentials"
+  "excluded": "upstream trees/history, gitlinks, binaries except inspected authored report, bundles, design PDFs, credentials",
+  "audited_head": "3a37be56dae744833fa5f9b8ca784644615000fb",
+  "receipt_scope": "All refs through the presentation merge; subsequent receipt-only commits are scanned again before push."
 }
