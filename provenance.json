@@ -729,5 +729,6 @@
   "evidence_path_map": "docs/EVIDENCE_PATHS.json",
   "source_browser": "src/manifest.json",
   "patch_series": "integration/ssa/patch-series.json",
-  "patch_name_map": "docs/PATCH_NAMES.json"
+  "patch_name_map": "docs/PATCH_NAMES.json",
+  "development_archives": "docs/DEVELOPMENT_ARCHIVES.json"
 }

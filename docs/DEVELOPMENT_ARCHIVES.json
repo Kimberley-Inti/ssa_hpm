@@ -1,0 +1,366 @@
+{
+  "schema": 1,
+  "maintained_project": "https://github.com/Kimberley-Inti/ssa_hpm",
+  "scope": "Original development archives; original commit identities and branch targets preserved. Archive notices are separate README-only commits.",
+  "archives": {
+    "Kimberley-Inti/SSA-HPM": {
+      "url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "visibility": "private",
+      "archived": true,
+      "default_branch": "main",
+      "original_default_sha": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+      "archive_notice_sha": "ea7dc70c36cafe2264bfce062af6ae3085a25b4a",
+      "branch_renames": [
+        {
+          "old": "archive/ssa-hpm-local-20261108",
+          "new": "archive/original-local-work",
+          "sha": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+          "verified": true
+        },
+        {
+          "old": "ssa-hpm-completion-20261108",
+          "new": "context-validation",
+          "sha": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+          "verified": true
+        },
+        {
+          "old": "ssa-hpm-publication-20261109",
+          "new": "reproduction-entry",
+          "sha": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+          "verified": true
+        },
+        {
+          "old": "stage2-trap-isolation",
+          "new": "trap-isolation",
+          "sha": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+          "verified": true
+        },
+        {
+          "old": "stage3-process-isolation",
+          "new": "task-accounting",
+          "sha": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+          "verified": true
+        },
+        {
+          "old": "stage4-linux-process-isolation",
+          "new": "linux-process-isolation",
+          "sha": "cad6278c2a079e8ffa3b371158bb6f41aca64ffb",
+          "verified": true
+        }
+      ],
+      "branches": {
+        "archive/original-local-work": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+        "context-validation": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+        "linux-process-isolation": "cad6278c2a079e8ffa3b371158bb6f41aca64ffb",
+        "main": "ea7dc70c36cafe2264bfce062af6ae3085a25b4a",
+        "reproduction-entry": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+        "task-accounting": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+        "trap-isolation": "fa0ccc7be59a624acc1dcd80af211919be17cd56"
+      },
+      "tags": [],
+      "original_upstream_unique_count": 15,
+      "upstream": "https://github.com/ucb-bar/chipyard.git",
+      "upstream_refs_compared": 413,
+      "original_development_commits": [
+        {
+          "sha": "c9f704c0364ba5cafb83c4ec01478b90a40d5b1a",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-04T22:27:08+08:00",
+          "subject": "Initial commit"
+        },
+        {
+          "sha": "90bfa6c768b8fd1258d38cdffcfde862dfcc669d",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-04T22:59:12+08:00",
+          "subject": "Update .gitignore and remove untracked build artifacts"
+        },
+        {
+          "sha": "6723407ba5ffb05d01757ef1c5d24a20218caffa",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-05T22:42:48+08:00",
+          "subject": "Track modified rocket-chip for SSA-HPM"
+        },
+        {
+          "sha": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-06T23:35:12+08:00",
+          "subject": "Relink rocket-chip submodule to my personal fork"
+        },
+        {
+          "sha": "710f951e2a3ec3ec1c050889c9ccf35e0e0ede1e",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-22T21:26:42+08:00",
+          "subject": "ssa_trap_mode connection logic"
+        },
+        {
+          "sha": "01b1aa69bce35971c9912e5706860d848adc6900",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-28T08:01:21+08:00",
+          "subject": "modified code sequence"
+        },
+        {
+          "sha": "f98d756927cf59cfee20b1183f9247cab7e181b9",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-04-01T15:35:42+08:00",
+          "subject": "forced exit"
+        },
+        {
+          "sha": "2cd92122a0fff0c4036d34e77e36470c22311f53",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-04-12T08:02:41+08:00",
+          "subject": "normal exit"
+        },
+        {
+          "sha": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-04-12T14:46:47+08:00",
+          "subject": "normal exit"
+        },
+        {
+          "sha": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T06:19:08+08:00",
+          "subject": "Add reproducible SSA-HPM Spike and Rocket RTL validation"
+        },
+        {
+          "sha": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T08:05:51+08:00",
+          "subject": "Complete SSA-HPM publication reproduction entry points"
+        },
+        {
+          "sha": "339d349d35e308f2912c5db55c42c6e4adcb18ba",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T08:05:51+08:00",
+          "subject": "Complete SSA-HPM publication reproduction entry points"
+        },
+        {
+          "sha": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T09:05:25+08:00",
+          "subject": "Validate SSA trap isolation, IRQ resume and fail-closed depth bounds"
+        },
+        {
+          "sha": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T10:02:57+08:00",
+          "subject": "Add single-hart monitoring pool lifecycle and off-CPU attribution regression"
+        },
+        {
+          "sha": "cad6278c2a079e8ffa3b371158bb6f41aca64ffb",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T16:05:17+08:00",
+          "subject": "Add pinned Linux and OpenSBI boot pipeline plus Sv39 regression"
+        }
+      ],
+      "review": {
+        "url": "https://github.com/Kimberley-Inti/SSA-HPM/pull/1",
+        "state": "closed",
+        "merged": false,
+        "original_head": "ssa-hpm-publication-20261109",
+        "current_source_branch": "reproduction-entry",
+        "base_branch": "main",
+        "functional_coverage": "The original build/reproduction changes, calling-context tests and native evidence are superseded by the maintained patch-based build, current fixtures and preserved calling-context captures. Legacy packaging and PR-description files remain in this development archive.",
+        "original_head_sha": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+        "original_base_sha": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1"
+      },
+      "backup_verification": {
+        "full_remote_mirror_fsck": true,
+        "original_ref_object_closure_complete": true,
+        "local_all_ref_bundle_verified": true
+      },
+      "original_rocket_gitlinks": [
+        {
+          "chipyard_commit": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+          "rocket_gitlink": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+          "reachable_in_rocket_archive": true
+        },
+        {
+          "chipyard_commit": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+          "rocket_gitlink": "9c6d44169365b1423f5aa8282def76b20e6c04fb",
+          "reachable_in_rocket_archive": true
+        },
+        {
+          "chipyard_commit": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+          "rocket_gitlink": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+          "reachable_in_rocket_archive": true
+        },
+        {
+          "chipyard_commit": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+          "rocket_gitlink": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+          "reachable_in_rocket_archive": true
+        },
+        {
+          "chipyard_commit": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+          "rocket_gitlink": "3f4ab938660454b101c67f6929bfebae5be1a138",
+          "reachable_in_rocket_archive": true
+        },
+        {
+          "chipyard_commit": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+          "rocket_gitlink": "3f4ab938660454b101c67f6929bfebae5be1a138",
+          "reachable_in_rocket_archive": true
+        },
+        {
+          "chipyard_commit": "cad6278c2a079e8ffa3b371158bb6f41aca64ffb",
+          "rocket_gitlink": "41d297689890296699d4a45699bf7e5791d33b96",
+          "reachable_in_rocket_archive": true
+        }
+      ]
+    },
+    "Kimberley-Inti/rocket-chip": {
+      "url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "visibility": "public",
+      "archived": true,
+      "default_branch": "master",
+      "original_default_sha": "885dd5966a49ce19512e3cc3275515926e729ba2",
+      "archive_notice_sha": "110a3b16fbc4d2cc50ce73c3ad2af298bf2ff40a",
+      "branch_renames": [
+        {
+          "old": "archive/ssa-hpm-local-20261108",
+          "new": "archive/original-local-work",
+          "sha": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+          "verified": true
+        },
+        {
+          "old": "stage2-trap-isolation",
+          "new": "trap-isolation",
+          "sha": "3f4ab938660454b101c67f6929bfebae5be1a138",
+          "verified": true
+        },
+        {
+          "old": "stage4-linux-process-isolation",
+          "new": "linux-process-isolation",
+          "sha": "41d297689890296699d4a45699bf7e5791d33b96",
+          "verified": true
+        },
+        {
+          "old": "ssa-hpm-completion-20261108",
+          "new": "context-monitoring",
+          "sha": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+          "verified": true
+        }
+      ],
+      "branches": {
+        "SSA-HPM": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd",
+        "archive/original-local-work": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+        "context-monitoring": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+        "linux-process-isolation": "41d297689890296699d4a45699bf7e5791d33b96",
+        "main": "9c6d44169365b1423f5aa8282def76b20e6c04fb",
+        "master": "110a3b16fbc4d2cc50ce73c3ad2af298bf2ff40a",
+        "trap-isolation": "3f4ab938660454b101c67f6929bfebae5be1a138"
+      },
+      "tags": [],
+      "original_upstream_unique_count": 10,
+      "upstream": "https://github.com/chipsalliance/rocket-chip.git",
+      "upstream_refs_compared": 402,
+      "original_development_commits": [
+        {
+          "sha": "9c6d44169365b1423f5aa8282def76b20e6c04fb",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-05T22:41:45+08:00",
+          "subject": "Update HPM logic in RocketCore",
+          "patch": "patches/rocket-chip/hpm-context-tracking.patch",
+          "patch_id": "3102a444c7446f162f19e91a600ca9aa59dcc872",
+          "local_object_available": true
+        },
+        {
+          "sha": "1543ea5445423aefae78c52b37c2521abea42fdc",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-22T21:26:42+08:00",
+          "subject": "ssa_trap_mode connection logic",
+          "patch": "patches/rocket-chip/trap-mode-routing.patch",
+          "patch_id": "66ae9c2704749480dd061c1e49a45faf62592fc9",
+          "local_object_available": true
+        },
+        {
+          "sha": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-03-28T08:01:21+08:00",
+          "subject": "modified code sequence",
+          "patch": "patches/rocket-chip/trap-signal-placement.patch",
+          "patch_id": "52ebc4ef10ae64c4ca3b59298c1ec17ff9e2a7f9",
+          "local_object_available": true
+        },
+        {
+          "sha": "d047a854895f008c586487e017f5346c4427c1af",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-04-01T15:35:41+08:00",
+          "subject": "forced exit",
+          "patch": "patches/rocket-chip/forced-monitor-exit.patch",
+          "patch_id": "42cf3e5ca02152dc788ddfd53c1482dcfbcf7669",
+          "local_object_available": true
+        },
+        {
+          "sha": "07a9c3fa809332daa19f8ca99e2573cd0ecaced1",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-04-12T08:02:41+08:00",
+          "subject": "normal exit",
+          "patch": "patches/rocket-chip/normal-monitor-exit.patch",
+          "patch_id": "9b9365edfd822197055f90c18f8a955b7f447e1b",
+          "local_object_available": true
+        },
+        {
+          "sha": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-04-12T14:46:46+08:00",
+          "subject": "normal exit",
+          "patch": "patches/rocket-chip/monitor-exit-finalization.patch",
+          "patch_id": "9bf51c9b6684345e897233e4bc07ea1f479be641",
+          "local_object_available": true
+        },
+        {
+          "sha": "539c3b10fee35fe0a2890083dd17c06688a704f8",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-08T23:03:16+08:00",
+          "subject": "Preserve inherited uncommitted SSA-HPM implementation",
+          "patch": "patches/rocket-chip/inherited-context-implementation.patch",
+          "patch_id": "7ef6731297b3418595b152f232b0dad64355fdab",
+          "local_object_available": true
+        },
+        {
+          "sha": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T06:18:46+08:00",
+          "subject": "Fix SSA-HPM microcode retirement, context dictionary and counter attribution",
+          "patch": "patches/rocket-chip/context-retirement-attribution.patch",
+          "patch_id": "e709b38eb884b990d9e8213e67ec3c7e0b52c70e",
+          "local_object_available": true
+        },
+        {
+          "sha": "3f4ab938660454b101c67f6929bfebae5be1a138",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T09:05:25+08:00",
+          "subject": "Suspend SSA application contexts across nested architectural traps",
+          "patch": "patches/rocket-chip/trap-context-isolation.patch",
+          "patch_id": "00e00e8ece7ad2395e2616661b83b159db3d9935",
+          "local_object_available": true
+        },
+        {
+          "sha": "41d297689890296699d4a45699bf7e5791d33b96",
+          "author": "Kimberley-Inti",
+          "author_date": "2026-11-09T15:55:54+08:00",
+          "subject": "Preserve compressed virtual PC width across SSA ROM muxes for Sv39",
+          "patch": "patches/rocket-chip/sv39-pc-width.patch",
+          "patch_id": "4fb48a8b6a861cc29d6078a2a6ff9e1ecd067616",
+          "local_object_available": true
+        }
+      ],
+      "review": {
+        "url": "https://github.com/Kimberley-Inti/rocket-chip/pull/1",
+        "state": "closed",
+        "merged": false,
+        "original_head": "ssa-hpm-completion-20261108",
+        "current_source_branch": "context-monitoring",
+        "base_branch": "SSA-HPM",
+        "functional_coverage": "Every implementation commit in this review is preserved by the maintained Rocket patch series; the accepted final Rocket tree extends this head. Original commit identities and review records remain in this archive.",
+        "original_head_sha": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+        "original_base_sha": "1f200edb0eb0832a72d04d8d4f36b912e0e447dd"
+      },
+      "backup_verification": {
+        "full_remote_mirror_fsck": true,
+        "original_ref_object_closure_complete": true,
+        "local_all_ref_bundle_verified": true
+      }
+    }
+  }
+}

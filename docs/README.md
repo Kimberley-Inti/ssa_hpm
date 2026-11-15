@@ -19,7 +19,7 @@
 | Rebuild and evidence replay | [Reproduction](../REPRODUCE.md) |
 | Full English project report | [PDF](../report/SSA-HPM-report.pdf), [editable source](../report/README.md) |
 | Development provenance | [History](../HISTORY.md), [reference map](HISTORY_MAP.json) |
-| Development fork and preservation | [Rocket Chip archive assessment](ROCKET_CHIP_ARCHIVE.md) |
+| Original development archives | [Development archive index](DEVELOPMENT_ARCHIVES.md) |
 
 Evidence directories use functional names. Original raw log bytes and hashes
 remain unchanged; the path map preserves their historical locations.
