@@ -2,8 +2,8 @@
 
 Scope is ACCEPTANCE.md: one hart, trusted kernel/firmware, audited non-privileged
 single-thread LIFO targets and the tested musl continuation adaptation.
-Native/semantic requirements and 12-step host evidence replay passed; audit/publication receipts
-are in evidence/stage11/summary.json and the release/integration receipt.
+Native/semantic requirements and the 12-step host evidence replay passed.
+The final results are indexed by evidence/stage11/summary.json.
 
 ## Required functionality and final review
 
@@ -25,8 +25,7 @@ are in evidence/stage11/summary.json and the release/integration receipt.
  20composite performance checks and 20direct companion checks pass. Companion
   negative suite5cases passes. All four native captures exit 0; all three Linux
   payloads power down normally. Original failed host runners are not rewritten0.
-- Final host-only replay and complete-history/file audit must pass before merge;
-  their actual receipts govern this gate. Ordered patches and rights notices are
+- Host-only replay verifies the committed evidence and workload arithmetic. Ordered patches and rights notices are
   retained; images, upstream trees, backups, credentials and original design PDFs are excluded; the authored English report is a checked publication artifact.
 
 ## Performance evaluation completed
@@ -61,14 +60,9 @@ measurement was performed.
 ## Optional follow-up or requirements if the product scope expands
 
 There is no remaining functionality task inside the declared tested prototype
-once the recorded packaging gates pass. Production/generalization work would
+with the recorded correctness and performance evidence. Production/generalization work would
 need a new scope: bounded diagnostic streaming for long sessions, a call fast
 path/overhead optimization, configurable memory pools, multi-hart/task migration,
 non-local unwinding, full-capacity long stress, wider memory instruction coverage,
 more events, general symbolization and non-console export. Reliable synthesis or
 a matched no-extension implementation is needed for hardware-cost conclusions.
-
-After final acceptance, the user authorized dependency-order merge commits of
-only this repository's stage PRs, main tree equality verification and a new private
-release. Preserve original commits, stage branches and v0.1.0. Integration.md
-specifies the checks; actual GitHub read-back supplies the main SHA/tag/release.

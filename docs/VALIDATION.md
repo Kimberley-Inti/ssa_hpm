@@ -2,8 +2,7 @@
 
 The native/semantic matrix and final host-only evidence replay passed. The replay
 actually completed 12 steps and rechecked 300 work results without another native
-execution. Gate receipts are indexed by `evidence/stage11/summary.json`; complete
-reachable-history audit is additionally enforced before push/integration.
+execution. Results are indexed by `evidence/stage11/summary.json`.
 The acceptance domain is one hart, trusted kernel/firmware, audited single-thread
 non-privileged LIFO programs and the explicitly tested musl continuation case.
 This is not a universal Linux or low-overhead implementation claim.
@@ -128,4 +127,3 @@ Multi-hart/migration, shared-mm/vfork, arbitrary handlers/non-local runtimes,
 FP/vector/AMO classification and automatic DTLB combinations remain outside scope.
 
 Reproduction and fast host-only evidence replay are in [REPRODUCE](../REPRODUCE.md).
-The dependency-preserving private integration procedure is [INTEGRATION](INTEGRATION.md).

@@ -22,10 +22,4 @@ The audit compared all seven fork branches with 402 fetched upstream branches an
 
 The open [Draft PR #1](https://github.com/Kimberley-Inti/rocket-chip/pull/1) depends on `ssa-hpm-completion-20261108` and `SSA-HPM`. These archival branches keep their original names. Local feature-branch aliases were renamed; the exact mapping is in [HISTORY_MAP.json](HISTORY_MAP.json). Public reproduction fetches the official Rocket baseline and applies the delivered patches, so it does not require the fork. Historical PRs and original development references do require it.
 
-**Recommendation: retain the fork as a development archive.** It is not pinned on the owner's profile. SSA-HPM is the principal presentation repository. No repository deletion, history rewrite, or upstream PR mutation was performed.
-
-## Recoverable backups
-
-Before changes, an all-reference bundle of the local Rocket repository and a complete bare mirror of the remote fork were saved outside the publication tree. The mirror also contains the upstream references used in the comparison. Bundle verification passed. The delivery record identifies the local backup directory; backups are intentionally excluded from the public repository.
-
-A mirror can be restored with `git clone --mirror /path/to/rocket-chip-remote.git restored.git`. A bundle can be inspected with `git bundle verify /path/to/rocket-chip-local-all.bundle` and cloned with `git clone /path/to/rocket-chip-local-all.bundle restored`. Deleting the remote would remove its PR, branch URLs and convenient original-SHA hosting even when local objects remain recoverable. Deletion is reserved for the owner's decision.
+**Recommendation: retain the fork as a development archive.** SSA-HPM is the principal research repository.

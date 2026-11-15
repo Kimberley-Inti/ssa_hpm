@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Verify functional navigation, report packaging and preserved implementation."""
+"""Verify repository navigation, installed-file manifests, report packaging and preserved implementation."""
 import hashlib,json,pathlib,re,subprocess,zipfile,urllib.parse
 r=pathlib.Path(__file__).resolve().parents[1]
 def git(*a):return subprocess.check_output(['git','-C',str(r),*a])
-files=[r/x for x in ('README.md','REPRODUCE.md','THIRD_PARTY.md')]+list((r/'docs').glob('*.md'))+[r/'report/README.md']
+files=[r/x for x in ('README.md','HISTORY.md','REPRODUCE.md','THIRD_PARTY.md')]+list((r/'docs').glob('*.md'))+list((r/'integration').rglob('*.md'))+list((r/'report').rglob('*.md'))
 checked=0;errors=[]
 for p in files:
  s=p.read_text()
- if p.name!='HISTORY.md':
+ if True:
   for label,target in re.findall(r'\[([^\]]+)\]\(([^)]+)\)',s):
    target=target.strip('<>');u=urllib.parse.urlsplit(target)
    if u.scheme or target.startswith('#'):continue
@@ -29,3 +29,16 @@ assert git('rev-parse','v0.1.0^{}').decode().strip()=='0421e67203e0cfb63d96699f0
 changes=git('diff','v0.2.0','--','patches').decode();assert not changes,'implementation patches changed'
 for line in git('diff','--name-only','v0.2.0','--','integration').decode().splitlines():assert pathlib.Path(line).suffix=='.md',line
 print(json.dumps({'passed':True,'local_document_links':checked,'packaged_source_files':len(source),'release_tags_preserved':True,'implementation_patches_unchanged':True},indent=2))
+
+manifest=json.loads((r/'provenance.json').read_text())
+for path,expected in manifest['expected_files'].items():
+ source=r/'integration'/path
+ if source.exists():assert hashlib.sha256(source.read_bytes()).hexdigest()==expected,path
+for entry in (r/'evidence').rglob('*manifest.json'):
+ data=json.loads(entry.read_text())
+ if isinstance(data,dict) and isinstance(data.get('files'),dict):
+  for path,expected in data['files'].items():
+   target=r/path
+   if target.exists():assert hashlib.sha256(target.read_bytes()).hexdigest()==expected,(str(entry),path)
+   elif path.startswith(('evidence/','integration/','docs/','patches/')):raise AssertionError((str(entry),'missing',path))
+print('PASS installed-source and evidence manifests')

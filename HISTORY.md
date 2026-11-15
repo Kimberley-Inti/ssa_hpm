@@ -1,492 +1,83 @@
-<!-- Historical branch names, authors and commit messages below are retained as provenance. -->
-# Development history and provenance
-
-Original development commits remain preserved. This standalone repository imports project patches, tests and evidence rather than upstream Git ancestry. Original SHAs identify sources; original authors, author dates and commit subjects remain unchanged. Import committer dates identify packaging work. Ordering across repositories does not establish an absolute order of development actions.
-
-## Original repository verification
-
-- Authenticated access to the owner’s original development repositories was restored during initial packaging. Historical authentication diagnostics remain in the immutable development record; credentials are not distributed.
-- 仅在相关仓库增加 `github-authenticated` 远端和 gh helper 覆盖，原 origin/my-fork 保留。
-- 旧 Chipyard `main` 仍是 `4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1`；
-  Rocket `SSA-HPM` 仍是 `1f200edb0eb0832a72d04d8d4f36b912e0e447dd`，未被改写。
-- 两个旧仓库均新增 `archive/ssa-hpm-local-20261108`，分别保存本地原 main `c2391670…`
-  和原 SSA-HPM `23f5a64f…`；此前超前的 3 个 Rocket 提交现在均可在 GitHub 查到。
-- 两层 `ssa-hpm-completion-20261108` 已原样推送：Chipyard 为
-  `375068b6180fa968f86f07fc4b2e1ec104f632ee`，Rocket 为
-  `986407bc6df8d2a67572250f1df9eb2c0edeacf9`，gitlink 对应正确。
-- 原始工作树差异恢复点 `539c3b10fee35fe0a2890083dd17c06688a704f8` 也可从 GitHub 访问。
-  所有表内原始提交均已逐条通过已认证 GitHub commit API 核验，见
-  `evidence/publication/original-commits.json`。
-- Rocket Draft PR: https://github.com/Kimberley-Inti/rocket-chip/pull/1 （base `SSA-HPM`）。
-- Chipyard Draft PR: https://github.com/Kimberley-Inti/SSA-HPM/pull/1 （base `main`）。
-  后者以独立 `ssa-hpm-publication-20261109` 分支附加一个复现入口修补提交，补收忽略的
-  env.sh 并保护缺失旧 C 原型的默认构建，未移动已验收分支。先合 Rocket，再合 Chipyard。
-- 原工作树、原分支、初始未跟踪文件及 `ssa/handoff/` 均保留；不上传这些 bundle。
-
-## Original records and imported commits
-
-所有完整 SHA、作者、日期、改动路径和具体产物亦见 `provenance.json`。
-
-| 原仓库 / 原分支 | 原始 SHA | 作者日期 | 原说明 | 新提交 / 整理说明 |
-| --- | --- | --- | --- | --- |
-| chipyard / main | `c9f704c0364ba5cafb83c4ec01478b90a40d5b1a` | 2026-03-04T22:27:08+08:00 | Initial commit | `b4be26b28b237996713b47f75cb9619cdc242d3b`；`patches/history/chipyard/0001-original-tests.patch` |
-| chipyard / main | `90bfa6c768b8fd1258d38cdffcfde862dfcc669d` | 2026-03-04T22:59:12+08:00 | Update .gitignore and remove untracked build artifacts | 仅记录：仓库忽略规则、无关子模块移除或路径/gitlink 配置；复现改用可获取基线 |
-| rocket-chip / SSA-HPM | `9c6d44169365b1423f5aa8282def76b20e6c04fb` | 2026-03-05T22:41:45+08:00 | Update HPM logic in RocketCore | `e47da1fbea907868f45c3eeb56d8a5f7e1a41262`；`patches/rocket-chip/0001-9c6d44169.patch` |
-| chipyard / main | `6723407ba5ffb05d01757ef1c5d24a20218caffa` | 2026-03-05T22:42:48+08:00 | Track modified rocket-chip for SSA-HPM | 仅记录：仓库忽略规则、无关子模块移除或路径/gitlink 配置；复现改用可获取基线 |
-| chipyard / main | `4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1` | 2026-03-06T23:35:12+08:00 | Relink rocket-chip submodule to my personal fork | 仅记录：仓库忽略规则、无关子模块移除或路径/gitlink 配置；复现改用可获取基线 |
-| chipyard / main | `710f951e2a3ec3ec1c050889c9ccf35e0e0ede1e` | 2026-03-22T21:26:42+08:00 | ssa_trap_mode connection logic | `826f5082206beef41b461c847ca4b0ca46bc60c3`；`patches/chipyard/0001-constellation-dependency.patch` |
-| rocket-chip / SSA-HPM | `1543ea5445423aefae78c52b37c2521abea42fdc` | 2026-03-22T21:26:42+08:00 | ssa_trap_mode connection logic | `22ac074de75b476f2fcd44d01fa38039afe9e40a`；`patches/rocket-chip/0002-1543ea544.patch` |
-| chipyard / main | `01b1aa69bce35971c9912e5706860d848adc6900` | 2026-03-28T08:01:21+08:00 | modified code sequence | `1f19a00316cebd0e9bd4b5ed784dbf0f6e44eeff`；`patches/history/chipyard/0002-legacy-test-revision.patch` |
-| rocket-chip / SSA-HPM | `1f200edb0eb0832a72d04d8d4f36b912e0e447dd` | 2026-03-28T08:01:21+08:00 | modified code sequence | `ec73be3357edd13ef4653ec62a1e3074159defa0`；`patches/rocket-chip/0003-1f200edb0.patch` |
-| rocket-chip / SSA-HPM | `d047a854895f008c586487e017f5346c4427c1af` | 2026-04-01T15:35:41+08:00 | forced exit | `5a37854211a9f1043de1eed9397e145a20ca8caf`；`patches/rocket-chip/0004-d047a8548.patch`；原本超前的 3 个本地提交之一 |
-| chipyard / main | `f98d756927cf59cfee20b1183f9247cab7e181b9` | 2026-04-01T15:35:42+08:00 | forced exit | 仅记录：仓库忽略规则、无关子模块移除或路径/gitlink 配置；复现改用可获取基线 |
-| chipyard / main | `2cd92122a0fff0c4036d34e77e36470c22311f53` | 2026-04-12T08:02:41+08:00 | normal exit | 仅记录：仓库忽略规则、无关子模块移除或路径/gitlink 配置；复现改用可获取基线 |
-| rocket-chip / SSA-HPM | `07a9c3fa809332daa19f8ca99e2573cd0ecaced1` | 2026-04-12T08:02:41+08:00 | normal exit | `48e9965c45221ff5a427e1e4bc53c2cc86e97ee5`；`patches/rocket-chip/0005-07a9c3fa8.patch`；原本超前的 3 个本地提交之一 |
-| rocket-chip / SSA-HPM | `23f5a64f6144cd3ffc7b25d490b48f5d019ee718` | 2026-04-12T14:46:46+08:00 | normal exit | `1d5ae817964d3b13f1098431d0c4f71209ef59cb`；`patches/rocket-chip/0006-23f5a64f6.patch`；原本超前的 3 个本地提交之一 |
-| chipyard / main | `c2391670d8e1cc62369cfc3e96b58a9a8cc94dda` | 2026-04-12T14:46:47+08:00 | normal exit | `1d14fa7c7ff95029ee009465f95f30a35646e5a4`；`patches/history/chipyard/0003-legacy-microcode-build.patch` |
-| rocket-chip / ssa-hpm-completion-20261108 | `539c3b10fee35fe0a2890083dd17c06688a704f8` | 2026-11-08T23:03:16+08:00 | Preserve inherited uncommitted SSA-HPM implementation | `d8390b3affa5c04d7b4e7b305b88a9f8900bba5a`；`patches/rocket-chip/0007-539c3b10f.patch` |
-| rocket-chip / ssa-hpm-completion-20261108 | `986407bc6df8d2a67572250f1df9eb2c0edeacf9` | 2026-11-09T06:18:46+08:00 | Fix SSA-HPM microcode retirement, context dictionary and counter attribution | `bc2b064fd2be342d51774e4c83c895457cf197b6`；`patches/rocket-chip/0008-986407bc6.patch` |
-| chipyard / ssa-hpm-completion-20261108 | `375068b6180fa968f86f07fc4b2e1ec104f632ee` | 2026-11-09T06:19:08+08:00 | Add reproducible SSA-HPM Spike and Rocket RTL validation | `429b78c19191d4973042ac554ae3c71383ad5ff5`；`patches/chipyard/0002-fesvr-verilator-build.patch`, `integration/ssa/.gitignore` 等 |
-
-## Packaging and maintenance
-
-- Rocket 的 8 次实现修改逐个保留为补丁及对应导入提交，包含原始未提交差异的恢复提交 `539c3b10f`。
-- Chipyard 中纯 gitlink 更新与 URL 调整不重复制造代码副本，其与 Rocket 原始提交的对应关系保留在上述记录中。
-- `710f951e` 里的 Constellation 固定作为单独依赖补丁；`375068b6` 仅提取两个实际需要的仿真构建文件，
-  测试另作为独立文件安装，避免同一改动在 patch 和文件中交付两次。
-- 旧 `.gitignore`、商业/ESP 子模块移除和旧 tests/Makefile 不进入当前复现补丁；旧测试演进只保留历史系列。
-- 本次发布整理提交新增 README/HISTORY、许可证材料、公开基线安装器、来源清单、完整历史审计、发布核验及
-  本次发布回归证据。该提交由 `v0.1.0` 标签标识；不借用旧作者日期给发布新增材料溯源。
-- `ssa/env.sh` 是已验收工作目录里的忽略文件，原交付 commit 没有包含它；本发布显式补齐，来源单列。
-- 新仓库提交 SHA 与原始 SHA 不同，因为其内容是筛选后的补丁/资料而非原源码树，且不继承上游 parents。
-- 后续工作继续在本仓库增加版本；禁止改写已有版本标签或用强推覆盖原开发记录。
-
-发布后补充提交：原 Chipyard `ssa-hpm-publication-20261109` 的 `58a7acde9598b4e08d11e5b5f3da0e146e138078` 由本次发布整理创建；在独立包中，其 env 辅助文件由发布整理提交收录，历史 Makefile 防护无需应用到干净上游，因为独立包没有引入过时的默认测试目标。
-
-发布包的后续两个新提交分别整理复现/来源/许可证材料，以及记录本次公开基线重建和实际回归。
-这两次整理保留当前作者日期，没有改写前面 13 个按原作者日期导入的提交；版本由 v0.1.0 标记。
-
-
-## Trap isolation
-
-Based on unchanged v0.1.0 `0421e67203e0cfb63d96699f061ffa7d8d00fddf`.
-The publication environment fix `58a7acde9598b4e08d11e5b5f3da0e146e138078`
-was replayed on the Chipyard development branch as
-`339d349d35e308f2912c5db55c42c6e4adcb18ba` (identical tree).
-
-| Source repository | Source base | New source commit | Artifact |
-| --- | --- | --- | --- |
-| Rocket Chip | `986407bc6df8d2a67572250f1df9eb2c0edeacf9` | `3f4ab938660454b101c67f6929bfebae5be1a138` | `patches/rocket-chip/0009-trap-context-isolation.patch` |
-| Chipyard | `339d349d35e308f2912c5db55c42c6e4adcb18ba` | `fa0ccc7be59a624acc1dcd80af211919be17cd56` | Updated standalone `integration/ssa` test files; no duplicate test patch |
-
-This stage implements normal architectural trap isolation, nested resume, a
-read-only state CSR and fail-closed overflow. `docs/TRAP_ISOLATION.md` records design
-review, the old-RTL failure, unchanged counting semantics and validation scope.
-First-stage main/tag and the two existing Draft PR branches are not moved.
-
-
-本轮独立维护仓库的实现/测试整理提交为 `3ecec6adc0c6e483d5b386f1239e5a596a545153`。
-其后的验证提交收录独立公开基线重建、339 个 Rocket Scala 源文件编译、新 RTL 和新
-Verilator 的 16 项实际结果。原始验收证据与本次 baseline/development/independent
-证据分开保存；全部实现位于本轮独立分支，v0.1.0 和 main 保持不变。
-
-
-## Process accounting
-
-从 stage2 独立维护仓库提交 `2d646a615b357e3e883289d91d0b903ac14baec4` 新建分支。
-已回读 GitHub stage2 分支与 Draft PR #1，二者 head 一致；未移动 main、v0.1.0 或旧 PR。
-
-| 原仓库/分支 | 本轮基线 | 本轮源码提交 | 独立仓库对应内容 |
-| --- | --- | --- | --- |
-| Kimberley-Inti/SSA-HPM / stage3-process-isolation | fa0ccc7be59a624acc1dcd80af211919be17cd56 | 503d5ccdb6634a05f46181ecd23648cfbb4e61b8 | integration/ssa 的进程协议、双栈调度及验证器；不重复打测试补丁 |
-| Rocket Chip | 3f4ab938660454b101c67f6929bfebae5be1a138 | 无新源码提交 | 原有 0001–0009 补丁保持不变，expected_tree 同 stage2 |
-
-本轮原创提交未重写先前开发历史。首次实现提交和后续独立重建证据提交形成两个
-有意义的维护仓库提交；其 SHA 可由本分支 git log 核验。源码提交说明为
-“Add single-hart monitoring pool lifecycle and off-CPU attribution regression”。
-Chipyard ssa/README.md 的本轮说明在维护仓库整理为 docs/PROCESS_ACCOUNTING.md；运行源文件
-和 Makefile 一致，历史 integration/ssa/README.md 不替代当前阶段说明。
-
-本轮接口与测试整理提交：`aad36f0ecad6fce9fbd661760c9505bc1e653e6d`，对应 Chipyard `503d5ccdb6634a05f46181ecd23648cfbb4e61b8`。后续验证提交仅补充实际重建证据和文档。
-
-## Linux boot and process accounting
-
-Branch starts at stage3 418692f75b3895cbb084e26276ba7267b9f8efee.
-
-| Source | Baseline | New commit | Delivery |
-| --- | --- | --- | --- |
-| Rocket | 3f4ab938660454b101c67f6929bfebae5be1a138 | 41d297689890296699d4a45699bf7e5791d33b96 | 0010-sv39-pc-width.patch |
-| Chipyard | 503d5ccdb6634a05f46181ecd23648cfbb4e61b8 | cad6278c2a079e8ffa3b371158bb6f41aca64ffb | integration/ssa boot entry and tests, no duplicate test patch |
-| Linux | 5f5fd87b36e21ed59b759b69eebfa1c74955cb37 | 3b79ddfa2fb70707ace85385d6722925fffc8eea | integration/ssa/linux/0001-stack-pointer-declaration.patch |
-| OpenSBI | a98258d0b537a295f517bbc8d813007336731fa9 | b778927a507e4ebcc43a8ecb8d495562ef48efb3 | integration/ssa/linux/0001-opensbi-rocket-platform.patch |
-
-Kernel and firmware development commits are local; reproduction fetches the
-public pinned baselines and applies the patches, never fetching those local
-commits. The independent bootstrap already matched both source tree hashes.
-The first-stage Sv39 regression uses the same ELF: old RTL exits 42, Spike and
-fixed RTL exit zero. Linux boot and subsequent real-process acceptance are
-separate gates; implementation commits do not imply they have passed.
-
-Stage4 Linux integration implementation (runtime gates pending):
-- Rocket `1c78413459344d7ca1d2b3cdedbdc4a16133dee9`: supervisor-only pool selection,
-  opt-in U-mode notification policy and trusted ROM physical memory access;
-  distributed as patch0011. Parent is the stage4 Sv39 PC fix41d2976.
-- Linux `0d6ec76e6f44802adab36e84c8ffd7b65187d91f`: per-task ownership, fork reset,
-  scheduler pause/resume of open frames, bounded exit export and test diagnostics.
-  Local development commit, reconstructed with integration/ssa/linux/0002 patch
-  after the public baseline and stack-pointer compatibility patch.
-- Chipyard `8bb4bb28` (full SHA in provenance): kernel patch, user-mode probes,
-  real Linux process fixtures, pinned build entry and strict attribution grader.
-  Standalone project files are delivered once under integration/ssa; the gitlink
-  records the Rocket dependency without requiring a private/local commit fetch.
-- Chipyard `ffa17056` (full SHA in provenance): remove unused legacy PTYs,
-  correct RISC-V syslog ABI and retain an initramfs-only rebuild entry. The signal
-  and permission ABI diagnostic passed on baseline Linux/Spike; no SSA claim.
-- Chipyard `1462d8ba` (full SHA in provenance): require reciprocal B sleep-frame
-  pause/resume/rebasing evidence in the Linux grader, in addition to A's timer
-  preemption evidence. This changes the checker only, not the kernel or image.
-- Chipyard `40287b89` / `2813cd71` (full final SHA in provenance): document the
-  task/selector ownership, prctl lifecycle, physical-pool ABI and exact counter
-  boundaries, with guarded-failure scope clarified. Documentation only.
-  These stage4 source revisions are retained locally; this private standalone
-  repository carries their patches/files and does not require fetching local SHAs.
-- Chipyard e6a1537e /3776fab1 /59255bbf /325b441a: strengthen Linux evidence checks
-  with global sample chronology, actual embedded user ELF symbols, mandatory loop
-  instructions, independent open-frame interval sums and parent-frame exclusion.
-  These checker-only commits do not change the already-built RTL/kernel/image.
-- Chipyard `68611650` (full SHA in provenance): specify the exact pre-context-switch
-  S/R sampling boundary and which outgoing/incoming handoff costs remain charged.
-  Documentation only; running RTL, kernel and initramfs are unchanged.
-
-Stage4 final acceptance: final Rocket Linux boot A passed, real uid1000 process
-monitoring/exit export and permission probes B passed, and all four real Linux
-preemption trials C completed with clean power-down/exit0. The final checker
-passed173 checks on the original log and again from the public-source reconstructed
-project directory. Corrected A common instret short/long is278450/278470 (delta20);
-legacy is1545490/1753452 (delta207962). All16+3+5 existing/new low-level checks
-remain passed, including the expected-exit42 legacy control. No new tag, main
-update, PR merge or public repository visibility change is part of this delivery.
-
-## Exec lifecycle
-
-Development starts from maintenance55104eb22d160d9bf9e1e7388866ba7482a2785a
-(stage4 Draft PR#3, unchanged), not from main or an unmerged upstream PR.
-
-| Repository | Local baseline | Local stage5 commit | Standalone delivery |
-| --- | --- | --- | --- |
-| Linux | 0d6ec76e6f44802adab36e84c8ffd7b65187d91f | f327da924b3515e2d4c33bc1a8eb1e0c38807d66 | integration/ssa/linux/0003-linux-exec-lifecycle.patch |
-| Chipyard | 68611650d79c7635a7f1b28935c758f2f12fa3b8 | 6621ef7ca88a1091c13fe2e050746d3e7e6fee11 | standalone build/fixtures/checker in integration/ssa/linux |
-| Rocket | 1c78413459344d7ca1d2b3cdedbdc4a16133dee9 | unchanged | existing patches0001..0011 |
-| OpenSBI | b778927a507e4ebcc43a8ecb8d495562ef48efb3 | unchanged | existing platform patch |
-
-Linux commit separates post-commit exec retirement from normal exit, labels
-sessions/image epochs and abandoned frames, and preserves pre-commit failed exec.
-Chipyard commit adds the same-PID replacement and ENOENT fixtures, pinned image
-build and native checker, followed by the unchanged stage4 Linux regression.
-These source commits are retained in local source repositories, with author/date
-and commit text preserved in the kernel format-patch. Reproduction uses public
-baselines and these patches/files; it never needs the local SHAs to be fetchable.
-Runtime evidence and final maintenance commit mapping follow after native completion.
-
-Chipyard follow-up `02ddc90abb4806e136f1e96b1580702df39cc4b7` documents session retirement and counter boundaries in ABI.md; it does not alter the built image or RTL.
-
-Chipyard `b4944ca3f1e589ca43a0e015a229d1b843651313` strengthens the checker with exact short-leaf counts at identical old/new virtual addresses, without rebuilding or altering the running image.
-
-Chipyard `fb7fd09e8c5886498aee42f90e2e5bb97cfa56df` corrects the leaf oracle: actual disassembly shows five fewer non-loop user instructions than stage4 common. Expected counts3318/6618/6636; no kernel, RTL or image change.
-
-Stage5 publication follow-up: the installer excludes locally ignored Python bytecode caches when copying integration files. Original caches are preserved; a fresh public reconstruction verifies no .pyc is installed. This changes packaging only, not the native image or verifier logic.
-
-Stage5 native acceptance:37 lifecycle gates and173 affected stage4 Linux checks passed in one actual independent public-source rebuilt image execution, clean exit0/power-down. Source implementation maps to maintenance4a5ca6f61cdcf00faa1aab0822f471febcd60765; oracle/provenance follow-ups are d2dcd01 and281f536. Final evidence is in evidence/stage5/. Main, tags and stage4 PR are unchanged.
-
-Final Chipyard source delivery `c8be3fd4d10a758ea378f2b8f349eff6e2dc9de9` includes the test/checker changes and the atomic-release-order ABI clarification; Linux remains `f327da924b3515e2d4c33bc1a8eb1e0c38807d66`. Native model and firmware sources are unchanged. Current instret corrected/legacy long-minus-short is4205/211029, with raw214873 minus excluded210668 =4205. Historical stage4 remains20/207962 under its original image.
-
-## DTLB interval attribution
-
-Maintenance starts at3741fdc18e8586e8b8a1c2b6c25a2a8b9742a92d, stage5 Draft PR#4.
-It retains main, v0.1.0 and every earlier Draft PR.
-
-- Rocket baseline1c78413459344d7ca1d2b3cdedbdc4a16133dee9 →
-  469bfac7de26bfbb03298787ad030898c6de24c9: optional ABI2 ROM, 40-bit fourth
-  record/frame counter, supervisor mode bit and opt-in actual PTW/HPM trace;
-  patch0012. Original104-word ABI1 ROM is byte-identical.
-- Linux baselinef327da924b3515e2d4c33bc1a8eb1e0c38807d66 →07fb4b1ef
-  (full SHA in source metadata): fourth per-task snapshots, modular pause/resume,
-  bounded event export and all existing exec/exit semantics; event patch0004.
-- OpenSBI baselineb778927a507e4ebcc43a8ecb8d495562ef48efb3 →c83d3aa then34520a7:
-  standard HPM3 selector/reset/inhibit profile, then U-mode counter permission
-  denial while keeping supervisor access. Both source commits retained in0002.
-- Chipyard baselinec8be3fd4d10a758ea378f2b8f349eff6e2dc9de9 →8d07f53b then6abd0f37:
-  separate event config, actual RTL controls, Linux event/context/preemption/exec
-  fixtures, verifier selection and ABI documentation. Config only is patch0003;
-  standalone tests/build scripts are delivered once under integration/ssa.
-
-These are local source development commits retained on stage6 branches. Public
-reproduction replays the patches on reachable upstream baselines; independent builds are documented in evidence/stage6/.
-At this implementation checkpoint Linux runtime gates were pending; final accepted results and the corrected kernel tree are recorded below. Source author/date/message are retained in format-patches.
-
-Chipyard3711603c (full SHA in evidence/stage6/source-commits.json) adds a nonzero repeated-record oracle, ABI2 all-register canaries, and the actual Linux timer/unmonitored-handoff chronology. These test/checker changes do not modify the running Linux image or Rocket model. Independent public-source RTL generation/model build and all five new tests passed; Linux execution was ongoing at this checkpoint; see final acceptance below.
-
-Chipyard 3a31d53b10babdf476473cc7d2d682e215dc7305 adds explicit ELF-identified ABI2 record trees and the Linux B512-page source-count oracle. Checker-only; running image/model unchanged.
-
-Stage6 native scheduling follow-up: Linux `49943b80f864a41e4ac13108a77f921e013d3570` corrects the fourth-delta scratch array after the initial run exposed an overrun. Both Linux commits are retained in `0004-linux-dtlb-event.patch`. Chipyard `d954827f` carries this corrected reproduction patch; maintenance `3cff382` maps and records the fix. The independent corrected tree is `4234609f62a91906b25a741f9897f17b327bcb57`; the original image build evidence is superseded by `linux-image-build.json` for final acceptance.
-
-Stage6 native acceptance completed: actual independent Linux image, clean exit0/power-down; 70 event gates,37 lifecycle gates and176 process gates (all173 historical gates plus three additional sample assertions) passed. All29 low-level tests (24 existing plus5 new) were actual new runs, and independent model rebuild repeated the5 new tests. Source/ROM ABI1 continuity remains verified; main/tags/earlier Draft PRs are unchanged.
-
-## Result export
-
-Actual maintenance baseline `1c48e93b0055e92a565eb455a057c1e45618d81c`; PR5 remains Draft/Open against stage5. User's supplied SHA had one missing digit; local and remote branch agree on the full SHA above.
-
-Linux `49943b80f864a41e4ac13108a77f921e013d3570` → `b92b11252f5b9a5ce2a3c33298fa3b8bef93c836` removes the32-record export/completeness limit, snapshots on STOP, reads frozen current-task chunks of16, emits versioned metadata/checksums/status and releases only after terminal export. New op5 exports STOPPED state once without releasing; later exit/exec releases it. Both author/date/message and source diff are retained in linux patch0005.
-
-Chipyard `d954827faca21a1534ac89db748896f0c319c559` → `b4d90067` carries the Linux patch,41/2/0/open-frame fixture, host parser and fault tests, ABI and versioned build/run/check entry. Source full SHAs/tree hashes are in evidence/stage7/source-commits.json. Rocket `469bfac7de26bfbb03298787ad030898c6de24c9` and OpenSBI `34520a712309790d3e9a005194b763467b980fdb` are unchanged; no RTL rebuild is claimed.
-
-The project acceptance matrix (docs/ACCEPTANCE.md) distinguishes original core requirements, adopted single-hart Linux adaptations, deferred original data-flow objectives and optional extensions. Public-source independent kernel/firmware build and36 host checks passed at this checkpoint; native Linux validation remains running.
-
-Chipyard `a96ebf15` strengthens the host-only session-boundary oracle by rejecting injected foreign payloads;36 host checks pass. It does not change the already built/running image or the reused Rocket model.
-
-A new public Chipyard/Rocket fetch/application matched the final stage7 source manifest and both ROM banks. Its installed suite passed36 host tests; recompiling all7 userspace ELFs there reproduced exactly the hashes of the running independent image payloads. These are actual fresh checks; the native Linux execution remains pending.
-
-Chipyard `4687cdbe` adds optional --native-log replay and missing/duplicate/truncated mutation checks against the real completed41-record prefix. Host-only; running image/model unchanged. The independent installed validation script is refreshed after the public source reconstruction; its original compilation/source evidence remains distinct.
-
-Native stage7 checkpoint: actual41-record/3-chunk session completed and released its pool, exactIDs/ELF tree/checksums passed;36 synthetic host checks plus4 checks on actual captured-prefix/mutations passed. Remaining native cases and affected regressions are still running. Monitor exit143 is recorded separately and is not a native failure.
-
-Chipyard `28c03f08` fixes a checker-role mismatch for the chained original lifecycle fixture: use the actual `/lifecycle` ELF as the historical logical init role while keeping the new export fixture bound to `/init`. On archived real stage6 data the uncorrected role caused two ELF-tree failures; the corrected role passes70/37/176 unchanged gates. Actual /lifecycle payload exactly equals archived /init by hash/symbols. This is a historical-log oracle check, not a new native execution; the running image is unchanged. The independently installed host checker was refreshed and the complete source-file manifest reverified.
-
-Native four-case export checkpoint passed23 specialized gates:41/2/0/open sessions, IDs/ELF trees/checksums and lifecycle pool release. The full25-gate result remains pending only on native shutdown and delegated old-suite execution; checkpoint evidence retains its honest false overall status. The same native boot continues into original stage6/5/4 suites.
-
-Chipyard `b610880d` raises only the default host timeout for fresh --export runs to48h after the observed slow native run exceeded7h with suites remaining; explicit flags and legacy defaults remain intact. Current native process/image/model unchanged. Host supervision actions, if needed near its original12h deadline, are separately audited and actual child exit status still reaped by the same runner. No actual extension action at this checkpoint.
-
-Actual stage7 native lifecycle checkpoint:35 original lifecycle gates pass, with only overall shutdown/affected-stage4 gates pending. Success old/new SID5/6 underPID18 have images2/3 and leaf3318/6618; ENOENT session7 retains and closes its tree. The running boot continues into events/process fixtures. Checkpoint overall status remains false until the dependent gates complete.
-
-Stage7 final acceptance (same single native run, no restart): independently built
-public-source Linux/OpenSBI image exited0 with normal power-down after51379.89s.
-All25 export,70 event,37 exec and179 process checks passed; the latter retains
-all176 stage6 checks plus3 assertions for an additional real scheduler sample.
-36 synthetic host checks and4 real-prefix/host-mutation checks also pass. The
-independently installed checker replays the same raw log identically.24 sessions,
-87 records,25 chunks all transferred/released; first41-record END871b3b3ee92eb291.
-Actual corrected DTLB6=1131-1125 versus legacy1133; corrected instret long-short-40
-versus legacy202484. In-flight summaries remain explicitly historical.
-
-Only the waiting host runner was paused near its original12h deadline; native
-execution continued, kernel wait0 was captured, and runner resumed/reaped0. The
-monitor's143 is separate. No Rocket/OpenSBI source change or new low-level RTL/
-Spike execution. Source delivery remains Chipyard b610880dd4a0bcab4808398b62f290b13a613979,
-Linux b92b11252f5b9a5ce2a3c33298fa3b8bef93c836, Rocket469bfac7 and OpenSBI34520a7.
-Final evidence/requirements decision is in evidence/stage7/summary.json and
-docs/ACCEPTANCE.md. The final maintenance evidence commit continues the existing
-stage7-result-export history and updates Draft PR6 against stage6; main, tags and
-earlier PR branches remain unchanged.
-
-## Cache-event attribution
-
-Maintenance starts at2c63845c4bd262594f6d5ed0e4fc12773957d833; PR6 is retained
-Draft/Open. Linux275125fab adds fixed-profile export metadata without altering
-pool ownership/rebase logic; OpenSBI43f02ff selects native0x202 only under the
-matching opt-in build flag. Rocketbccfc47a4 adds read-only Cache source/reset/CSR
-traces, keeping EventSet and ROM semantics unchanged; patch0013. Chipyard4cc1b033
-carries profile patches, explicit host parsing, source/negative/wrap oracles and
-a directed Cache/Linux event/exec/export fixture. Full SHAs and source trees are
-in evidence/stage8/source-commits.json; format-patches preserve authors/messages.
-Implementation checkpoint only: Cache RTL/Linux acceptance is still pending.
-
-Chipyardf246f721 adds Cache-mode register canaries, physically backed user pages
-(prefault writes outside monitored intervals), and rejects mixed-profile/scalar
-event payload injection. Cache4source/negative/wrap tests plus a separate Cache
-ABI canary pass; all29 previous low-level tests (23RTL+6Spike) pass on the newly
-generated model. The independent installed suite repeats all5 Cache tests with
-verified reused model. Corrected Cache Linux image is running; the one superseded
-early boot before userspace is separately retained, never counted as acceptance.
-
-Stage8 oracle follow-ups: Root25cec803 audits all four actual Linux sample/record
-identities; c0898e68 checks both directions of source/registered increments; the
-latest root commit adds bounded no-work parent checks to catch a missed parent
-rebase while the child is corrected. Full source heads are in stage8 metadata.
-These are host/checker-only changes; the running model and image are unchanged.
-Native Linux context4/131 and corrected193=10688-10495 versus legacy10752
-(off10556not subtracted) have passed checkpoints; exec/full-export/shutdown pending.
-
-Stage8 final acceptance: all5 new Cache cases plus all29 prior low-level cases
-(23RTL+6Spike references) passed on the newly generated RTL/Verilator model.
-The independent installed suite repeated all5 Cache tests with fresh images on
-that verified model, not a second model build. Host profile/protocol tests48
-and4 mutations/rechecks of the real Cache41 session pass. Latest source mapping
-includes generic41-session selection and parent-frame/all-counter pause guards;
-source SHAs in evidence/stage8/source-commits.json and patches retain the history.
-
-Corrected independent Linux image completed19620.89s with actual native/runner0
-and normal power-down.39 aggregate/all-counter,69 Cache context/timer/exec and
-24 full-export gates pass.12 sessions63 records13 chunks all transferred/released;
-open6/12 are marked semantic-incomplete. Common contexts4/131, correctedA
-193=10688-10495, legacy10752 retaining10556paused. Old/new/failed exec leaf65/290/130;
-41-record END e9872487db2fd6d0. The superseded initial200000-cycle early boot
-(signal-handler0 without shutdown/userspace) remains explicitly rejected and
-retained. Updated checkers replay the same final log independently; historical
-stage7 replay25/70/37/179 remains distinguished from new native execution.
-
-D03 is closed for one explicitly defined native Cache event, including uncached/
-PTW/kernel/private traffic, not unique retired load misses. D02 classification
-is next; generic transparent loader/multicore/unwind and other extended goals
-remain scoped in ACCEPTANCE.md. Main/tags/earlier PRs are unchanged.
-
-
-## Memory classification
-
-The stage8 head cdcf64fd5a9e2321b43fd68070b3ee45d12b42de and Draft PR7 are retained.
-New work is on stage9-memory-classification; no main/tag/merge changes.
-
-| Original source | Stage8 base | Stage9 original SHA | Work / standalone mapping |
-| --- | --- | --- | --- |
-| Rocket Chip local stage9 | bccfc47a4aecbef59aa4d4c73f15159b78ab123c | bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2 | bounded classifier, WB observer, shadow-stack mirror, S CSRs; patches/rocket-chip/0014-memory-classification.patch |
-| Linux local stage9 | 275125fabacde9e83f4bff6863bf25012537e0ed | e341319bc75a2c2c1443d4b8654c9270f922aaf8 | epoch ownership/select/reset/frozen sidecar export; integration/ssa/linux/0007-linux-memory-classification.patch |
-| Chipyard local stage9 | 897f5d3043aeab785ef4700bc0c4b6f45c25cbc9 | 845de089885afe175d941d8e6a2211ea0829d629 | source gitlink, independent rule1 reference, RTL/user fixtures and build/run/grade entries; standalone integration/ssa |
-| Chipyard local stage9 followup | previous row | 8be38abe85e787ff135ea14fd0513ae6b51a11c6 | host export ordering/progress/overflow checks, Linux scheduler chronology, ABI documentation |
-| OpenSBI | 43f02ffb329d9c86b2ff2138dc450b2060778ffe | unchanged | fixed Cache/DTLB profiles retained; no stage9 firmware patch |
-
-Patch author/date/message are retained in each mail patch. Original source SHAs
-remain in local development repositories/backup branches; the new upstream-based
-reconstruction is judged by exact tree/file hashes, not a claim that local source
-commit IDs can be fetched publicly. Later host-only followups do not imply a new
-RTL/image build. The implementation checkpoint is maintenance commit d247fce86372a9581a3efff427b63369e98f426b; final Linux evidence and documentation follow it on the same branch.
-
-Stage9 source followup `dbaaa7ca454445be679de9206baa80c08a6f2561` records explicit mixed-stream reference examples
-and strict old/partial/new exec observation checks. It changes host verification
-only; user fixture, kernel, RTL and frozen running images remain unchanged.
-
-Host-only followup `6b0c03dbf8dc941c636dba90b039d204e22da10f` fixes the checker's preempt-argument assumption.
-The pinned PREEMPT_NONE RISC-V IRQ-return path tails schedule(), which invokes
-__schedule(false); runnable state, involuntary switches, timer cause and sample
-chronology prove user preemption. No hardware/kernel/user-image rerun was needed.
-
-Stage9 final acceptance: one original native run completed0, normal powerdown,
-26/26gates,7sessions/20records. Semantic owner-swap mutation retains valid checksums
-but fails attribution. Complete source heads, host-only followups and cached-model
-reuse are recorded in evidence/stage9/source-commits.json and summary.json.
-
-Final Chipyard suite head `6abb37ea5316bb2cad9b8280b2485cf631d482c8` adds exact capacity/FIFO
-metadata accounting (139inputs=130classified+9dropped,54evictions) to the unchanged
-actual RTL logs. Kernel/RTL/image sources are unchanged by the host followups.
-
-
-## Automatic launch
-
-| Original repository / stage9 base | New source commit | Meaning / standalone mapping |
-| --- | --- | --- |
-| Linux e341319bc75a2c2c1443d4b8654c9270f922aaf8 | 8b865bfe4c40332446227e2fbf6b442ab0bc651a | trusted exec policy/fork clearing/ELF readiness/exit reason; integration/ssa/linux/0008-linux-transparent-launch.patch |
-| Chipyard 6abb37ea5316bb2cad9b8280b2485cf631d482c8 | 4dbc51534c13a2fcf950bb9322b68ab6892a2eac | ordinary static/dynamic/DSO/capacity fixtures, trusted init, builder/runner/policy; standalone integration/ssa |
-| Chipyard previous row | 59b7d7916f8c0367733a6cbee2d342af13abf775 | host automatic-session bijection/profile/uid checks and semantic negative tool |
-| Rocket bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2 | unchanged | stage9 model/hash reused, no Scala/ROM edits |
-| OpenSBI 43f02ffb329d9c86b2ff2138dc450b2060778ffe | unchanged | fixed Cache/DTLB profile entry retained |
-
-Source commit messages/authorship remain in local source repos and the Linux
-mail patch; public reconstruction starts at the unchanged accessible bases.
-Stage10 maintenance starts at24fa1cde07a7af6de77c136789867ce730c60f91 on its own
-branch. Native acceptance is still running at this implementation checkpoint.
-
-Root followup3c07385f8aac9acfaeb65d87e8a71aec557486dd selects uncompressed
-initramfs for --transparent only. A gzip preparation boot was superseded before
-user acceptance to avoid long RTL software inflate of the new standard loader.
-The same target ELFs and unchanged kernel monitoring source/model are retained.
-
-Host-only followup 0d88f5baa08268d82728784cdc41be023bbf8ee9 requires complete noncapacity sidecar coverage.
-The same live native run has verified static, successful/failed exec, fork/signal,
-resource and automatic A/B preemption prefixes. Full dynamic/capacity/manual
-acceptance is pending; no C05 final acceptance is implied by this checkpoint.
-
-Host followups5de3401c0c7c209aa414de5319340d8c4b2c22ac and9ac5adcecba65f3906d9c0b70fe1741000ff0415 add an independent ELF-linked64-record
-capacity oracle. Row-capacity loss is explicitly dropped>0/semantic-complete=false;
-it does not set the separate invalid-shadow-stack bit. Hardware/kernel/image
-are unchanged. The same real Linux run completed the musl dynamic prefix:
-105records/7chunks, return0, one abandoned loader continuationRID10.
-
-The real automatic prefix completed at76.3Mcycles:48semantic gates,10sessions/
-195base records, dynamic105records/7chunks (one loader continuation abandoned),
-capacity64records/4chunks with63classification rows/1explicit drop/48evictions.
-Ten independent ELF-linked capacity gates passed. Later host followups add
-actual dynamic application/inclusive subtree checks and structured truncation
-rejection; all source SHAs/dates/messages are in stage10/source-commits.json.
-The appended original manual regression and final native shutdown are still
-running at this checkpoint, so C05 is not yet marked finally accepted.
-
-
-Stage10 final acceptance completed on the ORIGINAL native run: process/runner/
-both checkers0, normal powerdown at~102.3Mcycles,27484.93host seconds.50automatic
-and26old manual gates pass, with17sessions/215records completely exported/released.
-Independent ELF capacity10, automatic semantic/terminal negatives4 and the manual
-repaired-checksum owner negative pass. Public installed checkers replay the same
-capture with exactly equal JSON; no second native simulation/model build is claimed.
-Chipyard final suite7db7a2a43da0149319cb16906666ae2afbb072e9 includes the host-only
-inclusive subtree/address/structured-truncation followups. Linux remains8b865...;
-Rocket/OpenSBI are unchanged. Full source heads/author dates/messages are in
-source-commits.json. Final evidence and documentation follow maintenance checkpoint
-848ba24f8efd42da690efed7207e5823f0de09ec on the SAME stage10 branch/Draft PR9.
-C05 is now accepted only for the controlled tested ELF policy; all limitations,
-remaining overall review and performance work remain explicit.
-
-Final Chipyard host-only followup f05e1a0dfa274f5505c80445cdc0d0205af54d86 adds a portable completed-run
-postcheck entry: original native/log receipt verification,50automatic/26manual/
-10capacity checks and the automatic/manual semantic negatives. It was executed
-against the same finished capture in both development and installed public suites;
-no frozen image/model/RTL source changed and no new native run was performed.
-
-## Final validation and cost evaluation
-
-From stage10 `6ef19d6e85dfe55983794342620a026005a67d20`, stage11 preserves all
-prior source commits, branches and tags. Source mapping is recorded in
-`evidence/stage11/source-commits.json`. Linux adds opt-in compile-time cost probes
-and a forward declaration of required classification sidecars; Chipyard adds
-independent workload-boundary measurements and strengthens the host checker.
-The Rocket/OpenSBI source versions remain unchanged. Public baseline fetch,
-patches, new Scala/RTL/Verilator build and low-level regressions have passed;
-At that source checkpoint, Linux/performance acceptance was pending. Completion
-is recorded below; the earlier checkpoint did not claim an integration result. See `docs/VALIDATION.md` and `docs/INTEGRATION.md`.
-
-Stage11 source development sequence (original commits retained in local source
-repositories, consolidated into this maintenance source checkpoint):
-
-| Repository | Original SHA | Work |
-|---|---|---|
-| Linux | bf5a1bc53f4131b9b7be9648f80b32d061cb0a09 | Optional target-counter cost probes |
-| Linux | 3e7c06efefeda043f100ab635b1729ce7a11afd8 | Declare expected classification sidecar |
-| Chipyard | 75de1249aac7fa9a0751d1b174c884ba4efbe0ef | Workload, runner and contract integration |
-| Chipyard | 3b0bf4ff1e0c8c8839bd0f323de7ba3ee07e177a | Complete CSR/measurement-integrity checks |
-| Chipyard | 096d24d15887025b9f08b29dd3403d0ac156a0eb | Matched manual/automatic Linux comparison |
-| Chipyard | bc07c7710c24f111e9c4f88ac199fb1794748ef5 | Normalize progress-interleaved performance rows |
-
-New maintenance scripts final.py/integrate.py, review reports and evidence are
-project delivery additions; no full upstream history is imported. Kernel patch
-mail headers retain the original source author/date/message. Later evidence
-completion will update the stage11 acceptance state without rewriting this
-source checkpoint or any preceding stage history.
-
-The final Linux cost checker also reconstructs timer A→B→A chronology and sums
-raw pause samples independently before comparing all four rebased frame fields.
-It requires closed context exports and declared complete classifier coverage in
-the benchmark (unlike the intentionally incomplete loader/capacity regression).
-This is a host-oracle addition and does not change the executing target image.
-
-Stage11 completion retains the source checkpoint history above. The production
-Linux run actually finished native0/powerdown with51automatic/26manual and
-10ELF/5automatic/3manual negatives. Both150-work performance matrices completed;
-only missing direct accounting proof was supplemented in another actual Linux
-capture. Original failed host receipts are retained and distinguished from the
-successful native simulations. See STAGE11/PERFORMANCE/EXPERIMENTS for scope.
-
-| Repository | Original SHA | Final addition |
-|---|---|---|
-| Chipyard |905ff526ba063892403cd33bc0373bf84dce0610| Strict Linux timer chronology and independently summed pause oracle |
-| Chipyard |d756a546e27d40100752a0ff7c73b796c77d4fde| Conditional two-record native companion, explicit composite coverage, exact counter identities and semantic negative checks |
-
-These source changes are delivered as standalone project fixtures/oracles and
-manifest updates, not duplicated in RTL patches. Kernel3e7c06efe, Rocketbb5b1c26
-and OpenSBI43f02ffb remain unchanged. Default full-performance loadable bytes are
-identical after the conditional test addition. Final maintenance evidence/report
-commit consolidates the already pushed stage11 checkpoints with these results;
-original author/message history remains reachable. Authorized integration uses
-merge commits, preserving all stage heads and v0.1.0 rather than squashing them.
-
-## Functional naming and public presentation
-
-The [reference map](docs/HISTORY_MAP.json) records every branch/document rename with its original commit target. All historical names in this file identify their original records. The accepted v0.2.0 tags and raw evidence are unchanged; current navigation and the English report are a documentary follow-up.
-
-The public-presentation commit adds the English report and functional navigation, preserves v0.2.0 implementation bytes, replays the accepted host oracles, and validates a fresh public-baseline patch application. No simulator rerun or history rewrite is attributed to this documentation update. Detailed receipts are in `evidence/publication/`.
+# Development history and source provenance
+
+SSA-HPM is a standalone patch-and-validation repository. Original commits remain reachable in their development archives; their identities, authors and dates are recorded below. Imported commits do not inherit upstream Git ancestry. Original format-patch headers remain unchanged.
+
+## Original development and imported commits
+
+| Repository | Original commit | Author | Author date | Original subject | Imported commit |
+|---|---|---|---|---|---|
+| chipyard | `c9f704c0364ba5cafb83c4ec01478b90a40d5b1a` | Kimberley-Inti | 2026-03-04T22:27:08+08:00 | Initial commit | `b4be26b28b237996713b47f75cb9619cdc242d3b` |
+| chipyard | `90bfa6c768b8fd1258d38cdffcfde862dfcc669d` | Kimberley-Inti | 2026-03-04T22:59:12+08:00 | Update .gitignore and remove untracked build artifacts | Metadata-only source record |
+| rocket-chip | `9c6d44169365b1423f5aa8282def76b20e6c04fb` | Kimberley-Inti | 2026-03-05T22:41:45+08:00 | Update HPM logic in RocketCore | `e47da1fbea907868f45c3eeb56d8a5f7e1a41262` |
+| chipyard | `6723407ba5ffb05d01757ef1c5d24a20218caffa` | Kimberley-Inti | 2026-03-05T22:42:48+08:00 | Track modified rocket-chip for SSA-HPM | Metadata-only source record |
+| chipyard | `4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1` | Kimberley-Inti | 2026-03-06T23:35:12+08:00 | Relink rocket-chip submodule to my personal fork | Metadata-only source record |
+| chipyard | `710f951e2a3ec3ec1c050889c9ccf35e0e0ede1e` | Kimberley-Inti | 2026-03-22T21:26:42+08:00 | ssa_trap_mode connection logic | `826f5082206beef41b461c847ca4b0ca46bc60c3` |
+| rocket-chip | `1543ea5445423aefae78c52b37c2521abea42fdc` | Kimberley-Inti | 2026-03-22T21:26:42+08:00 | ssa_trap_mode connection logic | `22ac074de75b476f2fcd44d01fa38039afe9e40a` |
+| chipyard | `01b1aa69bce35971c9912e5706860d848adc6900` | Kimberley-Inti | 2026-03-28T08:01:21+08:00 | modified code sequence | `1f19a00316cebd0e9bd4b5ed784dbf0f6e44eeff` |
+| rocket-chip | `1f200edb0eb0832a72d04d8d4f36b912e0e447dd` | Kimberley-Inti | 2026-03-28T08:01:21+08:00 | modified code sequence | `ec73be3357edd13ef4653ec62a1e3074159defa0` |
+| rocket-chip | `d047a854895f008c586487e017f5346c4427c1af` | Kimberley-Inti | 2026-04-01T15:35:41+08:00 | forced exit | `5a37854211a9f1043de1eed9397e145a20ca8caf` |
+| chipyard | `f98d756927cf59cfee20b1183f9247cab7e181b9` | Kimberley-Inti | 2026-04-01T15:35:42+08:00 | forced exit | Metadata-only source record |
+| chipyard | `2cd92122a0fff0c4036d34e77e36470c22311f53` | Kimberley-Inti | 2026-04-12T08:02:41+08:00 | normal exit | Metadata-only source record |
+| rocket-chip | `07a9c3fa809332daa19f8ca99e2573cd0ecaced1` | Kimberley-Inti | 2026-04-12T08:02:41+08:00 | normal exit | `48e9965c45221ff5a427e1e4bc53c2cc86e97ee5` |
+| rocket-chip | `23f5a64f6144cd3ffc7b25d490b48f5d019ee718` | Kimberley-Inti | 2026-04-12T14:46:46+08:00 | normal exit | `1d5ae817964d3b13f1098431d0c4f71209ef59cb` |
+| chipyard | `c2391670d8e1cc62369cfc3e96b58a9a8cc94dda` | Kimberley-Inti | 2026-04-12T14:46:47+08:00 | normal exit | `1d14fa7c7ff95029ee009465f95f30a35646e5a4` |
+| rocket-chip | `539c3b10fee35fe0a2890083dd17c06688a704f8` | Kimberley-Inti | 2026-11-08T23:03:16+08:00 | Preserve inherited uncommitted SSA-HPM implementation | `d8390b3affa5c04d7b4e7b305b88a9f8900bba5a` |
+| rocket-chip | `986407bc6df8d2a67572250f1df9eb2c0edeacf9` | Kimberley-Inti | 2026-11-09T06:18:46+08:00 | Fix SSA-HPM microcode retirement, context dictionary and counter attribution | `bc2b064fd2be342d51774e4c83c895457cf197b6` |
+| chipyard | `375068b6180fa968f86f07fc4b2e1ec104f632ee` | Kimberley-Inti | 2026-11-09T06:19:08+08:00 | Add reproducible SSA-HPM Spike and Rocket RTL validation | `429b78c19191d4973042ac554ae3c71383ad5ff5` |
+
+The machine-readable source records, original branch names and artifact mappings are in [provenance.json](provenance.json). [HISTORY_MAP.json](docs/HISTORY_MAP.json) maps historical branch/document names to functional names without changing original commit identities.
+
+[Complete original source relationships](docs/SOURCE_HISTORY.json) retain the original technical tables, including intermediate source baselines and delivery mappings.
+
+## Implementation patch identities
+
+| Patch | Original commit | Original author | Original author date |
+|---|---|---|---|
+| [integration/ssa/linux/0001-opensbi-rocket-platform.patch](integration/ssa/linux/0001-opensbi-rocket-platform.patch) | `b778927a507e4ebcc43a8ecb8d495562ef48efb3` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 15:26:12 +0800 |
+| [integration/ssa/linux/0001-stack-pointer-declaration.patch](integration/ssa/linux/0001-stack-pointer-declaration.patch) | `3b79ddfa2fb70707ace85385d6722925fffc8eea` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 14:56:49 +0800 |
+| [integration/ssa/linux/0002-linux-task-pools.patch](integration/ssa/linux/0002-linux-task-pools.patch) | `0d6ec76e6f44802adab36e84c8ffd7b65187d91f` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 18:18:07 +0800 |
+| [integration/ssa/linux/0002-opensbi-dtlb-profile.patch](integration/ssa/linux/0002-opensbi-dtlb-profile.patch) | `c83d3aadaef39a9ddb3cb2e25bb89399ff856126` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 11 Nov 2026 00:04:46 +0800 |
+| [integration/ssa/linux/0003-linux-exec-lifecycle.patch](integration/ssa/linux/0003-linux-exec-lifecycle.patch) | `f327da924b3515e2d4c33bc1a8eb1e0c38807d66` | Kimberley-Inti <KimIntizar@hotmail.com> | Tue, 10 Nov 2026 13:53:59 +0800 |
+| [integration/ssa/linux/0003-opensbi-cache-profile.patch](integration/ssa/linux/0003-opensbi-cache-profile.patch) | `43f02ffb329d9c86b2ff2138dc450b2060778ffe` | Kimberley-Inti <KimIntizar@hotmail.com> | Thu, 12 Nov 2026 13:59:44 +0800 |
+| [integration/ssa/linux/0004-linux-dtlb-event.patch](integration/ssa/linux/0004-linux-dtlb-event.patch) | `07fb4b1efd171f1453b1bcd13ce113a7e6f1b307` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 11 Nov 2026 00:04:45 +0800 |
+| [integration/ssa/linux/0005-linux-result-export.patch](integration/ssa/linux/0005-linux-result-export.patch) | `b92b11252f5b9a5ce2a3c33298fa3b8bef93c836` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 11 Nov 2026 15:45:30 +0800 |
+| [integration/ssa/linux/0006-linux-cache-profile.patch](integration/ssa/linux/0006-linux-cache-profile.patch) | `275125fabacde9e83f4bff6863bf25012537e0ed` | Kimberley-Inti <KimIntizar@hotmail.com> | Thu, 12 Nov 2026 13:59:44 +0800 |
+| [integration/ssa/linux/0007-linux-memory-classification.patch](integration/ssa/linux/0007-linux-memory-classification.patch) | `e341319bc75a2c2c1443d4b8654c9270f922aaf8` | Kimberley-Inti <KimIntizar@hotmail.com> | Fri, 13 Nov 2026 13:32:38 +0800 |
+| [integration/ssa/linux/0008-linux-transparent-launch.patch](integration/ssa/linux/0008-linux-transparent-launch.patch) | `8b865bfe4c40332446227e2fbf6b442ab0bc651a` | Kimberley-Inti <KimIntizar@hotmail.com> | Fri, 13 Nov 2026 20:32:01 +0800 |
+| [integration/ssa/linux/0009-linux-cost-probes.patch](integration/ssa/linux/0009-linux-cost-probes.patch) | `bf5a1bc53f4131b9b7be9648f80b32d061cb0a09` | Kimberley-Inti <KimIntizar@hotmail.com> | Sat, 14 Nov 2026 14:20:56 +0800 |
+| [integration/ssa/linux/0010-linux-classification-contract.patch](integration/ssa/linux/0010-linux-classification-contract.patch) | `3e7c06efefeda043f100ab635b1729ce7a11afd8` | Kimberley-Inti <KimIntizar@hotmail.com> | Sat, 14 Nov 2026 14:39:54 +0800 |
+| [patches/chipyard/0001-constellation-dependency.patch](patches/chipyard/0001-constellation-dependency.patch) | `710f951e2a3ec3ec1c050889c9ccf35e0e0ede1e` | Kimberley-Inti <KimIntizar@hotmail.com> | Sun, 22 Mar 2026 21:26:42 +0800 |
+| [patches/chipyard/0002-fesvr-verilator-build.patch](patches/chipyard/0002-fesvr-verilator-build.patch) | `375068b6180fa968f86f07fc4b2e1ec104f632ee` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 06:19:08 +0800 |
+| [patches/chipyard/0003-dtlb-hpm-config.patch](patches/chipyard/0003-dtlb-hpm-config.patch) | `8d07f53b8ed7fa36eae0da59d35f07cf6fd861d3` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 11 Nov 2026 00:19:30 +0800 |
+| [patches/history/chipyard/0001-original-tests.patch](patches/history/chipyard/0001-original-tests.patch) | `c9f704c0364ba5cafb83c4ec01478b90a40d5b1a` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 4 Mar 2026 22:27:08 +0800 |
+| [patches/history/chipyard/0002-legacy-test-revision.patch](patches/history/chipyard/0002-legacy-test-revision.patch) | `01b1aa69bce35971c9912e5706860d848adc6900` | Kimberley-Inti <KimIntizar@hotmail.com> | Sat, 28 Mar 2026 08:01:21 +0800 |
+| [patches/history/chipyard/0003-legacy-microcode-build.patch](patches/history/chipyard/0003-legacy-microcode-build.patch) | `c2391670d8e1cc62369cfc3e96b58a9a8cc94dda` | Kimberley-Inti <KimIntizar@hotmail.com> | Sun, 12 Apr 2026 14:46:47 +0800 |
+| [patches/rocket-chip/0001-9c6d44169.patch](patches/rocket-chip/0001-9c6d44169.patch) | `9c6d44169365b1423f5aa8282def76b20e6c04fb` | Kimberley-Inti <KimIntizar@hotmail.com> | Thu, 5 Mar 2026 22:41:45 +0800 |
+| [patches/rocket-chip/0002-1543ea544.patch](patches/rocket-chip/0002-1543ea544.patch) | `1543ea5445423aefae78c52b37c2521abea42fdc` | Kimberley-Inti <KimIntizar@hotmail.com> | Sun, 22 Mar 2026 21:26:42 +0800 |
+| [patches/rocket-chip/0003-1f200edb0.patch](patches/rocket-chip/0003-1f200edb0.patch) | `1f200edb0eb0832a72d04d8d4f36b912e0e447dd` | Kimberley-Inti <KimIntizar@hotmail.com> | Sat, 28 Mar 2026 08:01:21 +0800 |
+| [patches/rocket-chip/0004-d047a8548.patch](patches/rocket-chip/0004-d047a8548.patch) | `d047a854895f008c586487e017f5346c4427c1af` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 1 Apr 2026 15:35:41 +0800 |
+| [patches/rocket-chip/0005-07a9c3fa8.patch](patches/rocket-chip/0005-07a9c3fa8.patch) | `07a9c3fa809332daa19f8ca99e2573cd0ecaced1` | Kimberley-Inti <KimIntizar@hotmail.com> | Sun, 12 Apr 2026 08:02:41 +0800 |
+| [patches/rocket-chip/0006-23f5a64f6.patch](patches/rocket-chip/0006-23f5a64f6.patch) | `23f5a64f6144cd3ffc7b25d490b48f5d019ee718` | Kimberley-Inti <KimIntizar@hotmail.com> | Sun, 12 Apr 2026 14:46:46 +0800 |
+| [patches/rocket-chip/0007-539c3b10f.patch](patches/rocket-chip/0007-539c3b10f.patch) | `539c3b10fee35fe0a2890083dd17c06688a704f8` | Kimberley-Inti <KimIntizar@hotmail.com> | Sun, 8 Nov 2026 23:03:16 +0800 |
+| [patches/rocket-chip/0008-986407bc6.patch](patches/rocket-chip/0008-986407bc6.patch) | `986407bc6df8d2a67572250f1df9eb2c0edeacf9` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 06:18:46 +0800 |
+| [patches/rocket-chip/0009-trap-context-isolation.patch](patches/rocket-chip/0009-trap-context-isolation.patch) | `3f4ab938660454b101c67f6929bfebae5be1a138` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 09:05:25 +0800 |
+| [patches/rocket-chip/0010-sv39-pc-width.patch](patches/rocket-chip/0010-sv39-pc-width.patch) | `41d297689890296699d4a45699bf7e5791d33b96` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 15:55:54 +0800 |
+| [patches/rocket-chip/0011-linux-user-pool-privileges.patch](patches/rocket-chip/0011-linux-user-pool-privileges.patch) | `1c78413459344d7ca1d2b3cdedbdc4a16133dee9` | Kimberley-Inti <KimIntizar@hotmail.com> | Mon, 9 Nov 2026 18:16:47 +0800 |
+| [patches/rocket-chip/0012-dtlb-request-attribution.patch](patches/rocket-chip/0012-dtlb-request-attribution.patch) | `469bfac7de26bfbb03298787ad030898c6de24c9` | Kimberley-Inti <KimIntizar@hotmail.com> | Wed, 11 Nov 2026 00:19:30 +0800 |
+| [patches/rocket-chip/0013-cache-event-trace.patch](patches/rocket-chip/0013-cache-event-trace.patch) | `bccfc47a4aecbef59aa4d4c73f15159b78ab123c` | Kimberley-Inti <KimIntizar@hotmail.com> | Thu, 12 Nov 2026 14:11:23 +0800 |
+| [patches/rocket-chip/0014-memory-classification.patch](patches/rocket-chip/0014-memory-classification.patch) | `bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2` | Kimberley-Inti <KimIntizar@hotmail.com> | Fri, 13 Nov 2026 13:46:31 +0800 |
+
+## Technical evolution
+
+Calling-context retirement and dictionary fixes established parent-sensitive record reuse. Trap isolation preserves application frames across privileged execution. Per-task physical pools and pause/resume snapshot correction provide single-hart process accounting. Exec freezes the old image, preserves failed pre-commit replacements, and starts a clean new session. Native PTW and D-cache request profiles extend interval accounting. Bounded chunked export separates transport integrity, abandoned calls and classification coverage. Rule1 classifies retired integer accesses with bounded session-local histories. Trusted automatic launch enables audited ordinary ELF targets. The final validation combines independent reconstruction, RTL/Linux correctness checks and target-side performance measurements.
+
+The original loader-managed virtual-pool and helper-SRAM proposals are adapted to kernel-managed physical pools and generated private ROMs. Executable classification and lifecycle rules are project design supplements; [acceptance](docs/ACCEPTANCE.md) identifies their scope.
+
+## Accepted releases and source identities
+
+- `v0.1.0`: `0421e67203e0cfb63d96699f061ffa7d8d00fddf`.
+- `v0.2.0`: `2adbfa5de81f341bd575e8498b370c5a12a02785`, accepted candidate `9c1fdfb0e147c27f7aca58f306e91f532c3fb609`.
+- Final component identities: [source commits](evidence/stage11/source-commits.json).
+- Final behavior and remaining boundaries: [validation](docs/VALIDATION.md), [performance](docs/PERFORMANCE.md), [acceptance](docs/ACCEPTANCE.md).
+
+Failed native/checker evidence and semantic negatives remain alongside final captures. Existing tags and original development history remain unchanged. The [Rocket archive assessment](docs/ROCKET_CHIP_ARCHIVE.md) documents retained development-fork dependencies.

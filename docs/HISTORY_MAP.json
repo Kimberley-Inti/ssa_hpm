@@ -456,5 +456,5 @@
   },
   "stable_evidence": "Raw evidence/stage* paths, original mail-patches, authors, commit messages, hashes and release receipts remain unchanged. These storage identifiers are historical, not reader navigation.",
   "historical_links": "Original documentation is available under the unchanged v0.2.0 tag; closed PR URLs remain stable.",
-  "compatibility_documents": "Former document paths now contain short English links to their functional replacements; current navigation uses the new paths. Original content remains at v0.2.0."
+  "compatibility_documents": "Historical document names are mapped here; obsolete compatibility pages were removed from the current tree. Original files remain available at v0.2.0."
 }

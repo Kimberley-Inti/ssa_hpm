@@ -1,16 +1,4 @@
 {
-  "ps_finished_pilot": {
-    "command": [
-      "ps",
-      "-p",
-      "102933",
-      "-o",
-      "stat,etime"
-    ],
-    "exit_code": 1,
-    "output": "STAT     ELAPSED\n",
-    "meaning": "PID no longer exists; this is not a retrieved simulator native exit status"
-  },
   "interleaving_before": {
     "passed": false,
     "coverage": "host-only synthetic measurement protocol fault injection",

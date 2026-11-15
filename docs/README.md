@@ -20,9 +20,8 @@
 | Full English project report | [PDF](../report/SSA-HPM-report.pdf), [editable source](../report/README.md) |
 | Development provenance | [History](../HISTORY.md), [reference map](HISTORY_MAP.json) |
 | Development fork and preservation | [Rocket Chip archive assessment](ROCKET_CHIP_ARCHIVE.md) |
-| Release provenance and maintenance | [Integration](INTEGRATION.md) |
 
 Raw evidence paths keep their original storage identifiers so hashes and the
 accepted release remain reproducible. Current navigation uses functional names.
 
-[Public presentation checks and reference behavior](PUBLIC_PRESENTATION.md).
+[Evidence organization and verification](EVIDENCE.md).

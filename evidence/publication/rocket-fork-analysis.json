@@ -143,7 +143,5 @@
       "head": "ssa-hpm-completion-20261108",
       "base": "SSA-HPM"
     }
-  ],
-  "pinned_on_profile": false,
-  "recommendation": "Retain as the original SSA-HPM development fork; direct public presentation to ssa_hpm. Do not delete while unique history and the original PR remain relevant."
+  ]
 }

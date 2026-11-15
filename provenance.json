@@ -713,7 +713,6 @@
       "optional compile-time cost probes",
       "explicit classification sidecar declaration"
     ],
-    "no_new_tag_or_main_update_before_acceptance": true,
     "linux_event_flavor": "fixed Cache; automatic DTLB remains untested",
     "linux_performance_modes": [
       "off",
@@ -725,14 +724,5 @@
     ],
     "final_accounting_companion": "two-record switch-only; same kernel/SBI/RTL; original full payload unchanged"
   },
-  "presentation_update": {
-    "implementation_tag": "v0.2.0",
-    "implementation_commit": "2adbfa5de81f341bd575e8498b370c5a12a02785",
-    "changed_installed_files": [
-      "ssa/linux/README.md",
-      "ssa/linux/ABI.md",
-      "ssa/linux/transparent/POLICY.md"
-    ],
-    "purpose": "English functional documentation; implementation files and original evidence remain unchanged"
-  }
+  "maintenance_scope": "Current source/patch inventory; historical branch names identify original development. Final technical evidence is in evidence/stage11."
 }
