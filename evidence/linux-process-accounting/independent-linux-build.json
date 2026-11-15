@@ -61,7 +61,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0001-stack-pointer-declaration.patch"
+        "/home/lxf/chipyard/ssa/linux/stack-pointer-declaration.patch"
       ],
       "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
     },
@@ -69,7 +69,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0002-linux-task-pools.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-task-pools.patch"
       ],
       "cwd": "/tmp/ssa-linux-independent-process-fast/linux"
     },
@@ -77,7 +77,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0001-opensbi-rocket-platform.patch"
+        "/home/lxf/chipyard/ssa/linux/opensbi-rocket-platform.patch"
       ],
       "cwd": "/tmp/ssa-linux-independent-process-fast/opensbi"
     },

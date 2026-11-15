@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "order": "Array order is authoritative; never sort filenames. Conditions preserve existing Linux/OpenSBI build modes.",
+  "components": {
+    "chipyard": {
+      "directory": "patches/chipyard",
+      "url": "https://github.com/ucb-bar/chipyard.git",
+      "base": "2d03d10837fc1a7569d10ae2c91c8132c7fee77d",
+      "accepted_tree": "ba41f91861f379a2ff75953ffb6d712305975f62",
+      "patches": [
+        {
+          "file": "constellation-dependency.patch",
+          "condition": "always",
+          "sha256": "efcdc0ed4fe6736825796178c775c910c8c8db59ccc8b7c6d2b0455cc282a986"
+        },
+        {
+          "file": "fesvr-verilator-build.patch",
+          "condition": "always",
+          "sha256": "cf7e76028fd6f579fa4baff61e6e69f8e673b69119d1a5603c8d42460ebf7704"
+        },
+        {
+          "file": "dtlb-hpm-config.patch",
+          "condition": "always",
+          "sha256": "0bbb1255012fc3b7462e685088db3240bed6c621609c55801879138141cc587f"
+        }
+      ]
+    },
+    "rocket-chip": {
+      "directory": "patches/rocket-chip",
+      "url": "https://github.com/chipsalliance/rocket-chip.git",
+      "base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
+      "accepted_tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+      "patches": [
+        {
+          "file": "hpm-context-tracking.patch",
+          "condition": "always",
+          "sha256": "86fd3bf5529d04960f72fcaf4981cdaacc71c7e44b49b9154108e6a904e0a2f0"
+        },
+        {
+          "file": "trap-mode-routing.patch",
+          "condition": "always",
+          "sha256": "446d42b231daea5a802c75501974a551a83c2c4bfd76a5ea5ef03c8eb6b616d9"
+        },
+        {
+          "file": "trap-signal-placement.patch",
+          "condition": "always",
+          "sha256": "6176222ee9949403a6ce7f76d8b528d7a78dc18ae1954e5300cdb35bd997100d"
+        },
+        {
+          "file": "forced-monitor-exit.patch",
+          "condition": "always",
+          "sha256": "83abda5c23aef99c2afb4ada6797820b4eb900a4e0483711f86e272f868cd36b"
+        },
+        {
+          "file": "normal-monitor-exit.patch",
+          "condition": "always",
+          "sha256": "42700c9b756e396a2bf86915e73d6e3ef9509b102c09d3f2f3d64681db803093"
+        },
+        {
+          "file": "monitor-exit-finalization.patch",
+          "condition": "always",
+          "sha256": "e384353dbe77e7a1b69511987e5eb3dda2f19ff4bcc290b7e7648b428ff9d055"
+        },
+        {
+          "file": "inherited-context-implementation.patch",
+          "condition": "always",
+          "sha256": "9ca7a1a42f6ad9b567da31e617d128530e2d7640119d5871ddda5ca937b87055"
+        },
+        {
+          "file": "context-retirement-attribution.patch",
+          "condition": "always",
+          "sha256": "bd1d3beca9567fdfaaed434124cda88516b4b678dc75a2cc3b3b300efa280609"
+        },
+        {
+          "file": "trap-context-isolation.patch",
+          "condition": "always",
+          "sha256": "468e831c9b61f2c3bba7ffd9d3ea45dcaaae1e684b081395a92b8d8317040662"
+        },
+        {
+          "file": "sv39-pc-width.patch",
+          "condition": "always",
+          "sha256": "05512d932e08d7a2f06a20fd9219467048fc8dea59049f29df23ef41a4c4e48a"
+        },
+        {
+          "file": "linux-user-pool-privileges.patch",
+          "condition": "always",
+          "sha256": "c3d23a321791c37e8711fe031ebf7eb756a330e246a74cd49525306edffd9f84"
+        },
+        {
+          "file": "dtlb-request-attribution.patch",
+          "condition": "always",
+          "sha256": "1440c33517c61df1e1e39bfd775f081fe6d1417bb9c3ff78c0960d407d5897f5"
+        },
+        {
+          "file": "cache-event-trace.patch",
+          "condition": "always",
+          "sha256": "4a163421b88e6135c83a33eace168c0c2fc7acc13ca5e7e53f36abf91cdfd682"
+        },
+        {
+          "file": "memory-classification.patch",
+          "condition": "always",
+          "sha256": "8ce00aa6474562ba1954ea007e74711406580fdd89c0a1318f51e6d85152cb7e"
+        }
+      ]
+    },
+    "linux": {
+      "directory": "integration/ssa/linux",
+      "url": "https://github.com/firesim/linux.git",
+      "base": "5f5fd87b36e21ed59b759b69eebfa1c74955cb37",
+      "accepted_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+      "patches": [
+        {
+          "file": "stack-pointer-declaration.patch",
+          "condition": "always",
+          "sha256": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511"
+        },
+        {
+          "file": "linux-task-pools.patch",
+          "condition": "process",
+          "sha256": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5"
+        },
+        {
+          "file": "linux-exec-lifecycle.patch",
+          "condition": "exec",
+          "sha256": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a"
+        },
+        {
+          "file": "linux-dtlb-event.patch",
+          "condition": "event",
+          "sha256": "5a3977fa4193ddbc59f160cb7706c37e744fc9efc331753d68c1affe9aba6ff4"
+        },
+        {
+          "file": "linux-result-export.patch",
+          "condition": "export",
+          "sha256": "cd5cd9e580f097933e0f93cfd83304c87c3081544fec31471f59dfc5aeee81ff"
+        },
+        {
+          "file": "linux-cache-profile.patch",
+          "condition": "export",
+          "sha256": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526"
+        },
+        {
+          "file": "linux-memory-classification.patch",
+          "condition": "classification",
+          "sha256": "28c5ad48c0fbce21f59160c4d5a6a98e3ae991af2f8562f72e8ce183693acced"
+        },
+        {
+          "file": "linux-transparent-launch.patch",
+          "condition": "transparent",
+          "sha256": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2"
+        },
+        {
+          "file": "linux-cost-probes.patch",
+          "condition": "transparent",
+          "sha256": "eb2829bdc61413c9f64662f560ced1def39a50d82b758679abed89c5e970c91b"
+        },
+        {
+          "file": "linux-classification-contract.patch",
+          "condition": "classification",
+          "sha256": "d0f2888336569eb2b14e28dfbdfe56909b31e01259898aae42f23e2c211f941d"
+        }
+      ]
+    },
+    "opensbi": {
+      "directory": "integration/ssa/linux",
+      "url": "https://github.com/riscv/opensbi.git",
+      "base": "a98258d0b537a295f517bbc8d813007336731fa9",
+      "accepted_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+      "patches": [
+        {
+          "file": "opensbi-rocket-platform.patch",
+          "condition": "always",
+          "sha256": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36"
+        },
+        {
+          "file": "opensbi-dtlb-profile.patch",
+          "condition": "event",
+          "sha256": "7b8941e8a77dd59d39ddc3f3eb025279246767ec3b63927fa0cc22a3231cf8f3"
+        },
+        {
+          "file": "opensbi-cache-profile.patch",
+          "condition": "event",
+          "sha256": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9"
+        }
+      ]
+    },
+    "history-chipyard": {
+      "directory": "patches/history/chipyard",
+      "role": "archive-only; never applied to production reconstruction",
+      "patches": [
+        {
+          "file": "original-tests.patch",
+          "condition": "archive-only",
+          "sha256": "16a7e4634531330972a506ef6884b51e57b3c5899f184cf6e17a9ec54448136a"
+        },
+        {
+          "file": "legacy-test-revision.patch",
+          "condition": "archive-only",
+          "sha256": "fc6dbecbf06fa46729daf6b417f1c921cbcb0be249f81fb88bf69a2f846d3373"
+        },
+        {
+          "file": "legacy-microcode-build.patch",
+          "condition": "archive-only",
+          "sha256": "cdfd5847851bab5c95af9c38b956ba57e66f9b4a5224c6347807822111b3f2de"
+        }
+      ]
+    }
+  }
+}

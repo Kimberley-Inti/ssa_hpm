@@ -129,7 +129,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0001-constellation-dependency.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/constellation-dependency.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final"
     },
@@ -138,7 +138,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/chipyard/0002-fesvr-verilator-build.patch"
+        "/home/lxf/ssa_hpm/patches/chipyard/fesvr-verilator-build.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final"
     },
@@ -147,7 +147,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0001-9c6d44169.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/hpm-context-tracking.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -156,7 +156,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0002-1543ea544.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-mode-routing.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -165,7 +165,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0003-1f200edb0.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-signal-placement.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -174,7 +174,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0004-d047a8548.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/forced-monitor-exit.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -183,7 +183,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0005-07a9c3fa8.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/normal-monitor-exit.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -192,7 +192,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0006-23f5a64f6.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/monitor-exit-finalization.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -201,7 +201,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0007-539c3b10f.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/inherited-context-implementation.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -210,7 +210,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0008-986407bc6.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/context-retirement-attribution.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },
@@ -219,7 +219,7 @@
         "git",
         "am",
         "--keep-cr",
-        "/home/lxf/ssa_hpm/patches/rocket-chip/0009-trap-context-isolation.patch"
+        "/home/lxf/ssa_hpm/patches/rocket-chip/trap-context-isolation.patch"
       ],
       "cwd": "/tmp/ssa-process-rebuild-final/generators/rocket-chip"
     },

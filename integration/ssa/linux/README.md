@@ -123,3 +123,5 @@ The runner reads its actual parent/common symbols with host readelf and records
 its hash. The grader checks exported addresses against these symbols and requires
 at least66 retired user instructions per fixed nop-loop iteration. This does not
 assume exact total counts: own kernel/monitoring costs remain in the intervals.
+
+Patch order is defined by the [explicit series](../../../docs/PATCH_ORDER.md), not by filename sorting.

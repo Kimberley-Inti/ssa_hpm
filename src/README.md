@@ -27,3 +27,5 @@ The browser is generated output: change the patch-authoritative implementation, 
 ## Licensing
 
 Rocket files retain their original headers and [Berkeley](rocket-chip/LICENSE.Berkeley)/[SiFive](rocket-chip/LICENSE.SiFive) notices. Linux monitoring files are GPL-2.0-only; [COPYING](linux/COPYING), [GPL-2.0](linux/LICENSES/preferred/GPL-2.0) and the referenced [syscall note](linux/LICENSES/exceptions/Linux-syscall-note) are included. The OpenSBI platform preserves its BSD-2-Clause notice and [COPYING.BSD](opensbi/COPYING.BSD). See [THIRD_PARTY.md](../THIRD_PARTY.md) for the complete project source/rights policy.
+
+Patch order is defined by the [explicit series](../docs/PATCH_ORDER.md), not by filename sorting.

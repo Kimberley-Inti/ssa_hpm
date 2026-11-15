@@ -65,7 +65,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0001-stack-pointer-declaration.patch"
+        "/home/lxf/chipyard/ssa/linux/stack-pointer-declaration.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -73,7 +73,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0002-linux-task-pools.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-task-pools.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -81,7 +81,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0003-linux-exec-lifecycle.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-exec-lifecycle.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -89,7 +89,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0004-linux-dtlb-event.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-dtlb-event.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -97,7 +97,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0005-linux-result-export.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-result-export.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -105,7 +105,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0006-linux-cache-profile.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-cache-profile.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -113,7 +113,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0007-linux-memory-classification.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-memory-classification.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -121,7 +121,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0008-linux-transparent-launch.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-transparent-launch.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -129,7 +129,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0009-linux-cost-probes.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-cost-probes.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -137,7 +137,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0010-linux-classification-contract.patch"
+        "/home/lxf/chipyard/ssa/linux/linux-classification-contract.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/linux"
     },
@@ -145,7 +145,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0001-opensbi-rocket-platform.patch"
+        "/home/lxf/chipyard/ssa/linux/opensbi-rocket-platform.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/opensbi"
     },
@@ -153,7 +153,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0002-opensbi-dtlb-profile.patch"
+        "/home/lxf/chipyard/ssa/linux/opensbi-dtlb-profile.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/opensbi"
     },
@@ -161,7 +161,7 @@
       "argv": [
         "git",
         "am",
-        "/home/lxf/chipyard/ssa/linux/0003-opensbi-cache-profile.patch"
+        "/home/lxf/chipyard/ssa/linux/opensbi-cache-profile.patch"
       ],
       "cwd": "/tmp/ssa-hpm-stage11/linux-candidate/opensbi"
     },

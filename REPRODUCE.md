@@ -153,3 +153,5 @@ A fresh external directory fetches fixed public baselines and applies the compon
 patches. The complete build still uses the commands above. Historical raw log
 paths map through [EVIDENCE_PATHS.json](docs/EVIDENCE_PATHS.json); their bytes and
 hashes are preserved.
+
+Patch order is defined by the [explicit series](docs/PATCH_ORDER.md), not by filename sorting.

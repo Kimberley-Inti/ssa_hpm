@@ -11,7 +11,7 @@ p.add_argument('workspace',type=pathlib.Path)
 p.add_argument('--report',type=pathlib.Path)
 a=p.parse_args();work=a.workspace.resolve()
 if work.exists() and any(work.iterdir()):p.error('workspace must be absent or empty')
-m=json.loads((release/'provenance.json').read_text());commands=[]
+m=json.loads((release/'provenance.json').read_text());series=json.loads((release/'integration/ssa/patch-series.json').read_text())['components'];commands=[]
 env=os.environ.copy();env.update(GIT_COMMITTER_NAME='SSA-HPM reproduction',GIT_COMMITTER_EMAIL='reproduction@localhost')
 def run(args,cwd=None):
     commands.append(dict(argv=list(map(str,args)),cwd=str(cwd) if cwd else None))
@@ -29,9 +29,13 @@ try:
     rocket=work/'generators/rocket-chip'
     init(rocket,m['rocket_chip']['url'],m['rocket_chip']['base'])
     for kind,repo in [('chipyard',work),('rocket-chip',rocket)]:
-        for patch in sorted((release/'patches'/kind).glob('*.patch')):
+        for item in series[kind]['patches']:
+            patch=release/series[kind]['directory']/item['file']
+            assert hashlib.sha256(patch.read_bytes()).hexdigest()==item['sha256'],str(patch)
             print('APPLY',patch.relative_to(release),flush=True)
             run(['git','am','--keep-cr',patch],repo)
+    chipyard_tree=run(['git','rev-parse','HEAD^{tree}'],work).strip()
+    assert chipyard_tree==series['chipyard']['accepted_tree'],chipyard_tree
     tree=run(['git','rev-parse','HEAD^{tree}'],rocket).strip()
     assert tree==m['rocket_chip']['expected_tree'],(tree,m['rocket_chip']['expected_tree'])
     # Tests are supplied as standalone project files, not duplicated in patches.
@@ -49,7 +53,7 @@ try:
         checks[rel]=actual
     run(['python3','ssa/gen_rom.py','--check'],work)
     result=dict(passed=True,chipyard_base=m['chipyard']['base'],rocket_base=m['rocket_chip']['base'],
-                rocket_tree=tree,exact_file_hashes=checks,commands=commands)
+                rocket_tree=tree,chipyard_patch_tree=chipyard_tree,exact_file_hashes=checks,commands=commands)
 except subprocess.CalledProcessError as e:
     print(e.output.decode(errors='replace'))
     raise
