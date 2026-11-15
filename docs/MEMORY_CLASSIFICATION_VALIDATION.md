@@ -17,9 +17,9 @@ rejected even after transport checksums are repaired.
 Linux preserves histories across open-frame task switches, resets new exec epochs,
 and exports exclusive category rows with completeness diagnostics. The final
 production capture checks those paths together with 63-row overflow and 48FIFO
-evictions. [Retirement oracle](../evidence/stage11/wb-summary.json),
-[RTL cases](../evidence/stage11/regression-classification/summary.json),
-[production manual checks](../evidence/stage11/linux-unified-final/manual-summary.json)
-and [original dedicated Linux evidence](../evidence/stage9/summary.json) identify
+evictions. [Retirement oracle](../evidence/final-validation/wb-summary.json),
+[RTL cases](../evidence/final-validation/regression-classification/summary.json),
+[production manual checks](../evidence/final-validation/linux-unified-final/manual-summary.json)
+and [original dedicated Linux evidence](../evidence/memory-classification/summary.json) identify
 new execution versus retained historical evidence. Irregular means that the
 specified local pattern was not recognized; the rule has no statistical-randomness test.

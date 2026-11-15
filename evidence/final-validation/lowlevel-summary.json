@@ -329,28 +329,28 @@
     {
       "original": "/tmp/ssa-hpm-stage11/regression-classification/classification-fault.txt",
       "original_sha256": "261c238d90c526782aaae15af8f04850a90f4b5d033399191f70905a61d2f763",
-      "published": "evidence/stage11/regression-classification/classification-fault-excerpt.txt",
+      "published": "evidence/final-validation/regression-classification/classification-fault-excerpt.txt",
       "excerpt_sha256": "70be8e8b91d29054250dcb5929847fc1060a627e697c62bd546f1ae07c3613ad",
       "filter": "Keep unchanged SSA_, native status and UART lines; discard verbose per-cycle disassembly"
     },
     {
       "original": "/tmp/ssa-hpm-stage11/regression-classification/classification.txt",
       "original_sha256": "499e548f65500fa33fdce1fbb4e1598b3941a3c3f660166de14523a2b6bb76bc",
-      "published": "evidence/stage11/regression-classification/classification-excerpt.txt",
+      "published": "evidence/final-validation/regression-classification/classification-excerpt.txt",
       "excerpt_sha256": "476a115b30532b02279644d684559b59ce9591dae6defb8cd763a0c4e10abf23",
       "filter": "Keep unchanged SSA_, native status and UART lines; discard verbose per-cycle disassembly"
     },
     {
       "original": "/tmp/ssa-hpm-stage11/regression-classification/classification-capacity.txt",
       "original_sha256": "59e27dab464e1a2010d84c8945a08dcad55d584acab3c0e369e2ba8ec3224d1e",
-      "published": "evidence/stage11/regression-classification/classification-capacity-excerpt.txt",
+      "published": "evidence/final-validation/regression-classification/classification-capacity-excerpt.txt",
       "excerpt_sha256": "98809dba3ce0396f4adadfe01ab7bfdae176534629bedb78ca767e1d84f5f392",
       "filter": "Keep unchanged SSA_, native status and UART lines; discard verbose per-cycle disassembly"
     },
     {
       "original": "/tmp/ssa-hpm-stage11/regression-classification/classification-patterns.txt",
       "original_sha256": "93617220bcff375bb5325e031b2904a7610fc12ceb23e8c546b9fcaa177b036e",
-      "published": "evidence/stage11/regression-classification/classification-patterns-excerpt.txt",
+      "published": "evidence/final-validation/regression-classification/classification-patterns-excerpt.txt",
       "excerpt_sha256": "ff71dd4a747968985a0b77ace5a4b86ef70caec1a83063bdd863eaa9f7ae8bd7",
       "filter": "Keep unchanged SSA_, native status and UART lines; discard verbose per-cycle disassembly"
     }

@@ -18,7 +18,7 @@ def run(cmd,cwd=w):
 def checkout(name,url,sha):
  d=w/name
  if d.exists():raise SystemExit('Refusing existing source directory: '+str(d))
- d.mkdir();run(['git','init','-b','stage4-linux'],d);run(['git','fetch','--depth=1',url,sha],d);run(['git','checkout','--detach','FETCH_HEAD'],d);return d
+ d.mkdir();run(['git','init','-b','linux-reconstruction'],d);run(['git','fetch','--depth=1',url,sha],d);run(['git','checkout','--detach','FETCH_HEAD'],d);return d
 linux=checkout('linux','https://github.com/firesim/linux.git','5f5fd87b36e21ed59b759b69eebfa1c74955cb37')
 sbi=checkout('opensbi','https://github.com/riscv/opensbi.git','a98258d0b537a295f517bbc8d813007336731fa9')
 run(['git','am',src/'0001-stack-pointer-declaration.patch'],linux)

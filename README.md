@@ -38,6 +38,18 @@ versioned offline results in a reproducible single-hart research implementation.
   reconstructed offline into JSON trees. Session identity, counter metadata,
   checksums, abandoned frames and classification coverage are explicit.
 
+## Browse the implementation
+
+Start with [RocketCore.scala](src/rocket-chip/src/main/scala/rocket/RocketCore.scala),
+[CSR.scala](src/rocket-chip/src/main/scala/rocket/CSR.scala),
+[the Rule1 classifier](src/rocket-chip/src/main/scala/rocket/SSAMemoryClassifier.scala),
+[private microcode](src/rocket-chip/src/main/resources/ssa/microcode.S),
+and [Linux session management](src/linux/kernel/ssa_hpm.c).
+The [source guide](src/README.md) explains each component, licensing and automatic
+reconstruction checks. These fixed-version browsing files are generated from the
+accepted patches. [Full builds](REPRODUCE.md) continue to reconstruct the complete
+upstream trees and use the existing patch-based entry.
+
 ## Architecture
 
 ```mermaid
@@ -174,7 +186,7 @@ The [English report](report/SSA-HPM-report.pdf) uses the supplied ACL LaTeX layo
 [editable source and the Overleaf ZIP](report/README.md) include figures and references.
 [Development history](HISTORY.md) and the [reference map](docs/HISTORY_MAP.json)
 preserve original commits, former branch/document names and immutable evidence
-locations. [`v0.2.0`](https://github.com/Kimberley-Inti/ssa_hpm/releases/tag/v0.2.0)
+identities. [Evidence directory mappings](docs/EVIDENCE_PATHS.json) preserve historical paths while current files use functional names. [`v0.2.0`](https://github.com/Kimberley-Inti/ssa_hpm/releases/tag/v0.2.0)
 keeps the accepted implementation; subsequent presentation commits organize the
 same implementation for public reading.
 

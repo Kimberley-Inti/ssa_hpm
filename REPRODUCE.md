@@ -46,7 +46,7 @@ from v0.2.0; current presentation/report commits update documentation separately
 Prerequisites are Git, Python3, RISC-V GCC/binutils, Spike, Java/sbt, Verilator and
 matching Chipyard dependencies. The accepted host used Ubuntu22.04, GCC15.1.0,
 Verilator4.226, Spike1.1.1-dev, Java17 and Python3.12.12. Exact observations are in
-[evidence](evidence/stage11/tools.json). Linux bootstrap extracts a pinned Ubuntu
+[evidence](evidence/final-validation/tools.json). Linux bootstrap extracts a pinned Ubuntu
 binutils package project-locally; it does not require replacing the system linker.
 
 ```sh
@@ -136,6 +136,20 @@ fixture entries. Automatic DTLB is outside the validated combination matrix.
 
 Actual commands, source/model/image hashes, native codes, normal shutdown and
 checker coverage are indexed in [Validation](docs/VALIDATION.md) and the
-[accepted summary](evidence/stage11/summary.json). [Performance](docs/PERFORMANCE.md)
+[accepted summary](evidence/final-validation/summary.json). [Performance](docs/PERFORMANCE.md)
 defines sampling/probe/IRQ/console boundaries. [Report sources](report/README.md)
 provide an independent document-build entry; they do not trigger long simulations.
+
+## Source-browser consistency
+
+The generated [source browser](src/README.md) is separate from build inputs.
+Reconstruct and compare its accepted component trees with:
+
+```sh
+python3 scripts/source_browser.py check --work /tmp/ssa-browser-independent
+```
+
+A fresh external directory fetches fixed public baselines and applies the component
+patches. The complete build still uses the commands above. Historical raw log
+paths map through [EVIDENCE_PATHS.json](docs/EVIDENCE_PATHS.json); their bytes and
+hashes are preserved.

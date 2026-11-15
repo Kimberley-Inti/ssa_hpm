@@ -77,7 +77,7 @@ The original loader-managed virtual-pool and helper-SRAM proposals are adapted t
 
 - `v0.1.0`: `0421e67203e0cfb63d96699f061ffa7d8d00fddf`.
 - `v0.2.0`: `2adbfa5de81f341bd575e8498b370c5a12a02785`, accepted candidate `9c1fdfb0e147c27f7aca58f306e91f532c3fb609`.
-- Final component identities: [source commits](evidence/stage11/source-commits.json).
+- Final component identities: [source commits](evidence/final-validation/source-commits.json).
 - Final behavior and remaining boundaries: [validation](docs/VALIDATION.md), [performance](docs/PERFORMANCE.md), [acceptance](docs/ACCEPTANCE.md).
 
 Failed native/checker evidence and semantic negatives remain alongside final captures. Existing tags and original development history remain unchanged. The [Rocket archive assessment](docs/ROCKET_CHIP_ARCHIVE.md) documents retained development-fork dependencies.

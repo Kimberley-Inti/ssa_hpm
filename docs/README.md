@@ -21,7 +21,9 @@
 | Development provenance | [History](../HISTORY.md), [reference map](HISTORY_MAP.json) |
 | Development fork and preservation | [Rocket Chip archive assessment](ROCKET_CHIP_ARCHIVE.md) |
 
-Raw evidence paths keep their original storage identifiers so hashes and the
-accepted release remain reproducible. Current navigation uses functional names.
+Evidence directories use functional names. Original raw log bytes and hashes
+remain unchanged; the path map preserves their historical locations.
 
 [Evidence organization and verification](EVIDENCE.md).
+
+[Core implementation browser](../src/README.md) · [Historical evidence path map](EVIDENCE_PATHS.json).

@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "purpose": "Read-only source browser; build inputs remain the pinned patches.",
+  "components": {
+    "rocket-chip": {
+      "url": "https://github.com/chipsalliance/rocket-chip.git",
+      "base": "44b0b8249279d25bd75ea693b725d9ff1b96e2ab",
+      "accepted_commit": "bb5b1c26a8dae5d5afee716a1636b55a1bfe1ed2",
+      "accepted_tree": "0c41414a848beded9c96acc413a3d85eec00ef9b",
+      "patches": {
+        "patches/rocket-chip/0001-9c6d44169.patch": "86fd3bf5529d04960f72fcaf4981cdaacc71c7e44b49b9154108e6a904e0a2f0",
+        "patches/rocket-chip/0002-1543ea544.patch": "446d42b231daea5a802c75501974a551a83c2c4bfd76a5ea5ef03c8eb6b616d9",
+        "patches/rocket-chip/0003-1f200edb0.patch": "6176222ee9949403a6ce7f76d8b528d7a78dc18ae1954e5300cdb35bd997100d",
+        "patches/rocket-chip/0004-d047a8548.patch": "83abda5c23aef99c2afb4ada6797820b4eb900a4e0483711f86e272f868cd36b",
+        "patches/rocket-chip/0005-07a9c3fa8.patch": "42700c9b756e396a2bf86915e73d6e3ef9509b102c09d3f2f3d64681db803093",
+        "patches/rocket-chip/0006-23f5a64f6.patch": "e384353dbe77e7a1b69511987e5eb3dda2f19ff4bcc290b7e7648b428ff9d055",
+        "patches/rocket-chip/0007-539c3b10f.patch": "9ca7a1a42f6ad9b567da31e617d128530e2d7640119d5871ddda5ca937b87055",
+        "patches/rocket-chip/0008-986407bc6.patch": "bd1d3beca9567fdfaaed434124cda88516b4b678dc75a2cc3b3b300efa280609",
+        "patches/rocket-chip/0009-trap-context-isolation.patch": "468e831c9b61f2c3bba7ffd9d3ea45dcaaae1e684b081395a92b8d8317040662",
+        "patches/rocket-chip/0010-sv39-pc-width.patch": "05512d932e08d7a2f06a20fd9219467048fc8dea59049f29df23ef41a4c4e48a",
+        "patches/rocket-chip/0011-linux-user-pool-privileges.patch": "c3d23a321791c37e8711fe031ebf7eb756a330e246a74cd49525306edffd9f84",
+        "patches/rocket-chip/0012-dtlb-request-attribution.patch": "1440c33517c61df1e1e39bfd775f081fe6d1417bb9c3ff78c0960d407d5897f5",
+        "patches/rocket-chip/0013-cache-event-trace.patch": "4a163421b88e6135c83a33eace168c0c2fc7acc13ca5e7e53f36abf91cdfd682",
+        "patches/rocket-chip/0014-memory-classification.patch": "8ce00aa6474562ba1954ea007e74711406580fdd89c0a1318f51e6d85152cb7e"
+      }
+    },
+    "linux": {
+      "url": "https://github.com/firesim/linux.git",
+      "base": "5f5fd87b36e21ed59b759b69eebfa1c74955cb37",
+      "accepted_commit": "3e7c06efefeda043f100ab635b1729ce7a11afd8",
+      "accepted_tree": "c937114e57032e8f896bc853d1d63ff16e9bf8a7",
+      "patches": {
+        "integration/ssa/linux/0001-stack-pointer-declaration.patch": "24215db7b03ef75fef8cf297bac009c423d14d6f1f854f1d4c06923cace57511",
+        "integration/ssa/linux/0002-linux-task-pools.patch": "be1d436a54039fe846f404fbc9a084c23bba2b0ceb24d86fc07673730277d4d5",
+        "integration/ssa/linux/0003-linux-exec-lifecycle.patch": "733922a3e2667078f48a7ef2f0d9e64f6a3f3d58abc1676962463e1a0766615a",
+        "integration/ssa/linux/0004-linux-dtlb-event.patch": "5a3977fa4193ddbc59f160cb7706c37e744fc9efc331753d68c1affe9aba6ff4",
+        "integration/ssa/linux/0005-linux-result-export.patch": "cd5cd9e580f097933e0f93cfd83304c87c3081544fec31471f59dfc5aeee81ff",
+        "integration/ssa/linux/0006-linux-cache-profile.patch": "dba7054695d19628a5da93b6e5c1ae78fb4e778a4e21c6d92812b4e76efb3526",
+        "integration/ssa/linux/0007-linux-memory-classification.patch": "28c5ad48c0fbce21f59160c4d5a6a98e3ae991af2f8562f72e8ce183693acced",
+        "integration/ssa/linux/0008-linux-transparent-launch.patch": "e38d4d644ac8a88890a92e46132bb554744ad8716c56b7cfb8739906cd4ed8f2",
+        "integration/ssa/linux/0009-linux-cost-probes.patch": "eb2829bdc61413c9f64662f560ced1def39a50d82b758679abed89c5e970c91b",
+        "integration/ssa/linux/0010-linux-classification-contract.patch": "d0f2888336569eb2b14e28dfbdfe56909b31e01259898aae42f23e2c211f941d"
+      }
+    },
+    "opensbi": {
+      "url": "https://github.com/riscv/opensbi.git",
+      "base": "a98258d0b537a295f517bbc8d813007336731fa9",
+      "accepted_commit": "43f02ffb329d9c86b2ff2138dc450b2060778ffe",
+      "accepted_tree": "c8e81125ce6b92976ccfff630c49a61d9d887e91",
+      "patches": {
+        "integration/ssa/linux/0001-opensbi-rocket-platform.patch": "4b5f50d3e581c834af8ce05d944d74108e6dd3529219fb0db2d1f9d45f864f36",
+        "integration/ssa/linux/0002-opensbi-dtlb-profile.patch": "7b8941e8a77dd59d39ddc3f3eb025279246767ec3b63927fa0cc22a3231cf8f3",
+        "integration/ssa/linux/0003-opensbi-cache-profile.patch": "7c20ba293ce8cc0bcb9cc69ca3777dec791a6571ed756792af20ebc5925cdfd9"
+      }
+    }
+  },
+  "files": {
+    "src/rocket-chip/src/main/scala/rocket/RocketCore.scala": {
+      "sha256": "182b0c1aad954bcf8fed8de23d1fd06b97dc114324ea5db7262eb735eb620672",
+      "component_path": "src/main/scala/rocket/RocketCore.scala"
+    },
+    "src/rocket-chip/src/main/scala/rocket/CSR.scala": {
+      "sha256": "c8ca3b095ab85f5755e4e4c4b240e51424c5d94317246aff87e4c287e2fae83c",
+      "component_path": "src/main/scala/rocket/CSR.scala"
+    },
+    "src/rocket-chip/src/main/scala/rocket/IDecode.scala": {
+      "sha256": "a2f6fefae2d38f6414fcf8f0c4eeaa6d49205f3072bb578a121592e459c92377",
+      "component_path": "src/main/scala/rocket/IDecode.scala"
+    },
+    "src/rocket-chip/src/main/scala/rocket/SSAMemoryClassifier.scala": {
+      "sha256": "c05ddac21192eee261a1495792cf15936922957cf1a83ebc0653d5cce019e71c",
+      "component_path": "src/main/scala/rocket/SSAMemoryClassifier.scala"
+    },
+    "src/rocket-chip/src/main/resources/ssa/microcode.S": {
+      "sha256": "597eec1ec9966cfc73474e42003559d102a6f9463b576f2e3a5a4d3b107d24b2",
+      "component_path": "src/main/resources/ssa/microcode.S"
+    },
+    "src/rocket-chip/scripts/gen-ssa-rom.py": {
+      "sha256": "8ca2dacdd6b694435624d75746949215d25f4e04107cf1fdfc63422563fd8585",
+      "component_path": "scripts/gen-ssa-rom.py"
+    },
+    "src/rocket-chip/LICENSE.Berkeley": {
+      "sha256": "54349a017a8a0876fcc5ef281fc37aedbf5a008158395eaad0f589ade7f019cc",
+      "component_path": "LICENSE.Berkeley"
+    },
+    "src/rocket-chip/LICENSE.SiFive": {
+      "sha256": "63b453c2c3f5e5d31007f55eaacc2b72e8b7a40e6ab33eae6972ba010fa7acc4",
+      "component_path": "LICENSE.SiFive"
+    },
+    "src/linux/kernel/ssa_hpm.c": {
+      "sha256": "133d294640a013e633897a7d0ce4e60a75283b685f6fb6686e2a80bdae2c228e",
+      "component_path": "kernel/ssa_hpm.c"
+    },
+    "src/linux/include/linux/ssa_hpm.h": {
+      "sha256": "c530240eeeeb567645076a55638048fc3bc464be5cd184ca456f3eab32107a54",
+      "component_path": "include/linux/ssa_hpm.h"
+    },
+    "src/linux/COPYING": {
+      "sha256": "fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0",
+      "component_path": "COPYING"
+    },
+    "src/linux/LICENSES/preferred/GPL-2.0": {
+      "sha256": "f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79",
+      "component_path": "LICENSES/preferred/GPL-2.0"
+    },
+    "src/linux/LICENSES/exceptions/Linux-syscall-note": {
+      "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f",
+      "component_path": "LICENSES/exceptions/Linux-syscall-note"
+    },
+    "src/opensbi/platform/ssa_rocket/platform.c": {
+      "sha256": "db42df49c1595917aed35aedfb5eb44d5bbb7505cdddc90fddae02ef20d63bce",
+      "component_path": "platform/ssa_rocket/platform.c"
+    },
+    "src/opensbi/platform/ssa_rocket/config.mk": {
+      "sha256": "da03cccf444d08e70e62cc3ad6ae42ac3b1473dd3c58cea85631824044a0fe1f",
+      "component_path": "platform/ssa_rocket/config.mk"
+    },
+    "src/opensbi/platform/ssa_rocket/objects.mk": {
+      "sha256": "69722dc68b66a381017d012eec2c49899262b88143cb2425938ca93dab45e811",
+      "component_path": "platform/ssa_rocket/objects.mk"
+    },
+    "src/opensbi/COPYING.BSD": {
+      "sha256": "82d13fb1bf6bb162629deeea9eb9c117e74548d3b707e478967691fe79a68e21",
+      "component_path": "COPYING.BSD"
+    }
+  }
+}

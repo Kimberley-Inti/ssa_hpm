@@ -21,7 +21,7 @@ with independent10ELF-capacity checks,5automatic semantic negatives and 3manual
 classification negatives. It records17sessions/215records, native0/powerdown.
 
 [Policy contract](../integration/ssa/linux/transparent/POLICY.md),
-[ordinary ELF identities](../evidence/stage11/linux-users.json),
-[production results](../evidence/stage11/linux-unified-final/summary.json) and
+[ordinary ELF identities](../evidence/final-validation/linux-users.json),
+[production results](../evidence/final-validation/linux-unified-final/summary.json) and
 [validation](VALIDATION.md) cover the actual supported combinations. Automatic
 DTLB and arbitrary language runtimes are future combinations.

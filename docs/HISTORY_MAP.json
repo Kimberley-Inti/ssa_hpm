@@ -454,7 +454,7 @@
     "docs/STAGE11.md": "docs/VALIDATION.md",
     "docs/accepted-delivery.md": "docs/CALLING_CONTEXTS.md"
   },
-  "stable_evidence": "Raw evidence/stage* paths, original mail-patches, authors, commit messages, hashes and release receipts remain unchanged. These storage identifiers are historical, not reader navigation.",
+  "stable_evidence": "Original mail-patches, authors, commit messages and raw log bytes/hashes remain unchanged. Current evidence directories use the mapping in docs/EVIDENCE_PATHS.json; historical log-internal paths and release snapshots retain original names.",
   "historical_links": "Original documentation is available under the unchanged v0.2.0 tag; closed PR URLs remain stable.",
   "compatibility_documents": "Historical document names are mapped here; obsolete compatibility pages were removed from the current tree. Original files remain available at v0.2.0."
 }

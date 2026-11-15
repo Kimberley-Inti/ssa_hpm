@@ -4,7 +4,7 @@ from pathlib import Path
 import json,hashlib,shutil,csv
 r=Path(__file__).resolve().parents[1];w=r/'report/source'
 for d in ['sections','figures','tables','data','third_party']:(w/d).mkdir(exist_ok=True)
-e=r/'evidence/stage11';inputs={'bare':e/'performance-final/summary.json','linux':e/'linux-performance-final/work-summary.json','kernel_cost':e/'linux-performance-final/phase-costs.json','switch':e/'linux-switch-proof/switch-accounting.json','acceptance':e/'summary.json','sources':e/'source-commits.json','instruction_accounting':e/'linux-instruction-accounting.json'}
+e=r/'evidence/final-validation';inputs={'bare':e/'performance-final/summary.json','linux':e/'linux-performance-final/work-summary.json','kernel_cost':e/'linux-performance-final/phase-costs.json','switch':e/'linux-switch-proof/switch-accounting.json','acceptance':e/'summary.json','sources':e/'source-commits.json','instruction_accounting':e/'linux-instruction-accounting.json'}
 d={k:json.loads(p.read_text()) for k,p in inputs.items()};d['provenance']={'validated_release':'v0.2.0','validated_main':'2adbfa5de81f341bd575e8498b370c5a12a02785','candidate':'9c1fdfb0e147c27f7aca58f306e91f532c3fb609','input_sha256':{str(p.relative_to(r)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs.values()}};(w/'data/measurements.json').write_text(json.dumps(d,indent=2)+'\n')
 labels=['Compute','Calls128','Depth16','Stream32K','Irregular32K'];modes=[0,1,2,3,4,5];bare={(x['mode'],x['workload']):x for x in d['bare']['statistics']};linux={(x['mode'],x['workload']):x for x in d['linux']['statistics']}
 def fmt(x):return f'{int(x):,}' if int(x)==x else f'{x:,.1f}'

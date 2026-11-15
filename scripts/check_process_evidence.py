@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check quantitative relationships in actual stage3 simulator output."""
+"""Check quantitative relationships in actual controlled-task simulator output."""
 import argparse,json,pathlib,re
 p=argparse.ArgumentParser();p.add_argument('results',type=pathlib.Path);p.add_argument('--report',type=pathlib.Path,required=True);a=p.parse_args()
 def rows(text,task):

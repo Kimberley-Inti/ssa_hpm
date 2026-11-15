@@ -1,6 +1,6 @@
 # Sources, copyright and licensing
 
-This repository distributes project patches, original fixtures, documentation and validation evidence. It does not import upstream Git ancestry or complete upstream source trees. Patch context and removed lines retain their original copyright and license conditions. Original patch authors, dates and commit messages are preserved in [HISTORY.md](HISTORY.md).
+This repository distributes project patches, selected patched core source files, original fixtures, documentation and validation evidence. It does not import upstream Git ancestry or complete upstream source trees. Patch context and removed lines retain their original copyright and license conditions. Original patch authors, dates and commit messages are preserved in [HISTORY.md](HISTORY.md).
 
 | Material | Source and applicable license |
 | --- | --- |
@@ -20,3 +20,5 @@ The Linux builder fetches pinned source and a pinned Ubuntu Linux-target binutil
 The original acceptance checkout ignored `ssa/env.sh`; this reproduction helper was explicitly added during packaging. Canonical microcode remains in the Rocket patches rather than a second independently maintained copy. Cost probes preserve Linux GPL-2.0-only notices; workload fixtures retain their marked project licenses.
 
 Excluded materials include the two original design PDFs, the supplied report template's prior prose, student information, screenshots and slides, backup bundles, complete upstream trees, generated RTL, firmware/kernel images, credentials and account configuration. Historical commit author identities are retained as development provenance. The English report reuses only the template's independently sourced ACL style and bibliography style; its prose, diagrams, tables and data are project-specific.
+
+The generated core files under [src/](src/README.md) retain their original file headers and component-relative paths. Component license texts accompany the selected sources. Their fixed public baselines, patch hashes and accepted tree identities are recorded in `src/manifest.json`; the full upstream trees and Git ancestry remain external build inputs.

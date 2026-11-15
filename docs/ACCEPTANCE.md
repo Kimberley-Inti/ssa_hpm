@@ -20,8 +20,8 @@ implements those helpers in generated ROM instead of writable on-chip SRAM.
 | ID | Source | Implemented behavior | Evidence / accepted domain |
 |---|---|---|---|
 | C01 |Design p1,p4| Hierarchical calling contexts; same callee distinguished by parent | [Calling contexts](CALLING_CONTEXTS.md);6 records and14452/7226 golden instret |
-| C02 |Design p8–9| SCStack call/return management and 256-frame default | [Boundary RTL](../evidence/stage11/regression-base/rtl-boundary.txt);258calls exercise the defined folding boundary |
-| C03 |Design p9–11| Parent/callee dictionary, chained collisions, monotonic IDs with 0reserved | Context/reuse/collision/exhaustion RTL in [low-level matrix](../evidence/stage11/lowlevel-summary.json) |
+| C02 |Design p8–9| SCStack call/return management and 256-frame default | [Boundary RTL](../evidence/final-validation/regression-base/rtl-boundary.txt);258calls exercise the defined folding boundary |
+| C03 |Design p9–11| Parent/callee dictionary, chained collisions, monotonic IDs with 0reserved | Context/reuse/collision/exhaustion RTL in [low-level matrix](../evidence/final-validation/lowlevel-summary.json) |
 | C04 |Design p11–12; HPM p3| cycle/instret/time in128-byte records |64-bit inclusive intervals; [ABI](../integration/ssa/linux/ABI.md) and actual captures |
 | C05 |Design p8,p11–13; launch-policy supplement| Ordinary selected ELF runs without per-function instrumentation or SSA lifecycle calls | [Automatic launch](AUTOMATIC_LAUNCH.md); final51automatic/26manual checks plus ELF/negative checks; static and tested musl paths |
 | C06 |Design p6,p12–13; trap adaptation| Handler calls excluded from application context construction; return restores notification | [Trap isolation](TRAP_ISOLATION.md); fresh trap/IRQ/permission RTL and real Linux |
@@ -36,7 +36,7 @@ implements those helpers in generated ROM instead of writable on-chip SRAM.
 ## Final candidate evidence
 
 The accepted implementation is v0.2.0 at2adbfa5de81f341bd575e8498b370c5a12a02785.
-[Validation](VALIDATION.md) and [summary](../evidence/stage11/summary.json) record:
+[Validation](VALIDATION.md) and [summary](../evidence/final-validation/summary.json) record:
 
 - Public-baseline application,111source/ROM hashes, actual Scala/RTL/Verilator
   build, and three public-source Linux/SBI payload builds.

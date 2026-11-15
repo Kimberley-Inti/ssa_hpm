@@ -27,12 +27,13 @@
   },
   "artifacts": {
     "report/SSA-HPM-report.pdf": {
-      "sha256": "6bf87b168bab1c357a1bfd17a72e285aeb16d402cbf253719f0e1b42ee67d50e",
+      "sha256": "ca32b9564e11c909c9613926d3de87b11198f534c38284e65c32f2328efdff1e",
       "bytes": 105846
     },
     "report/SSA-HPM-overleaf.zip": {
-      "sha256": "c52066c3ec3417279cb5f0d10c78d719450eab8e8e89ee0f4fb42cee945cb70b",
-      "bytes": 84939
+      "sha256": "d15c740b9e1f12cccce998b61eceb152952516cf2d9593b6117b8c6483db087a",
+      "bytes": 84940
     }
-  }
+  },
+  "path_update": "Evidence directory references and packaged measurement metadata updated; report rebuilt; no new simulation."
 }

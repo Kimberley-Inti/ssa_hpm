@@ -23,5 +23,5 @@ frames and bounded record exhaustion; full-tree support is declared within 256fr
 
 Source: `patches/rocket-chip/`, `integration/ssa/test.c`, the canonical ROM installed
 by `scripts/apply.py`, and [the memory/interface contract](../integration/ssa/linux/ABI.md).
-[Final context capture](../evidence/stage11/regression-base/rtl-context.txt)
-and [low-level results](../evidence/stage11/lowlevel-summary.json) retain actual outputs.
+[Final context capture](../evidence/final-validation/regression-base/rtl-context.txt)
+and [low-level results](../evidence/final-validation/lowlevel-summary.json) retain actual outputs.

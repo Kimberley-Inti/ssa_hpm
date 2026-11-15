@@ -17,4 +17,4 @@ uncorrected negative control. The Linux accounting companion additionally reads
 actual frame snapshots and independently sums raw pause samples for each of
 four distinct counters in both tasks. See [the proof](VALIDATION.md),
 [ABI ownership](../integration/ssa/linux/ABI.md), and
-[controlled-switch results](../evidence/stage11/regression-process/summary.json).
+[controlled-switch results](../evidence/final-validation/regression-process/summary.json).

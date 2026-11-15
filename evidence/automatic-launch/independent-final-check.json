@@ -73,7 +73,7 @@
         "--native-log",
         "/tmp/ssa-hpm-stage10/linux-uncompressed/manual-regression.txt",
         "--execution",
-        "/home/lxf/ssa_hpm/evidence/stage10/manual-suffix-execution.json",
+        "/home/lxf/ssa_hpm/evidence/automatic-launch/manual-suffix-execution.json",
         "--out",
         "/tmp/ssa-hpm-stage10/independent-final/manual-negative.json"
       ],

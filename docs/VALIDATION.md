@@ -2,7 +2,7 @@
 
 The native/semantic matrix and final host-only evidence replay passed. The replay
 actually completed 12 steps and rechecked 300 work results without another native
-execution. Results are indexed by `evidence/stage11/summary.json`.
+execution. Results are indexed by `evidence/final-validation/summary.json`.
 The acceptance domain is one hart, trusted kernel/firmware, audited single-thread
 non-privileged LIFO programs and the explicitly tested musl continuation case.
 This is not a universal Linux or low-overhead implementation claim.
@@ -10,7 +10,7 @@ This is not a universal Linux or low-overhead implementation claim.
 ## Frozen source and actual independent construction
 
 Baseline maintenance commit:6ef19d6e85dfe55983794342620a026005a67d20.
-Final source commits are in [source-commits.json](../evidence/stage11/source-commits.json).
+Final source commits are in [source-commits.json](../evidence/final-validation/source-commits.json).
 Chipyard d756a546e27d40100752a0ff7c73b796c77d4fde adds the accounting companion and
 strict host oracles; Linux3e7c06efefeda043f100ab635b1729ce7a11afd8 adds opt-in cost
 probes and classification-sidecar declarations. Rocket

@@ -3,7 +3,7 @@
 Scope is ACCEPTANCE.md: one hart, trusted kernel/firmware, audited non-privileged
 single-thread LIFO targets and the tested musl continuation adaptation.
 Native/semantic requirements and the 12-step host evidence replay passed.
-The final results are indexed by evidence/stage11/summary.json.
+The final results are indexed by evidence/final-validation/summary.json.
 
 ## Required functionality and final review
 
