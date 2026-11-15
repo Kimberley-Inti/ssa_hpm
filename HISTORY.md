@@ -80,4 +80,4 @@ The original loader-managed virtual-pool and helper-SRAM proposals are adapted t
 - Final component identities: [source commits](evidence/final-validation/source-commits.json).
 - Final behavior and remaining boundaries: [validation](docs/VALIDATION.md), [performance](docs/PERFORMANCE.md), [acceptance](docs/ACCEPTANCE.md).
 
-Failed native/checker evidence and semantic negatives remain alongside final captures. Existing tags and original development history remain unchanged. The [Rocket archive assessment](docs/ROCKET_CHIP_ARCHIVE.md) documents retained development-fork dependencies.
+Failed native/checker evidence and semantic negatives remain alongside final captures. Existing tags and original development history remain unchanged. The [development archive index](docs/DEVELOPMENT_ARCHIVES.md) records the original repositories, archived refs and source coverage.

@@ -452,9 +452,88 @@
     "docs/STAGE9.md": "docs/MEMORY_CLASSIFICATION_VALIDATION.md",
     "docs/STAGE10.md": "docs/AUTOMATIC_LAUNCH.md",
     "docs/STAGE11.md": "docs/VALIDATION.md",
-    "docs/accepted-delivery.md": "docs/CALLING_CONTEXTS.md"
+    "docs/accepted-delivery.md": "docs/CALLING_CONTEXTS.md",
+    "docs/ROCKET_CHIP_ARCHIVE.md": "docs/DEVELOPMENT_ARCHIVES.md"
   },
   "stable_evidence": "Original mail-patches, authors, commit messages and raw log bytes/hashes remain unchanged. Current evidence directories use the mapping in docs/EVIDENCE_PATHS.json; historical log-internal paths and release snapshots retain original names.",
-  "historical_links": "Original documentation is available under the unchanged v0.2.0 tag; closed PR URLs remain stable.",
-  "compatibility_documents": "Historical document names are mapped here; obsolete compatibility pages were removed from the current tree. Original files remain available at v0.2.0."
+  "historical_links": "Original source/review labels and release snapshots remain historical. Current archive refs are indexed in remote_development_archives; closed PR URLs remain available.",
+  "compatibility_documents": "Historical document names are mapped here; obsolete compatibility pages were removed from the current tree. Original files remain available at v0.2.0.",
+  "remote_development_archives": {
+    "Kimberley-Inti/SSA-HPM": {
+      "url": "https://github.com/Kimberley-Inti/SSA-HPM",
+      "branch_renames": [
+        {
+          "old": "archive/ssa-hpm-local-20261108",
+          "new": "archive/original-local-work",
+          "sha": "c2391670d8e1cc62369cfc3e96b58a9a8cc94dda",
+          "verified": true
+        },
+        {
+          "old": "ssa-hpm-completion-20261108",
+          "new": "context-validation",
+          "sha": "375068b6180fa968f86f07fc4b2e1ec104f632ee",
+          "verified": true
+        },
+        {
+          "old": "ssa-hpm-publication-20261109",
+          "new": "reproduction-entry",
+          "sha": "58a7acde9598b4e08d11e5b5f3da0e146e138078",
+          "verified": true
+        },
+        {
+          "old": "stage2-trap-isolation",
+          "new": "trap-isolation",
+          "sha": "fa0ccc7be59a624acc1dcd80af211919be17cd56",
+          "verified": true
+        },
+        {
+          "old": "stage3-process-isolation",
+          "new": "task-accounting",
+          "sha": "503d5ccdb6634a05f46181ecd23648cfbb4e61b8",
+          "verified": true
+        },
+        {
+          "old": "stage4-linux-process-isolation",
+          "new": "linux-process-isolation",
+          "sha": "cad6278c2a079e8ffa3b371158bb6f41aca64ffb",
+          "verified": true
+        }
+      ],
+      "default_branch": "main",
+      "default_before_archive_notice": "4c2e2c7b2aaab4388b9f91f64b22e751ddf283f1",
+      "default_archive_notice": "ea7dc70c36cafe2264bfce062af6ae3085a25b4a"
+    },
+    "Kimberley-Inti/rocket-chip": {
+      "url": "https://github.com/Kimberley-Inti/rocket-chip",
+      "branch_renames": [
+        {
+          "old": "archive/ssa-hpm-local-20261108",
+          "new": "archive/original-local-work",
+          "sha": "23f5a64f6144cd3ffc7b25d490b48f5d019ee718",
+          "verified": true
+        },
+        {
+          "old": "stage2-trap-isolation",
+          "new": "trap-isolation",
+          "sha": "3f4ab938660454b101c67f6929bfebae5be1a138",
+          "verified": true
+        },
+        {
+          "old": "stage4-linux-process-isolation",
+          "new": "linux-process-isolation",
+          "sha": "41d297689890296699d4a45699bf7e5791d33b96",
+          "verified": true
+        },
+        {
+          "old": "ssa-hpm-completion-20261108",
+          "new": "context-monitoring",
+          "sha": "986407bc6df8d2a67572250f1df9eb2c0edeacf9",
+          "verified": true
+        }
+      ],
+      "default_branch": "master",
+      "default_before_archive_notice": "885dd5966a49ce19512e3cc3275515926e729ba2",
+      "default_archive_notice": "110a3b16fbc4d2cc50ce73c3ad2af298bf2ff40a"
+    }
+  }
 }

@@ -199,3 +199,5 @@ Linux, OpenSBI, musl and the report template. Explicit SPDX licenses apply to
 marked files; other original materials retain their authors' rights.
 
 Patch order is defined by the [explicit series](docs/PATCH_ORDER.md), not by filename sorting.
+
+The [original development repositories](docs/DEVELOPMENT_ARCHIVES.md) are preserved as read-only archives. This repository is the maintained implementation, documentation and release entry.
